@@ -3,30 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quickfix Mumbai | Advance Booking</title>
+    <title>Quickfix Mumbai | Premium Services</title>
     <style>
         body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f4f4f4; color: #333; }
+        /* Emergency Banner */
         .emergency { background: #dc3545; color: white; padding: 20px; text-align: center; animation: pulse 1.5s infinite; font-weight: bold; }
         @keyframes pulse { 0% { background: #dc3545; } 50% { background: #ff4d4d; } 100% { background: #dc3545; } }
-        .about-section { background: white; padding: 20px; line-height: 1.6; border-bottom: 3px solid #007bff; }
-        .booking-form { background: #fff; padding: 20px; margin: 15px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        /* Intro */
+        .about { background: white; padding: 20px; line-height: 1.6; border-bottom: 3px solid #007bff; }
+        /* Image Grid */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px; }
+        .card { background: white; padding: 8px; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 90px; object-fit: cover; border-radius: 6px; }
+        /* Booking Form */
+        .booking { background: #fff; padding: 20px; margin: 15px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         select, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
-        .btn { display: block; width: 100%; padding: 15px; background: #25d366; color: white; text-align: center; border: none; border-radius: 8px; font-weight: bold; font-size: 1.1em; cursor: pointer; }
+        .btn { display: block; width: 100%; padding: 15px; background: #25d366; color: white; text-align: center; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
 
     <div class="emergency">🚨 24/7 EMERGENCY REPAIR - CALL NOW!</div>
 
-    <div class="about-section">
+    <div class="about">
         <h2>Welcome to Quickfix</h2>
-        <p>15+ years of trust, 100,000+ families served. Expert technicians at your doorstep.</p>
+        <p>India's #1 Trusted platform in Mumbai since 2010. Over 100,000+ happy families served. Expert technicians for all appliances.</p>
     </div>
 
-    <div class="booking-form">
+    <div class="grid">
+        <div class="card"><img src="https://images.unsplash.com/photo-1571175483880-77e1d4411130" alt="Fridge">Fridge</div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f" alt="Wash">Wash</div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1585464297120-760777174e95" alt="Micro">Micro</div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1596436889106-be35e843f974" alt="Dish">Dish</div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1558312657-30e71616c683" alt="Dryer">Dryer</div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1557800636-894a64c1696f" alt="Air">Air Dresser</div>
+    </div>
+
+    <div class="booking">
         <h3>📅 Advance Booking (Flat 30% OFF)</h3>
         <form id="bookingForm" onsubmit="sendWhatsApp(event)">
-            <label>Select Item:</label>
             <select id="item" required>
                 <option value="Refrigerator">Refrigerator</option>
                 <option value="Washing Machine">Washing Machine</option>
@@ -35,8 +50,7 @@
                 <option value="Cloth Dryer">Cloth Dryer</option>
                 <option value="Air Dresser">Air Dresser</option>
             </select>
-            <label>Problem Description (Optional):</label>
-            <textarea id="desc" rows="3" placeholder="Kuch aur batana chahte hain?"></textarea>
+            <textarea id="desc" rows="3" placeholder="Description (Optional)"></textarea>
             <button type="submit" class="btn">Book via WhatsApp</button>
         </form>
     </div>
@@ -46,8 +60,7 @@
             event.preventDefault();
             const item = document.getElementById('item').value;
             const desc = document.getElementById('desc').value;
-            const phone = "919930249182";
-            const url = `https://wa.me/${phone}?text=Hello, I want to book an advance service for: ${item}. Problem: ${desc}`;
+            const url = `https://wa.me/919930249182?text=I want to book an advance service for: ${item}. Description: ${desc}`;
             window.open(url, '_blank');
         }
     </script>
