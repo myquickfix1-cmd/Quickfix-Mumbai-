@@ -5,18 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quickfix Mumbai | Expert Services</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f4f4f4; color: #333; }
-        .emergency { background: #ff0000; color: white; padding: 25px 10px; text-align: center; font-size: 1.4em; font-weight: 900; animation: blink 1s infinite; }
-        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
-        .about { background: white; padding: 20px; line-height: 1.6; border-bottom: 4px solid #007bff; }
-        .why-choose { background: #eef; padding: 20px; margin: 10px; border-radius: 10px; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px; }
-        .card { background: white; padding: 10px; border-radius: 10px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f9f9f9; color: #333; }
+        
+        /* Emergency Banner */
+        .emergency { background: #d32f2f; color: white; padding: 20px; text-align: center; font-size: 1.3em; font-weight: 800; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { background: #d32f2f; } 50% { background: #ff5252; } 100% { background: #d32f2f; } }
+        
+        /* About & Trust */
+        .about, .why-choose { background: white; padding: 20px; margin: 10px; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        h2 { margin-top: 0; color: #007bff; }
+        
+        /* Image Grid */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 10px; }
+        .card { background: white; padding: 8px; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .card img { width: 100%; height: 90px; object-fit: cover; border-radius: 8px; }
-        .offer { background: #ff9800; color: white; padding: 20px; margin: 15px; border-radius: 15px; text-align: center; font-weight: bold; }
-        .booking { background: #fff; padding: 20px; margin: 15px; border-radius: 10px; border: 2px solid #007bff; }
-        select, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
-        .btn { display: block; width: 100%; padding: 15px; background: #25d366; color: white; text-align: center; border-radius: 8px; font-weight: bold; text-decoration: none; }
+        
+        /* Offer & Booking */
+        .offer { background: #ff9800; color: white; padding: 15px; margin: 10px; border-radius: 10px; text-align: center; font-weight: bold; }
+        .booking { background: #fff; padding: 20px; margin: 10px; border-radius: 12px; border: 2px solid #007bff; }
+        select, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
+        .btn { display: block; width: 100%; padding: 15px; background: #25d366; color: white; text-align: center; border-radius: 8px; font-weight: bold; font-size: 1.1em; cursor: pointer; border: none; }
     </style>
 </head>
 <body>
@@ -25,37 +33,31 @@
 
     <div class="about">
         <h2>Welcome to Quickfix</h2>
-        <p>India's #1 trusted platform in Mumbai. Revolutionizing Doorstep Services since 2010. Over 100,000+ trusted families served.</p>
+        <p>India's #1 trusted platform in Mumbai. Revolutionizing Doorstep Services since 2010. 100,000+ trusted families served.</p>
     </div>
 
     <div class="why-choose">
-        <h3>Why Choose Us?</h3>
-        <ul>
-            <li>15+ Years of Experience</li>
-            <li>50+ Company Expert Technicians</li>
-            <li>Tension-free Perfect Repair</li>
-        </ul>
+        <h2>Why Choose Us?</h2>
+        <p>✓ 15+ Years Industry Experience<br>✓ 50+ Company Expert Technicians<br>✓ Perfect Repair & Tension-Free Service</p>
     </div>
 
     <div class="grid">
-        <div class="card"><img src="https://images.unsplash.com/photo-1571175483880-77e1d4411130" alt="Fridge">Fridge</div>
-        <div class="card"><img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f" alt="Wash">Wash Machine</div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1571175483880-77e1d4411130" alt="Fridge">Refrigerator</div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f" alt="Wash">Washing Machine</div>
         <div class="card"><img src="https://images.unsplash.com/photo-1585464297120-760777174e95" alt="Micro">Microwave</div>
         <div class="card"><img src="https://images.unsplash.com/photo-1596436889106-be35e843f974" alt="Dish">Dishwasher</div>
         <div class="card"><img src="https://images.unsplash.com/photo-1558312657-30e71616c683" alt="Dryer">Cloth Dryer</div>
         <div class="card"><img src="https://images.unsplash.com/photo-1557800636-894a64c1696f" alt="Air">Air Dresser</div>
     </div>
 
-    <div class="offer">
-        <h3>📅 Advance Booking (Flat 30% OFF)</h3>
-    </div>
+    <div class="offer">📅 Advance Booking: Flat 30% OFF!</div>
 
     <div class="booking">
         <select id="item">
             <option>Refrigerator</option><option>Washing Machine</option><option>Microwave</option>
             <option>Dishwasher</option><option>Cloth Dryer</option><option>Air Dresser</option>
         </select>
-        <textarea id="desc" rows="3" placeholder="Describe your problem (Optional)"></textarea>
+        <textarea id="desc" rows="3" placeholder="Description of problem (Optional)"></textarea>
         <button onclick="sendWA()" class="btn">Book via WhatsApp</button>
     </div>
 
@@ -63,7 +65,7 @@
         function sendWA() {
             const item = document.getElementById('item').value;
             const desc = document.getElementById('desc').value;
-            window.open(`https://wa.me/919930249182?text=Advance Booking for ${item}. Details: ${desc}`);
+            window.open(`https://wa.me/919930249182?text=Advance Booking for: ${item}. Description: ${desc}`);
         }
     </script>
 </body>
