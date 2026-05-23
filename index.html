@@ -1,45 +1,41 @@
-<!DOCTYPE html>
+            <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Quickfix Mumbai - #1 Trusted Home Appliance Repair. Experts in Freeze, Washing Machine, Microwave, Dishwasher,Air Dryer, Air Dresser and All Types of Home Appliances Services and repair since 2010.">
+    <meta name="description" content="Quickfix Mumbai - #1 Trusted Home Appliance Repair. Experts in Freeze, Washing Machine, Microwave, Dishwasher, Air Dryer, Air Dresser and All Types of Home Appliances Services and repair since 2010.">
     <title>Quickfix Mumbai | Expert Home Appliance Repair & Services</title>
     <style>
         body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fdfdfd; color: #333; }
         
-        /* Fast Emergency Banner */<div class="emergency-wrapper" style="background: #ff0000; padding: 20px; text-align: center; animation: flash 0.5s infinite;">
-    <h2 style="color: white; margin: 0;">🚨 24/7 EMERGENCY REPAIR</h2>
-    <p style="color: white; font-weight: bold;">Need instant help? Share your issue now!</p>
-    
-    <a href="https://wa.me/919930249182?text=EMERGENCY!%20I%20need%20urgent%20repair.%20I%20am%20sending%20a%20photo/video%20of%20my%20problem." 
-       style="display: block; background: white; color: red; padding: 15px; margin-top: 10px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em;">
-       📸 Tap to Share Photo/Video/Voice
-    </a>
-</div>
-
-<style>
-    @keyframes flash { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
-</style>
-    
+        /* Emergency Banner */
+        .emergency-wrapper { background: #ff0000; padding: 20px; text-align: center; animation: flash 0.5s infinite; }
+        @keyframes flash { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
         
-        .about, .why { background: #fff; padding: 20px; line-height: 1.6; border-bottom: 2px solid #eee; }
+        .about { background: #fff; padding: 20px; line-height: 1.6; border-bottom: 2px solid #eee; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 15px; }
         .card { border: 1px solid #ddd; padding: 10px; border-radius: 12px; text-align: center; }
         .card img { width: 100%; height: 110px; object-fit: cover; border-radius: 8px; margin-bottom: 8px; }
         
-        /* Attractive Advance Booking */
         .booking-box { background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 25px; margin: 15px; border-radius: 20px; text-align: center; }
         input, select, textarea { width: 100%; padding: 14px; margin: 8px 0; border-radius: 8px; border: none; box-sizing: border-box; }
         
         .btn-call { display: block; width: 90%; margin: 10px auto; padding: 18px; background: #000; color: white; text-align: center; text-decoration: none; border-radius: 50px; font-weight: bold; }
         .btn-wa { background: #25d366; }
+        .testimonials { background: #f9f9f9; padding: 20px; text-align: center; border-radius: 15px; margin: 15px; border: 1px dashed #ccc; }
     </style>
 </head>
 <body>
 
-    <div class="emergency">🚨 24/7 EMERGENCY REPAIR</div>
-/* Fast Emergency Banner */
+    <div class="emergency-wrapper">
+        <h2 style="color: white; margin: 0;">🚨 24/7 EMERGENCY REPAIR</h2>
+        <p style="color: white; font-weight: bold;">Need instant help? Share your issue now!</p>
+        <a href="https://wa.me/919930249182?text=EMERGENCY! I need urgent repair. I am sending a photo/video of my problem." 
+           style="display: block; background: white; color: red; padding: 15px; margin-top: 10px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em;">
+           📸 Tap to Share Photo/Video/Voice
+        </a>
+    </div>
+
     <div class="about">
         <h2>Welcome to Quickfix</h2>
         <p>India's #1 Most Trusted platform (Mumbai). Revolutionizing Doorstep Services since 2010. with 1,900,519+ trusted families served. We Have the above 15 years+ experiences with the Service industries and have 50+ Companys Expert Technicians Service and repairing provided by My Expert Technicians .</p>
@@ -60,18 +56,19 @@
         <p style="font-size: 1.2em;">Get <b>Flat 30% OFF</b> on Next Day Service!</p>
         <input type="date" id="date">
         <select id="item">
-            <option>Freeze</option><option>Washing Machine</option><option>Microwave</option>
+            <option>Refrigerator</option><option>Washing Machine</option><option>Microwave</option>
             <option>Dishwasher</option><option>Cloth Dryer</option><option>Air Dresser</option>
         </select>
         <textarea id="desc" rows="2" placeholder="Your Problem (Optional)"></textarea>
-        <button onclick="sendWA()" class="btn-call btn-wa">Book via WhatsApp</button>
+        <button onclick="sendWA()" class="btn-call btn-wa" style="width:100%;">Book via WhatsApp</button>
     </div>
-        <div class="testimonials" style="background: #f9f9f9; padding: 20px; text-align: center; border-radius: 15px; margin: 15px; border: 1px dashed #ccc;">
-        <h3 style="margin-top: 0;">⭐ Trusted by 1,900,519+ Families</h3>
-        <div class="stars" style="color: #ff9800; font-size: 1.2em; margin-bottom: 10px;">★★★★★</div>
+
+    <div class="testimonials">
+        <h3>⭐ Trusted by 1,900,519+ Families</h3>
+        <div style="color: #ff9800; font-size: 1.2em; margin-bottom: 10px;">★★★★★</div>
         <p style="font-style: italic; color: #555;">"Quickfix saved my fridge on time! Excellent service and very polite technicians."</p>
-        <p style="font-weight: bold;">— <i> Experts Home Appliances 24/7 Emergency Available You Don't Take Tension Quickfix Mean 100% Fix Your Problems on Time. QuickFix Mumbai Expert Home Appliances 24/7</i></p>
-        </div>
+        <p style="font-weight: bold;">— <i>Experts Home Appliances 24/7 Emergency Available</i></p>
+    </div>
     
     <a href="tel:+919930249182" class="btn-call">📞 Call Now: 9930249182</a>
 
