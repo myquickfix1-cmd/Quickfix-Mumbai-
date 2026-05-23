@@ -74,28 +74,25 @@
     </div>
 
     <div class="testimonials" id="rating-section">
-    <h3>⭐ Give Your Valuable Opinion</h3>
-    <div class="stars" id="star-container" style="cursor: pointer; font-size: 2em; color: #ccc;">
-        <span onclick="rate(1)">★</span>
-        <span onclick="rate(2)">★</span>
-        <span onclick="rate(3)">★</span>
-        <span onclick="rate(4)">★</span>
-        <span onclick="rate(5)">★</span>
+    <div class="testimonials" style="background: #fff; padding: 20px; border-radius: 15px; margin: 15px; border: 1px solid #ddd; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    <h3 style="margin-top: 0;">Customer Opinions</h3>
+    <div style="font-size: 2.5em; font-weight: bold; color: #ff9800;">4.9 <span style="font-size: 0.4em; color: #777;">/ 5.0</span></div>
+    <div class="stars" style="color: #ff9800; font-size: 1.2em;">★★★★★</div>
+    <p style="color: #555; font-size: 0.9em;">Based on 1,900,519+ reviews</p>
+
+    <div style="margin-top: 15px;">
+        <div style="display: flex; align-items: center; font-size: 0.8em; margin-bottom: 5px;">
+            <span>5★</span> <div style="flex-grow: 1; height: 10px; background: #eee; margin: 0 10px; border-radius: 5px;"><div style="width: 90%; height: 100%; background: #ff9800; border-radius: 5px;"></div></div> <span>90%</span>
+        </div>
+        <div style="display: flex; align-items: center; font-size: 0.8em; margin-bottom: 5px;">
+            <span>4★</span> <div style="flex-grow: 1; height: 10px; background: #eee; margin: 0 10px; border-radius: 5px;"><div style="width: 8%; height: 100%; background: #ff9800; border-radius: 5px;"></div></div> <span>8%</span>
+        </div>
+        <div style="display: flex; align-items: center; font-size: 0.8em;">
+            <span>3★</span> <div style="flex-grow: 1; height: 10px; background: #eee; margin: 0 10px; border-radius: 5px;"><div style="width: 2%; height: 100%; background: #ff9800; border-radius: 5px;"></div></div> <span>2%</span>
+        </div>
     </div>
-    <p id="rating-text">Click a star to rate us!</p>
 </div>
 
-<script>
-    let currentRating = 0;
-    function rate(n) {
-        currentRating = n;
-        const stars = document.querySelectorAll('#star-container span');
-        stars.forEach((star, index) => {
-            star.style.color = index < n ? '#ff9800' : '#ccc';
-        });
-        document.getElementById('rating-text').innerText = "You rated: " + n + " Stars! Thank you for being a loyal customer.";
-    }
-</script>
 
     
     <a href="tel:+919930249182" class="btn-call">📞 Call Now: 9930249182</a>
