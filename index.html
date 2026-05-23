@@ -3,28 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quickfix Mumbai | Expert Services</title>
+    <meta name="description" content="Quickfix Mumbai - #1 Trusted Appliance Repair. Experts in Fridge, Washing Machine, Microwave, Dishwasher, Dryer, Air Dresser repair since 2010.">
+    <title>Quickfix Mumbai | Expert Appliance Repair & Services</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f9f9f9; color: #333; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fdfdfd; color: #333; }
         
-        /* Emergency Banner */
-        .emergency { background: #d32f2f; color: white; padding: 20px; text-align: center; font-size: 1.3em; font-weight: 800; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { background: #d32f2f; } 50% { background: #ff5252; } 100% { background: #d32f2f; } }
+        /* Fast Emergency Banner */
+        .emergency { background: #ff0000; color: white; padding: 25px 10px; text-align: center; font-size: 1.8em; font-weight: 900; animation: flash 0.5s infinite; }
+        @keyframes flash { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
         
-        /* About & Trust */
-        .about, .why-choose { background: white; padding: 20px; margin: 10px; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        h2 { margin-top: 0; color: #007bff; }
+        .about, .why { background: #fff; padding: 20px; line-height: 1.6; border-bottom: 2px solid #eee; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 15px; }
+        .card { border: 1px solid #ddd; padding: 10px; border-radius: 12px; text-align: center; }
+        .card img { width: 100%; height: 110px; object-fit: cover; border-radius: 8px; margin-bottom: 8px; }
         
-        /* Image Grid */
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 10px; }
-        .card { background: white; padding: 8px; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .card img { width: 100%; height: 90px; object-fit: cover; border-radius: 8px; }
+        /* Attractive Advance Booking */
+        .booking-box { background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 25px; margin: 15px; border-radius: 20px; text-align: center; }
+        input, select, textarea { width: 100%; padding: 14px; margin: 8px 0; border-radius: 8px; border: none; box-sizing: border-box; }
         
-        /* Offer & Booking */
-        .offer { background: #ff9800; color: white; padding: 15px; margin: 10px; border-radius: 10px; text-align: center; font-weight: bold; }
-        .booking { background: #fff; padding: 20px; margin: 10px; border-radius: 12px; border: 2px solid #007bff; }
-        select, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
-        .btn { display: block; width: 100%; padding: 15px; background: #25d366; color: white; text-align: center; border-radius: 8px; font-weight: bold; font-size: 1.1em; cursor: pointer; border: none; }
+        .btn-call { display: block; width: 90%; margin: 10px auto; padding: 18px; background: #000; color: white; text-align: center; text-decoration: none; border-radius: 50px; font-weight: bold; }
+        .btn-wa { background: #25d366; }
     </style>
 </head>
 <body>
@@ -33,12 +31,8 @@
 
     <div class="about">
         <h2>Welcome to Quickfix</h2>
-        <p>India's #1 trusted platform in Mumbai. Revolutionizing Doorstep Services since 2010. 100,000+ trusted families served.</p>
-    </div>
-
-    <div class="why-choose">
-        <h2>Why Choose Us?</h2>
-        <p>✓ 15+ Years Industry Experience<br>✓ 50+ Company Expert Technicians<br>✓ Perfect Repair & Tension-Free Service</p>
+        <p>India's #1 Most Trusted platform (Mumbai). Revolutionizing Doorstep Services since 2010. 100,000+ trusted families served. 15+ years experience with 50+ Expert Technicians.</p>
+        <p><b>EXPERT HOME APPLIANCES REPAIRERS 24/7 WITH RELIABLE AND REASONABLE PRICES.</b></p>
     </div>
 
     <div class="grid">
@@ -50,22 +44,26 @@
         <div class="card"><img src="https://images.unsplash.com/photo-1557800636-894a64c1696f" alt="Air">Air Dresser</div>
     </div>
 
-    <div class="offer">📅 Advance Booking: Flat 30% OFF!</div>
-
-    <div class="booking">
+    <div class="booking-box">
+        <h3>📅 Advance Booking</h3>
+        <p style="font-size: 1.2em;">Get <b>Flat 30% OFF</b> on Next Day Service!</p>
+        <input type="date" id="date">
         <select id="item">
             <option>Refrigerator</option><option>Washing Machine</option><option>Microwave</option>
             <option>Dishwasher</option><option>Cloth Dryer</option><option>Air Dresser</option>
         </select>
-        <textarea id="desc" rows="3" placeholder="Description of problem (Optional)"></textarea>
-        <button onclick="sendWA()" class="btn">Book via WhatsApp</button>
+        <textarea id="desc" rows="2" placeholder="Your Problem (Optional)"></textarea>
+        <button onclick="sendWA()" class="btn-call btn-wa">Book via WhatsApp</button>
     </div>
+
+    <a href="tel:+919930249182" class="btn-call">📞 Call Now: 9930249182</a>
 
     <script>
         function sendWA() {
+            const date = document.getElementById('date').value;
             const item = document.getElementById('item').value;
             const desc = document.getElementById('desc').value;
-            window.open(`https://wa.me/919930249182?text=Advance Booking for: ${item}. Description: ${desc}`);
+            window.open(`https://wa.me/919930249182?text=Advance Booking for ${item} on ${date}. Problem: ${desc}`);
         }
     </script>
 </body>
