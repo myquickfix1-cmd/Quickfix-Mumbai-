@@ -73,12 +73,30 @@
         <button onclick="sendWA()" class="btn-call btn-wa" style="width:100%;">Book via WhatsApp</button>
     </div>
 
-    <div class="testimonials">
-        <h3>⭐ Valuable Opinions from Happy Loyal Families</h3>
-        <div style="color: #ff9800; font-size: 1.5em; margin-bottom: 10px;">★★★★★</div>
-        <p style="font-style: italic; color: #555;">"Quickfix is the most trusted and valuable service in Mumbai! My Refrigerator and W-Machine are always in perfect condition. Truly Loyal QC!"</p>
-        <p style="font-weight: bold;">— <i>Satisfied & Loyal Customer</i></p>
+    <div class="testimonials" id="rating-section">
+    <h3>⭐ Give Your Valuable Opinion</h3>
+    <div class="stars" id="star-container" style="cursor: pointer; font-size: 2em; color: #ccc;">
+        <span onclick="rate(1)">★</span>
+        <span onclick="rate(2)">★</span>
+        <span onclick="rate(3)">★</span>
+        <span onclick="rate(4)">★</span>
+        <span onclick="rate(5)">★</span>
     </div>
+    <p id="rating-text">Click a star to rate us!</p>
+</div>
+
+<script>
+    let currentRating = 0;
+    function rate(n) {
+        currentRating = n;
+        const stars = document.querySelectorAll('#star-container span');
+        stars.forEach((star, index) => {
+            star.style.color = index < n ? '#ff9800' : '#ccc';
+        });
+        document.getElementById('rating-text').innerText = "You rated: " + n + " Stars! Thank you for being a loyal customer.";
+    }
+</script>
+
     
     <a href="tel:+919930249182" class="btn-call">📞 Call Now: 9930249182</a>
 
