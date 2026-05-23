@@ -8,9 +8,20 @@
     <style>
         body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fdfdfd; color: #333; }
         
-        /* Fast Emergency Banner */
-        .emergency { background: #ff0000; color: white; padding: 25px 10px; text-align: center; font-size: 1.8em; font-weight: 900; animation: flash 0.5s infinite; }
-        @keyframes flash { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        /* Fast Emergency Banner */<div class="emergency-wrapper" style="background: #ff0000; padding: 20px; text-align: center; animation: flash 0.5s infinite;">
+    <h2 style="color: white; margin: 0;">🚨 24/7 EMERGENCY REPAIR</h2>
+    <p style="color: white; font-weight: bold;">Need instant help? Share your issue now!</p>
+    
+    <a href="https://wa.me/919930249182?text=EMERGENCY!%20I%20need%20urgent%20repair.%20I%20am%20sending%20a%20photo/video%20of%20my%20problem." 
+       style="display: block; background: white; color: red; padding: 15px; margin-top: 10px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em;">
+       📸 Tap to Share Photo/Video/Voice
+    </a>
+</div>
+
+<style>
+    @keyframes flash { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+</style>
+    
         
         .about, .why { background: #fff; padding: 20px; line-height: 1.6; border-bottom: 2px solid #eee; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 15px; }
