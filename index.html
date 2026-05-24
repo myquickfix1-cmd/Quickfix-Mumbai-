@@ -32,11 +32,25 @@
 
         /* Services List */
         .grid { display: flex; flex-direction: column; gap: 15px; padding: 15px; }
-        .card { border: 1px solid #ddd; padding: 12px; border-radius: 12px; display: flex; align-items: center; gap: 15px; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .card { border: 1px solid #ddd; padding: 15px; border-radius: 12px; display: flex; align-items: center; gap: 15px; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.05); cursor: pointer; transition: background 0.2s; }
+        .card:active { background: #f0f7ff; border-color: #007bff; }
         
-        .card img { width: 80px; height: 80px; object-fit: contain; border-radius: 8px; background: #f7f7f7; padding: 4px; box-sizing: border-box; }
-        .card span { font-weight: bold; font-size: 1.1em; }
+        .card img { width: 65px; height: 65px; object-fit: contain; border-radius: 8px; background: #f7f7f7; padding: 4px; box-sizing: border-box; }
+        .card span { font-weight: bold; font-size: 1.1em; flex-grow: 1; }
+        .arrow-icon { color: #007bff; font-weight: bold; font-size: 1.2em; }
         
+        /* Dynamic Problem Explorer Popup Section */
+        .problem-explorer { display: none; background: #ffffff; border: 2px solid #007bff; border-radius: 20px; margin: 15px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); animation: slideDown 0.3s ease-out; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .slideshow-container { width: 100%; height: 180px; background: #f9f9f9; border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; border: 1px solid #eee; }
+        .slideshow-img { max-width: 100%; max-height: 100%; object-fit: contain; display: none; }
+        .slideshow-img.active { display: block; }
+
+        .problem-list { text-align: left; margin: 15px 0; }
+        .problem-option { display: flex; align-items: center; gap: 10px; background: #f8f9fa; padding: 10px; margin: 8px 0; border-radius: 8px; border: 1px solid #eee; cursor: pointer; }
+        .problem-option input { width: auto; margin: 0; }
+
         /* Booking Box & Feedback Box */
         .booking-box, .feedback-box { background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 25px; margin: 15px; border-radius: 20px; text-align: center; position: relative; }
         .feedback-box { background: linear-gradient(135deg, #333333, #111111); margin-top: 25px; border: 2px solid #ff9800; }
@@ -63,6 +77,7 @@
         .btn-call { display: block; width: 90%; margin: 10px auto; padding: 18px; background: #000; color: white; text-align: center; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1.2em; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .btn-wa { background: #25d366; color: white; border: none; cursor: pointer; }
         .btn-submit-feedback { background: #ff9800; color: white; border: none; cursor: pointer; }
+        .btn-book-now { background: #ff9800; color: white; font-size: 1.1em; border: none; padding: 15px; border-radius: 50px; font-weight: bold; width: 100%; cursor: pointer; margin-top: 10px; box-shadow: 0 4px 10px rgba(255,152,0,0.4); }
         
         .fixed-call-container { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.95); padding: 12px 0; box-shadow: 0 -4px 10px rgba(0,0,0,0.1); z-index: 999; }
 
@@ -109,35 +124,55 @@
 
     <div class="trust-badges">
         <div class="badge-item">💯<span>Genuine Parts</span></div>
-        <div class="badge-item">🛡️<span>6 Months Warranty</span></div>
+        <div class="badge-item">🛡️<span>30 Days Warranty</span></div>
         <div class="badge-item">👨‍🔧<span>Expert Techs</span></div>
     </div>
 
     <div class="grid">
-        <div class="card">
+        <div class="card" onclick="exploreProduct('Refrigerator')">
             <img src="https://cdn-icons-png.flaticon.com/512/2928/2928929.png" alt="Refrigerator">
             <span>Refrigerator (Fridge)</span>
+            <div class="arrow-icon">➔</div>
         </div>
-        <div class="card">
+        <div class="card" onclick="exploreProduct('Washing Machine')">
             <img src="https://cdn-icons-png.flaticon.com/512/2928/2928941.png" alt="Washing Machine">
             <span>Washing Machine</span>
+            <div class="arrow-icon">➔</div>
         </div>
-        <div class="card">
+        <div class="card" onclick="exploreProduct('Microwave')">
             <img src="https://cdn-icons-png.flaticon.com/512/2928/2928956.png" alt="Microwave">
             <span>Microwave Oven</span>
+            <div class="arrow-icon">➔</div>
         </div>
-        <div class="card">
+        <div class="card" onclick="exploreProduct('Dishwasher')">
             <img src="https://cdn-icons-png.flaticon.com/512/2558/2558058.png" alt="Dishwasher">
             <span>Dishwasher</span>
+            <div class="arrow-icon">➔</div>
         </div>
-        <div class="card">
+        <div class="card" onclick="exploreProduct('Cloth Dryer')">
             <img src="https://cdn-icons-png.flaticon.com/512/9116/9116518.png" alt="Cloth Dryer">
             <span>Cloth Dryer</span>
+            <div class="arrow-icon">➔</div>
         </div>
-        <div class="card">
+        <div class="card" onclick="exploreProduct('Air Dresser')">
             <img src="https://cdn-icons-png.flaticon.com/512/3067/3067169.png" alt="Air Dresser">
             <span>Air Dresser</span>
+            <div class="arrow-icon">➔</div>
         </div>
+    </div>
+
+    <div id="problem-explorer-section" class="problem-explorer">
+        <h3 id="explorer-title" style="color: #007bff; margin-top: 0; font-size: 1.3em; text-align: center;">Identify Your Problem</h3>
+        
+        <div class="slideshow-container" id="slideshow-box">
+            </div>
+        
+        <p style="font-size: 0.9em; color: #666; text-align: center; margin: 8px 0;">👇 Select what problem you are facing:</p>
+        
+        <div class="problem-list" id="problem-checklist">
+            </div>
+
+        <button onclick="bookExplorerService()" class="btn-book-now">👉 Confirm & Book Now</button>
     </div>
 
     <div class="booking-box">
@@ -232,7 +267,115 @@
     </div>
 
     <script>
-        // 📆 1. Real-time Live Date Setter (Calendar Fix)
+        // Data Bank for Dynamic Machine Images and Problems
+        const catalogData = {
+            "Refrigerator": {
+                images: [
+                    "https://images.unsplash.com/photo-1571175432267-efb922a1c3bb?w=500&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1601054704854-1a2e79dea4d3?w=500&auto=format&fit=crop"
+                ],
+                problems: ["Cooling Problem / Not Cooling", "Water Leakage Issue", "Making Loud Unwanted Noise", "Gas Leakage / Refilling Required"]
+            },
+            "Washing Machine": {
+                images: [
+                    "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=500&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1545173168-9f19472ef7f4?w=500&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?w=500&auto=format&fit=crop"
+                ],
+                problems: ["Drum Not Spinning / Rotating", "Water Drainage Blocked", "Vibrating Violently", "Error Code on Digital Screen"]
+            },
+            "Microwave": {
+                images: [
+                    "https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=500&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1585659722982-79614c0a96ef?w=500&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1614594805323-e5a9854fea59?w=500&auto=format&fit=crop"
+                ],
+                problems: ["Not Heating Food at All", "Touchpad / Buttons Not Working", "Sparking Inside the Oven", "Glass Plate Not Spinning"]
+            },
+            "Dishwasher": {
+                images: [
+                    "https://images.unsplash.com/photo-1581622558663-b2933377df12?w=500&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1595225476474-87563907a212?w=500&auto=format&fit=crop"
+                ],
+                problems: ["Dishes Coming Out Dirty", "Water Not Draining Out", "Leaking Water on Floor", "Not Drying Dishes Properly"]
+            },
+            "Cloth Dryer": {
+                images: [
+                    "https://images.unsplash.com/photo-1610557892470-55d9e80e0b9b?w=500&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1604335399105-a0c5e5ad90d1?w=500&auto=format&fit=crop"
+                ],
+                problems: ["Takes Too Long to Dry Clothes", "Dryer Not Heating Up", "Making Squeaking Noises", "Won't Turn On / Start"]
+            },
+            "Air Dresser": {
+                images: [
+                    "https://images.unsplash.com/photo-1567113463300-1025f5d37ed8?w=500&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=500&auto=format&fit=crop"
+                ],
+                problems: ["Steam Function Not Working", "Bad Odor Coming from System", "Clothing Wrinkles Not Removing", "Smart App Connection Failure"]
+            }
+        };
+
+        let selectedProduct = "";
+        let slideshowInterval;
+
+        // Function triggered when an appliance card is clicked
+        function exploreProduct(prodName) {
+            selectedProduct = prodName;
+            const section = document.getElementById('problem-explorer-section');
+            const title = document.getElementById('explorer-title');
+            const slideBox = document.getElementById('slideshow-box');
+            const checklist = document.getElementById('problem-checklist');
+
+            // Open the explorer box visually
+            section.style.display = 'block';
+            title.innerHTML = `🛠️ Your <b>${prodName}</b> Problem Profile`;
+            section.scrollIntoView({ behavior: 'smooth' });
+
+            // Setup Slideshow HTML Images
+            clearInterval(slideshowInterval);
+            slideBox.innerHTML = "";
+            catalogData[prodName].images.forEach((imgUrl, idx) => {
+                const imgTag = document.createElement('img');
+                imgTag.src = imgUrl;
+                imgTag.className = `slideshow-img ${idx === 0 ? 'active' : ''}`;
+                slideBox.appendChild(imgTag);
+            });
+
+            // Start Live Auto Image Changing Loop (3 seconds)
+            let activeIdx = 0;
+            const loadedImages = slideBox.getElementsByClassName('slideshow-img');
+            slideshowInterval = setInterval(() => {
+                if(loadedImages.length > 0) {
+                    loadedImages[activeIdx].classList.remove('active');
+                    activeIdx = (activeIdx + 1) % loadedImages.length;
+                    loadedImages[activeIdx].classList.add('active');
+                }
+            }, 3000);
+
+            // Inject Custom Appliance Problems Checklist
+            checklist.innerHTML = "";
+            catalogData[prodName].problems.forEach((probText, idx) => {
+                checklist.innerHTML += `
+                    <label class="problem-option">
+                        <input type="radio" name="selected_problem" value="${probText}" ${idx === 0 ? 'checked' : ''}>
+                        <span>${probText}</span>
+                    </label>
+                `;
+            });
+        }
+
+        // Direct Order Placement via dedicated Book Now button
+        function bookExplorerService() {
+            const checkedRadio = document.querySelector('input[name="selected_problem"]:checked');
+            if(!checkedRadio) { alert("Please select a problem!"); return; }
+            const finalProblem = checkedRadio.value;
+            
+            const whatsappMsg = `Hello Quickfix! I need an expert technician to repair my *${selectedProduct}*. My specific issue is: *${finalProblem}*. Please check availability for home visit.`;
+            window.open(`https://wa.me/919930249182?text=${encodeURIComponent(whatsappMsg)}`);
+        }
+
+        // Live Calendar Sync Logic
         window.addEventListener('DOMContentLoaded', () => {
             const today = new Date();
             const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -240,7 +383,6 @@
             document.getElementById('cal-d').innerText = today.getDate();
         });
 
-        // 📩 2. Advance Booking WhatsApp Redirect
         function sendWA() {
             const date = document.getElementById('date').value;
             const item = document.getElementById('item').value;
@@ -249,23 +391,18 @@
             window.open(`https://wa.me/919930249182?text=Advance%20Booking%20for%20${encodeURIComponent(item)}%20on%20${encodeURIComponent(date)}.%20Problem:%20${encodeURIComponent(desc)}`);
         }
 
-        // 📝 3. Feedback Form Logic
         function sendFeedback() {
             const name = document.getElementById('cust-name').value;
             const recommend = document.getElementById('recommend').value;
             const message = document.getElementById('feed-msg').value;
-            
             if(!name || !message) { alert("Please fill your Name and Experience!"); return; }
-            
             const whatsappText = `📝 *NEW CUSTOMER FEEDBACK* \n\n👤 *Name:* ${name}\n📢 *Will Recommend:* ${recommend}\n💬 *Experience:* ${message}`;
             window.open(`https://wa.me/919930249182?text=${encodeURIComponent(whatsappText)}`);
         }
 
-        function giveRating(stars) {
-            alert("Thank you for your " + stars + " star rating!");
-        }
+        function giveRating(stars) { alert("Thank you for your " + stars + " star rating!"); }
 
-        // 📉 4. 50% OFF (10 Slots) Decreasing Discount Logic Fixed
+        // Decreasing Discount Loop Logic
         let currentStage = 1;
         function updateScarcityDeal() {
             const discText = document.getElementById('dynamic-disc-text');
@@ -291,7 +428,7 @@
         }
         setInterval(updateScarcityDeal, 20000);
 
-        // 🛠️ 5. Random FOMO Pop-up Notifications Loop
+        // Random Live FOMO Notifications
         const names = ["Amit", "Rahul", "Vikram", "Sneha", "Priyanka", "Rajesh", "Deepak"];
         const locations = ["Andheri", "Borivali", "Dadar", "Bandra", "Thane", "Ghatkopar", "Colaba"];
         const services = ["Washing Machine repair", "Refrigerator service", "Microwave repair", "Cloth Dryer service"];
@@ -299,7 +436,6 @@
         function showFomoPopup() {
             const fomoEl = document.getElementById('live-fomo');
             const txtEl = document.getElementById('fomo-text');
-            
             const rName = names[Math.floor(Math.random() * names.length)];
             const rLoc = locations[Math.floor(Math.random() * locations.length)];
             const rServ = services[Math.floor(Math.random() * services.length)];
@@ -307,38 +443,24 @@
 
             txtEl.innerHTML = `<b>${rName}</b> from ${rLoc} booked a <b>${rServ}</b> ${rTime} mins ago!`;
             fomoEl.classList.add('show');
-
-            setTimeout(() => {
-                fomoEl.classList.remove('show');
-            }, 4000);
+            setTimeout(() => { fomoEl.classList.remove('show'); }, 4000);
         }
         setInterval(showFomoPopup, 12000);
         setTimeout(showFomoPopup, 3000);
 
-        // 📲 6. PWA Installation Prompt Logic
+        // PWA Code
         let deferredPrompt;
         window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
+            e.preventDefault(); deferredPrompt = e;
             document.getElementById('pwa-prompt').style.display = 'flex';
         });
-
         document.getElementById('pwa-btn').addEventListener('click', async () => {
             if (deferredPrompt) {
                 deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
                 deferredPrompt = null;
                 document.getElementById('pwa-prompt').style.display = 'none';
             }
         });
-
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(reg => console.log('Service Worker Registered Successfully!'))
-                    .catch(err => console.log('Service Worker Registration Failed:', err));
-            });
-        }
     </script>
 </body>
 </html>
