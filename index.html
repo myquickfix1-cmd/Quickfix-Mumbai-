@@ -294,5 +294,63 @@
             });
         }
     </script>
+<script>
+    // 📆 1. Real-time Live Date Setter (Calendar Fix)
+    window.addEventListener('DOMContentLoaded', () => {
+        const today = new Date();
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        document.getElementById('cal-m').innerText = months[today.getMonth()];
+        document.getElementById('cal-d').innerText = today.getDate();
+    });
+
+    // 📩 2. Advance Booking WhatsApp Redirect
+    function sendWA() {
+        const date = document.getElementById('date').value;
+        const item = document.getElementById('item').value;
+        const desc = document.getElementById('desc').value;
+        if(!date) { alert("Please select a date!"); return; }
+        window.open(`https://wa.me/919930249182?text=Advance%20Booking%20for%20${encodeURIComponent(item)}%20on%20${encodeURIComponent(date)}.%20Problem:%20${encodeURIComponent(desc)}`);
+    }
+
+    // 📝 3. Feedback Form Logic
+    function sendFeedback() {
+        const name = document.getElementById('cust-name').value;
+        const recommend = document.getElementById('recommend').value;
+        const message = document.getElementById('feed-msg').value;
+        
+        if(!name || !message) { alert("Please fill your Name and Experience!"); return; }
+        
+        const whatsappText = `📝 *NEW CUSTOMER FEEDBACK* \n\n👤 *Name:* ${name}\n📢 *Will Recommend:* ${recommend}\n💬 *Experience:* ${message}`;
+        window.open(`https://wa.me/919930249182?text=${encodeURIComponent(whatsappText)}`);
+    }
+
+    function giveRating(stars) {
+        alert("Thank you for your " + stars + " star rating!");
+    }
+
+    // 📉 4. 50% OFF (10 Slots) Decreasing Discount Logic
+    let currentStage = 1;
+    function updateScarcityDeal() {
+        const discText = document.getElementById('dynamic-disc-text');
+        const slotText = document.getElementById('slots-left-text');
+        const topBarText = document.getElementById('live-slots-top');
+
+        if (currentStage === 1) {
+            // Stage 1: 50% OFF (First 3 slots)
+            discText.innerText = "Flat 50% OFF";
+            slotText.innerHTML = "🔥 MEGA OFFER! Only 2 early-bird slots left for tomorrow!";
+            topBarText.innerText = "Today's Availability: Only 3 urgent slots left for South Mumbai";
+            currentStage = 2;
+        } else if (currentStage === 2) {
+            // Stage 2: 25% OFF (Next 4 slots)
+            discText.innerText = "Flat 25% OFF";
+            slotText.innerHTML = "⚡ 50% OFF Slots Full! Only 4 slots left at 25% OFF.";
+            topBarText.innerText = "🚨 Rush Alert: 6 Bookings completed in the last 2 hours!";
+            currentStage = 3;
+        } else {
+            // Stage 3: 10% OFF (Last 3 slots)
+            discText.innerText = "Flat 10% OFF";
+            slotText.
+
 </body>
 </html>
