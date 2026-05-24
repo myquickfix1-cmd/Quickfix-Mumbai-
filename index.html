@@ -29,8 +29,10 @@
         .card img { width: 80px; height: 80px; object-fit: contain; border-radius: 8px; background: #f7f7f7; padding: 4px; box-sizing: border-box; }
         .card span { font-weight: bold; font-size: 1.1em; }
         
-        /* Booking Box */
-        .booking-box { background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 25px; margin: 15px; border-radius: 20px; text-align: center; }
+        /* Booking Box & Feedback Box */
+        .booking-box, .feedback-box { background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 25px; margin: 15px; border-radius: 20px; text-align: center; }
+        .feedback-box { background: linear-gradient(135deg, #333333, #111111); margin-top: 25px; border: 2px solid #ff9800; }
+        
         input, select, textarea { width: 100%; padding: 14px; margin: 8px 0; border-radius: 8px; border: none; box-sizing: border-box; font-size: 1em; }
         
         /* Testimonials Section */
@@ -47,6 +49,7 @@
         /* Fixed Call Floating Button */
         .btn-call { display: block; width: 90%; margin: 10px auto; padding: 18px; background: #000; color: white; text-align: center; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1.2em; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .btn-wa { background: #25d366; color: white; border: none; cursor: pointer; }
+        .btn-submit-feedback { background: #ff9800; color: white; border: none; cursor: pointer; }
         
         .fixed-call-container { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.95); padding: 12px 0; box-shadow: 0 -4px 10px rgba(0,0,0,0.1); z-index: 999; }
 
@@ -121,6 +124,24 @@
         <button onclick="sendWA()" class="btn-call btn-wa" style="width:100%; margin-top: 10px;">Book via WhatsApp</button>
     </div>
 
+    <div class="feedback-box">
+        <h3 style="margin-top: 0; font-size: 1.4em; color: #ff9800;">📝 Share Your Service Feedback</h3>
+        <p style="font-size: 1em; margin: 5px 0 15px 0; color: #eee;">Help us improve! Tell us how your repair went.</p>
+        
+        <input type="text" id="cust-name" placeholder="Your Name" required>
+        
+        <select id="recommend">
+            <option value="" disabled selected>Will you suggest Quickfix to others?</option>
+            <option value="Yes, absolutely!">Yes, absolutely! 👍</option>
+            <option value="Maybe">Maybe 🤔</option>
+            <option value="No, faced some issues">No, faced some issues 👎</option>
+        </select>
+        
+        <textarea id="feed-msg" rows="3" placeholder="Write your problem/experience here..." required></textarea>
+        
+        <button onclick="sendFeedback()" class="btn-call btn-submit-feedback" style="width:100%; margin-top: 10px;">Submit Feedback to Owner</button>
+    </div>
+
     <div class="testimonials-box">
         <h3 style="margin-top: 0; color: #333;">Customer Opinions & Ratings</h3>
         <div style="font-size: 2.8em; font-weight: bold; color: #ff9800; margin: 5px 0;">4.9 <span style="font-size: 0.4em; color: #777;">/ 5.0</span></div>
@@ -171,6 +192,18 @@
             const desc = document.getElementById('desc').value;
             if(!date) { alert("Please select a date!"); return; }
             window.open(`https://wa.me/919930249182?text=Advance%20Booking%20for%20${encodeURIComponent(item)}%20on%20${encodeURIComponent(date)}.%20Problem:%20${encodeURIComponent(desc)}`);
+        }
+
+        // NEW: Send Feedback Function Logic
+        function sendFeedback() {
+            const name = document.getElementById('cust-name').value;
+            const recommend = document.getElementById('recommend').value;
+            const message = document.getElementById('feed-msg').value;
+            
+            if(!name || !message) { alert("Please fill your Name and Experience!"); return; }
+            
+            const whatsappText = `📝 *NEW CUSTOMER FEEDBACK* \n\n👤 *Name:* ${name}\n📢 *Will Recommend:* ${recommend}\n💬 *Experience:* ${message}`;
+            window.open(`https://wa.me/919930249182?text=${encodeURIComponent(whatsappText)}`);
         }
 
         function giveRating(stars) {
