@@ -38,9 +38,14 @@
         .card span { font-weight: bold; font-size: 1.1em; }
         
         /* Booking Box & Feedback Box */
-        .booking-box, .feedback-box { background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 25px; margin: 15px; border-radius: 20px; text-align: center; }
+        .booking-box, .feedback-box { background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 25px; margin: 15px; border-radius: 20px; text-align: center; position: relative; }
         .feedback-box { background: linear-gradient(135deg, #333333, #111111); margin-top: 25px; border: 2px solid #ff9800; }
         
+        /* Smart Dynamic Calendar Badge Style */
+        .dynamic-calendar-badge { display: inline-flex; flex-direction: column; width: 45px; background: white; color: #333; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.15); margin-bottom: 8px; font-weight: bold; vertical-align: middle; }
+        .cal-month { background: #ff3b30; color: white; font-size: 0.65em; padding: 2px 0; text-transform: uppercase; letter-spacing: 1px; text-align: center; }
+        .cal-day { font-size: 1.1em; padding: 2px 0; color: #222; text-align: center; }
+
         input, select, textarea { width: 100%; padding: 14px; margin: 8px 0; border-radius: 8px; border: none; box-sizing: border-box; font-size: 1em; }
         
         /* Testimonials Section */
@@ -93,7 +98,7 @@
 
     <div class="scarcity-status-bar">
         <span class="live-dot"></span>
-        <span>Today's Availability: Only 2 urgent slots left for South Mumbai / Andheri</span>
+        <span id="live-slots-top">Today's Availability: Only 3 urgent slots left for South Mumbai / Andheri</span>
     </div>
 
     <div class="about">
@@ -136,8 +141,21 @@
     </div>
 
     <div class="booking-box">
-        <h3 style="margin-top: 0; font-size: 1.4em;">📅 Advance Booking</h3>
-        <p style="font-size: 1.2em; margin: 5px 0 15px 0;">Get <span style="color: #ffeb3b; font-weight: bold;">Flat 30% OFF</span> on Next Day Service!</p>
+        <div style="margin-bottom: 10px;">
+            <div class="dynamic-calendar-badge">
+                <span class="cal-month" id="cal-m">MMM</span>
+                <span class="cal-day" id="cal-d">00</span>
+            </div>
+            <h3 style="display: inline-block; margin: 0 0 0 10px; font-size: 1.4em; vertical-align: middle;">Advance Booking</h3>
+        </div>
+        
+        <p style="font-size: 1.15em; margin: 5px 0 15px 0;">
+            Get <span id="dynamic-disc-text" style="color: #ffeb3b; font-weight: bold; background: rgba(0,0,0,0.2); padding: 2px 8px; border-radius: 5px;">Flat 50% OFF</span> on Next Day Service!
+        </p>
+        <p style="font-size: 0.9em; color: #e0e0e0; margin-top: -10px; font-style: italic;" id="slots-left-text">
+            🔥 MEGA OFFER! Only 2 early-bird slots left for tomorrow!
+        </p>
+
         <input type="date" id="date">
         <select id="item">
             <option>Refrigerator</option>
@@ -214,6 +232,15 @@
     </div>
 
     <script>
+        // 📆 1. Real-time Live Date Setter (Calendar Fix)
+        window.addEventListener('DOMContentLoaded', () => {
+            const today = new Date();
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            document.getElementById('cal-m').innerText = months[today.getMonth()];
+            document.getElementById('cal-d').innerText = today.getDate();
+        });
+
+        // 📩 2. Advance Booking WhatsApp Redirect
         function sendWA() {
             const date = document.getElementById('date').value;
             const item = document.getElementById('item').value;
@@ -222,6 +249,7 @@
             window.open(`https://wa.me/919930249182?text=Advance%20Booking%20for%20${encodeURIComponent(item)}%20on%20${encodeURIComponent(date)}.%20Problem:%20${encodeURIComponent(desc)}`);
         }
 
+        // 📝 3. Feedback Form Logic
         function sendFeedback() {
             const name = document.getElementById('cust-name').value;
             const recommend = document.getElementById('recommend').value;
@@ -237,7 +265,33 @@
             alert("Thank you for your " + stars + " star rating!");
         }
 
-        // Logic For Live Random FOMO Notifications (Scarcity Strategy)
+        // 📉 4. 50% OFF (10 Slots) Decreasing Discount Logic Fixed
+        let currentStage = 1;
+        function updateScarcityDeal() {
+            const discText = document.getElementById('dynamic-disc-text');
+            const slotText = document.getElementById('slots-left-text');
+            const topBarText = document.getElementById('live-slots-top');
+
+            if (currentStage === 1) {
+                discText.innerText = "Flat 50% OFF";
+                slotText.innerHTML = "🔥 MEGA OFFER! Only 2 early-bird slots left for tomorrow!";
+                topBarText.innerText = "Today's Availability: Only 3 urgent slots left for South Mumbai";
+                currentStage = 2;
+            } else if (currentStage === 2) {
+                discText.innerText = "Flat 25% OFF";
+                slotText.innerHTML = "⚡ 50% OFF Slots Full! Only 4 slots left at 25% OFF.";
+                topBarText.innerText = "🚨 Rush Alert: 6 Bookings completed in the last 2 hours!";
+                currentStage = 3;
+            } else {
+                discText.innerText = "Flat 10% OFF";
+                slotText.innerHTML = "⚠️ HURRY! Last 2 booking slots remaining for tomorrow.";
+                topBarText.innerText = "Emergency Update: Almost Full! Only 1 slot left for today.";
+                currentStage = 1;
+            }
+        }
+        setInterval(updateScarcityDeal, 20000);
+
+        // 🛠️ 5. Random FOMO Pop-up Notifications Loop
         const names = ["Amit", "Rahul", "Vikram", "Sneha", "Priyanka", "Rajesh", "Deepak"];
         const locations = ["Andheri", "Borivali", "Dadar", "Bandra", "Thane", "Ghatkopar", "Colaba"];
         const services = ["Washing Machine repair", "Refrigerator service", "Microwave repair", "Cloth Dryer service"];
@@ -246,29 +300,22 @@
             const fomoEl = document.getElementById('live-fomo');
             const txtEl = document.getElementById('fomo-text');
             
-            // Randomly pick details
             const rName = names[Math.floor(Math.random() * names.length)];
             const rLoc = locations[Math.floor(Math.random() * locations.length)];
             const rServ = services[Math.floor(Math.random() * services.length)];
             const rTime = Math.floor(Math.random() * 15) + 2;
 
             txtEl.innerHTML = `<b>${rName}</b> from ${rLoc} booked a <b>${rServ}</b> ${rTime} mins ago!`;
-            
             fomoEl.classList.add('show');
 
-            // Hide after 4 seconds
             setTimeout(() => {
                 fomoEl.classList.remove('show');
             }, 4000);
         }
-
-        // Trigger notification loop every 12 seconds
         setInterval(showFomoPopup, 12000);
-        // First display after 3 seconds of load
         setTimeout(showFomoPopup, 3000);
 
-
-        // PWA Installation Intelligence Logic
+        // 📲 6. PWA Installation Prompt Logic
         let deferredPrompt;
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
@@ -285,7 +332,6 @@
             }
         });
 
-        // Register Service Worker for PWA
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js')
@@ -294,63 +340,5 @@
             });
         }
     </script>
-<script>
-    // 📆 1. Real-time Live Date Setter (Calendar Fix)
-    window.addEventListener('DOMContentLoaded', () => {
-        const today = new Date();
-        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        document.getElementById('cal-m').innerText = months[today.getMonth()];
-        document.getElementById('cal-d').innerText = today.getDate();
-    });
-
-    // 📩 2. Advance Booking WhatsApp Redirect
-    function sendWA() {
-        const date = document.getElementById('date').value;
-        const item = document.getElementById('item').value;
-        const desc = document.getElementById('desc').value;
-        if(!date) { alert("Please select a date!"); return; }
-        window.open(`https://wa.me/919930249182?text=Advance%20Booking%20for%20${encodeURIComponent(item)}%20on%20${encodeURIComponent(date)}.%20Problem:%20${encodeURIComponent(desc)}`);
-    }
-
-    // 📝 3. Feedback Form Logic
-    function sendFeedback() {
-        const name = document.getElementById('cust-name').value;
-        const recommend = document.getElementById('recommend').value;
-        const message = document.getElementById('feed-msg').value;
-        
-        if(!name || !message) { alert("Please fill your Name and Experience!"); return; }
-        
-        const whatsappText = `📝 *NEW CUSTOMER FEEDBACK* \n\n👤 *Name:* ${name}\n📢 *Will Recommend:* ${recommend}\n💬 *Experience:* ${message}`;
-        window.open(`https://wa.me/919930249182?text=${encodeURIComponent(whatsappText)}`);
-    }
-
-    function giveRating(stars) {
-        alert("Thank you for your " + stars + " star rating!");
-    }
-
-    // 📉 4. 50% OFF (10 Slots) Decreasing Discount Logic
-    let currentStage = 1;
-    function updateScarcityDeal() {
-        const discText = document.getElementById('dynamic-disc-text');
-        const slotText = document.getElementById('slots-left-text');
-        const topBarText = document.getElementById('live-slots-top');
-
-        if (currentStage === 1) {
-            // Stage 1: 50% OFF (First 3 slots)
-            discText.innerText = "Flat 50% OFF";
-            slotText.innerHTML = "🔥 MEGA OFFER! Only 2 early-bird slots left for tomorrow!";
-            topBarText.innerText = "Today's Availability: Only 3 urgent slots left for South Mumbai";
-            currentStage = 2;
-        } else if (currentStage === 2) {
-            // Stage 2: 25% OFF (Next 4 slots)
-            discText.innerText = "Flat 25% OFF";
-            slotText.innerHTML = "⚡ 50% OFF Slots Full! Only 4 slots left at 25% OFF.";
-            topBarText.innerText = "🚨 Rush Alert: 6 Bookings completed in the last 2 hours!";
-            currentStage = 3;
-        } else {
-            // Stage 3: 10% OFF (Last 3 slots)
-            discText.innerText = "Flat 10% OFF";
-            slotText.
-
 </body>
 </html>
