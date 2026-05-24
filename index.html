@@ -3,100 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Quickfix Mumbai - Trusted Home Appliance Repair. Experts in Refrigerator, Washing Machine, Microwave, Dishwasher, Dryer, Air Dresser and All Types of Home Appliances Services and repair since 2010 Fast & Reliable, Same-day service, Genuine parts, 6 Months warranty across all Mumbai.">
+    <meta name="description" content="Quickfix Mumbai - Trusted Home Appliance Repair. Experts in Refrigerator, Washing Machine, Microwave, Dishwasher, Dryer, Air Dresser and All Types of Home Appliances Services since 2010.">
     <title>Quickfix Mumbai | Expert Home Appliance Repair & Services</title>
-    
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#007bff">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Quickfix">
-
-    <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fdfdfd; color: #333; padding-bottom: 90px; }
-        
-        /* Emergency Banner */
-        .emergency-wrapper { background: #ff0000; padding: 20px; text-align: center; animation: flash 0.5s infinite; }
-        @keyframes flash { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
-        
-        /* Scarcity Live Status Bar */
-        .scarcity-status-bar { background: #fff3cd; color: #856404; padding: 10px; text-align: center; font-weight: bold; font-size: 0.95em; border-bottom: 1px solid #ffeeba; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .live-dot { width: 8px; height: 8px; background: #28a745; border-radius: 50%; display: inline-block; animation: pulse 1s infinite; }
-        @keyframes pulse { 0% { transform: scale(0.9); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.5; } 100% { transform: scale(0.9); opacity: 1; } }
-
-        .about { background: #fff; padding: 20px; line-height: 1.6; border-bottom: 2px solid #eee; }
-        
-        /* Trust Badges section */
-        .trust-badges { display: flex; justify-content: space-around; background: #f8f9fa; padding: 12px 5px; border-bottom: 1px solid #eee; font-size: 0.85em; text-align: center; font-weight: bold; color: #555; }
-        .badge-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-
-        /* Services List Hierarchy */
-        .grid { display: flex; flex-direction: column; gap: 15px; padding: 15px; }
-        
-        /* SMART EXPANDABLE CARD DESIGN (Usi Ke Andar Samundar) */
-        .card { border: 1px solid #ddd; padding: 15px; border-radius: 12px; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: all 0.3s ease; display: flex; flex-direction: column; cursor: pointer; }
-        .card-header-info { display: flex; align-items: center; gap: 15px; width: 100%; }
-        .card img.main-icon { width: 65px; height: 65px; object-fit: contain; border-radius: 8px; background: #f7f7f7; padding: 4px; box-sizing: border-box; }
-        .card span.main-title { font-weight: bold; font-size: 1.15em; flex-grow: 1; color: #222; }
-        .arrow-icon { color: #007bff; font-weight: bold; font-size: 1.2em; transition: transform 0.3s; }
-        
-        /* Card Open State Styler */
-        .card.expanded { border-color: #007bff; background: #fafcff; box-shadow: 0 6px 15px rgba(0,123,255,0.1); }
-        .card.expanded .arrow-icon { transform: rotate(90deg); }
-
-        /* Inside Content Area (Hidden by Default) */
-        .inner-content { display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ced4da; width: 100%; }
-        
-        /* Endless Samundar Slideshow Styles */
-        .inner-slideshow { width: 100%; height: 190px; background: #ffffff; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; border: 1px solid #e2e8f0; }
-        .slide-img { max-width: 100%; max-height: 100%; object-fit: contain; display: none; animation: fadeIn 0.4s ease-in-out; }
-        .slide-img.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0.3; } to { opacity: 1; } }
-
-        /* Detailed Long Problems Profile List */
-        .problem-container { text-align: left; margin: 15px 0; }
-        .problem-row { display: flex; align-items: center; gap: 12px; background: #ffffff; padding: 12px; margin: 8px 0; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 0.95em; transition: background 0.2s; }
-        .problem-row input { width: auto; margin: 0; transform: scale(1.2); }
-        .problem-row:active { background: #eef6ff; }
-
-        /* Booking Box & Feedback Box */
-        .booking-box, .feedback-box { background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 25px; margin: 15px; border-radius: 20px; text-align: center; position: relative; }
-        .feedback-box { background: linear-gradient(135deg, #333333, #111111); margin-top: 25px; border: 2px solid #ff9800; }
-        
-        /* Smart Dynamic Calendar Badge Style */
-        .dynamic-calendar-badge { display: inline-flex; flex-direction: column; width: 45px; background: white; color: #333; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.15); margin-bottom: 8px; font-weight: bold; vertical-align: middle; }
-        .cal-month { background: #ff3b30; color: white; font-size: 0.65em; padding: 2px 0; text-transform: uppercase; letter-spacing: 1px; text-align: center; }
-        .cal-day { font-size: 1.1em; padding: 2px 0; color: #222; text-align: center; }
-
-        input, select, textarea { width: 100%; padding: 14px; margin: 8px 0; border-radius: 8px; border: none; box-sizing: border-box; font-size: 1em; }
-        
-        /* Testimonials Section */
-        .testimonials-box { background: #fff; padding: 20px; border-radius: 15px; margin: 15px; border: 1px solid #ddd; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
-        
-        /* Interactive Rating Stars Styles */
-        .rating-stars { display: flex; justify-content: center; gap: 8px; font-size: 2em; margin: 10px 0; cursor: pointer; direction: rtl; }
-        .rating-stars input { display: none; }
-        .rating-stars label { color: #ccc; transition: color 0.2s; }
-        .rating-stars label:hover,
-        .rating-stars label:hover ~ label,
-        .rating-stars input:checked ~ label { color: #ff9800; }
-        
-        /* Fixed Call Floating Button */
-        .btn-call { display: block; width: 90%; margin: 10px auto; padding: 18px; background: #000; color: white; text-align: center; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1.2em; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        .btn-wa { background: #25d366; color: white; border: none; cursor: pointer; }
-        .btn-submit-feedback { background: #ff9800; color: white; border: none; cursor: pointer; }
-        .btn-inner-book { background: #ff9800; color: white; font-size: 1.1em; border: none; padding: 14px; border-radius: 50px; font-weight: bold; width: 100%; cursor: pointer; margin-top: 12px; box-shadow: 0 4px 12px rgba(255,152,0,0.35); }
-        
-        .fixed-call-container { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.95); padding: 12px 0; box-shadow: 0 -4px 10px rgba(0,0,0,0.1); z-index: 999; }
-
-        /* PWA Install Notification Bar CSS */
-        #pwa-prompt { position: fixed; bottom: 85px; left: 5%; width: 90%; background: #222; color: #fff; padding: 15px; border-radius: 15px; display: none; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; box-sizing: border-box; }
-        #pwa-prompt button { background: #00c853; color: white; border: none; padding: 10px 20px; font-weight: bold; border-radius: 8px; cursor: pointer; }
-
-        /* Live FOMO Pop-up Notification style */
-        .fomo-popup { position: fixed; bottom: 95px; left: 15px; background: rgba(255, 255, 255, 0.98); color: #333; padding: 10px 15px; border-radius: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 10px; font-size: 0.85em; z-index: 1001; border-left: 4px solid #00c853; transform: translateY(150px); transition: transform 0.5s ease-in-out; }
-        .fomo-popup.show { transform: translateY(0); }
-    </style>
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -113,21 +28,20 @@
     <div class="emergency-wrapper">
         <h2 style="color: white; margin: 0; font-size: 1.5em;">🚨 24/7 EMERGENCY REPAIR</h2>
         <p style="color: white; font-weight: bold; margin: 5px 0 0 0;">Need instant help? Share your issue now!</p>
-        <a href="https://wa.me/919930249182?text=EMERGENCY!%20I%20need%20urgent%20repair.%20I%20am%20sending%20a%20photo/video%20of%20my%20problem." 
-           style="display: block; background: white; color: red; padding: 15px; margin-top: 12px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+        <a href="https://wa.me/919930249182?text=EMERGENCY!%20I%20need%20urgent%20repair." style="display: block; background: white; color: red; padding: 15px; margin-top: 12px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
            📸 Tap to Share Photo/Video/Voice
         </a>
     </div>
 
     <div class="scarcity-status-bar">
         <span class="live-dot"></span>
-        <span id="live-slots-top">Today's Availability: Only 3 urgent slots left for South Mumbai / Andheri</span>
+        <span id="live-slots-top">Today's Availability: Only 3 urgent slots left</span>
     </div>
 
     <div class="about">
         <h2 style="color: #007bff; margin-top: 0;">Welcome to Quickfix</h2>
-        <p style="font-size: 1.05em; color: #444;">India's #1 Most Trusted platform (Mumbai). Revolutionizing Doorstep Services since 2010 with <b>1,900,519+ trusted families served</b>. We have above 15+ years of experience in the service industry with 50+ company expert technicians. High-quality service and repairing provided directly by my expert team.</p>
-        <p style="color: #ff0000; font-size: 1.1em; margin-bottom: 0;"><b>EXPERT HOME APPLIANCES REPAIRERS 24/7 WITH RELIABLE AND REASONABLE PRICES.</b></p>
+        <p>India's #1 Most Trusted platform (Mumbai). Serving families since 2010 with expert technicians.</p>
+        <p style="color: #ff0000; font-weight: bold;">EXPERT HOME APPLIANCES REPAIRERS 24/7 WITH REASONABLE PRICES.</p>
     </div>
 
     <div class="trust-badges">
@@ -137,7 +51,6 @@
     </div>
 
     <div class="grid">
-        
         <div class="card" id="card-Refrigerator" onclick="toggleCard('Refrigerator')">
             <div class="card-header-info">
                 <img src="https://cdn-icons-png.flaticon.com/512/2928/2928929.png" class="main-icon" alt="Refrigerator">
@@ -146,9 +59,8 @@
             </div>
             <div class="inner-content" id="content-Refrigerator" onclick="event.stopPropagation();">
                 <div class="inner-slideshow" id="slidebox-Refrigerator"></div>
-                <p style="font-size:0.9em; font-weight:bold; color:#0056b3; margin:10px 0 5px 0;">🔍 Select your exact fridge issue:</p>
                 <div class="problem-container" id="problems-Refrigerator"></div>
-                <button onclick="bookDirect('Refrigerator')" class="btn-inner-book">⚡ Book Refrigerator Repair Now</button>
+                <button onclick="bookDirect('Refrigerator')" class="btn-inner-book">⚡ Book Refrigerator Repair</button>
             </div>
         </div>
 
@@ -160,7 +72,6 @@
             </div>
             <div class="inner-content" id="content-WashingMachine" onclick="event.stopPropagation();">
                 <div class="inner-slideshow" id="slidebox-WashingMachine"></div>
-                <p style="font-size:0.9em; font-weight:bold; color:#0056b3; margin:10px 0 5px 0;">🔍 Select your washing machine issue:</p>
                 <div class="problem-container" id="problems-WashingMachine"></div>
                 <button onclick="bookDirect('WashingMachine')" class="btn-inner-book">⚡ Book Washing Machine Repair</button>
             </div>
@@ -174,9 +85,8 @@
             </div>
             <div class="inner-content" id="content-Microwave" onclick="event.stopPropagation();">
                 <div class="inner-slideshow" id="slidebox-Microwave"></div>
-                <p style="font-size:0.9em; font-weight:bold; color:#0056b3; margin:10px 0 5px 0;">🔍 Select your microwave issue:</p>
                 <div class="problem-container" id="problems-Microwave"></div>
-                <button onclick="bookDirect('Microwave')" class="btn-inner-book">⚡ Book Microwave Repair Now</button>
+                <button onclick="bookDirect('Microwave')" class="btn-inner-book">⚡ Book Microwave Repair</button>
             </div>
         </div>
 
@@ -188,9 +98,8 @@
             </div>
             <div class="inner-content" id="content-Dishwasher" onclick="event.stopPropagation();">
                 <div class="inner-slideshow" id="slidebox-Dishwasher"></div>
-                <p style="font-size:0.9em; font-weight:bold; color:#0056b3; margin:10px 0 5px 0;">🔍 Select your dishwasher issue:</p>
                 <div class="problem-container" id="problems-Dishwasher"></div>
-                <button onclick="bookDirect('Dishwasher')" class="btn-inner-book">⚡ Book Dishwasher Repair Now</button>
+                <button onclick="bookDirect('Dishwasher')" class="btn-inner-book">⚡ Book Dishwasher Repair</button>
             </div>
         </div>
 
@@ -202,9 +111,8 @@
             </div>
             <div class="inner-content" id="content-ClothDryer" onclick="event.stopPropagation();">
                 <div class="inner-slideshow" id="slidebox-ClothDryer"></div>
-                <p style="font-size:0.9em; font-weight:bold; color:#0056b3; margin:10px 0 5px 0;">🔍 Select your dryer issue:</p>
                 <div class="problem-container" id="problems-ClothDryer"></div>
-                <button onclick="bookDirect('ClothDryer')" class="btn-inner-book">⚡ Book Dryer Repair Now</button>
+                <button onclick="bookDirect('ClothDryer')" class="btn-inner-book">⚡ Book Dryer Repair</button>
             </div>
         </div>
 
@@ -216,12 +124,10 @@
             </div>
             <div class="inner-content" id="content-AirDresser" onclick="event.stopPropagation();">
                 <div class="inner-slideshow" id="slidebox-AirDresser"></div>
-                <p style="font-size:0.9em; font-weight:bold; color:#0056b3; margin:10px 0 5px 0;">🔍 Select your air dresser issue:</p>
                 <div class="problem-container" id="problems-AirDresser"></div>
-                <button onclick="bookDirect('AirDresser')" class="btn-inner-book">⚡ Book Air Dresser Service Now</button>
+                <button onclick="bookDirect('AirDresser')" class="btn-inner-book">⚡ Book Air Dresser Service</button>
             </div>
         </div>
-
     </div>
 
     <div class="booking-box">
@@ -230,297 +136,45 @@
                 <span class="cal-month" id="cal-m">MMM</span>
                 <span class="cal-day" id="cal-d">00</span>
             </div>
-            <h3 style="display: inline-block; margin: 0 0 0 10px; font-size: 1.4em; vertical-align: middle;">Advance Booking</h3>
+            <h3 style="display: inline-block; margin: 0 0 0 10px;">Advance Booking</h3>
         </div>
-        
-        <p style="font-size: 1.15em; margin: 5px 0 15px 0;">
-            Get <span id="dynamic-disc-text" style="color: #ffeb3b; font-weight: bold; background: rgba(0,0,0,0.2); padding: 2px 8px; border-radius: 5px;">Flat 50% OFF</span> on Next Day Service!
-        </p>
-        <p style="font-size: 0.9em; color: #e0e0e0; margin-top: -10px; font-style: italic;" id="slots-left-text">
-            🔥 MEGA OFFER! Only 2 early-bird slots left for tomorrow!
-        </p>
-
+        <p>Get <span id="dynamic-disc-text" style="color: #ffeb3b; font-weight: bold;">Flat 50% OFF</span> on Next Day Service!</p>
+        <p id="slots-left-text" style="font-size:0.9em; color:#e0e0e0;">🔥 Only 2 slots left for tomorrow!</p>
         <input type="date" id="date">
         <select id="item">
-            <option>Refrigerator</option>
-            <option>Deep Freeze</option>
-            <option>Washing Machine</option>
-            <option>Microwave</option>
-            <option>Dishwasher</option>
-            <option>Cloth Dryer</option>
-            <option>Air Dresser</option>
+            <option>Refrigerator</option><option>Washing Machine</option><option>Microwave</option>
+            <option>Dishwasher</option><option>Cloth Dryer</option><option>Air Dresser</option>
         </select>
-        <textarea id="desc" rows="2" placeholder="Your Problem (Optional, e.g., Cooling issue, Water leakage)"></textarea>
-        <button onclick="sendWA()" class="btn-call btn-wa" style="width:100%; margin-top: 10px;">Book via WhatsApp</button>
+        <textarea id="desc" rows="2" placeholder="Your Problem (Optional)"></textarea>
+        <button onclick="sendWA()" class="btn-call btn-wa">Book via WhatsApp</button>
     </div>
 
     <div class="feedback-box">
-        <h3 style="margin-top: 0; font-size: 1.4em; color: #ff9800;">📝 Share Your Service Feedback</h3>
-        <p style="font-size: 1em; margin: 5px 0 15px 0; color: #eee;">Help us improve! Tell us how your repair went.</p>
-        
+        <h3>📝 Service Feedback</h3>
         <input type="text" id="cust-name" placeholder="Your Name" required>
-        
         <select id="recommend">
-            <option value="" disabled selected>Will you suggest Quickfix to others?</option>
             <option value="Yes, absolutely!">Yes, absolutely! 👍</option>
             <option value="Maybe">Maybe 🤔</option>
-            <option value="No, faced some issues">No, faced some issues 👎</option>
         </select>
-        
-        <textarea id="feed-msg" rows="3" placeholder="Write your problem/experience here..." required></textarea>
-        
-        <button onclick="sendFeedback()" class="btn-call btn-submit-feedback" style="width:100%; margin-top: 10px;">Submit Feedback to Owner</button>
+        <textarea id="feed-msg" rows="3" placeholder="Write experience here..." required></textarea>
+        <button onclick="sendFeedback()" class="btn-call btn-submit-feedback">Submit Feedback</button>
     </div>
 
     <div class="testimonials-box">
-        <h3 style="margin-top: 0; color: #333;">Customer Opinions & Ratings</h3>
-        <div style="font-size: 2.8em; font-weight: bold; color: #ff9800; margin: 5px 0;">4.9 <span style="font-size: 0.4em; color: #777;">/ 5.0</span></div>
-        
+        <h3>Customer Ratings</h3>
+        <div style="font-size: 2.8em; font-weight: bold; color: #ff9800;">4.9</div>
         <div class="rating-stars">
             <input type="radio" id="star5" name="rating" value="5" checked><label for="star5" onclick="giveRating(5)">★</label>
             <input type="radio" id="star4" name="rating" value="4"><label for="star4" onclick="giveRating(4)">★</label>
             <input type="radio" id="star3" name="rating" value="3"><label for="star3" onclick="giveRating(3)">★</label>
-            <input type="radio" id="star2" name="rating" value="2"><label for="star2" onclick="giveRating(2)">★</label>
-            <input type="radio" id="star1" name="rating" value="1"><label for="star1" onclick="giveRating(1)">★</label>
         </div>
-        
-        <p style="color: #666; font-size: 0.95em; margin: 0 0 15px 0;">Based on 1,900,519+ successful reviews</p>
-
-        <div style="max-width: 300px; margin: 0 auto;">
-            <div style="display: flex; align-items: center; font-size: 0.85em; margin-bottom: 6px;">
-                <span style="width: 25px; text-align: left;">5★</span> 
-                <div style="flex-grow: 1; height: 10px; background: #eee; margin: 0 10px; border-radius: 5px;">
-                    <div style="width: 90%; height: 100%; background: #ff9800; border-radius: 5px;"></div>
-                </div> 
-                <span style="width: 35px; text-align: right;">90%</span>
-            </div>
-            <div style="display: flex; align-items: center; font-size: 0.85em; margin-bottom: 6px;">
-                <span style="width: 25px; text-align: left;">4★</span> 
-                <div style="flex-grow: 1; height: 10px; background: #eee; margin: 0 10px; border-radius: 5px;">
-                    <div style="width: 8%; height: 100%; background: #ff9800; border-radius: 5px;"></div>
-                </div> 
-                <span style="width: 35px; text-align: right;">8%</span>
-            </div>
-            <div style="display: flex; align-items: center; font-size: 0.85em;">
-                <span style="width: 25px; text-align: left;">3★</span> 
-                <div style="flex-grow: 1; height: 10px; background: #eee; margin: 0 10px; border-radius: 5px;">
-                    <div style="width: 2%; height: 100%; background: #ff9800; border-radius: 5px;"></div>
-                </div> 
-                <span style="width: 35px; text-align: right;">2%</span>
-            </div>
-        </div>
+        <p style="color: #666; font-size: 0.95em;">Based on 1,900,519+ successful reviews</p>
     </div>
 
     <div class="fixed-call-container">
-        <a href="tel:+919930249182" class="btn-call" style="background: #00c853; margin: 0 auto; width: 85%;">📞 Call Now: 9930249182</a>
+        <a href="tel:+919930249182" class="btn-call" style="background: #00c853;">📞 Call Now: 9930249182</a>
     </div>
 
-    <script>
-        // Ocean of Knowledge: Multiple Different Images and Detailed Problem Checklists
-        const oceanCatalog = {
-            "Refrigerator": {
-                images: [
-                    "https://images.unsplash.com/photo-1571175432267-efb922a1c3bb?w=500&auto=format&fit=crop",
-                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500&auto=format&fit=crop",
-                    "https://images.unsplash.com/photo-1601054704854-1a2e79dea4d3?w=500&auto=format&fit=crop"
-                ],
-                problems: ["Cooling Problem (Double Door/Single Door)", "Water leaking from bottom inside fridge", "Ice forming heavily in freezer (Over-freezing)", "Compressor turning on and off constantly", "Strange click-click sound / Loud vibration noise", "Gas charging & filter replacement needed"]
-            },
-            "WashingMachine": {
-                images: [
-                    "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=500&auto=format&fit=crop",
-                    "https://images.unsplash.com/photo-1545173168-9f19472ef7f4?w=500&auto=format&fit=crop",
-                    "https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?w=500&auto=format&fit=crop"
-                ],
-                problems: ["Drum not rotating / Only sound coming", "Water not draining out (Error code on screen)", "Machine making heavy jumping sound during spin", "Water leakage from bottom or soap tray", "Buttons or touch panel completely dead", "Front door locked / Not opening"]
-            },
-            "Microwave": {
-                images: [
-                    "https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=500&auto=format&fit=crop",
-                    "https://images.unsplash.com/photo-1585659722982-79614c0a96ef?w=500&auto=format&fit=crop",
-                    "https://images.unsplash.com/photo-1614594805323-e5a9854fea59?w=500&auto=format&fit=crop"
-                ],
-                problems: ["Microwave running but not heating food", "Sparking / Burning smell inside cabinet", "Glass turntable tray not rotating", "Display is blank or buttons not working", "Door switch loose / Microwave doesn't start"]
-            },
-            "Dishwasher": {
-                images: [
-                    "https://images.unsplash.com/photo-1581622558663-b2933377df12?w=500&auto=format&fit=crop",
-                    "https://images.unsplash.com/photo-1595225476474-87563907a212?w=500&auto=format&fit=crop"
-                ],
-                problems: ["White spots or dirty film on dishes", "Water pooling at the bottom / No drainage", "Leaking water during wash cycle", "Dishwasher stops midway with alarm beeps"]
-            },
-            "ClothDryer": {
-                images: [
-                    "https://images.unsplash.com/photo-1610557892470-55d9e80e0b9b?w=500&auto=format&fit=crop",
-                    "https://images.unsplash.com/photo-1604335399105-a0c5e5ad90d1?w=500&auto=format&fit=crop"
-                ],
-                problems: ["Clothes remain wet / No heat inside dryer", "Tumbling action stopped completely", "Squeaking or grinding metal sounds", "Overheating / Burning lint smell"]
-            },
-            "AirDresser": {
-                images: [
-                    "https://images.unsplash.com/photo-1567113463300-1025f5d37ed8?w=500&auto=format&fit=crop",
-                    "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=500&auto=format&fit=crop"
-                ],
-                problems: ["JetSteam not creating vapor inside tank", "Bad smell / Musty odor on jackets after cycle", "System showing water tank full error constantly", "Touch screen locked / Panel frozen"]
-            }
-        };
-
-        let loopsManager = {};
-
-        // IN-CARD TOGGLE EXPERIENCE (Usi Me Ghus Gaya Architecture)
-        function toggleCard(keyName) {
-            const cardElement = document.getElementById(`card-${keyName}`);
-            const contentBlock = document.getElementById(`content-${keyName}`);
-            const slidebox = document.getElementById(`slidebox-${keyName}`);
-            const problemBox = document.getElementById(`problems-${keyName}`);
-
-            // If card is already open, close it cleanly
-            if(cardElement.classList.contains('expanded')) {
-                contentBlock.style.display = 'none';
-                cardElement.classList.remove('expanded');
-                if(loopsManager[keyName]) { clearInterval(loopsManager[keyName]); }
-                return;
-            }
-
-            // Close all other cards first to prevent overcrowding
-            document.querySelectorAll('.card').forEach(c => c.classList.remove('expanded'));
-            document.querySelectorAll('.inner-content').forEach(b => b.style.display = 'none');
-            Object.keys(loopsManager).forEach(k => clearInterval(loopsManager[k]));
-
-            // Expand Current Card
-            cardElement.classList.add('expanded');
-            contentBlock.style.display = 'block';
-
-            // Load Samundar of Live Changing Photos inside this item card
-            slidebox.innerHTML = "";
-            oceanCatalog[keyName].images.forEach((url, i) => {
-                const img = document.createElement('img');
-                img.src = url;
-                img.className = `slide-img ${i === 0 ? 'active' : ''}`;
-                slidebox.appendChild(img);
-            });
-
-            // Start Live Changing Carousel
-            let currentImgIdx = 0;
-            const liveImages = slidebox.getElementsByClassName('slide-img');
-            loopsManager[keyName] = setInterval(() => {
-                if(liveImages.length > 0) {
-                    liveImages[currentImgIdx].classList.remove('active');
-                    currentImgIdx = (currentImgIdx + 1) % liveImages.length;
-                    liveImages[currentImgIdx].classList.add('active');
-                }
-            }, 2500);
-
-            // Inject Comprehensive Problem Checklist inside this item card
-            problemBox.innerHTML = "";
-            oceanCatalog[keyName].problems.forEach((prob, idx) => {
-                problemBox.innerHTML += `
-                    <label class="problem-row">
-                        <input type="radio" name="prob_radio_${keyName}" value="${prob}" ${idx === 0 ? 'checked' : ''}>
-                        <span>${prob}</span>
-                    </label>
-                `;
-            });
-        }
-
-        // WhatsApp Direct Router for specific active Card Booking
-        function bookDirect(keyName) {
-            const checkedOption = document.querySelector(`input[name="prob_radio_${keyName}"]:checked`);
-            if(!checkedOption) { alert("Please click on your issue type!"); return; }
-            const chosenProblem = checkedOption.value;
-
-            const finalText = `Hello Quickfix! I checked your app catalog and want to book a expert technician visit for my *${keyName}*. Problem type identified: *${chosenProblem}*. Please share available slot.`;
-            window.open(`https://wa.me/919930249182?text=${encodeURIComponent(finalText)}`);
-        }
-
-        // Live Real-Time Date Automation (Calendar Box)
-        window.addEventListener('DOMContentLoaded', () => {
-            const today = new Date();
-            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            document.getElementById('cal-m').innerText = months[today.getMonth()];
-            document.getElementById('cal-d').innerText = today.getDate();
-        });
-
-        // WhatsApp Form Router for Main Booking Box
-        function sendWA() {
-            const date = document.getElementById('date').value;
-            const item = document.getElementById('item').value;
-            const desc = document.getElementById('desc').value;
-            if(!date) { alert("Please select a date!"); return; }
-            window.open(`https://wa.me/919930249182?text=Advance%20Booking%20for%20${encodeURIComponent(item)}%20on%20${encodeURIComponent(date)}.%20Problem:%20${encodeURIComponent(desc)}`);
-        }
-
-        // Feedback System Router
-        function sendFeedback() {
-            const name = document.getElementById('cust-name').value;
-            const recommend = document.getElementById('recommend').value;
-            const message = document.getElementById('feed-msg').value;
-            if(!name || !message) { alert("Please fill your Name and Experience!"); return; }
-            const whatsappText = `📝 *NEW CUSTOMER FEEDBACK* \n\n👤 *Name:* ${name}\n📢 *Will Recommend:* ${recommend}\n💬 *Experience:* ${message}`;
-            window.open(`https://wa.me/919930249182?text=${encodeURIComponent(whatsappText)}`);
-        }
-
-        function giveRating(stars) { alert("Thank you for your " + stars + " star rating!"); }
-
-        // Live Decreasing Discount Logic (10 Slots Anchor Strategy)
-        let currentStage = 1;
-        function updateScarcityDeal() {
-            const discText = document.getElementById('dynamic-disc-text');
-            const slotText = document.getElementById('slots-left-text');
-            const topBarText = document.getElementById('live-slots-top');
-
-            if (currentStage === 1) {
-                discText.innerText = "Flat 50% OFF";
-                slotText.innerHTML = "🔥 MEGA OFFER! Only 2 early-bird slots left for tomorrow!";
-                topBarText.innerText = "Today's Availability: Only 3 urgent slots left for South Mumbai";
-                currentStage = 2;
-            } else if (currentStage === 2) {
-                discText.innerText = "Flat 25% OFF";
-                slotText.innerHTML = "⚡ 50% OFF Slots Full! Only 4 slots left at 25% OFF.";
-                topBarText.innerText = "🚨 Rush Alert: 6 Bookings completed in the last 2 hours!";
-                currentStage = 3;
-            } else {
-                discText.innerText = "Flat 10% OFF";
-                slotText.innerHTML = "⚠️ HURRY! Last 2 booking slots remaining for tomorrow.";
-                topBarText.innerText = "Emergency Update: Almost Full! Only 1 slot left for today.";
-                currentStage = 1;
-            }
-        }
-        setInterval(updateScarcityDeal, 20000);
-
-        // Instant FOMO Simulated Notifications Loop
-        const names = ["Amit", "Rahul", "Vikram", "Sneha", "Priyanka", "Rajesh", "Deepak"];
-        const locations = ["Andheri", "Borivali", "Dadar", "Bandra", "Thane", "Ghatkopar", "Colaba"];
-        const services = ["Washing Machine repair", "Refrigerator service", "Microwave repair", "Cloth Dryer service"];
-
-        function showFomoPopup() {
-            const fomoEl = document.getElementById('live-fomo');
-            const txtEl = document.getElementById('fomo-text');
-            const rName = names[Math.floor(Math.random() * names.length)];
-            const rLoc = locations[Math.floor(Math.random() * locations.length)];
-            const rServ = services[Math.floor(Math.random() * services.length)];
-            const rTime = Math.floor(Math.random() * 15) + 2;
-
-            txtEl.innerHTML = `<b>${rName}</b> from ${rLoc} booked a <b>${rServ}</b> ${rTime} mins ago!`;
-            fomoEl.classList.add('show');
-            setTimeout(() => { fomoEl.classList.remove('show'); }, 4000);
-        }
-        setInterval(showFomoPopup, 12000);
-        setTimeout(showFomoPopup, 3000);
-
-        // Intelligent Progressive App Installation Prompt 
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault(); deferredPrompt = e;
-            document.getElementById('pwa-prompt').style.display = 'flex';
-        });
-        document.getElementById('pwa-btn').addEventListener('click', async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt = null;
-                document.getElementById('pwa-prompt').style.display = 'none';
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
