@@ -19,13 +19,21 @@
         .emergency-wrapper { background: #ff0000; padding: 20px; text-align: center; animation: flash 0.5s infinite; }
         @keyframes flash { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
         
+        /* Scarcity Live Status Bar */
+        .scarcity-status-bar { background: #fff3cd; color: #856404; padding: 10px; text-align: center; font-weight: bold; font-size: 0.95em; border-bottom: 1px solid #ffeeba; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .live-dot { width: 8px; height: 8px; background: #28a745; border-radius: 50%; display: inline-block; animation: pulse 1s infinite; }
+        @keyframes pulse { 0% { transform: scale(0.9); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.5; } 100% { transform: scale(0.9); opacity: 1; } }
+
         .about { background: #fff; padding: 20px; line-height: 1.6; border-bottom: 2px solid #eee; }
         
+        /* Trust Badges section */
+        .trust-badges { display: flex; justify-content: space-around; background: #f8f9fa; padding: 12px 5px; border-bottom: 1px solid #eee; font-size: 0.85em; text-align: center; font-weight: bold; color: #555; }
+        .badge-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+
         /* Services List */
         .grid { display: flex; flex-direction: column; gap: 15px; padding: 15px; }
         .card { border: 1px solid #ddd; padding: 12px; border-radius: 12px; display: flex; align-items: center; gap: 15px; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         
-        /* Image Fixed: Contain use kiya taaki full appliance bina kate dikhe */
         .card img { width: 80px; height: 80px; object-fit: contain; border-radius: 8px; background: #f7f7f7; padding: 4px; box-sizing: border-box; }
         .card span { font-weight: bold; font-size: 1.1em; }
         
@@ -56,6 +64,10 @@
         /* PWA Install Notification Bar CSS */
         #pwa-prompt { position: fixed; bottom: 85px; left: 5%; width: 90%; background: #222; color: #fff; padding: 15px; border-radius: 15px; display: none; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; box-sizing: border-box; }
         #pwa-prompt button { background: #00c853; color: white; border: none; padding: 10px 20px; font-weight: bold; border-radius: 8px; cursor: pointer; }
+
+        /* Live FOMO Pop-up Notification style */
+        .fomo-popup { position: fixed; bottom: 95px; left: 15px; background: rgba(255, 255, 255, 0.98); color: #333; padding: 10px 15px; border-radius: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 10px; font-size: 0.85em; z-index: 1001; border-left: 4px solid #00c853; transform: translateY(150px); transition: transform 0.5s ease-in-out; }
+        .fomo-popup.show { transform: translateY(0); }
     </style>
 </head>
 <body>
@@ -63,6 +75,11 @@
     <div id="pwa-prompt">
         <span>📲 Install Quickfix App for Faster Booking!</span>
         <button id="pwa-btn">Install</button>
+    </div>
+
+    <div id="live-fomo" class="fomo-popup">
+        <span>🛠️</span>
+        <span id="fomo-text">Someone recently booked a service!</span>
     </div>
 
     <div class="emergency-wrapper">
@@ -74,10 +91,21 @@
         </a>
     </div>
 
+    <div class="scarcity-status-bar">
+        <span class="live-dot"></span>
+        <span>Today's Availability: Only 2 urgent slots left for South Mumbai / Andheri</span>
+    </div>
+
     <div class="about">
         <h2 style="color: #007bff; margin-top: 0;">Welcome to Quickfix</h2>
         <p style="font-size: 1.05em; color: #444;">India's #1 Most Trusted platform (Mumbai). Revolutionizing Doorstep Services since 2010 with <b>1,900,519+ trusted families served</b>. We have above 15+ years of experience in the service industry with 50+ company expert technicians. High-quality service and repairing provided directly by my expert team.</p>
         <p style="color: #ff0000; font-size: 1.1em; margin-bottom: 0;"><b>EXPERT HOME APPLIANCES REPAIRERS 24/7 WITH RELIABLE AND REASONABLE PRICES.</b></p>
+    </div>
+
+    <div class="trust-badges">
+        <div class="badge-item">💯<span>Genuine Parts</span></div>
+        <div class="badge-item">🛡️<span>30 Days Warranty</span></div>
+        <div class="badge-item">👨‍🔧<span>Expert Techs</span></div>
     </div>
 
     <div class="grid">
@@ -194,7 +222,6 @@
             window.open(`https://wa.me/919930249182?text=Advance%20Booking%20for%20${encodeURIComponent(item)}%20on%20${encodeURIComponent(date)}.%20Problem:%20${encodeURIComponent(desc)}`);
         }
 
-        // NEW: Send Feedback Function Logic
         function sendFeedback() {
             const name = document.getElementById('cust-name').value;
             const recommend = document.getElementById('recommend').value;
@@ -209,6 +236,37 @@
         function giveRating(stars) {
             alert("Thank you for your " + stars + " star rating!");
         }
+
+        // Logic For Live Random FOMO Notifications (Scarcity Strategy)
+        const names = ["Amit", "Rahul", "Vikram", "Sneha", "Priyanka", "Rajesh", "Deepak"];
+        const locations = ["Andheri", "Borivali", "Dadar", "Bandra", "Thane", "Ghatkopar", "Colaba"];
+        const services = ["Washing Machine repair", "Refrigerator service", "Microwave repair", "Cloth Dryer service"];
+
+        function showFomoPopup() {
+            const fomoEl = document.getElementById('live-fomo');
+            const txtEl = document.getElementById('fomo-text');
+            
+            // Randomly pick details
+            const rName = names[Math.floor(Math.random() * names.length)];
+            const rLoc = locations[Math.floor(Math.random() * locations.length)];
+            const rServ = services[Math.floor(Math.random() * services.length)];
+            const rTime = Math.floor(Math.random() * 15) + 2;
+
+            txtEl.innerHTML = `<b>${rName}</b> from ${rLoc} booked a <b>${rServ}</b> ${rTime} mins ago!`;
+            
+            fomoEl.classList.add('show');
+
+            // Hide after 4 seconds
+            setTimeout(() => {
+                fomoEl.classList.remove('show');
+            }, 4000);
+        }
+
+        // Trigger notification loop every 12 seconds
+        setInterval(showFomoPopup, 12000);
+        // First display after 3 seconds of load
+        setTimeout(showFomoPopup, 3000);
+
 
         // PWA Installation Intelligence Logic
         let deferredPrompt;
