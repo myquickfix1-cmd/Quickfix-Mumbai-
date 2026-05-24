@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Quickfix Mumbai - Trusted Home Appliance Repair. Experts in Refrigerator, Washing Machine, Microwave, Dishwasher, Dryer, Air Dresser and All Types of Home Appliances Services and repair since 2010 Fast & Reliable, Same-day service, Genuine parts, 6 Months warranty across all Mumbai.">
     <title>Quickfix Mumbai | Expert Home Appliance Repair & Services</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#007bff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Quickfix">
+
     <style>
         body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fdfdfd; color: #333; padding-bottom: 90px; }
         
@@ -42,9 +49,18 @@
         .btn-wa { background: #25d366; color: white; border: none; cursor: pointer; }
         
         .fixed-call-container { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.95); padding: 12px 0; box-shadow: 0 -4px 10px rgba(0,0,0,0.1); z-index: 999; }
+
+        /* PWA Install Notification Bar CSS */
+        #pwa-prompt { position: fixed; bottom: 85px; left: 5%; width: 90%; background: #222; color: #fff; padding: 15px; border-radius: 15px; display: none; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; box-sizing: border-box; }
+        #pwa-prompt button { background: #00c853; color: white; border: none; padding: 10px 20px; font-weight: bold; border-radius: 8px; cursor: pointer; }
     </style>
 </head>
 <body>
+
+    <div id="pwa-prompt">
+        <span>📲 Install Quickfix App for Faster Booking!</span>
+        <button id="pwa-btn">Install</button>
+    </div>
 
     <div class="emergency-wrapper">
         <h2 style="color: white; margin: 0; font-size: 1.5em;">🚨 24/7 EMERGENCY REPAIR</h2>
@@ -160,7 +176,32 @@
         function giveRating(stars) {
             alert("Thank you for your " + stars + " star rating!");
         }
+
+        // PWA Installation Intelligence Logic
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('pwa-prompt').style.display = 'flex';
+        });
+
+        document.getElementById('pwa-btn').addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                deferredPrompt = null;
+                document.getElementById('pwa-prompt').style.display = 'none';
+            }
+        });
+
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker Registered Successfully!'))
+                    .catch(err => console.log('Service Worker Registration Failed:', err));
+            });
+        }
     </script>
 </body>
-                        </html>
-                        
+</html>
