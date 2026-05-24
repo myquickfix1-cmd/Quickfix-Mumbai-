@@ -3,62 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <!-- bro ye wala Q nahi dikh raha  -->  <meta name="description" content="Quickfix Mumbai - Trusted Home Appliance Repair. Experts in Refrigerator, Washing Machine, Microwave, Dishwasher, Dryer, Air Dresser and All Types of Home Appliances Services and repair since 2010 Fast & Reliable, Same-day service, Genuine parts, 6 Months warranty across all Mumbai.">
+    <meta name="description" content="Quickfix Mumbai - Trusted Home Appliance Repair. Experts in Refrigerator, Washing Machine, Microwave, Dishwasher, Dryer, Air Dresser and All Types of Home Appliances Services and repair since 2010 Fast & Reliable, Same-day service, Genuine parts, 6 Months warranty across all Mumbai.">
     <title>Quickfix Mumbai | Expert Home Appliance Repair & Services</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fdfdfd; color: #333; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fdfdfd; color: #333; padding-bottom: 80px; }
         
         /* Emergency Banner */
         .emergency-wrapper { background: #ff0000; padding: 20px; text-align: center; animation: flash 0.5s infinite; }
-        @keyframes flash { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+        @keyframes flash { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
         
         .about { background: #fff; padding: 20px; line-height: 1.6; border-bottom: 2px solid #eee; }
         
         /* Services List */
         .grid { display: flex; flex-direction: column; gap: 15px; padding: 15px; }
         .card { border: 1px solid #ddd; padding: 12px; border-radius: 12px; display: flex; align-items: center; gap: 15px; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .card img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; }
+        .card img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; background: #eee; }
         .card span { font-weight: bold; font-size: 1.1em; }
         
         /* Booking Box */
         .booking-box { background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 25px; margin: 15px; border-radius: 20px; text-align: center; }
-        input, select, textarea { width: 100%; padding: 14px; margin: 8px 0; border-radius: 8px; border: none; box-sizing: border-box; }
+        input, select, textarea { width: 100%; padding: 14px; margin: 8px 0; border-radius: 8px; border: none; box-sizing: border-box; font-size: 1em; }
         
         /* Testimonials Section */
-        .testimonials { background: #f9f9f9; padding: 20px; text-align: center; border-radius: 15px; margin: 15px; border: 1px dashed #ccc; }
-        .btn-call { display: block; width: 90%; margin: 10px auto; padding: 18px; background: #000; color: white; text-align: center; text-decoration: none; border-radius: 50px; font-weight: bold; }
-        .btn-wa { background: #25d366; }
+        .testimonials-box { background: #fff; padding: 20px; border-radius: 15px; margin: 15px; border: 1px solid #ddd; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
+        
+        /* Fixed Call Floating Button */
+        .btn-call { display: block; width: 90%; margin: 10px auto; padding: 18px; background: #000; color: white; text-align: center; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1.2em; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .btn-wa { background: #25d366; color: white; border: none; cursor: pointer; }
+        
+        .fixed-call-container { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.95); padding: 10px 0; box-shadow: 0 -4px 10px rgba(0,0,0,0.1); z-index: 999; }
     </style>
 </head>
 <body>
 
     <div class="emergency-wrapper">
-        <h2 style="color: white; margin: 0;">🚨 24/7 EMERGENCY REPAIR</h2>
-        <p style="color: white; font-weight: bold;">Need instant help? Share your issue now!</p>
+        <h2 style="color: white; margin: 0; font-size: 1.5em;">🚨 24/7 EMERGENCY REPAIR</h2>
+        <p style="color: white; font-weight: bold; margin: 5px 0 0 0;">Need instant help? Share your issue now!</p>
         <a href="https://wa.me/919930249182?text=EMERGENCY!%20I%20need%20urgent%20repair.%20I%20am%20sending%20a%20photo/video%20of%20my%20problem." 
-           style="display: block; background: white; color: red; padding: 15px; margin-top: 10px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em;">
+           style="display: block; background: white; color: red; padding: 15px; margin-top: 12px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
            📸 Tap to Share Photo/Video/Voice
         </a>
     </div>
 
     <div class="about">
-        <h2>Welcome to Quickfix</h2>
-        <p>India's #1 Most Trusted platform (Mumbai). Revolutionizing Doorstep Services since 2010. with 1,900,519+ trusted families served. We Have the above 15 years+ experiences with the Service industries and have 50+ Companys Expert Technicians Service and repairing provided by My Expert Technicians .</p>
-        <p><b>EXPERT HOME APPLIANCES REPAIRERS 24/7 WITH RELIABLE AND REASONABLE PRICES.</b></p>
+        <h2 style="color: #007bff; margin-top: 0;">Welcome to Quickfix</h2>
+        <p style="font-size: 1.05em; color: #444;">India's #1 Most Trusted platform (Mumbai). Revolutionizing Doorstep Services since 2010 with <b>1,900,519+ trusted families served</b>. We have above 15+ years of experience in the service industry with 50+ company expert technicians. High-quality service and repairing provided directly by my expert team.</p>
+        <p style="color: #ff0000; font-size: 1.1em; margin-bottom: 0;"><b>EXPERT HOME APPLIANCES REPAIRERS 24/7 WITH RELIABLE AND REASONABLE PRICES.</b></p>
     </div>
 
     <div class="grid">
-        <div class="card"><img src="https://images.unsplash.com/photo-1571175483880-77e1d4411130" alt="Fridge"><span>Refrigerator</span></div>
-        <div class="card"><img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f" alt="Wash"><span>Washing Machine</span></div>
-        <div class="card"><img src="https://images.unsplash.com/photo-1585464297120-760777174e95" alt="Micro"><span>Microwave</span></div>
-        <div class="card"><img src="https://images.unsplash.com/photo-1596436889106-be35e843f974" alt="Dish"><span>Dishwasher</span></div>
-        <div class="card"><img src="https://images.unsplash.com/photo-1558312657-30e71616c683" alt="Dryer"><span>Cloth Dryer</span></div>
-        <div class="card"><img src="https://images.unsplash.com/photo-1557800636-894a64c1696f" alt="Air"><span>Air Dresser</span></div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1571887455899-23228d5753b6?w=200&q=80" alt="Refrigerator">
+            <span>Refrigerator</span>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1545173168-9f1947eebd01?w=200&q=80" alt="Washing Machine">
+            <span>Washing Machine</span>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=200&q=80" alt="Microwave">
+            <span>Microwave Oven</span>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1596436889106-be35e843f974?w=200&q=80" alt="Dishwasher">
+            <span>Dishwasher</span>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1616627561950-9f746e330187?w=200&q=80" alt="Cloth Dryer">
+            <span>Cloth Dryer</span>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?w=200&q=80" alt="Air Dresser">
+            <span>Air Dresser</span>
+        </div>
     </div>
 
     <div class="booking-box">
-        <h3>📅 Advance Booking</h3>
-        <p style="font-size: 1.2em;">Get <b>Flat 30% OFF</b> on Next Day Service!</p>
+        <h3 style="margin-top: 0; font-size: 1.4em;">📅 Advance Booking</h3>
+        <p style="font-size: 1.2em; margin: 5px 0 15px 0;">Get <span style="color: #ffeb3b; font-weight: bold;">Flat 30% OFF</span> on Next Day Service!</p>
         <input type="date" id="date">
         <select id="item">
             <option>Refrigerator</option>
@@ -69,33 +91,44 @@
             <option>Cloth Dryer</option>
             <option>Air Dresser</option>
         </select>
-        <textarea id="desc" rows="2" placeholder="Your Problem (Optional)"></textarea>
-        <button onclick="sendWA()" class="btn-call btn-wa" style="width:100%;">Book via WhatsApp</button>
+        <textarea id="desc" rows="2" placeholder="Your Problem (Optional, e.g., Cooling issue, Water leakage)"></textarea>
+        <button onclick="sendWA()" class="btn-call btn-wa" style="width:100%; margin-top: 10px;">Book via WhatsApp</button>
     </div>
 
-    <div class="testimonials" id="rating-section">
-    <div class="testimonials" style="background: #fff; padding: 20px; border-radius: 15px; margin: 15px; border: 1px solid #ddd; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-    <h3 style="margin-top: 0;">Customer Opinions</h3>
-    <div style="font-size: 2.5em; font-weight: bold; color: #ff9800;">4.9 <span style="font-size: 0.4em; color: #777;">/ 5.0</span></div>
-    <div class="stars" style="color: #ff9800; font-size: 1.2em;">★★★★★</div>
-    <p style="color: #555; font-size: 0.9em;">Based on 1,900,519+ reviews</p>
+    <div class="testimonials-box">
+        <h3 style="margin-top: 0; color: #333;">Customer Opinions & Ratings</h3>
+        <div style="font-size: 2.8em; font-weight: bold; color: #ff9800; margin: 5px 0;">4.9 <span style="font-size: 0.4em; color: #777;">/ 5.0</span></div>
+        <div style="color: #ff9800; font-size: 1.4em; margin-bottom: 5px;">★★★★★</div>
+        <p style="color: #666; font-size: 0.95em; margin: 0 0 15px 0;">Based on 1,900,519+ successful reviews</p>
 
-    <div style="margin-top: 15px;">
-        <div style="display: flex; align-items: center; font-size: 0.8em; margin-bottom: 5px;">
-            <span>5★</span> <div style="flex-grow: 1; height: 10px; background: #eee; margin: 0 10px; border-radius: 5px;"><div style="width: 90%; height: 100%; background: #ff9800; border-radius: 5px;"></div></div> <span>90%</span>
-        </div>
-        <div style="display: flex; align-items: center; font-size: 0.8em; margin-bottom: 5px;">
-            <span>4★</span> <div style="flex-grow: 1; height: 10px; background: #eee; margin: 0 10px; border-radius: 5px;"><div style="width: 8%; height: 100%; background: #ff9800; border-radius: 5px;"></div></div> <span>8%</span>
-        </div>
-        <div style="display: flex; align-items: center; font-size: 0.8em;">
-            <span>3★</span> <div style="flex-grow: 1; height: 10px; background: #eee; margin: 0 10px; border-radius: 5px;"><div style="width: 2%; height: 100%; background: #ff9800; border-radius: 5px;"></div></div> <span>2%</span>
+        <div style="max-width: 300px; margin: 0 auto;">
+            <div style="display: flex; align-items: center; font-size: 0.85em; margin-bottom: 6px;">
+                <span style="width: 25px; text-align: left;">5★</span> 
+                <div style="flex-grow: 1; height: 10px; background: #eee; margin: 0 10px; border-radius: 5px;">
+                    <div style="width: 90%; height: 100%; background: #ff9800; border-radius: 5px;"></div>
+                </div> 
+                <span style="width: 35px; text-align: right;">90%</span>
+            </div>
+            <div style="display: flex; align-items: center; font-size: 0.85em; margin-bottom: 6px;">
+                <span style="width: 25px; text-align: left;">4★</span> 
+                <div style="flex-grow: 1; height: 10px; background: #eee; margin: 0 10px; border-radius: 5px;">
+                    <div style="width: 8%; height: 100%; background: #ff9800; border-radius: 5px;"></div>
+                </div> 
+                <span style="width: 35px; text-align: right;">8%</span>
+            </div>
+            <div style="display: flex; align-items: center; font-size: 0.85em;">
+                <span style="width: 25px; text-align: left;">3★</span> 
+                <div style="flex-grow: 1; height: 10px; background: #eee; margin: 0 10px; border-radius: 5px;">
+                    <div style="width: 2%; height: 100%; background: #ff9800; border-radius: 5px;"></div>
+                </div> 
+                <span style="width: 35px; text-align: right;">2%</span>
+            </div>
         </div>
     </div>
-</div>
 
-
-    
-    <a href="tel:+919930249182" class="btn-call">📞 Call Now: 9930249182</a>
+    <div class="fixed-call-container">
+        <a href="tel:+919930249182" class="btn-call" style="background: #00c853; margin: 0 auto; width: 85%;">📞 Call Now: 9930249182</a>
+    </div>
 
     <script>
         function sendWA() {
@@ -103,7 +136,7 @@
             const item = document.getElementById('item').value;
             const desc = document.getElementById('desc').value;
             if(!date) { alert("Please select a date!"); return; }
-            window.open(`https://wa.me/919930249182?text=Advance Booking for ${item} on ${date}. Problem: ${desc}`);
+            window.open(`https://wa.me/919930249182?text=Advance%20Booking%20for%20${encodeURIComponent(item)}%20on%20${encodeURIComponent(date)}.%20Problem:%20${encodeURIComponent(desc)}`);
         }
     </script>
 </body>
