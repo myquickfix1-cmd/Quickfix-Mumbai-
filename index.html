@@ -6,7 +6,7 @@
     <meta name="description" content="Quickfix Mumbai - Trusted Home Appliance Repair. Experts in Refrigerator, Washing Machine, Microwave, Dishwasher, Dryer, Air Dresser and All Types of Home Appliances Services and repair since 2010 Fast & Reliable, Same-day service, Genuine parts, 6 Months warranty across all Mumbai.">
     <title>Quickfix Mumbai | Expert Home Appliance Repair & Services</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fdfdfd; color: #333; padding-bottom: 80px; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fdfdfd; color: #333; padding-bottom: 90px; }
         
         /* Emergency Banner */
         .emergency-wrapper { background: #ff0000; padding: 20px; text-align: center; animation: flash 0.5s infinite; }
@@ -17,7 +17,9 @@
         /* Services List */
         .grid { display: flex; flex-direction: column; gap: 15px; padding: 15px; }
         .card { border: 1px solid #ddd; padding: 12px; border-radius: 12px; display: flex; align-items: center; gap: 15px; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .card img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; background: #eee; }
+        
+        /* Image Fixed: Contain use kiya taaki full appliance bina kate dikhe */
+        .card img { width: 80px; height: 80px; object-fit: contain; border-radius: 8px; background: #f7f7f7; padding: 4px; box-sizing: border-box; }
         .card span { font-weight: bold; font-size: 1.1em; }
         
         /* Booking Box */
@@ -27,11 +29,19 @@
         /* Testimonials Section */
         .testimonials-box { background: #fff; padding: 20px; border-radius: 15px; margin: 15px; border: 1px solid #ddd; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
         
+        /* Interactive Rating Stars Styles */
+        .rating-stars { display: flex; justify-content: center; gap: 8px; font-size: 2em; margin: 10px 0; cursor: pointer; direction: rtl; }
+        .rating-stars input { display: none; }
+        .rating-stars label { color: #ccc; transition: color 0.2s; }
+        .rating-stars label:hover,
+        .rating-stars label:hover ~ label,
+        .rating-stars input:checked ~ label { color: #ff9800; }
+        
         /* Fixed Call Floating Button */
         .btn-call { display: block; width: 90%; margin: 10px auto; padding: 18px; background: #000; color: white; text-align: center; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1.2em; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .btn-wa { background: #25d366; color: white; border: none; cursor: pointer; }
         
-        .fixed-call-container { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.95); padding: 10px 0; box-shadow: 0 -4px 10px rgba(0,0,0,0.1); z-index: 999; }
+        .fixed-call-container { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.95); padding: 12px 0; box-shadow: 0 -4px 10px rgba(0,0,0,0.1); z-index: 999; }
     </style>
 </head>
 <body>
@@ -53,27 +63,27 @@
 
     <div class="grid">
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1571887455899-23228d5753b6?w=200&q=80" alt="Refrigerator">
-            <span>Refrigerator</span>
+            <img src="https://cdn-icons-png.flaticon.com/512/2928/2928929.png" alt="Refrigerator">
+            <span>Refrigerator (Fridge)</span>
         </div>
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1545173168-9f1947eebd01?w=200&q=80" alt="Washing Machine">
+            <img src="https://cdn-icons-png.flaticon.com/512/2928/2928941.png" alt="Washing Machine">
             <span>Washing Machine</span>
         </div>
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=200&q=80" alt="Microwave">
+            <img src="https://cdn-icons-png.flaticon.com/512/2928/2928956.png" alt="Microwave">
             <span>Microwave Oven</span>
         </div>
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1596436889106-be35e843f974?w=200&q=80" alt="Dishwasher">
+            <img src="https://cdn-icons-png.flaticon.com/512/2558/2558058.png" alt="Dishwasher">
             <span>Dishwasher</span>
         </div>
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1616627561950-9f746e330187?w=200&q=80" alt="Cloth Dryer">
+            <img src="https://cdn-icons-png.flaticon.com/512/9116/9116518.png" alt="Cloth Dryer">
             <span>Cloth Dryer</span>
         </div>
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?w=200&q=80" alt="Air Dresser">
+            <img src="https://cdn-icons-png.flaticon.com/512/3067/3067169.png" alt="Air Dresser">
             <span>Air Dresser</span>
         </div>
     </div>
@@ -98,7 +108,15 @@
     <div class="testimonials-box">
         <h3 style="margin-top: 0; color: #333;">Customer Opinions & Ratings</h3>
         <div style="font-size: 2.8em; font-weight: bold; color: #ff9800; margin: 5px 0;">4.9 <span style="font-size: 0.4em; color: #777;">/ 5.0</span></div>
-        <div style="color: #ff9800; font-size: 1.4em; margin-bottom: 5px;">★★★★★</div>
+        
+        <div class="rating-stars">
+            <input type="radio" id="star5" name="rating" value="5" checked><label for="star5" onclick="giveRating(5)">★</label>
+            <input type="radio" id="star4" name="rating" value="4"><label for="star4" onclick="giveRating(4)">★</label>
+            <input type="radio" id="star3" name="rating" value="3"><label for="star3" onclick="giveRating(3)">★</label>
+            <input type="radio" id="star2" name="rating" value="2"><label for="star2" onclick="giveRating(2)">★</label>
+            <input type="radio" id="star1" name="rating" value="1"><label for="star1" onclick="giveRating(1)">★</label>
+        </div>
+        
         <p style="color: #666; font-size: 0.95em; margin: 0 0 15px 0;">Based on 1,900,519+ successful reviews</p>
 
         <div style="max-width: 300px; margin: 0 auto;">
@@ -138,6 +156,11 @@
             if(!date) { alert("Please select a date!"); return; }
             window.open(`https://wa.me/919930249182?text=Advance%20Booking%20for%20${encodeURIComponent(item)}%20on%20${encodeURIComponent(date)}.%20Problem:%20${encodeURIComponent(desc)}`);
         }
+
+        function giveRating(stars) {
+            alert("Thank you for your " + stars + " star rating!");
+        }
     </script>
 </body>
-</html>
+                        </html>
+                        
