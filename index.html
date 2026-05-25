@@ -122,7 +122,8 @@
 
     <div class="trust-badges">
         <div class="badge-item">💯<span>Genuine Parts</span></div>
-        <div class="badge-item">🛡️<span>30 Days Warranty</span></div>
+        <div class="badge-item">🛡️<span>6 Months Warranty</span></div>
+        <div class="badge-item">🔄<span>Free Revisit If Re-problem</span></div>
         <div class="badge-item">👨‍🔧<span>Expert Techs</span></div>
     </div>
 
@@ -262,10 +263,10 @@
             <span class="close-pay" onclick="closePaymentGateway()">&times;</span>
             <h3 style="margin-top: 5px; color: #007bff;">🔒 Secure UPI Checkout</h3>
             <p style="font-size: 0.9em; margin-bottom: 15px;">Selected Item: <strong id="modal-item-name">-</strong></p>
+            <p style="font-size: 0.85em; color: #28a745; font-weight: bold; margin: -5px 0 15px 0;">🛡️ Includes 6 Months Warranty + Free Revisit</p>
             
             <div class="pay-btn-group">
-                <button class="pay-opt-btn active" id="btn-advance" onclick="setPaymentAmount(199, 'advance')">Advance Booking<br><strong>₹199</strong></button>
-                <button class="pay-opt-btn" id="btn-full" onclick="setPaymentAmount(499, 'full')">Full Visiting Fee<br><strong>₹499</strong></button>
+                <button class="pay-opt-btn active" id="btn-advance" onclick="setPaymentAmount(149, 'advance')">Visiting Charge<br><strong>₹149</strong></button>
             </div>
 
             <div class="qr-placeholder">
@@ -308,16 +309,15 @@
     <script>
         // Internal Controller for Dynamic UPI Gate Handling
         let currentSelectedService = '';
-        let currentAmount = 199; 
+        let currentAmount = 149; 
         let paymentType = 'advance';
         
-        // APNI REAL UPI ID CODES ME YAHA UPDATE KAREIN
         const MY_UPI_ID = "9930249182@okbizaxis"; 
         const BUSINESS_NAME = "Quickfix Mumbai";
 
         function generateSmartQR(service, amount) {
             let encodedName = encodeURIComponent(BUSINESS_NAME);
-            let encodedNote = encodeURIComponent("Booking for " + service);
+            let encodedNote = encodeURIComponent("Visiting Charge for " + service);
             let qrUrl = `https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=upi://pay?pa=${MY_UPI_ID}&pn=${encodedName}&am=${amount}&tn=${encodedNote}&cu=INR`;
             document.getElementById('dynamic-qr-img').src = qrUrl;
         }
@@ -325,7 +325,7 @@
         function openPaymentGateway(serviceName) {
             currentSelectedService = serviceName;
             document.getElementById('modal-item-name').innerText = serviceName;
-            setPaymentAmount(199, 'advance');
+            setPaymentAmount(149, 'advance');
             document.getElementById('paymentModal').style.display = 'block';
         }
 
@@ -343,20 +343,12 @@
         function setPaymentAmount(amt, type) {
             currentAmount = amt;
             paymentType = type;
-            document.getElementById('btn-advance').classList.remove('active');
-            document.getElementById('btn-full').classList.remove('active');
-            
-            if(type === 'advance') {
-                document.getElementById('btn-advance').classList.add('active');
-            } else {
-                document.getElementById('btn-full').classList.add('active');
-            }
             generateSmartQR(currentSelectedService, currentAmount);
         }
 
         function confirmAndSendWhatsApp() {
             let targetDate = document.getElementById('date').value || 'Today/Urgent';
-            let message = `*NEW BOOKING CONFIRMED* \n\n*Service:* ${currentSelectedService}\n*Date:* ${targetDate}\n*Payment Status:* Paid ₹${currentAmount} via UPI (${paymentType === 'advance' ? 'Advance' : 'Full Visiting Fee'})\n\n_Technician please check and dispatch immediately._`;
+            let message = `*NEW BOOKING CONFIRMED* \n\n*Service:* ${currentSelectedService}\n*Date:* ${targetDate}\n*Visiting Charge Paid:* ₹${currentAmount} via UPI\n*Warranty:* 6 Months Included\n*Revisit:* FREE if Re-problem\n\n_Technician assigned, check server panel immediately._`;
             let encodedMsg = encodeURIComponent(message);
             window.location.href = `https://wa.me/919930249182?text=${encodedMsg}`;
         }
