@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Quickfix Mumbai - Trusted Home Appliance Repair. Experts in Refrigerator, Washing Machine, Microwave, Dishwasher, Dryer, Air Dresser and All Types of Home Appliances Services since 2010.">
+    <meta name="description" content="Quickfix Mumbai - Trusted Home Appliance Repair. Experts in Refrigerator, Washing Machine, Microwave, Dishwasher, Dryer, Air Dresser, AC, and PCB Repair Services since 2010.">
     <title>Quickfix Mumbai | Expert Home Appliance Repair & Services</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#007bff">
@@ -12,6 +12,82 @@
     <meta name="apple-mobile-web-app-title" content="Quickfix">
     
     <link rel="stylesheet" href="style.css">
+    
+    <script src="server-bridge.js"></script>
+
+    <style>
+        /* Lightning Fast UPI Payment Modal Custom Styles */
+        .pay-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+        }
+        .pay-modal-content {
+            background-color: #ffffff;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            color: #333;
+            position: relative;
+            font-family: sans-serif;
+        }
+        .close-pay {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #888;
+        }
+        .qr-placeholder {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border: 2px dashed #007bff;
+        }
+        .pay-btn-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .pay-opt-btn {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #007bff;
+            background: #fff;
+            color: #007bff;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .pay-opt-btn.active {
+            background: #007bff;
+            color: #fff;
+        }
+        .verify-pay-btn {
+            width: 100%;
+            background: #28a745;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
 
@@ -60,7 +136,7 @@
             <div class="inner-content" id="content-Refrigerator" onclick="event.stopPropagation();">
                 <div class="inner-slideshow" id="slidebox-Refrigerator"></div>
                 <div class="problem-container" id="problems-Refrigerator"></div>
-                <button onclick="bookDirect('Refrigerator')" class="btn-inner-book">⚡ Book Refrigerator Repair</button>
+                <button onclick="openPaymentGateway('Refrigerator')" class="btn-inner-book">⚡ Book Refrigerator Repair</button>
             </div>
         </div>
 
@@ -73,7 +149,33 @@
             <div class="inner-content" id="content-WashingMachine" onclick="event.stopPropagation();">
                 <div class="inner-slideshow" id="slidebox-WashingMachine"></div>
                 <div class="problem-container" id="problems-WashingMachine"></div>
-                <button onclick="bookDirect('WashingMachine')" class="btn-inner-book">⚡ Book Washing Machine Repair</button>
+                <button onclick="openPaymentGateway('Washing Machine')" class="btn-inner-book">⚡ Book Washing Machine Repair</button>
+            </div>
+        </div>
+
+        <div class="card" id="card-AirConditioner" onclick="toggleCard('AirConditioner')">
+            <div class="card-header-info">
+                <img src="https://cdn-icons-png.flaticon.com/512/9114/9114059.png" class="main-icon" alt="Air Conditioner">
+                <span class="main-title">Air Conditioner (AC)</span>
+                <div class="arrow-icon">➔</div>
+            </div>
+            <div class="inner-content" id="content-AirConditioner" onclick="event.stopPropagation();">
+                <div class="inner-slideshow" id="slidebox-AirConditioner"></div>
+                <div class="problem-container" id="problems-AirConditioner"></div>
+                <button onclick="openPaymentGateway('Air Conditioner (AC)')" class="btn-inner-book">⚡ Book AC Service & Repair</button>
+            </div>
+        </div>
+
+        <div class="card" id="card-PCB" onclick="toggleCard('PCB')">
+            <div class="card-header-info">
+                <img src="https://cdn-icons-png.flaticon.com/512/4115/4115161.png" class="main-icon" alt="PCB Repair">
+                <span class="main-title">Advanced PCB Repairing</span>
+                <div class="arrow-icon">➔</div>
+            </div>
+            <div class="inner-content" id="content-PCB" onclick="event.stopPropagation();">
+                <div class="inner-slideshow" id="slidebox-PCB"></div>
+                <div class="problem-container" id="problems-PCB"></div>
+                <button onclick="openPaymentGateway('Advanced PCB Repair')" class="btn-inner-book">⚡ Book Motherboard/PCB Repair</button>
             </div>
         </div>
 
@@ -86,7 +188,7 @@
             <div class="inner-content" id="content-Microwave" onclick="event.stopPropagation();">
                 <div class="inner-slideshow" id="slidebox-Microwave"></div>
                 <div class="problem-container" id="problems-Microwave"></div>
-                <button onclick="bookDirect('Microwave')" class="btn-inner-book">⚡ Book Microwave Repair</button>
+                <button onclick="openPaymentGateway('Microwave')" class="btn-inner-book">⚡ Book Microwave Repair</button>
             </div>
         </div>
 
@@ -99,7 +201,7 @@
             <div class="inner-content" id="content-Dishwasher" onclick="event.stopPropagation();">
                 <div class="inner-slideshow" id="slidebox-Dishwasher"></div>
                 <div class="problem-container" id="problems-Dishwasher"></div>
-                <button onclick="bookDirect('Dishwasher')" class="btn-inner-book">⚡ Book Dishwasher Repair</button>
+                <button onclick="openPaymentGateway('Dishwasher')" class="btn-inner-book">⚡ Book Dishwasher Repair</button>
             </div>
         </div>
 
@@ -112,7 +214,7 @@
             <div class="inner-content" id="content-ClothDryer" onclick="event.stopPropagation();">
                 <div class="inner-slideshow" id="slidebox-ClothDryer"></div>
                 <div class="problem-container" id="problems-ClothDryer"></div>
-                <button onclick="bookDirect('ClothDryer')" class="btn-inner-book">⚡ Book Dryer Repair</button>
+                <button onclick="openPaymentGateway('Cloth Dryer')" class="btn-inner-book">⚡ Book Dryer Repair</button>
             </div>
         </div>
 
@@ -125,7 +227,7 @@
             <div class="inner-content" id="content-AirDresser" onclick="event.stopPropagation();">
                 <div class="inner-slideshow" id="slidebox-AirDresser"></div>
                 <div class="problem-container" id="problems-AirDresser"></div>
-                <button onclick="bookDirect('AirDresser')" class="btn-inner-book">⚡ Book Air Dresser Service</button>
+                <button onclick="openPaymentGateway('Air Dresser')" class="btn-inner-book">⚡ Book Air Dresser Service</button>
             </div>
         </div>
     </div>
@@ -142,11 +244,38 @@
         <p id="slots-left-text" style="font-size:0.9em; color:#e0e0e0;">🔥 Only 2 slots left for tomorrow!</p>
         <input type="date" id="date">
         <select id="item">
-            <option>Refrigerator</option><option>Washing Machine</option><option>Microwave</option>
-            <option>Dishwasher</option><option>Cloth Dryer</option><option>Air Dresser</option>
+            <option>Refrigerator</option>
+            <option>Washing Machine</option>
+            <option>Air Conditioner (AC)</option>
+            <option>Advanced PCB Repairing</option>
+            <option>Microwave</option>
+            <option>Dishwasher</option>
+            <option>Cloth Dryer</option>
+            <option>Air Dresser</option>
         </select>
         <textarea id="desc" rows="2" placeholder="Your Problem (Optional)"></textarea>
-        <button onclick="sendWA()" class="btn-call btn-wa">Book via WhatsApp</button>
+        <button onclick="openPaymentGatewayFromForm()" class="btn-call btn-wa">Proceed to Pay & Book</button>
+    </div>
+
+    <div id="paymentModal" class="pay-modal">
+        <div class="pay-modal-content">
+            <span class="close-pay" onclick="closePaymentGateway()">&times;</span>
+            <h3 style="margin-top: 5px; color: #007bff;">🔒 Secure UPI Checkout</h3>
+            <p style="font-size: 0.9em; margin-bottom: 15px;">Selected Item: <strong id="modal-item-name">-</strong></p>
+            
+            <div class="pay-btn-group">
+                <button class="pay-opt-btn active" id="btn-advance" onclick="setPaymentAmount(199, 'advance')">Advance Booking<br><strong>₹199</strong></button>
+                <button class="pay-opt-btn" id="btn-full" onclick="setPaymentAmount(499, 'full')">Full Visiting Fee<br><strong>₹499</strong></button>
+            </div>
+
+            <div class="qr-placeholder">
+                <img id="dynamic-qr-img" src="" alt="Scan to Pay" style="width: 180px; height: 180px;">
+                <p style="margin: 5px 0 0 0; font-size: 0.85em; font-weight: bold; color: #555;">Scan with GPay, PhonePe or Paytm</p>
+            </div>
+
+            <p style="font-size: 0.85em; color: #e53935; font-weight: bold; margin-bottom: 12px;">⚠️ Please take a screenshot of payment after success.</p>
+            <button onclick="confirmAndSendWhatsApp()" class="verify-pay-btn">Done? Confirm Booking on WhatsApp</button>
+        </div>
     </div>
 
     <div class="feedback-box">
@@ -176,5 +305,61 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // Internal Controller for Dynamic UPI Gate Handling
+        let currentSelectedService = '';
+        let currentAmount = 199; 
+        let paymentType = 'advance';
+        
+        // APNI REAL UPI ID CODES ME YAHA UPDATE KAREIN
+        const MY_UPI_ID = "9930249182@okbizaxis"; 
+        const BUSINESS_NAME = "Quickfix Mumbai";
+
+        function generateSmartQR(service, amount) {
+            let encodedName = encodeURIComponent(BUSINESS_NAME);
+            let encodedNote = encodeURIComponent("Booking for " + service);
+            let qrUrl = `https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=upi://pay?pa=${MY_UPI_ID}&pn=${encodedName}&am=${amount}&tn=${encodedNote}&cu=INR`;
+            document.getElementById('dynamic-qr-img').src = qrUrl;
+        }
+
+        function openPaymentGateway(serviceName) {
+            currentSelectedService = serviceName;
+            document.getElementById('modal-item-name').innerText = serviceName;
+            setPaymentAmount(199, 'advance');
+            document.getElementById('paymentModal').style.display = 'block';
+        }
+
+        function openPaymentGatewayFromForm() {
+            let selectedFormItem = document.getElementById('item').value;
+            let customDesc = document.getElementById('desc').value;
+            let serviceWithDesc = selectedFormItem + (customDesc ? ` (${customDesc})` : '');
+            openPaymentGateway(serviceWithDesc);
+        }
+
+        function closePaymentGateway() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        function setPaymentAmount(amt, type) {
+            currentAmount = amt;
+            paymentType = type;
+            document.getElementById('btn-advance').classList.remove('active');
+            document.getElementById('btn-full').classList.remove('active');
+            
+            if(type === 'advance') {
+                document.getElementById('btn-advance').classList.add('active');
+            } else {
+                document.getElementById('btn-full').classList.add('active');
+            }
+            generateSmartQR(currentSelectedService, currentAmount);
+        }
+
+        function confirmAndSendWhatsApp() {
+            let targetDate = document.getElementById('date').value || 'Today/Urgent';
+            let message = `*NEW BOOKING CONFIRMED* \n\n*Service:* ${currentSelectedService}\n*Date:* ${targetDate}\n*Payment Status:* Paid ₹${currentAmount} via UPI (${paymentType === 'advance' ? 'Advance' : 'Full Visiting Fee'})\n\n_Technician please check and dispatch immediately._`;
+            let encodedMsg = encodeURIComponent(message);
+            window.location.href = `https://wa.me/919930249182?text=${encodedMsg}`;
+        }
+    </script>
 </body>
 </html>
