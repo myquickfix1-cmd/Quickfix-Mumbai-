@@ -106,25 +106,73 @@
         .clean-features-list div {
             margin: 6px 0;
         }
-        /* ✨ PREMIUM BRAND TICKER STYLING */
-        .brand-ticker {
-            background: #f1f5f9;
-            color: #334155;
-            padding: 10px;
+        
+        /* 🏢 NEW HIGHLY VISIBLE BRAND BOX */
+        .brand-box {
+            background: #ffffff;
+            color: #1e293b;
+            padding: 15px;
             font-weight: bold;
-            font-size: 0.9em;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border: 1px solid #cbd5e1;
+            font-size: 0.95em;
+            border-radius: 10px;
+            margin: 15px auto;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            border: 2px solid #e2e8f0;
             text-align: center;
+            line-height: 1.6;
         }
         .brand-highlight {
-            color: #007bff;
+            color: #0056b3;
+            background: #e0f2fe;
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 2px;
         }
-        .stars-container {
-            font-size: 1.8em;
-            color: #ff9800;
-            margin: 5px 0;
+
+        /* ⭐ 3-LINE RATING SCALE STYLE */
+        .rating-summary-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            color: #333;
+        }
+        .scale-row {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            font-size: 0.88em;
+            font-weight: bold;
+            color: #475569;
+        }
+        .scale-label {
+            width: 55px;
+            text-align: left;
+        }
+        .scale-bar-bg {
+            flex-grow: 1;
+            background: #e2e8f0;
+            height: 10px;
+            border-radius: 5px;
+            margin: 0 10px;
+            overflow: hidden;
+        }
+        .scale-bar-fill {
+            background: #ff9800;
+            height: 100%;
+            border-radius: 5px;
+        }
+        .scale-percent {
+            width: 35px;
+            text-align: right;
         }
     </style>
 </head>
@@ -145,7 +193,7 @@
         <p style="font-weight: bold; margin: 5px 0;">Greetings! 👋</p>
         
         <div class="trust-intro-box">
-            🚀 Welcome to <b>Quick Fix Mumbai Expert</b>, India's #1 trusted platform, revolutionising online Services, Repair, and Care since 2015. Trusted by over <b>85,000+ Families</b>! <br><br>
+            🚀 Welcome to <b>Quick Fix Mumbai Expert</b>, India's #1 trusted platform, revolutionising online Services, Repair, and Care since 2015. Trusted by over <b>89,957+ Families</b>! <br><br>
             💼 We have above <b>10+ Years of Experience</b> in the service industry and a dedicated team of <b>50+ Company Expert Technicians</b>.
         </div>
 
@@ -161,8 +209,19 @@
         <p style="margin: 12px 0 0 0; text-align: center; font-weight: bold; color: #fff;">Your Satisfaction, Our Responsibility! ✨</p>
     </div>
 
-    <div class="brand-ticker">
-        🛠️ We Expertly Repair All Major Brands: <span class="brand-highlight">Samsung, LG, Whirlpool, Bosch, IFB, Godrej, Panasonic, Haier, Voltas, Daikin, Siemens & more!</span>
+    <div class="brand-box">
+        ⚙️ All Major Brands Professionally Repaired:<br>
+        <span class="brand-highlight">Samsung</span>
+        <span class="brand-highlight">LG</span>
+        <span class="brand-highlight">Whirlpool</span>
+        <span class="brand-highlight">Bosch</span>
+        <span class="brand-highlight">IFB</span>
+        <span class="brand-highlight">Godrej</span>
+        <span class="brand-highlight">Panasonic</span>
+        <span class="brand-highlight">Haier</span>
+        <span class="brand-highlight">Voltas</span>
+        <span class="brand-highlight">Daikin</span>
+        <span class="brand-highlight">Siemens</span>
     </div>
 
     <div class="emergency-wrapper">
@@ -357,12 +416,27 @@
         <button onclick="sendFeedback()" class="btn-call btn-submit-feedback">Submit Feedback</button>
     </div>
 
-    <div class="testimonials-box">
-        <h3>Customer Ratings</h3>
-        <div style="font-size: 2.8em; font-weight: bold; color: #ff9800; margin-bottom: 2px;">4.9</div>
-        <div class="stars-container">★★★★★</div>
-        <p style="color: #1e293b; font-size: 0.95em; margin-top: 5px; font-weight: bold;">🎯 97% Client Satisfaction Rating</p>
-        <p style="color: #64748b; font-size: 0.88em; margin-top: 2px;">Based on <b>87,519+</b> certified domestic repairs across Mumbai</p>
+    <div class="rating-summary-box">
+        <h3 style="margin-top: 0; color: #1e293b; font-size: 1.2em;">Verified Customer Reviews</h3>
+        <div style="font-size: 3em; font-weight: bold; color: #ff9800; line-height: 1;">4.9</div>
+        <div style="color: #ff9800; font-size: 1.4em; margin: 5px 0;">★★★★★</div>
+        <p style="color: #64748b; font-size: 0.85em; margin: -2px 0 15px 0;">Based on <b>89,957+</b> Mumbai Repairs</p>
+        
+        <div class="scale-row">
+            <span class="scale-label">5 Stars</span>
+            <div class="scale-bar-bg"><div class="scale-bar-fill" style="width: 97%;"></div></div>
+            <span class="scale-percent">97%</span>
+        </div>
+        <div class="scale-row">
+            <span class="scale-label">4 Stars</span>
+            <div class="scale-bar-bg"><div class="scale-bar-fill" style="width: 2%;"></div></div>
+            <span class="scale-percent">2%</span>
+        </div>
+        <div class="scale-row">
+            <span class="scale-label">3 Stars</span>
+            <div class="scale-bar-bg"><div class="scale-bar-fill" style="width: 1%;"></div></div>
+            <span class="scale-percent">1%</span>
+        </div>
     </div>
 
     <div class="fixed-call-container">
