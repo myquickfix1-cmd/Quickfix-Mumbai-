@@ -84,9 +84,12 @@
             color: white;
             padding: 20px;
             border-radius: 12px;
-            margin-bottom: 15px;
+            margin: 15px auto;
+            width: 90%;
+            max-width: 600px;
             text-align: left;
             line-height: 1.5;
+            box-sizing: border-box;
         }
         .trust-intro-box {
             background: rgba(255, 235, 59, 0.15);
@@ -107,7 +110,7 @@
             margin: 6px 0;
         }
         
-        /* 🏢 NEW HIGHLY VISIBLE BRAND BOX */
+        /* 🏢 HIGHLY VISIBLE BRAND BOX */
         .brand-box {
             background: #ffffff;
             color: #1e293b;
@@ -122,6 +125,7 @@
             border: 2px solid #e2e8f0;
             text-align: center;
             line-height: 1.6;
+            box-sizing: border-box;
         }
         .brand-highlight {
             color: #0056b3;
@@ -144,6 +148,7 @@
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             color: #333;
+            box-sizing: border-box;
         }
         .scale-row {
             display: flex;
@@ -227,7 +232,7 @@
     <div class="emergency-wrapper">
         <h2 style="color: white; margin: 0; font-size: 1.5em;">🚨 24/7 EMERGENCY REPAIR</h2>
         <p style="color: white; font-weight: bold; margin: 5px 0 0 0;">Need instant help? Share your issue now!</p>
-        <a href="https://wa.me/919594406045?text=EMERGENCY!%20I%20need%20urgent%20repair." style="display: block; background: white; color: red; padding: 15px; margin-top: 12px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+        <a href="https://wa.me/919594406045?text=EMERGENCY!%20I%20need%20urgent%20repair." style="display: block; background: white; color: red; padding: 15px; margin-top: 12px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; box-shadow: 0 4px 6px rgba(0,0,0,0.2); text-align: center;">
            📸 Tap to Share Photo/Video/Voice
         </a>
     </div>
@@ -296,67 +301,11 @@
                 <button onclick="openPaymentGateway('Advanced PCB Repair')" class="btn-inner-book">⚡ Book Motherboard/PCB Repair</button>
             </div>
         </div>
-
-        <div class="card" id="card-Microwave" onclick="toggleCard('Microwave')">
-            <div class="card-header-info">
-                <img src="https://cdn-icons-png.flaticon.com/512/2928/2928956.png" class="main-icon" alt="Microwave">
-                <span class="main-title">Microwave Oven</span>
-                <div class="arrow-icon">➔</div>
-            </div>
-            <div class="inner-content" id="content-Microwave" onclick="event.stopPropagation();">
-                <div class="inner-slideshow" id="slidebox-Microwave"></div>
-                <div class="problem-container" id="problems-Microwave"></div>
-                <button onclick="openPaymentGateway('Microwave')" class="btn-inner-book">⚡ Book Microwave Repair</button>
-            </div>
-        </div>
-
-        <div class="card" id="card-Dishwasher" onclick="toggleCard('Dishwasher')">
-            <div class="card-header-info">
-                <img src="https://cdn-icons-png.flaticon.com/512/2558/2558058.png" class="main-icon" alt="Dishwasher">
-                <span class="main-title">Dishwasher</span>
-                <div class="arrow-icon">➔</div>
-            </div>
-            <div class="inner-content" id="content-Dishwasher" onclick="event.stopPropagation();">
-                <div class="inner-slideshow" id="slidebox-Dishwasher"></div>
-                <div class="problem-container" id="problems-Dishwasher"></div>
-                <button onclick="openPaymentGateway('Dishwasher')" class="btn-inner-book">⚡ Book Dishwasher Repair</button>
-            </div>
-        </div>
-
-        <div class="card" id="card-ClothDryer" onclick="toggleCard('ClothDryer')">
-            <div class="card-header-info">
-                <img src="https://cdn-icons-png.flaticon.com/512/9116/9116518.png" class="main-icon" alt="Cloth Dryer">
-                <span class="main-title">Cloth Dryer</span>
-                <div class="arrow-icon">➔</div>
-            </div>
-            <div class="inner-content" id="content-ClothDryer" onclick="event.stopPropagation();">
-                <div class="inner-slideshow" id="slidebox-ClothDryer"></div>
-                <div class="problem-container" id="problems-ClothDryer"></div>
-                <button onclick="openPaymentGateway('Cloth Dryer')" class="btn-inner-book">⚡ Book Dryer Repair</button>
-            </div>
-        </div>
-
-        <div class="card" id="card-AirDresser" onclick="toggleCard('AirDresser')">
-            <div class="card-header-info">
-                <img src="https://cdn-icons-png.flaticon.com/512/3067/3067169.png" class="main-icon" alt="Air Dresser">
-                <span class="main-title">Air Dresser</span>
-                <div class="arrow-icon">➔</div>
-            </div>
-            <div class="inner-content" id="content-AirDresser" onclick="event.stopPropagation();">
-                <div class="inner-slideshow" id="slidebox-AirDresser"></div>
-                <div class="problem-container" id="problems-AirDresser"></div>
-                <button onclick="openPaymentGateway('Air Dresser')" class="btn-inner-book">⚡ Book Air Dresser Service</button>
-            </div>
-        </div>
     </div>
 
     <div class="booking-box">
         <div style="margin-bottom: 10px;">
-            <div class="dynamic-calendar-badge">
-                <span class="cal-month" id="cal-m">MMM</span>
-                <span class="cal-day" id="cal-d">00</span>
-            </div>
-            <h3 style="display: inline-block; margin: 0 0 0 10px;">Advance Booking</h3>
+            <h3>Advance Booking</h3>
         </div>
         <p>Get <span id="dynamic-disc-text" style="color: #ffeb3b; font-weight: bold;">Flat 50% OFF</span> on Next Day Service!</p>
         <p id="slots-left-text" style="font-size:0.9em; color:#e0e0e0;">🔥 Only 2 slots left for tomorrow!</p>
@@ -366,10 +315,6 @@
             <option>Washing Machine</option>
             <option>Air Conditioner (AC)</option>
             <option>Advanced PCB Repairing</option>
-            <option>Microwave</option>
-            <option>Dishwasher</option>
-            <option>Cloth Dryer</option>
-            <option>Air Dresser</option>
         </select>
         <textarea id="desc" rows="2" placeholder="Your Problem (Optional)"></textarea>
         <button onclick="openPaymentGatewayFromForm()" class="btn-call btn-wa">Proceed to Pay & Book</button>
@@ -378,10 +323,14 @@
     <div id="paymentModal" class="pay-modal">
         <div class="pay-modal-content">
             <span class="close-pay" onclick="closePaymentGateway()">&times;</span>
-            <h3 style="margin-top: 5px; color: #007bff;">🔒 Secure Checkout Form</h3>
-            <p style="font-size: 0.9em; margin-bottom: 12px;">Selected: <strong id="modal-item-name">-</strong></p>
-            <p style="font-size: 0.85em; color: #28a745; font-weight: bold; margin: -5px 0 10px 0;">🛡️ Visiting Charge: ₹149 (6 Months Warranty Included)</p>
+            <h3 style="margin-top: 5px; color: #007bff;">🔒 Secure UPI Checkout</h3>
+            <p style="font-size: 0.9em; margin-bottom: 12px;">Selected Item: <strong id="modal-item-name">-</strong></p>
+            <p style="font-size: 0.85em; color: #28a745; font-weight: bold; margin: -5px 0 10px 0;">🛡️ Includes 6 Months Warranty + Free Revisit</p>
             
+            <div style="background:#007bff; color:white; padding:10px; font-weight:bold; border-radius:5px; margin-bottom:15px;">
+                Visiting Charge: ₹149
+            </div>
+
             <div class="customer-inputs">
                 <input type="text" id="pay-cust-name" placeholder="Enter Your Full Name" required>
                 <input type="tel" id="pay-cust-phone" placeholder="Enter Contact Number" required>
@@ -396,12 +345,13 @@
             </div>
 
             <div class="qr-placeholder" onclick="openDirectUPIApp()" style="cursor: pointer;">
-                <img id="dynamic-qr-img" src="" alt="UPI QR Code" style="width: 170px; height: 170px;">
-                <p style="margin: 5px 0 0 0; font-size: 0.85em; font-weight: bold; color: #007bff;">👉 Mobile Users: Tap here to pay via GPay/PhonePe directly</p>
+                <img id="dynamic-qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=9930249182@okbizaxis" alt="UPI QR Code" style="width: 170px; height: 170px; display:block; margin:0 auto;">
+                <p style="margin: 8px 0 0 0; font-size: 0.85em; font-weight: bold; color: #007bff;">Scan with GPay, PhonePe or Paytm</p>
+                <p style="margin: 3px 0 0 0; font-size: 0.75em; color: #555;">(Mobile Users: Tap here to pay directly)</p>
             </div>
 
-            <p style="font-size: 0.8em; color: #e53935; font-weight: bold; margin-bottom: 12px;">⚠️ Success ke baad screenshot zaroor le lein.</p>
-            <button onclick="confirmAndSendWhatsApp()" class="verify-pay-btn">Done? Confirm Booking on WhatsApp</button>
+            <p style="font-size: 0.85em; color: #e53935; font-weight: bold; margin-bottom: 12px;">⚠️ Please take a screenshot of payment after success.</p>
+            <button onclick="confirmAndSendWhatsApp()" class="verify-pay-btn" style="background:#28a745;">Done? Confirm Booking on WhatsApp</button>
         </div>
     </div>
 
@@ -417,10 +367,10 @@
     </div>
 
     <div class="rating-summary-box">
-        <h3 style="margin-top: 0; color: #1e293b; font-size: 1.2em;">Verified Customer Reviews</h3>
-        <div style="font-size: 3em; font-weight: bold; color: #ff9800; line-height: 1;">4.9</div>
+        <h3 style="margin-top: 0; color: #1e293b; font-size: 1.2em;">Customer Ratings</h3>
+        <div style="font-size: 3.2em; font-weight: bold; color: #ff9800; line-height: 1; margin-bottom:5px;">4.9</div>
         <div style="color: #ff9800; font-size: 1.4em; margin: 5px 0;">★★★★★</div>
-        <p style="color: #64748b; font-size: 0.85em; margin: -2px 0 15px 0;">Based on <b>89,957+</b> Mumbai Repairs</p>
+        <p style="color: #64748b; font-size: 0.85em; margin: -2px 0 15px 0;">Based on <b>89,957+</b> successful repairs in Mumbai</p>
         
         <div class="scale-row">
             <span class="scale-label">5 Stars</span>
@@ -440,14 +390,13 @@
     </div>
 
     <div class="fixed-call-container">
-        <a href="tel:+919594406045" class="btn-call" style="background: #00c853;">📞 Call Now: 9594406045</a>
+        <a href="tel:+919594406045" class="btn-call" style="background: #00c853; text-align:center; display:block; text-decoration:none; color:white; font-weight:bold; padding:15px; border-radius:10px;">📞 Call Now: 9594406045</a>
     </div>
 
     <script src="script.js"></script>
     <script>
-        let currentSelectedService = '';
+        let currentSelectedService = 'General Repair';
         let currentAmount = 149; 
-        
         const MY_UPI_ID = "9930249182@okbizaxis"; 
         const BUSINESS_NAME = "Quickfix Mumbai";
 
@@ -455,7 +404,6 @@
             let encodedName = encodeURIComponent(BUSINESS_NAME);
             let encodedNote = encodeURIComponent("Visiting Fee: " + service);
             let upiUrl = `upi://pay?pa=${MY_UPI_ID}&pn=${encodedName}&am=${amount}&tn=${encodedNote}&cu=INR`;
-            
             let qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`;
             document.getElementById('dynamic-qr-img').src = qrUrl;
         }
@@ -492,12 +440,8 @@
             let cSlot = document.getElementById('pay-cust-slot').value;
             let targetDate = document.getElementById('date').value || 'Urgent / Today';
 
-            if(!cName || !cPhone || !cAddress) {
-                alert("Bhai! Customer ka Name, Phone aur Address bharna zaroori hai tabhi toh technician jayega!");
-                return;
-            }
-            if(!cSlot) {
-                alert("Bhai! Please, discuss karne ke liye ek convenient Time Slot select karein!");
+            if(!cName || !cPhone || !cAddress || !cSlot) {
+                alert("Please fill all details and select a time slot!");
                 return;
             }
 
@@ -511,8 +455,7 @@
                           `💳 *Payment Status:* ₹149 Paid Successfully via UPI\n` +
                           `🛡️ *Warranty:* 6 Months Warranty Activated.`;
 
-            let encodedMsg = encodeURIComponent(message);
-            window.location.href = `https://wa.me/919594406045?text=${encodedMsg}`;
+            window.location.href = `https://wa.me/919594406045?text=${encodeURIComponent(message)}`;
         }
     </script>
 </body>
