@@ -16,7 +16,7 @@
     <script src="server-bridge.js"></script>
 
     <style>
-        /* Lightning Fast UPI Payment Modal Custom Styles */
+        /* Secure Checkout Modal Styling */
         .pay-modal {
             display: none;
             position: fixed;
@@ -25,15 +25,16 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.6);
+            background-color: rgba(0,0,0,0.7);
+            overflow-y: auto;
         }
         .pay-modal-content {
             background-color: #ffffff;
-            margin: 15% auto;
+            margin: 5% auto;
             padding: 20px;
             border-radius: 15px;
             width: 90%;
-            max-width: 400px;
+            max-width: 420px;
             text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             color: #333;
@@ -48,44 +49,41 @@
             cursor: pointer;
             color: #888;
         }
+        .customer-inputs input, .customer-inputs textarea {
+            width: 90%;
+            padding: 10px;
+            margin: 6px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 0.95em;
+        }
         .qr-placeholder {
             background: #f5f5f5;
-            padding: 15px;
-            margin: 15px 0;
+            padding: 12px;
+            margin: 12px 0;
             border-radius: 10px;
             border: 2px dashed #007bff;
-        }
-        .pay-btn-group {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        .pay-opt-btn {
-            flex: 1;
-            padding: 10px;
-            border: 2px solid #007bff;
-            background: #fff;
-            color: #007bff;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .pay-opt-btn.active {
-            background: #007bff;
-            color: #fff;
         }
         .verify-pay-btn {
             width: 100%;
             background: #28a745;
             color: white;
-            padding: 12px;
+            padding: 14px;
             border: none;
             border-radius: 8px;
             font-size: 1.1em;
             font-weight: bold;
             cursor: pointer;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .greetings-banner {
+            background: linear-gradient(135deg, #0056b3, #007bff);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: left;
+            line-height: 1.5;
         }
     </style>
 </head>
@@ -101,10 +99,26 @@
         <span id="fomo-text">Someone recently booked a service!</span>
     </div>
 
+    <div class="greetings-banner">
+        <h3 style="margin-top: 0; color: #ffeb3b; font-size: 1.3em;">🛠️ 24/7 Quickfix Service & Repair Home Appliances</h3>
+        <p style="font-weight: bold; margin: 5px 0;">Greetings! 👋</p>
+        <p style="margin: 5px 0; font-size: 0.95em;">Is your <b>Refrigerator</b> not cooling? Or is your <b>Washing Machine, Air Conditioner (AC), Microwave Oven, Dishwasher, Cloth Dryer, Air Dresser, or Inverter PCB Board</b> giving you trouble? Don't worry, we’ve got you covered!</p>
+        <p style="margin: 5px 0; font-size: 0.95em;">We provide the fastest and most reliable Home Appliance Repair Services right at your doorstep, near you, day and night.</p>
+        
+        <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 8px; margin-top: 10px; font-size: 0.9em;">
+            ⚡ <b>✅ 24/7 Service</b> (Available day & night, whenever you need us)<br>
+            👨‍💻 <b>✅ Expert Engineering & Technical Solutions</b><br>
+            👨‍🔧 <b>✅ Certified Expert Technicians</b><br>
+            💰 <b>✅ Affordable & Transparent Rates</b><br>
+            📍 <b>✅ Special Doorstep Service</b> (At your convenience)
+        </div>
+        <p style="margin: 10px 0 0 0; text-align: center; font-weight: bold; color: #fff;">Your Satisfaction, Our Responsibility! ✨</p>
+    </div>
+
     <div class="emergency-wrapper">
         <h2 style="color: white; margin: 0; font-size: 1.5em;">🚨 24/7 EMERGENCY REPAIR</h2>
         <p style="color: white; font-weight: bold; margin: 5px 0 0 0;">Need instant help? Share your issue now!</p>
-        <a href="https://wa.me/919930249182?text=EMERGENCY!%20I%20need%20urgent%20repair." style="display: block; background: white; color: red; padding: 15px; margin-top: 12px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+        <a href="https://wa.me/919594406045?text=EMERGENCY!%20I%20need%20urgent%20repair." style="display: block; background: white; color: red; padding: 15px; margin-top: 12px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
            📸 Tap to Share Photo/Video/Voice
         </a>
     </div>
@@ -112,12 +126,6 @@
     <div class="scarcity-status-bar">
         <span class="live-dot"></span>
         <span id="live-slots-top">Today's Availability: Only 3 urgent slots left</span>
-    </div>
-
-    <div class="about">
-        <h2 style="color: #007bff; margin-top: 0;">Welcome to Quickfix</h2>
-        <p>India's #1 Most Trusted platform (Mumbai). Serving families since 2010 with expert technicians.</p>
-        <p style="color: #ff0000; font-weight: bold;">EXPERT HOME APPLIANCES REPAIRERS 24/7 WITH REASONABLE PRICES.</p>
     </div>
 
     <div class="trust-badges">
@@ -261,20 +269,22 @@
     <div id="paymentModal" class="pay-modal">
         <div class="pay-modal-content">
             <span class="close-pay" onclick="closePaymentGateway()">&times;</span>
-            <h3 style="margin-top: 5px; color: #007bff;">🔒 Secure UPI Checkout</h3>
-            <p style="font-size: 0.9em; margin-bottom: 15px;">Selected Item: <strong id="modal-item-name">-</strong></p>
-            <p style="font-size: 0.85em; color: #28a745; font-weight: bold; margin: -5px 0 15px 0;">🛡️ Includes 6 Months Warranty + Free Revisit</p>
+            <h3 style="margin-top: 5px; color: #007bff;">🔒 Secure Checkout Form</h3>
+            <p style="font-size: 0.9em; margin-bottom: 12px;">Selected: <strong id="modal-item-name">-</strong></p>
+            <p style="font-size: 0.85em; color: #28a745; font-weight: bold; margin: -5px 0 10px 0;">🛡️ Visiting Charge: ₹149 (6 Months Warranty Included)</p>
             
-            <div class="pay-btn-group">
-                <button class="pay-opt-btn active" id="btn-advance" onclick="setPaymentAmount(149, 'advance')">Visiting Charge<br><strong>₹149</strong></button>
+            <div class="customer-inputs">
+                <input type="text" id="pay-cust-name" placeholder="Enter Your Full Name" required>
+                <input type="tel" id="pay-cust-phone" placeholder="Enter Contact Number" required>
+                <textarea id="pay-cust-address" rows="2" placeholder="Enter Complete Area / Address Location" required></textarea>
             </div>
 
-            <div class="qr-placeholder">
-                <img id="dynamic-qr-img" src="" alt="Scan to Pay" style="width: 180px; height: 180px;">
-                <p style="margin: 5px 0 0 0; font-size: 0.85em; font-weight: bold; color: #555;">Scan with GPay, PhonePe or Paytm</p>
+            <div class="qr-placeholder" onclick="openDirectUPIApp()" style="cursor: pointer;">
+                <img id="dynamic-qr-img" src="" alt="UPI QR Code" style="width: 170px; height: 170px;">
+                <p style="margin: 5px 0 0 0; font-size: 0.85em; font-weight: bold; color: #007bff;">👉 Mobile Users: Tap here to pay via GPay/PhonePe directly</p>
             </div>
 
-            <p style="font-size: 0.85em; color: #e53935; font-weight: bold; margin-bottom: 12px;">⚠️ Please take a screenshot of payment after success.</p>
+            <p style="font-size: 0.8em; color: #e53935; font-weight: bold; margin-bottom: 12px;">⚠️ Success ke baad screenshot zaroor le lein.</p>
             <button onclick="confirmAndSendWhatsApp()" class="verify-pay-btn">Done? Confirm Booking on WhatsApp</button>
         </div>
     </div>
@@ -302,30 +312,41 @@
     </div>
 
     <div class="fixed-call-container">
-        <a href="tel:+919930249182" class="btn-call" style="background: #00c853;">📞 Call Now: 9930249182</a>
+        <a href="tel:+919594406045" class="btn-call" style="background: #00c853;">📞 Call Now: 9594406045</a>
     </div>
 
     <script src="script.js"></script>
     <script>
-        // Internal Controller for Dynamic UPI Gate Handling
         let currentSelectedService = '';
         let currentAmount = 149; 
-        let paymentType = 'advance';
         
+        // PRIMARY CONFIGURATIONS
         const MY_UPI_ID = "9930249182@okbizaxis"; 
         const BUSINESS_NAME = "Quickfix Mumbai";
 
+        // STABLE QR GENERATOR LINK FIX
         function generateSmartQR(service, amount) {
             let encodedName = encodeURIComponent(BUSINESS_NAME);
-            let encodedNote = encodeURIComponent("Visiting Charge for " + service);
-            let qrUrl = `https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=upi://pay?pa=${MY_UPI_ID}&pn=${encodedName}&am=${amount}&tn=${encodedNote}&cu=INR`;
+            let encodedNote = encodeURIComponent("Visiting Fee: " + service);
+            let upiUrl = `upi://pay?pa=${MY_UPI_ID}&pn=${encodedName}&am=${amount}&tn=${encodedNote}&cu=INR`;
+            
+            // Using 100% stable api.qrserver.com instead of unstable google charts
+            let qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`;
             document.getElementById('dynamic-qr-img').src = qrUrl;
+        }
+
+        // MOBILE APP HANDLER INTENT LINKS
+        function openDirectUPIApp() {
+            let encodedName = encodeURIComponent(BUSINESS_NAME);
+            let encodedNote = encodeURIComponent("Visiting Fee: " + currentSelectedService);
+            let upiLink = `upi://pay?pa=${MY_UPI_ID}&pn=${encodedName}&am=${currentAmount}&tn=${encodedNote}&cu=INR`;
+            window.location.href = upiLink;
         }
 
         function openPaymentGateway(serviceName) {
             currentSelectedService = serviceName;
             document.getElementById('modal-item-name').innerText = serviceName;
-            setPaymentAmount(149, 'advance');
+            generateSmartQR(serviceName, 149);
             document.getElementById('paymentModal').style.display = 'block';
         }
 
@@ -340,17 +361,29 @@
             document.getElementById('paymentModal').style.display = 'none';
         }
 
-        function setPaymentAmount(amt, type) {
-            currentAmount = amt;
-            paymentType = type;
-            generateSmartQR(currentSelectedService, currentAmount);
-        }
-
+        // DATA CAPTURING & WHATSAPP ENGINE UPDATE
         function confirmAndSendWhatsApp() {
-            let targetDate = document.getElementById('date').value || 'Today/Urgent';
-            let message = `*NEW BOOKING CONFIRMED* \n\n*Service:* ${currentSelectedService}\n*Date:* ${targetDate}\n*Visiting Charge Paid:* ₹${currentAmount} via UPI\n*Warranty:* 6 Months Included\n*Revisit:* FREE if Re-problem\n\n_Technician assigned, check server panel immediately._`;
+            let cName = document.getElementById('pay-cust-name').value.trim();
+            let cPhone = document.getElementById('pay-cust-phone').value.trim();
+            let cAddress = document.getElementById('pay-cust-address').value.trim();
+            let targetDate = document.getElementById('date').value || 'Today / Emergency Urgent';
+
+            if(!cName || !cPhone || !cAddress) {
+                alert("Bhai! Customer ka Name, Phone aur Address bharna zaroori hai tabhi toh technician jayega!");
+                return;
+            }
+
+            let message = `*NEW BOOKING CONFIRMED (QUICKFIX)*\n\n` +
+                          `👤 *Customer Name:* ${cName}\n` +
+                          `📞 *Contact Number:* ${cPhone}\n` +
+                          `📍 *Location/Address:* ${cAddress}\n` +
+                          `🛠️ *Machine/Problem:* ${currentSelectedService}\n` +
+                          `📅 *Preferred Date:* ${targetDate}\n\n` +
+                          `💳 *Payment Status:* ₹149 Paid Successfully via UPI\n` +
+                          `🛡️ *Warranty:* 6 Months Warranty + Free Revisit Activated.`;
+
             let encodedMsg = encodeURIComponent(message);
-            window.location.href = `https://wa.me/919930249182?text=${encodedMsg}`;
+            window.location.href = `https://wa.me/919594406045?text=${encodedMsg}`;
         }
     </script>
 </body>
