@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quickfix Technician App</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f7f6; margin: 0; padding: 15px; }
+        .worker-header { background: #212529; color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;}
+        .job-card { background: white; border-radius: 10px; padding: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 15px; border-top: 4px solid #007bff; }
+        .status-toggle { background: #28a745; color: white; border: none; padding: 10px 15px; border-radius: 5px; font-weight: bold; width: 100%; cursor: pointer; margin-top: 10px;}
+        .status-online { background: #00c853; color: white; padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <div class="worker-header">
+        <h3>👨‍🔧 Technician Portal</h3>
+        <span class="status-online">● Duty Online</span>
+    </div>
+
+    <h2>My Jobs For Today</h2>
+    
+    <div id="worker-jobs-container">
+        <!-- Sample Job Card -->
+        <div class="job-card">
+            <h4 style="margin:0 0 5px 0; color:#007bff;">Job ID: #QF9920</h4>
+            <p><strong>Customer:</strong> Rohan Sharma</p>
+            <p><strong>Address:</strong> Andheri West, Near Metro Station, Mumbai</p>
+            <p><strong>Issue:</strong> AC Cooling is zero, PCB error code showing.</p>
+            <p><strong>Payment Done:</strong> ₹199 Advance Received</p>
+            <button class="status-toggle" onclick="completeJob(this)">➔ Mark as Job Completed</button>
+        </div>
+    </div>
+
+    <script>
+        function completeJob(button) {
+            if(confirm("Bhai, kya kaam sach me complete ho gaya hai?")) {
+                button.innerHTML = "✓ Job Completed";
+                button.style.background = "#6c757d";
+                button.disabled = true;
+                // Yahan se Automatic Admin Dashboard par update chala jayega backend ke through
+            }
+        }
+    </script>
+</body>
+</html>
