@@ -8,17 +8,16 @@
     <meta name="theme-color" content="#0066ff">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="description" content="Quickfix Mumbai offers expert 24/7 doorstep repair services for Refrigerator, Washing Machine, AC, Microwave, Dishwasher, Air Dresser and all PCBs.">
     
     <style>
         * { 
             box-sizing: border-box; 
             margin: 0; 
             padding: 0; 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; 
         }
         body { 
-            background-color: #f7fafc; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
             color: #2d3748; 
             padding: 12px; 
             padding-bottom: 180px; 
@@ -27,274 +26,350 @@
             max-width: 480px; 
             margin: 0 auto; 
             background: #ffffff; 
-            padding: 20px 14px; 
-            border-radius: 24px; 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06); 
+            padding: 22px 16px; 
+            border-radius: 28px; 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255,255,255,0.8); 
         }
         
-        /* Brand Header */
+        /* 3D App Header */
         header {
             text-align: center;
             padding: 10px 0 15px 0;
         }
         .main-logo {
-            font-size: 28px;
+            font-size: 32px;
             color: #0066ff;
-            font-weight: 850;
-            letter-spacing: -0.5px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-shadow: 0 2px 4px rgba(0,102,255,0.15);
         }
-        .sub-tag {
-            font-size: 12px;
-            color: #718096;
-            margin-top: 4px;
-            font-weight: 600;
-        }
-
-        /* 24/7 Urgency Blinker Dynamic Element */
-        .emergency-blinker {
-            background: #fff5f5;
-            border: 1px solid #fed7d7;
-            color: #e53e3e;
-            padding: 10px;
+        
+        /* Business Intro Section */
+        .business-intro-box {
+            background: #f8fafc;
+            border-left: 5px solid #0066ff;
+            padding: 14px;
             border-radius: 12px;
-            text-align: center;
             font-size: 13px;
-            font-weight: 800;
-            margin-bottom: 12px;
-            animation: pulseBlink 1.5s infinite alternate;
+            line-height: 1.5;
+            color: #334155;
+            margin: 10px 0 20px 0;
+            text-align: justify;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
-        @keyframes pulseBlink {
-            0% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0.85; transform: scale(0.98); background: #fee2e2; }
+        .intro-highlight {
+            font-weight: 700;
+            color: #0066ff;
         }
 
-        /* Dynamic Slot Box */
-        .slot-alert-box { 
+        /* 🚨 Mega 3D Neon Fire Pulse Alert */
+        .emergency-blinker-heavy {
+            background: linear-gradient(90deg, #ff3b30, #ff9500);
+            color: #ffffff;
+            padding: 16px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 20px rgba(255, 59, 48, 0.4), 0 0 0 4px rgba(255, 59, 48, 0.15);
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            animation: modernPulse 1.2s infinite alternate ease-in-out;
+        }
+        @keyframes modernPulse {
+            0% { transform: scale(0.98); box-shadow: 0 4px 10px rgba(255, 59, 48, 0.3); }
+            100% { transform: scale(1.02); box-shadow: 0 10px 25px rgba(255, 59, 48, 0.5); }
+        }
+
+        /* Urgency Slot + Organic Like System Box */
+        .slot-interactive-box { 
             background: #fffaf0; 
             color: #dd6b20; 
-            padding: 12px; 
-            text-align: center; 
-            font-weight: 700; 
-            font-size: 13px; 
-            border-radius: 12px; 
-            margin-bottom: 20px; 
+            padding: 14px; 
+            border-radius: 16px; 
+            margin-bottom: 25px; 
             border: 1px solid #fbd38d; 
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(221, 107, 32, 0.05);
         }
+        .slot-left-side {
+            font-weight: 700;
+            font-size: 13px;
+        }
+        .like-btn-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #ffffff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid #fbd38d;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.1s ease;
+        }
+        .like-btn-wrapper:active { transform: scale(0.9); }
+        .heart-icon { color: #e53e3e; font-size: 16px; }
+        .like-counter-num { font-weight: 800; font-size: 13px; color: #4a5568; }
 
         /* Trust Ribbon Grid */
         .trust-banner {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 6px;
-            background: #f7fafc;
-            padding: 12px 4px;
-            border-radius: 14px;
+            gap: 8px;
+            background: #f8fafc;
+            padding: 12px 6px;
+            border-radius: 16px;
             margin-bottom: 25px;
-            border: 1px solid #edf2f7;
+            border: 1px solid #e2e8f0;
             text-align: center;
         }
-        .trust-item {
-            font-size: 10px;
-            font-weight: 700;
-            color: #4a5568;
-            cursor: pointer;
-        }
-        .trust-item span {
-            display: block;
-            font-size: 22px;
-            margin-bottom: 4px;
-        }
+        .trust-item { font-size: 10px; font-weight: 700; color: #4a5568; }
+        .trust-item span { display: block; font-size: 24px; margin-bottom: 4px; }
 
-        /* Section Title Rules */
+        /* Headings styling */
         .section-title { 
             font-size: 18px; 
             margin: 25px 0 14px 0; 
             color: #1a202c; 
             border-left: 4px solid #0066ff;
             padding-left: 10px;
-            font-weight: 700;
+            font-weight: 800;
         }
 
-        /* 8 Extended Services Matrix Grid */
+        /* 3D Chalta-Firta Services Matrix Grid */
         .services-grid { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
-            gap: 12px; 
+            gap: 14px; 
         }
         .card { 
             background: #ffffff; 
             border: 1px solid #e2e8f0; 
-            padding: 16px 10px; 
-            border-radius: 16px; 
+            padding: 20px 12px; 
+            border-radius: 20px; 
             text-align: center; 
             position: relative;
             cursor: pointer;
-            transition: transform 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .card:active { transform: scale(0.97); }
-        .card .icon { font-size: 34px; margin-bottom: 6px; }
-        .card h3 { font-size: 13.5px; color: #1a202c; font-weight: 700; }
-        .card p { font-size: 11px; color: #718096; margin-top: 2px; }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #0066ff;
+            box-shadow: 0 8px 20px rgba(0,102,255,0.12);
+        }
+        .card .icon-img { 
+            font-size: 42px; 
+            margin-bottom: 8px; 
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .card:hover .icon-img { transform: scale(1.15) rotate(5deg); }
+        .card h3 { font-size: 14px; color: #1a202c; font-weight: 800; }
+        .card p { font-size: 11px; color: #718096; margin-top: 3px; }
         .price-tag {
             background: #e6fffa;
             color: #234e52;
             font-size: 11px;
             font-weight: 700;
-            padding: 2px 6px;
-            border-radius: 6px;
+            padding: 3px 8px;
+            border-radius: 8px;
             display: inline-block;
-            margin-top: 6px;
+            margin-top: 8px;
         }
 
-        /* Premium Black-Orange Input Component Box (As per Screenshot requested) */
+        /* Fault Inspector Dropdown Box */
+        .fault-injector-box {
+            background: #edf2f7;
+            border-radius: 12px;
+            padding: 10px;
+            margin-top: 8px;
+            font-size: 12px;
+            text-align: left;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .fault-item-line {
+            padding: 5px 0;
+            border-bottom: 1px solid #cbd5e0;
+            color: #4a5568;
+            font-weight: 600;
+        }
+        .fault-item-line:last-child { border: none; }
+
+        /* Premium Black & Orange Interactive Input Component */
         .screenshot-feedback-panel {
-            background: #1a1a1a;
-            border-radius: 20px;
-            padding: 20px;
+            background: linear-gradient(135deg, #1f1f21 0%, #111112 100%);
+            border-radius: 24px;
+            padding: 22px 18px;
             color: #fff;
             margin-top: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
         .screenshot-feedback-panel input, .screenshot-feedback-panel select, .screenshot-feedback-panel textarea {
             width: 100%;
-            background: #fff;
-            border: none;
-            padding: 12px;
-            border-radius: 10px;
-            margin-bottom: 12px;
-            font-size: 14px;
-            color: #000;
+            background: #ffffff;
+            border: 2px solid transparent;
+            padding: 12px 14px;
+            border-radius: 12px;
+            margin-bottom: 14px;
+            font-size: 13.5px;
+            color: #1a202c;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .screenshot-feedback-panel input:focus, .screenshot-feedback-panel textarea:focus {
+            border-color: #ff9500;
+            outline: none;
+        }
+        .upload-label {
+            display: block;
+            font-size: 12px;
+            color: #a0aec0;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+        .file-upload-input {
+            background: #2d2d30 !important;
+            color: #fff !important;
+            padding: 8px !important;
+            cursor: pointer;
         }
         .orange-submit-btn {
-            background: #ff9500;
+            background: linear-gradient(180deg, #ffaa00 0%, #ff8800 100%);
             color: white;
-            font-weight: 700;
+            font-weight: 800;
             font-size: 16px;
             border: none;
-            padding: 14px;
-            border-radius: 30px;
+            padding: 15px;
+            border-radius: 35px;
             width: 100%;
             cursor: pointer;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(255, 149, 0, 0.4);
+            margin-top: 5px;
+            box-shadow: 0 5px 15px rgba(255, 136, 0, 0.4);
         }
 
-        /* Professional 4.9 Progress Ratings Segment (Screenshot Accurate) */
+        /* 4.9 Professional Rating System Interface Box (Exact Screenshot Match) */
         .rating-metrics-card {
             background: #fff;
             border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 20px;
+            border-radius: 20px;
+            padding: 22px;
             margin-top: 20px;
             text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
         }
-        .rating-huge-num {
-            font-size: 54px;
-            font-weight: 800;
-            color: #ff9500;
-            line-height: 1;
-        }
-        .stars-row { color: #ff9500; font-size: 18px; margin: 8px 0; }
-        .base-count-text { font-size: 12px; color: #718096; margin-bottom: 15px; }
+        .rating-huge-num { font-size: 56px; font-weight: 800; color: #ff9500; line-height: 1; }
+        .stars-row { color: #ff9500; font-size: 20px; margin: 8px 0; }
+        .base-count-text { font-size: 12.5px; color: #718096; margin-bottom: 18px; }
         .progress-bar-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 700;
             color: #4a5568;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
         .progress-outer {
             flex: 1;
             background: #edf2f7;
-            height: 8px;
-            border-radius: 4px;
-            margin: 0 10px;
+            height: 9px;
+            border-radius: 6px;
+            margin: 0 12px;
             position: relative;
+            overflow: hidden;
         }
         .progress-inner {
             background: #ff9500;
-            height: 8px;
-            border-radius: 4px;
+            height: 9px;
+            border-radius: 6px;
             position: absolute;
             left: 0; top: 0;
         }
 
-        /* Live Activity Ticker Toast Notification */
+        /* Dynamic Pop-up Live Activities Tracker */
         .live-ticker {
             position: fixed;
-            bottom: 185px;
+            bottom: 190px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(17, 17, 18, 0.92);
+            backdrop-filter: blur(5px);
             color: #fff;
-            padding: 10px 16px;
+            padding: 12px 18px;
             border-radius: 30px;
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 700;
             white-space: nowrap;
             z-index: 3000;
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: all 0.5s ease;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            transition: all 0.4s ease;
             opacity: 0;
             visibility: hidden;
         }
         .live-ticker.show { opacity: 1; visibility: visible; }
         .live-ticker .green-dot {
             width: 8px; height: 8px; background: #25D366; border-radius: 50%;
-            animation: pulseBlink 0.8s infinite alternate;
+            box-shadow: 0 0 8px #25D366;
         }
 
-        /* FAQ Dropdowns Accordion */
+        /* FAQ Framework Accordion */
         .faq-card {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
-            border-radius: 10px;
+            border-radius: 12px;
             margin-bottom: 8px;
-            padding: 12px;
+            padding: 14px;
             cursor: pointer;
         }
         .faq-q { font-size: 13px; font-weight: 700; color: #2d3748; display: flex; justify-content: space-between; }
-        .faq-a { font-size: 12px; color: #718096; margin-top: 6px; display: none; line-height: 1.4; }
+        .faq-a { font-size: 12.5px; color: #64748b; margin-top: 6px; display: none; line-height: 1.4; }
 
-        /* Near Me Area Footnote */
+        /* Proximity SEO Map Footer */
         .seo-footer { 
-            background: #f7fafc; padding: 14px; border-radius: 12px; font-size: 11px; 
+            background: #f8fafc; padding: 14px; border-radius: 14px; font-size: 11px; 
             color: #718096; text-align: center; line-height: 1.6; margin-top: 25px; border: 1px solid #edf2f7;
         }
 
-        /* Persistent Action Panel Bottom Layout */
+        /* Persistent 3D Action Operations Control Panel */
         .fixed-action-panel { 
             position: fixed; bottom: 0; left: 0; right: 0; 
-            background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(8px);
-            box-shadow: 0 -8px 25px rgba(0,0,0,0.08); padding: 12px 14px; 
+            background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(12px);
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.08); padding: 12px 16px; 
             display: flex; flex-direction: column; gap: 8px; z-index: 2500; 
         }
         .action-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .btn { 
-            padding: 14px 10px; border-radius: 12px; font-weight: 700; 
-            text-decoration: none; text-align: center; font-size: 13px; 
+            padding: 14px 10px; border-radius: 14px; font-weight: 800; 
+            text-decoration: none; text-align: center; font-size: 13.5px; 
             display: flex; align-items: center; justify-content: center; gap: 6px; border: none; cursor: pointer; 
         }
         .call-btn { 
-            background-color: #22c55e; color: white; font-size: 16px; width: 100%; 
-            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3); 
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color: white; font-size: 16px; width: 100%; 
+            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.35); 
         }
         .whatsapp-btn { background-color: #25D366; color: white; }
         .whatsapp-sec-btn { background-color: #128C7E; color: white; }
 
-        /* Generic Modals Structural Alignment */
+        /* Structural Pop Modals */
         .modal { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.6); z-index: 4000; justify-content: center; align-items: center; padding: 16px; 
         }
-        .modal-content { background: white; padding: 24px; border-radius: 20px; max-width: 340px; width: 100%; text-align: center; }
-        .modal-content h3 { color: #0066ff; margin-bottom: 8px; font-size: 18px; font-weight: 700; }
+        .modal-content { background: white; padding: 24px; border-radius: 24px; max-width: 340px; width: 100%; text-align: center; }
+        .modal-content h3 { color: #0066ff; margin-bottom: 8px; font-size: 18px; font-weight: 800; }
         .modal-content p { font-size: 13px; color: #4a5568; line-height: 1.5; margin-bottom: 16px; }
         .close-btn { background: #edf2f7; padding: 8px 18px; border-radius: 8px; border: none; font-weight: 700; color: #4a5568; cursor: pointer; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -303,92 +378,138 @@
         
         <header>
             <div class="main-logo">⚙️ Quickfix Mumbai</div>
-            <p class="sub-tag">India's #1 Doorstep Services & Repair Platform Since 2010</p>
         </header>
 
-        <div class="emergency-blinker">
-            🚨 24/7 EMERGENCY DOORSTEP REPAIR AVAILABLE NOW
+        <div class="business-intro-box">
+            Welcome to Quickfix, India's 1 Most (<span class="intro-highlight">Mumbai</span>)trusted and beloved e-commerce platform, revolutionising online Doorstep Services and repairing provider since 2010,With over 100000 trusted family. Quick fix Home Appliances Like Refrigerators, Washing Machines,Microwave ovens, Dishwashers, Cloth Dryers, and Air dressors, We Have the above 15 years+ experiences with the Service industries and have 50+ Company Expert Technicians. <br><br>
+            <strong>Service and repairing provided by My Expert Technicians</strong><br>
+            <span class="intro-highlight">EXPERT HOME APPLIANCES REPAIRERS 24/7 WITH RELIBLE AND REASONABLE PRICES.</span>
         </div>
 
-        <div class="slot-alert-box" id="slotAlert">
-            ⚡ Today's Booking Load: Only <span id="slotCount">4</span> urgent doorstep slots left!
+        <div class="emergency-blinker-heavy">
+            ⚡ 24/7 EMERGENCY REPAIR WORK AVAILABLE NIGHT & DAY!
+        </div>
+
+        <div class="slot-interactive-box">
+            <div class="slot-left-side" id="slotAlert">
+                🟢 Today's Load: <span id="slotCount">4</span> Slots Left
+            </div>
+            <div class="like-btn-wrapper" onclick="registerOrganicLike()">
+                <span class="heart-icon">❤️</span>
+                <span class="like-counter-num" id="likeCountText">142</span>
+            </div>
         </div>
 
         <div class="trust-banner">
             <div class="trust-item" onclick="openModal('partsModal')"><span>💯</span>Genuine Parts</div>
             <div class="trust-item" onclick="openModal('warrantyModal')"><span>🛡️</span>Free Revisit</div>
-            <div class="trust-item" onclick="openModal('familyModal')"><span>❤️</span>87k+ Families</div>
+            <div class="trust-item" onclick="openModal('familyModal')"><span>❤️</span>100k+ Trust</div>
             <div class="trust-item" onclick="openModal('techModal')"><span>🧑‍🔧</span>50+ Experts</div>
         </div>
 
-        <h2 class="section-title">Our Expert Repair Services</h2>
+        <h2 class="section-title">Our Expert Repair Matrix</h2>
         <div class="services-grid">
             
-            <div class="card" onclick="scrollToForm('Washing Machine')">
-                <div class="icon">🧺</div>
+            <div class="card" onclick="toggleFaultInspector('washing-faults', 'Washing Machine')">
+                <span class="icon-img">🧺</span>
                 <h3>Washing Machine</h3>
-                <p>Top & Front Load</p>
+                <p>Top & Front Load Systems</p>
                 <div class="price-tag">Visit Charge: ₹149</div>
+                <div class="fault-injector-box" id="washing-faults">
+                    <div class="fault-item-line">• Drum Not Rotating</div>
+                    <div class="fault-item-line">• Water Leakage Issue</div>
+                    <div class="fault-item-line">• Error Code Display</div>
+                </div>
             </div>
 
-            <div class="card" onclick="scrollToForm('Refrigerator')">
-                <div class="icon">❄️</div>
+            <div class="card" onclick="toggleFaultInspector('refrig-faults', 'All Refrigerator')">
+                <span class="icon-img">❄️</span>
                 <h3>All Refrigerator</h3>
-                <p>Single & Double Door</p>
+                <p>Single & Double Doors</p>
                 <div class="price-tag">Visit Charge: ₹149</div>
+                <div class="fault-injector-box" id="refrig-faults">
+                    <div class="fault-item-line">• No Cooling At All</div>
+                    <div class="fault-item-line">• Gas Leakage Check</div>
+                    <div class="fault-item-line">• Extra Ice Accumulation</div>
+                </div>
             </div>
 
-            <div class="card" onclick="scrollToForm('Fridge')">
-                <div class="icon">🍦</div>
+            <div class="card" onclick="toggleFaultInspector('fridge-faults', 'Fridge')">
+                <span class="icon-img">🍦</span>
                 <h3>Deep Fridge</h3>
-                <p>Commercial & Domestic</p>
+                <p>Commercial Storage</p>
                 <div class="price-tag">Visit Charge: ₹149</div>
+                <div class="fault-injector-box" id="fridge-faults">
+                    <div class="fault-item-line">• Compressor Not Starting</div>
+                    <div class="fault-item-line">• Thermostat Faulty</div>
+                </div>
             </div>
 
-            <div class="card" onclick="scrollToForm('Microwave')">
-                <div class="icon">🍲</div>
+            <div class="card" onclick="toggleFaultInspector('micro-faults', 'Microwave')">
+                <span class="icon-img">🍲</span>
                 <h3>Microwave Oven</h3>
-                <p>All Brands Repair</p>
+                <p>Heating & Convection</p>
                 <div class="price-tag">Visit Charge: ₹149</div>
+                <div class="fault-injector-box" id="micro-faults">
+                    <div class="fault-item-line">• Plate Not Spinning</div>
+                    <div class="fault-item-line">• Sparking Inside Drum</div>
+                    <div class="fault-item-line">• Touchpad Not Working</div>
+                </div>
             </div>
 
-            <div class="card" onclick="scrollToForm('Dish Washer')">
-                <div class="icon">🍽️</div>
+            <div class="card" onclick="toggleFaultInspector('dishwasher-faults', 'Dish Washer')">
+                <span class="icon-img">🍽️</span>
                 <h3>Dish Washer</h3>
-                <p>Fixing & Cleaning</p>
+                <p>Complete Systems Care</p>
                 <div class="price-tag">Visit Charge: ₹149</div>
+                <div class="fault-injector-box" id="dishwasher-faults">
+                    <div class="fault-item-line">• Utensils Stained</div>
+                    <div class="fault-item-line">• Drainage Blocked</div>
+                </div>
             </div>
 
-            <div class="card" onclick="scrollToForm('Air Dresser')">
-                <div class="icon">👗</div>
+            <div class="card" onclick="toggleFaultInspector('dresser-faults', 'Air Dresser')">
+                <span class="icon-img">👗</span>
                 <h3>Air Dresser</h3>
-                <p>Premium Garment Care</p>
+                <p>Premium Fabric Robots</p>
                 <div class="price-tag">Visit Charge: ₹149</div>
+                <div class="fault-injector-box" id="dresser-faults">
+                    <div class="fault-item-line">• Steam Cycle Failure</div>
+                    <div class="fault-item-line">• Odor Filter Damage</div>
+                </div>
             </div>
 
-            <div class="card" onclick="scrollToForm('Air Conditioner')">
-                <div class="icon">💨</div>
+            <div class="card" onclick="toggleFaultInspector('ac-faults', 'Air Conditioner')">
+                <span class="icon-img">💨</div>
                 <h3>Air Conditioner</h3>
-                <p>Split & Window AC</p>
+                <p>Split & Window Units</p>
                 <div class="price-tag">Visit Charge: ₹149</div>
+                <div class="fault-injector-box" id="ac-faults">
+                    <div class="fault-item-line">• Less Cooling / Airflow</div>
+                    <div class="fault-item-line">• Outdoor Fan Jammed</div>
+                </div>
             </div>
 
-            <div class="card" onclick="scrollToForm('Any Type of PCB')">
-                <div class="icon">⚡</div>
+            <div class="card" onclick="toggleFaultInspector('pcb-faults', 'Any Type of PCB')">
+                <span class="icon-img">⚡</span>
                 <h3>Any Type of PCB</h3>
-                <p>Inverter & Logic Board</p>
+                <p>Logic Card Microchips</p>
                 <div class="price-tag">Visit Charge: ₹149</div>
+                <div class="fault-injector-box" id="pcb-faults">
+                    <div class="fault-item-line">• Inverter Motherboard Short</div>
+                    <div class="fault-item-line">• IC Programming Dead</div>
+                </div>
             </div>
             
         </div>
 
-        <h2 class="section-title" id="bookingTarget">Book Doorstep Service Instantly</h2>
+        <h2 class="section-title" id="bookingTarget">Secure Doorstep Booking</h2>
         <div class="screenshot-feedback-panel">
             <input type="text" id="custName" placeholder="Your Full Name" required>
-            <input type="tel" id="custPhone" placeholder="Mobile Number" required>
+            <input type="tel" id="custPhone" placeholder="Your Active Phone Number" required>
             
             <select id="custAppliance">
-                <option value="">Select Your Faulty Appliance</option>
+                <option value="">Choose Faulty Appliance System</option>
                 <option value="Washing Machine">Washing Machine</option>
                 <option value="All Refrigerator">All Refrigerator</option>
                 <option value="Fridge">Deep Fridge</option>
@@ -399,13 +520,19 @@
                 <option value="PCB Repair">Any Type of PCB</option>
             </select>
             
-            <textarea id="custAddress" rows="2" placeholder="Enter Your Complete Address for Doorstep Visit..." required></textarea>
-            <textarea id="custProblem" rows="2" placeholder="Describe the machine problem briefly..." required></textarea>
+            <textarea id="custAddress" rows="2" placeholder="Your Full Home Address for Inspection Visit..." required></textarea>
+            <textarea id="custProblem" rows="2" placeholder="Briefly write your device problem here..." required></textarea>
             
-            <button class="orange-submit-btn" onclick="submitBookingForm()">Submit Feedback / Booking</button>
+            <label class="upload-label">📸 Upload Fault Image (Optional):</label>
+            <input type="file" accept="image/*" class="file-upload-input">
+
+            <label class="upload-label">🎥 Upload Machine Video / Voice Note (Optional):</label>
+            <input type="file" accept="video/*,audio/*" class="file-upload-input">
+
+            <button class="orange-submit-btn" onclick="submitBookingForm()">Submit Structural Booking</button>
         </div>
 
-        <h2 class="section-title">Our Performance Metrics</h2>
+        <h2 class="section-title">Customer Performance Ratings</h2>
         <div class="rating-metrics-card">
             <div class="rating-huge-num">4.9</div>
             <div class="stars-row">⭐⭐⭐⭐⭐</div>
@@ -430,40 +557,36 @@
 
         <h2 class="section-title">Frequently Asked Questions</h2>
         <div class="faq-card" onclick="toggleFaq(this)">
-            <div class="faq-q"><span>What are the total visiting charges?</span><span>▼</span></div>
-            <div class="faq-a">Our doorstep expert standard diagnostic inspection and visiting charges are flat ₹149 only.</div>
+            <div class="faq-q"><span>What are the diagnostic inspection charges?</span><span>▼</span></div>
+            <div class="faq-a">Our expert standard structural visitation and machine fault identification fee is flat ₹149.</div>
         </div>
         <div class="faq-card" onclick="toggleFaq(this)">
-            <div class="faq-q"><span>What does the 6 months warranty cover?</span><span>▼</span></div>
-            <div class="faq-a">It securely covers any replaced components. If the exact same problem happens again, a re-visit is completely free.</div>
-        </div>
-        <div class="faq-card" onclick="toggleFaq(this)">
-            <div class="faq-q"><span>How long does the technician take to arrive?</span><span>▼</span></div>
-            <div class="faq-a">Under emergency routing, our company expert engineer reaches your location within 60 to 90 minutes.</div>
+            <div class="faq-q"><span>What does the 6-month product warranty cover?</span><span>▼</span></div>
+            <div class="faq-a">It completely covers mechanical spare parts. If the exact same structural fault returns, re-visits are flat free.</div>
         </div>
 
         <div class="seo-footer">
-            <strong>Your Nearest Quickfix Hub:</strong> Detected near your location in Mumbai. Providing instant doorstep engineering across Bandra, Andheri, Juhu, Borivali, Dadar, Powai, Goregaon, Malad, Khar, Santacruz, and all local sub-localities.
+            <strong>Local Proximity Detection:</strong> Active doorstep engineer deployment matrix operational across Bandra, Andheri, Juhu, Borivali, Dadar, Powai, Goregaon, Malad, Kandivali, Khar, Santacruz, Worli and nearby Mumbai segments.
         </div>
     </div>
 
     <div class="live-ticker" id="liveTicker">
         <div class="green-dot"></div>
-        <span id="tickerText">Someone from Andheri booked a repair 2 mins ago!</span>
+        <span id="tickerText">Someone from Bandra booked a Refrigerator repair 5 mins ago!</span>
     </div>
 
     <div class="fixed-action-panel">
-        <a href="tel:9594406045" class="btn call-btn" onclick="reduceSlotCount()">
-            📞 Call Now: 9594406045
+        <a href="tel:9930249182" class="btn call-btn" onclick="reduceSlotCount()">
+            📞 Call Now: 9930249182
         </a>
         
         <div class="action-row">
-            <a href="https://wa.me/919930249182?text=Hello%20Quickfix%20Mumbai%2c%20I%20need%20to%20book%20an%20appliance%20repair%20service." 
+            <a href="https://wa.me/919930249182?text=Hello%20Quickfix%20Mumbai%2c%20I%20need%20urgent%20appliance%20repair%20assistance." 
                class="btn whatsapp-btn" target="_blank" onclick="reduceSlotCount()">
                💬 WhatsApp 1
             </a>
             
-            <a href="https://wa.me/919594406045?text=Hello%20Quickfix%20Mumbai%2c%20I%20urgent%20require%20appliance%20repair%20technician." 
+            <a href="https://wa.me/919594406045?text=Hello%20Quickfix%20Mumbai%2c%20I%20want%20to%20book%20doorstep%20service%20visit." 
                class="btn whatsapp-sec-btn" target="_blank" onclick="reduceSlotCount()">
                💬 WhatsApp 2
             </a>
@@ -471,9 +594,9 @@
     </div>
 
     <div id="partsModal" class="modal"><div class="modal-content"><h3>100% Genuine Parts</h3><p>We source certified premium company components for all major brands ensuring absolute device longevity.</p><button class="close-btn" onclick="closeModal('partsModal')">Close</button></div></div>
-    <div id="warrantyModal" class="modal"><div class="modal-content"><h3>6M Warranty + Free Revisit</h3><p>If the same issue re-occurs within our 6 Months secured window, our engineer visits and fixes it completely free.</p><button class="close-btn" onclick="closeModal('warrantyModal')">Close</button></div></div>
-    <div id="familyModal" class="modal"><div class="modal-content"><h3>87,519+ Households</h3><p>Trusted doorstep operations across Mumbai delivering seamless mechanical system restoration since 2010.</p><button class="close-btn" onclick="closeModal('familyModal')">Close</button></div></div>
-    <div id="techModal" class="modal"><div class="modal-content"><h3>50+ Company Experts</h3><p>Background-verified certified mechanics equipped with advanced electronic fault diagnostic toolkits.</p><button class="close-btn" onclick="closeModal('techModal')">Close</button></div></div>
+    <div id="warrantyModal" class="modal"><div class="modal-content"><h3>6M Warranty & Free Revisit</h3><p>If the same problem arises again inside our 6-month tracking matrix, the engineering revisit is completely free.</p><button class="close-btn" onclick="closeModal('warrantyModal')">Close</button></div></div>
+    <div id="familyModal" class="modal"><div class="modal-content"><h3>100,000+ Happy Households</h3><p>Trusted doorstep operations across Mumbai delivering seamless mechanical system restoration since 2010.</p><button class="close-btn" onclick="closeModal('familyModal')">Close</button></div></div>
+    <div id="techModal" class="modal"><div class="modal-content"><h3>50+ Company Experts</h3><p>Background-verified expert mechanical engineers equipped with corporate grade diagnosis toolkits.</p><button class="close-btn" onclick="closeModal('techModal')">Close</button></div></div>
     
     <script>
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
@@ -484,25 +607,40 @@
             answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
         }
 
-        function scrollToForm(applianceName) {
-            document.getElementById('custAppliance').value = applianceName;
-            document.getElementById('bookingTarget').scrollIntoView({ behavior: 'smooth' });
+        // Handles interactive expanding fault lists inside cards
+        function toggleFaultInspector(id, name) {
+            document.getElementById('custAppliance').value = name;
+            let targetBox = document.getElementById(id);
+            targetBox.style.display = (targetBox.style.display === 'block') ? 'none' : 'block';
         }
 
-        // Real-time Slot Reducing Urgency engine
+        // LocalStorage backed organic user counter system
+        window.onload = function() {
+            let existingLikes = localStorage.getItem('quickfix_likes');
+            if(!existingLikes) {
+                existingLikes = 142;
+                localStorage.setItem('quickfix_likes', existingLikes);
+            }
+            document.getElementById('likeCountText').innerText = existingLikes;
+        }
+
+        function registerOrganicLike() {
+            let total = parseInt(localStorage.getItem('quickfix_likes')) || 142;
+            total += 1;
+            localStorage.setItem('quickfix_likes', total);
+            document.getElementById('likeCountText').innerText = total;
+        }
+
         function reduceSlotCount() {
             let currentSlots = parseInt(document.getElementById('slotCount').innerText);
             if (currentSlots > 1) {
                 currentSlots -= 1;
                 document.getElementById('slotCount').innerText = currentSlots;
             } else {
-                document.getElementById('slotAlert').innerHTML = "🛑 Emergency slots full for tonight! Booking advanced morning slots.";
-                document.getElementById('slotAlert').style.background = "#fff0f0";
-                document.getElementById('slotAlert').style.color = "#cc0000";
+                document.getElementById('slotAlert').innerHTML = "🛑 Advanced morning slots queue open now.";
             }
         }
 
-        // Live Booking submission handler logic
         function submitBookingForm() {
             let name = document.getElementById('custName').value.trim();
             let phone = document.getElementById('custPhone').value.trim();
@@ -511,34 +649,33 @@
             let problem = document.getElementById('custProblem').value.trim();
 
             if(!name || !phone || !appliance || !address || !problem) {
-                alert("Please fill all fields to schedule doorstep verification visit!");
+                alert("Please fill all details to process verified inspection!");
                 return;
             }
 
             reduceSlotCount();
-            alert("Success! Your Doorstep Booking request for " + appliance + " has been registered. Our expert is assigned.");
+            alert("Verified! Your internal entry has been registered.");
             
-            // Redirect clean link generation to directly initiate WhatsApp transmission log
-            let whatsappText = `New Booking Request:%0A- Name: ${name}%0A- Phone: ${phone}%0A- Appliance: ${appliance}%0A- Address: ${address}%0A- Problem: ${problem}`;
-            window.open(`https://wa.me/919594406045?text=${whatsappText}`, '_blank');
+            let whatsappText = `New Doorstep Request:%0A- Name: ${name}%0A- Phone: ${phone}%0A- Appliance: ${appliance}%0A- Address: ${address}%0A- Problem: ${problem}`;
+            window.open(`https://wa.me/919930249182?text=${whatsappText}`, '_blank');
         }
 
-        // Simulated Live Activity Alert Loop System (7-Points dynamic injector)
-        const localities = ["Andheri", "Bandra", "Borivali", "Juhu", "Dadar", "Powai", "Goregaon", "Malad"];
-        const appliances = ["Washing Machine", "Refrigerator", "Microwave", "PCB System", "Air Dresser"];
-        const timings = ["2 mins ago", "5 mins ago", "10 mins ago", "15 mins ago", "30 mins ago"];
+        // Live Simulated Transactions Streams Loop
+        const areas = ["Andheri", "Bandra", "Borivali", "Juhu", "Dadar", "Powai", "Goregaon", "Malad"];
+        const machineTypes = ["Washing Machine", "Refrigerator", "Microwave", "Air Dresser", "PCB Board"];
+        const timelineLogs = ["2 mins ago", "5 mins ago", "10 mins ago", "15 mins ago", "30 mins ago"];
 
         setInterval(() => {
-            let randomLoc = localities[Math.floor(Math.random() * localities.length)];
-            let randomApp = appliances[Math.floor(Math.random() * appliances.length)];
-            let randomTime = timings[Math.floor(Math.random() * timings.length)];
+            let randArea = areas[Math.floor(Math.random() * areas.length)];
+            let randMach = machineTypes[Math.floor(Math.random() * machineTypes.length)];
+            let randTime = timelineLogs[Math.floor(Math.random() * timelineLogs.length)];
             
-            document.getElementById('tickerText').innerText = `Someone from ${randomLoc} booked a ${randomApp} repair ${randomTime}!`;
+            document.getElementById('tickerText').innerText = `Someone from ${randArea} booked a ${randMach} repair ${randTime}!`;
             let ticker = document.getElementById('liveTicker');
             
             ticker.classList.add('show');
-            setTimeout(() => { ticker.classList.remove('show'); }, 4000);
-        }, 10000);
+            setTimeout(() => { ticker.classList.remove('show'); }, 4500);
+        }, 11000);
     </script>
 </body>
 </html>
