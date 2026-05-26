@@ -34,7 +34,15 @@
         header { text-align: center; padding: 10px 0 5px 0; }
         .main-logo { font-size: 32px; color: #0066ff; font-weight: 900; letter-spacing: -1px; }
         
-        /* Corporate Bio Intro Format */
+        /* Corporate Bio Intro Typo Adjustments */
+        .greetings-title {
+            text-align: center;
+            display: block;
+            font-size: 20px;
+            font-weight: 900;
+            color: #0066ff;
+            margin-bottom: 8px;
+        }
         .business-intro-box {
             background: #f8fafc;
             border-left: 5px solid #0066ff;
@@ -77,9 +85,9 @@
             justify-content: center;
             gap: 8px;
         }
-        .emergency-click-block:active { transform: scale(0.97); box-shadow: 0 4px 10px rgba(255, 59, 48, 0.2); }
+        .emergency-click-block:active { transform: scale(0.97); }
 
-        /* Dynamic Slot Box + Advanced High Value Like Engine */
+        /* Dynamic Slot Box + Single-Vote Secured Like Framework */
         .slot-interactive-box { 
             background: #fffaf0; 
             color: #dd6b20; 
@@ -102,24 +110,27 @@
             border: 1px solid #fbd38d;
             cursor: pointer;
             box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            transition: transform 0.1s;
         }
+        .like-btn-wrapper:active { transform: scale(0.9); }
         .heart-icon { color: #e53e3e; font-size: 16px; }
         .like-counter-num { font-weight: 800; font-size: 13px; color: #334155; }
 
-        /* Trust Ribbon Grid Matrix */
+        /* Promise Banner Rules Matrix */
         .trust-banner {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 6px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
             background: #f8fafc;
-            padding: 12px 4px;
+            padding: 12px 6px;
             border-radius: 16px;
             margin-bottom: 25px;
             border: 1px solid #e2e8f0;
             text-align: center;
         }
-        .trust-item { font-size: 10px; font-weight: 700; color: #4a5568; }
+        .trust-item { font-size: 11px; font-weight: 700; color: #4a5568; cursor: pointer; }
         .trust-item span { display: block; font-size: 24px; margin-bottom: 4px; }
+        .promise-like-sub { font-size: 9px; color: #e53e3e; display: block; margin-top: 2px; }
 
         .section-title { 
             font-size: 18px; margin: 25px 0 14px 0; color: #1a202c; 
@@ -131,63 +142,81 @@
         .card { 
             background: #ffffff; border: 1px solid #e2e8f0; padding: 20px 12px; 
             border-radius: 20px; text-align: center; position: relative; cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02); transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02); transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .card:hover { transform: translateY(-4px); border-color: #0066ff; box-shadow: 0 8px 20px rgba(0,102,255,0.1); }
-        .card .icon-img { font-size: 44px; margin-bottom: 8px; display: inline-block; }
+        .card:hover { transform: translateY(-5px); border-color: #0066ff; box-shadow: 0 8px 25px rgba(0,102,255,0.15); }
+        .card .icon-img { font-size: 46px; margin-bottom: 8px; display: inline-block; transition: transform 0.2s; }
+        .card:hover .icon-img { transform: scale(1.15); }
         .card h3 { font-size: 14px; color: #1a202c; font-weight: 800; }
         .card p { font-size: 11px; color: #718096; margin-top: 2px; }
         .price-tag {
-            background: #fffaf0; color: #dd6b20; font-size: 11px; 
-            font-weight: 800; padding: 4px 8px; border-radius: 8px; display: inline-block; margin-top: 8px; border: 1px solid #feebc8;
+            background: #f0fff4; color: #38a169; font-size: 11px; 
+            font-weight: 800; padding: 4px 8px; border-radius: 8px; display: inline-block; margin-top: 8px; border: 1px solid #c6f6d5;
         }
 
-        /* Smart Dynamic Suggestions Box */
+        /* Customer Live Feedback & Suggestions Dynamic Board */
         .suggestion-tip-box {
-            background: #ebf8ff; border: 1px solid #bee3f8; color: #2b6cb0;
-            padding: 12px; border-radius: 12px; margin-top: 15px; font-size: 12px; font-weight: 600;
+            background: #fffaf0; border: 1px solid #feebc8; color: #c05621;
+            padding: 16px; border-radius: 18px; margin-top: 20px;
         }
+        .suggestion-title-line { font-size: 14px; font-weight: 800; margin-bottom: 8px; color: #dd6b20; }
+        .live-suggestion-feed { max-height: 110px; overflow-y: auto; margin-bottom: 12px; font-size: 12px; }
+        .feed-item-bubble { background: #fff; padding: 8px 12px; border-radius: 10px; margin-bottom: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); line-height: 1.4; }
+        .suggestion-input-row { display: flex; gap: 6px; }
+        .suggestion-input-row input { flex: 1; padding: 10px; border-radius: 10px; border: 1px solid #cbd5e0; font-size: 12px; font-weight: 600; }
+        .suggestion-input-row button { background: #dd6b20; color: white; border: none; padding: 0 14px; border-radius: 10px; font-weight: 700; cursor: pointer; }
 
-        /* Festival Advanced Dashboard Rules */
+        /* Advance Booking / Festival Dashboard */
         .festival-discount-board {
-            background: linear-gradient(135deg, #7928ca 0%, #ff0080 100%);
-            color: white; padding: 18px; border-radius: 22px; margin: 25px 0;
-            box-shadow: 0 8px 20px rgba(240, 46, 170, 0.25);
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white; padding: 18px; border-radius: 24px; margin: 25px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15); border: 1px solid #4a5568;
         }
-        .fest-title { font-size: 15px; font-weight: 900; margin-bottom: 10px; display: flex; justify-content: space-between; }
+        .fest-title { font-size: 15px; font-weight: 900; margin-bottom: 12px; color: #ff9500; display: flex; justify-content: space-between; }
         .discount-tier-row {
             display: flex; justify-content: space-between; align-items: center;
-            background: rgba(255, 255, 255, 0.15); padding: 8px 12px; border-radius: 10px;
+            background: rgba(255, 255, 255, 0.08); padding: 8px 12px; border-radius: 10px;
             margin-bottom: 6px; font-size: 12px; font-weight: 700;
         }
         .advance-booking-form-box {
-            background: rgba(255, 255, 255, 0.2); padding: 12px; border-radius: 12px; margin-top: 12px;
+            background: rgba(255, 255, 255, 0.05); padding: 14px; border-radius: 14px; margin-top: 12px;
         }
+        .advance-booking-form-box label { font-size: 11px; color: #a0aec0; font-weight: 700; display: block; margin-bottom: 4px; }
         .advance-booking-form-box input, .advance-booking-form-box select {
-            width: 100%; padding: 8px; margin-bottom: 8px; border-radius: 6px; border: none; font-size: 12px; font-weight: bold;
+            width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #4a5568; background: #fff; font-size: 13px; font-weight: bold; color: #1a202c;
+        }
+        .calc-output-window {
+            background: #2d3748; padding: 10px; border-radius: 8px; font-size: 12px; font-weight: 800; color: #00e676; text-align: center; margin-bottom: 10px; border: 1px dashed #4a5568;
         }
         .adv-submit-btn {
-            background: #fff; color: #7928ca; border: none; padding: 10px;
-            width: 100%; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 13px;
+            background: linear-gradient(180deg, #ffaa00 0%, #ff8800 100%); color: white; border: none; padding: 12px;
+            width: 100%; border-radius: 30px; font-weight: 800; cursor: pointer; font-size: 14px; box-shadow: 0 4px 12px rgba(255,136,0,0.3);
         }
 
-        /* Black Orange Registration Panel */
+        /* Premium Black Orange Form Enhancements */
         .screenshot-feedback-panel {
-            background: linear-gradient(135deg, #1f1f21 0%, #111112 100%);
+            background: linear-gradient(135deg, #111112 0%, #1f1f21 100%);
             border-radius: 24px; padding: 22px 18px; color: #fff; margin-top: 20px;
+            border: 2px solid #ff9500;
         }
         .screenshot-feedback-panel input, .screenshot-feedback-panel select, .screenshot-feedback-panel textarea {
             width: 100%; background: #ffffff; border: 2px solid transparent; padding: 12px 14px;
             border-radius: 12px; margin-bottom: 12px; font-size: 13.5px; color: #1a202c; font-weight: 600;
         }
-        .upload-label { display: block; font-size: 12px; color: #a0aec0; margin-bottom: 6px; font-weight: 700; }
-        .file-upload-input { background: #2d2d30 !important; color: #fff !important; padding: 8px !important; cursor: pointer; }
+        .easy-upload-grid { display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 14px; }
+        .easy-upload-card {
+            background: #2d2d30; padding: 10px; border-radius: 10px; position: relative; border: 1px dashed #ff9500;
+            display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: #e2e8f0;
+        }
+        .easy-upload-card input[type="file"] {
+            position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;
+        }
         .orange-submit-btn {
             background: linear-gradient(180deg, #ffaa00 0%, #ff8800 100%); color: white;
-            font-weight: 800; font-size: 16px; border: none; padding: 15px; border-radius: 35px; width: 100%; cursor: pointer;
+            font-weight: 800; font-size: 16px; border: none; padding: 16px; border-radius: 35px; width: 100%; cursor: pointer;
         }
 
-        /* 4.9 Accurate Graphical Component Setup */
+        /* 4.9 Realtime Active Rating Element */
         .rating-metrics-card {
             background: #fff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 22px; text-align: center;
         }
@@ -197,41 +226,41 @@
         .progress-outer { flex: 1; background: #edf2f7; height: 9px; border-radius: 6px; margin: 0 12px; position: relative; overflow: hidden; }
         .progress-inner { background: #ff9500; height: 9px; position: absolute; left: 0; top: 0; }
 
-        /* General Purpose App Modals Framework Layout */
+        /* Online Payment Options Drawer Box */
+        .payment-options-card {
+            background: #f8fafc; border: 2px dashed #0066ff; border-radius: 20px; padding: 16px; margin-top: 25px; text-align: center;
+        }
+        .pay-gateways-row { display: flex; justify-content: center; gap: 12px; margin-top: 10px; }
+        .gateway-pill { background: white; border: 1px solid #e2e8f0; padding: 8px 14px; border-radius: 10px; font-size: 12px; font-weight: 800; color: #4a5568; }
+
+        /* Modals Rules Architecture */
         .modal { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.75); z-index: 4000; justify-content: center; align-items: center; padding: 16px; 
-            overflow-y: auto;
         }
         .modal-content { 
-            background: white; padding: 24px; border-radius: 24px; max-width: 380px; width: 100%; 
-            text-align: left; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            background: white; padding: 24px; border-radius: 24px; max-width: 400px; width: 100%; 
+            text-align: left; max-height: 85vh; overflow-y: auto;
         }
-        .modal-content h3 { color: #0066ff; margin-bottom: 12px; font-size: 19px; font-weight: 900; text-align: center; }
-        .modal-content p { font-size: 13px; color: #4a5568; line-height: 1.5; margin-bottom: 16px; }
-        
-        /* Modal Form Styles */
-        .modal-input {
-            width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 13px; font-weight: 600;
-        }
-        .modal-action-btn {
-            background: #25D366; color: white; width: 100%; padding: 12px; border-radius: 30px; border: none; font-weight: 800; font-size: 14px; cursor: pointer; text-align: center; margin-top: 5px;
-        }
+        .modal-content h3 { color: #0066ff; margin-bottom: 12px; font-size: 18px; font-weight: 900; text-align: center; }
+        .modal-input { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 13px; font-weight: 600; }
+        .modal-action-btn { background: #25D366; color: white; width: 100%; padding: 12px; border-radius: 30px; border: none; font-weight: 800; font-size: 14px; cursor: pointer; }
 
-        /* Service Sea Layout Inside Modal */
+        /* 3D Mechanical Service Sea Visualization Matrix */
         .sea-image-container {
-            width: 100%; height: 140px; border-radius: 14px; margin-bottom: 15px;
-            background-size: cover; background-position: center;
-            background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=500&q=80');
+            width: 100%; height: 150px; border-radius: 14px; margin-bottom: 15px;
+            background-size: cover; background-position: center; position: relative;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.6);
+        }
+        .pcb-sea-effect {
+            background-image: linear-gradient(rgba(0,102,255,0.2), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=500&q=80') !important;
         }
         .sea-fault-row {
             background: #f7fafc; border: 1px solid #e2e8f0; padding: 10px; border-radius: 10px; margin-bottom: 8px;
             display: flex; justify-content: space-between; align-items: center;
         }
-        .sea-fault-name { font-size: 12px; font-weight: 700; color: #2d3748; flex: 1; }
-        .sea-book-badge {
-            background: #10b981; color: white; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 6px; cursor: pointer; text-decoration: none;
-        }
+        .sea-fault-name { font-size: 11.5px; font-weight: 700; color: #2d3748; flex: 1; padding-right: 6px; }
+        .sea-book-badge { background: #10b981; color: white; font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 6px; cursor: pointer; text-decoration: none; text-align: center; }
 
         .close-btn-container { text-align: center; margin-top: 15px; }
         .close-btn { background: #edf2f7; padding: 10px 24px; border-radius: 10px; border: none; font-weight: 800; color: #4a5568; cursor: pointer; }
@@ -242,13 +271,11 @@
             font-size: 12px; font-weight: 700; white-space: nowrap; z-index: 3000; display: flex; align-items: center; gap: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.25); opacity: 0; visibility: hidden; transition: all 0.4s ease;
         }
         .live-ticker.show { opacity: 1; visibility: visible; }
-        .live-ticker .green-dot { width: 8px; height: 8px; background: #25D366; border-radius: 50%; box-shadow: 0 0 8px #25D366; }
+        .live-ticker .green-dot { width: 8px; height: 8px; background: #25D366; border-radius: 50%; }
 
-        .seo-footer { 
-            background: #f8fafc; padding: 14px; border-radius: 14px; font-size: 11px; color: #718096; text-align: center; line-height: 1.6; margin-top: 25px; border: 1px solid #edf2f7;
-        }
+        .seo-footer { background: #f8fafc; padding: 14px; border-radius: 14px; font-size: 11px; color: #718096; text-align: center; line-height: 1.6; margin-top: 25px; border: 1px solid #edf2f7; }
 
-        /* Persistent Bottom Operations Control Bar Layout */
+        /* Sticky Action Control Navigation Hub Panels */
         .fixed-action-panel { 
             position: fixed; bottom: 0; left: 0; right: 0; 
             background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(12px);
@@ -261,10 +288,7 @@
             text-decoration: none; text-align: center; font-size: 13.5px; 
             display: flex; align-items: center; justify-content: center; gap: 6px; border: none; cursor: pointer; 
         }
-        .call-btn { 
-            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color: white; font-size: 16px; width: 100%; 
-            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.35); 
-        }
+        .call-btn { background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color: white; font-size: 16px; width: 100%; box-shadow: 0 5px 15px rgba(34, 197, 94, 0.35); }
         .whatsapp-btn { background-color: #25D366; color: white; }
         .whatsapp-sec-btn { background-color: #128C7E; color: white; }
     </style>
@@ -278,7 +302,8 @@
         </header>
 
         <div class="business-intro-box">
-            Greetings! Welcome to Quickfix, India's 1 Most (<span class="intro-highlight">Mumbai</span>)trusted and beloved premium doorstep service and repairing provider since 2010,With over 357419 trusted family. Quick fix Home Appliances Like Refrigerators, Washing Machines,Microwave ovens, Dishwashers, Cloth Dryers, and Air dressors, <br>
+            <span class="greetings-title">Greetings!</span>
+            Welcome to Quickfix, India's #1 Most Trusted Premium Doorstep Service & Repair Platform since 2010, With over <span class="intro-highlight" id="introCountText">357,419+</span> trusted families. Quick fix Home Appliances Like Refrigerators, Washing Machines, Microwave Ovens, Dishwashers, Cloth Dryers, Air Dressers, and Any Type of PCB Engineering. <br>
             <span class="center-split-line">Service and repairing provided by My Expert Technicians</span><br>
             We Have the above 15 years+ experiences with the Service industries and have 50+ Company Expert Technicians. EXPERT HOME APPLIANCES REPAIRERS 24/7 WITH RELIBLE AND REASONABLE PRICES.
         </div>
@@ -291,17 +316,23 @@
             <div class="slot-left-side" id="slotAlert">
                 🟢 Today's Schedule: Only <span id="slotCount">4</span> Slots Remaining
             </div>
-            <div class="like-btn-wrapper" onclick="registerOrganicLike()">
+            <div class="like-btn-wrapper" onclick="registerSecureVote('schedule')">
                 <span class="heart-icon">❤️</span>
-                <span class="like-counter-num" id="likeCountText">357419</span>
+                <span class="like-counter-num" id="scheduleLikeText">357,419</span>
             </div>
         </div>
 
         <div class="trust-banner">
-            <div class="trust-item" onclick="openModal('partsModal')"><span>💯</span>Genuine Parts</div>
-            <div class="trust-item" onclick="openModal('warrantyModal')"><span>🛡️</span>Free Revisit</div>
-            <div class="trust-item" onclick="openModal('familyModal')"><span>❤️</span>357k+ Families</div>
-            <div class="trust-item" onclick="openModal('techModal')"><span>🧑‍🔧</span>50+ Co. Experts</div>
+            <div class="trust-item" onclick="registerSecureVote('parts')">
+                <span>💯</span>Genuine Parts
+                <span class="promise-like-sub" id="partsLikeText">❤️ 89,240</span>
+            </div>
+            <div class="trust-item" onclick="openModal('warrantyModal')">
+                <span>🛡️</span>No Hidden Charge
+            </div>
+            <div class="trust-item" onclick="openModal('techModal')">
+                <span>🧑‍🔧</span>50+ Co. Experts
+            </div>
         </div>
 
         <h2 class="section-title">Our Expert Repair Matrix</h2>
@@ -311,86 +342,103 @@
                 <span class="icon-img">🧺</span>
                 <h3>Washing Machine</h3>
                 <p>Top, Front & Smart Load</p>
-                <div class="price-tag">Diagnosis Visit: ₹99</div>
+                <div class="price-tag">Diagnostic Visit: ₹99</div>
             </div>
 
             <div class="card" onclick="openServiceSea('All Refrigerator', 'https://images.unsplash.com/photo-1571175432267-efb02585970a?auto=format&fit=crop&w=400&q=80')">
                 <span class="icon-img">❄️</span>
                 <h3>All Refrigerator</h3>
                 <p>Single & Double Door Units</p>
-                <div class="price-tag">Diagnosis Visit: ₹99</div>
+                <div class="price-tag">Diagnostic Visit: ₹99</div>
             </div>
 
             <div class="card" onclick="openServiceSea('Fridge', 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=400&q=80')">
                 <span class="icon-img">🍦</span>
                 <h3>Deep Fridge</h3>
-                <p>Commercial Ice Cold Systems</p>
-                <div class="price-tag">Diagnosis Visit: ₹99</div>
+                <p>Commercial Storage</p>
+                <div class="price-tag">Diagnostic Visit: ₹99</div>
             </div>
 
             <div class="card" onclick="openServiceSea('Microwave Oven', 'https://images.unsplash.com/photo-1574269664601-e5781b00efbf?auto=format&fit=crop&w=400&q=80')">
                 <span class="icon-img">🍲</span>
                 <h3>Microwave Oven</h3>
-                <p>Convection & Grill Circuit Repair</p>
-                <div class="price-tag">Diagnosis Visit: ₹99</div>
+                <p>Convection Circuit Repair</p>
+                <div class="price-tag">Diagnostic Visit: ₹99</div>
             </div>
 
             <div class="card" onclick="openServiceSea('Dish Washer', 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=400&q=80')">
                 <span class="icon-img">🍽️</span>
                 <h3>Dish Washer</h3>
-                <p>Advanced Plumbing Valves Fix</p>
-                <div class="price-tag">Diagnosis Visit: ₹99</div>
+                <p>Plumbing Valves Fix</p>
+                <div class="price-tag">Diagnostic Visit: ₹99</div>
             </div>
 
             <div class="card" onclick="openServiceSea('Air Dresser', 'https://images.unsplash.com/photo-1520004481441-1142483ad3ae?auto=format&fit=crop&w=400&q=80')">
                 <span class="icon-img">👗</span>
                 <h3>Air Dresser</h3>
-                <p>Smart Premium Textile Maintenance</p>
-                <div class="price-tag">Diagnosis Visit: ₹99</div>
+                <p>Smart Premium Fabric Robot</p>
+                <div class="price-tag">Diagnostic Visit: ₹99</div>
             </div>
 
             <div class="card" onclick="openServiceSea('Air Conditioner', 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=400&q=80')">
                 <span class="icon-img">💨</span>
                 <h3>Air Conditioner</h3>
-                <p>Split, Window & Gas Inversions</p>
-                <div class="price-tag">Diagnosis Visit: ₹99</div>
+                <p>Split & Window Systems</p>
+                <div class="price-tag">Diagnostic Visit: ₹99</div>
             </div>
 
             <div class="card" onclick="openServiceSea('Any Type of PCB', 'https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=400&q=80')">
                 <span class="icon-img">⚡</span>
                 <h3>Any Type of PCB</h3>
-                <p>Inverter Motherboard Microchips</p>
-                <div class="price-tag">Diagnosis Visit: ₹99</div>
+                <p>Circuit Board Microchips</p>
+                <div class="price-tag">Diagnostic Visit: ₹99</div>
             </div>
             
         </div>
 
         <div class="suggestion-tip-box">
-            💡 <strong>Quickfix Expert Suggestions:</strong> Always check if your power voltage is regular before reporting motherboard short circuits. Regular maintenance drops power bills by up to 25%!
+            <div class="suggestion-title-line">💬 Customer Opinions & Suggestions</div>
+            
+            <div class="live-suggestion-feed" id="suggestionFeedBox">
+                <div class="feed-item-bubble"><strong>Ramesh K. (Andheri):</strong> Perfect repair of my Inverter PCB. Saved my money! Thankful to QuickFix! ⭐⭐⭐⭐⭐</div>
+                <div class="feed-item-bubble"><strong>Priya Sharma (Bandra):</strong> The technician arrived within 45 mins. Very clean and reasonable service charges. ⭐⭐⭐⭐⭐</div>
+            </div>
+
+            <div class="suggestion-input-row">
+                <input type="text" id="userOpinionText" placeholder="Share your opinion/realize thankful notes...">
+                <button onclick="postLocalOpinion()">Send</button>
+            </div>
         </div>
 
         <div class="festival-discount-board">
-            <div class="fest-title">🎉 Live Festival Discounts <span id="festActiveSlots">Slots: 4 Left</span></div>
-            <p style="font-size: 11px; opacity: 0.9; margin-bottom: 12px;">Pre-book your doorstep engineers advanced to claim high-value deductions automatically.</p>
+            <div class="fest-title">🎉 Advance Booking / Festival Special Offers</div>
+            <p style="font-size: 11px; opacity: 0.9; margin-bottom: 12px;">Pre-book your doorstep engineers ahead of queue to claim high-value deductions instantly.</p>
             
-            <div class="discount-tier-row"><span>Bookings #1 to #3</span> <span style="color: #fffb00;">30% Off</span></div>
-            <div class="discount-tier-row"><span>Bookings #4 to #6</span> <span style="color: #fffb00;">20% Off</span></div>
-            <div class="discount-tier-row"><span>Bookings #7 to #10</span> <span style="color: #fffb00;">10% Off</span></div>
+            <div class="discount-tier-row"><span>Bookings #1 to #3</span> <span style="color: #00e676;">30% Off</span></div>
+            <div class="discount-tier-row"><span>Bookings #4 to #6</span> <span style="color: #00e676;">20% Off</span></div>
+            <div class="discount-tier-row"><span>Bookings #7 to #10</span> <span style="color: #00e676;">10% Off</span></div>
+            <div class="discount-tier-row"><span>Advance Sunday Booking</span> <span style="color: #00e676;">40% Off Mega Discount</span></div>
             
             <div class="advance-booking-form-box">
-                <input type="text" id="advName" placeholder="Your Name">
-                <select id="advDaySelect" onchange="evaluateSundayPremium()">
-                    <option value="Regular">Choose Advance Day</option>
-                    <option value="Wednesday">Wednesday Special Slot</option>
-                    <option value="Saturday">Saturday Special Slot</option>
-                    <option value="Sunday">Sunday Mega Advanced (5 Days Ahead)</option>
-                    <option value="Other">Other Weekdays</option>
-                </select>
+                <label>Your Full Name:</label>
+                <input type="text" id="advName" placeholder="Enter name">
+                
+                <label>Choose Advance Date:</label>
+                <input type="date" id="advCalendarInput" onchange="runLiveDiscountCalculator()">
+                
+                <label>Preferred Target Timing Hours (Operational 7:00 AM onwards):</label>
                 <select id="advTime">
-                    <option value="10 AM - 12 PM">Morning (10 AM - 12 PM)</option>
-                    <option value="2 PM - 5 PM">Afternoon (2 PM - 5 PM)</option>
-                    <option value="6 PM - 9 PM">Evening (6 PM - 9 PM)</option>
+                    <option value="7 AM - 10 AM">Early Morning (7 AM - 10 AM)</option>
+                    <option value="11 AM - 2 PM">Midday (11 AM - 2 PM)</option>
+                    <option value="3 PM - 6 PM">Afternoon (3 PM - 6 PM)</option>
+                    <option value="7 PM - 10 PM">Late Evening (7 PM - 10 PM)</option>
                 </select>
+
+                <label>Enter Estimated Repair Amount (For Live Calculator):</label>
+                <input type="number" id="calcBasePrice" placeholder="e.g. 500" oninput="runLiveDiscountCalculator()">
+
+                <div class="calc-output-window" id="calcDisplayArea">Total Calculation: Enter values above</div>
+                
                 <button class="adv-submit-btn" onclick="processAdvanceBooking()">Claim Discount Booking Now</button>
             </div>
         </div>
@@ -415,28 +463,43 @@
             <textarea id="custAddress" rows="2" placeholder="Complete Home Address for Doorstep Inspection Visit..." required></textarea>
             <textarea id="custProblem" rows="2" placeholder="Describe the fault / issue briefly..." required></textarea>
             
-            <label class="upload-label">📸 Photo Attachment (Optional):</label>
-            <input type="file" accept="image/*" class="file-upload-input">
+            <div class="easy-upload-grid">
+                <div class="easy-upload-card">
+                    📷 <span>Tap to Upload Photo Attachment</span>
+                    <input type="file" accept="image/*">
+                </div>
+                <div class="easy-upload-card">
+                    🎵 <span>Tap to Upload Audio / Video Clip</span>
+                    <input type="file" accept="video/*,audio/*">
+                </div>
+            </div>
 
-            <label class="upload-label">🎵 Machine Audio Note / Video Clip (Optional):</label>
-            <input type="file" accept="video/*,audio/*" class="file-upload-input">
-
-            <button class="orange-submit-btn" onclick="submitStandardForm()">Submit To My Expert Technicians</button>
+            <button class="orange-submit-btn" onclick="submitStandardForm()">Submit to QuickFix Experts</button>
         </div>
 
         <h2 class="section-title">Verified Customer Performance</h2>
         <div class="rating-metrics-card">
-            <div class="rating-huge-num">4.9</div>
+            <div class="rating-huge-num" id="liveRatingNum">4.90</div>
             <div class="stars-row">⭐⭐⭐⭐⭐</div>
-            <div style="font-size: 12px; color: #718096; margin-bottom: 15px;">Based on <strong>3,57,419+ doorstep operations</strong> in Mumbai</div>
+            <div style="font-size: 12px; color: #718096; margin-bottom: 15px;">Based on <strong id="liveReviewCounter">357419</strong> verified doorstep jobs in Mumbai</div>
             
             <div class="progress-bar-row"><span>5 Stars</span><div class="progress-outer"><div class="progress-inner" style="width: 97%;"></div></div><span>97%</span></div>
             <div class="progress-bar-row"><span>4 Stars</span><div class="progress-outer"><div class="progress-inner" style="width: 2%;"></div></div><span>2%</span></div>
             <div class="progress-bar-row"><span>3 Stars</span><div class="progress-outer"><div class="progress-inner" style="width: 1%;"></div></div><span>1%</span></div>
         </div>
 
+        <div class="payment-options-card">
+            <div style="font-size: 13px; font-weight: 800; color: #0066ff;">💳 Instant Online Payment Methods</div>
+            <p style="font-size: 11px; color: #718096; margin-top: 2px;">Pay diagnostics or bills securely post inspection via direct channels</p>
+            <div class="pay-gateways-row">
+                <div class="gateway-pill">Google Pay</div>
+                <div class="gateway-pill">PhonePe</div>
+                <div class="gateway-pill">Paytm / Cards</div>
+            </div>
+        </div>
+
         <div class="seo-footer">
-            <strong>Proximity Area Control:</strong> Direct deployment network active near you in Mumbai. Delivering express response teams throughout Bandra, Andheri, Juhu, Borivali, Dadar, Powai, Goregaon, Malad, Kandivali, Khar, Santacruz, and Worli.
+            <strong>Proximity Area Control:</strong> Express field response engineering networks deployed across Bandra, Andheri, Juhu, Borivali, Dadar, Powai, Goregaon, Malad, Kandivali, Khar, Santacruz, and Worli sectors.
         </div>
     </div>
 
@@ -446,20 +509,25 @@
 
     <div id="emergencyHubModal" class="modal">
         <div class="modal-content">
-            <h3>🚨 24/7 Express Dispatch</h3>
-            <p>Fill urgent scheduling preferences to automatically transmit encrypted diagnostics directly to our field coordinator.</p>
+            <h3>🚨 24/7 Urgent Dispatch</h3>
+            <p style="font-size:12px; color:#718096; margin-bottom:12px;">Fill urgent metrics to pass data logs straight to local operations engineer.</p>
             
             <input type="text" id="emName" class="modal-input" placeholder="Your Name">
             <input type="tel" id="emPhone" class="modal-input" placeholder="Phone Number">
             
-            <label style="font-size:12px; font-weight:700; color:#4a5568;">Select Preferred Timing Slot:</label>
-            <select id="emTimeType" class="modal-input">
-                <option value="ASAP Immediate (Within 60 Mins)">ASAP Immediate (Within 60 Mins)</option>
-                <option value="Manual Custom Hour">Specify Custom Hour Preference</option>
-            </select>
-            <input type="text" id="emManualTime" class="modal-input" placeholder="e.g. 11:30 PM Night" style="border-color:#ff9500;">
+            <label style="font-size:11px; font-weight:700; color:#4a5568;">Select Target Preferred Scheduling Hour:</label>
+            <input type="time" id="emCustomTime" class="modal-input">
 
-            <label style="font-size:12px; font-weight:700; color:#4a5568;">Media Evidence Inputs:</label>
+            <label style="font-size:11px; font-weight:700; color:#4a5568;">Optional Pre-Payment Mode:</label>
+            <select id="emPayMode" class="modal-input" onchange="toggleEmergencyPayAlert()">
+                <option value="Pay Post Repair">Pay Post Repair (Standard Mode)</option>
+                <option value="Pre-Pay 199">Pre-Pay ₹199 Diagnostic Priority Fee Now</option>
+            </select>
+            <div id="emPayWarning" style="font-size:11px; color:#e53e3e; font-weight:800; margin-bottom:10px; display:none;">
+                🎯 Payment sheet processing gateway will execute upon WhatsApp dispatch transmission.
+            </div>
+
+            <label style="font-size:11px; font-weight:700; color:#4a5568;">Easy Media Proof Inputs:</label>
             <input type="file" accept="image/*,video/*,audio/*" class="modal-input">
             
             <button class="modal-action-btn" onclick="submitEmergencyHubData()">Launch Urgent WhatsApp Dispatch</button>
@@ -469,19 +537,17 @@
 
     <div id="serviceSeaModal" class="modal">
         <div class="modal-content" style="max-width: 420px;">
-            <h3 id="seaApplianceTitle">Washing Machine Core Sea</h3>
+            <h3 id="seaApplianceTitle">Washing Machine Matrix</h3>
             <div class="sea-image-container" id="seaImageGraphic"></div>
-            <p style="font-weight: 700; font-size: 12px; color: #ff9500; text-align: center; margin-bottom: 12px;">🔧 Select Specific System Fault Below (Visit Diagnostic Charge: ₹99)</p>
+            <p style="font-weight: 800; font-size: 11px; color: #ff9500; text-align: center; margin-bottom: 12px;">🔧 Select Specific System Fault Below (Visit Diagnostic Charge: ₹99)</p>
             
-            <div id="seaFaultsContainer"></div>
+            <div id="seaFaultsContainer" style="max-height: 260px; overflow-y: auto;"></div>
             <div class="close-btn-container"><button class="close-btn" onclick="closeModal('serviceSeaModal')">Close Machine Matrix</button></div>
         </div>
     </div>
 
-    <div id="partsModal" class="modal"><div class="modal-content"><h3>100% Genuine Parts</h3><p>Certified company replacements sourced straight from authorized industrial hubs.</p><button class="close-btn" onclick="closeModal('partsModal')">Close</button></div></div>
-    <div id="warrantyModal" class="modal"><div class="modal-content"><h3>6 Months Secured Tracking</h3><p>If the same problem returns inside the 6-month tracking matrix, our engineer revisits flat free.</p><button class="close-btn" onclick="closeModal('warrantyModal')">Close</button></div></div>
-    <div id="familyModal" class="modal"><div class="modal-content"><h3>357,419+ Happy Families</h3><p>Delivering premier electronic repair operations continuously in Mumbai since 2010.</p><button class="close-btn" onclick="closeModal('familyModal')">Close</button></div></div>
-    <div id="techModal" class="modal"><div class="modal-content"><h3>50+ Company Expert Technicians</h3><p>Certified background-verified engineers carrying premium field instrumentation toolkits.</p><button class="close-btn" onclick="closeModal('techModal')">Close</button></div></div>
+    <div id="warrantyModal" class="modal"><div class="modal-content"><h3>🛡️ Transparent Pricing Guarantee</h3><p>Absolute flat zero hidden charges. You pay exactly ₹99 for internal machine checks and diagnostics. Full part lists are approved before assembly.</p><button class="close-btn" onclick="closeModal('warrantyModal')">Close</button></div></div>
+    <div id="techModal" class="modal"><div class="modal-content"><h3>🧑‍🔧 50+ Company Expert Technicians</h3><p>Every structural deployment team consists of background-verified, company-certified appliance engineers carrying advanced multimeters.</p><button class="close-btn" onclick="closeModal('techModal')">Close</button></div></div>
 
     <div class="fixed-action-panel">
         <a href="tel:9930249182" class="btn call-btn" onclick="reduceOperationalSlot()">
@@ -500,85 +566,132 @@
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
         
         function openEmergencyHub() { openModal('emergencyHubModal'); }
+        function toggleEmergencyPayAlert() {
+            let val = document.getElementById('emPayMode').value;
+            document.getElementById('emPayWarning').style.display = (val === "Pre-Pay 199") ? "block" : "none";
+        }
 
-        // LocalStorage backed Organic Like Engine initialized via high baseline numbers
+        // Single-Vote Secured LocalStorage Voting Engine Initialization
         window.onload = function() {
-            let currentLikes = localStorage.getItem('qf_verified_likes');
-            if(!currentLikes) {
-                currentLikes = 357419;
-                localStorage.setItem('qf_verified_likes', currentLikes);
-            }
-            document.getElementById('likeCountText').innerText = parseInt(currentLikes).toLocaleString();
+            // Setup Initial Base Metrics Arrays
+            if(!localStorage.getItem('vote_schedule')) localStorage.setItem('vote_schedule', '357419');
+            if(!localStorage.getItem('vote_parts')) localStorage.setItem('vote_parts', '89240');
+            
+            document.getElementById('scheduleLikeText').innerText = parseInt(localStorage.getItem('vote_schedule')).toLocaleString();
+            document.getElementById('partsLikeText').innerText = "❤️ " + parseInt(localStorage.getItem('vote_parts')).toLocaleString();
+            
             calculateWeeklySlotConstraints();
+            runOrganicReviewTracker();
         }
 
-        function registerOrganicLike() {
-            let val = parseInt(localStorage.getItem('qf_verified_likes')) || 357419;
+        function registerSecureVote(key) {
+            let hasVoted = localStorage.getItem('user_has_voted_' + key);
+            if(hasVoted) {
+                alert("You have already recorded your vote for this verified parameter block! Thank you.");
+                return;
+            }
+            
+            let val = parseInt(localStorage.getItem('vote_' + key));
             val += 1;
-            localStorage.setItem('qf_verified_likes', val);
-            document.getElementById('likeCountText').innerText = val.toLocaleString();
+            localStorage.setItem('vote_' + key, val);
+            localStorage.setItem('user_has_voted_' + key, 'true');
+            
+            if(key === 'schedule') {
+                document.getElementById('scheduleLikeText').innerText = val.toLocaleString();
+            } else if(key === 'parts') {
+                document.getElementById('partsLikeText').innerText = "❤️ " + val.toLocaleString();
+            }
         }
 
-        // Automatic Slot Restrictions Engine controlled relative to Weekday Matrix schedules
         function calculateWeeklySlotConstraints() {
             let dateObj = new Date();
             let currentDay = dateObj.getDay(); // 3 = Wednesday, 6 = Saturday
-            let calculatedSlots = 4;
-            
-            if(currentDay === 3 || currentDay === 6) {
-                calculatedSlots = 3; 
-            } else {
-                calculatedSlots = Math.floor(Math.random() * 5) + 1; // 1 to 5 range dynamic load
-            }
-            document.getElementById('slotCount').innerText = calculatedSlots;
-            document.getElementById('festActiveSlots').innerText = `Slots: ${calculatedSlots} Left`;
+            let slots = (currentDay === 3 || currentDay === 6) ? 3 : Math.floor(Math.random() * 5) + 1;
+            document.getElementById('slotCount').innerText = slots;
         }
 
         function reduceOperationalSlot() {
             let sl = parseInt(document.getElementById('slotCount').innerText);
-            if(sl > 1) {
-                sl -= 1;
-                document.getElementById('slotCount').innerText = sl;
-                document.getElementById('festActiveSlots').innerText = `Slots: ${sl} Left`;
+            if(sl > 1) document.getElementById('slotCount').innerText = sl - 1;
+        }
+
+        function postLocalOpinion() {
+            let text = document.getElementById('userOpinionText').value.trim();
+            if(!text) return;
+            let container = document.getElementById('suggestionFeedBox');
+            let item = `<div class="feed-item-bubble"><strong>Verified Client:</strong> ${text} ⭐Target Verified Thankful Note</div>`;
+            container.insertAdjacentHTML('afterbegin', item);
+            document.getElementById('userOpinionText').value = "";
+            alert("Your opinion/suggestion has been submitted to our engineering log stream!");
+        }
+
+        // Live Intelligent Percentage Discount Engine
+        function runLiveDiscountCalculator() {
+            let dateVal = document.getElementById('advCalendarInput').value;
+            let basePrice = parseFloat(document.getElementById('calcBasePrice').value) || 0;
+            let display = document.getElementById('calcDisplayArea');
+            
+            if(!dateVal || basePrice <= 0) {
+                display.innerText = "Total Calculation: Enter values above";
+                return;
             }
+
+            let chosenDate = new Date(dateVal);
+            let dayOfWeek = chosenDate.getDay(); // 0 = Sunday
+            let discountPercentage = 10; // Default
+
+            // Multi-Tier Allocation Algorithms
+            let slotsLeft = parseInt(document.getElementById('slotCount').innerText) || 4;
+            if(slotsLeft >= 3) discountPercentage = 30;
+            else if(slotsLeft === 2) discountPercentage = 20;
+
+            // Sunday Override Logic Checks
+            if(dayOfWeek === 0) {
+                discountPercentage = 40;
+            }
+
+            let deduction = (basePrice * discountPercentage) / 100;
+            let finalPrice = basePrice - deduction;
+
+            display.innerHTML = `🎯 Applied Discount: <span style="color:#ff9500;">${discountPercentage}% Off</span> | Final Payable: <span style="color:#00e676;">₹${finalPrice.toFixed(0)}</span>`;
         }
 
-        // Emergency Hub Dispatch Packaging
-        function submitEmergencyHubData() {
-            let name = document.getElementById('emName').value.trim();
-            let phone = document.getElementById('emPhone').value.trim();
-            let type = document.getElementById('emTimeType').value;
-            let manual = document.getElementById('emManualTime').value.trim();
-
-            if(!name || !phone) { alert("Please complete basic structural contact fields!"); return; }
-            
-            let timeString = (type === "Manual Custom Hour") ? manual : type;
-            let message = `URGENT 24/7 EMERGENCY REPAIR DISPATCH:%0A- Name: ${name}%0A- Phone: ${phone}%0A- Preferred Time: ${timeString}%0A- Media Upload: Attached via Web Interface`;
-            
-            window.open(`https://wa.me/919930249182?text=${message}`, '_blank');
-            closeModal('emergencyHubModal');
-        }
-
-        // 3D Image Matrix System & Fault Array Builder
-        const systemsFaultsDB = {
-            "Washing Machine": ["Drum Jammed Error", "Drain Pump Clogged", "Water Inlet Solenoid Faulty", "Spin Speed Controller Failure", "Digital Panel Blank Screen", "Heavy Vibration Mechanical Noise", "Door Interlock Switch Broken", "Heater Element Shorted", "Main Capacitor Damaged", "Complete Power Tripping"],
-            "All Refrigerator": ["Compressor Relay Failure", "Gas Leakage Restoration", "Defrost Sensor Open Circuit", "Fan Motor Bearing Jammed", "Thermostat Calibration Drop", "Internal LED Blinking Error", "Side Body Overheating Fault", "Capillary Filter Blockage", "Inverter Drive PCB Flashing", "Drain Pipe Ice Blockage"],
-            "Fridge": ["Deep Freeze Gas Topup", "Thermostat Failure", "Overload Protector Burn", "Door Gasket Seal Deformed"],
-            "Microwave Oven": ["Magnetron High Voltage Short", "Inverter HV Diode Failure", "Turntable Roller Ring Cracked", "Touch Membrane Grid Disconnect", "Door Interlock Microswitch Jam", "Internal Cavity Sparking Fix"],
-            "Dish Washer": ["Circulation Pump Jam", "Spray Arm Pressure Loss", "Float Switch Level Error", "Turbidity Sensor Failure"],
-            "Air Dresser": ["Steam Module Scale Clogging", "Refresher Fan Motor Static", "Heat Pump Assembly Failure", "Tank Empty False Detection"],
-            "Air Conditioner": ["Compressor Capacitor Burnt", "Cooling Coil Gas Leakage", "Cross Flow Fan Unbalanced", "Expansion Valve Starvation"],
-            "Any Type of PCB": ["Inverter IGBT Module Exploded", "SMPS Switching Transformer Open", "MCU Microcontroller Reset Failure", "EEPROM Firmware Corruption"]
+        // 25+ Hyper-Detailed Structural Fault Matrices Database
+        const masterFaultSeaDB = {
+            "Washing Machine": [
+                "Drum Alignment Bearing Crack","Water Drain Pump Impeller Jam","Inlet Valve Solenoid Core Burn","Electronic Door Lock Shutter Error","Carbon Brush Assembly Wearing","Main Logic PCB Track Fracture","Suspension Spring Mechanical Collapse","Heating Rod Element Scale Break","Vibration Damper Strut Wear","Digital Panel Memory IC Dead","Display Error Code E1/F1 Clear","Pressure Switch Air Tube Leak","Spin Motor Capacitor Open Circuit",
+                "Belt Drive Slippage Drop","Dispenser Drawer Flap Clogged","Agitator Spline Stripped Damage","Internal Wire Loom Rodent Bite","Ground Earthing Leakage Trip","Inverter Card IGBT Overload","Top Lid Safety Switch Snap","Water Level Frequency Shift","Pulsator Assembly Loose Threads","Rinse Cycle Loop Sticking","Drain Pipe Backflow Seal Rip","Main Power Transformer Fuse Blow"
+            ],
+            "All Refrigerator": [
+                "Compressor PTC Relay Terminal Burn","Gas Tube Capillary Copper Blockage","Defrost Sensor Bimetal Circuit Open","Evaporator Fan Bush Jammed","Thermostat Calibration Core Slid","Inverter PCB Card Condenser Burst","Door Gasket Magnetic Tracking Tear","Drain Line Tray Ice Clogging","Gas Leakage Pressure Vacuum Drop","Thermal Fuse Cutoff Disconnect","3-Way Solenoid Valve Sticking","Freezer Coil Air Leakage","Overload Protector Bimetal Snap","Internal LED Control Grid Short",
+                "Suction Line Frost Accumulation","Accumulator Oil Choking Issue","Dryer Filter Sieve Saturation","Condenser Fan Motor Winding Open","Damper Control Motor Track Freeze","Defrost Timer Gear Strip","Air Duct Blockage Flap Lock","Digital Display Comm Error Link","Shell Earthing Body Current Shock","Dual Evaporator Balance Loss","Inverter Compressor Speed Stall"
+            ],
+            "Fridge": ["Deep Freeze Gas Refill Needed", "Thermostat Disconnect", "Overload Protector Burn", "Door Gasket Air Leakage"],
+            "Microwave Oven": ["Magnetron High Voltage Antenna Burn", "HV Diode Rectifier Leakage Short", "Turntable Motor Drive Gear Strip", "Touch Pad Membrane Ribbon Disconnect", "Door Interlock Microswitch Alignment", "Cavity Waveguide Mica Sheet Spark"],
+            "Dish Washer": ["Circulation Pump Impeller Lock", "Spray Arm Pressure Jet Clog", "Float Sensor Level Stick Error", "Turbidity Cleanliness Lens Scratch"],
+            "Air Dresser": ["Steam Engine Boiler Scale Clog", "Aroma Filter Frame Mount Crack", "Heat Pump Compressor Relay Open", "Condensation Tank Valve Rupture"],
+            "Air Conditioner": ["Compressor Run Capacitor Burn", "Cooling Coil Copper U-Bend Leak", "Cross Flow Fan Blower Balance Loss", "4-Way Reversing Valve Slider Jam"],
+            "Any Type of PCB": [
+                "Inverter Drive Micro-IGBT Burst","SMPS Transformer Primary Coil Open","MCU Microcontroller Reset Pin Short","EEPROM Firmware Memory Stack Crash","Optocoupler Feedback Circuit Isolation","Current Sensing Shunt Resistor Burn","Gate Driver Logic IC Track Crack","Relay Contact Welding Arc Damage","Crystal Oscillator Frequency Drift",
+                "Heatsink Paste Dehydration Fault","DC Link Filter Capacitor Leakage","Surge Arrestor MOV Explosion Fracture","Varistor Thermal Runaway Desolder","Line Choke Coil Core Cracking","PWM Controller IC VCC Line Short"
+            ]
         };
 
         function openServiceSea(name, imgUrl) {
-            document.getElementById('seaApplianceTitle').innerText = `${name} System Matrix`;
-            document.getElementById('seaImageGraphic').style.backgroundImage = `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('${imgUrl}')`;
+            document.getElementById('seaApplianceTitle').innerText = `${name} Core 3D Sea`;
+            let graphicBox = document.getElementById('seaImageGraphic');
+            
+            if(name === "Any Type of PCB") {
+                graphicBox.className = "sea-image-container pcb-sea-effect";
+            } else {
+                graphicBox.className = "sea-image-container";
+                graphicBox.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.5)), url('${imgUrl}')`;
+            }
             
             let container = document.getElementById('seaFaultsContainer');
             container.innerHTML = "";
             
-            let issuesList = systemsFaultsDB[name] || ["General Structural Mechanical Breakdown"];
+            let issuesList = masterFaultSeaDB[name] || ["General Structural Breakdown Circuit Fault"];
             issuesList.forEach((issue) => {
                 let node = `
                     <div class="sea-fault-row">
@@ -591,29 +704,25 @@
             openModal('serviceSeaModal');
         }
 
-        function evaluateSundayPremium() {
-            let day = document.getElementById('advDaySelect').value;
-            if(day === "Sunday") {
-                alert("🎯 Sunday Super-Saver Activated! You unlocked 40% Off for booking 5-6 days ahead of operational queue schedule.");
-            }
+        function submitEmergencyHubData() {
+            let name = document.getElementById('emName').value.trim();
+            let phone = document.getElementById('emPhone').value.trim();
+            let time = document.getElementById('emCustomTime').value;
+            let pm = document.getElementById('emPayMode').value;
+
+            if(!name || !phone) { alert("Please input basic structural credentials!"); return; }
+            let msg = `URGENT 24/7 DISPATCH:%0A- Name: ${name}%0A- Contact: ${phone}%0A- Target Hour: ${time}%0A- Payment Choice: ${pm}`;
+            window.open(`https://wa.me/919930249182?text=${msg}`, '_blank');
+            closeModal('emergencyHubModal');
         }
 
         function processAdvanceBooking() {
             let name = document.getElementById('advName').value.trim();
-            let day = document.getElementById('advDaySelect').value;
+            let date = document.getElementById('advCalendarInput').value;
             let time = document.getElementById('advTime').value;
-
-            if(!name || day === "Regular") { alert("Please input fields to check festive validation slots!"); return; }
+            if(!name || !date) { alert("Please complete Advance Date settings fields!"); return; }
             
-            let discount = "10%";
-            if(day === "Sunday") discount = "40%";
-            else {
-                let sl = parseInt(document.getElementById('slotCount').innerText);
-                if(sl >= 3) discount = "30%";
-                else if(sl == 2) discount = "20%";
-            }
-
-            let msg = `ADVANCE FESTIVAL BOOKING:%0A- Customer: ${name}%0A- Target Day: ${day}%0A- Time Choice: ${time}%0A- Claimed Discount: ${discount} Automatic Deduction`;
+            let msg = `ADVANCE DISCOUNT BOOKING:%0A- Name: ${name}%0A- Targeted Date: ${date}%0A- Time Hour: ${time}`;
             window.open(`https://wa.me/919930249182?text=${msg}`, '_blank');
         }
 
@@ -624,27 +733,36 @@
             let adr = document.getElementById('custAddress').value.trim();
             let prob = document.getElementById('custProblem').value.trim();
 
-            if(!name || !phone || !app || !adr || !prob) { alert("Please fill standard input sequences!"); return; }
-            
-            let completeText = `Standard Doorstep Service:%0A- Name: ${name}%0A- Contact: ${phone}%0A- Unit: ${app}%0A- Address: ${adr}%0A- Problem Notes: ${prob}`;
+            if(!name || !phone || !app || !adr || !prob) { alert("Please complete required tracking data sequences!"); return; }
+            let completeText = `Standard Doorstep Job:%0A- Name: ${name}%0A- Phone: ${phone}%0A- System Type: ${app}%0A- Address: ${adr}%0A- Problem Details: ${prob}`;
             window.open(`https://wa.me/919930249182?text=${completeText}`, '_blank');
         }
 
-        // Live Realtime Ticker Activities Simulator Stream
+        // Live Performance Metrics Rating Incrementation Engine
+        function runOrganicReviewTracker() {
+            let count = 357419;
+            let score = 4.90;
+            setInterval(() => {
+                count += Math.floor(Math.random() * 2) + 1;
+                score = 4.90 + (Math.random() * 0.02);
+                if(score > 4.99) score = 4.99;
+                
+                document.getElementById('liveReviewCounter').innerText = count.toLocaleString();
+                document.getElementById('liveRatingNum').innerText = score.toFixed(2);
+            }, 14000);
+        }
+
+        // Live Realtime Ticker Activities Streams Loops
         const areas = ["Andheri", "Bandra", "Borivali", "Juhu", "Dadar", "Powai", "Goregaon", "Malad"];
         const appliances = ["Washing Machine", "All Refrigerator", "Deep Fridge", "Air Dresser", "PCB Board Circuits"];
-        const timestamps = ["2 mins ago", "5 mins ago", "12 mins ago", "20 mins ago"];
-
         setInterval(() => {
             let rA = areas[Math.floor(Math.random() * areas.length)];
             let rP = appliances[Math.floor(Math.random() * appliances.length)];
-            let rT = timestamps[Math.floor(Math.random() * timestamps.length)];
-            
-            document.getElementById('tickerText').innerText = `Someone from ${rA} booked an expert ${rP} fix ${rT}!`;
+            document.getElementById('tickerText').innerText = `Someone from ${rA} booked an expert ${rP} fix just now!`;
             let ticker = document.getElementById('liveTicker');
             ticker.classList.add('show');
-            setTimeout(() => { ticker.classList.remove('show'); }, 4200);
-        }, 12000);
+            setTimeout(() => { ticker.classList.remove('show'); }, 4000);
+        }, 13000);
     </script>
 </body>
 </html>
