@@ -1,209 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickFix Mumbai | Premium Multi-Brand Repair & Maintenance</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #ff6b00;
-            --secondary: #1a252f;
-            --emergency: #d9534f; /* Red for Emergency */
-            --dark: #111;
-            --light: #f8f9fa;
-            --white: #ffffff;
-            --gray: #666;
-            --success: #28a745;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-        }
-
-        /* Navigation */
-        header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 15px 20px;
-        }
-
-        .logo { font-size: 24px; font-weight: bold; color: var(--secondary); }
-        .logo span { color: var(--primary); }
-
-        .nav-links { list-style: none; display: flex; gap: 20px; }
-        .nav-links a { text-decoration: none; color: var(--secondary); font-weight: 600; transition: 0.3s; }
-        .nav-links a:hover { color: var(--primary); }
-
-        .btn-main {
-            background: var(--primary); color: var(--white); padding: 10px 20px;
-            border-radius: 5px; text-decoration: none; font-weight: bold; transition: 0.3s; border: none; cursor: pointer;
-        }
-        .btn-main:hover { background: #e05e00; }
-
-        .btn-emergency {
-            background: var(--emergency); color: var(--white); padding: 10px 20px;
-            border-radius: 5px; text-decoration: none; font-weight: bold; animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 83, 79, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(217, 83, 79, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 83, 79, 0); }
-        }
-
-        /* Sections */
-        section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
-        .section-title { text-align: center; font-size: 32px; margin-bottom: 40px; }
-        .section-title span { color: var(--primary); }
-
-        /* Hero Section */
-        .hero-bg {
-            background: linear-gradient(rgba(0,0,0,0.73), rgba(0,0,0,0.73)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1200') no-repeat center center/cover;
-            height: 85vh; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white); margin-top: 60px;
-        }
-        .hero-content h1 { font-size: 45px; margin-bottom: 15px; }
-        .hero-content p { font-size: 18px; margin-bottom: 25px; color: #ccc; }
-
-        /* 6M Warranty Commitment Badge */
-        .warranty-commitment {
-            background: rgba(40, 167, 69, 0.15);
-            border: 2px dashed var(--success);
-            padding: 15px 25px;
-            border-radius: 8px;
-            display: inline-block;
-            margin-top: 25px;
-            backdrop-filter: blur(5px);
-        }
-        .warranty-commitment h4 { color: #5cb85c; font-size: 18px; margin-bottom: 5px; }
-
-        /* Brands & Items Grid (Point 2) */
-        .brands-badge-container {
-            display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 30px;
-            background: #eee; padding: 15px; border-radius: 8px;
-        }
-        .brand-tag { background: var(--secondary); color: white; padding: 5px 15px; border-radius: 4px; font-weight: bold; font-size: 14px;}
-
-        .items-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-        .item-card { background: var(--white); padding: 25px; border-radius: 8px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .item-card i { font-size: 35px; color: var(--primary); margin-bottom: 12px; }
-        .item-card h4 { margin-bottom: 8px; color: var(--secondary); }
-        .item-card span { font-size: 12px; color: #777; background: #eef2f5; padding: 2px 8px; border-radius: 10px; }
-
-        /* Emergency Section (Point 6) */
-        .emergency-section { background: #fff5f5; border-left: 8px solid var(--emergency); border-radius: 4px; }
-        .emergency-box { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-        .emergency-form { display: flex; gap: 10px; flex-wrap: wrap; width: 100%; max-width: 600px; }
-        .emergency-form input { flex: 1; min-width: 200px; padding: 12px; border: 1px solid #ccc; border-radius: 4px; }
-
-        /* Customer Suggestion List (Point 7) */
-        .suggestion-box { background: var(--white); padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-top: 20px; }
-        .suggestion-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; list-style: none; }
-        .suggestion-list li { background: #f0f4f8; padding: 12px; border-radius: 5px; border-left: 4px solid var(--primary); font-size: 14px; }
-
-        /* Live Rating Section (Point 8) */
-        .live-rating-bar { background: var(--secondary); color: white; padding: 15px 20px; text-align: center; font-weight: bold; display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; }
-        .counter-box { background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 4px; color: var(--primary); }
-
-        /* Forms & Common Booking */
-        .booking-form { max-width: 700px; margin: 0 auto; background: var(--white); padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .form-group { margin-bottom: 15px; }
-        .form-group.full-width { grid-column: span 2; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; }
-
-        /* Review Grid */
-        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .review-card { background: var(--white); padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .stars { color: #ffb100; margin-bottom: 10px; }
-
-        footer { background: var(--dark); color: #aaa; text-align: center; padding: 20px; font-size: 14px; }
-
-        @media(max-width: 768px) {
-            .nav-links { display: none; }
-            .form-grid { grid-template-columns: 1fr; }
-            .form-group.full-width { grid-column: span 1; }
-            .hero-content h1 { font-size: 32px; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="live-rating-bar">
-        <span><i class="fa-solid fa-star" style="color: #ffb100;"></i> Live Customer Rating: 4.9/5</span>
-        <span class="counter-box"><i class="fa-solid fa-user-gear"></i> <span id="jobsCounter">14,240</span>+ Jobs Completed in Mumbai</span>
-        <span class="counter-box"><i class="fa-solid fa-circle text-success" style="font-size:10px; animation: pulse 1s infinite;"></i> <span id="activeTechs">48</span> Technicians Online Now</span>
-    </div>
-
-    <header>
-        <div class="navbar">
-            <div class="logo">Quick<span>Fix</span> Mumbai</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Items & Brands</a></li>
-                <li><a href="#emergency">Emergency Service</a></li>
-                <li><a href="#suggestions">Expert Suggestions</a></li>
-                <li><a href="#booking">Book Slot</a></li>
-            </ul>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <a href="#emergency" class="btn-emergency"><i class="fa-solid fa-truck-fast"></i> 90-Min Emergency</a>
-            </div>
-        </div>
-    </header>
-
-    <div id="home" class="hero-bg">
-        <div class="hero-content">
-            <h1>Mumbai's Authorized Smart Repair Experts</h1>
-            <p>From Multi-Brand Motherboards to Complex PCB Circuit Repairs</p>
-            <a href="#booking" class="btn-main" style="padding: 15px 35px; font-size: 18px;"><i class="fa-solid fa-wrench"></i> Book a Repair Now</a>
-            <br>
-            
-            <div class="warranty-commitment">
-                <h4><i class="fa-solid fa-circle-check"></i> Official 6-Month Service Warranty</h4>
-                <p style="font-size: 14px; color: #fff;">Commitment: If any re-problem occurs within 6 months, <strong>Free Re-visit & Free Fixing</strong> guaranteed!</p>
-            </div>
-        </div>
-    </div>
-
-    <section id="emergency" class="emergency-section">
-        <div class="emergency-box">
-            <div>
-                <h2 style="color: var(--emergency); margin-bottom: 5px;"><i class="fa-solid fa-bell-on"></i> 90-Minute Emergency Repair</h2>
-                <p>AC breakdown in summer? Fridge fully stopped? Urgent PCB issues? Hum turant pahunchenge.</p>
-            </div>
-            <form class="emergency-form" id="emergencyForm">
-                <input type="text" id="emName" placeholder="Your Name" required>
-                <input type="tel" id="emPhone" placeholder="Mobile Number" required>
-                <input type="text" id="emArea" placeholder="Mumbai Location (e.g. Andheri)" required>
-                <button type="submit" class="btn-emergency" style="border:none; cursor:pointer; padding: 12px 25px;">Send Tech SOS</button>
-            </form>
-        </div>
-    </section>
-
-    <section id="services">
-        <h2 class="section-title">Multi-Brand <span>Home Appliances Hub</span></h2>
+lti-Brand <span>Home Appliances Hub</span></h2>
         
         <p style="text-align:center; font-weight:bold; margin-bottom:10px; color: var(--gray);">We Repair All Major Worldwide Brands:</p>
         <div class="brands-badge-container">
@@ -398,3 +193,70 @@ document.getElementById('routineBookingForm').addEventListener('submit', functio
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickFix Mumbai | Premium Multi-Brand Repair & Maintenance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff6b00;
+            --secondary: #1a252f;
+            --emergency: #d9534f; /* Red for Emergency */
+            --dark: #111;
+            --light: #f8f9fa;
+            --white: #ffffff;
+            --gray: #666;
+            --success: #28a745;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+        }
+
+        /* Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
+
+        .logo { font-size: 24px; font-weight: bold; color: var(--secondary); }
+        .logo span { color: var(--primary); }
+
+        .nav-links { list-style: none; display: flex; gap: 20px; }
+        .nav-links a { text-decoration: none; color: var(--secondary); font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .btn-main {
+            background: var(--primary); color: var(--white); padding: 10px 20px;
+            border-radius: 5px; text-decoration: none; font-weight: bold; transition: 0.3s; border: none; cursor: pointer;
+        }
+        .btn-main:hover { background: #e05e00; }
+
+        .btn-emergency {
+            background: var(--emergency); color: var(--white); padding: 10px 20px;
+            border-radius: 5px; text-decoration: none; font-weight: bold; animation: pulse 1.5s infinite
