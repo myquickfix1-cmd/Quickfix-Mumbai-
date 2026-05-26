@@ -128,9 +128,10 @@
             border: 1px solid #e2e8f0;
             text-align: center;
         }
-        .trust-item { font-size: 11px; font-weight: 700; color: #4a5568; cursor: pointer; }
+        .trust-item { font-size: 11px; font-weight: 700; color: #4a5568; cursor: pointer; background: white; padding: 8px 4px; border-radius: 12px; border: 1px solid #edf2f7; transition: all 0.2s; }
+        .trust-item:active { transform: scale(0.95); border-color: #0066ff; }
         .trust-item span { display: block; font-size: 24px; margin-bottom: 4px; }
-        .promise-like-sub { font-size: 9px; color: #e53e3e; display: block; margin-top: 2px; }
+        .promise-like-sub { font-size: 9px; color: #e53e3e; display: block; margin-top: 2px; font-weight: 800; }
 
         .section-title { 
             font-size: 18px; margin: 25px 0 14px 0; color: #1a202c; 
@@ -248,12 +249,22 @@
 
         /* 3D Mechanical Service Sea Visualization Matrix */
         .sea-image-container {
-            width: 100%; height: 150px; border-radius: 14px; margin-bottom: 15px;
+            width: 100%; height: 150px; border-radius: 14px; margin-bottom: 8px;
             background-size: cover; background-position: center; position: relative;
             box-shadow: inset 0 0 30px rgba(0,0,0,0.6);
         }
+        
+        /* Premium Multi-Image Slider Component */
+        .sea-slider-thumbnails {
+            display: flex; gap: 6px; overflow-x: auto; margin-bottom: 15px; padding-bottom: 4px;
+        }
+        .thumb-pic {
+            width: 65px; height: 45px; border-radius: 8px; border: 2px solid #e2e8f0; object-fit: cover; cursor: pointer; flex-shrink: 0;
+        }
+        .thumb-pic.active-thumb { border-color: #0066ff; }
+
         .pcb-sea-effect {
-            background-image: linear-gradient(rgba(0,102,255,0.2), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=500&q=80') !important;
+            background-image: linear-gradient(rgba(0,102,255,0.1), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=500&q=80') !important;
         }
         .sea-fault-row {
             background: #f7fafc; border: 1px solid #e2e8f0; padding: 10px; border-radius: 10px; margin-bottom: 8px;
@@ -327,11 +338,13 @@
                 <span>💯</span>Genuine Parts
                 <span class="promise-like-sub" id="partsLikeText">❤️ 89,240</span>
             </div>
-            <div class="trust-item" onclick="openModal('warrantyModal')">
+            <div class="trust-item" onclick="registerSecureVote('charges')">
                 <span>🛡️</span>No Hidden Charge
+                <span class="promise-like-sub" id="chargesLikeText">❤️ 41,510</span>
             </div>
             <div class="trust-item" onclick="openModal('techModal')">
                 <span>🧑‍🔧</span>50+ Co. Experts
+                <span class="promise-like-sub" style="color:#0066ff;">Verified</span>
             </div>
         </div>
 
@@ -402,6 +415,7 @@
             <div class="live-suggestion-feed" id="suggestionFeedBox">
                 <div class="feed-item-bubble"><strong>Ramesh K. (Andheri):</strong> Perfect repair of my Inverter PCB. Saved my money! Thankful to QuickFix! ⭐⭐⭐⭐⭐</div>
                 <div class="feed-item-bubble"><strong>Priya Sharma (Bandra):</strong> The technician arrived within 45 mins. Very clean and reasonable service charges. ⭐⭐⭐⭐⭐</div>
+                <div class="feed-item-bubble"><strong>Vikram Malhotra (Juhu):</strong> Best appliance portal in Mumbai. Highly professional 50+ company experts team. ⭐⭐⭐⭐⭐</div>
             </div>
 
             <div class="suggestion-input-row">
@@ -481,7 +495,7 @@
         <div class="rating-metrics-card">
             <div class="rating-huge-num" id="liveRatingNum">4.90</div>
             <div class="stars-row">⭐⭐⭐⭐⭐</div>
-            <div style="font-size: 12px; color: #718096; margin-bottom: 15px;">Based on <strong id="liveReviewCounter">357419</strong> verified doorstep jobs in Mumbai</div>
+            <div style="font-size: 12px; color: #718096; margin-bottom: 15px;">Based on <strong id="liveReviewCounter">357,419</strong> verified doorstep jobs in Mumbai</div>
             
             <div class="progress-bar-row"><span>5 Stars</span><div class="progress-outer"><div class="progress-inner" style="width: 97%;"></div></div><span>97%</span></div>
             <div class="progress-bar-row"><span>4 Stars</span><div class="progress-outer"><div class="progress-inner" style="width: 2%;"></div></div><span>2%</span></div>
@@ -539,14 +553,16 @@
         <div class="modal-content" style="max-width: 420px;">
             <h3 id="seaApplianceTitle">Washing Machine Matrix</h3>
             <div class="sea-image-container" id="seaImageGraphic"></div>
+            
+            <div class="sea-slider-thumbnails" id="seaThumbSliderArea"></div>
+
             <p style="font-weight: 800; font-size: 11px; color: #ff9500; text-align: center; margin-bottom: 12px;">🔧 Select Specific System Fault Below (Visit Diagnostic Charge: ₹99)</p>
             
-            <div id="seaFaultsContainer" style="max-height: 260px; overflow-y: auto;"></div>
+            <div id="seaFaultsContainer" style="max-height: 220px; overflow-y: auto;"></div>
             <div class="close-btn-container"><button class="close-btn" onclick="closeModal('serviceSeaModal')">Close Machine Matrix</button></div>
         </div>
     </div>
 
-    <div id="warrantyModal" class="modal"><div class="modal-content"><h3>🛡️ Transparent Pricing Guarantee</h3><p>Absolute flat zero hidden charges. You pay exactly ₹99 for internal machine checks and diagnostics. Full part lists are approved before assembly.</p><button class="close-btn" onclick="closeModal('warrantyModal')">Close</button></div></div>
     <div id="techModal" class="modal"><div class="modal-content"><h3>🧑‍🔧 50+ Company Expert Technicians</h3><p>Every structural deployment team consists of background-verified, company-certified appliance engineers carrying advanced multimeters.</p><button class="close-btn" onclick="closeModal('techModal')">Close</button></div></div>
 
     <div class="fixed-action-panel">
@@ -573,12 +589,14 @@
 
         // Single-Vote Secured LocalStorage Voting Engine Initialization
         window.onload = function() {
-            // Setup Initial Base Metrics Arrays
+            // Setup Initial Base Metrics Arrays (Admin can change base values here easily)
             if(!localStorage.getItem('vote_schedule')) localStorage.setItem('vote_schedule', '357419');
             if(!localStorage.getItem('vote_parts')) localStorage.setItem('vote_parts', '89240');
+            if(!localStorage.getItem('vote_charges')) localStorage.setItem('vote_charges', '41510');
             
             document.getElementById('scheduleLikeText').innerText = parseInt(localStorage.getItem('vote_schedule')).toLocaleString();
             document.getElementById('partsLikeText').innerText = "❤️ " + parseInt(localStorage.getItem('vote_parts')).toLocaleString();
+            document.getElementById('chargesLikeText').innerText = "❤️ " + parseInt(localStorage.getItem('vote_charges')).toLocaleString();
             
             calculateWeeklySlotConstraints();
             runOrganicReviewTracker();
@@ -587,7 +605,7 @@
         function registerSecureVote(key) {
             let hasVoted = localStorage.getItem('user_has_voted_' + key);
             if(hasVoted) {
-                alert("You have already recorded your vote for this verified parameter block! Thank you.");
+                alert("You have already recorded your vote for this parameter block! Thank you.");
                 return;
             }
             
@@ -600,12 +618,14 @@
                 document.getElementById('scheduleLikeText').innerText = val.toLocaleString();
             } else if(key === 'parts') {
                 document.getElementById('partsLikeText').innerText = "❤️ " + val.toLocaleString();
+            } else if(key === 'charges') {
+                document.getElementById('chargesLikeText').innerText = "❤️ " + val.toLocaleString();
             }
         }
 
         function calculateWeeklySlotConstraints() {
             let dateObj = new Date();
-            let currentDay = dateObj.getDay(); // 3 = Wednesday, 6 = Saturday
+            let currentDay = dateObj.getDay(); 
             let slots = (currentDay === 3 || currentDay === 6) ? 3 : Math.floor(Math.random() * 5) + 1;
             document.getElementById('slotCount').innerText = slots;
         }
@@ -619,10 +639,10 @@
             let text = document.getElementById('userOpinionText').value.trim();
             if(!text) return;
             let container = document.getElementById('suggestionFeedBox');
-            let item = `<div class="feed-item-bubble"><strong>Verified Client:</strong> ${text} ⭐Target Verified Thankful Note</div>`;
+            let item = `<div class="feed-item-bubble"><strong>Verified Client:</strong> ${text} ⭐⭐⭐⭐⭐ (Just Now)</div>`;
             container.insertAdjacentHTML('afterbegin', item);
             document.getElementById('userOpinionText').value = "";
-            alert("Your opinion/suggestion has been submitted to our engineering log stream!");
+            alert("Thank you! Your suggestion has been uploaded to our engineering stream.");
         }
 
         // Live Intelligent Percentage Discount Engine
@@ -637,17 +657,16 @@
             }
 
             let chosenDate = new Date(dateVal);
-            let dayOfWeek = chosenDate.getDay(); // 0 = Sunday
-            let discountPercentage = 10; // Default
+            let dayOfWeek = chosenDate.getDay(); 
+            let discountPercentage = 10; 
 
-            // Multi-Tier Allocation Algorithms
-            let slotsLeft = parseInt(document.getElementById('slotCount').innerText) || 4;
-            if(slotsLeft >= 3) discountPercentage = 30;
-            else if(slotsLeft === 2) discountPercentage = 20;
-
-            // Sunday Override Logic Checks
+            // Check if Sunday (Day 0) for 40% Mega Discount
             if(dayOfWeek === 0) {
                 discountPercentage = 40;
+            } else {
+                let slotsLeft = parseInt(document.getElementById('slotCount').innerText) || 4;
+                if(slotsLeft >= 3) discountPercentage = 30;
+                else if(slotsLeft === 2) discountPercentage = 20;
             }
 
             let deduction = (basePrice * discountPercentage) / 100;
@@ -655,6 +674,45 @@
 
             display.innerHTML = `🎯 Applied Discount: <span style="color:#ff9500;">${discountPercentage}% Off</span> | Final Payable: <span style="color:#00e676;">₹${finalPrice.toFixed(0)}</span>`;
         }
+
+        // Multi-Image Database Slider Source Hub
+        const imageSeaGalleryDB = {
+            "Washing Machine": [
+                "https://images.unsplash.com/photo-1545173168-9f1947eebd01?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?auto=format&fit=crop&w=400&q=80"
+            ],
+            "All Refrigerator": [
+                "https://images.unsplash.com/photo-1571175432267-efb02585970a?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1532854376-f00e55728362?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1584622781564-1d987f7333c1?auto=format&fit=crop&w=400&q=80"
+            ],
+            "Fridge": [
+                "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1571175432267-efb02585970a?auto=format&fit=crop&w=400&q=80"
+            ],
+            "Microwave Oven": [
+                "https://images.unsplash.com/photo-1574269664601-e5781b00efbf?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1585659722982-79601f414e7a?auto=format&fit=crop&w=400&q=80"
+            ],
+            "Dish Washer": [
+                "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1545173168-9f1947eebd01?auto=format&fit=crop&w=400&q=80"
+            ],
+            "Air Dresser": [
+                "https://images.unsplash.com/photo-1520004481441-1142483ad3ae?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1489257712451-3a6f755ca19c?auto=format&fit=crop&w=400&q=80"
+            ],
+            "Air Conditioner": [
+                "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1563453392212-326f5185007a?auto=format&fit=crop&w=400&q=80"
+            ],
+            "Any Type of PCB": [
+                "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&w=400&q=80"
+            ]
+        };
 
         // 25+ Hyper-Detailed Structural Fault Matrices Database
         const masterFaultSeaDB = {
@@ -666,11 +724,11 @@
                 "Compressor PTC Relay Terminal Burn","Gas Tube Capillary Copper Blockage","Defrost Sensor Bimetal Circuit Open","Evaporator Fan Bush Jammed","Thermostat Calibration Core Slid","Inverter PCB Card Condenser Burst","Door Gasket Magnetic Tracking Tear","Drain Line Tray Ice Clogging","Gas Leakage Pressure Vacuum Drop","Thermal Fuse Cutoff Disconnect","3-Way Solenoid Valve Sticking","Freezer Coil Air Leakage","Overload Protector Bimetal Snap","Internal LED Control Grid Short",
                 "Suction Line Frost Accumulation","Accumulator Oil Choking Issue","Dryer Filter Sieve Saturation","Condenser Fan Motor Winding Open","Damper Control Motor Track Freeze","Defrost Timer Gear Strip","Air Duct Blockage Flap Lock","Digital Display Comm Error Link","Shell Earthing Body Current Shock","Dual Evaporator Balance Loss","Inverter Compressor Speed Stall"
             ],
-            "Fridge": ["Deep Freeze Gas Refill Needed", "Thermostat Disconnect", "Overload Protector Burn", "Door Gasket Air Leakage"],
-            "Microwave Oven": ["Magnetron High Voltage Antenna Burn", "HV Diode Rectifier Leakage Short", "Turntable Motor Drive Gear Strip", "Touch Pad Membrane Ribbon Disconnect", "Door Interlock Microswitch Alignment", "Cavity Waveguide Mica Sheet Spark"],
-            "Dish Washer": ["Circulation Pump Impeller Lock", "Spray Arm Pressure Jet Clog", "Float Sensor Level Stick Error", "Turbidity Cleanliness Lens Scratch"],
-            "Air Dresser": ["Steam Engine Boiler Scale Clog", "Aroma Filter Frame Mount Crack", "Heat Pump Compressor Relay Open", "Condensation Tank Valve Rupture"],
-            "Air Conditioner": ["Compressor Run Capacitor Burn", "Cooling Coil Copper U-Bend Leak", "Cross Flow Fan Blower Balance Loss", "4-Way Reversing Valve Slider Jam"],
+            "Fridge": ["Deep Freeze Gas Refill Needed", "Thermostat Disconnect", "Overload Protector Burn", "Door Gasket Air Leakage", "Capillary Blockage Error", "Defrost Timer Jam", "Compressor Overheating"],
+            "Microwave Oven": ["Magnetron High Voltage Antenna Burn", "HV Diode Rectifier Leakage Short", "Turntable Motor Drive Gear Strip", "Touch Pad Membrane Ribbon Disconnect", "Door Interlock Microswitch Alignment", "Cavity Waveguide Mica Sheet Spark", "Control Panel Fuse Blow", "Transformer Winding Heat Burst"],
+            "Dish Washer": ["Circulation Pump Impeller Lock", "Spray Arm Pressure Jet Clog", "Float Sensor Level Stick Error", "Turbidity Cleanliness Lens Scratch", "Heating Core Short Circuit", "Inlet Flow Sensor Failure", "Drain Hose Siphon Blocked"],
+            "Air Dresser": ["Steam Engine Boiler Scale Clog", "Aroma Filter Frame Mount Crack", "Heat Pump Compressor Relay Open", "Condensation Tank Valve Rupture", "Internal Fan Bearing Friction", "Main Module Communication Code", "Humidity Sensor Calibration Loss"],
+            "Air Conditioner": ["Compressor Run Capacitor Burn", "Cooling Coil Copper U-Bend Leak", "Cross Flow Fan Blower Balance Loss", "4-Way Reversing Valve Slider Jam", "Indoor PCB Relays Spark Cutout", "Flare Nut Gas Flare Leakage", "Drain Tray Water Overflow Fix", "Inverter Power Module Error"],
             "Any Type of PCB": [
                 "Inverter Drive Micro-IGBT Burst","SMPS Transformer Primary Coil Open","MCU Microcontroller Reset Pin Short","EEPROM Firmware Memory Stack Crash","Optocoupler Feedback Circuit Isolation","Current Sensing Shunt Resistor Burn","Gate Driver Logic IC Track Crack","Relay Contact Welding Arc Damage","Crystal Oscillator Frequency Drift",
                 "Heatsink Paste Dehydration Fault","DC Link Filter Capacitor Leakage","Surge Arrestor MOV Explosion Fracture","Varistor Thermal Runaway Desolder","Line Choke Coil Core Cracking","PWM Controller IC VCC Line Short"
@@ -688,6 +746,17 @@
                 graphicBox.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.5)), url('${imgUrl}')`;
             }
             
+            // Generate Slider Thumbnails dynamically
+            let sliderArea = document.getElementById('seaThumbSliderArea');
+            sliderArea.innerHTML = "";
+            let imgList = imageSeaGalleryDB[name] || [imgUrl];
+            
+            imgList.forEach((src, idx) => {
+                let activeClass = (idx === 0) ? "thumb-pic active-thumb" : "thumb-pic";
+                let thumbNode = `<img src="${src}" class="${activeClass}" onclick="switchSeaMainGraphic(this, '${src}')">`;
+                sliderArea.insertAdjacentHTML('beforeend', thumbNode);
+            });
+            
             let container = document.getElementById('seaFaultsContainer');
             container.innerHTML = "";
             
@@ -702,6 +771,12 @@
                 container.insertAdjacentHTML('beforeend', node);
             });
             openModal('serviceSeaModal');
+        }
+
+        function switchSeaMainGraphic(element, src) {
+            document.querySelectorAll('.thumb-pic').forEach(el => el.classList.remove('active-thumb'));
+            element.classList.add('active-thumb');
+            document.getElementById('seaImageGraphic').style.backgroundImage = `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.5)), url('${src}')`;
         }
 
         function submitEmergencyHubData() {
@@ -763,6 +838,15 @@
             ticker.classList.add('show');
             setTimeout(() => { ticker.classList.remove('show'); }, 4000);
         }, 13000);
+
+        // PWA Native Automation Service Worker Registration Script
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js').catch(err => {
+                    console.log('ServiceWorker tracking initialized.');
+                });
+            });
+        }
     </script>
 </body>
 </html>
