@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quickfix Mumbai | India's #1 Home Appliance Repair Service</title>
-    <meta name="description" content="Quickfix Mumbai offers expert doorstep repair services for Washing Machines, Refrigerators, ACs, Microwaves, and Air Dressers in Mumbai. 15+ years of experience.">
-    <meta name="keywords" content="washing machine repair mumbai, fridge repair mumbai, ac service mumbai, home appliance repair mumbai, quickfix mumbai">
+    <title>Quickfix Mumbai | India's #1 Doorstep Home Appliance Repair</title>
+    
+    <meta name="theme-color" content="#0066ff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="description" content="Quickfix Mumbai offers expert 24/7 doorstep repair services for Refrigerator, Washing Machine, AC, Microwave, Dishwasher, Air Dresser and all PCBs.">
     
     <style>
         * { 
@@ -15,41 +18,40 @@
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
         }
         body { 
-            background-color: #f0f4f8; 
+            background-color: #f7fafc; 
             color: #2d3748; 
             padding: 12px; 
-            padding-bottom: 160px; 
+            padding-bottom: 180px; 
         }
         .container { 
             max-width: 480px; 
             margin: 0 auto; 
             background: #ffffff; 
-            padding: 20px 16px; 
+            padding: 20px 14px; 
             border-radius: 24px; 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06); 
         }
         
-        /* Premium Header Setup */
+        /* Brand Header */
         header {
             text-align: center;
             padding: 10px 0 15px 0;
         }
         .main-logo {
-            font-size: 26px;
+            font-size: 28px;
             color: #0066ff;
             font-weight: 850;
             letter-spacing: -0.5px;
-            text-transform: uppercase;
         }
         .sub-tag {
             font-size: 12px;
             color: #718096;
             margin-top: 4px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
-        /* Emergency Flash Bar */
-        .emergency-bar {
+        /* 24/7 Urgency Blinker Dynamic Element */
+        .emergency-blinker {
             background: #fff5f5;
             border: 1px solid #fed7d7;
             color: #e53e3e;
@@ -57,17 +59,22 @@
             border-radius: 12px;
             text-align: center;
             font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 15px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            animation: pulseBlink 1.5s infinite alternate;
+        }
+        @keyframes pulseBlink {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0.85; transform: scale(0.98); background: #fee2e2; }
         }
 
-        /* Dynamic Slot Monitor */
-        .top-alert { 
+        /* Dynamic Slot Box */
+        .slot-alert-box { 
             background: #fffaf0; 
             color: #dd6b20; 
             padding: 12px; 
             text-align: center; 
-            font-weight: 600; 
+            font-weight: 700; 
             font-size: 13px; 
             border-radius: 12px; 
             margin-bottom: 20px; 
@@ -80,7 +87,7 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 6px;
             background: #f7fafc;
-            padding: 12px 6px;
+            padding: 12px 4px;
             border-radius: 14px;
             margin-bottom: 25px;
             border: 1px solid #edf2f7;
@@ -98,244 +105,196 @@
             margin-bottom: 4px;
         }
 
-        /* Premium Section Headings */
+        /* Section Title Rules */
         .section-title { 
-            font-size: 17px; 
-            margin-bottom: 14px; 
+            font-size: 18px; 
+            margin: 25px 0 14px 0; 
             color: #1a202c; 
             border-left: 4px solid #0066ff;
             padding-left: 10px;
             font-weight: 700;
         }
 
-        /* Core Services Grid Layout */
+        /* 8 Extended Services Matrix Grid */
         .services-grid { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
             gap: 12px; 
-            margin-bottom: 25px; 
         }
         .card { 
             background: #ffffff; 
             border: 1px solid #e2e8f0; 
-            padding: 18px 12px; 
+            padding: 16px 10px; 
             border-radius: 16px; 
             text-align: center; 
             position: relative;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform 0.2s;
         }
-        .card:hover {
-            border-color: #0066ff;
-            background: #f8faac;
-        }
-        .card .icon { 
-            font-size: 36px; 
-            margin-bottom: 8px; 
-        }
-        .card h3 { 
-            font-size: 14px; 
-            color: #1a202c; 
-            margin-bottom: 4px; 
-            font-weight: 700;
-        }
-        .card p { 
-            font-size: 11px; 
-            color: #718096; 
-        }
-        .card-arrow-inc {
-            position: absolute;
-            right: 12px;
-            top: 12px;
-            color: #a0aec0;
+        .card:active { transform: scale(0.97); }
+        .card .icon { font-size: 34px; margin-bottom: 6px; }
+        .card h3 { font-size: 13.5px; color: #1a202c; font-weight: 700; }
+        .card p { font-size: 11px; color: #718096; margin-top: 2px; }
+        .price-tag {
+            background: #e6fffa;
+            color: #234e52;
             font-size: 11px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-top: 6px;
         }
 
-        /* Features Bullet List */
-        .features-list {
-            background: #f8fafc;
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 25px;
-            border: 1px solid #e2e8f0;
+        /* Premium Black-Orange Input Component Box (As per Screenshot requested) */
+        .screenshot-feedback-panel {
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 20px;
+            color: #fff;
+            margin-top: 20px;
         }
-        .feature-line {
+        .screenshot-feedback-panel input, .screenshot-feedback-panel select, .screenshot-feedback-panel textarea {
+            width: 100%;
+            background: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #000;
+        }
+        .orange-submit-btn {
+            background: #ff9500;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            border: none;
+            padding: 14px;
+            border-radius: 30px;
+            width: 100%;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 149, 0, 0.4);
+        }
+
+        /* Professional 4.9 Progress Ratings Segment (Screenshot Accurate) */
+        .rating-metrics-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .rating-huge-num {
+            font-size: 54px;
+            font-weight: 800;
+            color: #ff9500;
+            line-height: 1;
+        }
+        .stars-row { color: #ff9500; font-size: 18px; margin: 8px 0; }
+        .base-count-text { font-size: 12px; color: #718096; margin-bottom: 15px; }
+        .progress-bar-row {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 13px;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 600;
             color: #4a5568;
-            margin-bottom: 10px;
-            font-weight: 500;
+            margin-bottom: 6px;
         }
-        .feature-line:last-child { margin-bottom: 0; }
-        .feature-line span { color: #38a169; font-weight: bold; }
-
-        /* Customer Reviews */
-        .feedback-section { margin-bottom: 25px; }
-        .feedback-card { 
-            background: #fffdf5; 
-            border: 1px solid #fef3c7;
-            border-left: 4px solid #d69e2e; 
-            padding: 14px; 
-            border-radius: 12px; 
-            margin-bottom: 12px;
+        .progress-outer {
+            flex: 1;
+            background: #edf2f7;
+            height: 8px;
+            border-radius: 4px;
+            margin: 0 10px;
+            position: relative;
         }
-        .feedback-card p { 
-            font-size: 13px; 
-            font-style: italic; 
-            color: #4a5568; 
-            line-height: 1.4;
-        }
-        .feedback-card .user { 
-            font-size: 11px; 
-            font-weight: 700; 
-            color: #718096; 
-            margin-top: 6px; 
-            text-align: right; 
-        }
-        .stars { 
-            color: #ecc94b; 
-            font-size: 12px; 
-            margin-bottom: 4px; 
+        .progress-inner {
+            background: #ff9500;
+            height: 8px;
+            border-radius: 4px;
+            position: absolute;
+            left: 0; top: 0;
         }
 
-        /* Review submission Form */
-        .review-form { 
-            background: #f7fafc; 
-            border: 1px dashed #cbd5e0; 
-            padding: 16px; 
-            border-radius: 16px; 
-            margin-top: 25px; 
+        /* Live Activity Ticker Toast Notification */
+        .live-ticker {
+            position: fixed;
+            bottom: 185px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.5s ease;
+            opacity: 0;
+            visibility: hidden;
         }
-        .review-form h4 { 
-            font-size: 13px; 
-            margin-bottom: 12px; 
-            color: #2d3748; 
-            font-weight: 700;
-        }
-        .review-form input, .review-form textarea, .review-form select { 
-            width: 100%; 
-            padding: 10px 12px; 
-            margin-bottom: 10px; 
-            border: 1px solid #e2e8f0; 
-            border-radius: 8px; 
-            font-size: 13px; 
-            background: #fff;
-        }
-        .submit-btn { 
-            background: #0066ff; 
-            color: white; 
-            border: none; 
-            padding: 12px; 
-            border-radius: 8px; 
-            font-weight: 700; 
-            cursor: pointer; 
-            width: 100%; 
-            font-size: 13px;
+        .live-ticker.show { opacity: 1; visibility: visible; }
+        .live-ticker .green-dot {
+            width: 8px; height: 8px; background: #25D366; border-radius: 50%;
+            animation: pulseBlink 0.8s infinite alternate;
         }
 
-        /* Area SEO Links */
+        /* FAQ Dropdowns Accordion */
+        .faq-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            padding: 12px;
+            cursor: pointer;
+        }
+        .faq-q { font-size: 13px; font-weight: 700; color: #2d3748; display: flex; justify-content: space-between; }
+        .faq-a { font-size: 12px; color: #718096; margin-top: 6px; display: none; line-height: 1.4; }
+
+        /* Near Me Area Footnote */
         .seo-footer { 
-            background: #f7fafc; 
-            padding: 14px; 
-            border-radius: 12px; 
-            font-size: 11px; 
-            color: #718096; 
-            text-align: center; 
-            line-height: 1.6; 
-            margin-top: 25px; 
-            border: 1px solid #edf2f7;
+            background: #f7fafc; padding: 14px; border-radius: 12px; font-size: 11px; 
+            color: #718096; text-align: center; line-height: 1.6; margin-top: 25px; border: 1px solid #edf2f7;
         }
 
-        /* Modern Bottom CTA Fixed Panel */
+        /* Persistent Action Panel Bottom Layout */
         .fixed-action-panel { 
-            position: fixed; 
-            bottom: 0; 
-            left: 0; 
-            right: 0; 
-            background: rgba(255, 255, 255, 0.95); 
-            backdrop-filter: blur(10px);
-            box-shadow: 0 -8px 30px rgba(0,0,0,0.08); 
-            padding: 12px 16px; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 8px; 
-            z-index: 1000; 
+            position: fixed; bottom: 0; left: 0; right: 0; 
+            background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(8px);
+            box-shadow: 0 -8px 25px rgba(0,0,0,0.08); padding: 12px 14px; 
+            display: flex; flex-direction: column; gap: 8px; z-index: 2500; 
         }
-        .action-row { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 8px; 
-        }
+        .action-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .btn { 
-            padding: 14px 10px; 
-            border-radius: 12px; 
-            font-weight: 700; 
-            text-decoration: none; 
-            text-align: center; 
-            font-size: 13px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 6px; 
-            border: none; 
-            cursor: pointer; 
+            padding: 14px 10px; border-radius: 12px; font-weight: 700; 
+            text-decoration: none; text-align: center; font-size: 13px; 
+            display: flex; align-items: center; justify-content: center; gap: 6px; border: none; cursor: pointer; 
         }
         .call-btn { 
-            background-color: #ff3b30; 
-            color: white; 
-            font-size: 15px; 
-            width: 100%; 
-            box-shadow: 0 4px 15px rgba(255, 59, 48, 0.3); 
+            background-color: #22c55e; color: white; font-size: 16px; width: 100%; 
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3); 
         }
         .whatsapp-btn { background-color: #25D366; color: white; }
         .whatsapp-sec-btn { background-color: #128C7E; color: white; }
 
-        /* Modals Dynamic Windows */
+        /* Generic Modals Structural Alignment */
         .modal { 
-            display: none; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            background: rgba(0,0,0,0.6); 
-            z-index: 2000; 
-            justify-content: center; 
-            align-items: center; 
-            padding: 16px; 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.6); z-index: 4000; justify-content: center; align-items: center; padding: 16px; 
         }
-        .modal-content { 
-            background: white; 
-            padding: 24px; 
-            border-radius: 20px; 
-            max-width: 340px; 
-            width: 100%; 
-            text-align: center; 
-        }
-        .modal-content h3 { 
-            color: #0066ff; 
-            margin-bottom: 10px; 
-            font-size: 18px; 
-            font-weight: 700;
-        }
-        .modal-content p { 
-            font-size: 13px; 
-            color: #4a5568; 
-            line-height: 1.5; 
-            margin-bottom: 18px; 
-        }
-        .close-btn { 
-            background: #edf2f7; 
-            padding: 10px 20px; 
-            border-radius: 8px; 
-            border: none; 
-            font-weight: 700; 
-            cursor: pointer; 
-            font-size: 13px;
-            color: #4a5568;
-        }
+        .modal-content { background: white; padding: 24px; border-radius: 20px; max-width: 340px; width: 100%; text-align: center; }
+        .modal-content h3 { color: #0066ff; margin-bottom: 8px; font-size: 18px; font-weight: 700; }
+        .modal-content p { font-size: 13px; color: #4a5568; line-height: 1.5; margin-bottom: 16px; }
+        .close-btn { background: #edf2f7; padding: 8px 18px; border-radius: 8px; border: none; font-weight: 700; color: #4a5568; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -343,78 +302,243 @@
     <div class="container">
         
         <header>
-            <div class="main-logo">Quickfix Mumbai</div>
+            <div class="main-logo">⚙️ Quickfix Mumbai</div>
             <p class="sub-tag">India's #1 Doorstep Services & Repair Platform Since 2010</p>
         </header>
 
-        <div class="emergency-bar">
-            🚨 24/7 EMERGENCY REPAIR AVAILABLE NOW
+        <div class="emergency-blinker">
+            🚨 24/7 EMERGENCY DOORSTEP REPAIR AVAILABLE NOW
         </div>
 
-        <div class="top-alert" id="slotAlert">
-            ⚡ Today's Availability: Only <span id="slotCount">4</span> urgent doorstep slots left!
+        <div class="slot-alert-box" id="slotAlert">
+            ⚡ Today's Booking Load: Only <span id="slotCount">4</span> urgent doorstep slots left!
         </div>
 
         <div class="trust-banner">
             <div class="trust-item" onclick="openModal('partsModal')"><span>💯</span>Genuine Parts</div>
-            <div class="trust-item" onclick="openModal('warrantyModal')"><span>🛡️</span>6M Warranty</div>
+            <div class="trust-item" onclick="openModal('warrantyModal')"><span>🛡️</span>Free Revisit</div>
             <div class="trust-item" onclick="openModal('familyModal')"><span>❤️</span>87k+ Families</div>
             <div class="trust-item" onclick="openModal('techModal')"><span>🧑‍🔧</span>50+ Experts</div>
         </div>
 
-        <h2 class="section-title">Professional Home Repair</h2>
+        <h2 class="section-title">Our Expert Repair Services</h2>
         <div class="services-grid">
             
-            <div class="card" onclick="openModal('techModal')">
-                <div class="card-arrow-inc">➔</div>
+            <div class="card" onclick="scrollToForm('Washing Machine')">
                 <div class="icon">🧺</div>
                 <h3>Washing Machine</h3>
-                <p>Top, Front & Smart Load</p>
+                <p>Top & Front Load</p>
+                <div class="price-tag">Visit Charge: ₹149</div>
             </div>
 
-            <div class="card" onclick="openModal('techModal')">
-                <div class="card-arrow-inc">➔</div>
+            <div class="card" onclick="scrollToForm('Refrigerator')">
                 <div class="icon">❄️</div>
-                <h3>Refrigerator</h3>
-                <p>Single, Double & Side Door</p>
+                <h3>All Refrigerator</h3>
+                <p>Single & Double Door</p>
+                <div class="price-tag">Visit Charge: ₹149</div>
             </div>
 
-            <div class="card" onclick="openModal('techModal')">
-                <div class="card-arrow-inc">➔</div>
+            <div class="card" onclick="scrollToForm('Fridge')">
+                <div class="icon">🍦</div>
+                <h3>Deep Fridge</h3>
+                <p>Commercial & Domestic</p>
+                <div class="price-tag">Visit Charge: ₹149</div>
+            </div>
+
+            <div class="card" onclick="scrollToForm('Microwave')">
                 <div class="icon">🍲</div>
                 <h3>Microwave Oven</h3>
-                <p>All Brands & Convection</p>
+                <p>All Brands Repair</p>
+                <div class="price-tag">Visit Charge: ₹149</div>
             </div>
 
-            <div class="card" onclick="openModal('techModal')">
-                <div class="card-arrow-inc">➔</div>
+            <div class="card" onclick="scrollToForm('Dish Washer')">
+                <div class="icon">🍽️</div>
+                <h3>Dish Washer</h3>
+                <p>Fixing & Cleaning</p>
+                <div class="price-tag">Visit Charge: ₹149</div>
+            </div>
+
+            <div class="card" onclick="scrollToForm('Air Dresser')">
                 <div class="icon">👗</div>
-                <h3>Air Dressers</h3>
-                <p>Premium Tech Care</p>
+                <h3>Air Dresser</h3>
+                <p>Premium Garment Care</p>
+                <div class="price-tag">Visit Charge: ₹149</div>
+            </div>
+
+            <div class="card" onclick="scrollToForm('Air Conditioner')">
+                <div class="icon">💨</div>
+                <h3>Air Conditioner</h3>
+                <p>Split & Window AC</p>
+                <div class="price-tag">Visit Charge: ₹149</div>
+            </div>
+
+            <div class="card" onclick="scrollToForm('Any Type of PCB')">
+                <div class="icon">⚡</div>
+                <h3>Any Type of PCB</h3>
+                <p>Inverter & Logic Board</p>
+                <div class="price-tag">Visit Charge: ₹149</div>
             </div>
             
         </div>
 
-        <h2 class="section-title">Why Choose Quickfix Mumbai?</h2>
-        <div class="features-list">
-            <div class="feature-line"><span>✅</span> 24/7 Day & Night Doorstep Service</div>
-            <div class="feature-line"><span>✅</span> Certified Expert Engineering Solutions</div>
-            <div class="feature-line"><span>✅</span> Affordable & 100% Transparent Rates</div>
-            <div class="feature-line"><span>✅</span> Background-Verified Company Technicians</div>
+        <h2 class="section-title" id="bookingTarget">Book Doorstep Service Instantly</h2>
+        <div class="screenshot-feedback-panel">
+            <input type="text" id="custName" placeholder="Your Full Name" required>
+            <input type="tel" id="custPhone" placeholder="Mobile Number" required>
+            
+            <select id="custAppliance">
+                <option value="">Select Your Faulty Appliance</option>
+                <option value="Washing Machine">Washing Machine</option>
+                <option value="All Refrigerator">All Refrigerator</option>
+                <option value="Fridge">Deep Fridge</option>
+                <option value="Microwave Oven">Microwave Oven</option>
+                <option value="Dish Washer">Dish Washer</option>
+                <option value="Air Dresser">Air Dresser</option>
+                <option value="Air Conditioner">Air Conditioner</option>
+                <option value="PCB Repair">Any Type of PCB</option>
+            </select>
+            
+            <textarea id="custAddress" rows="2" placeholder="Enter Your Complete Address for Doorstep Visit..." required></textarea>
+            <textarea id="custProblem" rows="2" placeholder="Describe the machine problem briefly..." required></textarea>
+            
+            <button class="orange-submit-btn" onclick="submitBookingForm()">Submit Feedback / Booking</button>
         </div>
 
-        <h2 class="section-title">Real Customer Stories</h2>
-        <div class="feedback-section" id="feedbackList">
-            <div class="feedback-card">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p>"Mera fridge bilkul thandak nahi kar raha tha. Quickfix ke technician ne aakar 1 ghante me mast bana diya!"</p>
-                <div class="user">- Rahul, Andheri</div>
+        <h2 class="section-title">Our Performance Metrics</h2>
+        <div class="rating-metrics-card">
+            <div class="rating-huge-num">4.9</div>
+            <div class="stars-row">⭐⭐⭐⭐⭐</div>
+            <div class="base-count-text">Based on <strong>89,957+ successful repairs</strong> in Mumbai</div>
+            
+            <div class="progress-bar-row">
+                <span>5 Stars</span>
+                <div class="progress-outer"><div class="progress-inner" style="width: 97%;"></div></div>
+                <span>97%</span>
             </div>
-            <div class="feedback-card">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p>"Best washing machine repair service in Mumbai. No hidden charges and very professional behavior."</p>
-                <div class="user">- Priya, Borivali</div>
+            <div class="progress-bar-row">
+                <span>4 Stars</span>
+                <div class="progress-outer"><div class="progress-inner" style="width: 2%;"></div></div>
+                <span>2%</span>
+            </div>
+            <div class="progress-bar-row">
+                <span>3 Stars</span>
+                <div class="progress-outer"><div class="progress-inner" style="width: 1%;"></div></div>
+                <span>1%</span>
             </div>
         </div>
 
-        <div class="review-form">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-card" onclick="toggleFaq(this)">
+            <div class="faq-q"><span>What are the total visiting charges?</span><span>▼</span></div>
+            <div class="faq-a">Our doorstep expert standard diagnostic inspection and visiting charges are flat ₹149 only.</div>
+        </div>
+        <div class="faq-card" onclick="toggleFaq(this)">
+            <div class="faq-q"><span>What does the 6 months warranty cover?</span><span>▼</span></div>
+            <div class="faq-a">It securely covers any replaced components. If the exact same problem happens again, a re-visit is completely free.</div>
+        </div>
+        <div class="faq-card" onclick="toggleFaq(this)">
+            <div class="faq-q"><span>How long does the technician take to arrive?</span><span>▼</span></div>
+            <div class="faq-a">Under emergency routing, our company expert engineer reaches your location within 60 to 90 minutes.</div>
+        </div>
+
+        <div class="seo-footer">
+            <strong>Your Nearest Quickfix Hub:</strong> Detected near your location in Mumbai. Providing instant doorstep engineering across Bandra, Andheri, Juhu, Borivali, Dadar, Powai, Goregaon, Malad, Khar, Santacruz, and all local sub-localities.
+        </div>
+    </div>
+
+    <div class="live-ticker" id="liveTicker">
+        <div class="green-dot"></div>
+        <span id="tickerText">Someone from Andheri booked a repair 2 mins ago!</span>
+    </div>
+
+    <div class="fixed-action-panel">
+        <a href="tel:9594406045" class="btn call-btn" onclick="reduceSlotCount()">
+            📞 Call Now: 9594406045
+        </a>
+        
+        <div class="action-row">
+            <a href="https://wa.me/919930249182?text=Hello%20Quickfix%20Mumbai%2c%20I%20need%20to%20book%20an%20appliance%20repair%20service." 
+               class="btn whatsapp-btn" target="_blank" onclick="reduceSlotCount()">
+               💬 WhatsApp 1
+            </a>
+            
+            <a href="https://wa.me/919594406045?text=Hello%20Quickfix%20Mumbai%2c%20I%20urgent%20require%20appliance%20repair%20technician." 
+               class="btn whatsapp-sec-btn" target="_blank" onclick="reduceSlotCount()">
+               💬 WhatsApp 2
+            </a>
+        </div>
+    </div>
+
+    <div id="partsModal" class="modal"><div class="modal-content"><h3>100% Genuine Parts</h3><p>We source certified premium company components for all major brands ensuring absolute device longevity.</p><button class="close-btn" onclick="closeModal('partsModal')">Close</button></div></div>
+    <div id="warrantyModal" class="modal"><div class="modal-content"><h3>6M Warranty + Free Revisit</h3><p>If the same issue re-occurs within our 6 Months secured window, our engineer visits and fixes it completely free.</p><button class="close-btn" onclick="closeModal('warrantyModal')">Close</button></div></div>
+    <div id="familyModal" class="modal"><div class="modal-content"><h3>87,519+ Households</h3><p>Trusted doorstep operations across Mumbai delivering seamless mechanical system restoration since 2010.</p><button class="close-btn" onclick="closeModal('familyModal')">Close</button></div></div>
+    <div id="techModal" class="modal"><div class="modal-content"><h3>50+ Company Experts</h3><p>Background-verified certified mechanics equipped with advanced electronic fault diagnostic toolkits.</p><button class="close-btn" onclick="closeModal('techModal')">Close</button></div></div>
+    
+    <script>
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        
+        function toggleFaq(element) {
+            let answer = element.querySelector('.faq-a');
+            answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function scrollToForm(applianceName) {
+            document.getElementById('custAppliance').value = applianceName;
+            document.getElementById('bookingTarget').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Real-time Slot Reducing Urgency engine
+        function reduceSlotCount() {
+            let currentSlots = parseInt(document.getElementById('slotCount').innerText);
+            if (currentSlots > 1) {
+                currentSlots -= 1;
+                document.getElementById('slotCount').innerText = currentSlots;
+            } else {
+                document.getElementById('slotAlert').innerHTML = "🛑 Emergency slots full for tonight! Booking advanced morning slots.";
+                document.getElementById('slotAlert').style.background = "#fff0f0";
+                document.getElementById('slotAlert').style.color = "#cc0000";
+            }
+        }
+
+        // Live Booking submission handler logic
+        function submitBookingForm() {
+            let name = document.getElementById('custName').value.trim();
+            let phone = document.getElementById('custPhone').value.trim();
+            let appliance = document.getElementById('custAppliance').value;
+            let address = document.getElementById('custAddress').value.trim();
+            let problem = document.getElementById('custProblem').value.trim();
+
+            if(!name || !phone || !appliance || !address || !problem) {
+                alert("Please fill all fields to schedule doorstep verification visit!");
+                return;
+            }
+
+            reduceSlotCount();
+            alert("Success! Your Doorstep Booking request for " + appliance + " has been registered. Our expert is assigned.");
+            
+            // Redirect clean link generation to directly initiate WhatsApp transmission log
+            let whatsappText = `New Booking Request:%0A- Name: ${name}%0A- Phone: ${phone}%0A- Appliance: ${appliance}%0A- Address: ${address}%0A- Problem: ${problem}`;
+            window.open(`https://wa.me/919594406045?text=${whatsappText}`, '_blank');
+        }
+
+        // Simulated Live Activity Alert Loop System (7-Points dynamic injector)
+        const localities = ["Andheri", "Bandra", "Borivali", "Juhu", "Dadar", "Powai", "Goregaon", "Malad"];
+        const appliances = ["Washing Machine", "Refrigerator", "Microwave", "PCB System", "Air Dresser"];
+        const timings = ["2 mins ago", "5 mins ago", "10 mins ago", "15 mins ago", "30 mins ago"];
+
+        setInterval(() => {
+            let randomLoc = localities[Math.floor(Math.random() * localities.length)];
+            let randomApp = appliances[Math.floor(Math.random() * appliances.length)];
+            let randomTime = timings[Math.floor(Math.random() * timings.length)];
+            
+            document.getElementById('tickerText').innerText = `Someone from ${randomLoc} booked a ${randomApp} repair ${randomTime}!`;
+            let ticker = document.getElementById('liveTicker');
+            
+            ticker.classList.add('show');
+            setTimeout(() => { ticker.classList.remove('show'); }, 4000);
+        }, 10000);
+    </script>
+</body>
+</html>
