@@ -8,131 +8,369 @@
     <meta name="keywords" content="washing machine repair mumbai, fridge repair mumbai, ac service mumbai, home appliance repair mumbai, quickfix mumbai">
     
     <style>
-        /* 🎨 Original Best Professional Look */
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f4f7f6; color: #333; padding: 15px; padding-bottom: 210px; }
-        .container { max-width: 500px; margin: 0 auto; background: #fff; padding: 15px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        /* 🎨 AAPKA ORIGINAL 500+ LINES WALA PREMIUM GRID LOOK & STYLES */
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        }
+        body { 
+            background-color: #f4f7f6; 
+            color: #333; 
+            padding: 15px; 
+            padding-bottom: 180px; /* Space for fixed bottom calling panel */
+        }
+        .container { 
+            max-width: 500px; 
+            margin: 0 auto; 
+            background: #fff; 
+            padding: 15px; 
+            border-radius: 16px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
+        }
         
-        /* Top Header Intro Alert */
-        .top-alert { background: #fff4d4; color: #b37400; padding: 10px; text-align: center; font-weight: bold; font-size: 13px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #ffeaa7; }
+        /* Header & Brand Banner */
+        header {
+            text-align: center;
+            padding: 10px 0 20px 0;
+        }
+        header h1 {
+            font-size: 28px;
+            color: #0076ff;
+            font-weight: 800;
+        }
+        header p {
+            font-size: 13px;
+            color: #666;
+            margin-top: 5px;
+        }
 
-        /* 🛡️ Original Icons Ribbon (Clickable) */
-        .badge-ribbon { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 20px; text-align: center; background: #fafafa; padding: 10px; border-radius: 12px; }
-        .badge-item { font-size: 11px; font-weight: bold; color: #444; cursor: pointer; transition: 0.2s; }
-        .badge-item:hover { transform: scale(1.05); }
-        .badge-item span { display: block; font-size: 22px; margin-bottom: 4px; }
+        /* Top Dynamic Alert Line */
+        .top-alert { 
+            background: #fff4d4; 
+            color: #b37400; 
+            padding: 12px; 
+            text-align: center; 
+            font-weight: bold; 
+            font-size: 13px; 
+            border-radius: 10px; 
+            margin-bottom: 20px; 
+            border: 1px solid #ffeaa7; 
+        }
 
-        /* 🧺 Services List (Original Arrow Look) */
-        .section-title { font-size: 18px; margin: 20px 0 12px 0; color: #111; font-weight: 700; display: flex; align-items: center; justify-content: space-between; }
-        .service-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; }
-        .service-card { display: flex; align-items: center; background: #fff; border: 1px solid #eef2f5; padding: 15px; border-radius: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); justify-content: space-between; }
-        .card-left { display: flex; align-items: center; gap: 15px; }
-        .card-icon { font-size: 30px; background: #f0f6ff; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; border-radius: 12px; }
-        .card-info h3 { font-size: 16px; color: #222; font-weight: 600; }
-        .card-arrow { color: #0076ff; font-size: 20px; font-weight: bold; }
+        /* 🛡️ Clickable Trust Ribbon (4 Items Grid) */
+        .trust-banner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            background: #ebf3ff;
+            padding: 12px 8px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .trust-item {
+            font-size: 11px;
+            font-weight: bold;
+            color: #0056b3;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .trust-item:hover {
+            transform: scale(1.05);
+        }
+        .trust-item span {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
 
-        /* ⭐ Realtime Customer Reviews Section */
-        .feedback-container { display: flex; flex-direction: column; gap: 10px; }
-        .feedback-card { background: #fff9e6; border-left: 4px solid #ffcc00; padding: 12px; border-radius: 6px; }
-        .feedback-card p { font-size: 13px; font-style: italic; color: #444; }
-        .feedback-card .user { font-size: 11px; font-weight: bold; color: #666; margin-top: 5px; text-align: right; }
-        .stars { color: #ffcc00; font-size: 12px; margin-bottom: 2px; }
+        /* 🧺 Our Repair Services Grid Section (Aapka Asli Layout) */
+        .section-title { 
+            font-size: 18px; 
+            margin-bottom: 15px; 
+            color: #222; 
+            border-left: 4px solid #0076ff;
+            padding-left: 8px;
+            font-weight: 700;
+        }
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px; 
+            margin-bottom: 25px; 
+        }
+        .card { 
+            background: #fafafa; 
+            border: 1px solid #ebeeec; 
+            padding: 15px; 
+            border-radius: 12px; 
+            text-align: center; 
+            transition: 0.3s; 
+            position: relative;
+            cursor: pointer;
+        }
+        .card:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+        }
+        .card .icon { 
+            font-size: 32px; 
+            margin-bottom: 8px; 
+        }
+        .card h3 { 
+            font-size: 15px; 
+            color: #333; 
+            margin-bottom: 5px; 
+        }
+        .card p { 
+            font-size: 12px; 
+            color: #777; 
+        }
+        .card-arrow-inc {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            color: #0076ff;
+            font-weight: bold;
+            font-size: 14px;
+        }
 
-        /* ✍️ Live Review Input Form */
-        .review-form { background: #f9fbfd; border: 1px dashed #bdf; padding: 15px; border-radius: 12px; margin-top: 20px; }
-        .review-form h4 { font-size: 14px; margin-bottom: 10px; color: #0056b3; }
-        .review-form input, .review-form textarea, .review-form select { width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 13px; }
-        .submit-btn { background: #0076ff; color: white; border: none; padding: 8px 15px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; }
+        /* ⭐ Customer Feedback Section */
+        .feedback-section { margin-bottom: 25px; }
+        .feedback-card { 
+            background: #fff9e6; 
+            border-left: 4px solid #ffcc00; 
+            padding: 12px; 
+            border-radius: 6px; 
+            margin-bottom: 10px;
+        }
+        .feedback-card p { 
+            font-size: 13px; 
+            font-style: italic; 
+            color: #444; 
+        }
+        .feedback-card .user { 
+            font-size: 12px; 
+            font-weight: bold; 
+            color: #222; 
+            margin-top: 5px; 
+            text-align: right; 
+        }
+        .stars { 
+            color: #ffcc00; 
+            font-size: 14px; 
+            margin-bottom: 3px; 
+        }
 
-        /* 📍 SEO Area Footer */
-        .seo-footer { background: #f9f9f9; padding: 15px; border-radius: 12px; font-size: 11px; color: #777; text-align: center; line-height: 1.6; margin-top: 25px; border-top: 1px solid #eee; }
+        /* ✍️ Live Review Submission Form */
+        .review-form { 
+            background: #f9fbfd; 
+            border: 1px dashed #bdf; 
+            padding: 15px; 
+            border-radius: 12px; 
+            margin-top: 25px; 
+        }
+        .review-form h4 { 
+            font-size: 14px; 
+            margin-bottom: 12px; 
+            color: #0056b3; 
+        }
+        .review-form input, .review-form textarea, .review-form select { 
+            width: 100%; 
+            padding: 10px; 
+            margin-bottom: 10px; 
+            border: 1px solid #ddd; 
+            border-radius: 6px; 
+            font-size: 13px; 
+        }
+        .submit-btn { 
+            background: #0076ff; 
+            color: white; 
+            border: none; 
+            padding: 10px; 
+            border-radius: 6px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            width: 100%; 
+            font-size: 14px;
+        }
 
-        /* 🟢 Sticky Calling & WhatsApp Action Area */
-        .fixed-action-panel { position: fixed; bottom: 0; left: 0; right: 0; background: white; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); padding: 12px 20px; display: flex; flex-direction: column; gap: 8px; z-index: 1000; }
-        .action-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
-        .btn { padding: 12px 8px; border-radius: 10px; font-weight: bold; text-decoration: none; text-align: center; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 4px; border: none; cursor: pointer; }
-        .call-btn { background-color: #00c853; color: white; font-size: 16px; width: 100%; box-shadow: 0 4px 12px rgba(0,200,83,0.3); }
+        /* 📍 SEO Area Footnote links */
+        .seo-footer { 
+            background: #f9f9f9; 
+            padding: 15px; 
+            border-radius: 12px; 
+            font-size: 11px; 
+            color: #777; 
+            text-align: center; 
+            line-height: 1.6; 
+            margin-top: 25px; 
+            border-top: 1px solid #eee; 
+        }
+
+        /* 🟢 Sticky Bottom Calling Panel Layout */
+        .fixed-action-panel { 
+            position: fixed; 
+            bottom: 0; 
+            left: 0; 
+            right: 0; 
+            background: white; 
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.1); 
+            padding: 12px 20px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 8px; 
+            z-index: 1000; 
+        }
+        .action-row { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr 1fr; 
+            gap: 8px; 
+        }
+        .btn { 
+            padding: 12px 8px; 
+            border-radius: 10px; 
+            font-weight: bold; 
+            text-decoration: none; 
+            text-align: center; 
+            font-size: 13px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 4px; 
+            border: none; 
+            cursor: pointer; 
+        }
+        /* Primary Calling Button */
+        .call-btn { 
+            background-color: #00c853; 
+            color: white; 
+            font-size: 16px; 
+            width: 100%; 
+            box-shadow: 0 4px 12px rgba(0,200,83,0.3); 
+        }
+        /* WhatsApp Channels Colors */
         .whatsapp-btn { background-color: #25D366; color: white; }
         .whatsapp-sec-btn { background-color: #128C7E; color: white; }
         .pay-btn { background-color: #0076ff; color: white; }
 
-        /* 📦 Modal / Pop-up Styling */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
-        .modal-content { background: white; padding: 20px; border-radius: 14px; max-width: 360px; width: 100%; text-align: center; box-shadow: 0 5px 25px rgba(0,0,0,0.2); }
-        .modal-content h3 { color: #0076ff; margin-bottom: 10px; font-size: 18px; }
-        .modal-content p { font-size: 13px; color: #555; line-height: 1.5; margin-bottom: 15px; }
-        .close-btn { background: #eee; padding: 8px 16px; border-radius: 6px; border: none; font-weight: bold; cursor: pointer; }
-        .qr-img { width: 180px; height: 180px; margin: 10px auto; display: block; border: 1px solid #eee; }
+        /* 📦 Modals Structure Styling */
+        .modal { 
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0,0,0,0.5); 
+            z-index: 2000; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 20px; 
+        }
+        .modal-content { 
+            background: white; 
+            padding: 25px; 
+            border-radius: 14px; 
+            max-width: 360px; 
+            width: 100%; 
+            text-align: center; 
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2); 
+        }
+        .modal-content h3 { 
+            color: #0076ff; 
+            margin-bottom: 12px; 
+            font-size: 18px; 
+        }
+        .modal-content p { 
+            font-size: 13px; 
+            color: #555; 
+            line-height: 1.5; 
+            margin-bottom: 15px; 
+        }
+        .close-btn { 
+            background: #eee; 
+            padding: 8px 16px; 
+            border-radius: 6px; 
+            border: none; 
+            font-weight: bold; 
+            cursor: pointer; 
+        }
+        .qr-img { 
+            width: 180px; 
+            height: 180px; 
+            margin: 10px auto; 
+            display: block; 
+            border: 1px solid #eee; 
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
+        
+        <header>
+            <h1>Quickfix Mumbai</h1>
+            <p>My Expert Technicians | Over 15 Years of Industry Experience</p>
+        </header>
+
         <div class="top-alert" id="slotAlert">
             🟢 Today's Availability: Only <span id="slotCount">3</span> urgent slots left
         </div>
 
-        <div class="badge-ribbon">
-            <div class="badge-item" onclick="openModal('partsModal')"><span>💯</span>Genuine Parts</div>
-            <div class="badge-item" onclick="openModal('warrantyModal')"><span>🛡️</span>6 Months Warranty</div>
-            <div class="badge-item" onclick="openModal('revisitModal')"><span>🔄</span>Free Revisit If Re-problem</div>
-            <div class="badge-item" onclick="openModal('techModal')"><span>🧑‍🔧</span>Expert Techs</div>
+        <div class="trust-banner">
+            <div class="trust-item" onclick="openModal('partsModal')"><span>💯</span>Genuine Parts</div>
+            <div class="trust-item" onclick="openModal('warrantyModal')"><span>🛡️</span>6 Months Warranty</div>
+            <div class="trust-item" onclick="openModal('revisitModal')"><span>🔄</span>Free Revisit</div>
+            <div class="trust-item" onclick="openModal('techModal')"><span>🧑‍🔧</span>Expert Techs</div>
         </div>
 
-        <h2 class="section-title">Our Expert Services</h2>
-        <div class="service-list">
-            <div class="service-card">
-                <div class="card-left">
-                    <div class="card-icon">🏢</div>
-                    <div class="card-info">
-                        <h3>Refrigerator (Fridge)</h3>
-                    </div>
-                </div>
-                <div class="card-arrow">➔</div>
+        <h2 class="section-title">Our Repair Services</h2>
+        <div class="services-grid">
+            
+            <div class="card" onclick="openModal('techModal')">
+                <div class="card-arrow-inc">➔</div>
+                <div class="icon">🧺</div>
+                <h3>Washing Machine</h3>
+                <p>Top & Front Load</p>
             </div>
 
-            <div class="service-card">
-                <div class="card-left">
-                    <div class="card-icon">🔄</div>
-                    <div class="card-info">
-                        <h3>Washing Machine</h3>
-                    </div>
-                </div>
-                <div class="card-arrow">➔</div>
+            <div class="card" onclick="openModal('techModal')">
+                <div class="card-arrow-inc">➔</div>
+                <div class="icon">❄️</div>
+                <h3>Refrigerator</h3>
+                <p>Single & Double Door</p>
             </div>
 
-            <div class="service-card">
-                <div class="card-left">
-                    <div class="card-icon">☕</div>
-                    <div class="card-info">
-                        <h3>Air Conditioner (AC)</h3>
-                    </div>
-                </div>
-                <div class="card-arrow">➔</div>
+            <div class="card" onclick="openModal('techModal')">
+                <div class="card-arrow-inc">➔</div>
+                <div class="icon">💨</div>
+                <h3>Air Conditioner</h3>
+                <p>Split & Window AC</p>
             </div>
 
-            <div class="service-card">
-                <div class="card-left">
-                    <div class="card-icon">⚙️</div>
-                    <div class="card-info">
-                        <h3>Advanced PCB Repairing</h3>
-                    </div>
-                </div>
-                <div class="card-arrow">➔</div>
+            <div class="card" onclick="openModal('techModal')">
+                <div class="card-arrow-inc">➔</div>
+                <div class="icon">🍲</div>
+                <h3>Microwave Oven</h3>
+                <p>All Brands Repair</p>
             </div>
+            
         </div>
 
         <h2 class="section-title">What Our Customers Say</h2>
-        <div class="feedback-container" id="feedbackList">
+        <div class="feedback-section" id="feedbackList">
             <div class="feedback-card">
                 <div class="stars">⭐⭐⭐⭐⭐</div>
                 <p>"Mera fridge bilkul thandak nahi kar raha tha. Quickfix ke technician ne aakar 1 ghante me mast bana diya!"</p>
-                <div class="user">- Rahul, Andheri (Verified)</div>
+                <div class="user">- Rahul, Andheri</div>
             </div>
             <div class="feedback-card">
                 <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p>"Best washing machine repair service in Mumbai. Quick fix provided absolute shout-out to my problem from Bandra!"</p>
-                <div class="user">- Priya, Borivali (Verified)</div>
+                <p>"Best washing machine repair service in Mumbai. No hidden charges and very professional behavior."</p>
+                <div class="user">- Priya, Borivali</div>
             </div>
         </div>
 
@@ -147,7 +385,7 @@
                 <option value="Dadar">Dadar</option>
                 <option value="Powai">Powai</option>
             </select>
-            <textarea id="revText" rows="2" placeholder="Write your problem shout-out here..." required></textarea>
+            <textarea id="revText" rows="2" placeholder="Write your service feedback here..." required></textarea>
             <button class="submit-btn" onclick="addNewReview()">Submit Review</button>
         </div>
 
@@ -160,6 +398,7 @@
         <a href="tel:9930249182" class="btn call-btn">
             📞 Call Now: 9930249182
         </a>
+        
         <div class="action-row">
             <button class="btn pay-btn" onclick="openModal('paymentModal')">💳 Direct Pay</button>
             
@@ -175,13 +414,14 @@
     <div id="warrantyModal" class="modal"><div class="modal-content"><h3>6 Months Secured Warranty</h3><p>Our explicit 6-month warranty securely covers any newly replaced spare parts automatically.</p><button class="close-btn" onclick="closeModal('warrantyModal')">Close</button></div></div>
     <div id="revisitModal" class="modal"><div class="modal-content"><h3>Free Revisit Validation</h3><p>If the same problem arises again within the warranty window, our tech visits again completely free.</p><button class="close-btn" onclick="closeModal('revisitModal')">Close</button></div></div>
     <div id="techModal" class="modal"><div class="modal-content"><h3>Expert Technicians</h3><p>Background-verified experts specialized in advanced domestic machinery mechanics.</p><button class="close-btn" onclick="closeModal('techModal')">Close</button></div></div>
+    
     <div id="paymentModal" class="modal"><div class="modal-content"><h3>Direct Owner Secure Payment</h3><p>Scan the official QR below to pay the owner directly without technician intervention.</p><img src="https://via.placeholder.com/180" class="qr-img"><button class="close-btn" onclick="closeModal('paymentModal')">Close</button></div></div>
 
     <script>
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-        // Dynamic Slot Tracker
+        // Reactive Slot Monitor Control
         function reduceSlot() {
             let slots = parseInt(document.getElementById('slotCount').innerText);
             if (slots > 1) {
@@ -194,7 +434,7 @@
             }
         }
 
-        // Live Real-Time Review Addition
+        // Live Frontend Client Review injector 
         function addNewReview() {
             let name = document.getElementById('revName').value.trim();
             let area = document.getElementById('revArea').value;
@@ -209,14 +449,14 @@
                 <div class="feedback-card" style="animation: fadeIn 0.5s ease;">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
                     <p>"${text}"</p>
-                    <div class="user">- ${name}, ${area} (Verified Customer)</div>
+                    <div class="user">- ${name}, ${area}</div>
                 </div>
             `;
 
             document.getElementById('feedbackList').insertAdjacentHTML('beforeend', newReviewHtml);
             document.getElementById('revName').value = "";
             document.getElementById('revText').value = "";
-            alert("Thank you! Your verified shout-out has been added live.");
+            alert("Thank you! Your review has been added live.");
         }
     </script>
 </body>
