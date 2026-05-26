@@ -3,86 +3,375 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quickfix Mumbai | Doorstep Repair</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Quickfix Mumbai | India's #1 Doorstep Home Appliance Repair</title>
+    
+    <meta name="theme-color" content="#0066ff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
     <style>
-        :root { --primary: #0066ff; --wa-primary: #25D366; --wa-sec: #128C7E; --dark: #1a202c; }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-        body { background: #f4f7f6; color: #333; }
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; 
+        }
+        body { 
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: #2d3748; 
+            padding: 12px; 
+            padding-bottom: 180px; 
+        }
+        .container { 
+            max-width: 480px; 
+            margin: 0 auto; 
+            background: #ffffff; 
+            padding: 22px 14px; 
+            border-radius: 28px; 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); 
+        }
         
-        .container { max-width: 500px; margin: 0 auto; background: #fff; min-height: 100vh; padding-bottom: 100px; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
+        header { text-align: center; padding: 10px 0 5px 0; }
+        .main-logo { font-size: 32px; color: #0066ff; font-weight: 900; letter-spacing: -1px; }
         
-        /* Header */
-        header { padding: 25px; text-align: center; background: var(--primary); color: white; }
+        /* Corporate Bio Intro Typo Adjustments */
+        .greetings-title {
+            text-align: center;
+            display: block;
+            font-size: 20px;
+            font-weight: 900;
+            color: #0066ff;
+            margin-bottom: 8px;
+        }
+        .business-intro-box {
+            background: #f8fafc;
+            border-left: 5px solid #0066ff;
+            padding: 16px;
+            border-radius: 14px;
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: #334155;
+            margin: 12px 0 20px 0;
+            text-align: justify;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .intro-highlight { font-weight: 700; color: #0066ff; }
+        .center-split-line {
+            text-align: center;
+            display: block;
+            margin-top: 12px;
+            font-weight: 800;
+            color: #1e293b;
+            border-top: 1px dashed #cbd5e0;
+            padding-top: 10px;
+        }
+
+        /* 🚨 Mega 3D Emergency Clickable Block */
+        .emergency-click-block {
+            background: linear-gradient(90deg, #ff3b30, #ff9500);
+            color: #ffffff;
+            padding: 16px;
+            border-radius: 18px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 20px rgba(255, 59, 48, 0.35);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .emergency-click-block:active { transform: scale(0.97); }
+
+        /* Dynamic Slot Box + Single-Vote Secured Like Framework */
+        .slot-interactive-box { 
+            background: #fffaf0; 
+            color: #dd6b20; 
+            padding: 14px; 
+            border-radius: 16px; 
+            margin-bottom: 25px; 
+            border: 1px solid #fbd38d; 
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .slot-left-side { font-weight: 800; font-size: 13px; }
+        .like-btn-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #ffffff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid #fbd38d;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            transition: transform 0.1s;
+        }
+        .like-btn-wrapper:active { transform: scale(0.9); }
+        .heart-icon { color: #e53e3e; font-size: 16px; }
+        .like-counter-num { font-weight: 800; font-size: 13px; color: #334155; }
+
+        /* Promise Banner Rules Matrix */
+        .trust-banner {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            background: #f8fafc;
+            padding: 12px 6px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+        .trust-item { font-size: 11px; font-weight: 700; color: #4a5568; cursor: pointer; background: white; padding: 8px 4px; border-radius: 12px; border: 1px solid #edf2f7; transition: all 0.2s; }
+        .trust-item:active { transform: scale(0.95); border-color: #0066ff; }
+        .trust-item span { display: block; font-size: 24px; margin-bottom: 4px; }
+        .promise-like-sub { font-size: 9px; color: #e53e3e; display: block; margin-top: 2px; font-weight: 800; }
+
+        .section-title { 
+            font-size: 18px; margin: 25px 0 14px 0; color: #1a202c; 
+            border-left: 4px solid #0066ff; padding-left: 10px; font-weight: 800;
+        }
+
+        /* 3D Chalta-Firta Services Matrix Grid */
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .card { 
+            background: #ffffff; border: 1px solid #e2e8f0; padding: 20px 12px; 
+            border-radius: 20px; text-align: center; position: relative; cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02); transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .card:hover { transform: translateY(-5px); border-color: #0066ff; box-shadow: 0 8px 25px rgba(0,102,255,0.15); }
+        .card .icon-img { font-size: 46px; margin-bottom: 8px; display: inline-block; transition: transform 0.2s; }
+        .card:hover .icon-img { transform: scale(1.15); }
+        .card h3 { font-size: 14px; color: #1a202c; font-weight: 800; }
+        .card p { font-size: 11px; color: #718096; margin-top: 2px; }
+        .price-tag {
+            background: #f0fff4; color: #38a169; font-size: 11px; 
+            font-weight: 800; padding: 4px 8px; border-radius: 8px; display: inline-block; margin-top: 8px; border: 1px solid #c6f6d5;
+        }
+
+        /* Customer Live Feedback & Suggestions Dynamic Board */
+        .suggestion-tip-box {
+            background: #fffaf0; border: 1px solid #feebc8; color: #c05621;
+            padding: 16px; border-radius: 18px; margin-top: 20px;
+        }
+        .suggestion-title-line { font-size: 14px; font-weight: 800; margin-bottom: 8px; color: #dd6b20; }
+        .live-suggestion-feed { max-height: 110px; overflow-y: auto; margin-bottom: 12px; font-size: 12px; }
+        .feed-item-bubble { background: #fff; padding: 8px 12px; border-radius: 10px; margin-bottom: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); line-height: 1.4; }
+        .suggestion-input-row { display: flex; gap: 6px; }
+        .suggestion-input-row input { flex: 1; padding: 10px; border-radius: 10px; border: 1px solid #cbd5e0; font-size: 12px; font-weight: 600; }
+        .suggestion-input-row button { background: #dd6b20; color: white; border: none; padding: 0 14px; border-radius: 10px; font-weight: 700; cursor: pointer; }
+
+        /* Advance Booking / Festival Dashboard */
+        .festival-discount-board {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white; padding: 18px; border-radius: 24px; margin: 25px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15); border: 1px solid #4a5568;
+        }
+        .fest-title { font-size: 15px; font-weight: 900; margin-bottom: 12px; color: #ff9500; display: flex; justify-content: space-between; }
+        .discount-tier-row {
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(255, 255, 255, 0.08); padding: 8px 12px; border-radius: 10px;
+            margin-bottom: 6px; font-size: 12px; font-weight: 700;
+        }
+        .advance-booking-form-box {
+            background: rgba(255, 255, 255, 0.05); padding: 14px; border-radius: 14px; margin-top: 12px;
+        }
+        .advance-booking-form-box label { font-size: 11px; color: #a0aec0; font-weight: 700; display: block; margin-bottom: 4px; }
+        .advance-booking-form-box input, .advance-booking-form-box select {
+            width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #4a5568; background: #fff; font-size: 13px; font-weight: bold; color: #1a202c;
+        }
+        .calc-output-window {
+            background: #2d3748; padding: 10px; border-radius: 8px; font-size: 12px; font-weight: 800; color: #00e676; text-align: center; margin-bottom: 10px; border: 1px dashed #4a5568;
+        }
+        .adv-submit-btn {
+            background: linear-gradient(180deg, #ffaa00 0%, #ff8800 100%); color: white; border: none; padding: 12px;
+            width: 100%; border-radius: 30px; font-weight: 800; cursor: pointer; font-size: 14px; box-shadow: 0 4px 12px rgba(255,136,0,0.3);
+        }
+
+        /* Premium Black Orange Form Enhancements */
+        .screenshot-feedback-panel {
+            background: linear-gradient(135deg, #111112 0%, #1f1f21 100%);
+            border-radius: 24px; padding: 22px 18px; color: #fff; margin-top: 20px;
+            border: 2px solid #ff9500;
+        }
+        .screenshot-feedback-panel input, .screenshot-feedback-panel select, .screenshot-feedback-panel textarea {
+            width: 100%; background: #ffffff; border: 2px solid transparent; padding: 12px 14px;
+            border-radius: 12px; margin-bottom: 12px; font-size: 13.5px; color: #1a202c; font-weight: 600;
+        }
+        .easy-upload-grid { display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 14px; }
+        .easy-upload-card {
+            background: #2d2d30; padding: 10px; border-radius: 10px; position: relative; border: 1px dashed #ff9500;
+            display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: #e2e8f0;
+        }
+        .easy-upload-card input[type="file"] {
+            position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;
+        }
+        .orange-submit-btn {
+            background: linear-gradient(180deg, #ffaa00 0%, #ff8800 100%); color: white;
+            font-weight: 800; font-size: 16px; border: none; padding: 16px; border-radius: 35px; width: 100%; cursor: pointer;
+        }
+
+        /* 4.9 Realtime Active Rating Element */
+        .rating-metrics-card {
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 22px; text-align: center;
+        }
+        .rating-huge-num { font-size: 56px; font-weight: 800; color: #ff9500; line-height: 1; }
+        .stars-row { color: #ff9500; font-size: 20px; margin: 8px 0; }
+        .progress-bar-row { display: flex; align-items: center; justify-content: space-between; font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+        .progress-outer { flex: 1; background: #edf2f7; height: 9px; border-radius: 6px; margin: 0 12px; position: relative; overflow: hidden; }
+        .progress-inner { background: #ff9500; height: 9px; position: absolute; left: 0; top: 0; }
+
+        /* Online Payment Options Drawer Box */
+        .payment-options-card {
+            background: #f8fafc; border: 2px dashed #0066ff; border-radius: 20px; padding: 16px; margin-top: 25px; text-align: center;
+        }
+        .pay-gateways-row { display: flex; justify-content: center; gap: 12px; margin-top: 10px; }
+        .gateway-pill { background: white; border: 1px solid #e2e8f0; padding: 8px 14px; border-radius: 10px; font-size: 12px; font-weight: 800; color: #4a5568; }
+
+        /* Modals Rules Architecture */
+        .modal { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.75); z-index: 4000; justify-content: center; align-items: center; padding: 16px; 
+        }
+        .modal-content { 
+            background: white; padding: 24px; border-radius: 24px; max-width: 400px; width: 100%; 
+            text-align: left; max-height: 85vh; overflow-y: auto;
+        }
+        .modal-content h3 { color: #0066ff; margin-bottom: 12px; font-size: 18px; font-weight: 900; text-align: center; }
+        .modal-input { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 13px; font-weight: 600; }
+        .modal-action-btn { background: #25D366; color: white; width: 100%; padding: 12px; border-radius: 30px; border: none; font-weight: 800; font-size: 14px; cursor: pointer; }
+
+        /* 3D Mechanical Service Sea Visualization Matrix */
+        .sea-image-container {
+            width: 100%; height: 150px; border-radius: 14px; margin-bottom: 8px;
+            background-size: cover; background-position: center; position: relative;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.6);
+        }
         
-        /* Form Section */
-        .form-section { padding: 20px; }
-        input, select { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px; }
-        .submit-btn { width: 100%; padding: 15px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
-        
-        /* Service Cards */
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 20px; }
-        .card { padding: 15px; border: 1px solid #eee; border-radius: 10px; text-align: center; cursor: pointer; background: #f9f9f9; }
-        
-        /* Floating Nav */
-        .fixed-footer { position: fixed; bottom: 0; width: 100%; max-width: 500px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-        .btn-wa { padding: 15px; color: white; text-decoration: none; text-align: center; font-weight: bold; font-size: 14px; }
-        .wa-primary { background: var(--wa-primary); }
-        .wa-sec { background: var(--wa-sec); }
+        /* Premium Multi-Image Slider Component */
+        .sea-slider-thumbnails {
+            display: flex; gap: 6px; overflow-x: auto; margin-bottom: 15px; padding-bottom: 4px;
+        }
+        .thumb-pic {
+            width: 65px; height: 45px; border-radius: 8px; border: 2px solid #e2e8f0; object-fit: cover; cursor: pointer; flex-shrink: 0;
+        }
+        .thumb-pic.active-thumb { border-color: #0066ff; }
+
+        .pcb-sea-effect {
+            background-image: linear-gradient(rgba(0,102,255,0.1), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=500&q=80') !important;
+        }
+        .sea-fault-row {
+            background: #f7fafc; border: 1px solid #e2e8f0; padding: 10px; border-radius: 10px; margin-bottom: 8px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .sea-fault-name { font-size: 11.5px; font-weight: 700; color: #2d3748; flex: 1; padding-right: 6px; }
+        .sea-book-badge { background: #10b981; color: white; font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 6px; cursor: pointer; text-decoration: none; text-align: center; }
+
+        .close-btn-container { text-align: center; margin-top: 15px; }
+        .close-btn { background: #edf2f7; padding: 10px 24px; border-radius: 10px; border: none; font-weight: 800; color: #4a5568; cursor: pointer; }
+
+        .live-ticker {
+            position: fixed; bottom: 190px; left: 50%; transform: translateX(-50%);
+            background: rgba(17, 17, 18, 0.95); color: #fff; padding: 12px 18px; border-radius: 30px;
+            font-size: 12px; font-weight: 700; white-space: nowrap; z-index: 3000; display: flex; align-items: center; gap: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.25); opacity: 0; visibility: hidden; transition: all 0.4s ease;
+        }
+        .live-ticker.show { opacity: 1; visibility: visible; }
+        .live-ticker .green-dot { width: 8px; height: 8px; background: #25D366; border-radius: 50%; }
+
+        .seo-footer { background: #f8fafc; padding: 14px; border-radius: 14px; font-size: 11px; color: #718096; text-align: center; line-height: 1.6; margin-top: 25px; border: 1px solid #edf2f7; }
+
+        /* Sticky Action Control Navigation Hub Panels */
+        .fixed-action-panel { 
+            position: fixed; bottom: 0; left: 0; right: 0; 
+            background: rgba(255, 255, 255, 0.97); backdrop-filter: blur(12px);
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.08); padding: 12px 16px; 
+            display: flex; flex-direction: column; gap: 8px; z-index: 2500; 
+        }
+        .action-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .btn { 
+            padding: 14px 10px; border-radius: 14px; font-weight: 800; 
+            text-decoration: none; text-align: center; font-size: 13.5px; 
+            display: flex; align-items: center; justify-content: center; gap: 6px; border: none; cursor: pointer; 
+        }
+        .call-btn { background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color: white; font-size: 16px; width: 100%; box-shadow: 0 5px 15px rgba(34, 197, 94, 0.35); }
+        .whatsapp-btn { background-color: #25D366; color: white; }
+        .whatsapp-sec-btn { background-color: #128C7E; color: white; }
     </style>
 </head>
 <body>
 
     <div class="container">
+        
         <header>
-            <h1>⚙️ Quickfix Mumbai</h1>
-            <p>15+ Years Experience | Expert Technicians</p>
+            <div class="main-logo">⚙️ Quickfix Mumbai</div>
         </header>
 
-        <!-- Booking Form -->
-        <div class="form-section">
-            <h3>Book a Technician</h3>
-            <input type="text" id="name" placeholder="Your Name">
-            <select id="service">
-                <option value="Washing Machine">Washing Machine</option>
-                <option value="Refrigerator">Refrigerator</option>
-                <option value="Microwave">Microwave</option>
-                <option value="PCB Repair">PCB Repair</option>
-            </select>
-            <button class="submit-btn" onclick="submitForm()">BOOK NOW</button>
+        <div class="business-intro-box">
+            <span class="greetings-title">Greetings!</span>
+            Welcome to Quickfix, India's #1 Most Trusted Premium Doorstep Service & Repair Platform since 2010, With over <span class="intro-highlight" id="introCountText">357,419+</span> trusted families. Quick fix Home Appliances Like Refrigerators, Washing Machines, Microwave Ovens, Dishwashers, Cloth Dryers, Air Dressers, and Any Type of PCB Engineering. <br>
+            <span class="center-split-line">Service and repairing provided by My Expert Technicians</span><br>
+            We Have the above 15 years+ experiences with the Service industries and have 50+ Company Expert Technicians. EXPERT HOME APPLIANCES REPAIRERS 24/7 WITH RELIBLE AND REASONABLE PRICES.
         </div>
 
-        <!-- Services -->
-        <div class="grid">
-            <div class="card" onclick="sendWA('919930249182', 'Washing Machine Repair')">🧺 Machine</div>
-            <div class="card" onclick="sendWA('919930249182', 'Fridge Repair')">❄️ Fridge</div>
+        <div class="emergency-click-block" onclick="openEmergencyHub()">
+            🚨 24/7 EMERGENCY BOOKING PORTAL (TOUCH TO LAUNCH)
         </div>
-    </div>
 
-    <!-- Footer Nav -->
-    <div class="fixed-footer">
-        <a href="#" class="btn-wa wa-primary" onclick="sendWA('919930249182', 'General Query')">
-            <i class="fab fa-whatsapp"></i> Primary Support
-        </a>
-        <a href="#" class="btn-wa wa-sec" onclick="sendWA('9594406045', 'General Query')">
-            <i class="fab fa-whatsapp"></i> Secondary Support
-        </a>
-    </div>
+        <div class="slot-interactive-box">
+            <div class="slot-left-side" id="slotAlert">
+                🟢 Today's Schedule: Only <span id="slotCount">4</span> Slots Remaining
+            </div>
+            <div class="like-btn-wrapper" onclick="registerSecureVote('schedule')">
+                <span class="heart-icon">❤️</span>
+                <span class="like-counter-num" id="scheduleLikeText">357,419</span>
+            </div>
+        </div>
 
-    <script>
-        function sendWA(number, service) {
-            const msg = `Hello, I need help with: ${service}`;
-            window.open(`https://wa.me/${number}?text=${encodeURIComponent(msg)}`, '_blank');
-        }
+        <div class="trust-banner">
+            <div class="trust-item" onclick="registerSecureVote('parts')">
+                <span>💯</span>Genuine Parts
+                <span class="promise-like-sub" id="partsLikeText">❤️ 89,240</span>
+            </div>
+            <div class="trust-item" onclick="registerSecureVote('charges')">
+                <span>🛡️</span>No Hidden Charge
+                <span class="promise-like-sub" id="chargesLikeText">❤️ 41,510</span>
+            </div>
+            <div class="trust-item" onclick="openModal('techModal')">
+                <span>🧑‍🔧</span>50+ Co. Experts
+                <span class="promise-like-sub" style="color:#0066ff;">Verified</span>
+            </div>
+        </div>
 
-        function submitForm() {
-            const name = document.getElementById('name').value;
-            const service = document.getElementById('service').value;
-            if(!name) { alert("Please enter your name"); return; }
-            const fullMsg = `Hi, I am ${name}. I need service for: ${service}`;
-            window.open(`https://wa.me/919930249182?text=${encodeURIComponent(fullMsg)}`, '_blank');
-        }
-    </script>
-</body>
-</html>
+        <h2 class="section-title">Our Expert Repair Matrix</h2>
+        <div class="services-grid">
+            
+            <div class="card" onclick="openServiceSea('Washing Machine', 'https://images.unsplash.com/photo-1545173168-9f1947eebd01?auto=format&fit=crop&w=400&q=80')">
+                <span class="icon-img">🧺</span>
+                <h3>Washing Machine</h3>
+                <p>Top, Front & Smart Load</p>
+                <div class="price-tag">Diagnostic Visit: ₹99</div>
+            </div>
+
+            <div class="card" onclick="openServiceSea('All Refrigerator', 'https://images.unsplash.com/photo-1571175432267-efb02585970a?auto=format&fit=crop&w=400&q=80')">
+                <span class="icon-img">❄️</span>
+                <h3>All Refrigerator</h3>
+                <p>Single & Double Door Units</p>
+                <div class="price-tag">Diagnostic Visit: ₹99</div>
+            </div>
+
+            <div class="card" onclick="openServiceSea('Fridge', 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=400&q=80')">
+                <span class="icon-img">🍦</span>
+                <h3>Deep Fridge</h3>
+                <p>Commercial Storage</p>
+                <div class="price-tag">Diagnostic Visit: ₹99</div>
+            </div>
+
+            <div class="card" onclick="openServiceSea('Microwave Oven', 'https://images.unsplash.com/photo-1574269664601-e5781b00efbf?auto=format&fit=crop&w=400&q=80')">
+                <span class="icon-im
 
