@@ -3,460 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Quickfix Mumbai - Expert Home Appliance Repair Service since 2010. Certified doorstep technicians for Samsung, LG, Whirlpool, Bosch, IFB, Godrej, Panasonic Refrigerator, Washing Machine, AC, Microwave, and PCB Repair in Mumbai.">
-    <meta name="keywords" content="Appliance Repair Mumbai, Refrigerator repair Mumbai, Washing Machine repair Mumbai, AC Service Mumbai, Microwave repair, Bosch repair Mumbai, Samsung repair Mumbai, Whirlpool service center Mumbai, Quickfix Mumbai">
-    <title>Quickfix Mumbai | Expert Home Appliance Repair & Services (All Brands)</title>
     
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#007bff">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Quickfix">
+    <title>Quickfix Mumbai | Best Home Appliance Repair Service</title>
+    <meta name="description" content="Quickfix Mumbai offers expert repair services for Washing Machines, Refrigerators, ACs, and Microwaves in Mumbai. 15+ years of experience. Fast 1-hour service.">
+    <meta name="keywords" content="washing machine repair mumbai, fridge repair mumbai, ac service mumbai, home appliance repair mumbai, quickfix mumbai, repair in bandra">
     
-    <link rel="stylesheet" href="style.css">
-    <script src="server-bridge.js"></script>
-
     <style>
-        /* Secure Checkout Modal Styling */
-        .pay-modal {
-            display: none;
-            position: fixed;
-            z-index: 10000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.7);
-            overflow-y: auto;
-        }
-        .pay-modal-content {
-            background-color: #ffffff;
-            margin: 5% auto;
-            padding: 20px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 420px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            color: #333;
-            position: relative;
-            font-family: sans-serif;
-        }
-        .close-pay {
-            position: absolute;
-            right: 15px;
-            top: 10px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #888;
-        }
-        .customer-inputs input, .customer-inputs select, .customer-inputs textarea {
-            width: 90%;
-            padding: 10px;
-            margin: 6px 0;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 0.95em;
-            background: #fff;
-            color: #333;
-        }
-        .qr-placeholder {
-            background: #f5f5f5;
-            padding: 12px;
-            margin: 12px 0;
-            border-radius: 10px;
-            border: 2px dashed #007bff;
-        }
-        .verify-pay-btn {
-            width: 100%;
-            background: #28a745;
-            color: white;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .greetings-banner {
-            background: linear-gradient(135deg, #0056b3, #007bff);
-            color: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin: 15px auto;
-            width: 90%;
-            max-width: 600px;
-            text-align: left;
-            line-height: 1.5;
-            box-sizing: border-box;
-        }
-        .trust-intro-box {
-            background: rgba(255, 235, 59, 0.15);
-            border-left: 4px solid #ffeb3b;
-            padding: 12px;
-            margin: 12px 0;
-            border-radius: 4px;
-            font-size: 0.95em;
-        }
-        .clean-features-list {
-            background: rgba(255,255,255,0.12); 
-            padding: 12px; 
-            border-radius: 8px; 
-            margin-top: 12px; 
-            font-size: 0.92em;
-        }
-        .clean-features-list div {
-            margin: 6px 0;
-        }
+        /* Base Styling */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f7f6; color: #333; padding: 20px; padding-bottom: 80px; }
+        .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; }
         
-        /* 🏢 HIGHLY VISIBLE BRAND BOX */
-        .brand-box {
-            background: #ffffff;
-            color: #1e293b;
-            padding: 15px;
-            font-weight: bold;
-            font-size: 0.95em;
-            border-radius: 10px;
-            margin: 15px auto;
-            width: 90%;
-            max-width: 600px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            border: 2px solid #e2e8f0;
-            text-align: center;
-            line-height: 1.6;
-            box-sizing: border-box;
-        }
-        .brand-highlight {
-            color: #0056b3;
-            background: #e0f2fe;
-            padding: 2px 6px;
-            border-radius: 4px;
-            display: inline-block;
-            margin: 2px;
-        }
+        /* Header */
+        header { text-align: center; margin-bottom: 25px; border-bottom: 2px solid #f0f0f0; padding-bottom: 15px; }
+        header h1 { color: #0076ff; font-size: 28px; }
+        header p { color: #666; font-size: 14px; margin-top: 5px; }
 
-        /* ⭐ 3-LINE RATING SCALE STYLE */
-        .rating-summary-box {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 400px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            color: #333;
-            box-sizing: border-box;
-        }
-        .scale-row {
-            display: flex;
-            align-items: center;
-            margin: 8px 0;
-            font-size: 0.88em;
-            font-weight: bold;
-            color: #475569;
-        }
-        .scale-label {
-            width: 55px;
-            text-align: left;
-        }
-        .scale-bar-bg {
-            flex-grow: 1;
-            background: #e2e8f0;
-            height: 10px;
-            border-radius: 5px;
-            margin: 0 10px;
-            overflow: hidden;
-        }
-        .scale-bar-fill {
-            background: #ff9800;
-            height: 100%;
-            border-radius: 5px;
-        }
-        .scale-percent {
-            width: 35px;
-            text-align: right;
-        }
+        /* Urgency Slot Banner */
+        .slot-banner { background: #ffebeb; color: #cc0000; padding: 10px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 14px; margin-bottom: 15px; border: 1px dashed #cc0000; }
+
+        /* 🛡️ Why Choose Us Section (Clickable) */
+        .trust-banner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; background: #ebf3ff; padding: 12px; border-radius: 8px; margin-bottom: 25px; text-align: center; }
+        .trust-item { font-size: 12px; font-weight: bold; color: #0056b3; cursor: pointer; transition: 0.2s; padding: 5px; border-radius: 4px; }
+        .trust-item:hover { background: #d6e7ff; }
+        .trust-item span { display: block; font-size: 20px; margin-bottom: 2px; }
+
+        /* Service Cards Section */
+        .section-title { font-size: 18px; margin-bottom: 15px; color: #222; border-left: 4px solid #0076ff; padding-left: 8px; }
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
+        .card { background: #fafafa; border: 1px solid #ebeeec; padding: 15px; border-radius: 8px; text-align: center; transition: 0.3s; }
+        .card:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .card .icon { font-size: 24px; margin-bottom: 8px; }
+        .card h3 { font-size: 15px; color: #333; margin-bottom: 5px; }
+        .card p { font-size: 12px; color: #777; }
+
+        /* 🛠️ Customer Feedback Section */
+        .feedback-section { margin-bottom: 25px; }
+        .feedback-card { background: #fff9e6; border-left: 4px solid #ffcc00; padding: 12px; border-radius: 4px; margin-bottom: 10px; }
+        .feedback-card p { font-size: 13px; font-style: italic; color: #444; }
+        .feedback-card .user { font-size: 12px; font-weight: bold; color: #222; margin-top: 5px; text-align: right; }
+        .stars { color: #ffcc00; font-size: 14px; margin-bottom: 3px; }
+
+        /* 📍 SEO Area Footer Section */
+        .seo-footer { background: #f9f9f9; padding: 15px; border-radius: 8px; border-top: 1px solid #eeeeee; margin-top: 25px; text-align: center; }
+        .seo-footer h4 { font-size: 13px; color: #555; margin-bottom: 8px; }
+        .seo-footer p { font-size: 11px; color: #888; line-height: 1.6; }
+
+        /* 🟢 Sticky Buttons Container */
+        .action-bar { position: fixed; bottom: 0; left: 0; right: 0; background: white; box-shadow: 0 -4px 10px rgba(0,0,0,0.1); padding: 12px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; z-index: 1000; }
+        .btn { padding: 12px; border-radius: 8px; font-weight: bold; text-decoration: none; text-align: center; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 6px; border: none; cursor: pointer; }
+        .whatsapp-btn { background-color: #25D366; color: white; }
+        .whatsapp-btn:hover { background-color: #128C7E; }
+        .pay-btn { background-color: #0076ff; color: white; }
+        .pay-btn:hover { background-color: #0056b3; }
+
+        /* 📦 Modal / Pop-up Styling */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: white; padding: 20px; border-radius: 12px; max-width: 400px; width: 100%; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.2); position: relative; }
+        .modal-content h3 { color: #0076ff; margin-bottom: 12px; font-size: 18px; }
+        .modal-content p { font-size: 14px; color: #555; line-height: 1.5; margin-bottom: 15px; }
+        .close-btn { background: #eee; padding: 8px 16px; border-radius: 6px; border: none; font-weight: bold; cursor: pointer; color: #333; }
+        .qr-img { width: 200px; height: 200px; margin: 10px auto; display: block; border: 1px solid #ddd; padding: 5px; }
     </style>
 </head>
 <body>
 
-    <div id="pwa-prompt">
-        <span>📲 Install Quickfix App for Faster Booking!</span>
-        <button id="pwa-btn">Install</button>
-    </div>
+    <div class="container">
+        <header>
+            <h1>Quickfix Mumbai</h1>
+            <p>My Expert Technicians | Over 15 Years of Industry Experience</p>
+        </header>
 
-    <div id="live-fomo" class="fomo-popup">
-        <span>🛠️</span>
-        <span id="fomo-text">Someone recently booked a service!</span>
-    </div>
-
-    <div class="greetings-banner">
-        <h3 style="margin-top: 0; color: #ffeb3b; font-size: 1.3em;">🛠️ 24/7 Quickfix Service & Repair Home Appliances</h3>
-        <p style="font-weight: bold; margin: 5px 0;">Greetings! 👋</p>
-        
-        <div class="trust-intro-box">
-            🚀 Welcome to <b>Quick Fix Mumbai Expert</b>, India's #1 trusted platform, revolutionising online Services, Repair, and Care since 2015. Trusted by over <b>89,957+ Families</b>! <br><br>
-            💼 We have above <b>10+ Years of Experience</b> in the service industry and a dedicated team of <b>50+ Company Expert Technicians</b>.
+        <div class="slot-banner" id="slotAlert">
+            ⚠️ Alert: Only <span id="slotCount">3</span> Booking Slots Left For Today!
         </div>
 
-        <p style="margin: 10px 0 5px 0; font-size: 0.95em;">Is your <b>Refrigerator</b> not cooling? Or is your <b>Washing Machine, Air Conditioner (AC), Microwave Oven, Dishwasher, Cloth Dryer, Air Dresser, or Inverter PCB Board</b> giving you trouble? Don't worry, we’ve got you covered!</p>
-        
-        <div class="clean-features-list">
-            <div>⚡ <b>✅ 24/7 Service</b> (Available day & night, whenever you need us)</div>
-            <div>👨‍💻 <b>✅ Expert Engineering & Technical Solutions</b></div>
-            <div>👨‍🔧 <b>✅ Certified Expert Technicians</b></div>
-            <div>💰 <b>✅ Affordable & Transparent Rates</b></div>
-            <div>📍 <b>✅ Special Doorstep Service</b> (At your convenience)</div>
+        <div class="trust-banner">
+            <div class="trust-item" onclick="openModal('serviceModal')"><span>⏱️</span>6-Month Warranty*</div>
+            <div class="trust-item" onclick="openModal('techModal')"><span>👨‍🛠️</span>Expert Techs*</div>
+            <div class="trust-item" onclick="openModal('ratesModal')"><span>💰</span>100% Reliable Parts*</div>
         </div>
-        <p style="margin: 12px 0 0 0; text-align: center; font-weight: bold; color: #fff;">Your Satisfaction, Our Responsibility! ✨</p>
+
+        <h2 class="section-title">Our Repair Services</h2>
+        <div class="services-grid">
+            <div class="card">
+                <div class="icon">🧺</div>
+                <h3>Washing Machine</h3>
+                <p>Top & Front Load</p>
+            </div>
+            <div class="card">
+                <div class="icon">❄️</div>
+                <h3>Refrigerator</h3>
+                <p>Single & Double Door</p>
+            </div>
+            <div class="card">
+                <div class="icon">💨</div>
+                <h3>Air Conditioner</h3>
+                <p>Split & Window AC</p>
+            </div>
+            <div class="card">
+                <div class="icon">🍲</div>
+                <h3>Microwave Oven</h3>
+                <p>All Brands Repair</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">What Our Customers Say</h2>
+        <div class="feedback-section">
+            <div class="feedback-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Mera fridge bilkul thandak nahi kar raha tha. Quickfix ke technician ne aakar 1 ghante me mast bana diya!"</p>
+                <div class="user">- Rahul, Andheri</div>
+            </div>
+            <div class="feedback-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Best washing machine repair service in Mumbai. No hidden charges and very professional behavior."</p>
+                <div class="user">- Priya, Borivali</div>
+            </div>
+        </div>
+
+        <div class="seo-footer">
+            <h4>Our Service Hubs in Mumbai:</h4>
+            <p>
+                <strong>South Mumbai:</strong> Colaba, Marine Drive, Malabar Hill, Cuffe Parade, Breach Candy, Dadar, Worli, Lower Parel. <br>
+                <strong>Western Suburbs:</strong> Bandra West, Bandra East, Khar, Santacruz, Juhu, Andheri West, Andheri East, Goregaon, Malad, Kandivali, Borivali. <br>
+                <strong>Central & Thane:</strong> Ghatkopar, Kurla, Powai, Mulund, Chembur, Thane Central, Vashi, Navi Mumbai.
+            </p>
+        </div>
     </div>
 
-    <div class="brand-box">
-        ⚙️ All Major Brands Professionally Repaired:<br>
-        <span class="brand-highlight">Samsung</span>
-        <span class="brand-highlight">LG</span>
-        <span class="brand-highlight">Whirlpool</span>
-        <span class="brand-highlight">Bosch</span>
-        <span class="brand-highlight">IFB</span>
-        <span class="brand-highlight">Godrej</span>
-        <span class="brand-highlight">Panasonic</span>
-        <span class="brand-highlight">Haier</span>
-        <span class="brand-highlight">Voltas</span>
-        <span class="brand-highlight">Daikin</span>
-        <span class="brand-highlight">Siemens</span>
-    </div>
-
-    <div class="emergency-wrapper">
-        <h2 style="color: white; margin: 0; font-size: 1.5em;">🚨 24/7 EMERGENCY REPAIR</h2>
-        <p style="color: white; font-weight: bold; margin: 5px 0 0 0;">Need instant help? Share your issue now!</p>
-        <a href="https://wa.me/919594406045?text=EMERGENCY!%20I%20need%20urgent%20repair." style="display: block; background: white; color: red; padding: 15px; margin-top: 12px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; box-shadow: 0 4px 6px rgba(0,0,0,0.2); text-align: center;">
-           📸 Tap to Share Photo/Video/Voice
+    <div class="action-bar">
+        <button class="btn pay-btn" onclick="openModal('paymentModal')">
+            💳 Pay Owner Securely
+        </button>
+        <a href="https://wa.me/919999999999?text=Hello%20Quickfix%20Mumbai%2c%20muhje%20appliance%20repair%20ki%20enquiry%20karni%20hai" 
+           class="btn whatsapp-btn" target="_blank" onclick="reduceSlot()">
+            💬 Book on WhatsApp
         </a>
     </div>
 
-    <div class="scarcity-status-bar">
-        <span class="live-dot"></span>
-        <span id="live-slots-top">Today's Availability: Only 3 urgent slots left</span>
-    </div>
-
-    <div class="trust-badges">
-        <div class="badge-item">💯<span>Genuine Parts</span></div>
-        <div class="badge-item">🛡️<span>6 Months Warranty</span></div>
-        <div class="badge-item">🔄<span>Free Revisit If Re-problem</span></div>
-        <div class="badge-item">👨‍🔧<span>Expert Techs</span></div>
-    </div>
-
-    <div class="grid">
-        <div class="card" id="card-Refrigerator" onclick="toggleCard('Refrigerator')">
-            <div class="card-header-info">
-                <img src="https://cdn-icons-png.flaticon.com/512/2928/2928929.png" class="main-icon" alt="Refrigerator">
-                <span class="main-title">Refrigerator (Fridge)</span>
-                <div class="arrow-icon">➔</div>
-            </div>
-            <div class="inner-content" id="content-Refrigerator" onclick="event.stopPropagation();">
-                <div class="inner-slideshow" id="slidebox-Refrigerator"></div>
-                <div class="problem-container" id="problems-Refrigerator"></div>
-                <button onclick="openPaymentGateway('Refrigerator')" class="btn-inner-book">⚡ Book Refrigerator Repair</button>
-            </div>
-        </div>
-
-        <div class="card" id="card-WashingMachine" onclick="toggleCard('WashingMachine')">
-            <div class="card-header-info">
-                <img src="https://cdn-icons-png.flaticon.com/512/2928/2928941.png" class="main-icon" alt="Washing Machine">
-                <span class="main-title">Washing Machine</span>
-                <div class="arrow-icon">➔</div>
-            </div>
-            <div class="inner-content" id="content-WashingMachine" onclick="event.stopPropagation();">
-                <div class="inner-slideshow" id="slidebox-WashingMachine"></div>
-                <div class="problem-container" id="problems-WashingMachine"></div>
-                <button onclick="openPaymentGateway('Washing Machine')" class="btn-inner-book">⚡ Book Washing Machine Repair</button>
-            </div>
-        </div>
-
-        <div class="card" id="card-AirConditioner" onclick="toggleCard('AirConditioner')">
-            <div class="card-header-info">
-                <img src="https://cdn-icons-png.flaticon.com/512/9114/9114059.png" class="main-icon" alt="Air Conditioner">
-                <span class="main-title">Air Conditioner (AC)</span>
-                <div class="arrow-icon">➔</div>
-            </div>
-            <div class="inner-content" id="content-AirConditioner" onclick="event.stopPropagation();">
-                <div class="inner-slideshow" id="slidebox-AirConditioner"></div>
-                <div class="problem-container" id="problems-AirConditioner"></div>
-                <button onclick="openPaymentGateway('Air Conditioner (AC)')" class="btn-inner-book">⚡ Book AC Service & Repair</button>
-            </div>
-        </div>
-
-        <div class="card" id="card-PCB" onclick="toggleCard('PCB')">
-            <div class="card-header-info">
-                <img src="https://cdn-icons-png.flaticon.com/512/4115/4115161.png" class="main-icon" alt="PCB Repair">
-                <span class="main-title">Advanced PCB Repairing</span>
-                <div class="arrow-icon">➔</div>
-            </div>
-            <div class="inner-content" id="content-PCB" onclick="event.stopPropagation();">
-                <div class="inner-slideshow" id="slidebox-PCB"></div>
-                <div class="problem-container" id="problems-PCB"></div>
-                <button onclick="openPaymentGateway('Advanced PCB Repair')" class="btn-inner-book">⚡ Book Motherboard/PCB Repair</button>
-            </div>
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <h3>6 Months Secured Warranty</h3>
+            <p>Our 6-month warranty applies fully to the newly replaced spare parts. If the exact same part fails within 180 days, we replace it again with zero service fees.</p>
+            <button class="close-btn" onclick="closeModal('serviceModal')">Close</button>
         </div>
     </div>
 
-    <div class="booking-box">
-        <div style="margin-bottom: 10px;">
-            <h3>Advance Booking</h3>
-        </div>
-        <p>Get <span id="dynamic-disc-text" style="color: #ffeb3b; font-weight: bold;">Flat 50% OFF</span> on Next Day Service!</p>
-        <p id="slots-left-text" style="font-size:0.9em; color:#e0e0e0;">🔥 Only 2 slots left for tomorrow!</p>
-        <input type="date" id="date">
-        <select id="item">
-            <option>Refrigerator</option>
-            <option>Washing Machine</option>
-            <option>Air Conditioner (AC)</option>
-            <option>Advanced PCB Repairing</option>
-        </select>
-        <textarea id="desc" rows="2" placeholder="Your Problem (Optional)"></textarea>
-        <button onclick="openPaymentGatewayFromForm()" class="btn-call btn-wa">Proceed to Pay & Book</button>
-    </div>
-
-    <div id="paymentModal" class="pay-modal">
-        <div class="pay-modal-content">
-            <span class="close-pay" onclick="closePaymentGateway()">&times;</span>
-            <h3 style="margin-top: 5px; color: #007bff;">🔒 Secure UPI Checkout</h3>
-            <p style="font-size: 0.9em; margin-bottom: 12px;">Selected Item: <strong id="modal-item-name">-</strong></p>
-            <p style="font-size: 0.85em; color: #28a745; font-weight: bold; margin: -5px 0 10px 0;">🛡️ Includes 6 Months Warranty + Free Revisit</p>
-            
-            <div style="background:#007bff; color:white; padding:10px; font-weight:bold; border-radius:5px; margin-bottom:15px;">
-                Visiting Charge: ₹149
-            </div>
-
-            <div class="customer-inputs">
-                <input type="text" id="pay-cust-name" placeholder="Enter Your Full Name" required>
-                <input type="tel" id="pay-cust-phone" placeholder="Enter Contact Number" required>
-                <textarea id="pay-cust-address" rows="2" placeholder="Enter Complete Area / Address Location" required></textarea>
-                
-                <select id="pay-cust-slot" required>
-                    <option value="" disabled selected>⏰ Choose Discussion Time Slot</option>
-                    <option value="Morning Slot (10:00 AM - 01:00 PM)">🌅 Morning Slot (10:00 AM - 01:00 PM)</option>
-                    <option value="Afternoon Slot (01:00 PM - 04:00 PM)">☀️ Afternoon Slot (01:00 PM - 04:00 PM)</option>
-                    <option value="Evening/Night Slot (04:00 PM - 09:00 PM)">🌆 Evening/Night Slot (04:00 PM - 09:00 PM)</option>
-                </select>
-            </div>
-
-            <div class="qr-placeholder" onclick="openDirectUPIApp()" style="cursor: pointer;">
-                <img id="dynamic-qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=9930249182@okbizaxis" alt="UPI QR Code" style="width: 170px; height: 170px; display:block; margin:0 auto;">
-                <p style="margin: 8px 0 0 0; font-size: 0.85em; font-weight: bold; color: #007bff;">Scan with GPay, PhonePe or Paytm</p>
-                <p style="margin: 3px 0 0 0; font-size: 0.75em; color: #555;">(Mobile Users: Tap here to pay directly)</p>
-            </div>
-
-            <p style="font-size: 0.85em; color: #e53935; font-weight: bold; margin-bottom: 12px;">⚠️ Please take a screenshot of payment after success.</p>
-            <button onclick="confirmAndSendWhatsApp()" class="verify-pay-btn" style="background:#28a745;">Done? Confirm Booking on WhatsApp</button>
+    <div id="techModal" class="modal">
+        <div class="modal-content">
+            <h3>Verified Expert Technicians</h3>
+            <p>All Quickfix technicians carry a minimum of 10+ years of active field experience. They are background-verified, localized in Mumbai, and specialize in premium multi-brand diagnostic repairs.</p>
+            <button class="close-btn" onclick="closeModal('techModal')">Close</button>
         </div>
     </div>
 
-    <div class="feedback-box">
-        <h3>📝 Service Feedback</h3>
-        <input type="text" id="cust-name" placeholder="Your Name" required>
-        <select id="recommend">
-            <option value="Yes, absolutely!">Yes, absolutely! 👍</option>
-            <option value="Maybe">Maybe 🤔</option>
-        </select>
-        <textarea id="feed-msg" rows="3" placeholder="Write experience here..." required></textarea>
-        <button onclick="sendFeedback()" class="btn-call btn-submit-feedback">Submit Feedback</button>
-    </div>
-
-    <div class="rating-summary-box">
-        <h3 style="margin-top: 0; color: #1e293b; font-size: 1.2em;">Customer Ratings</h3>
-        <div style="font-size: 3.2em; font-weight: bold; color: #ff9800; line-height: 1; margin-bottom:5px;">4.9</div>
-        <div style="color: #ff9800; font-size: 1.4em; margin: 5px 0;">★★★★★</div>
-        <p style="color: #64748b; font-size: 0.85em; margin: -2px 0 15px 0;">Based on <b>89,957+</b> successful repairs in Mumbai</p>
-        
-        <div class="scale-row">
-            <span class="scale-label">5 Stars</span>
-            <div class="scale-bar-bg"><div class="scale-bar-fill" style="width: 97%;"></div></div>
-            <span class="scale-percent">97%</span>
-        </div>
-        <div class="scale-row">
-            <span class="scale-label">4 Stars</span>
-            <div class="scale-bar-bg"><div class="scale-bar-fill" style="width: 2%;"></div></div>
-            <span class="scale-percent">2%</span>
-        </div>
-        <div class="scale-row">
-            <span class="scale-label">3 Stars</span>
-            <div class="scale-bar-bg"><div class="scale-bar-fill" style="width: 1%;"></div></div>
-            <span class="scale-percent">1%</span>
+    <div id="ratesModal" class="modal">
+        <div class="modal-content">
+            <h3>100% Compatible Reliable Parts</h3>
+            <p>We source only high-quality certified components. In rare cases where strict original brand stock is restricted, we install premium-grade fully compatible parts to ensure your machine runs safely.</p>
+            <button class="close-btn" onclick="closeModal('ratesModal')">Close</button>
         </div>
     </div>
 
-    <div class="fixed-call-container">
-        <a href="tel:+919594406045" class="btn-call" style="background: #00c853; text-align:center; display:block; text-decoration:none; color:white; font-weight:bold; padding:15px; border-radius:10px;">📞 Call Now: 9594406045</a>
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <h3>Quickfix Official Secure Payment</h3>
+            <p>To avoid technician discrepancy, please scan the official company QR below to transfer payment directly to the owner.</p>
+            <img src="https://via.placeholder.com/200" alt="Official Owner QR Code" class="qr-img">
+            <p style="font-size: 12px; color: #777;">Authorized Platform Holder Verification Secured.</p>
+            <button class="close-btn" onclick="closeModal('paymentModal')">Close</button>
+        </div>
     </div>
 
-    <script src="script.js"></script>
     <script>
-        let currentSelectedService = 'General Repair';
-        let currentAmount = 149; 
-        const MY_UPI_ID = "9930249182@okbizaxis"; 
-        const BUSINESS_NAME = "Quickfix Mumbai";
+        // Modal Control Functions
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-        function generateSmartQR(service, amount) {
-            let encodedName = encodeURIComponent(BUSINESS_NAME);
-            let encodedNote = encodeURIComponent("Visiting Fee: " + service);
-            let upiUrl = `upi://pay?pa=${MY_UPI_ID}&pn=${encodedName}&am=${amount}&tn=${encodedNote}&cu=INR`;
-            let qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`;
-            document.getElementById('dynamic-qr-img').src = qrUrl;
-        }
-
-        function openDirectUPIApp() {
-            let encodedName = encodeURIComponent(BUSINESS_NAME);
-            let encodedNote = encodeURIComponent("Visiting Fee: " + currentSelectedService);
-            let upiLink = `upi://pay?pa=${MY_UPI_ID}&pn=${encodedName}&am=${currentAmount}&tn=${encodedNote}&cu=INR`;
-            window.location.href = upiLink;
-        }
-
-        function openPaymentGateway(serviceName) {
-            currentSelectedService = serviceName;
-            document.getElementById('modal-item-name').innerText = serviceName;
-            generateSmartQR(serviceName, 149);
-            document.getElementById('paymentModal').style.display = 'block';
-        }
-
-        function openPaymentGatewayFromForm() {
-            let selectedFormItem = document.getElementById('item').value;
-            let customDesc = document.getElementById('desc').value;
-            let serviceWithDesc = selectedFormItem + (customDesc ? ` (${customDesc})` : '');
-            openPaymentGateway(serviceWithDesc);
-        }
-
-        function closePaymentGateway() {
-            document.getElementById('paymentModal').style.display = 'none';
-        }
-
-        function confirmAndSendWhatsApp() {
-            let cName = document.getElementById('pay-cust-name').value.trim();
-            let cPhone = document.getElementById('pay-cust-phone').value.trim();
-            let cAddress = document.getElementById('pay-cust-address').value.trim();
-            let cSlot = document.getElementById('pay-cust-slot').value;
-            let targetDate = document.getElementById('date').value || 'Urgent / Today';
-
-            if(!cName || !cPhone || !cAddress || !cSlot) {
-                alert("Please fill all details and select a time slot!");
-                return;
+        // Dynamic If-Else Slot Reducer
+        function reduceSlot() {
+            let currentSlots = parseInt(document.getElementById('slotCount').innerText);
+            
+            // IF-ELSE logical validation
+            if (currentSlots > 1) {
+                currentSlots -= 1;
+                document.getElementById('slotCount').innerText = currentSlots;
+            } else {
+                // If slots reach 0 or full threshold
+                document.getElementById('slotAlert').innerHTML = "🛑 Today's official booking slots are full! Booking now open for tomorrow morning.";
+                document.getElementById('slotAlert').style.background = "#fff0f0";
+                document.getElementById('slotAlert').style.color = "#d93838";
             }
-
-            let message = `*NEW BOOKING CONFIRMED (QUICKFIX)*\n\n` +
-                          `👤 *Customer Name:* ${cName}\n` +
-                          `📞 *Contact Number:* ${cPhone}\n` +
-                          `📍 *Location/Address:* ${cAddress}\n` +
-                          `🛠️ *Machine/Problem:* ${currentSelectedService}\n` +
-                          `📅 *Preferred Date:* ${targetDate}\n` +
-                          `⏰ *Selected Time Slot:* ${cSlot}\n\n` +
-                          `💳 *Payment Status:* ₹149 Paid Successfully via UPI\n` +
-                          `🛡️ *Warranty:* 6 Months Warranty Activated.`;
-
-            window.location.href = `https://wa.me/919594406045?text=${encodeURIComponent(message)}`;
         }
     </script>
+
 </body>
 </html>
