@@ -340,36 +340,57 @@
         <p>&copy; 2026 QuickFix Mumbai. Professional Multi-Brand Technical Services.</p>
     </footer>
 
-    <script>
-        // Live Counter Animation (Point 8)
-        setInterval(() => {
-            // Live active technician counter randomly fluctuates between 45 and 55 to look completely organic
-            const randomTechs = Math.floor(Math.random() * (55 - 45 + 1)) + 45;
-            document.getElementById('activeTechs').innerText = randomTechs;
-        }, 4000);
+    // Live Counter Animation (Active Techs)
+setInterval(() => {
+    const randomTechs = Math.floor(Math.random() * (55 - 45 + 1)) + 45;
+    document.getElementById('activeTechs').innerText = randomTechs;
+}, 4000);
 
-        // Emergency Form Processing
-        document.getElementById('emergencyForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('emName').value;
-            const phone = document.getElementById('emPhone').value;
-            const area = document.getElementById('emArea').value;
-            
-            alert(`🚨 EMERGENCY ALARM RAISED! 🚨\n\nHello ${name}, emergency repair request dispatch ho chuka hai. Hamara verified technician agle 90 minutes ke andar aapke area (${area}) me call karega.`);
-            this.reset();
-        });
+// YAHA APNA WHATSAPP NUMBER LIKHEIN (With Country Code, bina '+' sign ke)
+const MY_WHATSAPP_NUMBER = "919876543210"; 
 
-        // Routine Booking Processing
-        document.getElementById('routineBookingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('custName').value;
-            const item = document.getElementById('custItem').value;
-            const brand = document.getElementById('custBrand').value;
+// 1. Emergency Form Processing (Direct to WhatsApp)
+document.getElementById('emergencyForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('emName').value;
+    const phone = document.getElementById('emPhone').value;
+    const area = document.getElementById('emArea').value;
+    
+    // WhatsApp Message Format
+    const message = `🚨 *EMERGENCY REPAIR REQUEST* 🚨%0A%0A` +
+                    `👤 *Name:* ${name}%0A` +
+                    `📞 *Phone:* ${phone}%0A` +
+                    `📍 *Location:* ${area}%0A` +
+                    `⏱️ *Target:* 90-Min Emergency`;
+    
+    // WhatsApp open karne ka link
+    window.open(`https://api.whatsapp.com/send?phone=${MY_WHATSAPP_NUMBER}&text=${message}`, '_blank');
+    this.reset();
+});
 
-            alert(`Thank you, ${name}!\nAapka ${brand} ${item} ke liye schedule complete ho gaya hai. Hum 6-Month Free Re-visit commitment ke saath kaam shuru karenge.`);
-            this.reset();
-        });
-    </script>
+// 2. Routine Booking Processing (Direct to WhatsApp)
+document.getElementById('routineBookingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('custName').value;
+    const phone = document.getElementById('custPhone').value;
+    const item = document.getElementById('custItem').value;
+    const brand = document.getElementById('custBrand').value;
+    const address = document.getElementById('custAddress').value;
+
+    // WhatsApp Message Format
+    const message = `🛠️ *NEW BOOKING RECEIVED* 🛠️%0A%0A` +
+                    `👤 *Customer Name:* ${name}%0A` +
+                    `📞 *Contact Number:* ${phone}%0A` +
+                    `🏷️ *Brand:* ${brand}%0A` +
+                    `📦 *Appliance:* ${item}%0A` +
+                    `🏠 *Address:* ${address}%0A%0A` +
+                    `📜 *Warranty:* 6-Month Free Re-visit Promise Verified.`;
+
+    // WhatsApp open karne ka link
+    window.open(`https://api.whatsapp.com/send?phone=${MY_WHATSAPP_NUMBER}&text=${message}`, '_blank');
+    this.reset();
+});
+
 </body>
 </html>
 
