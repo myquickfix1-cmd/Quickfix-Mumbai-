@@ -24,81 +24,160 @@
         select, input, button { padding: 8px 12px; border-radius: 6px; border: 1px solid #ced4da; margin-right: 5px; }
         button { background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; }
         button:hover { background: #0056b3; }
+
+        /* --- LOGIN POPUP STYLES --- */
+        .login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #eef2f7; display: flex; justify-content: center; align-items: center; z-index: 9999; }
+        .login-box { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 350px; text-align: center; }
+        .login-box h2 { border: none; padding: 0; margin-bottom: 20px; }
+        .login-box input { width: 90%; margin-bottom: 15px; padding: 10px; display: block; margin-left: auto; margin-right: auto; }
+        .login-box button { width: 96%; padding: 12px; font-size: 1rem; }
+        .error-msg { color: red; font-size: 0.9rem; margin-top: 10px; display: none; }
+        .logout-btn { background: #dc3545; }
+        .logout-btn:hover { background: #bd2130; }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h2>🚀 Quickfix Mumbai Command Center</h2>
-        <div>Logged in as: <strong>Admin (Owner)</strong></div>
-    </div>
-
-    <!-- Live Performance Stats -->
-    <div class="grid-stats">
-        <div class="stat-card">
-            <h3>Total Bookings Today</h3>
-            <p id="total-jobs">0</p>
-        </div>
-        <div class="stat-card earnings">
-            <h3>Today's Collection</h3>
-            <p id="total-revenue">₹0</p>
-        </div>
-        <div class="stat-card" style="border-left-color: #ffc107;">
-            <h3>Active Workers Online</h3>
-            <p id="active-workers">0</p>
+    <!-- 1. LOGIN SCREEN OVERLAY -->
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-box">
+            <h2>🔐 Admin Login</h2>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Log In</button>
+                <p id="errorMsg" class="error-msg">⚠️ Wrong Username or Password!</p>
+            </form>
         </div>
     </div>
 
-    <!-- Section 1: Live Bookings & Assignment -->
-    <div class="section">
-        <h2>📅 Live Customer Bookings</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Customer / Service</th>
-                    <th>Date</th>
-                    <th>Payment</th>
-                    <th>Assign Technician</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody id="admin-booking-table">
-                <!-- Data will load here dynamically -->
-                <tr>
-                    <td><strong>Rohan Sharma</strong><br><small>Inverter AC PCB Repair</small></td>
-                    <td>26-May-2026</td>
-                    <td><span class="badge badge-success">Paid ₹199 (Advance)</span></td>
-                    <td>
-                        <select onchange="assignWorker(this)">
-                            <option>Select Worker</option>
-                            <option value="W1">Amit (AC Expert)</option>
-                            <option value="W2">Suresh (PCB Specialist)</option>
-                        </select>
-                    </td>
-                    <td><span class="badge badge-pending">Pending Assignment</span></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Section 2: Smart Inventory Management -->
-    <div class="section">
-        <h2>📦 Spare Parts Inventory Stock</h2>
-        <div style="margin-bottom: 15px;">
-            <input type="text" id="part-name" placeholder="Part Name (e.g., AC Capacitor)">
-            <input type="number" id="part-qty" placeholder="Quantity" style="width: 80px;">
-            <button onclick="addInventory()">Add Item</button>
+    <!-- 2. ACTUAL DASHBOARD CONTENT -->
+    <div id="dashboardContent" style="display: none;">
+        <div class="header">
+            <h2>🚀 Quickfix Mumbai Command Center</h2>
+            <div>
+                Logged in as: <strong>Admin (Owner)</strong>
+                <button class="logout-btn" onclick="logoutAdmin()" style="margin-left: 15px; padding: 5px 10px; font-size: 0.85rem;">Logout</button>
+            </div>
         </div>
-        <table>
-            <thead>
-                <tr><th>Item Name</th><th>Available Stock</th><th>Status</th></tr>
-            </thead>
-            <tbody id="inventory-table">
-                <tr><td>Inverter AC PCB Board (Universal)</td><td>5 Units</td><td><span class="badge badge-success">In Stock</span></td></tr>
-                <tr><td>R32 Gas Cylinder (AC)</td><td>2 Left</td><td><span class="badge badge-pending">Low Stock</span></td></tr>
-            </tbody>
-        </table>
+
+        <!-- Live Performance Stats -->
+        <div class="grid-stats">
+            <div class="stat-card">
+                <h3>Total Bookings Today</h3>
+                <p id="total-jobs">0</p>
+            </div>
+            <div class="stat-card earnings">
+                <h3>Today's Collection</h3>
+                <p id="total-revenue">₹0</p>
+            </div>
+            <div class="stat-card" style="border-left-color: #ffc107;">
+                <h3>Active Workers Online</h3>
+                <p id="active-workers">0</p>
+            </div>
+        </div>
+
+        <!-- Section 1: Live Bookings & Assignment -->
+        <div class="section">
+            <h2>📅 Live Customer Bookings</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer / Service</th>
+                        <th>Date</th>
+                        <th>Payment</th>
+                        <th>Assign Technician</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-booking-table">
+                    <tr>
+                        <td><strong>Rohan Sharma</strong><br><small>Inverter AC PCB Repair</small></td>
+                        <td>26-May-2026</td>
+                        <td><span class="badge badge-success">Paid ₹199 (Advance)</span></td>
+                        <td>
+                            <select onchange="assignWorker(this)">
+                                <option>Select Worker</option>
+                                <option value="W1">Amit (AC Expert)</option>
+                                <option value="W2">Suresh (PCB Specialist)</option>
+                            </select>
+                        </td>
+                        <td><span class="badge badge-pending">Pending Assignment</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Section 2: Smart Inventory Management -->
+        <div class="section">
+            <h2>📦 Spare Parts Inventory Stock</h2>
+            <div style="margin-bottom: 15px;">
+                <input type="text" id="part-name" placeholder="Part Name (e.g., AC Capacitor)">
+                <input type="number" id="part-qty" placeholder="Quantity" style="width: 80px;">
+                <button onclick="addInventory()">Add Item</button>
+            </div>
+            <table>
+                <thead>
+                    <tr><th>Item Name</th><th>Available Stock</th><th>Status</th></tr>
+                </thead>
+                <tbody id="inventory-table">
+                    <tr><td>Inverter AC PCB Board (Universal)</td><td>5 Units</td><td><span class="badge badge-success">In Stock</span></td></tr>
+                    <tr><td>R32 Gas Cylinder (AC)</td><td>2 Left</td><td><span class="badge badge-pending">Low Stock</span></td></tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
+    <!-- 3. LOGIN & UTILITY JAVASCRIPT -->
+    <script>
+        // Yahan aap apna username aur password badal sakte hain
+        const LOGIN_USER = "admin";
+        const LOGIN_PASS = "quickfix321"; // Ise apna secret password bana lein
+
+        const loginOverlay = document.getElementById('loginOverlay');
+        const dashboardContent = document.getElementById('dashboardContent');
+        const loginForm = document.getElementById('loginForm');
+        const errorMsg = document.getElementById('errorMsg');
+
+        // Check login session on load
+        if (sessionStorage.getItem('quickfix_admin_logged') === 'true') {
+            loginOverlay.style.display = 'none';
+            dashboardContent.style.display = 'block';
+        }
+
+        // Handle Login Submission
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            if (user === LOGIN_USER && pass === LOGIN_PASS) {
+                sessionStorage.setItem('quickfix_admin_logged', 'true');
+                loginOverlay.style.display = 'none';
+                dashboardContent.style.display = 'block';
+                errorMsg.style.display = 'none';
+            } else {
+                errorMsg.style.display = 'block';
+            }
+        });
+
+        // Logout Function
+        function logoutAdmin() {
+            sessionStorage.removeItem('quickfix_admin_logged');
+            window.location.reload();
+        }
+
+        // Placeholder functions for existing buttons to prevent errors
+        function assignWorker(selectElement) {
+            alert("Worker assigned: " + selectElement.value);
+        }
+        function addInventory() {
+            const name = document.getElementById('part-name').value;
+            const qty = document.getElementById('part-qty').value;
+            if(name && qty) {
+                alert("Added " + qty + " units of " + name);
+            }
+        }
+    </script>
 </body>
 </html>
