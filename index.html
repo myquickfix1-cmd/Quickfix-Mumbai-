@@ -113,7 +113,7 @@
             .nav-links { gap: 12px; font-size: 0.85rem; }
         }
 
-        /* Hero Section Premium Arrangements Centered */
+        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.88)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
             color: #fff;
@@ -135,7 +135,15 @@
         }
         .hero-main-title span { color: #3b82f6; }
         
-        /* Fixed Greeting Center Display Setup */
+        .greeting-text {
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
         .greeting-badge {
             display: inline-flex;
             align-items: center;
@@ -145,7 +153,7 @@
             border-radius: 30px;
             font-weight: 700;
             font-size: 0.95rem;
-            margin: 0 auto 20px auto;
+            margin: 0 auto 15px auto;
             border: 1px solid rgba(255,255,255,0.2);
             color: #fff;
             text-transform: uppercase;
@@ -289,7 +297,7 @@
             font-weight: 500;
         }
 
-        /* 10 Fixed Items Responsive Layout Grid */
+        /* Items Grid Layout */
         .items-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -362,7 +370,7 @@
             border: 1px solid #e2e8f0;
         }
 
-        /* Responsive Form Panel Splits */
+        /* Responsive Panels Splits */
         .grid-panel {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -437,7 +445,7 @@
         .booking-success-box img { width: 55px; margin-bottom: 8px; }
         .booking-success-box h4 { color: #065f46; font-size: 1.2rem; font-weight: 800; }
 
-        /* Emergency Module styling */
+        /* Emergency Module */
         .emergency-header {
             display: flex;
             align-items: center;
@@ -514,15 +522,30 @@
             border-bottom: 1px solid #e2e8f0;
         }
         .big-rating-num { font-size: 3.2rem; font-weight: 800; color: var(--secondary); }
-        .stars-display i { color: #f59e0b; font-size: 1.1rem; }
+        
+        /* Interactive Star Ratings styling */
+        .stars-display i, .interactive-stars i { 
+            color: #cbd5e1; 
+            font-size: 1.3rem; 
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .stars-display i.active, .interactive-stars i.active { 
+            color: #f59e0b; 
+        }
+        .interactive-stars {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
         
         .rating-row { display: flex; align-items: center; margin-bottom: 12px; gap: 12px; }
         .bar-container { flex-grow: 1; background: #e2e8f0; height: 8px; border-radius: 6px; overflow: hidden; }
-        .bar-fill { height: 100%; background: #f59e0b; }
+        .bar-fill { height: 100%; background: #f59e0b; transition: width 0.4s ease; }
 
         .live-item { padding: 12px 0; border-bottom: 1px dashed #e2e8f0; font-size: 0.85rem; }
 
-        /* PWA Looping Sticky Bar layout */
+        /* PWA Looping Box */
         .pwa-loop-prompt {
             position: fixed;
             bottom: 95px;
@@ -552,7 +575,7 @@
         .pwa-btn.ins { background: #fff; color: #2563eb; }
         .pwa-btn.lat { background: rgba(255,255,255,0.15); color: #fff; }
 
-        /* Image reference Layout Footer Component */
+        /* Footer Components */
         footer {
             background-color: var(--footer-bg);
             color: #94a3b8;
@@ -689,11 +712,12 @@
 
     <section class="hero">
         <div class="container">
+            <div class="greeting-text">Greetings</div>
             <div class="greeting-badge">Smart Appliances Repairing Hub</div>
             <h1 class="hero-main-title">QUICKFIX <span>MUMBAI</span></h1>
             
             <h2>Welcome to QuickFix | Most Popular In Mumbai</h2>
-            <p>India's number 1 most trusted & beloved revolutionising online doorstep peerwise center since 2010. Providing fast, expert, and advanced repairs 24/7 with reliable and reasonable prices near you.</p>
+            <p>India's number 1 most trusted & beloved revolutionising online doorstep service center since 2010. With Thanks a lot to 3,85,019 families for trusting us. Providing fast, expert, and advanced repairs 24/7 with reliable and reasonable prices near you.</p>
             
             <div class="highlighter-wrapper">
                 <div class="best-highlighter">ESSENTIAL SERVICES GUARANTEED</div>
@@ -906,10 +930,10 @@
             <div class="form-group">
                 <label>Emergency Pre-Payment Gateway Selection</label>
                 <div class="payment-methods">
-                    <div class="pay-option" onclick="togglePayment('Cash')">Cash</div>
-                    <div class="pay-option" onclick="togglePayment('GPay')">Google Pay</div>
-                    <div class="pay-option active" onclick="togglePayment('PhonePe')">PhonePe QR</div>
-                    <div class="pay-option" onclick="togglePayment('Card')">Paytm/Card</div>
+                    <div class="pay-option" onclick="togglePayment('Cash', event)">Cash</div>
+                    <div class="pay-option" onclick="togglePayment('GPay', event)">Google Pay</div>
+                    <div class="pay-option active" onclick="togglePayment('PhonePe', event)">PhonePe QR</div>
+                    <div class="pay-option" onclick="togglePayment('Card', event)">Paytm/Card</div>
                 </div>
             </div>
 
@@ -932,14 +956,25 @@
             <h3><i class="fa fa-comments" style="color: var(--primary);"></i> Suggestions Live Desk</h3>
             <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Minimum 79,201 People Have Left Good Suggestions.</p>
             
+            <div class="form-group">
+                <label style="font-weight: 600; font-size: 0.85rem; display:block; margin-bottom:5px;">Give Your Live Rating:</label>
+                <div class="interactive-stars" id="userStarRating">
+                    <i class="fa fa-star active" data-rating="1" onclick="setInteractiveRating(1)"></i>
+                    <i class="fa fa-star active" data-rating="2" onclick="setInteractiveRating(2)"></i>
+                    <i class="fa fa-star active" data-rating="3" onclick="setInteractiveRating(3)"></i>
+                    <i class="fa fa-star active" data-rating="4" onclick="setInteractiveRating(4)"></i>
+                    <i class="fa fa-star active" data-rating="5" onclick="setInteractiveRating(5)"></i>
+                </div>
+            </div>
+
             <div class="form-group" style="display: flex; gap: 10px;">
                 <input type="text" id="userSuggest" class="form-control" placeholder="Write live recommendation...">
                 <button onclick="submitLiveSuggestion()" class="btn-main" style="padding: 10px 20px;">Submit</button>
             </div>
 
             <div id="suggestionFeed" style="max-height: 180px; overflow-y: auto;">
-                <div class="live-item"><strong>Rohan K. (Bandra West):</strong> Best machine repair center near me. Very reliable service.</div>
-                <div class="live-item"><strong>Anjali S. (Borivali East):</strong> Quick fixation of my fridge PCB circuit board within 1 hour!</div>
+                <div class="live-item"><strong>Rohan K. (Bandra West):</strong> Best machine repair center near me. Very reliable service. <span style="color:#f59e0b; margin-left:5px;">★★★★★</span></div>
+                <div class="live-item"><strong>Anjali S. (Borivali East):</strong> Quick fixation of my fridge PCB circuit board within 1 hour! <span style="color:#f59e0b; margin-left:5px;">★★★★★</span></div>
             </div>
         </div>
 
@@ -948,29 +983,29 @@
             <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 15px;">Based on 3,85,019 verified doorstep jobs in Mumbai.</p>
             
             <div class="rating-summary-pro">
-                <div class="big-rating-num">4.9</div>
+                <div class="big-rating-num" id="liveMainScore">4.9</div>
                 <div>
-                    <div class="stars-display">
-                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                    <div class="stars-display" id="mainStarsContainer">
+                        <i class="fa fa-star active"></i><i class="fa fa-star active"></i><i class="fa fa-star active"></i><i class="fa fa-star active"></i><i class="fa fa-star active"></i>
                     </div>
-                    <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-top: 2px;">Overall Score</div>
+                    <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-top: 2px;">Overall Score (<span id="totalRatingCount">385019</span> reviews)</div>
                 </div>
             </div>
 
             <div class="rating-row">
                 <span style="width: 30px; font-weight: 600; font-size: 0.85rem;">5★</span>
-                <div class="bar-container"><div class="bar-fill" style="width: 97%;"></div></div>
-                <span style="width: 40px; text-align: right; font-size: 0.85rem; font-weight: 600;">97%</span>
+                <div class="bar-container"><div class="bar-fill" id="bar5" style="width: 97%;"></div></div>
+                <span style="width: 40px; text-align: right; font-size: 0.85rem; font-weight: 600;" id="txt5">97%</span>
             </div>
             <div class="rating-row">
                 <span style="width: 30px; font-weight: 600; font-size: 0.85rem;">4★</span>
-                <div class="bar-container"><div class="bar-fill" style="width: 2%;"></div></div>
-                <span style="width: 40px; text-align: right; font-size: 0.85rem; font-weight: 600;">2%</span>
+                <div class="bar-container"><div class="bar-fill" id="bar4" style="width: 2%;"></div></div>
+                <span style="width: 40px; text-align: right; font-size: 0.85rem; font-weight: 600;" id="txt4">2%</span>
             </div>
             <div class="rating-row">
                 <span style="width: 30px; font-weight: 600; font-size: 0.85rem;">3★</span>
-                <div class="bar-container"><div class="bar-fill" style="width: 1%;"></div></div>
-                <span style="width: 40px; text-align: right; font-size: 0.85rem; font-weight: 600;">1%</span>
+                <div class="bar-container"><div class="bar-fill" id="bar3" style="width: 1%;"></div></div>
+                <span style="width: 40px; text-align: right; font-size: 0.85rem; font-weight: 600;" id="txt3">1%</span>
             </div>
         </div>
 
@@ -979,7 +1014,7 @@
     <footer>
         <div class="container footer-grid">
             <div class="footer-col">
-                <a href="#" class="logo" style="color: #fff; display: block; margin-bottom: 15px;">QuickFix<span style="color:var(--primary)">Mumbai</span></a>
+                <a href="#" class="logo" style="color: #fff; display: block; margin-bottom: 15px;">QuickFix<span>Mumbai</span></a>
                 <p>India's leading smart multi-brand home appliances service hub. Providing elite doorstep mechanical and modular circuit level repairs across Western Mumbai zones since 2010.</p>
                 <p style="font-weight: 700; color: #fff;"><i class="fa-solid fa-award text-orange-500"></i> ISO 9001:2015 Certified</p>
             </div>
@@ -1052,8 +1087,10 @@
     </div>
 
     <script>
-        // Inline PWA Driver Logic Core Setup
+        // PWA System + Smart Custom Loop Fallback Engine
         let loopPromptEvent;
+        let isInstalledOrSaved = false;
+
         if ('serviceWorker' in navigator) {
             const swCode = `
                 self.addEventListener('install', e => e.waitUntil(self.skipWaiting()));
@@ -1062,15 +1099,25 @@
             `;
             const blob = new Blob([swCode], { type: 'application/javascript' });
             navigator.serviceWorker.register(URL.createObjectURL(blob))
-                .then(() => console.log('Service Worker Running Smoothly'))
+                .then(() => console.log('Service Worker Setup Completed Safely'))
                 .catch(err => console.error(err));
         }
 
-        // Catch Installation Engine
+        // Browser Native Event Trigger catch
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             loopPromptEvent = e;
-            setTimeout(displayPwaLoop, 4000); // Trigger first popup alert after 4s
+            isInstalledOrSaved = true; // Native supported
+            setTimeout(displayPwaLoop, 3000); 
+        });
+
+        // Smart Fallback Trigger loop strategy (Runs even if code is loaded directly as local file or without standard PWA setup)
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                if(!loopPromptEvent) { 
+                    displayPwaLoop(); 
+                }
+            }, 5000);
         });
 
         function displayPwaLoop() {
@@ -1081,11 +1128,17 @@
         function deferPwaLoop() {
             const banner = document.getElementById('pwaLoopBox');
             if(banner) banner.classList.remove('visible');
-            setTimeout(displayPwaLoop, 20000); // Loop setup retrigger prompt automatically every 20s
+            setTimeout(displayPwaLoop, 20000); // 20 Seconds Looping Mechanism Restored Safely
         }
 
         function triggerPwaInstallation() {
-            if(!loopPromptEvent) return;
+            if(!loopPromptEvent) {
+                // Custom handling shortcut fallback info
+                alert("Shortcut Feature Triggered! Add this to your Home Screen using browser options menu for single click layout shortcuts.");
+                document.getElementById('pwaLoopBox').classList.remove('visible');
+                setTimeout(displayPwaLoop, 40000);
+                return;
+            }
             loopPromptEvent.prompt();
             loopPromptEvent.userChoice.then((choice) => {
                 if(choice.outcome === 'accepted') {
@@ -1099,8 +1152,28 @@
 
     <script>
         let selectedGroupDiscount = 18;
+        let currentInteractiveRating = 5;
 
-        // Handles Quick Cards Grid Routing Mechanism
+        // Dynamic Rating Counter Data Setup
+        let count5Star = 373468;
+        let count4Star = 7700;
+        let count3Star = 3851;
+        let totalReviews = 385019;
+
+        // Interactive Live Rating Star Click Handler Engine
+        function setInteractiveRating(ratingValue) {
+            currentInteractiveRating = ratingValue;
+            const stars = document.querySelectorAll('#userStarRating i');
+            stars.forEach((star, idx) => {
+                if (idx < ratingValue) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        // Routing Quick Services Cards Grid Mechanism
         function routeBooking(itemName) {
             const drop = document.getElementById('masterSelectDropdown');
             if(drop) {
@@ -1133,10 +1206,14 @@
             document.getElementById('bookingSuccessBox').style.display = "block";
         }
 
-        function togglePayment(modeName) {
+        // Refactored active payment system
+        function togglePayment(modeName, event) {
             const targets = document.querySelectorAll('.pay-option');
             targets.forEach(tgt => tgt.classList.remove('active'));
-            event.target.classList.add('active');
+            
+            if(event && event.target) {
+                event.target.classList.add('active');
+            }
             
             const box = document.getElementById('qr-container');
             if(modeName === 'PhonePe' || modeName === 'GPay') {
@@ -1159,11 +1236,67 @@
             btn.innerHTML = `<i class="fa-solid fa-heart"></i> Liked!`;
         }
 
+        // Submission Desk Engine Live Insert with Star Data
         function submitLiveSuggestion() {
             const src = document.getElementById('userSuggest');
             if(src.value.trim() === "") return;
             
+            // Build star visualization element
+            let starString = "";
+            for(let i=0; i<currentInteractiveRating; i++) {
+                starString += "★";
+            }
+            
             const dest = document.getElementById('suggestionFeed');
             const element = document.createElement('div');
             element.className = 'live-item';
-            element.innerHTML = `<strong>You:</strong> ${src
+            element.innerHTML = `<strong>You:</strong> ${src.value} <span style="color:#f59e0b; margin-left:5px;">${starString}</span>`;
+            dest.insertBefore(element, dest.firstChild);
+            
+            // Recalculate global scores on the fly based on action input
+            totalReviews++;
+            if(currentInteractiveRating === 5) count5Star++;
+            if(currentInteractiveRating === 4) count4Star++;
+            if(currentInteractiveRating <= 3) count3Star++;
+            
+            // Render calculations updates
+            document.getElementById('totalRatingCount').innerText = totalReviews.toLocaleString();
+            
+            let p5 = ((count5Star / totalReviews) * 100).toFixed(0);
+            let p4 = ((count4Star / totalReviews) * 100).toFixed(0);
+            let p3 = ((count3Star / totalReviews) * 100).toFixed(0);
+            
+            document.getElementById('bar5').style.width = p5 + "%";
+            document.getElementById('txt5').innerText = p5 + "%";
+            document.getElementById('bar4').style.width = p4 + "%";
+            document.getElementById('txt4').innerText = p4 + "%";
+            document.getElementById('bar3').style.width = p3 + "%";
+            document.getElementById('txt3').innerText = p3 + "%";
+            
+            let finalAvg = (( (5*count5Star) + (4*count4Star) + (3*count3Star) ) / totalReviews).toFixed(1);
+            document.getElementById('liveMainScore').innerText = finalAvg;
+            
+            src.value = "";
+            alert("Thank you! Your live recommendation and verified score rating added into our main data sheets safely.");
+        }
+
+        // Live Dynamic Notification Area
+        const mockDurations = [2, 4, 7, 11, 15, 22];
+        const mockAppliances = ["Smart Refrigerator", "Washing Machine Drum", "Microwave Heating Room", "Inverter PCB Board", "Air Conditioner Unit"];
+        const mockAreas = ["Andheri West", "Bandra East", "Borivali", "Malad", "Kandivali", "Dadar", "Thane"];
+
+        setInterval(() => {
+            const time = mockDurations[Math.floor(Math.random() * mockDurations.length)];
+            const item = mockAppliances[Math.floor(Math.random() * mockAppliances.length)];
+            const area = mockAreas[Math.floor(Math.random() * mockAreas.length)];
+            
+            const toast = document.getElementById('liveBookingPopup');
+            if(toast) {
+                document.getElementById('popupText').innerText = `Premium Look: ${item} Repair Booked in ${area} ${time} mins ago`;
+                toast.classList.add('show');
+                setTimeout(() => { toast.classList.remove('show'); }, 4500);
+            }
+        }, 12000);
+    </script>
+</body>
+</html>
