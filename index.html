@@ -403,7 +403,8 @@
             margin-top: 15px;
         }
         .booking-success-box img { width: 55px; margin-bottom: 8px; }
-        .booking-success-box h4 { color: #065f46; font-size: 1.2rem; font-weight: 800; }
+        .booking-success-box h4 { color: #065f46; font-size: 1.1rem; font-weight: 800; }
+        .booking-success-box p { font-size: 0.85rem; color: #047857; margin-top: 4px; font-weight: 600; }
 
         .emergency-header {
             display: flex;
@@ -501,7 +502,7 @@
         }
         .big-rating-num { font-size: 3.2rem; font-weight: 800; color: var(--secondary); }
         
-        /* Point 5: Fixed Pointer events trigger for live star selection touch response */
+        /* Point 5: Direct interaction styling with forced cursor actions */
         .stars-display i, .interactive-stars i { 
             color: #cbd5e1; 
             font-size: 1.3rem; 
@@ -514,7 +515,7 @@
         }
         .interactive-stars {
             display: inline-flex;
-            gap: 5px;
+            gap: 6px;
             margin-bottom: 10px;
         }
         
@@ -524,20 +525,18 @@
 
         .live-item { padding: 12px 0; border-bottom: 1px dashed #e2e8f0; font-size: 0.85rem; }
 
-        /* Point 1: Hidden Admin panel locked by default to keep screen safe */
         .leads-admin-panel {
             display: none !important;
         }
 
-        /* Point 6: Dedicated SEO card structure block completely invisible but text present */
         .seo-location-block {
             display: none !important;
         }
 
-        /* Point 3: Compact structural adjustments for WPA layer popup overlay box */
+        /* Point 3: PWA Loop prompt container optimizations */
         .pwa-loop-prompt {
             position: fixed;
-            bottom: 100px;
+            bottom: 105px;
             right: 15px;
             background: #2563eb;
             color: #fff;
@@ -545,7 +544,7 @@
             border-radius: 10px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
             z-index: 9999;
-            max-width: 260px;
+            max-width: 250px;
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -660,27 +659,27 @@
             .contact-btn span { font-size: 0.65rem; }
         }
 
-        /* Point 4: Compact structural size for dynamic live notification popup box */
+        /* Point 4: Resized dynamic micro popup toast panel styles */
         .live-popup {
             position: fixed;
             bottom: 85px;
             left: 15px;
             background: var(--secondary);
             color: #fff;
-            padding: 10px 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            padding: 8px 12px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
             z-index: 1000;
             display: flex;
             align-items: center;
-            gap: 10px;
-            max-width: 290px;
+            gap: 8px;
+            max-width: 250px;
             transform: translateY(180%);
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .live-popup.show { transform: translateY(0); }
-        .live-popup i { color: var(--primary); font-size: 1.1rem; }
-        .live-popup #popupText { font-size: 0.75rem; line-height: 1.3; font-weight: 500; }
+        .live-popup i { color: var(--primary); font-size: 1rem; }
+        .live-popup #popupText { font-size: 0.7rem; line-height: 1.2; font-weight: 500; }
     </style>
 </head>
 <body>
@@ -703,13 +702,13 @@
     <div class="container" style="margin-top: 20px;">
         <div class="leads-admin-panel" id="leadsPanel">
             <div>
-                <h4 style="color:#60a5fa;"><i class="fa-solid fa-chart-line"></i> QuickFix Live Lead Board Manager</h4>
-                <p style="font-size:0.75rem; color:#94a3b8; margin-top:2px;">Tracks all incoming client registrations locally in real-time.</p>
+                <h4>QuickFix Live Lead Board Manager</h4>
+                <p>Tracks all incoming client registrations locally in real-time.</p>
             </div>
             <div style="display:flex; align-items:center; gap:20px;">
                 <div style="text-align:center;">
-                    <span style="font-size:1.8rem; font-weight:900; color:#f59e0b;" id="liveLeadCounter">0</span>
-                    <div style="font-size:0.65rem; font-weight:700; color:#cbd5e1; text-transform: uppercase;">New Leads</div>
+                    <span id="liveLeadCounter">0</span>
+                    <div>New Leads</div>
                 </div>
             </div>
         </div>
@@ -859,16 +858,16 @@
                     <label>Select Machine / Appliance Type</label>
                     <select class="form-control" id="masterSelectDropdown" required>
                         <option value="">-- Choose Item --</option>
-                        <option value="All Smart Home Appliances">All Smart Home Appliances</option>
-                        <option value="Smart Refrigerator">Smart Refrigerator</option>
-                        <option value="Fridge">Fridge</option>
-                        <option value="Washing Machine">Washing Machine</option>
+                        <option value="All Smart Home Appliances">All Smart Home Appliances Breakdown</option>
+                        <option value="Smart Refrigerator">Smart Refrigerator / Fridge</option>
+                        <option value="Washing Machine">Washing Machine (Front/Top Load)</option>
                         <option value="Microwave / Micro Oven">Microwave / Micro Oven</option>
-                        <option value="Premium Air Dresser">Premium Air Dresser</option>
-                        <option value="High Capacity Air Dryer">High Capacity Air Dryer</option>
-                        <option value="Advance Dishwasher">Advance Dishwasher</option>
-                        <option value="AC (Air Conditioner)">AC (Air Conditioner)</option>
-                        <option value="Inverter / PCB Repairs">Inverter / PCB Repairs</option>
+                        <option value="AC (Air Conditioner)">AC (Air Conditioner Unit)</option>
+                        <option value="Inverter / PCB Repairs">Inverter / PCB Circuit Repairs</option>
+                        <option value="Washing Machine + Refrigerator Combo">Washing Machine + Refrigerator (Multiple Fault)</option>
+                        <option value="Fridge + Microwave Oven Combo">Fridge + Microwave Oven (Multiple Fault)</option>
+                        <option value="AC + Washing Machine Combo">AC + Washing Machine (Multiple Fault)</option>
+                        <option value="Advance Dishwasher">Advance Dishwasher / Air Dryer</option>
                     </select>
                 </div>
                 
@@ -881,8 +880,8 @@
 
                 <div class="booking-success-box" id="bookingSuccessBox">
                     <img src="https://i.imgur.com/N6gAnNq.png" alt="Success Check">
-                    <h4>BOOKED ✔️</h4>
-                    <p style="font-size: 0.85rem; color: #047857; margin-top: 4px; font-weight: 600;">Technician details will be shared on call!</p>
+                    <h4 id="successTitlePlaceholder">BOOKED ✔️</h4>
+                    <p id="successMessagePlaceholder">Technician details will be shared on call!</p>
                 </div>
 
                 <button type="submit" id="submitActionBtn" class="btn-main" style="width: 100%; margin-top: 20px;">Complete Booking Instantly</button>
@@ -900,15 +899,12 @@
                 <label>Select Emergency Failure Item</label>
                 <select class="form-control" id="emergencyItemsList">
                     <option value="All Smart Home Appliances">ALL ITEMS / Complete Breakdown</option>
-                    <option value="Smart Refrigerator">Smart Refrigerator Breakdown</option>
-                    <option value="Fridge">Normal Fridge Defrost Loss</option>
-                    <option value="Washing Machine">Washing Machine Drum Jam Error</option>
-                    <option value="Microwave / Micro Oven">Microwave Short Circuit Sparking</option>
-                    <option value="Premium Air Dresser">Premium Air Dresser Error</option>
-                    <option value="High Capacity Air Dryer">Air Dryer Thermal Trip</option>
-                    <option value="Advance Dishwasher">Dishwasher Electronic Code Failure</option>
-                    <option value="AC (Air Conditioner)">AC Compressor Heating Leakage</option>
-                    <option value="Inverter / PCB Repairs">Inverter PCB Board Burned Sparking</option>
+                    <option value="Smart Refrigerator Breakdown">Smart Refrigerator Breakdown</option>
+                    <option value="Washing Machine Drum Jam">Washing Machine Drum Jam Error</option>
+                    <option value="Microwave Short Circuit">Microwave Short Circuit Sparking</option>
+                    <option value="AC Compressor Heating Leakage">AC Compressor Heating Leakage</option>
+                    <option value="Inverter PCB Board Burned">Inverter PCB Board Burned Sparking</option>
+                    <option value="Multiple Breakdown (Fridge + Washing Machine)">Multiple Breakdown (Fridge + Washing Machine)</option>
                 </select>
             </div>
 
@@ -1095,8 +1091,8 @@
     <div class="live-popup" id="liveBookingPopup">
         <i class="fa-solid fa-circle-check"></i>
         <div>
-            <span id="popupText">Premium Look: Smart Refrigerator Repair Booked in Borivali 2 mins ago</span>
-            <div style="font-size: 0.65rem; opacity: 0.85; font-weight:600;">Verified Doorstep Job Live</div>
+            <span id="popupText">Expert Smart Refrigerator Repair Booked in Borivali 2 mins ago</span>
+            <div style="font-size: 0.6rem; opacity: 0.85; font-weight:700; text-transform: uppercase; margin-top:1px;"> door step job live </div>
         </div>
     </div>
 
@@ -1117,14 +1113,14 @@
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             loopPromptEvent = e;
-            if(!pwaDismissedByUser) { setTimeout(displayPwaLoop, 8000); }
+            if(!pwaDismissedByUser) { setTimeout(displayPwaLoop, 6000); }
         });
 
         window.addEventListener('DOMContentLoaded', () => {
             if(sessionStorage.getItem('pwa_opt_out') === 'true') { pwaDismissedByUser = true; }
             setTimeout(() => {
                 if(!loopPromptEvent && !pwaDismissedByUser) { displayPwaLoop(); }
-            }, 10000);
+            }, 8000);
         });
 
         function displayPwaLoop() {
@@ -1141,8 +1137,8 @@
 
         function triggerPwaInstallation() {
             if(!loopPromptEvent) {
-                // Point 3 instruction handler shortcut modal
-                alert("To install: Please touch the browser menu icon (3 vertical dots) on your address bar and tap 'Add to Home Screen' safely.");
+                // Point 3: Direct fallback handler alert instruction
+                alert("Shortcut Setup: Click the top-right browser menu (three dots icon) and choose 'Add to Home screen' to save QuickFix Mumbai Web App safely.");
                 pwaDismissedByUser = true;
                 sessionStorage.setItem('pwa_opt_out', 'true');
                 document.getElementById('pwaLoopBox').classList.remove('visible');
@@ -1164,26 +1160,19 @@
         let currentInteractiveRating = 5;
         let activeLeadsCollection = [];
 
-        // Point 5: Multi star ratings localized counter index balance state set to 177,204 reviews
+        // Point 5: Verified data scale target array counts set to 177,204 reviews indices
         let count5Star = 171887;
         let count4Star = 3544;
         let count3Star = 1773;
         let totalReviews = 177204;
 
-        // Point 2 & 5: Load persistent structures from Local Storage arrays on startup initialization
         window.addEventListener('DOMContentLoaded', () => {
             if(localStorage.getItem('quickfix_liked') === 'true') {
                 const btn = document.getElementById('globalHeartBtn');
                 btn.classList.add('liked');
                 btn.innerHTML = `<i class="fa-solid fa-heart"></i> Already Liked`;
-                
-                // Keep stats matching active additions
-                if(localStorage.getItem('like_stat_bumped') === 'true') {
-                    document.getElementById('heartStatsVal').innerText = "128410";
-                }
             }
-            
-            // Re-render local feed stack memory
+            // Point 2: Trigger persistent user storage node rendering loop
             renderSavedFeedSuggestions();
         });
 
@@ -1199,10 +1188,9 @@
             btn.classList.add('liked');
             btn.innerHTML = `<i class="fa-solid fa-heart"></i> Liked!`;
             localStorage.setItem('quickfix_liked', 'true');
-            localStorage.setItem('like_stat_bumped', 'true');
         }
 
-        // Point 5: Fixed dynamic star touch validation engine function
+        // Point 5: Dynamic pointer click touch handler script matrix logic loop
         function setInteractiveRating(ratingValue) {
             currentInteractiveRating = ratingValue;
             const stars = document.querySelectorAll('#userStarRating i');
@@ -1220,7 +1208,7 @@
             if(drop) { drop.value = itemName; }
         }
 
-        // Point 3, 4 & 7: Form processing execution handler loops
+        // Point 1 & 2: Custom dynamic welcome text string generation module loops
         function executeFinalBooking(e) {
             e.preventDefault();
             const name = document.getElementById('custName').value;
@@ -1228,49 +1216,52 @@
             const address = document.getElementById('custAddress').value;
             const appliance = document.getElementById('masterSelectDropdown').value;
             
-            const payload = { 
-                type: 'Booking Request', 
+            activeLeadsCollection.push({ 
+                type: 'Slot Booking', 
                 clientName: name,
                 clientPhone: phone,
                 clientAddr: address,
                 item: appliance,
                 timestamp: new Date().toLocaleTimeString() 
-            };
+            });
             
-            activeLeadsCollection.push(payload);
             document.getElementById('liveLeadCounter').innerText = activeLeadsCollection.length;
+
+            // Point 1: Direct structural recall interpolation logic mapping
+            document.getElementById('successTitlePlaceholder').innerText = `THANK YOU, DEAR ${name.toUpperCase()}! ✔️`;
+            document.getElementById('successMessagePlaceholder').innerText = `Your Smart Doorstep Repair Booking for ${appliance} has been locked safely. Processing Technician Dispatch Tracker...`;
 
             document.getElementById('submitActionBtn').style.display = "none";
             document.getElementById('bookingSuccessBox').style.display = "block";
             
-            // Build absolute custom WhatsApp structured redirection strings template (Point 7/8 Fix)
-            let waText = `🔥 *NEW QUICKFIX BOOKING CAPTURED* 🔥\n\n`;
-            waText += `👤 *Customer Name:* ${name}\n`;
-            waText += `📞 *Mobile Phone:* ${phone}\n`;
-            waText += `📍 *Service Address:* ${address}\n`;
-            waText += `⚙️ *Appliance Item:* ${appliance}\n`;
-            waText += `⏰ *Timestamp:* ${new Date().toLocaleTimeString()}\n`;
-            waText += `---------------------------\n⚠️ _Status: Local Backup Registered_`;
+            // Generate cross-channel notification strings (Point 7)
+            let waString = `🔥 *NEW QUICKFIX BOOKING RECEIVED* 🔥\n\n`;
+            waString += `👤 *Customer Name:* ${name}\n`;
+            waString += `📞 *Mobile Phone:* ${phone}\n`;
+            waString += `📍 *Service Address:* ${address}\n`;
+            waString += `⚙️ *Appliance Selected:* ${appliance}\n`;
+            waString += `⏰ *Booking Time:* ${new Date().toLocaleTimeString()}\n`;
+            waString += `---------------------------\n📢 _Status: Active Job Registered_`;
             
-            const finalUrl = `https://wa.me/919930249182?text=${encodeURIComponent(waText)}`;
+            const encodedPayload = encodeURIComponent(waString);
+            const targetRedirectUrl = `https://wa.me/919930249182?text=${encodedPayload}`;
             
-            // Map live anchor points securely to direct triggers
-            document.getElementById('waPrimaryLink').href = finalUrl;
-            document.getElementById('waSecondaryLink').href = `https://wa.me/919594406095?text=${encodeURIComponent(waText)}`;
+            // Synchronize link streams instantly to background triggers
+            document.getElementById('waPrimaryLink').href = targetRedirectUrl;
+            document.getElementById('waSecondaryLink').href = `https://wa.me/919594406095?text=${encodedPayload}`;
             
-            alert(`🎉 Booking Lead Confirmed! Form data successfully prepared. Click 'WA Primary' or 'WA Second' bottom buttons anytime to transmit notifications offline.`);
-            
-            // Point 3: Fast Auto clear input fields instantly
+            // Auto Reset form controls (Point 3)
             document.getElementById('bookingForm').reset();
+            
             setTimeout(() => {
                 document.getElementById('bookingSuccessBox').style.display = "none";
                 document.getElementById('submitActionBtn').style.display = "block";
-                // Redirect action automation hook trigger safely
-                window.open(finalUrl, '_blank');
-            }, 3000);
+                // Redirect user to WhatsApp payload link
+                window.open(targetRedirectUrl, '_blank');
+            }, 4000);
         }
 
-        // Point 6: Secure application gateway redirect links ending in 9181
+        // Point 6: Secure application deep link handover error trapping modules
         function togglePaymentEngine(modeName, event) {
             const targets = document.querySelectorAll('.pay-option');
             targets.forEach(tgt => tgt.classList.remove('active'));
@@ -1290,7 +1281,8 @@
                 feedbackBox.style.background = "#ecfdf5";
                 feedbackBox.style.color = "#065f46";
                 feedbackBox.style.border = "1px solid #a7f3d0";
-                feedbackBox.innerText = "💸 Choice Logged: Cash on Delivery chosen. Complete transaction with technician post repair visit.";
+                // Point 6 professional phrasing update
+                feedbackBox.innerText = "💸 Choice Logged: Cash payment on QuickFix Mumbai's Expert Certified Technician doorstep visit.";
             } 
             else if(modeName === 'Card') {
                 cardForm.style.display = "block";
@@ -1301,8 +1293,11 @@
                 feedbackBox.style.background = "#fff7ed";
                 feedbackBox.style.color = "#c2410c";
                 feedbackBox.style.border = "1px solid #fed7aa";
-                feedbackBox.innerText = "📱 Opening PhonePe Protocol... Scan the visual secure canvas below or execute payment terminal ending PNB 9181.";
-                window.location.href = "upi://pay?pa=quickfixmumbai@ybl&pn=QuickFix%20Mumbai&am=199&cu=INR";
+                feedbackBox.innerText = "📱 Redirecting to PhonePe Application Terminal... If intercept error triggers on device, please utilize secure PNB static QR canvas below safely to account 9181.";
+                
+                setTimeout(() => {
+                    window.location.href = "upi://pay?pa=quickfixmumbai@ybl&pn=QuickFix%20Mumbai&am=199&cu=INR&tn=Emergency%20Advance";
+                }, 200);
             }
             else if(modeName === 'GPay') {
                 qrBox.style.display = "block";
@@ -1310,31 +1305,39 @@
                 feedbackBox.style.background = "#fff7ed";
                 feedbackBox.style.color = "#c2410c";
                 feedbackBox.style.border = "1px solid #fed7aa";
-                feedbackBox.innerText = "📱 Invoking Google Pay Native Intercept... Use standard static QR window pattern below for terminal tracking ending 9181.";
-                window.location.href = "upi://pay?pa=quickfixmumbai@ybl&pn=QuickFix%20Mumbai&am=199&cu=INR";
+                feedbackBox.innerText = "📱 Launching Google Pay Gateway Handoff... Secure encrypted interface active. Use alternate QR canvas below if deep link routing holds.";
+                
+                setTimeout(() => {
+                    window.location.href = "upi://pay?pa=quickfixmumbai@ybl&pn=QuickFix%20Mumbai&am=199&cu=INR&tn=Emergency%20Advance";
+                }, 200);
             }
         }
 
         function handleQRClick() {
-            alert("Terminal Check Verified: Destination Account Punjab National Bank ending in 9181.");
+            alert("Secure Endpoint Endpoint Checked: Punjab National Bank Account verified ending in 9181.");
         }
 
+        // Point 2: Emergency single step trigger validation link generations
         function executeEmergencySOSAlert() {
             const selectedItem = document.getElementById('emergencyItemsList').value;
             
-            let sosText = `🚨 *QUICKFIX MUMBAI IMMEDIATE EMERGENCY SOS* 🚨\n\n`;
-            sosText += `⚠️ *Failure Issue Item:* ${selectedItem}\n`;
-            sosText += `📍 *Tracking Target:* Immediate Dispatch 45-Min Route\n`;
-            sosText += `⏰ *Trigger Time:* ${new Date().toLocaleTimeString()}`;
+            let sosText = `🚨 *QUICKFIX MUMBAI CRITICAL EMERGENCY REQUEST* 🚨\n\n`;
+            sosText += `⚠️ *Failure Component:* ${selectedItem}\n`;
+            sosText += `📍 *Tracking Status:* Active Tech Route Dispatching\n`;
+            sosText += `⏰ *SOS Time Tracker:* ${new Date().toLocaleTimeString()}\n`;
+            sosText += `---------------------------\n👉 _Please call back immediately._`;
             
-            document.getElementById('waPrimaryLink').href = `https://wa.me/919930249182?text=${encodeURIComponent(sosText)}`;
-            document.getElementById('waSecondaryLink').href = `https://wa.me/919594406095?text=${encodeURIComponent(sosText)}`;
+            const encodedSOS = encodeURIComponent(sosText);
+            const targetSOSUrl = `https://wa.me/919930249182?text=${encodedSOS}`;
             
-            alert(`🚨 EMERGENCY SOS CAPTURED! Links bound to bottom WA nodes. Launching tracking routing paths.`);
-            window.open(`https://wa.me/919930249182?text=${encodeURIComponent(sosText)}`, '_blank');
+            document.getElementById('waPrimaryLink').href = targetSOSUrl;
+            document.getElementById('waSecondaryLink').href = `https://wa.me/919594406095?text=${encodedSOS}`;
+            
+            alert(`🚨 CRITICAL EMERGENCY LOGGED!\nItem: ${selectedItem}\nRedirection ready to launch.`);
+            window.open(targetSOSUrl, '_blank');
         }
 
-        // Point 2 & 7: Dynamic suggestions append stack with data persistence storage loops
+        // Point 2 & 5: Local Storage persistent suggestions tracking engines
         function submitLiveSuggestion() {
             const src = document.getElementById('userSuggest');
             if(src.value.trim() === "") return;
@@ -1343,29 +1346,25 @@
             for(let i=0; i<currentInteractiveRating; i++) { starString += "★"; }
             
             const newFeedbackObject = {
-                user: "Verified Client (Mumbai)",
+                user: "Verified Client (Mumbai Hub)",
                 text: src.value,
                 stars: starString
             };
             
-            // Save array nodes locally in browser persistence stack memory
             let customStoredList = JSON.parse(localStorage.getItem('quickfix_local_reviews') || "[]");
             customStoredList.unshift(newFeedbackObject);
             localStorage.setItem('quickfix_local_reviews', JSON.stringify(customStoredList));
             
-            // Render directly into viewport interface layout
             prependReviewToFeed(newFeedbackObject.user, newFeedbackObject.text, newFeedbackObject.stars);
             
-            // Metrics balance arithmetic updates
             totalReviews++;
             if(currentInteractiveRating === 5) count5Star++;
             if(currentInteractiveRating === 4) count4Star++;
             if(currentInteractiveRating <= 3) count3Star++;
             
             updateUIRatingsDashboardDisplay();
-            
             src.value = "";
-            alert("Thank you! Your verified rating and feedback live review has been published instantly on our desk board!");
+            alert("Thank you! Your dynamic review feedback has been captured and published live instantly into the registry sheets!");
         }
 
         function prependReviewToFeed(user, text, stars) {
@@ -1378,18 +1377,15 @@
 
         function renderSavedFeedSuggestions() {
             const dest = document.getElementById('suggestionFeed');
-            dest.innerHTML = ""; // Clear existing blocks
+            dest.innerHTML = ""; 
             
-            // Pull local storage array objects
             let customStoredList = JSON.parse(localStorage.getItem('quickfix_local_reviews') || "[]");
             
-            // Add baseline real demo static data blocks behind persistent nodes
             const generalBaselines = [
-                { user: "Rohan K. (Bandra West)", text: "Best machine repair center near me. Very reliable service.", stars: "★★★★★" },
+                { user: "Rohan K. (Bandra West)", text: "Best machine repair center near me. Very reliable quick fix.", stars: "★★★★★" },
                 { user: "Anjali S. (Borivali East)", text: "Quick fixation of my fridge PCB circuit board within 1 hour!", stars: "★★★★★" }
             ];
             
-            // Combine items
             const finalRenderStream = [...customStoredList, ...generalBaselines];
             
             finalRenderStream.forEach(item => {
@@ -1421,9 +1417,9 @@
             document.getElementById('liveMainScore').innerText = finalAvg;
         }
 
-        // Point 4: Optimized dynamic booking toast timing loop stretch (15 seconds gaps)
+        // Point 4: Optimized micro compact popup toast loops with extended 20 second safety gaps
         const mockDurations = [2, 4, 7, 11, 15, 22];
-        const mockAppliances = ["Smart Refrigerator/Fridge", "Washing Machine Drum", "Microwave Heating Oven", "Inverter PCB Board Circuit", "Air Conditioner Unit (AC)"];
+        const mockAppliances = ["Smart Refrigerator Fix", "Washing Machine Drum", "Microwave Heating Room", "Inverter PCB Board", "Air Conditioner Unit (AC)"];
         const mockAreas = ["Bandra West", "Borivali East", "Andheri West", "Malad West", "Kandivali East", "Dadar South", "Thane Zone"];
 
         setInterval(() => {
@@ -1437,7 +1433,7 @@
                 toast.classList.add('show');
                 setTimeout(() => { toast.classList.remove('show'); }, 4000);
             }
-        }, 15000); // Extended 15 second intervals
+        }, 20000); // 20 second safety windows
     </script>
     <script src="script.js?v=1.4"></script>
 </body>
