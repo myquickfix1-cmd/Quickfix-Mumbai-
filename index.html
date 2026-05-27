@@ -71,7 +71,6 @@
             50% { opacity: 1; }
         }
 
-        /* Header Navigation */
         header {
             background: #fff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -112,7 +111,6 @@
             .nav-links { gap: 12px; font-size: 0.85rem; }
         }
 
-        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.88)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
             color: #fff;
@@ -228,7 +226,6 @@
         }
         .warranty-card i { font-size: 2.2rem; color: var(--accent); }
         .warranty-card h4 { color: #fff; margin-bottom: 4px; font-size: 1.05rem; font-weight: 700; }
-        /* Point 1: Free fixing removed from warranty description text */
         .warranty-card p { font-size: 0.85rem; margin: 0; color: #cbd5e1; }
 
         @media(max-width: 768px) {
@@ -280,7 +277,6 @@
         }
         .stat-item .heart-btn.liked { color: #ef4444; }
 
-        /* Section Global Headers */
         .section-title {
             text-align: center;
             font-size: 2.2rem;
@@ -297,7 +293,6 @@
             font-weight: 500;
         }
 
-        /* Items Grid Layout */
         .items-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -345,7 +340,6 @@
         }
         .btn-card-book:hover { background: var(--primary); }
 
-        /* Multi Brand Area */
         .brands-container {
             background: #fff;
             padding: 30px;
@@ -370,7 +364,6 @@
             border: 1px solid #e2e8f0;
         }
 
-        /* Responsive Panels Splits */
         .grid-panel {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -412,7 +405,6 @@
         .booking-success-box img { width: 55px; margin-bottom: 8px; }
         .booking-success-box h4 { color: #065f46; font-size: 1.2rem; font-weight: 800; }
 
-        /* Emergency Module */
         .emergency-header {
             display: flex;
             align-items: center;
@@ -465,7 +457,6 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        /* Real Payment Feedback Container styling */
         .payment-log-box {
             margin-top: 15px;
             padding: 12px;
@@ -476,7 +467,6 @@
             display: none;
         }
 
-        /* Card Form Container */
         .card-details-form {
             display: none;
             margin-top: 15px;
@@ -487,7 +477,6 @@
             text-align: left;
         }
 
-        /* Ratings Desk Splits */
         .feedback-grid {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
@@ -512,17 +501,19 @@
         }
         .big-rating-num { font-size: 3.2rem; font-weight: 800; color: var(--secondary); }
         
+        /* Point 5: Fixed Pointer events trigger for live star selection touch response */
         .stars-display i, .interactive-stars i { 
             color: #cbd5e1; 
             font-size: 1.3rem; 
             cursor: pointer;
             transition: color 0.2s ease;
+            pointer-events: auto !important;
         }
         .stars-display i.active, .interactive-stars i.active { 
             color: #f59e0b; 
         }
         .interactive-stars {
-            display: flex;
+            display: inline-flex;
             gap: 5px;
             margin-bottom: 10px;
         }
@@ -533,27 +524,17 @@
 
         .live-item { padding: 12px 0; border-bottom: 1px dashed #e2e8f0; font-size: 0.85rem; }
 
-        /* Admin Master Counter Badge System layout */
+        /* Point 1: Hidden Admin panel locked by default to keep screen safe */
         .leads-admin-panel {
-            background: #1e293b;
-            color: #fff;
-            padding: 15px;
-            border-radius: 16px;
-            margin-bottom: 30px;
-            border: 2px solid #3b82f6;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
+            display: none !important;
         }
 
-        /* Point 6: Dedicated SEO Location Card Hidden from standard UI view but completely crawlable by Google engine bot structures */
+        /* Point 6: Dedicated SEO card structure block completely invisible but text present */
         .seo-location-block {
             display: none !important;
         }
 
-        /* Point 2: Optimized Compact PWA Prompt Engine Overlay box styles */
+        /* Point 3: Compact structural adjustments for WPA layer popup overlay box */
         .pwa-loop-prompt {
             position: fixed;
             bottom: 100px;
@@ -564,7 +545,7 @@
             border-radius: 10px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
             z-index: 9999;
-            max-width: 270px;
+            max-width: 260px;
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -583,7 +564,6 @@
         .pwa-btn.ins { background: #fff; color: #2563eb; }
         .pwa-btn.lat { background: rgba(255,255,255,0.15); color: #fff; }
 
-        /* Footer Components */
         footer {
             background-color: var(--footer-bg);
             color: #94a3b8;
@@ -639,7 +619,6 @@
         }
         .footer-bottom-bar p { font-size: 0.8rem; color: #64748b; font-weight: 500; }
 
-        /* Sticky Fixed Interaction Box */
         .sticky-contact {
             background: #fff;
             border-top: 1px solid #e2e8f0;
@@ -681,24 +660,27 @@
             .contact-btn span { font-size: 0.65rem; }
         }
 
+        /* Point 4: Compact structural size for dynamic live notification popup box */
         .live-popup {
             position: fixed;
             bottom: 85px;
-            left: 20px;
+            left: 15px;
             background: var(--secondary);
             color: #fff;
-            padding: 15px 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 1000;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            max-width: 290px;
             transform: translateY(180%);
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .live-popup.show { transform: translateY(0); }
-        .live-popup i { color: var(--primary); font-size: 1.3rem; }
+        .live-popup i { color: var(--primary); font-size: 1.1rem; }
+        .live-popup #popupText { font-size: 0.75rem; line-height: 1.3; font-weight: 500; }
     </style>
 </head>
 <body>
@@ -718,32 +700,6 @@
         </div>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="greeting-text">Greetings</div>
-            <div class="greeting-badge">Smart Appliances Repairing Hub</div>
-            <h1 class="hero-main-title">QUICKFIX <span>MUMBAI</span></h1>
-            
-            <h2>Welcome to QuickFix | Most Popular In Mumbai</h2>
-            <p>India's number 1 most trusted & beloved revolutionising online doorstep service center since 2010. With Thanks a lot to 3,85,019 families for trusting us. Providing fast, expert, and advanced repairs 24/7 with reliable and reasonable prices near you.</p>
-            
-            <div class="highlighter-wrapper">
-                <div class="best-highlighter">ESSENTIAL SERVICES GUARANTEED</div>
-                <div class="best-highlighter accent-color">CREATED PROBLEMS RESOLVED FAST</div>
-            </div>
-
-            <a href="#booking" class="btn-main"><i class="fa fa-wrench"></i> Book a Smart Repair Now</a>
-
-            <div class="warranty-card">
-                <i class="fa-solid fa-circle-check"></i>
-                <div>
-                    <h4>Official 6-Month Service Warranty Included</h4>
-                    <p>Commitment: If any re-problem occurs within 6 months, <strong>Free Re-visit Guaranteed</strong></p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <div class="container" style="margin-top: 20px;">
         <div class="leads-admin-panel" id="leadsPanel">
             <div>
@@ -755,7 +711,6 @@
                     <span style="font-size:1.8rem; font-weight:900; color:#f59e0b;" id="liveLeadCounter">0</span>
                     <div style="font-size:0.65rem; font-weight:700; color:#cbd5e1; text-transform: uppercase;">New Leads</div>
                 </div>
-                <button onclick="forwardLeadsToWhatsApp()" style="background:#22c55e; border:none; color:#fff; padding:8px 14px; border-radius:8px; font-size:0.75rem; font-weight:700; cursor:pointer;"><i class="fab fa-whatsapp"></i> Get Offline Alerts</button>
             </div>
         </div>
     </div>
@@ -763,11 +718,11 @@
     <div class="container">
         <div class="trust-box">
             <div class="stat-item">
-                <h3>3,85,019+</h3>
+                <h3>177K+</h3>
                 <p>Trusted Families Served</p>
             </div>
             <div class="stat-item">
-                <h3><span class="l-count" id="heartStatsVal">258019</span></h3>
+                <h3><span class="l-count" id="heartStatsVal">128409</span></h3>
                 <p>Liked Opinions & Feedback</p>
                 <button class="heart-btn" id="globalHeartBtn" onclick="registerSingleLike(this)"><i class="fa-solid fa-heart"></i> Press to Like</button>
             </div>
@@ -1034,14 +989,12 @@
             </div>
 
             <div id="suggestionFeed" style="max-height: 180px; overflow-y: auto;">
-                <div class="live-item"><strong>Rohan K. (Bandra West):</strong> Best machine repair center near me. Very reliable service. <span style="color:#f59e0b; margin-left:5px;">★★★★★</span></div>
-                <div class="live-item"><strong>Anjali S. (Borivali East):</strong> Quick fixation of my fridge PCB circuit board within 1 hour! <span style="color:#f59e0b; margin-left:5px;">★★★★★</span></div>
-            </div>
+                </div>
         </div>
 
         <div class="rating-box-pro">
             <h3>Verified Doorstep Ratings</h3>
-            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 15px;">Based on 3,85,019 verified doorstep jobs in Mumbai.</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 15px;">Based on <span id="totalRatingCount">177204</span> verified doorstep jobs in Mumbai.</p>
             
             <div class="rating-summary-pro">
                 <div class="big-rating-num" id="liveMainScore">4.9</div>
@@ -1049,7 +1002,7 @@
                     <div class="stars-display" id="mainStarsContainer">
                         <i class="fa fa-star active"></i><i class="fa fa-star active"></i><i class="fa fa-star active"></i><i class="fa fa-star active"></i><i class="fa fa-star active"></i>
                     </div>
-                    <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-top: 2px;">Overall Score (<span id="totalRatingCount">385019</span> reviews)</div>
+                    <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-top: 2px;">Overall Score (<span id="totalReviewCountBadge">177204</span> reviews)</div>
                 </div>
             </div>
 
@@ -1117,7 +1070,7 @@
     </footer>
 
     <div id="pwaLoopBox" class="pwa-loop-prompt">
-        <p style="font-size: 0.75rem; font-weight: 700; margin: 0; line-height: 1.4;"><i class="fa-solid fa-cloud-arrow-down"></i> Install Web Appshortcut shortcut!</p>
+        <p style="font-size: 0.75rem; font-weight: 700; margin: 0; line-height: 1.3;"><i class="fa-solid fa-cloud-arrow-down"></i> Install Web App for fast single click doorstep shortcuts?</p>
         <div class="pwa-buttons">
             <button class="pwa-btn lat" onclick="dismissPwaLoopBanner()">Later</button>
             <button class="pwa-btn ins" onclick="triggerPwaInstallation()">Install</button>
@@ -1125,7 +1078,7 @@
     </div>
 
     <div class="sticky-contact">
-        <a href="https://wa.me/919930249182" target="_blank" class="contact-btn btn-wa">
+        <a id="waPrimaryLink" href="https://wa.me/919930249182" target="_blank" class="contact-btn btn-wa">
             <i class="fab fa-whatsapp" style="font-size:1.3rem;"></i>
             <span>WA Primary</span>
         </a>
@@ -1133,7 +1086,7 @@
             <i class="fa fa-phone" style="font-size:1.3rem;"></i>
             <span>CALL: +91 9930249182</span>
         </a>
-        <a href="https://wa.me/919594406095" target="_blank" class="contact-btn btn-wa" style="background:#16a34a;">
+        <a id="waSecondaryLink" href="https://wa.me/919594406095" target="_blank" class="contact-btn btn-wa" style="background:#16a34a;">
             <i class="fab fa-whatsapp" style="font-size:1.3rem;"></i>
             <span>WA Second</span>
         </a>
@@ -1143,7 +1096,7 @@
         <i class="fa-solid fa-circle-check"></i>
         <div>
             <span id="popupText">Premium Look: Smart Refrigerator Repair Booked in Borivali 2 mins ago</span>
-            <div style="font-size: 0.75rem; opacity: 0.85;">Verified Doorstep Job Live</div>
+            <div style="font-size: 0.65rem; opacity: 0.85; font-weight:600;">Verified Doorstep Job Live</div>
         </div>
     </div>
 
@@ -1164,19 +1117,13 @@
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             loopPromptEvent = e;
-            if(!pwaDismissedByUser) {
-                setTimeout(displayPwaLoop, 8000); 
-            }
+            if(!pwaDismissedByUser) { setTimeout(displayPwaLoop, 8000); }
         });
 
         window.addEventListener('DOMContentLoaded', () => {
-            if(sessionStorage.getItem('pwa_opt_out') === 'true') {
-                pwaDismissedByUser = true;
-            }
+            if(sessionStorage.getItem('pwa_opt_out') === 'true') { pwaDismissedByUser = true; }
             setTimeout(() => {
-                if(!loopPromptEvent && !pwaDismissedByUser) { 
-                    displayPwaLoop(); 
-                }
+                if(!loopPromptEvent && !pwaDismissedByUser) { displayPwaLoop(); }
             }, 10000);
         });
 
@@ -1189,12 +1136,13 @@
         function dismissPwaLoopBanner() {
             const banner = document.getElementById('pwaLoopBox');
             if(banner) banner.classList.remove('visible');
-            setTimeout(displayPwaLoop, 60000); // Extended looping window
+            setTimeout(displayPwaLoop, 60000); 
         }
 
         function triggerPwaInstallation() {
             if(!loopPromptEvent) {
-                alert("Shortcut Feature Triggered! Add to Home screen for shortcuts.");
+                // Point 3 instruction handler shortcut modal
+                alert("To install: Please touch the browser menu icon (3 vertical dots) on your address bar and tap 'Add to Home Screen' safely.");
                 pwaDismissedByUser = true;
                 sessionStorage.setItem('pwa_opt_out', 'true');
                 document.getElementById('pwaLoopBox').classList.remove('visible');
@@ -1213,27 +1161,35 @@
     </script>
 
     <script>
-        let selectedGroupDiscount = 0;
         let currentInteractiveRating = 5;
         let activeLeadsCollection = [];
 
-        let count5Star = 373468;
-        let count4Star = 7700;
-        let count3Star = 3851;
-        let totalReviews = 385019;
+        // Point 5: Multi star ratings localized counter index balance state set to 177,204 reviews
+        let count5Star = 171887;
+        let count4Star = 3544;
+        let count3Star = 1773;
+        let totalReviews = 177204;
 
-        window.addEventListener('load', () => {
+        // Point 2 & 5: Load persistent structures from Local Storage arrays on startup initialization
+        window.addEventListener('DOMContentLoaded', () => {
             if(localStorage.getItem('quickfix_liked') === 'true') {
                 const btn = document.getElementById('globalHeartBtn');
                 btn.classList.add('liked');
                 btn.innerHTML = `<i class="fa-solid fa-heart"></i> Already Liked`;
+                
+                // Keep stats matching active additions
+                if(localStorage.getItem('like_stat_bumped') === 'true') {
+                    document.getElementById('heartStatsVal').innerText = "128410";
+                }
             }
+            
+            // Re-render local feed stack memory
+            renderSavedFeedSuggestions();
         });
 
         function registerSingleLike(btn) {
             if(localStorage.getItem('quickfix_liked') === 'true') {
-                // Point 2: Second touch advanced response message lock
-                alert("You have already shared your premium feedback value. Thank you for your support!");
+                alert("You have already shared your premium feedback value. Thank you for your immense support!");
                 return;
             }
             const textSpan = document.getElementById('heartStatsVal');
@@ -1243,8 +1199,10 @@
             btn.classList.add('liked');
             btn.innerHTML = `<i class="fa-solid fa-heart"></i> Liked!`;
             localStorage.setItem('quickfix_liked', 'true');
+            localStorage.setItem('like_stat_bumped', 'true');
         }
 
+        // Point 5: Fixed dynamic star touch validation engine function
         function setInteractiveRating(ratingValue) {
             currentInteractiveRating = ratingValue;
             const stars = document.querySelectorAll('#userStarRating i');
@@ -1262,7 +1220,7 @@
             if(drop) { drop.value = itemName; }
         }
 
-        // Point 3 & 4: Clear form and capture full context arrays on trigger execution
+        // Point 3, 4 & 7: Form processing execution handler loops
         function executeFinalBooking(e) {
             e.preventDefault();
             const name = document.getElementById('custName').value;
@@ -1270,31 +1228,49 @@
             const address = document.getElementById('custAddress').value;
             const appliance = document.getElementById('masterSelectDropdown').value;
             
-            activeLeadsCollection.push({ 
-                type: 'Slot Booking', 
+            const payload = { 
+                type: 'Booking Request', 
                 clientName: name,
                 clientPhone: phone,
                 clientAddr: address,
                 item: appliance,
                 timestamp: new Date().toLocaleTimeString() 
-            });
+            };
             
+            activeLeadsCollection.push(payload);
             document.getElementById('liveLeadCounter').innerText = activeLeadsCollection.length;
 
             document.getElementById('submitActionBtn').style.display = "none";
             document.getElementById('bookingSuccessBox').style.display = "block";
             
-            alert(`🎉 Booking Success! Lead captured for ${name}. Track active details now.`);
+            // Build absolute custom WhatsApp structured redirection strings template (Point 7/8 Fix)
+            let waText = `🔥 *NEW QUICKFIX BOOKING CAPTURED* 🔥\n\n`;
+            waText += `👤 *Customer Name:* ${name}\n`;
+            waText += `📞 *Mobile Phone:* ${phone}\n`;
+            waText += `📍 *Service Address:* ${address}\n`;
+            waText += `⚙️ *Appliance Item:* ${appliance}\n`;
+            waText += `⏰ *Timestamp:* ${new Date().toLocaleTimeString()}\n`;
+            waText += `---------------------------\n⚠️ _Status: Local Backup Registered_`;
             
-            // Point 3 Auto Clear Form immediately
+            const finalUrl = `https://wa.me/919930249182?text=${encodeURIComponent(waText)}`;
+            
+            // Map live anchor points securely to direct triggers
+            document.getElementById('waPrimaryLink').href = finalUrl;
+            document.getElementById('waSecondaryLink').href = `https://wa.me/919594406095?text=${encodeURIComponent(waText)}`;
+            
+            alert(`🎉 Booking Lead Confirmed! Form data successfully prepared. Click 'WA Primary' or 'WA Second' bottom buttons anytime to transmit notifications offline.`);
+            
+            // Point 3: Fast Auto clear input fields instantly
             document.getElementById('bookingForm').reset();
             setTimeout(() => {
                 document.getElementById('bookingSuccessBox').style.display = "none";
                 document.getElementById('submitActionBtn').style.display = "block";
-            }, 4000);
+                // Redirect action automation hook trigger safely
+                window.open(finalUrl, '_blank');
+            }, 3000);
         }
 
-        // Point 5: Fixed App Scheme triggers for secure operations ending in 9181
+        // Point 6: Secure application gateway redirect links ending in 9181
         function togglePaymentEngine(modeName, event) {
             const targets = document.querySelectorAll('.pay-option');
             targets.forEach(tgt => tgt.classList.remove('active'));
@@ -1314,7 +1290,7 @@
                 feedbackBox.style.background = "#ecfdf5";
                 feedbackBox.style.color = "#065f46";
                 feedbackBox.style.border = "1px solid #a7f3d0";
-                feedbackBox.innerText = "💸 Thanks for choosing Cash on Delivery! Pay securely to tech after job completion.";
+                feedbackBox.innerText = "💸 Choice Logged: Cash on Delivery chosen. Complete transaction with technician post repair visit.";
             } 
             else if(modeName === 'Card') {
                 cardForm.style.display = "block";
@@ -1325,7 +1301,7 @@
                 feedbackBox.style.background = "#fff7ed";
                 feedbackBox.style.color = "#c2410c";
                 feedbackBox.style.border = "1px solid #fed7aa";
-                feedbackBox.innerText = "📱 Launching PhonePe Protocol... If redirect doesn't trigger automatically, touch or scan the QR code below safely to account 9181.";
+                feedbackBox.innerText = "📱 Opening PhonePe Protocol... Scan the visual secure canvas below or execute payment terminal ending PNB 9181.";
                 window.location.href = "upi://pay?pa=quickfixmumbai@ybl&pn=QuickFix%20Mumbai&am=199&cu=INR";
             }
             else if(modeName === 'GPay') {
@@ -1334,52 +1310,31 @@
                 feedbackBox.style.background = "#fff7ed";
                 feedbackBox.style.color = "#c2410c";
                 feedbackBox.style.border = "1px solid #fed7aa";
-                feedbackBox.innerText = "📱 Launching Google Pay Gateway... If redirect doesn't trigger, please utilize the standard static QR snapshot below for PNB 9181.";
+                feedbackBox.innerText = "📱 Invoking Google Pay Native Intercept... Use standard static QR window pattern below for terminal tracking ending 9181.";
                 window.location.href = "upi://pay?pa=quickfixmumbai@ybl&pn=QuickFix%20Mumbai&am=199&cu=INR";
             }
         }
 
         function handleQRClick() {
-            alert("QR Selected! Destination Account: Punjab National Bank ending in 9181.");
+            alert("Terminal Check Verified: Destination Account Punjab National Bank ending in 9181.");
         }
 
         function executeEmergencySOSAlert() {
             const selectedItem = document.getElementById('emergencyItemsList').value;
             
-            activeLeadsCollection.push({ 
-                type: '🚨 EMERGENCY SOS', 
-                clientName: 'Immediate Guest',
-                clientPhone: 'Track Via Call',
-                clientAddr: 'SOS Live Dispatch',
-                item: selectedItem, 
-                timestamp: new Date().toLocaleTimeString() 
-            });
+            let sosText = `🚨 *QUICKFIX MUMBAI IMMEDIATE EMERGENCY SOS* 🚨\n\n`;
+            sosText += `⚠️ *Failure Issue Item:* ${selectedItem}\n`;
+            sosText += `📍 *Tracking Target:* Immediate Dispatch 45-Min Route\n`;
+            sosText += `⏰ *Trigger Time:* ${new Date().toLocaleTimeString()}`;
             
-            document.getElementById('liveLeadCounter').innerText = activeLeadsCollection.length;
-            alert(`🚨 EMERGENCY ALARM CAPTURED!\nItem: ${selectedItem}\nLead dashboard updated dynamically.`);
+            document.getElementById('waPrimaryLink').href = `https://wa.me/919930249182?text=${encodeURIComponent(sosText)}`;
+            document.getElementById('waSecondaryLink').href = `https://wa.me/919594406095?text=${encodeURIComponent(sosText)}`;
+            
+            alert(`🚨 EMERGENCY SOS CAPTURED! Links bound to bottom WA nodes. Launching tracking routing paths.`);
+            window.open(`https://wa.me/919930249182?text=${encodeURIComponent(sosText)}`, '_blank');
         }
 
-        // Point 8: Fully Debugged Dynamic URL Message Forwarding Engine
-        function forwardLeadsToWhatsApp() {
-            if(activeLeadsCollection.length === 0) {
-                alert("No new customer leads registered yet in this live session board.");
-                return;
-            }
-            let textTemplate = `🔥 *QUICKFIX MUMBAI NEW LEADS LOG* 🔥\n\n`;
-            activeLeadsCollection.forEach((lead, index) => {
-                textTemplate += `*Lead #${index + 1}* [${lead.type}]\n`;
-                textTemplate += `👤 *Name:* ${lead.clientName}\n`;
-                textTemplate += `📞 *Phone:* ${lead.clientPhone}\n`;
-                textTemplate += `📍 *Location:* ${lead.clientAddr}\n`;
-                textTemplate += `⚙️ *Appliance:* ${lead.item}\n`;
-                textTemplate += `⏰ *Time:* ${lead.timestamp}\n`;
-                textTemplate += `---------------------------\n`;
-            });
-            const encodedMessage = encodeURIComponent(textTemplate);
-            window.open(`https://wa.me/919930249182?text=${encodedMessage}`, '_blank');
-        }
-
-        // Point 7: Suggestions dynamic addition logic fixed to append live user nodes seamlessly
+        // Point 2 & 7: Dynamic suggestions append stack with data persistence storage loops
         function submitLiveSuggestion() {
             const src = document.getElementById('userSuggest');
             if(src.value.trim() === "") return;
@@ -1387,21 +1342,69 @@
             let starString = "";
             for(let i=0; i<currentInteractiveRating; i++) { starString += "★"; }
             
-            const dest = document.getElementById('suggestionFeed');
-            const element = document.createElement('div');
-            element.className = 'live-item';
-            element.innerHTML = `<strong>You:</strong> ${src.value} <span style="color:#f59e0b; margin-left:5px;">${starString}</span>`;
+            const newFeedbackObject = {
+                user: "Verified Client (Mumbai)",
+                text: src.value,
+                stars: starString
+            };
             
-            // Insert at top of UI list stream
-            dest.insertBefore(element, dest.firstChild);
+            // Save array nodes locally in browser persistence stack memory
+            let customStoredList = JSON.parse(localStorage.getItem('quickfix_local_reviews') || "[]");
+            customStoredList.unshift(newFeedbackObject);
+            localStorage.setItem('quickfix_local_reviews', JSON.stringify(customStoredList));
             
-            // Realtime metrics state update arithmetic
+            // Render directly into viewport interface layout
+            prependReviewToFeed(newFeedbackObject.user, newFeedbackObject.text, newFeedbackObject.stars);
+            
+            // Metrics balance arithmetic updates
             totalReviews++;
             if(currentInteractiveRating === 5) count5Star++;
             if(currentInteractiveRating === 4) count4Star++;
             if(currentInteractiveRating <= 3) count3Star++;
             
+            updateUIRatingsDashboardDisplay();
+            
+            src.value = "";
+            alert("Thank you! Your verified rating and feedback live review has been published instantly on our desk board!");
+        }
+
+        function prependReviewToFeed(user, text, stars) {
+            const dest = document.getElementById('suggestionFeed');
+            const element = document.createElement('div');
+            element.className = 'live-item';
+            element.innerHTML = `<strong>${user}:</strong> ${text} <span style="color:#f59e0b; margin-left:5px;">${stars}</span>`;
+            dest.insertBefore(element, dest.firstChild);
+        }
+
+        function renderSavedFeedSuggestions() {
+            const dest = document.getElementById('suggestionFeed');
+            dest.innerHTML = ""; // Clear existing blocks
+            
+            // Pull local storage array objects
+            let customStoredList = JSON.parse(localStorage.getItem('quickfix_local_reviews') || "[]");
+            
+            // Add baseline real demo static data blocks behind persistent nodes
+            const generalBaselines = [
+                { user: "Rohan K. (Bandra West)", text: "Best machine repair center near me. Very reliable service.", stars: "★★★★★" },
+                { user: "Anjali S. (Borivali East)", text: "Quick fixation of my fridge PCB circuit board within 1 hour!", stars: "★★★★★" }
+            ];
+            
+            // Combine items
+            const finalRenderStream = [...customStoredList, ...generalBaselines];
+            
+            finalRenderStream.forEach(item => {
+                const element = document.createElement('div');
+                element.className = 'live-item';
+                element.innerHTML = `<strong>${item.user}:</strong> ${item.text} <span style="color:#f59e0b; margin-left:5px;">${item.stars}</span>`;
+                dest.appendChild(element);
+            });
+            
+            updateUIRatingsDashboardDisplay();
+        }
+
+        function updateUIRatingsDashboardDisplay() {
             document.getElementById('totalRatingCount').innerText = totalReviews.toLocaleString();
+            document.getElementById('totalReviewCountBadge').innerText = totalReviews.toLocaleString();
             
             let p5 = ((count5Star / totalReviews) * 100).toFixed(0);
             let p4 = ((count4Star / totalReviews) * 100).toFixed(0);
@@ -1414,14 +1417,11 @@
             document.getElementById('bar3').style.width = p3 + "%";
             document.getElementById('txt3').innerText = p3 + "%";
             
-            let finalAvg = (( (5*count5Star) + (4*count4Star) + (3*count3Star) ) / totalReviews).toFixed(1);
+            let finalAvg = (((5 * count5Star) + (4 * count4Star) + (3 * count3Star)) / totalReviews).toFixed(1);
             document.getElementById('liveMainScore').innerText = finalAvg;
-            
-            src.value = "";
-            alert("Thank you! Your dynamic rating and suggestion has been updated live on our panel board sheets!");
         }
 
-        // Live Booking Toast Popup Modulator Area
+        // Point 4: Optimized dynamic booking toast timing loop stretch (15 seconds gaps)
         const mockDurations = [2, 4, 7, 11, 15, 22];
         const mockAppliances = ["Smart Refrigerator/Fridge", "Washing Machine Drum", "Microwave Heating Oven", "Inverter PCB Board Circuit", "Air Conditioner Unit (AC)"];
         const mockAreas = ["Bandra West", "Borivali East", "Andheri West", "Malad West", "Kandivali East", "Dadar South", "Thane Zone"];
@@ -1433,11 +1433,11 @@
             
             const toast = document.getElementById('liveBookingPopup');
             if(toast) {
-                document.getElementById('popupText').innerText = `Premium Look: Expert ${item} Repair Booked in ${area} ${time} mins ago (Quick & Priceless Service)`;
+                document.getElementById('popupText').innerText = `Expert ${item} Repair Booked in ${area} ${time} mins ago`;
                 toast.classList.add('show');
-                setTimeout(() => { toast.classList.remove('show'); }, 4500);
+                setTimeout(() => { toast.classList.remove('show'); }, 4000);
             }
-        }, 12000);
+        }, 15000); // Extended 15 second intervals
     </script>
     <script src="script.js?v=1.4"></script>
 </body>
