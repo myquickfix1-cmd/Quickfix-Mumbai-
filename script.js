@@ -1,46 +1,44 @@
 // =========================================================================
-// QUICKFIX MUMBAI - PREMIUM STANDALONE BANNER WITH DATE/TIME SELECTION
+// QUICKFIX MUMBAI - PREMIUM BANNER WITH COMPATIBLE INLINE STYLES (NO DEPS)
 // =========================================================================
 (function() {
     const bannerHTML = `
-    <div id="offer-banner" class="bg-gradient-to-r select-none from-red-600 to-orange-500 text-white py-4 px-4 font-sans font-bold shadow-lg w-full relative z-50 border-b-2 border-yellow-400">
-        <div class="max-w-6xl mx-auto flex flex-col items-center justify-between gap-4 text-center">
+    <div id="offer-banner" style="background: linear-gradient(to right, #dc2626, #f97316); color: white; padding: 15px; font-family: sans-serif; font-weight: bold; text-align: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); width: 100%; position: relative; z-index: 99999; border-bottom: 3px solid #facc15; box-sizing: border-box;">
+        <div style="max-w: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 12px;">
             
-            <div class="w-full flex flex-col sm:flex-row items-center justify-center gap-2">
-                <span class="animate-pulse bg-white text-red-600 text-xs px-2.5 py-1 rounded-full uppercase tracking-wider font-extrabold shadow">LIVE OFFER</span>
-                <p class="text-base sm:text-lg tracking-wide">🌙 Eid Special: <span class="text-yellow-300 font-black animate-bounce inline-block">25% OFF</span> on All Home Appliance Repairs!</p>
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;">
+                <span style="background-color: white; color: #dc2626; font-size: 11px; padding: 3px 10px; rounded-radius: 50px; border-radius: 9999px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">LIVE OFFER</span>
+                <p style="margin: 0; font-size: 16px; letter-spacing: 0.5px;">🌙 Eid Special: <span style="color: #facc15; font-size: 18px; font-weight: 900;">25% OFF</span> on All Home Appliance Repairs!</p>
             </div>
 
-            <div class="flex flex-col sm:flex-row items-center gap-2 bg-black/40 px-5 py-2 rounded-xl border border-yellow-400/30 shadow-inner w-full sm:w-auto justify-center">
-                <span id="timer-label" class="text-xs tracking-widest text-orange-200 uppercase font-mono animate-pulse">⏳ ENDS IN:</span>
-                <div class="flex gap-1.5 text-base font-mono tracking-wider text-yellow-300 justify-center">
-                    <span id="timer-days" class="bg-red-700 px-2 py-0.5 rounded text-white font-black shadow-sm">00</span>d :
-                    <span id="timer-hours" class="bg-red-700 px-2 py-0.5 rounded text-white font-black shadow-sm">00</span>h :
-                    <span id="timer-mins" class="bg-red-700 px-2 py-0.5 rounded text-white font-black shadow-sm">00</span>m :
-                    <span id="timer-secs" class="bg-red-700 px-2 py-0.5 rounded text-white font-black shadow-sm">00</span>s
+            <div style="display: flex; align-items: center; gap: 8px; background-color: rgba(0, 0, 0, 0.35); padding: 6px 16px; border-radius: 10px; border: 1px solid rgba(254, 240, 138, 0.2); box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); justify-content: center; min-width: 260px;">
+                <span id="timer-label" style="font-size: 11px; letter-spacing: 1px; color: #fed7aa; text-transform: uppercase;">⏳ ENDS IN:</span>
+                <div style="display: flex; gap: 4px; font-family: monospace; font-size: 15px; color: #facc15; letter-spacing: 0.5px;">
+                    <span id="timer-days" style="background-color: #b91c1c; padding: 2px 6px; border-radius: 4px; color: white; font-weight: bold;">00</span>d :
+                    <span id="timer-hours" style="background-color: #b91c1c; padding: 2px 6px; border-radius: 4px; color: white; font-weight: bold;">00</span>h :
+                    <span id="timer-mins" style="background-color: #b91c1c; padding: 2px 6px; border-radius: 4px; color: white; font-weight: bold;">00</span>m :
+                    <span id="timer-secs" style="background-color: #b91c1c; padding: 2px 6px; border-radius: 4px; color: white; font-weight: bold;">00</span>s
                 </div>
             </div>
 
-            <div class="w-full bg-black/20 p-4 rounded-xl border border-white/10 flex flex-col gap-3 shadow-md items-center justify-center">
-                <div class="text-sm text-yellow-200 flex items-center gap-1.5 font-medium justify-center block w-full text-center">
-                    📆 Apni Service Ka Din Aur Time Chunein:
+            <div style="width: 100%; max-width: 450px; background-color: rgba(255, 255, 255, 0.15); padding: 12px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.15); display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); box-sizing: border-box;">
+                <div style="font-size: 13px; color: #fef08a; font-weight: 500; text-align: center;">
+                    📅 Apni Service Ka Din Aur Time Chunein:
                 </div>
                 
-                <div class="w-full max-w-md grid grid-cols-1 gap-2.5">
-                    <input type="date" id="banner-booking-date" class="w-full bg-white text-gray-800 text-sm rounded-lg px-3 py-2 font-bold focus:outline-none focus:ring-2 focus:ring-yellow-400 cursor-pointer shadow-sm text-center">
-                    
-                    <select id="banner-booking-time" class="w-full bg-white text-gray-800 text-sm rounded-lg px-3 py-2 font-bold focus:outline-none focus:ring-2 focus:ring-yellow-400 cursor-pointer shadow-sm text-center">
-                        <option value="" disabled selected>⏰ Select Time Slot</option>
-                        <option value="09:00 AM to 12:00 PM">09:00 AM to 12:00 PM (Morning)</option>
-                        <option value="12:00 PM to 03:00 PM">12:00 PM to 03:00 PM (Afternoon)</option>
-                        <option value="03:00 PM to 06:00 PM">03:00 PM to 06:00 PM (Evening)</option>
-                        <option value="06:00 PM to 09:00 PM">06:00 PM to 09:00 PM (Night Rush)</option>
-                    </select>
+                <input type="date" id="banner-booking-date" style="width: 100%; bg-color: white; color: #1f2937; font-size: 14px; border-radius: 8px; padding: 8px; font-weight: bold; border: none; outline: none; text-align: center; box-sizing: border-box; cursor: pointer;">
+                
+                <select id="banner-booking-time" style="width: 100%; bg-color: white; color: #1f2937; font-size: 14px; border-radius: 8px; padding: 8px; font-weight: bold; border: none; outline: none; text-align: center; box-sizing: border-box; cursor: pointer;">
+                    <option value="" disabled selected>⏰ Select Time Slot</option>
+                    <option value="09:00 AM to 12:00 PM">09:00 AM to 12:00 PM (Morning)</option>
+                    <option value="12:00 PM to 03:00 PM">12:00 PM to 03:00 PM (Afternoon)</option>
+                    <option value="03:00 PM to 06:00 PM">03:00 PM to 06:00 PM (Evening)</option>
+                    <option value="06:00 PM to 09:00 PM">06:00 PM to 09:00 PM (Night Rush)</option>
+                </select>
 
-                    <button onclick="bookFromBanner()" class="w-full bg-yellow-400 hover:bg-yellow-300 text-red-700 hover:scale-[1.02] active:scale-95 transition-all text-sm py-2 rounded-lg font-black uppercase tracking-wider shadow cursor-pointer">
-                        Book Now ⚡
-                    </button>
-                </div>
+                <button onclick="bookFromBanner()" style="width: 100%; background-color: #facc15; color: #b91c1c; font-size: 14px; padding: 10px; border-radius: 8px; font-weight: 900; border: none; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.15); transition: background-color 0.2s;">
+                    Book Now ⚡
+                </button>
             </div>
 
         </div>
