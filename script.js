@@ -120,7 +120,7 @@ function bookFromBanner() {
     const selectedDate = document.getElementById("banner-booking-date").value;
     const selectedTime = document.getElementById("banner-booking-time").value;
 
-    if(!selectedDate) { alert("Please select a service Date! 📆"); return; }
+    if(!selectedDate) { alert("Please select a service Date! "); return; }
     if(!selectedTime) { alert("Please select a Time Slot! ⏰"); return; }
 
     const dateObj = new Date(selectedDate);
