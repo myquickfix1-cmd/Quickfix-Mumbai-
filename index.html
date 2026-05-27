@@ -3,518 +3,679 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickFix Mumbai | Premium Multi-Brand Repair & Maintenance</title>
+    <title>QuickFix Mumbai - Smart Home Appliance Repair</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --primary: #ff6b00;
-            --secondary: #1a252f;
-            --emergency: #d9534f; /* Red for Emergency */
-            --dark: #111;
-            --light: #f8f9fa;
-            --white: #ffffff;
-            --gray: #666;
-            --success: #28a745;
+            --primary: #FF6B00;
+            --primary-hover: #E05E00;
+            --secondary: #1E293B;
+            --accent: #10B981;
+            --bg-light: #F8FAFC;
+            --text-dark: #0F172A;
+            --text-muted: #64748B;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            scroll-behavior: smooth;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            background-color: var(--light);
-            color: var(--dark);
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
         }
 
-        /* Navigation */
-        header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
+        /* Utility Classes */
+        .container {
             width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .badge {
+            background: rgba(255, 107, 0, 0.1);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        /* Top Notification Bar */
+        .tech-bar {
+            background: var(--secondary);
+            color: #fff;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .tech-bar .dot {
+            height: 10px;
+            width: 10px;
+            background-color: #ef4444;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+            animation: blink 1.2s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+
+        /* Header & Navigation */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
             top: 0;
             z-index: 1000;
         }
-
-        .navbar {
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
             padding: 15px 20px;
         }
-
-        .logo { font-size: 24px; font-weight: bold; color: var(--secondary); }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-decoration: none;
+        }
         .logo span { color: var(--primary); }
-
-        .nav-links { list-style: none; display: flex; gap: 20px; }
-        .nav-links a { text-decoration: none; color: var(--secondary); font-weight: 600; transition: 0.3s; }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
         .nav-links a:hover { color: var(--primary); }
 
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
         .btn-main {
-            background: var(--primary); color: var(--white); padding: 10px 20px;
-            border-radius: 5px; text-decoration: none; font-weight: bold; transition: 0.3s; border: none; cursor: pointer;
+            background: var(--primary);
+            color: #fff;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
         }
-        .btn-main:hover { background: #e05e00; }
-
-        .btn-emergency {
-            background: var(--emergency); color: var(--white); padding: 10px 20px;
-            border-radius: 5px; text-decoration: none; font-weight: bold; animation: pulse 1.5s infinite;
+        .btn-main:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 83, 79, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(217, 83, 79, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 83, 79, 0); }
+        /* Warranty Box (Point 3) */
+        .warranty-card {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px dashed var(--accent);
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 30px auto 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-align: left;
         }
+        .warranty-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+        .warranty-card h4 { color: #fff; margin-bottom: 4px; }
+        .warranty-card p { font-size: 0.9rem; margin: 0; color: #cbd5e1; }
 
-        /* Sections */
-        section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
-        .section-title { text-align: center; font-size: 32px; margin-bottom: 40px; }
+        /* Trust Stats Box */
+        .trust-box {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            margin: -40px auto 40px;
+            max-width: 1000px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        .stat-item h3 { font-size: 1.5rem; color: var(--primary); }
+        .stat-item p { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* Section Styling */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--secondary);
+        }
         .section-title span { color: var(--primary); }
 
-        /* Hero Section */
-        .hero-bg {
-            background: linear-gradient(rgba(0,0,0,0.73), rgba(0,0,0,0.73)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1200') no-repeat center center/cover;
-            height: 85vh; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white); margin-top: 60px;
+        /* Multi-Brand Grid (Point 2 & Screenshot) */
+        .brands-container {
+            background: #fff;
+            padding: 40px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            margin-bottom: 50px;
         }
-        .hero-content h1 { font-size: 45px; margin-bottom: 15px; }
-        .hero-content p { font-size: 18px; margin-bottom: 25px; color: #ccc; }
-
-        /* 6M Warranty Commitment Badge */
-        .warranty-commitment {
-            background: rgba(40, 167, 69, 0.15);
-            border: 2px dashed var(--success);
-            padding: 15px 25px;
-            border-radius: 8px;
+        .brand-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+        .brand-badge {
+            background: var(--secondary);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .brand-badge::before {
+            content: '';
             display: inline-block;
-            margin-top: 25px;
-            backdrop-filter: blur(5px);
+            width: 8px;
+            height: 8px;
+            background: #fff;
+            border-radius: 50%;
         }
-        .warranty-commitment h4 { color: #5cb85c; font-size: 18px; margin-bottom: 5px; }
 
-        /* Brands & Items Grid (Point 2) */
-        .brands-badge-container {
-            display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 30px;
-            background: #eee; padding: 15px; border-radius: 8px;
+        /* Interactive Systems Section (Booking, Emergency, Offers) */
+        .grid-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
         }
-        .brand-tag { background: var(--secondary); color: white; padding: 5px 15px; border-radius: 4px; font-weight: bold; font-size: 14px;}
+        @media(max-width: 768px) { .grid-panel { grid-template-columns: 1fr; } }
 
-        .items-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-        .item-card { background: var(--white); padding: 25px; border-radius: 8px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .item-card i { font-size: 35px; color: var(--primary); margin-bottom: 12px; }
-        .item-card h4 { margin-bottom: 8px; color: var(--secondary); }
-        .item-card span { font-size: 12px; color: #777; background: #eef2f5; padding: 2px 8px; border-radius: 10px; }
-
-        /* Emergency Section (Point 6) */
-        .emergency-section { background: #fff5f5; border-left: 8px solid var(--emergency); border-radius: 4px; }
-        .emergency-box { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-        .emergency-form { display: flex; gap: 10px; flex-wrap: wrap; width: 100%; max-width: 600px; }
-        .emergency-form input { flex: 1; min-width: 200px; padding: 12px; border: 1px solid #ccc; border-radius: 4px; }
-
-        /* Customer Suggestion List (Point 7) */
-        .suggestion-box { background: var(--white); padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-top: 20px; }
-        .suggestion-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; list-style: none; }
-        .suggestion-list li { background: #f0f4f8; padding: 12px; border-radius: 5px; border-left: 4px solid var(--primary); font-size: 14px; }
-
-        /* Live Rating Section (Point 8) */
-        .live-rating-bar { background: var(--secondary); color: white; padding: 15px 20px; text-align: center; font-weight: bold; display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; }
-        .counter-box { background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 4px; color: var(--primary); }
-
-        /* Forms & Common Booking */
-        .booking-form { max-width: 700px; margin: 0 auto; background: var(--white); padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .form-group { margin-bottom: 15px; }
-        .form-group.full-width { grid-column: span 2; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; }
-
-        /* Review Grid */
-        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .review-card { background: var(--white); padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .stars { color: #ffb100; margin-bottom: 10px; }
-
-        footer { background: var(--dark); color: #aaa; text-align: center; padding: 20px; font-size: 14px; }
-
-        @media(max-width: 768px) {
-            .nav-links { display: none; }
-            .form-grid { grid-template-columns: 1fr; }
-            .form-group.full-width { grid-column: span 1; }
-            .hero-content h1 { font-size: 32px; }
+        .card-panel {
+            background: #fff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.04);
         }
+
+        /* Form Inputs */
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .form-control:focus { border-color: var(--primary); }
+
+        /* Live Discount Display */
+        .offer-box {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            text-align: center;
+        }
+        .offer-box h4 { color: #1e40af; }
+        .offer-amt { font-size: 1.4rem; color: #2563eb; font-weight: 700; }
+
+        /* QR Payment Section (Point 9 & Screenshot 1) */
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .pay-option {
+            border: 2px solid #e2e8f0;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .pay-option.active {
+            border-color: var(--primary);
+            background: rgba(255, 107, 0, 0.05);
+        }
+        #qr-container {
+            text-align: center;
+            margin-top: 20px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .qr-placeholder {
+            max-width: 180px;
+            margin: 0 auto 10px;
+            display: block;
+        }
+
+        /* Suggestions & Rating */
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        @media(max-width: 768px) { .feedback-grid { grid-template-columns: 1fr; } }
+
+        .live-item {
+            padding: 10px 0;
+            border-bottom: 1px dashed #e2e8f0;
+            font-size: 0.9rem;
+        }
+        .rating-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            gap: 10px;
+        }
+        .bar-container {
+            flex-grow: 1;
+            background: #e2e8f0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .bar-fill { height: 100%; background: #f59e0b; }
+
+        /* Quick Call/WhatsApp Bar (Point 8) */
+        .sticky-contact {
+            background: #fff;
+            border-top: 1px solid #e2e8f0;
+            padding: 12px 20px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 999;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+        }
+        .contact-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+        .btn-call { background: #2563eb; }
+        .btn-wa { background: #22c55e; }
+
+        /* Notification Popup (Point 12) */
+        .live-popup {
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            background: var(--secondary);
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateY(150%);
+            transition: transform 0.5s ease-in-out;
+        }
+        .live-popup.show { transform: translateY(0); }
+        .live-popup i { color: var(--primary); font-size: 1.2rem; }
     </style>
 </head>
 <body>
 
-    <div class="live-rating-bar">
-        <span><i class="fa-solid fa-star" style="color: #ffb100;"></i> Live Customer Rating: 4.9/5</span>
-        <span class="counter-box"><i class="fa-solid fa-user-gear"></i> <span id="jobsCounter">14,240</span>+ Jobs Completed in Mumbai</span>
-        <span class="counter-box"><i class="fa-solid fa-circle text-success" style="font-size:10px; animation: pulse 1s infinite;"></i> <span id="activeTechs">48</span> Technicians Online Now</span>
+    <div class="tech-bar">
+        <span class="dot"></span>49 Expert Technicians Online Now in Mumbai
     </div>
 
     <header>
-        <div class="navbar">
-            <div class="logo">Quick<span>Fix</span> Mumbai</div>
+        <div class="container nav-container">
+            <a href="#" class="logo">QuickFix<span>Mumbai</span></a>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Items & Brands</a></li>
+                <li><a href="#booking">Book Repair</a></li>
                 <li><a href="#emergency">Emergency Service</a></li>
-                <li><a href="#suggestions">Expert Suggestions</a></li>
-                <li><a href="#booking">Book Slot</a></li>
+                <li><a href="#offers">Mega Offers</a></li>
             </ul>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <a href="#emergency" class="btn-emergency"><i class="fa-solid fa-truck-fast"></i> 90-Min Emergency</a>
-            </div>
         </div>
     </header>
 
-    <div id="home" class="hero-bg">
-        <div class="hero-content">
-            <h1>Mumbai's Authorized Smart Repair Experts</h1>
-            <p>From Multi-Brand Motherboards to Complex PCB Circuit Repairs</p>
-            <a href="#booking" class="btn-main" style="padding: 15px 35px; font-size: 18px;"><i class="fa-solid fa-wrench"></i> Book a Repair Now</a>
-            <br>
-            
-            <div class="warranty-commitment">
-                <h4><i class="fa-solid fa-circle-check"></i> Official 6-Month Service Warranty</h4>
-                <p style="font-size: 14px; color: #fff;">Commitment: If any re-problem occurs within 6 months, <strong>Free Re-visit & Free Fixing</strong> guaranteed!</p>
+    <section class="hero">
+        <div class="container">
+            <div style="margin-bottom: 10px;">
+                <span class="badge" style="background: var(--primary); color: #fff; font-size: 0.9rem;">Expert Service</span>
+                <span class="badge" style="background: var(--accent); color: #fff; font-size: 0.9rem;">Trusted Platform</span>
+            </div>
+            <h1>Welcome to QuickFix Mumbai</h1>
+            <p>India's No.1 Most Trusted & Beloved Doorstep Peerwise Center. Revolutionizing online home appliance services since 2010. Providing fast, expert, and advanced repairs 24/7.</p>
+            <a href="#booking" class="btn-main"><i class="fa fa-wrench"></i> Book a Repair Now</a>
+
+            <div class="warranty-card">
+                <i class="fa-solid fa-circle-check"></i>
+                <div>
+                    <h4>Official 6-Month Service Warranty</h4>
+                    <p>Commitment: If any re-problem occurs within 6 months, <strong>Free Re-visit & Free Fixing</strong> guaranteed!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="trust-box">
+            <div class="stat-item">
+                <h3>3,85,019+</h3>
+                <p>Trusted Families Served</p>
+            </div>
+            <div class="stat-item">
+                <h3>100% Genuine</h3>
+                <p>Company Spare Parts</p>
+            </div>
+            <div class="stat-item">
+                <h3>Zero</h3>
+                <p>Hidden Charges or Fees</p>
+            </div>
+            <div class="stat-item">
+                <h3>15+ Years</h3>
+                <p>Industry Experience</p>
             </div>
         </div>
     </div>
 
-    <section id="emergency" class="emergency-section">
-        <div class="emergency-box">
-            <div>
-                <h2 style="color: var(--emergency); margin-bottom: 5px;"><i class="fa-solid fa-bell-on"></i> 90-Minute Emergency Repair</h2>
-                <p>AC breakdown in summer? Fridge fully stopped? Urgent PCB issues? Hum turant pahunchenge.</p>
-            </div>
-            <form class="emergency-form" id="emergencyForm">
-                <input type="text" id="emName" placeholder="Your Name" required>
-                <input type="tel" id="emPhone" placeholder="Mobile Number" required>
-                <input type="text" id="emArea" placeholder="Mumbai Location (e.g. Andheri)" required>
-                <button type="submit" class="btn-emergency" style="border:none; cursor:pointer; padding: 12px 25px;">Send Tech SOS</button>
-            </form>
-        </div>
-    </section>
-
-    <section id="services">
+    <section class="container" style="margin-bottom: 40px;">
         <h2 class="section-title">Multi-Brand <span>Home Appliances Hub</span></h2>
+        <div class="brands-container">
+            <p style="text-align: center; margin-bottom: 20px; font-weight: 600; color: var(--text-muted);">We Repair All Major Worldwide Brands:</p>
+            <div class="brand-grid">
+                <div class="brand-badge">Samsung</div>
+                <div class="brand-badge">LG</div>
+                <div class="brand-badge">Bosch</div>
+                <div class="brand-badge">Whirlpool</div>
+                <div class="brand-badge">IFB</div>
+                <div class="brand-badge">Panasonic</div>
+                <div class="brand-badge">Hitachi</div>
+                <div class="brand-badge">Toshiba</div>
+                <div class="brand-badge">Videocon</div>
+                <div class="brand-badge">Sony & More</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container grid-panel" id="booking">
         
-        <p style="text-align:center; font-weight:bold; margin-bottom:10px; color: var(--gray);">We Repair All Major Worldwide Brands:</p>
-        <div class="brands-badge-container">
-            <div class="brand-tag"><i class="fa-solid fa-circle-dot"></i> Samsung</div>
-            <div class="brand-tag"><i class="fa-solid fa-circle-dot"></i> LG</div>
-            <div class="brand-tag"><i class="fa-solid fa-circle-dot"></i> Bosch</div>
-            <div class="brand-tag"><i class="fa-solid fa-circle-dot"></i> Whirlpool</div>
-            <div class="brand-tag"><i class="fa-solid fa-circle-dot"></i> IFB</div>
-            <div class="brand-tag"><i class="fa-solid fa-circle-dot"></i> Sony & More</div>
-        </div>
-
-        <div class="items-grid">
-            <div class="item-card">
-                <i class="fa-solid fa-house-laptop"></i>
-                <h4>All Home Appliances</h4>
-                <span>All-in-One Solution</span>
-            </div>
-            <div class="item-card">
-                <i class="fa-solid fa-snowflake"></i>
-                <h4>Smart Refrigerator/Fridge</h4>
-                <span>Double Door / Side-by-Side</span>
-            </div>
-            <div class="item-card">
-                <i class="fa-solid fa-soap"></i>
-                <h4>Washing Machine</h4>
-                <span>Front & Top Load Expert</span>
-            </div>
-            <div class="item-card">
-                <i class="fa-solid fa-rug"></i>
-                <h4>Premium Air Dresser</h4>
-                <span>Specialized Steam Care</span>
-            </div>
-            <div class="item-card">
-                <i class="fa-solid fa-wind"></i>
-                <h4>High-Capacity Air Dryer</h4>
-                <span>Heating & Motor Repair</span>
-            </div>
-            <div class="item-card">
-                <i class="fa-solid fa-glass-water-droplet"></i>
-                <h4>Advanced Dishwasher</h4>
-                <span>Bosch/LG Specialized</span>
-            </div>
-            <div class="item-card">
-                <i class="fa-solid fa-temperature-arrow-down"></i>
-                <h4>Air Conditioner (AC)</h4>
-                <span>Inverter & Split AC</span>
-            </div>
-            <div class="item-card">
-                <i class="fa-solid fa-microchip"></i>
-                <h4>Inverter PCB Repair</h4>
-                <span>Circuit Board Micro-Soldering</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="suggestions" style="background: #f0f4f8; max-width: 100%;">
-        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-            <h2 class="section-title">Smart <span>Customer Suggestion Guide</span></h2>
-            <div class="suggestion-box">
-                <p style="margin-bottom: 20px; font-weight: 600; color: var(--secondary);"><i class="fa-solid fa-lightbulb" style="color: var(--primary);"></i> Appliance kharab hone par hamare experts ki basic salah:</p>
-                <ul class="suggestion-list">
-                    <li><strong>Washing Machine Vibration:</strong> Humesha check karein ki machine level floor par ho. Agar sound zyada hai, toh drum bearing badalna pad sakta hai.</li>
-                    <li><strong>AC Cooling Issue:</strong> Har 3 mahine me filter saaf karein. Agar thandi hawa bilkul band hai, toh PCB ya Gas Leakage ki jaanch turant karwayein.</li>
-                    <li><strong>Fridge Non-Stop Running:</strong> Baar-baar darwaza na kholein aur piche ke condenser coils ko saaf rakhein taaki electricity bill zyada na aaye.</li>
-                    <li><strong>PCB Protection Tips:</strong> Mumbai ki high humidity aur power fluctuations se bachne ke liye appliances ko hamesha achhe stabilizer ke saath chalayein.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="booking">
-        <h2 class="section-title">Schedule Routine <span>Maintenance</span></h2>
-        <div class="booking-form">
-            <form id="routineBookingForm">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" id="custName" required placeholder="Enter name">
-                    </div>
-                    <div class="form-group">
-                        <label>Mobile Number</label>
-                        <input type="tel" id="custPhone" required placeholder="10-digit number">
-                    </div>
-                    <div class="form-group">
-                        <label>Select Device Category</label>
-                        <select id="custItem" required>
-                            <option value="">-- Choose Item --</option>
-                            <option value="Fridge">Refrigerator / Fridge</option>
-                            <option value="Washing Machine">Washing Machine</option>
-                            <option value="Dishwasher">Dishwasher</option>
-                            <option value="Air Dresser/Dryer">Air Dresser / Dryer</option>
-                            <option value="AC & PCB Repair">AC & Inverter PCB Repair</option>
-                            <option value="Other Home Appliance">Other Appliance</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Appliance Brand</label>
-                        <select id="custBrand" required>
-                            <option value="">-- Choose Brand --</option>
-                            <option value="Samsung">Samsung</option>
-                            <option value="LG">LG</option>
-                            <option value="Bosch">Bosch</option>
-                            <option value="Whirlpool">Whirlpool</option>
-                            <option value="Other Brand">Other Brand</option>
-                        </select>
-                    </div>
-                    <div class="form-group full-width">
-                        <label>Service Address in Mumbai</label>
-                        <textarea id="custAddress" rows="3" required placeholder="Flat No, Landmark, Area name..."></textarea>
-                    </div>
+        <div class="card-panel">
+            <h3 style="margin-bottom: 15px;"><i class="fa fa-calendar-check" style="color: var(--primary);"></i> Fast Customer Booking</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">Book your slot instantly. <strong>₹99 Service Visit Charge</strong> applies.</p>
+            
+            <form id="bookingForm" onsubmit="event.preventDefault(); alert('Booking Confirmed Successfully!');">
+                <div class="form-group">
+                    <label>Select Appliance Type</label>
+                    <select class="form-control" required>
+                        <option value="">-- Choose Appliance --</option>
+                        <option>Smart Refrigerator / Fridge</option>
+                        <option>Washing Machine</option>
+                        <option>Micro Oven</option>
+                        <option>Premium Air Dresser / Dryer</option>
+                        <option>Advance Dishwasher</option>
+                        <option>Air Conditioner (AC)</option>
+                        <option>Inverter & Normal PCB Repair</option>
+                    </select>
                 </div>
-                <button type="submit" class="btn-main" style="width:100%; padding:15px; font-size: 16px;">Confirm Booking Request</button>
+                
+                <div class="form-group" id="offers">
+                    <label>Advance Booking Timing (Get Mega Offers)</label>
+                    <select class="form-control" id="bookingDays" onchange="calculateDiscount()" required>
+                        <option value="1">1-2 Days Booking (Standard Offer)</option>
+                        <option value="3">3-6 Days Advance Booking (Mega Offer)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Number of People Booking Jointly</label>
+                    <select class="form-control" id="groupSize" onchange="calculateDiscount()">
+                        <option value="1">1-3 People</option>
+                        <option value="4">4-6 People</option>
+                        <option value="7">7-10 People</option>
+                    </select>
+                </div>
+
+                <div class="offer-box">
+                    <h4>Your Applied Discount Offer</h4>
+                    <div class="offer-amt" id="discountDisplay">18% OFF</div>
+                    <p style="font-size: 0.8rem; margin: 0; color: var(--text-muted);">Real-time discount applied dynamically</p>
+                </div>
+
+                <button type="submit" class="btn-main" style="width: 100%; margin-top: 20px;">Complete Booking in 2 Clicks</button>
             </form>
         </div>
+
+        <div class="card-panel" id="emergency" style="border-top: 4px solid #ef4444;">
+            <span class="badge" style="background: #fee2e2; color: #ef4444; margin-bottom: 10px;">Urgent Help</span>
+            <h3 style="margin-bottom: 15px;"><i class="fa fa-bolt" style="color: #ef4444;"></i> Digital Emergency System</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">Immediate 45-Minute Dispatch Response for critical failures.</p>
+            
+            <div class="form-group">
+                <label>Select Emergency Item</label>
+                <select class="form-control" id="emergencyItem">
+                    <option>ALL ITEMS / General Breakdown</option>
+                    <option>Refrigerator Total Cooling Loss</option>
+                    <option>Washing Machine Water Overflow / Drum Jam</option>
+                    <option>AC Short Circuit / PCB Sparking</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Emergency Pre-Payment Mode</label>
+                <div class="payment-methods">
+                    <div class="pay-option" onclick="selectPay('Cash')">Cash</div>
+                    <div class="pay-option" onclick="selectPay('GPay')">Google Pay</div>
+                    <div class="pay-option active" onclick="selectPay('PhonePe')">PhonePe QR</div>
+                    <div class="pay-option" onclick="selectPay('Card')">Paytm / Card</div>
+                </div>
+            </div>
+
+            <div id="qr-container">
+                <p style="font-size: 0.85rem; font-weight: 600; margin-bottom: 10px; color: var(--secondary);">
+                    <i class="fa fa-qrcode"></i> Scan PhonePe QR to Confirm Emergency Dispatch (₹199 Pre-Payment System)
+                </p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=quickfixmumbai@ybl" alt="PhonePe QR Code Punjab National Bank 9181" class="qr-placeholder">
+                <div style="font-size: 0.75rem; color: var(--text-muted);">Punjab National Bank - 9181</div>
+            </div>
+
+            <button onclick="alert('Emergency Alert Dispatched! Technician is on their way.')" class="btn-main" style="width: 100%; background: #ef4444; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3); margin-top: 20px;">Launch Immediate 45-Min Dispatch</button>
+        </div>
+
     </section>
 
-    <section id="reviews">
-        <h2 class="section-title">Real Reviews From <span>Mumbaikars</span></h2>
-        <div class="review-grid">
-            <div class="review-card">
-                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p>"Mera Samsung Air Dresser malfunction kar raha tha. Mumbai me iske tech jaldi nahi milte, par inhone aakar iski PCB circuit repair kar di. Amazing service!"</p>
-                <h4 style="margin-top:15px;">- Vikram Malhotra, Bandra</h4>
+    <section class="container feedback-grid">
+        
+        <div class="card-panel">
+            <h3><i class="fa fa-comments" style="color: var(--primary);"></i> Suggestions Desk</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Minimum 79,201 People Have Left Good Suggestions.</p>
+            
+            <div class="form-group" style="display: flex; gap: 10px;">
+                <input type="text" id="userSuggest" class="form-control" placeholder="Write your live suggestion here...">
+                <button onclick="addSuggestion()" class="btn-main" style="padding: 10px 20px;">Submit</button>
             </div>
-            <div class="review-card">
-                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p>"Bosch Dishwasher leak ho raha tha rat ko. Emergency form bhara aur subah tech 90 mins me hazir. 6-month ki written warranty bhi di hai."</p>
-                <h4 style="margin-top:15px;">- Anjali Desai, Andheri West</h4>
+
+            <div id="suggestionFeed" style="max-height: 180px; overflow-y: auto;">
+                <div class="live-item"><strong>Amit R.</strong> - Excellent service timeliness in Andheri West!</div>
+                <div class="live-item"><strong>Sneha M.</strong> - Highly skilled PCB technician sent. Completely satisfied.</div>
             </div>
         </div>
+
+        <div class="card-panel">
+            <h3><i class="fa fa-star" style="color: #f59e0b;"></i> Verified Doorstep Ratings</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Based on 3,85,019 Verified Doorstep Jobs in Mumbai.</p>
+            
+            <div class="rating-row">
+                <span style="width: 30px; font-weight: 600;">5★</span>
+                <div class="bar-container"><div class="bar-fill" style="width: 97%;"></div></div>
+                <span style="width: 40px; text-align: right; font-size: 0.85rem;">97%</span>
+            </div>
+            <div class="rating-row">
+                <span style="width: 30px; font-weight: 600;">4★</span>
+                <div class="bar-container"><div class="bar-fill" style="width: 2%;"></div></div>
+                <span style="width: 40px; text-align: right; font-size: 0.85rem;">2%</span>
+            </div>
+            <div class="rating-row">
+                <span style="width: 30px; font-weight: 600;">3★</span>
+                <div class="bar-container"><div class="bar-fill" style="width: 1%;"></div></div>
+                <span style="width: 40px; text-align: right; font-size: 0.85rem;">1%</span>
+            </div>
+        </div>
+
     </section>
 
-    <footer>
-        <p>&copy; 2026 QuickFix Mumbai. Professional Multi-Brand Technical Services.</p>
-    </footer>
+    <div style="height: 100px;"></div>
+
+    <div class="sticky-contact">
+        <a href="tel:+919930249182" class="contact-btn btn-call"><i class="fa fa-phone"></i> Call: +91 9930249182</a>
+        <a href="https://wa.me/919930249182" target="_blank" class="contact-btn btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp Primary</a>
+        <a href="https://wa.me/919594406095" target="_blank" class="contact-btn btn-wa" style="background:#16a34a;"><i class="fab fa-whatsapp"></i> WhatsApp Secondary</a>
+    </div>
+
+    <div class="live-popup" id="liveBookingPopup">
+        <i class="fa fa-circle-check"></i>
+        <div>
+            <span id="popupText">An Appliance has been booked 3 mins ago</span>
+            <div style="font-size: 0.75rem; opacity: 0.8;">Verified Doorstep Job Live</div>
+        </div>
+    </div>
+
+    <div id="dashboard-hook" data-leads="all-over-mumbai" style="display:none;"></div>
 
     <script>
-        // Live Counter Animation (Point 8)
-        setInterval(() => {
-            // Live active technician counter randomly fluctuates between 45 and 55 to look completely organic
-            const randomTechs = Math.floor(Math.random() * (55 - 45 + 1)) + 45;
-            document.getElementById('activeTechs').innerText = randomTechs;
-        }, 4000);
+        // Real-Time Dynamic Offer Calculator Logic (Point 6)
+        function calculateDiscount() {
+            const daySelection = document.getElementById('bookingDays').value;
+            const groupSelection = document.getElementById('groupSize').value;
+            let finalDiscount = 18; // Default initial layout rule baseline
 
-        // Emergency Form Processing
-        document.getElementById('emergencyForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('emName').value;
-            const phone = document.getElementById('emPhone').value;
-            const area = document.getElementById('emArea').value;
+            if (daySelection === "3") {
+                // Mega Offer Condition Rule
+                finalDiscount = 20;
+            } else {
+                // Standard Dynamic Matrix Rule Implementation
+                if (groupSelection === "1") finalDiscount = 18;
+                else if (groupSelection === "4") finalDiscount = 12;
+                else if (groupSelection === "7") finalDiscount = 6;
+            }
+
+            document.getElementById('discountDisplay').innerText = finalDiscount + "% OFF";
+        }
+
+        // Live Interactive Suggestions Injector (Point 7)
+        function addSuggestion() {
+            const textInput = document.getElementById('userSuggest');
+            if (textInput.value.trim() === "") return;
             
-            alert(`🚨 EMERGENCY ALARM RAISED! 🚨\n\nHello ${name}, emergency repair request dispatch ho chuka hai. Hamara verified technician agle 90 minutes ke andar aapke area (${area}) me call karega.`);
-            this.reset();
-        });
+            const feed = document.getElementById('suggestionFeed');
+            const newItem = document.createElement('div');
+            newItem.className = 'live-item';
+            newItem.innerHTML = `<strong>You</strong> - ${textInput.value}`;
+            feed.insertBefore(newItem, feed.firstChild);
+            textInput.value = "";
+        }
 
-        // Routine Booking Processing
-        document.getElementById('routineBookingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('custName').value;
-            const item = document.getElementById('custItem').value;
-            const brand = document.getElementById('custBrand').value;
+        // Payment Switching Mode Visibility Selector System (Point 9)
+        function selectPay(mode) {
+            const options = document.querySelectorAll('.pay-option');
+            options.forEach(opt => opt.classList.remove('active'));
+            event.target.classList.add('active');
 
-            alert(`Thank you, ${name}!\nAapka ${brand} ${item} ke liye schedule complete ho gaya hai. Hum 6-Month Free Re-visit commitment ke saath kaam shuru karenge.`);
-            this.reset();
-        });
+            const qrBox = document.getElementById('qr-container');
+            if (mode === 'PhonePe' || mode === 'GPay') {
+                qrBox.style.display = 'block';
+            } else {
+                qrBox.style.display = 'none';
+            }
+        }
+
+        // Live Periodic Real-Time Simulation Interval Module Popup Loop (Point 12)
+        const timesArray = [2, 3, 5, 10, 15, 30];
+        const itemsArray = ["Smart Refrigerator", "Washing Machine", "Microwave Oven", "Air Conditioner", "PCB Circuit"];
+        const locationsArray = ["Andheri", "Bandra", "Borivali", "Dadar", "Thane", "Colaba"];
+
+        setInterval(() => {
+            const randomTime = timesArray[Math.floor(Math.random() * timesArray.length)];
+            const randomItem = itemsArray[Math.floor(Math.random() * itemsArray.length)];
+            const randomLoc = locationsArray[Math.floor(Math.random() * locationsArray.length)];
+            
+            const popup = document.getElementById('liveBookingPopup');
+            document.getElementById('popupText').innerText = `Premium Look: ${randomItem} Repair Booked in ${randomLoc} ${randomTime} mins ago`;
+            
+            popup.classList.add('show');
+            setTimeout(() => {
+                popup.classList.remove('show');
+            }, 4000);
+
+        }, 9000); // Triggers execution cycle routine interval smoothly
     </script>
 </body>
 </html>
-
-    <section id="reviews">
-        <h2 class="section-title">Real Reviews From <span>Mumbaikars</span></h2>
-        <div class="review-grid">
-            <div class="review-card">
-                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p>"Mera Samsung Air Dresser malfunction kar raha tha. Mumbai me iske tech jaldi nahi milte, par inhone aakar iski PCB circuit repair kar di. Amazing service!"</p>
-                <h4 style="margin-top:15px;">- Vikram Malhotra, Bandra</h4>
-            </div>
-            <div class="review-card">
-                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p>"Bosch Dishwasher leak ho raha tha rat ko. Emergency form bhara aur subah tech 90 mins me hazir. 6-month ki written warranty bhi di hai."</p>
-                <h4 style="margin-top:15px;">- Anjali Desai, Andheri West</h4>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 QuickFix Mumbai. Professional Multi-Brand Technical Services.</p>
-    </footer>
-
-    // Live Counter Animation (Active Techs)
-setInterval(() => {
-    const randomTechs = Math.floor(Math.random() * (55 - 45 + 1)) + 45;
-    document.getElementById('activeTechs').innerText = randomTechs;
-}, 4000);
-
-// YAHA APNA WHATSAPP NUMBER LIKHEIN (With Country Code, bina '+' sign ke)
-const MY_WHATSAPP_NUMBER = "919876543210"; 
-
-// 1. Emergency Form Processing (Direct to WhatsApp)
-document.getElementById('emergencyForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const name = document.getElementById('emName').value;
-    const phone = document.getElementById('emPhone').value;
-    const area = document.getElementById('emArea').value;
-    
-    // WhatsApp Message Format
-    const message = `🚨 *EMERGENCY REPAIR REQUEST* 🚨%0A%0A` +
-                    `👤 *Name:* ${name}%0A` +
-                    `📞 *Phone:* ${phone}%0A` +
-                    `📍 *Location:* ${area}%0A` +
-                    `⏱️ *Target:* 90-Min Emergency`;
-    
-    // WhatsApp open karne ka link
-    window.open(`https://api.whatsapp.com/send?phone=${MY_WHATSAPP_NUMBER}&text=${message}`, '_blank');
-    this.reset();
-});
-
-// 2. Routine Booking Processing (Direct to WhatsApp)
-document.getElementById('routineBookingForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const name = document.getElementById('custName').value;
-    const phone = document.getElementById('custPhone').value;
-    const item = document.getElementById('custItem').value;
-    const brand = document.getElementById('custBrand').value;
-    const address = document.getElementById('custAddress').value;
-
-    // WhatsApp Message Format
-    const message = `🛠️ *NEW BOOKING RECEIVED* 🛠️%0A%0A` +
-                    `👤 *Customer Name:* ${name}%0A` +
-                    `📞 *Contact Number:* ${phone}%0A` +
-                    `🏷️ *Brand:* ${brand}%0A` +
-                    `📦 *Appliance:* ${item}%0A` +
-                    `🏠 *Address:* ${address}%0A%0A` +
-                    `📜 *Warranty:* 6-Month Free Re-visit Promise Verified.`;
-
-    // WhatsApp open karne ka link
-    window.open(`https://api.whatsapp.com/send?phone=${MY_WHATSAPP_NUMBER}&text=${message}`, '_blank');
-    this.reset();
-});
-
-</body>
-</html>
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickFix Mumbai | Premium Multi-Brand Repair & Maintenance</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #ff6b00;
-            --secondary: #1a252f;
-            --emergency: #d9534f; /* Red for Emergency */
-            --dark: #111;
-            --light: #f8f9fa;
-            --white: #ffffff;
-            --gray: #666;
-            --success: #28a745;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-        }
-
-        /* Navigation */
-        header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 15px 20px;
-        }
-
-        .logo { font-size: 24px; font-weight: bold; color: var(--secondary); }
-        .logo span { color: var(--primary); }
-
-        .nav-links { list-style: none; display: flex; gap: 20px; }
-        .nav-links a { text-decoration: none; color: var(--secondary); font-weight: 600; transition: 0.3s; }
-        .nav-links a:hover { color: var(--primary); }
-
-        .btn-main {
-            background: var(--primary); color: var(--white); padding: 10px 20px;
-            border-radius: 5px; text-decoration: none; font-weight: bold; transition: 0.3s; border: none; cursor: pointer;
-        }
-        .btn-main:hover { background: #e05e00; }
-
-        .btn-emergency {
-            background: var(--emergency); color: var(--white); padding: 10px 20px;
-            border-radius: 5px; text-decoration: none; font-weight: bold; animation: pulse 1.5s infinite
