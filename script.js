@@ -1,3 +1,103 @@
+// ==========================================
+// QUICKFIX MUMBAI - AUTOMATIC FESTIVAL BANNER
+// ==========================================
+(function() {
+    // 1. Banner ka pure Tailwind HTML string format mein
+    const bannerHTML = `
+    <div id="offer-banner" class="bg-gradient-to-r select-none from-red-600 to-orange-500 text-white text-center py-3 px-4 font-sans font-bold shadow-md w-full relative z-50">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+            
+            <div class="flex items-center gap-2 justify-center">
+                <span class="animate-pulse bg-white text-red-600 text-xs px-2 py-1 rounded-full uppercase tracking-wider font-extrabold shadow-sm">LIVE OFFER</span>
+                <p class="text-sm sm:text-base">🌙 Eid Special: <span class="text-yellow-300 text-lg font-black">25% OFF</span> on All Repairs!</p>
+            </div>
+
+            <div class="text-xs sm:text-sm bg-black/20 px-3 py-1.5 rounded-lg border border-white/10 text-center flex items-center justify-center gap-1">
+                📆 <span class="text-white">Offer:</span> <span class="text-yellow-300">28 May</span> se <span class="text-yellow-300">03 June 2026</span> tak
+            </div>
+
+            <div class="flex items-center gap-2 bg-black/40 px-4 py-1.5 rounded-lg border border-yellow-400/30 shadow-inner justify-center">
+                <span id="timer-label" class="text-xs tracking-wider text-orange-200 uppercase animate-pulse">⏳ ENDS IN:</span>
+                <div class="flex gap-1 text-sm font-mono tracking-wider text-yellow-300">
+                    <span id="timer-days" class="bg-red-700 px-1.5 py-0.5 rounded text-white font-bold">00</span>d :
+                    <span id="timer-hours" class="bg-red-700 px-1.5 py-0.5 rounded text-white font-bold">00</span>h :
+                    <span id="timer-mins" class="bg-red-700 px-1.5 py-0.5 rounded text-white font-bold">00</span>m :
+                    <span id="timer-secs" class="bg-red-700 px-1.5 py-0.5 rounded text-white font-bold">00</span>s
+                </div>
+            </div>
+
+        </div>
+    </div>`;
+
+    // 2. Banner ko index.html ke body ke sabse upar inject karna
+    function injectBanner() {
+        if (!document.getElementById("offer-banner")) {
+            document.body.insertAdjacentHTML('afterbegin', bannerHTML);
+            startEidCountdown();
+        }
+    }
+
+    // 3. Live Ticking Countdown Logic
+    function startEidCountdown() {
+        const startDate = new Date("May 28, 2026 00:00:00").getTime();
+        const targetDate = new Date("June 3, 2026 23:59:59").getTime();
+
+        const timerInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const banner = document.getElementById("offer-banner");
+            if (!banner) return;
+
+            // Case 1: Offer shuru hone se pehle (27 May)
+            if (now < startDate) {
+                const label = document.getElementById("timer-label");
+                if(label) label.innerText = "⏳ STARTS IN:";
+                updateDisplay(startDate - now);
+                return;
+            }
+
+            // Case 2: Offer live chal raha hai
+            const label = document.getElementById("timer-label");
+            if(label) label.innerText = "⏳ ENDS IN:";
+            const difference = targetDate - now;
+
+            // Case 3: Time over -> Banner automatic remove!
+            if (difference < 0) {
+                clearInterval(timerInterval);
+                banner.remove(); // Hamesha ke liye gayab
+                return;
+            }
+            updateDisplay(difference);
+        }, 1000);
+    }
+
+    function updateDisplay(timeDiff) {
+        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+        const d = document.getElementById("timer-days");
+        const h = document.getElementById("timer-hours");
+        const m = document.getElementById("timer-mins");
+        const s = document.getElementById("timer-secs");
+
+        if(d && h && m && s) {
+            d.innerText = String(days).padStart(2, '0');
+            h.innerText = String(hours).padStart(2, '0');
+            m.innerText = String(minutes).padStart(2, '0');
+            s.innerText = String(seconds).padStart(2, '0');
+        }
+    }
+
+    // DOM load hote hi banner show karein
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", injectBanner);
+    } else {
+        injectBanner();
+    }
+})();
+
+
 const oceanCatalog = {
     "Refrigerator": {
         images: ["https://images.unsplash.com/photo-1571175432267-efb922a1c3bb?w=500&auto=format&fit=crop", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500&auto=format&fit=crop", "https://images.unsplash.com/photo-1601054704854-1a2e79dea4d3?w=500&auto=format&fit=crop"],
