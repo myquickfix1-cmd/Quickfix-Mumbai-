@@ -22,7 +22,8 @@
             --text-muted: #64748B;
             --danger: #EF4444;
             --footer-bg: #0F172A;
-            --tiiny-purple: linear-gradient(90deg, #6366F1 0%, #A855F7 100%);
+            /* Tiiny Host Premium Brand Blue Bright Horizon Theme */
+            --tiiny-blue-gradient: linear-gradient(90deg, #1E40AF 0%, #2563EB 50%, #3B82F6 100%);
         }
 
         * {
@@ -112,17 +113,142 @@
             .nav-links { gap: 12px; font-size: 0.85rem; }
         }
 
+        .hero {
+            background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.88)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            color: #fff;
+            padding: 70px 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-main-title {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+        .hero-main-title span { color: #3b82f6; }
+        
+        .greeting-text {
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .greeting-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.12);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin: 0 auto 15px auto;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .highlighter-wrapper {
+            margin: 20px 0 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .best-highlighter {
+            background: linear-gradient(135deg, var(--primary), #FF8C00);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+            text-transform: uppercase;
+        }
+        .best-highlighter.accent-color {
+            background: linear-gradient(135deg, var(--accent), #059669);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .hero h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #cbd5e1;
+        }
+        .hero p {
+            font-size: 1rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+            padding: 0 10px;
+        }
+
+        .btn-main {
+            background: var(--primary);
+            color: #fff;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+        }
+        .btn-main:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .warranty-card {
+            background: rgba(16, 185, 129, 0.12);
+            border: 2px dashed var(--accent);
+            border-radius: 16px;
+            padding: 18px;
+            max-width: 650px;
+            margin: 35px auto 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-align: left;
+        }
+        .warranty-card i { font-size: 2.2rem; color: var(--accent); }
+        .warranty-card h4 { color: #fff; margin-bottom: 4px; font-size: 1.05rem; font-weight: 700; }
+        .warranty-card p { font-size: 0.85rem; margin: 0; color: #cbd5e1; }
+
+        @media(max-width: 768px) {
+            .hero-main-title { font-size: 2.2rem; }
+            .warranty-card { flex-direction: column; text-align: center; }
+        }
+
+        /* Trust Box Layout */
         .trust-box {
             background: #fff;
             border-radius: 16px;
             padding: 25px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin: 30px auto;
+            margin: -40px auto 40px;
             max-width: 1100px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
             text-align: center;
+            position: relative;
+            z-index: 10;
             border: 1px solid #e2e8f0;
         }
         .stat-item {
@@ -131,7 +257,7 @@
         }
         .stat-item:last-child { border-right: none; }
         @media(max-width: 768px) { 
-            .trust-box { grid-template-columns: 1fr 1fr; }
+            .trust-box { margin-top: 20px; grid-template-columns: 1fr 1fr; }
             .stat-item { border-right: none; border-bottom: 1px solid #e2e8f0; }
             .stat-item:nth-child(3), .stat-item:nth-child(4) { border-bottom: none; }
         }
@@ -378,7 +504,6 @@
         }
         .big-rating-num { font-size: 3.2rem; font-weight: 800; color: var(--secondary); }
         
-        /* Input form overlay selection touch pointer override fixes */
         .stars-display i, .interactive-stars i { 
             color: #cbd5e1; 
             font-size: 1.3rem; 
@@ -393,10 +518,6 @@
             display: inline-flex;
             gap: 6px;
             margin-bottom: 10px;
-            pointer-events: auto !important;
-        }
-        #userSuggest, #userSuggestBtn {
-            pointer-events: auto !important;
         }
         
         .rating-row { display: flex; align-items: center; margin-bottom: 12px; gap: 12px; }
@@ -405,27 +526,16 @@
 
         .live-item { padding: 12px 0; border-bottom: 1px dashed #e2e8f0; font-size: 0.85rem; }
 
-        .leads-admin-panel { display: none !important; }
+        .leads-admin-panel {
+            display: none !important;
+        }
 
-        /* Point 4: Strict Search Engine Optimization Block (Hidden but heavily weighted) */
+        /* Point 4: Hide SEO Block completely from users view but keep content for crawler indexation */
         .seo-location-block {
-            display: block !important;
-            margin: 40px auto;
-            background: #fff;
-            padding: 25px;
-            border-radius: 16px;
-            border: 1px solid #e2e8f0;
+            display: none !important;
         }
-        .seo-zone-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 15px;
-        }
-        .seo-zone-card h4 { color: var(--secondary); margin-bottom: 8px; font-weight: 700; }
-        .seo-zone-card p { font-size: 0.82rem; color: var(--text-muted); text-align: justify; }
 
-        /* Point 1: Operational Absolute PWA Standalone Modal Window */
+        /* Point 1: Optimized Fallback PWA Loops Installation window style sheets */
         .pwa-loop-prompt {
             position: fixed;
             bottom: 105px;
@@ -551,37 +661,31 @@
             .contact-btn span { font-size: 0.65rem; }
         }
 
-        /* Point 2: Patla & Compact Linear Tiiny-Host Matching Horizontal Gradient Layout */
+        /* Point 1 & 2: Comfortable Size, Micro Slim Height with Clean Tiiny Host Blue Gradient Style Sheet */
         .live-popup {
             position: fixed;
             bottom: 85px;
             left: 50%;
             transform: translate(-50%, 200%);
-            background: var(--tiiny-purple);
+            background: var(--tiiny-blue-gradient);
             color: #fff;
-            padding: 4px 14px;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+            padding: 6px 16px;
+            border-radius: 30px;
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
             z-index: 1000;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             width: auto;
-            min-width: 290px;
-            max-width: 320px;
-            height: 28px;
+            min-width: 310px; /* Thoda aur bada aur clear space sizing */
+            max-width: 350px;
+            height: 34px; /* Perfectly slim matching horizontal line look */
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.25);
         }
         .live-popup.show { transform: translate(-50%, 0); }
-        .live-popup i { color: #fff; font-size: 0.85rem; animation: pulse 1s infinite; }
-        .live-popup #popupText { font-size: 0.7rem; line-height: 1; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #fff; }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-            100% { transform: scale(1); }
-        }
+        .live-popup i { color: #fff; font-size: 0.95rem; }
+        .live-popup #popupText { font-size: 0.75rem; line-height: 1; font-weight: 600; white-space: nowrap; color: #fff; }
     </style>
 </head>
 <body>
@@ -772,7 +876,6 @@
                 </div>
 
                 <button type="submit" id="submitActionBtn" class="btn-main" style="width: 100%; margin-top: 15px;">Complete Booking Instantly</button>
-                
                 <a href="tel:+919930249182" class="btn-main" style="width: 100%; background:#2563eb; text-align:center; box-shadow:none; margin-top:10px;"><i class="fa fa-phone"></i> Direct Booking By Call Support</a>
             </form>
         </div>
@@ -844,24 +947,22 @@
 
     </section>
 
-    <section class="container seo-location-block">
-        <h3 style="color:var(--secondary); font-weight:800; font-size:1.3rem;"><i class="fa fa-map-marked-alt" style="color:var(--primary)"></i> QuickFix Mumbai Doorstep Local Area Coverage Network</h3>
-        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">India's top rated appliance repair station index serving continuous doorstep mechanical assistance 24/7/365 across the following sectors:</p>
-        <div class="seo-zone-grid">
-            <div class="seo-zone-card">
-                <h4>Western Mumbai Suburbs</h4>
-                <p>Complete tech support deployment loops operational in Bandra West, Khar, Santacruz, Juhu, Andheri East, Andheri West, Lokhandwala, Jogeshwari, Goregaon, Malad East, Malad West, Kandivali, Borivali West, Borivali East, Dahisar, and Mira Road tracking junctions.</p>
-            </div>
-            <div class="seo-zone-card">
-                <h4>Central & Eastern Mumbai</h4>
-                <p>Direct service coverage routes handling complex breakdowns across Dadar, Prabhadevi, Worli, Lower Parel, Byculla, Sion, Matunga, Kurla, Ghatkopar, Vikhroli, Kanjurmarg, Bhandup, Mulund East, Mulund West, Powai, Hiranandani Hub, and full Thane Metropolitan sectors.</p>
-            </div>
-            <div class="seo-zone-card">
-                <h4>South Mumbai Hubs</h4>
-                <p>Premium elite maintenance squads on immediate standby channels for Colaba, Cuffe Parade, Nariman Point, Marine Drive, Churchgate, Fort, Girgaon, Malabar Hill, Breach Candy, Tardeo, and Mumbai Central authorized multi-brand electronic machine repairs.</p>
-            </div>
+    <div style="display: none !important; visibility: hidden !important; opacity: 0 !important; height: 0 !important; width: 0 !important; overflow: hidden !important;">
+        <h2>Best Multi Brand Appliance Repair Center in Mumbai</h2>
+        <p>QuickFix Mumbai provides authorized doorstep smart appliance repair solutions across Western Suburbs, Central Zones, Harbor Line and South Mumbai neighborhoods since 2010. Specialized mechanics deployment maps for:</p>
+        <div>
+            <h3>Western Sector Locations Covered:</h3>
+            <p>Bandra West, Bandra East, Khar, Santacruz, Juhu, Vile Parle, Andheri West, Andheri East, Lokhandwala Complex, Seven Bungalows, Versova, Oshiwara, Jogeshwari, Goregaon East, Goregaon West, Malad West, Malad East, Marve Road, Kandivali West, Kandivali East, Thakur Village, Borivali West, Borivali East, IC Colony, Dahisar, Mira Road, Bhayandar.</p>
         </div>
-    </section>
+        <div>
+            <h3>Central & Eastern Sector Locations Covered:</h3>
+            <p>Sion, Matunga, Dadar, Parel, Lalbaug, Byculla, CSMT, Colaba, Cuffe Parade, Malabar Hill, Breach Candy, Worli, Prabhadevi, Kurla, Ghatkopar, Vikhroli, Kanjurmarg, Bhandup, Mulund East, Mulund West, Powai, IIT Campus, Hiranandani Gardens, Chandivali, Chembur, Tilak Nagar, Mankhurd, Trombay, Govandi.</p>
+        </div>
+        <div>
+            <h3>Navi Mumbai & Extension Areas:</h3>
+            <p>Vashi, Sanpada, Nerul, Belapur, Kharghar, Airoli, Koparkhairane, Ghansoli, Kalwa, Mumbra, Thane West, Thane East, Majiwada, Ghodbunder Road, Panchpakhadi, Wagle Estate.</p>
+        </div>
+    </div>
 
     <section class="container feedback-grid">
         
@@ -871,7 +972,7 @@
             
             <div class="form-group">
                 <label style="font-weight: 600; font-size: 0.85rem; display:block; margin-bottom:5px;">Give Your Live Rating:</label>
-                <div class="interactive-stars" id="userStarRating">
+                <div class="interactive-stars" id="userStarRating" style="pointer-events: auto !important;">
                     <i class="fa fa-star active" data-rating="1" onclick="setInteractiveRating(1)"></i>
                     <i class="fa fa-star active" data-rating="2" onclick="setInteractiveRating(2)"></i>
                     <i class="fa fa-star active" data-rating="3" onclick="setInteractiveRating(3)"></i>
@@ -881,8 +982,8 @@
             </div>
 
             <div class="form-group" style="display: flex; gap: 10px;">
-                <input type="text" id="userSuggest" class="form-control" placeholder="Write live recommendation...">
-                <button id="userSuggestBtn" onclick="submitLiveSuggestion()" class="btn-main" style="padding: 10px 20px;">Submit</button>
+                <input type="text" id="userSuggest" class="form-control" placeholder="Write live recommendation..." style="pointer-events: auto !important;">
+                <button onclick="submitLiveSuggestion()" class="btn-main" style="padding: 10px 20px; pointer-events: auto !important;">Submit</button>
             </div>
 
             <div id="suggestionFeed" style="max-height: 180px; overflow-y: auto;">
@@ -1005,20 +1106,20 @@
                 self.addEventListener('fetch', e => e.respondWith(fetch(e.request)));
             `;
             const blob = new Blob([swCode], { type: 'application/javascript' });
-            navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(err => {});
+            navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(err => console.error(err));
         }
 
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             loopPromptEvent = e;
-            if(!pwaDismissedByUser) { setTimeout(displayPwaLoop, 3000); }
+            if(!pwaDismissedByUser) { setTimeout(displayPwaLoop, 6000); }
         });
 
         window.addEventListener('DOMContentLoaded', () => {
             if(sessionStorage.getItem('pwa_opt_out') === 'true') { pwaDismissedByUser = true; }
             setTimeout(() => {
                 if(!loopPromptEvent && !pwaDismissedByUser) { displayPwaLoop(); }
-            }, 5000);
+            }, 8000);
         });
 
         function displayPwaLoop() {
@@ -1030,13 +1131,12 @@
         function dismissPwaLoopBanner() {
             const banner = document.getElementById('pwaLoopBox');
             if(banner) banner.classList.remove('visible');
-            setTimeout(displayPwaLoop, 45000); 
+            setTimeout(displayPwaLoop, 60000); 
         }
 
-        // Point 1: Complete Web App standalone launcher shortcut engine logic
         function triggerPwaInstallation() {
             if(!loopPromptEvent) {
-                alert("Shortcut Sync Activated: Please touch your browser options panel (3 vertical dots icon) and choose 'Add to Home screen' or 'Install' to lock QuickFix Mumbai app desktop icon instantly.");
+                alert("Shortcut Feature Synced: Tap the browser option bar (3 vertical dots icon) and select 'Add to Home screen' or 'Install app' to save QuickFix Mumbai app dashboard immediately.");
                 pwaDismissedByUser = true;
                 sessionStorage.setItem('pwa_opt_out', 'true');
                 document.getElementById('pwaLoopBox').classList.remove('visible');
@@ -1058,11 +1158,10 @@
         let currentInteractiveRating = 5;
         let activeLeadsCollection = [];
 
-        // Point 3: Locked system indexes for solid 4.9 baseline averages
-        const count5Star = 171887;
-        const count4Star = 3544;
-        const count3Star = 1773;
-        const totalReviews = 177204;
+        let count5Star = 171887;
+        let count4Star = 3544;
+        let count3Star = 1773;
+        let totalReviews = 177204;
 
         window.addEventListener('DOMContentLoaded', () => {
             if(localStorage.getItem('quickfix_liked') === 'true') {
@@ -1111,6 +1210,15 @@
             const address = document.getElementById('custAddress').value;
             const appliance = document.getElementById('masterSelectDropdown').value;
             
+            activeLeadsCollection.push({ 
+                type: 'Slot Booking', 
+                clientName: name,
+                clientPhone: phone,
+                clientAddr: address,
+                item: appliance,
+                timestamp: new Date().toLocaleTimeString() 
+            });
+
             document.getElementById('successTitlePlaceholder').innerText = `THANK YOU, DEAR ${name.toUpperCase()}! ✔️`;
             document.getElementById('successMessagePlaceholder').innerText = `Your Smart Doorstep Repair Booking for ${appliance} has been locked safely. Processing Technician Dispatch Tracker...`;
 
@@ -1130,6 +1238,7 @@
             
             document.getElementById('waPrimaryLink').href = targetRedirectUrl;
             document.getElementById('waSecondaryLink').href = `https://wa.me/919594406095?text=${encodedPayload}`;
+            
             document.getElementById('bookingForm').reset();
             
             setTimeout(() => {
@@ -1139,7 +1248,7 @@
             }, 3500);
         }
 
-        // Point 3 & 4: Deep-Link Parameter Injectors for PhonePe, GPay & Cash Dismiss Controls
+        // Point 3: Operational 1.9 Payment Engine Router with Dynamic Auto Dismiss for Cash Option
         function togglePaymentEngine(modeName, event) {
             const targets = document.querySelectorAll('.pay-option');
             targets.forEach(tgt => tgt.classList.remove('active'));
@@ -1154,9 +1263,6 @@
             cardForm.style.display = "none";
             feedbackBox.style.display = "none";
 
-            // Structured advanced production UPI string configuration codes
-            const merchantParameters = "&mc=5732&tid=QFXMUM128409&tr=9181PNBTR&tn=QuickFix%20Mumbai%20Advance&am=199&cu=INR";
-
             if(modeName === 'Cash') {
                 feedbackBox.style.display = "block";
                 feedbackBox.style.background = "#ecfdf5";
@@ -1164,7 +1270,7 @@
                 feedbackBox.style.border = "1px solid #a7f3d0";
                 feedbackBox.innerText = "💸 Choice Logged: Cash payment on QuickFix Mumbai's Expert Certified Technician doorstep visit.";
                 
-                // Point 3: Auto hide/dismiss cash warning box exactly after 4 seconds
+                // Auto hide the cash banner after 4 seconds to clear space
                 setTimeout(() => { feedbackBox.style.display = "none"; }, 4000);
             } 
             else if(modeName === 'Card') {
@@ -1176,11 +1282,11 @@
                 feedbackBox.style.background = "#fff7ed";
                 feedbackBox.style.color = "#c2410c";
                 feedbackBox.style.border = "1px solid #fed7aa";
-                feedbackBox.innerText = "📱 Opening PhonePe Device Protocol Secure Interface... Utilize alternate visual QR map below if app routing holds.";
+                feedbackBox.innerText = "📱 Initializing PhonePe Direct Handshake Protocol... Intercept system processing safely to account ending in 9181.";
                 
                 setTimeout(() => {
-                    window.location.href = "upi://pay?pa=quickfixmumbai@ybl&pn=QuickFix%20Mumbai" + merchantParameters;
-                }, 400);
+                    window.location.href = "upi://pay?pa=quickfixmumbai@ybl&pn=QuickFix%20Mumbai&am=199&cu=INR&tn=Emergency%20Visit%20Fee";
+                }, 1000);
             }
             else if(modeName === 'GPay') {
                 qrBox.style.display = "block";
@@ -1188,11 +1294,11 @@
                 feedbackBox.style.background = "#fff7ed";
                 feedbackBox.style.color = "#c2410c";
                 feedbackBox.style.border = "1px solid #fed7aa";
-                feedbackBox.innerText = "📱 Invoking Google Pay Encrypted Intercept Node... Use visual scan checkpoint canvas below for terminal tracking ending 9181.";
+                feedbackBox.innerText = "📱 Invoking Google Pay Shield Intercept... Secure encrypted checkout routing active for static registration 9181.";
                 
                 setTimeout(() => {
-                    window.location.href = "upi://pay?pa=quickfixmumbai@ybl&pn=QuickFix%20Mumbai" + merchantParameters;
-                }, 400);
+                    window.location.href = "upi://pay?pa=quickfixmumbai@ybl&pn=QuickFix%20Mumbai&am=199&cu=INR&tn=Emergency%20Visit%20Fee";
+                }, 1000);
             }
         }
 
@@ -1213,7 +1319,6 @@
             feedbackBox.innerText = `💳 Gateway Success: ₹199 Advance authorized securely for ${cardName}. Booking linked to internal dashboard ledger!`;
             
             document.getElementById('cardDataFormPanel').style.display = "none";
-            setTimeout(() => { feedbackBox.style.display = "none"; }, 5000);
         }
 
         function handleQRClick() {
@@ -1239,7 +1344,6 @@
             window.open(targetSOSUrl, '_blank');
         }
 
-        // Point 3: Live updates handling without disturbing base locked counters
         function submitLiveSuggestion() {
             const src = document.getElementById('userSuggest');
             if(src.value.trim() === "") return;
@@ -1258,8 +1362,15 @@
             localStorage.setItem('quickfix_local_reviews', JSON.stringify(customStoredList));
             
             prependReviewToFeed(newFeedbackObject.user, newFeedbackObject.text, newFeedbackObject.stars);
+            
+            totalReviews++;
+            if(currentInteractiveRating === 5) count5Star++;
+            if(currentInteractiveRating === 4) count4Star++;
+            if(currentInteractiveRating <= 3) count3Star++;
+            
+            updateUIRatingsDashboardDisplay();
             src.value = "";
-            alert("Thank you! Your suggestion review feedback has been published instantly on our desk board!");
+            alert("Thank you! Your verified rating and feedback live review has been published instantly on our desk board!");
         }
 
         function prependReviewToFeed(user, text, stars) {
@@ -1289,11 +1400,32 @@
                 element.innerHTML = `<strong>${item.user}:</strong> ${item.text} <span style="color:#f59e0b; margin-left:5px;">${item.stars}</span>`;
                 dest.appendChild(element);
             });
+            
+            updateUIRatingsDashboardDisplay();
         }
 
-        // Point 2: Patla & slim horizontal sliding toast automation loop (Extended 20s gaps)
+        function updateUIRatingsDashboardDisplay() {
+            document.getElementById('totalRatingCount').innerText = totalReviews.toLocaleString();
+            document.getElementById('totalReviewCountBadge').innerText = totalReviews.toLocaleString();
+            
+            let p5 = ((count5Star / totalReviews) * 100).toFixed(0);
+            let p4 = ((count4Star / totalReviews) * 100).toFixed(0);
+            let p3 = ((count3Star / totalReviews) * 100).toFixed(0);
+            
+            document.getElementById('bar5').style.width = p5 + "%";
+            document.getElementById('txt5').innerText = p5 + "%";
+            document.getElementById('bar4').style.width = p4 + "%";
+            document.getElementById('txt4').innerText = p4 + "%";
+            document.getElementById('bar3').style.width = p3 + "%";
+            document.getElementById('txt3').innerText = p3 + "%";
+            
+            let finalAvg = (((5 * count5Star) + (4 * count4Star) + (3 * count3Star)) / totalReviews).toFixed(1);
+            document.getElementById('liveMainScore').innerText = finalAvg;
+        }
+
+        /* Point 1 & 2: Ultra Slim Real-Time Live Order Popups (20 Seconds Intervals) */
         const mockDurations = [2, 4, 7, 11, 15, 22];
-        const mockAppliances = ["Smart Refrigerator Repair", "Washing Machine Drum", "Microwave Heating Oven", "Inverter PCB Board", "Air Conditioner Unit (AC)"];
+        const mockAppliances = ["Smart Refrigerator Fix", "Washing Machine Drum", "Microwave Heating Room", "Inverter PCB Board", "Air Conditioner Unit (AC)"];
         const mockAreas = ["Bandra West", "Borivali East", "Andheri West", "Malad West", "Kandivali East", "Dadar South", "Thane Zone"];
 
         setInterval(() => {
@@ -1303,7 +1435,7 @@
             
             const toast = document.getElementById('liveBookingPopup');
             if(toast) {
-                document.getElementById('popupText').innerText = `Expert ${item} Booked in ${area} ${time} mins ago`;
+                document.getElementById('popupText').innerText = `Expert ${item} Repair Booked in ${area} ${time} mins ago`;
                 toast.classList.add('show');
                 setTimeout(() => { toast.classList.remove('show'); }, 4000);
             }
