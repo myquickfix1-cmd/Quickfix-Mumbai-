@@ -7,7 +7,7 @@
         <div style="max-w: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 12px;">
             
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;">
-                <span style="background-color: white; color: #dc2626; font-size: 11px; padding: 3px 10px; rounded-radius: 50px; border-radius: 9999px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">LIVE OFFER</span>
+                <span style="background-color: white; color: #dc2626; font-size: 11px; padding: 3px 10px; border-radius: 9999px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">LIVE OFFER</span>
                 <p style="margin: 0; font-size: 16px; letter-spacing: 0.5px;">🌙 Eid Special: <span style="color: #facc15; font-size: 18px; font-weight: 900;">25% OFF</span> on All Home Appliance Repairs!</p>
             </div>
 
@@ -26,14 +26,14 @@
                     📅 Apni Service Ka Din Aur Time Chunein:
                 </div>
                 
-                <input type="date" id="banner-booking-date" style="width: 100%; bg-color: white; color: #1f2937; font-size: 14px; border-radius: 8px; padding: 8px; font-weight: bold; border: none; outline: none; text-align: center; box-sizing: border-box; cursor: pointer;">
+                <input type="date" id="banner-booking-date" style="width: 100%; background-color: white; color: #1f2937; font-size: 14px; border-radius: 8px; padding: 8px; font-weight: bold; border: none; outline: none; text-align: center; box-sizing: border-box; cursor: pointer;">
                 
-                <select id="banner-booking-time" style="width: 100%; bg-color: white; color: #1f2937; font-size: 14px; border-radius: 8px; padding: 8px; font-weight: bold; border: none; outline: none; text-align: center; box-sizing: border-box; cursor: pointer;">
+                <select id="banner-booking-time" style="width: 100%; background-color: white; color: #1f2937; font-size: 14px; border-radius: 8px; padding: 8px; font-weight: bold; border: none; outline: none; text-align: center; box-sizing: border-box; cursor: pointer;">
                     <option value="" disabled selected>⏰ Select Time Slot</option>
-                    <option value="09:00 AM to 12:00 PM">09:00 AM to 12:00 PM (Morning)</option>
-                    <option value="12:00 PM to 03:00 PM">12:00 PM to 03:00 PM (Afternoon)</option>
-                    <option value="03:00 PM to 06:00 PM">03:00 PM to 06:00 PM (Evening)</option>
-                    <option value="06:00 PM to 09:00 PM">06:00 PM to 09:00 PM (Night Rush)</option>
+                    <option value="09:00 AM to 01:00 PM">09:00 AM to 01:00 PM (Morning)</option>
+                    <option value="01:00 PM to 05:00 PM">01:00 PM to 05:00 PM (Afternoon)</option>
+                    <option value="05:00 PM to 09:00 PM">05:00 PM to 09:00 PM (Evening)</option>
+                    <option value="09:00 PM to 12:00 AM">09:00 PM to 12:00 AM (Midnight Rush)</option>
                 </select>
 
                 <button onclick="bookFromBanner()" style="width: 100%; background-color: #facc15; color: #b91c1c; font-size: 14px; padding: 10px; border-radius: 8px; font-weight: 900; border: none; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.15); transition: background-color 0.2s;">
