@@ -23,7 +23,7 @@
 
             <div style="width: 100%; max-width: 450px; background-color: rgba(255, 255, 255, 0.15); padding: 12px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.15); display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); box-sizing: border-box;">
                 <div style="font-size: 13px; color: #fef08a; font-weight: 500; text-align: center;">
-                    📅 Apni Service Ka Din Aur Time Chunein:
+                     Apni Service Ka Din Aur Time Chunein:
                 </div>
                 
                 <input type="date" id="banner-booking-date" style="width: 100%; background-color: white; color: #1f2937; font-size: 14px; border-radius: 8px; padding: 8px; font-weight: bold; border: none; outline: none; text-align: center; box-sizing: border-box; cursor: pointer;">
