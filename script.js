@@ -1,27 +1,45 @@
-// ==========================================
-// QUICKFIX MUMBAI - AUTOMATIC FESTIVAL BANNER
-// ==========================================
+// =========================================================================
+// QUICKFIX MUMBAI - PREMIUM STANDALONE BANNER WITH DATE/TIME SELECTION
+// =========================================================================
 (function() {
     const bannerHTML = `
-    <div id="offer-banner" class="bg-gradient-to-r select-none from-red-600 to-orange-500 text-white text-center py-3 px-4 font-sans font-bold shadow-md w-full relative z-50">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+    <div id="offer-banner" class="bg-gradient-to-r select-none from-red-600 to-orange-500 text-white py-4 px-4 font-sans font-bold shadow-lg w-full relative z-50 border-b-2 border-yellow-400">
+        <div class="max-w-6xl mx-auto flex flex-col items-center justify-between gap-4 text-center">
             
-            <div class="flex items-center gap-2 justify-center">
-                <span class="animate-pulse bg-white text-red-600 text-xs px-2 py-1 rounded-full uppercase tracking-wider font-extrabold shadow-sm">LIVE OFFER</span>
-                <p class="text-sm sm:text-base">🌙 Eid Special: <span class="text-yellow-300 text-lg font-black">25% OFF</span> on All Repairs!</p>
+            <div class="w-full flex flex-col sm:flex-row items-center justify-center gap-2">
+                <span class="animate-pulse bg-white text-red-600 text-xs px-2.5 py-1 rounded-full uppercase tracking-wider font-extrabold shadow">LIVE OFFER</span>
+                <p class="text-base sm:text-lg tracking-wide">🌙 Eid Special: <span class="text-yellow-300 font-black animate-bounce inline-block">25% OFF</span> on All Home Appliance Repairs!</p>
             </div>
 
-            <div class="text-xs sm:text-sm bg-black/20 px-3 py-1.5 rounded-lg border border-white/10 text-center flex items-center justify-center gap-1">
-                Base 📆 <span class="text-white">Offer:</span> <span class="text-yellow-300">28 May</span> se <span class="text-yellow-300">03 June 2026</span> tak
+            <div class="flex flex-col sm:flex-row items-center gap-2 bg-black/40 px-5 py-2 rounded-xl border border-yellow-400/30 shadow-inner w-full sm:w-auto justify-center">
+                <span id="timer-label" class="text-xs tracking-widest text-orange-200 uppercase font-mono animate-pulse">⏳ ENDS IN:</span>
+                <div class="flex gap-1.5 text-base font-mono tracking-wider text-yellow-300 justify-center">
+                    <span id="timer-days" class="bg-red-700 px-2 py-0.5 rounded text-white font-black shadow-sm">00</span>d :
+                    <span id="timer-hours" class="bg-red-700 px-2 py-0.5 rounded text-white font-black shadow-sm">00</span>h :
+                    <span id="timer-mins" class="bg-red-700 px-2 py-0.5 rounded text-white font-black shadow-sm">00</span>m :
+                    <span id="timer-secs" class="bg-red-700 px-2 py-0.5 rounded text-white font-black shadow-sm">00</span>s
+                </div>
             </div>
 
-            <div class="flex items-center gap-2 bg-black/40 px-4 py-1.5 rounded-lg border border-yellow-400/30 shadow-inner justify-center">
-                <span id="timer-label" class="text-xs tracking-wider text-orange-200 uppercase animate-pulse">⏳ ENDS IN:</span>
-                <div class="flex gap-1 text-sm font-mono tracking-wider text-yellow-300">
-                    <span id="timer-days" class="bg-red-700 px-1.5 py-0.5 rounded text-white font-bold">00</span>d :
-                    <span id="timer-hours" class="bg-red-700 px-1.5 py-0.5 rounded text-white font-bold">00</span>h :
-                    <span id="timer-mins" class="bg-red-700 px-1.5 py-0.5 rounded text-white font-bold">00</span>m :
-                    <span id="timer-secs" class="bg-red-700 px-1.5 py-0.5 rounded text-white font-bold">00</span>s
+            <div class="w-full bg-black/20 p-4 rounded-xl border border-white/10 flex flex-col gap-3 shadow-md items-center justify-center">
+                <div class="text-sm text-yellow-200 flex items-center gap-1.5 font-medium justify-center block w-full text-center">
+                    📆 Apni Service Ka Din Aur Time Chunein:
+                </div>
+                
+                <div class="w-full max-w-md grid grid-cols-1 gap-2.5">
+                    <input type="date" id="banner-booking-date" class="w-full bg-white text-gray-800 text-sm rounded-lg px-3 py-2 font-bold focus:outline-none focus:ring-2 focus:ring-yellow-400 cursor-pointer shadow-sm text-center">
+                    
+                    <select id="banner-booking-time" class="w-full bg-white text-gray-800 text-sm rounded-lg px-3 py-2 font-bold focus:outline-none focus:ring-2 focus:ring-yellow-400 cursor-pointer shadow-sm text-center">
+                        <option value="" disabled selected>⏰ Select Time Slot</option>
+                        <option value="09:00 AM to 12:00 PM">09:00 AM to 12:00 PM (Morning)</option>
+                        <option value="12:00 PM to 03:00 PM">12:00 PM to 03:00 PM (Afternoon)</option>
+                        <option value="03:00 PM to 06:00 PM">03:00 PM to 06:00 PM (Evening)</option>
+                        <option value="06:00 PM to 09:00 PM">06:00 PM to 09:00 PM (Night Rush)</option>
+                    </select>
+
+                    <button onclick="bookFromBanner()" class="w-full bg-yellow-400 hover:bg-yellow-300 text-red-700 hover:scale-[1.02] active:scale-95 transition-all text-sm py-2 rounded-lg font-black uppercase tracking-wider shadow cursor-pointer">
+                        Book Now ⚡
+                    </button>
                 </div>
             </div>
 
@@ -31,6 +49,15 @@
     function injectBanner() {
         if (!document.getElementById("offer-banner")) {
             document.body.insertAdjacentHTML('afterbegin', bannerHTML);
+            
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const dateInput = document.getElementById("banner-booking-date");
+            if(dateInput) {
+                dateInput.value = tomorrow.toISOString().split('T')[0];
+                dateInput.min = new Date().toISOString().split('T')[0];
+            }
+            
             startEidCountdown();
         }
     }
@@ -89,6 +116,21 @@
         injectBanner();
     }
 })();
+
+// BANNER DIRECT BOOKING ROUTING FUNCTION
+function bookFromBanner() {
+    const selectedDate = document.getElementById("banner-booking-date").value;
+    const selectedTime = document.getElementById("banner-booking-time").value;
+
+    if(!selectedDate) { alert("Please select a service Date! 📆"); return; }
+    if(!selectedTime) { alert("Please select a Time Slot! ⏰"); return; }
+
+    const dateObj = new Date(selectedDate);
+    const formattedDate = dateObj.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+
+    const finalText = `Hello Quickfix Mumbai! 🌙 I want to claim the Eid 25% OFF Offer.\n\n📆 Scheduled Date: *${formattedDate}*\n⏰ Preferred Time Slot: *${selectedTime}*\n\nPlease confirm my expert technician visit!`;
+    window.open(`https://wa.me/919930249182?text=${encodeURIComponent(finalText)}`);
+}
 
 // ==========================================
 // QUICKFIX MUMBAI - APPLIANCE CATALOG DATA
