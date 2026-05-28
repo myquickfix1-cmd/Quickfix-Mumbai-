@@ -8,8 +8,7 @@ self.addEventListener('install', (e) => {
         '/',
         '/index.html',
         '/manifest.json',
-        '/style.css',   
-        '/script.js'    
+        '/script.js' // Agar alag se style.css nahi hai, toh use yahan se hata diya hai
       ]);
     }).then(() => self.skipWaiting()) 
   );
@@ -46,7 +45,7 @@ self.addEventListener('fetch', (e) => {
 });
 
 // =========================================================================
-// NEW: BACKGROUND PUSH NOTIFICATIONS & CLICK ACTIONS
+// FIXED: BACKGROUND PUSH NOTIFICATIONS & CLICK ACTIONS
 // =========================================================================
 
 // Background me Push Notification receive karne ka handler
@@ -63,8 +62,9 @@ self.addEventListener('push', (e) => {
 
   const options = {
     body: data.body,
-    icon: '/manifest.json', // Aapke app ka icon handle karega
-    badge: '/manifest.json',
+    // FIXED: .json file ki jagah aapka real PNG icon path lagaya hai
+    icon: 'https://cdn-icons-png.flaticon.com/512/2928/2928929.png', 
+    badge: 'https://cdn-icons-png.flaticon.com/512/2928/2928929.png',
     vibrate: [200, 100, 200, 100, 200], // Phone vibration pattern
     requireInteraction: true, // Jab tak owner click na kare screen se na hate
     data: {
