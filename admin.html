@@ -18,12 +18,18 @@
         table { width: 100%; border-collapse: collapse; margin-top: 15px; }
         th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #edf2f9; }
         th { background: #f8f9fa; color: #495057; font-weight: 600; }
-        .badge { padding: 5px 10px; border-radius: 30px; font-size: 0.8rem; font-weight: bold; }
+        .badge { padding: 5px 10px; border-radius: 30px; font-size: 0.8rem; font-weight: bold; display: inline-block; }
         .badge-pending { background: #fff3cd; color: #856404; }
         .badge-success { background: #d4edda; color: #155724; }
         select, input, button { padding: 8px 12px; border-radius: 6px; border: 1px solid #ced4da; margin-right: 5px; }
-        button { background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; }
+        button { background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; transition: background 0.2s; }
         button:hover { background: #0056b3; }
+
+        /* --- ACTION BUTTONS --- */
+        .btn-confirm { background: #28a745; margin-top: 5px; font-size: 0.8rem; padding: 5px 10px; }
+        .btn-confirm:hover { background: #218838; }
+        .btn-cancel { background: #dc3545; margin-top: 5px; font-size: 0.8rem; padding: 5px 10px; }
+        .btn-cancel:hover { background: #c82333; }
 
         /* --- LOGIN POPUP STYLES --- */
         .login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #eef2f7; display: flex; justify-content: center; align-items: center; z-index: 9999; }
@@ -38,7 +44,6 @@
 </head>
 <body>
 
-    <!-- 1. LOGIN SCREEN OVERLAY -->
     <div id="loginOverlay" class="login-overlay">
         <div class="login-box">
             <h2>🔐 Admin Login</h2>
@@ -51,7 +56,6 @@
         </div>
     </div>
 
-    <!-- 2. ACTUAL DASHBOARD CONTENT -->
     <div id="dashboardContent" style="display: none;">
         <div class="header">
             <h2>🚀 Quickfix Mumbai Command Center</h2>
@@ -61,7 +65,6 @@
             </div>
         </div>
 
-        <!-- Live Performance Stats -->
         <div class="grid-stats">
             <div class="stat-card">
                 <h3>Total Bookings Today</h3>
@@ -77,7 +80,6 @@
             </div>
         </div>
 
-        <!-- Section 1: Live Bookings & Assignment -->
         <div class="section">
             <h2>📅 Live Customer Bookings</h2>
             <table>
@@ -86,7 +88,7 @@
                         <th>Customer / Service</th>
                         <th>Date</th>
                         <th>Payment</th>
-                        <th>Assign Technician</th>
+                        <th>Assign Technician / Actions</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -96,11 +98,13 @@
                         <td>26-May-2026</td>
                         <td><span class="badge badge-success">Paid ₹199 (Advance)</span></td>
                         <td>
-                            <select onchange="assignWorker(this)">
+                            <select onchange="assignWorker(this)" style="display: block; margin-bottom: 5px;">
                                 <option>Select Worker</option>
                                 <option value="W1">Amit (AC Expert)</option>
                                 <option value="W2">Suresh (PCB Specialist)</option>
                             </select>
+                            <button class="btn-confirm" onclick="changeStatus(this, 'confirm', 'Rohan Sharma')">Confirm</button>
+                            <button class="btn-cancel" onclick="changeStatus(this, 'cancel', 'Rohan Sharma')">Cancel</button>
                         </td>
                         <td><span class="badge badge-pending">Pending Assignment</span></td>
                     </tr>
@@ -108,7 +112,6 @@
             </table>
         </div>
 
-        <!-- Section 2: Smart Inventory Management -->
         <div class="section">
             <h2>📦 Spare Parts Inventory Stock</h2>
             <div style="margin-bottom: 15px;">
@@ -128,11 +131,9 @@
         </div>
     </div>
 
-    <!-- 3. LOGIN & UTILITY JAVASCRIPT -->
     <script>
-        // Yahan aap apna username aur password badal sakte hain
         const LOGIN_USER = "admin";
-        const LOGIN_PASS = "quickfix321"; // Ise apna secret password bana lein
+        const LOGIN_PASS = "quickfix321"; 
 
         const loginOverlay = document.getElementById('loginOverlay');
         const dashboardContent = document.getElementById('dashboardContent');
@@ -143,6 +144,7 @@
         if (sessionStorage.getItem('quickfix_admin_logged') === 'true') {
             loginOverlay.style.display = 'none';
             dashboardContent.style.display = 'block';
+            initAdminNotifications();
         }
 
         // Handle Login Submission
@@ -156,6 +158,7 @@
                 loginOverlay.style.display = 'none';
                 dashboardContent.style.display = 'block';
                 errorMsg.style.display = 'none';
+                initAdminNotifications();
             } else {
                 errorMsg.style.display = 'block';
             }
@@ -167,13 +170,81 @@
             window.location.reload();
         }
 
-        // Placeholder functions for existing buttons to prevent errors
-        function assignWorker(selectElement) {
-            alert("Worker assigned: " + selectElement.value);
+        // --- NOTIFICATION & LEAD SYSTEM ---
+        function initAdminNotifications() {
+            // Request browser notification permissions
+            if ("Notification" in window) {
+                Notification.requestPermission().then(permission => {
+                    if (permission === "granted") {
+                        console.log("Notification allowed!");
+                    }
+                });
+            }
+            updateStats();
+
+            // Mock Notification after 4 seconds to test live alert
+            setTimeout(() => {
+                triggerLeadNotification("Rohan Sharma", "Inverter AC PCB Repair");
+            }, 4000);
         }
+
+        function triggerLeadNotification(customer, service) {
+            if (Notification.permission === "granted") {
+                const options = {
+                    body: `Service: ${service}\nClick to view booking.`,
+                    icon: 'manifest.json',
+                    vibrate: [200, 100, 200],
+                    requireInteraction: true
+                };
+                const notification = new Notification(`🚀 New Lead: ${customer}`, options);
+                notification.onclick = function() {
+                    window.focus();
+                };
+            }
+        }
+
+        // Action Buttons Logic (Confirm / Cancel)
+        function changeStatus(button, action, customerName) {
+            const row = button.closest('tr');
+            const statusBadge = row.querySelector('td:last-child .badge');
+            const actionArea = button.parentElement;
+
+            if (action === 'confirm') {
+                statusBadge.className = "badge badge-success";
+                statusBadge.innerText = "Confirmed ✅";
+                statusBadge.style.background = "#d4edda";
+                statusBadge.style.color = "#155724";
+                actionArea.innerHTML = `<span style="color:#28a745; font-weight:bold;">Lead Confirmed</span>`;
+            } else if (action === 'cancel') {
+                statusBadge.className = "badge";
+                statusBadge.innerText = "Cancelled ❌";
+                statusBadge.style.background = "#f8d7da";
+                statusBadge.style.color = "#721c24";
+                actionArea.innerHTML = `<span style="color:#dc3545; font-weight:bold;">Lead Cancelled</span>`;
+            }
+            updateStats();
+        }
+
+        function updateStats() {
+            document.getElementById('total-jobs').innerText = document.querySelectorAll('#admin-booking-table tr').length;
+        }
+
+        function assignWorker(selectElement) {
+            if(selectElement.value !== "Select Worker") {
+                alert("Technician assigned!");
+            }
+        }
+
         function addInventory() {
             const name = document.getElementById('part-name').value;
             const qty = document.getElementById('part-qty').value;
+            if(name && qty) {
+                alert("Added " + qty + " units of " + name);
+            }
+        }
+    </script>
+</body>
+</html>
             if(name && qty) {
                 alert("Added " + qty + " units of " + name);
             }
