@@ -45,6 +45,35 @@
             line-height: 1.6;
             padding-bottom: 90px;
             overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Premium App Tweaks for Installed Standalone Mode */
+        @media (display-mode: standalone) {
+            body {
+                background-color: #0F172A;
+                color: #F8FAFC;
+            }
+            header {
+                background: #1E293B !important;
+                border-bottom: 1px solid #334155;
+            }
+            .logo, .nav-links a {
+                color: #FFFFFF !important;
+            }
+            .item-card, .trust-box, .brands-container, #bookingSection {
+                background: #1E293B !important;
+                border: 1px solid #334155 !important;
+                color: #FFFFFF !important;
+            }
+            .section-title, .section-subtitle, .item-content h3, label {
+                color: #FFFFFF !important;
+            }
+            input, select, textarea {
+                background: #0F172A !important;
+                color: #FFFFFF !important;
+                border-color: #334155 !important;
+            }
         }
 
         .container {
@@ -60,8 +89,12 @@
             color: #fff;
             text-align: center;
             padding: 10px 20px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
         .tech-bar .dot {
             height: 10px;
@@ -69,7 +102,6 @@
             background-color: var(--danger);
             border-radius: 50%;
             display: inline-block;
-            margin-right: 6px;
             animation: blink 1.2s infinite;
         }
 
@@ -92,10 +124,11 @@
             padding: 15px 20px;
         }
         .logo {
-            font-size: 1.6rem;
-            font-weight: 700;
+            font-size: 1.4rem;
+            font-weight: 800;
             color: var(--secondary);
             text-decoration: none;
+            letter-spacing: -0.5px;
         }
         .logo span { color: var(--primary); }
         
@@ -107,24 +140,24 @@
         .nav-links a {
             text-decoration: none;
             color: var(--text-dark);
-            font-weight: 600;
-            font-size: 0.95rem;
+            font-weight: 700;
+            font-size: 0.9rem;
             transition: color 0.3s;
         }
         .nav-links a:hover { color: var(--primary); }
 
         @media(max-width: 640px) {
-            .nav-container { flex-direction: column; gap: 10px; text-align: center; }
-            .nav-links { gap: 12px; font-size: 0.85rem; }
+            .nav-container { flex-direction: column; gap: 8px; text-align: center; }
+            .nav-links { gap: 15px; font-size: 0.8rem; }
         }
 
         /* Professional PWA Installer Banner */
         .pwa-premium-banner {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
             border-bottom: 3px solid var(--primary);
             color: #fff;
-            padding: 12px 20px;
-            display: none;
+            padding: 14px 20px;
+            display: flex; /* Kept flex for preview control via JS later */
             justify-content: space-between;
             align-items: center;
             position: relative;
@@ -164,7 +197,7 @@
         .hero {
             background: linear-gradient(rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.94)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
             color: #fff;
-            padding: 50px 0;
+            padding: 45px 0;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -184,14 +217,14 @@
             backdrop-filter: blur(5px);
         }
         .intro-top-tag {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 800;
             color: #ff6b00;
             letter-spacing: 1px;
             margin-bottom: 5px;
         }
         .intro-mid-tag {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: #3b82f6;
             margin-bottom: 8px;
@@ -199,9 +232,9 @@
         .intro-badges-row {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
-            margin-top: 5px;
+            margin-top: 8px;
         }
         .intro-badge-pill {
             background: rgba(239, 68, 68, 0.15);
@@ -220,10 +253,10 @@
         }
         
         .hero-main-title {
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 900;
             color: #fff;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             line-height: 1.2;
@@ -231,7 +264,7 @@
         .hero-main-title span { color: #3b82f6; }
         
         .hero-intro-text {
-            font-size: 1.1rem;
+            font-size: 1rem;
             max-width: 750px;
             color: #cbd5e1;
             margin: 0 auto 25px;
@@ -239,7 +272,7 @@
             padding: 0 15px;
         }
 
-        /* DYNAMIC COUNTER LIVE OFFER CARD BLOCK (EXCLUSIVE DIGITAL DEAL) */
+        /* DYNAMIC COUNTER LIVE OFFER CARD BLOCK */
         .offer-showcase-box {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             border: 2px solid rgba(255, 107, 0, 0.8);
@@ -250,7 +283,6 @@
             margin: 20px auto 25px;
             box-shadow: 0 12px 30px rgba(0,0,0,0.5);
             text-align: center;
-            position: relative;
         }
         .offer-tag-line {
             color: #3b82f6;
@@ -261,15 +293,13 @@
             margin-bottom: 6px;
         }
         .offer-main-title {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: #fff;
             margin-bottom: 15px;
             line-height: 1.3;
         }
-        .offer-main-title span {
-            color: #ef4444;
-        }
+        .offer-main-title span { color: #ef4444; }
 
         /* Booking Tracker Boxes */
         .live-counter-wrapper {
@@ -297,7 +327,6 @@
         }
         .counter-pill-box.danger-glow .counter-pill-num {
             color: #ef4444;
-            animation: pulseText 1.5s infinite;
         }
         .counter-pill-lbl {
             font-size: 0.75rem;
@@ -309,7 +338,7 @@
         }
 
         .mega-discount-alert {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: #f59e0b;
             background: rgba(245, 158, 11, 0.1);
@@ -317,37 +346,6 @@
             border-radius: 8px;
             margin-bottom: 18px;
             border: 1px solid rgba(245, 158, 11, 0.2);
-        }
-
-        .tc-legal-anchor {
-            font-size: 0.75rem;
-            color: #64748b;
-            text-decoration: underline;
-            cursor: pointer;
-            display: inline-block;
-            transition: color 0.2s;
-            margin-top: 10px;
-        }
-        .tc-legal-anchor:hover { color: #fff; }
-
-        .btn-main {
-            background: var(--primary);
-            color: #fff;
-            padding: 14px 35px;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.05rem;
-            font-weight: 700;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
-            width: 100%;
-        }
-        .btn-main:hover {
-            background: var(--primary-hover);
-            transform: translateY(-2px);
         }
 
         /* Upgraded Warranty Card with Reproblem Logic */
@@ -371,7 +369,6 @@
             margin-top: 5px;
             font-weight: 800;
             color: #10b981;
-            text-shadow: 0 0 8px rgba(16,185,129,0.4);
             text-transform: uppercase;
             font-size: 0.8rem;
         }
@@ -425,7 +422,6 @@
             align-items: center;
             gap: 4px;
             font-weight: 700;
-            transition: color 0.2s;
         }
         .stat-item .heart-btn.liked { color: #ef4444; }
 
@@ -445,6 +441,7 @@
             font-weight: 500;
         }
 
+        /* Items Showcase Grid */
         .items-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -487,7 +484,6 @@
             text-decoration: none;
             font-weight: 700;
             font-size: 0.85rem;
-            transition: all 0.3s;
             margin-top: 15px;
         }
         .btn-card-book:hover { background: var(--primary); }
@@ -498,15 +494,14 @@
             padding: 25px 15px;
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.01);
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             border: 1px solid #e2e8f0;
             overflow: hidden;
-            position: relative;
         }
         .brand-slider-track {
             display: flex;
-            width: calc(250px * 18);
-            animation: infiniteScrollMarquee 25s linear infinite;
+            width: calc(220px * 10);
+            animation: infiniteScrollMarquee 20s linear infinite;
             gap: 16px;
         }
         .brands-container:hover .brand-slider-track {
@@ -523,20 +518,18 @@
             font-weight: 700;
             text-align: center;
             border: 1px solid #e2e8f0;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
             letter-spacing: 0.5px;
-            transition: all 0.3s ease;
             cursor: pointer;
+            transition: all 0.2s;
         }
         .brand-badge:hover {
             border-color: var(--primary);
             color: var(--primary);
             background: #fff;
-            transform: translateY(-2px);
         }
         @keyframes infiniteScrollMarquee {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-216px * 9)); }
+            100% { transform: translateX(calc(-216px * 5)); }
         }
 
         /* Brand Dynamic Ocean/Sea Section Layout */
@@ -546,13 +539,14 @@
             padding: 30px;
             margin-bottom: 50px;
             color: #fff;
-            display: none; /* Triggers via JS on touch */
+            display: none; 
             border: 2px solid #3b82f6;
             box-shadow: 0 10px 30px rgba(59,130,246,0.2);
             text-align: center;
         }
         .ocean-title { font-size: 1.6rem; font-weight: 800; color: #3b82f6; margin-bottom: 5px; text-transform: uppercase; }
         .ocean-subtitle { font-size: 0.9rem; color: #94a3b8; margin-bottom: 25px; }
+        
         .ocean-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -564,9 +558,8 @@
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 12px;
             padding: 15px;
-            transition: all 0.3s;
+            text-align: left;
         }
-        .ocean-card:hover { background: rgba(255,255,255,0.08); border-color: var(--primary); }
         .ocean-img-placeholder {
             height: 120px;
             background: rgba(255,107,0,0.1);
@@ -574,893 +567,493 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 12px;
         }
-        .ocean-card h5 { font-size: 1rem; font-weight: 700; margin-bottom: 5px; color: #f8fafc; }
+        .ocean-card h5 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; color: #fff; }
         .ocean-card p { font-size: 0.8rem; color: #94a3b8; }
-        .ocean-book-btn {
-            background: #2563eb;
-            color: #fff;
-            padding: 12px 35px;
-            font-weight: 700;
-            border-radius: 10px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 10px;
-            transition: background 0.2s;
-        }
-        .ocean-book-btn:hover { background: #1d4ed8; }
 
-        .grid-panel {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        @media(max-width: 850px) { .grid-panel { grid-template-columns: 1fr; } }
-
-        .card-panel {
+        /* Booking Form Section Wrapper styling */
+        .booking-section {
             background: #fff;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.03);
+            padding: 35px 25px;
+            border-radius: 24px;
             border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.03);
+            max-width: 600px;
+            margin: 0 auto 50px;
         }
-
         .form-group { margin-bottom: 18px; }
-        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 0.85rem; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--secondary); margin-bottom: 6px; text-transform: uppercase; }
         .form-control {
             width: 100%;
-            padding: 12px;
+            padding: 12px 16px;
             border: 1px solid #cbd5e1;
             border-radius: 10px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-dark);
             outline: none;
-            background: #f8fafc;
+            transition: border-color 0.2s;
         }
-        .form-control:focus { border-color: var(--primary); background: #fff; }
+        .form-control:focus { border-color: var(--primary); }
 
-        .booking-success-box {
-            display: none;
-            background: #ecfdf5;
-            border: 1px solid #a7f3d0;
-            border-radius: 12px;
-            padding: 20px;
+        /* Emergency Advanced Control Panel Card Block */
+        .emergency-accent-box {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid var(--danger);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 40px 0;
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.15);
             text-align: center;
-            margin-top: 15px;
         }
-        .booking-success-box img { width: 55px; margin-bottom: 8px; }
-        .booking-success-box h4 { color: #065f46; font-size: 1.1rem; font-weight: 800; }
-        .booking-success-box p { font-size: 0.85rem; color: #047857; margin-top: 4px; font-weight: 600; }
-
-        .emergency-header {
-            display: flex;
+        .emergency-title {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #991b1b;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .emergency-desc {
+            font-size: 0.9rem;
+            color: #7f1d1d;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .btn-emergency-call {
+            background: var(--danger);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-decoration: none;
+            display: inline-flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 15px;
-            animation: textBlink 1.5s infinite;
-        }
-
-        /* Payment Block Robust Fixes */
-        .payment-methods {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 8px;
-        }
-        .pay-option {
-            border: 1px solid #e2e8f0;
-            padding: 12px;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.85rem;
-            background: #f8fafc;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
             transition: all 0.2s;
+            width: 100%;
+            justify-content: center;
         }
-        .pay-option.active {
-            border-color: var(--danger);
-            background: #fef2f2;
-            color: var(--danger);
-        }
-
-        #qr-container {
-            text-align: center;
-            margin-top: 20px;
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 12px;
-            border: 2px dashed #cbd5e1;
-            cursor: pointer;
-            display: none;
-        }
-        .qr-placeholder {
-            max-width: 140px;
-            margin: 0 auto 10px;
-            display: block;
-            border: 4px solid #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        .btn-emergency-call:hover {
+            background: #dc2626;
+            transform: scale(1.02);
         }
 
-        .payment-log-box {
-            margin-top: 15px;
-            padding: 12px;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-align: center;
-            display: none;
-        }
-
-        .card-details-form {
-            display: none;
-            margin-top: 15px;
-            background: #f1f5f9;
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px solid #cbd5e1;
-            text-align: left;
-        }
-
-        .feedback-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-        @media(max-width: 768px) { .feedback-grid { grid-template-columns: 1fr; } }
-
-        .rating-box-pro {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 30px;
-        }
-        .rating-summary-pro {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            margin-bottom: 25px;
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-        }
-        .big-rating-num { font-size: 3.5rem; font-weight: 900; color: var(--secondary); line-height: 1; }
-        .rating-stars-view i { color: #f59e0b; font-size: 1.1rem; }
-        
-        .reviews-scroll-area {
-            max-height: 340px;
-            overflow-y: auto;
-            padding-right: 5px;
-        }
-        .review-post-card {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 12px;
-        }
-        .rev-head { display: flex; justify-content: space-between; margin-bottom: 6px; }
-        .rev-name { font-weight: 700; font-size: 0.9rem; color: var(--secondary); }
-        .rev-stars { color: #f59e0b; font-size: 0.75rem; }
-        .rev-text { font-size: 0.85rem; color: #475569; }
-
-        .toast-live-alert {
-            position: fixed;
-            bottom: 105px;
-            left: 20px;
-            background: var(--secondary);
-            color: #fff;
-            padding: 12px 20px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border-left: 4px solid var(--primary);
-            transform: translateY(150px);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .toast-live-alert.show { transform: translateY(0); }
-        .toast-live-alert .t-green { color: #22c55e; font-weight: 800; }
-
-        /* Sticky Action Navigation Footer Bar */
-        .action-dock-footer {
+        /* Native Sticky App Bar Styles */
+        .bottom-nav-dock {
+            fixed: bottom;
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(15, 23, 42, 0.96);
             backdrop-filter: blur(10px);
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
-            padding: 12px 20px;
+            border-t: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 16px;
+            z-index: 2000;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+        }
+        .dock-grid {
             display: grid;
             grid-template-columns: 1fr 1.2fr 1fr;
             gap: 12px;
-            z-index: 999;
-            border-top: 1px solid #e2e8f0;
+            max-width: 600px;
+            margin: 0 auto;
         }
         .dock-btn {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            color: #fff;
             text-decoration: none;
             font-size: 0.75rem;
             font-weight: 700;
-            color: #fff;
+            padding: 8px;
             border-radius: 12px;
-            height: 52px;
-            transition: transform 0.2s;
+            gap: 4px;
+            transition: all 0.2s;
         }
-        .dock-btn:active { transform: scale(0.95); }
-        .dock-btn i { font-size: 1.2rem; margin-bottom: 2px; }
+        .dock-btn.wa-primary { background: #059669; }
+        .dock-btn.emergency-call-dock { 
+            background: var(--danger); 
+            font-size: 0.8rem; 
+            font-weight: 900;
+            box-shadow: 0 0 15px rgba(239,68,68,0.5);
+            animation: pulseGlow 2s infinite;
+        }
+        .dock-btn.wa-secondary { background: #047857; }
         
-        .dock-wa-one { background: #22c55e; box-shadow: 0 4px 10px rgba(34,197,94,0.3); }
-        .dock-call { background: #2563eb; box-shadow: 0 4px 10px rgba(37,99,235,0.3); font-size: 0.85rem !important; }
-        .dock-wa-two { background: #16a34a; box-shadow: 0 4px 10px rgba(22,163,74,0.3); }
-
-        footer {
-            background: var(--footer-bg);
-            color: #94a3b8;
-            padding: 40px 20px 20px;
-            text-align: center;
-            font-size: 0.85rem;
-            border-top: 3px solid var(--primary);
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(239,68,68,0.5); }
+            50% { transform: scale(1.03); box-shadow: 0 0 25px rgba(239,68,68,0.8); }
         }
-        footer h3 { color: #fff; margin-bottom: 10px; font-weight: 700; }
     </style>
 </head>
 <body>
 
-    <div class="pwa-premium-banner" id="pwa-banner">
+    <div class="tech-bar">
+        <span class="dot"></span>
+        <span>MUMBAI HUB: 45+ LINE INSPECTORS ACTIVE IN WESTERN, EASTERN & SOUTH ZONES NOW</span>
+    </div>
+
+    <div class="pwa-premium-banner" id="pwaBanner">
         <div class="pwa-info">
             <div class="pwa-icon-box">
-                <i class="fa-solid fa-bolt"></i>
+                <i class="fa-solid fa-screwdriver-wrench"></i>
             </div>
             <div class="pwa-text">
                 <h5>QuickFix Mumbai App</h5>
-                <p>Install for instant tracking & premium 24/7 priority support</p>
+                <p>Install for Fast 1-Tap Emergency Bookings & Trackings</p>
             </div>
         </div>
         <div class="pwa-btn-group">
-            <button class="btn-pwa-install" id="btn-pwa-install-act">Install Now</button>
-            <button class="btn-pwa-close" id="btn-pwa-close-act"><i class="fa-solid fa-xmark"></i></button>
+            <button class="btn-pwa-install" onclick="triggerPWAInstallationEngine()">INSTALL</button>
+            <button class="btn-pwa-close" onclick="closePWABanner()"><i class="fa-solid fa-xmark"></i></button>
         </div>
     </div>
 
-    <div class="tech-bar">
-        <span class="dot"></span> Live Tracking Active: 45 Expert Technicians Online Now in Mumbai (Western & All Zones)
-    </div>
-
     <header>
-        <div class="nav-container">
+        <div class="nav-container container">
             <a href="#" class="logo">QuickFix<span>Mumbai</span></a>
             <ul class="nav-links">
-                <li><a href="#services">Our Services</a></li>
-                <li><a href="#book">Book Slot</a></li>
-                <li><a href="#emergency">Emergency Service</a></li>
+                <li><a href="#servicesSegment">Our Services</a></li>
+                <li><a href="#bookingSection">Book Slot</a></li>
+                <li><a href="#emergencySegment" style="color: var(--danger);"><i class="fa-solid fa-bolt"></i> Emergency Fix</a></li>
             </ul>
         </div>
     </header>
 
-    <section class="hero">
+    <main class="container">
         
-        <div class="business-intro-header">
-            <div class="intro-top-tag">🛠️ QUICKFIX MUMBAI 🛠️</div>
-            <div class="intro-mid-tag">⚡ Trusted Home Appliance Repair Since 2010 ⚡</div>
-            <div class="intro-badges-row">
-                <span class="intro-badge-pill">🚨 24/7 Emergency Repair</span>
-                <span class="intro-badge-pill tech-pill">👨‍🔧 50+ Company Experts</span>
-            </div>
-        </div>
-
-        <h1 class="hero-main-title">Doorstep Smart <span>Appliance Repair</span> Hub</h1>
-        <p class="hero-intro-text">Mumbai's No.1 Premium Trusted Doorstep Hub. Delivering instant mechanical diagnostics & original modular component resolutions straight to your doorstep.</p>
-
-        <div class="offer-showcase-box">
-            <div class="offer-tag-line">Exclusive Digital Deal</div>
-            <div class="offer-main-title">Flat 25% Off On Full <span>Circuit Overhauling</span></div>
-            
-            <div class="live-counter-wrapper">
-                <div class="counter-pill-box">
-                    <span class="counter-pill-num" id="booking-filled-num">177</span>
-                    <span class="counter-pill-lbl">Bookings Full Now</span>
-                </div>
-                <div class="counter-pill-box danger-glow">
-                    <span class="counter-pill-num" id="countdown-target-num">14</span>
-                    <span class="counter-pill-lbl">Available Now</span>
+        <section class="hero">
+            <div class="business-intro-header">
+                <div class="intro-top-tag">QUICKFIX MUMBAI DIVISION</div>
+                <div class="intro-mid-tag">Mumbai's No.1 Premium Trusted Doorstep Home Appliance Service Hub</div>
+                <div class="intro-badges-row">
+                    <span class="intro-badge-pill">Instant Mechanical Diagnostics</span>
+                    <span class="intro-badge-pill tech-pill">Original Component Resolutions</span>
                 </div>
             </div>
 
-            <div class="mega-discount-alert">
-                ⚡ Book your slot with a mega discount 25%, don't miss!
-            </div>
+            <h2 class="hero-main-title">Expert Home Repairs <span>Priceless Service</span></h2>
+            <p class="hero-intro-text">Delivering premium, verified solutions directly straight to your doorstep across all regional zones instantly.</p>
 
-            <a href="#book" class="btn-main">BOOK YOUR SLOT NOW</a>
-            
-            <div>
+            <div class="offer-showcase-box">
+                <div class="offer-tag-line">Exclusive Digital Deal</div>
+                <h3 class="offer-main-title">Flat <span>25% OFF</span> On Full Circuit Overhauling</h3>
+                
+                <div class="live-counter-wrapper">
+                    <div class="counter-pill-box">
+                        <span class="counter-pill-num" id="filledCounter text-green-500">182</span>
+                        <span class="counter-pill-lbl">Bookings Full Now</span>
+                    </div>
+                    <div class="counter-pill-box danger-glow">
+                        <span class="counter-pill-num" id="availCounter">11</span>
+                        <span class="counter-pill-lbl">Available Now</span>
+                    </div>
+                </div>
+
+                <div class="mega-discount-alert">
+                    <i class="fa-solid fa-bolt"></i> Book your slot with a mega discount 25% don't miss!
+                </div>
+
+                <a href="#bookingSection" class="btn-main">SCHEDULE DOORSTEP INSPECTOR NOW</a>
+                <br>
                 <span class="tc-legal-anchor">*Terms & Conditions Apply</span>
             </div>
-        </div>
 
-        <div class="warranty-card">
-            <i class="fa-solid fa-shield-halved"></i>
-            <div>
-                <h4>Certified 180-Day Guarantee Extension Program</h4>
-                <p>Every dynamic mechanical breakdown fix is backed entirely by an ironclad company paper warrant stamp ledger.</p>
-                <span class="reproblem-badge">🛡️ Free Revisit if Reproblem</span>
+            <div class="warranty-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <div>
+                    <h4>Certified 180-Day Guarantee Extension Program</h4>
+                    <p>Every dynamic mechanical breakdown fix is backed entirely by an ironclad company paper warrant stamp ledger.</p>
+                    <span class="reproblem-badge"><i class="fa-solid fa-circle-check"></i> Free Service If Repair Problem Occurs</span>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <div class="container">
-        
-        <div class="trust-box">
+        <section class="trust-box">
             <div class="stat-item">
-                <h3 id="stat-happy">14.2k</h3>
+                <h3>14.2k</h3>
                 <p>Happy Customers</p>
-                <button class="heart-btn" onclick="toggleLike(this, 'happy')"><i class="fa-solid fa-heart"></i> <span class="like-lbl">Like</span></button>
+                <button class="heart-btn" onclick="toggleLikeAction(this)"><i class="fa-solid fa-heart"></i> Like</button>
             </div>
             <div class="stat-item">
-                <h3 id="stat-rating">4.9/5</h3>
-                <p>Google Verified Rating</p>
-                <button class="heart-btn" onclick="toggleLike(this, 'rating')"><i class="fa-solid fa-heart"></i> <span class="like-lbl">Like</span></button>
+                <h3>4.9/5</h3>
+                <p>Google Verified</p>
+                <button class="heart-btn" onclick="toggleLikeAction(this)"><i class="fa-solid fa-heart"></i> Like</button>
             </div>
             <div class="stat-item">
-                <h3 id="stat-resolved">28k+</h3>
+                <h3>28k+</h3>
                 <p>Appliances Resolved</p>
-                <button class="heart-btn" onclick="toggleLike(this, 'resolved')"><i class="fa-solid fa-heart"></i> <span class="like-lbl">Like</span></button>
+                <button class="heart-btn" onclick="toggleLikeAction(this)"><i class="fa-solid fa-heart"></i> Like</button>
             </div>
             <div class="stat-item">
-                <h3 id="stat-expert">50+</h3>
+                <h3>52 Premium</h3>
                 <p>Expert Technicians</p>
-                <button class="heart-btn" onclick="toggleLike(this, 'expert')"><i class="fa-solid fa-heart"></i> <span class="like-lbl">Like</span></button>
+                <button class="heart-btn liked" style="color: #ef4444;"><i class="fa-solid fa-heart"></i> Liked</button>
             </div>
-        </div>
+        </section>
 
-        <section id="services">
-            <h2 class="section-title">Premium <span>Repair Modules</span></h2>
-            <p class="section-subtitle">Select your faulty appliance for premium automated troubleshooting execution</p>
-            
+        <section id="servicesSegment">
+            <h2 class="section-title">Appliances We <span>Service & Repair</span></h2>
+            <p class="section-subtitle">Select your damaged equipment block to load specialized modular engineers layout solutions</p>
+
             <div class="items-grid">
                 <div class="item-card">
                     <div class="item-img-box"><i class="fa-solid fa-snowflake"></i></div>
                     <div class="item-content">
-                        <h3>1. Refrigerator Repairs</h3>
-                        <a href="#book" class="btn-card-book" onclick="setServiceField('Refrigerator Repair')">Book Slot Now</a>
+                        <h3>All Refrigerators Service</h3>
+                        <p class="text-muted" style="font-size: 0.85rem;">Single door, double door, side-by-side inverter gas systems clearance.</p>
+                        <a href="#bookingSection" class="btn-card-book" onclick="setApplianceDropdown('Refrigerator System Repair')">Book Machine Fix</a>
                     </div>
                 </div>
                 <div class="item-card">
                     <div class="item-img-box"><i class="fa-solid fa-soap"></i></div>
                     <div class="item-content">
-                        <h3>2. Washing Machine Repair</h3>
-                        <a href="#book" class="btn-card-book" onclick="setServiceField('Washing Machine Repair')">Book Slot Now</a>
+                        <h3>Washing Machine Repair</h3>
+                        <p class="text-muted" style="font-size: 0.85rem;">Top load, front load diagnostic configurations and drum bearing resolutions.</p>
+                        <a href="#bookingSection" class="btn-card-book" onclick="setApplianceDropdown('Washing Machine Repair')">Book Machine Fix</a>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <div class="item-img-box"><i class="fa-solid fa-temperature-arrow-up"></i></div>
+                    <div class="item-content">
+                        <h3>Microwave Oven Fix</h3>
+                        <p class="text-muted" style="font-size: 0.85rem;">Magnetron replacement, touch panels rectification, heating terminal overhauls.</p>
+                        <a href="#bookingSection" class="btn-card-book" onclick="setApplianceDropdown('Microwave Oven Fix')">Book Machine Fix</a>
                     </div>
                 </div>
                 <div class="item-card">
                     <div class="item-img-box"><i class="fa-solid fa-wind"></i></div>
                     <div class="item-content">
-                        <h3>3. Microwave Oven Fix</h3>
-                        <a href="#book" class="btn-card-book" onclick="setServiceField('Microwave Oven Fix')">Book Slot Now</a>
-                    </div>
-                </div>
-                <div class="item-card">
-                    <div class="item-img-box"><i class="fa-solid fa-temperature-arrow-down"></i></div>
-                    <div class="item-content">
-                        <h3>4. Air Conditioner Units (AC)</h3>
-                        <a href="#book" class="btn-card-book" onclick="setServiceField('Air Conditioner (AC) Repair')">Book Slot Now</a>
-                    </div>
-                </div>
-                <div class="item-card">
-                    <div class="item-img-box"><i class="fa-solid fa-rug"></i></div>
-                    <div class="item-content">
-                        <h3>5. Clothes Dryer Setup</h3>
-                        <a href="#book" class="btn-card-book" onclick="setServiceField('Clothes Dryer Repair')">Book Slot Now</a>
-                    </div>
-                </div>
-                <div class="item-card">
-                    <div class="item-img-box"><i class="fa-solid fa-glass-water"></i></div>
-                    <div class="item-content">
-                        <h3>6. Dishwasher Restoration</h3>
-                        <a href="#book" class="btn-card-book" onclick="setServiceField('Dishwasher Restoration')">Book Slot Now</a>
-                    </div>
-                </div>
-                <div class="item-card">
-                    <div class="item-img-box"><i class="fa-solid fa-bolt-lightning"></i></div>
-                    <div class="item-content">
-                        <h3>7. Deep Freezer Systems</h3>
-                        <a href="#book" class="btn-card-book" onclick="setServiceField('Deep Freezer Repair')">Book Slot Now</a>
-                    </div>
-                </div>
-                <div class="item-card">
-                    <div class="item-img-box"><i class="fa-solid fa-fire-burner"></i></div>
-                    <div class="item-content">
-                        <h3>8. Cooktop / Cooking Range</h3>
-                        <a href="#book" class="btn-card-book" onclick="setServiceField('Cooktop Repair')">Book Slot Now</a>
-                    </div>
-                </div>
-                <div class="item-card">
-                    <div class="item-img-box"><i class="fa-solid fa-faucet-drip"></i></div>
-                    <div class="item-content">
-                        <h3>9. Water Cooler Machines</h3>
-                        <a href="#book" class="btn-card-book" onclick="setServiceField('Water Cooler Repair')">Book Slot Now</a>
-                    </div>
-                </div>
-                <div class="item-card">
-                    <div class="item-img-box"><i class="fa-solid fa-microchip"></i></div>
-                    <div class="item-content">
-                        <h3>10. Inverter / PCB Repairs</h3>
-                        <a href="#book" class="btn-card-book" onclick="setServiceField('Inverter / PCB Circuit Repairs')">Book Slot Now</a>
+                        <h3>Air Conditioner Units (AC)</h3>
+                        <p class="text-muted" style="font-size: 0.85rem;">Split/Window coils restoration, gas filling, dynamic cooling optimization.</p>
+                        <a href="#bookingSection" class="btn-card-book" onclick="setApplianceDropdown('Air Conditioner Units (AC)')">Book Machine Fix</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <h3 style="text-align:center; font-weight:700; font-size:1.1rem; color:var(--text-muted); margin-bottom:15px; text-transform:uppercase;">We Serviced And Repairing All Over Brands</h3>
-        
         <div class="brands-container">
             <div class="brand-slider-track">
-                <div class="brand-badge" onclick="triggerBrandOcean('Samsung')">SAMSUNG</div>
-                <div class="brand-badge" onclick="triggerBrandOcean('LG')">LG</div>
-                <div class="brand-badge" onclick="triggerBrandOcean('Whirlpool')">WHIRLPOOL</div>
-                <div class="brand-badge" onclick="triggerBrandOcean('IFB')">IFB</div>
-                <div class="brand-badge" onclick="triggerBrandOcean('Panasonic')">PANASONIC</div>
-                <div class="brand-badge" onclick="triggerBrandOcean('Godrej')">GODREJ</div>
-                <div class="brand-badge" onclick="triggerBrandOcean('Hitachi')">HITACHI</div>
-                <div class="brand-badge" onclick="triggerBrandOcean('Toshiba')">TOSHIBA</div>
-                <div class="brand-badge" onclick="triggerBrandOcean('Videocon')">VIDEOCON</div>
-                <div class="brand-badge" onclick="triggerBrandOcean('Samsung')">SAMSUNG</div>
-                <div class="brand-badge" onclick="triggerBrandOcean('LG')">LG</div>
-                <div class="brand-badge" onclick="triggerBrandOcean('Whirlpool')">WHIRLPOOL</div>
-                <div class="brand-badge" onclick="triggerBrandOcean('IFB')">IFB</div>
-                <div class="brand-badge" onclick="triggerBrandOcean('Panasonic')">PANASONIC</div>
-                <div class="brand-badge" onclick="triggerBrandOcean('Godrej')">GODREJ</div>
-                <div class="brand-badge" onclick="triggerBrandOcean('Hitachi')">HITACHI</div>
-                <div class="brand-badge" onclick="triggerBrandOcean('Toshiba')">TOSHIBA</div>
-                <div class="brand-badge" onclick="triggerBrandOcean('Videocon')">VIDEOCON</div>
+                <div class="brand-badge" onclick="triggerOceanEngine('Samsung')">Samsung</div>
+                <div class="brand-badge" onclick="triggerOceanEngine('LG')">LG</div>
+                <div class="brand-badge" onclick="triggerOceanEngine('Whirlpool')">Whirlpool</div>
+                <div class="brand-badge" onclick="triggerOceanEngine('Videocon')">Videocon</div>
+                <div class="brand-badge" onclick="triggerOceanEngine('Godrej')">Godrej</div>
+                <div class="brand-badge" onclick="triggerOceanEngine('Samsung')">Samsung</div>
+                <div class="brand-badge" onclick="triggerOceanEngine('LG')">LG</div>
+                <div class="brand-badge" onclick="triggerOceanEngine('Whirlpool')">Whirlpool</div>
+                <div class="brand-badge" onclick="triggerOceanEngine('Videocon')">Videocon</div>
+                <div class="brand-badge" onclick="triggerOceanEngine('Godrej')">Godrej</div>
             </div>
         </div>
 
-        <section class="brand-ocean-section" id="brand-ocean-block">
-            <h3 class="ocean-title" id="ocean-brand-heading">Samsung Expert Sea Hub</h3>
-            <p class="ocean-subtitle">Explore verified common errors and diagnostic solutions managed by our tech teams</p>
-            <div class="ocean-grid" id="ocean-cards-container">
-                </div>
-            <a href="#book" class="ocean-book-btn">Book Fast Diagnostic Slot Now</a>
-        </section>
-
-        <div class="grid-panel">
+        <section class="brand-ocean-section" id="oceanBox">
+            <h3 class="ocean-title" id="oceanTitle">SAMSUNG SOLUTIONS INDEX</h3>
+            <p class="ocean-subtitle">Touch tracking reveals active verified error code logs solved over doorstep units</p>
             
-            <div class="card-panel" id="book">
-                <h3 style="font-size:1.4rem; font-weight:800; margin-bottom:5px; color:var(--secondary);">Apni Service Ka Din Aur Time Chunein:</h3>
-                <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:20px;">Fill required details for verified immediate expert allocation routing</p>
-                
-                <form id="booking-form" onsubmit="executeBookingSystem(event)">
-                    <div class="form-group">
-                        <label>Chuney Aapki Appliance Service:</label>
-                        <select class="form-control" id="form-service" required>
-                            <option value="">-- Choose Appliance --</option>
-                            <option value="Refrigerator Repair">Refrigerator Repairs</option>
-                            <option value="Washing Machine Repair">Washing Machine Repair</option>
-                            <option value="Microwave Oven Fix">Microwave Oven Fix</option>
-                            <option value="Air Conditioner (AC) Repair">Air Conditioner Units (AC)</option>
-                            <option value="Clothes Dryer Repair">Clothes Dryer Setup</option>
-                            <option value="Dishwasher Restoration">Dishwasher Restoration</option>
-                            <option value="Deep Freezer Repair">Deep Freezer Systems</option>
-                            <option value="Cooktop Repair">Cooktop / Cooking Range</option>
-                            <option value="Water Cooler Repair">Water Cooler Machines</option>
-                            <option value="Inverter / PCB Circuit Repairs">Inverter / PCB Repairs</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Select Preferred Booking Date:</label>
-                        <input type="date" class="form-control" id="form-date" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Select Preferred Time Slot (Operating 9 AM to 12 AM):</label>
-                        <select class="form-control" id="form-time" required>
-                            <option value="">🕒 Select Time Slot</option>
-                            <option value="9 AM - 12 PM">Morning (9 AM - 12 PM)</option>
-                            <option value="12 PM - 3 PM">Afternoon (12 PM - 3 PM)</option>
-                            <option value="3 PM - 6 PM">Evening (3 PM - 6 PM)</option>
-                            <option value="6 PM - 9 PM">Late Evening (6 PM - 9 PM)</option>
-                            <option value="9 PM - 12 AM">Night Rush (9 PM - 12 AM)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Your Mobile Number:</label>
-                        <input type="tel" class="form-control" id="form-phone" placeholder="Enter 10 Digit Phone Number" pattern="[0-9]{10}" required>
-                    </div>
-
-                    <button type="submit" class="btn-main" style="background:var(--secondary);">BOOK NOW ⚡</button>
-                </form>
-
-                <div class="booking-success-box" id="success-message">
-                    <img src="https://cdn-icons-png.flaticon.com/512/5610/5610944.png" alt="Success Check">
-                    <h4>Booking Verification Request Received!</h4>
-                    <p id="success-text-log">Connecting with nearby expert routing channel instantly...</p>
+            <div class="ocean-grid" id="oceanGridContainer">
                 </div>
-            </div>
-
-            <div class="card-panel" id="emergency" style="border-color:var(--danger); background:rgba(239,68,68,0.01);">
-                <div class="emergency-header">
-                    <i class="fa-solid fa-triangle-exclamation" style="color:var(--danger); font-size:1.5rem;"></i>
-                    <h3 style="font-size:1.4rem; font-weight:800; color:var(--secondary); margin:0;">24/7 Priority Emergency Channel</h3>
-                </div>
-                <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:15px;">Short-circuit burning spark smell, massive leakage floods, or complete commercial chilling unit breakdowns processed instantly.</p>
-                
-                <div style="background:#fff; border:1px solid #e2e8f0; padding:15px; border-radius:12px; margin-bottom:20px;">
-                    <h4 style="font-size:0.9rem; font-weight:700; margin-bottom:4px; color:var(--secondary);">Secure Priority Diagnostics Advance Deposit</h4>
-                    <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:10px;">Token validation security adjustable completely into your overall ultimate repair invoice bill ledger.</p>
-                    
-                    <div class="payment-methods">
-                        <div class="pay-option" id="pay-qr-btn" onclick="switchPaymentMode('qr')">Scan Pay QR</div>
-                        <div class="pay-option" id="pay-card-btn" onclick="switchPaymentMode('card')">Credit / Debit Card</div>
-                    </div>
-
-                    <div id="qr-container" onclick="triggerLivePaymentSimulation()">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=quickfixmumbai@ybl%26pn=QuickFix%20Mumbai%26am=199%26cu=INR" class="qr-placeholder" alt="UPI Merchant QR Code">
-                        <p style="font-size:0.75rem; font-weight:700; color:var(--text-dark); margin:0;">Click Code Image After Scanning To Log Success</p>
-                    </div>
-
-                    <div class="card-details-form" id="card-form-box">
-                        <div class="form-group">
-                            <label style="font-size:0.75rem;">Card Number Ledger</label>
-                            <input type="text" class="form-control" placeholder="xxxx xxxx xxxx xxxx" maxlength="19" id="pay-card-num">
-                        </div>
-                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-                            <div class="form-group">
-                                <label style="font-size:0.75rem;">Expiry Date</label>
-                                <input type="text" class="form-control" placeholder="MM/YY" maxlength="5">
-                            </div>
-                            <div class="form-group">
-                                <label style="font-size:0.75rem;">CVV Code</label>
-                                <input type="password" class="form-control" placeholder="***" maxlength="3">
-                            </div>
-                        </div>
-                        <button class="btn-main" type="button" style="padding:10px; font-size:0.85rem; background:var(--danger);" onclick="triggerLivePaymentSimulation()">Authorize Safe Deposit Securely</button>
-                    </div>
-
-                    <div class="payment-log-box" id="pay-status-msg"></div>
-                </div>
-
-                <a href="tel:+919930249182" class="btn-main" style="background:var(--danger); text-align:center; box-shadow:0 4px 15px rgba(239,68,68,0.3);">
-                    <i class="fa-solid fa-phone-volume" style="margin-right:8px;"></i> CALL EMERGENCY HOTLINE
-                </a>
-            </div>
-        </div>
-
-        <section class="feedback-grid">
-            <div class="rating-box-pro">
-                <h3 style="font-size:1.3rem; font-weight:800; margin-bottom:5px; color:var(--secondary);">Customer Verification Reviews</h3>
-                <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:20px;">Transparent reviews sourced from actual client field surveys</p>
-                
-                <div class="rating-summary-pro">
-                    <div class="big-rating-num">4.9</div>
-                    <div>
-                        <div class="rating-stars-view">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p style="font-size:0.75rem; font-weight:700; color:var(--text-dark); margin-top:2px;">Based on 2,840+ doorstep reviews across Mumbai zones</p>
-                    </div>
-                </div>
-
-                <div class="reviews-scroll-area">
-                    <div class="review-post-card">
-                        <div class="rev-head"><span class="rev-name">Rajesh Kumar (Andheri West)</span><span class="rev-stars">⭐⭐⭐⭐⭐</span></div>
-                        <p class="rev-text">My double door refrigerator stopped cooling suddenly at 10 PM. Technicians arrived quickly and fixed the PCB board in no time. Highly professional!</p>
-                    </div>
-                    <div class="review-post-card">
-                        <div class="rev-head"><span class="rev-name">Pooja Sharma (Bandra)</span><span class="rev-stars">⭐⭐⭐⭐⭐</span></div>
-                        <p class="rev-text">Excellent service for IFB washing machine drum repair. Price was reasonable, and they cleaned everything post-fix. Highly recommended.</p>
-                    </div>
-                    <div class="review-post-card">
-                        <div class="rev-head"><span class="rev-name">Amit Patel (Borivali East)</span><span class="rev-stars">⭐⭐⭐⭐⭐</span></div>
-                        <p class="rev-text">Superb response speed for AC short circuit gas leak repair! Safe handling protocol followed perfectly by the tech team.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-panel">
-                <h3 style="font-size:1.2rem; font-weight:800; margin-bottom:5px; color:var(--secondary);">Submit Live Survey Feedback</h3>
-                <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:20px;">Help us keep our performance score optimal</p>
-                
-                <form id="feedback-form" onsubmit="processLiveUserFeedback(event)">
-                    <div class="form-group">
-                        <label>Full Client Name</label>
-                        <input type="text" class="form-control" id="fb-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Your Mumbai Region / Zone Location</label>
-                        <input type="text" class="form-control" id="fb-loc" placeholder="e.g. Malad West" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Select Rating Stars Score</label>
-                        <select class="form-control" id="fb-stars" required>
-                            <option value="5">⭐⭐⭐⭐⭐ (5/5 Excellence Score)</option>
-                            <option value="4">⭐⭐⭐⭐ (4/5 Satisfactory)</option>
-                            <option value="3">⭐⭐⭐ (3/5 Average Execution)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Your Experience Feedback Text</label>
-                        <textarea class="form-control" id="fb-msg" rows="3" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-main" style="background:var(--primary); padding:11px; font-size:0.9rem;">POST LIVE VERIFIED REVIEW</button>
-                </form>
-            </div>
         </section>
-    </div>
 
-    <div class="toast-live-alert" id="live-toast-box">
-        <i class="fa-solid fa-circle-check" style="color:#22c55e; font-size:1.2rem;"></i>
-        <div id="toast-text-content">Expert Technician Booked in Dadar Section</div>
-    </div>
+        <section class="booking-section" id="bookingSection">
+            <h3 style="text-align: center; font-size: 1.6rem; font-weight: 800; margin-bottom: 5px;">Aur Time Chunein:</h3>
+            <p style="text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px; font-weight: 500;">Fill required details for verified immediate expert allocation routing</p>
+            
+            <form id="appRegistrationForm" onsubmit="executeWhatsAppFormRoute(event)">
+                <div class="form-group">
+                    <label>Your Full Name:</label>
+                    <input type="text" id="custName" class="form-control" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label>Chuney Aapki Appliance Service:</label>
+                    <select id="appServiceDropdown" class="form-control" style="font-weight: 600;">
+                        <option value="Air Conditioner Units (AC)">Air Conditioner Units (AC)</option>
+                        <option value="Inverter / PCB Repairs">Inverter / PCB Repairs</option>
+                        <option value="Washing Machine Repair">Washing Machine</option>
+                        <option value="Refrigerator System Repair">Refrigerator</option>
+                        <option value="Microwave Oven Fix">Microwave Oven</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Select Preferred Booking Date:</label>
+                    <input type="date" id="bookDate" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Select Preferred Time Slot (Operating 9 AM to 12 AM):</label>
+                    <select id="timeSlotDropdown" class="form-control" style="font-weight: 600;">
+                        <option value="Morning (9 AM - 12 PM)">Morning (9 AM - 12 PM)</option>
+                        <option value="Afternoon (12 PM - 4 PM)">Afternoon (12 PM - 4 PM)</option>
+                        <option value="Evening (4 PM - 8 PM)">Evening (4 PM - 8 PM)</option>
+                        <option value="Late Night Rush (8 PM - 12 AM)">Late Night Rush (8 PM - 12 AM)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Your Mobile Number:</label>
+                    <input type="tel" id="custMobile" class="form-control" placeholder="Enter 10 digit mobile number" required pattern="[0-9]{10}" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                </div>
+                <div class="form-group">
+                    <label>Complete Address / Area:</label>
+                    <textarea id="custAddress" class="form-control" rows="3" placeholder="Flat/Room No, Building Name, Local Area, Mumbai" required></textarea>
+                </div>
 
-    <footer>
-        <div class="container">
-            <h3>QuickFix Mumbai Tech Hub Services Ltd.</h3>
-            <p>India's Premium Certified Independent Multi-Brand Doorstep Appliance Operations Network. All brand names, trade layout assets are property of respective original manufacturer corporations.</p>
-            <p style="margin-top:15px; font-size:0.75rem; color:#64748b;">&copy; 2026 QuickFix Mumbai. Designed professionally for extreme conversions.</p>
+                <button type="submit" class="btn-main" style="text-transform: uppercase; letter-spacing: 0.5px;">BOOK YOUR SLOT NOW <i class="fa-solid fa-bolt"></i></button>
+            </form>
+        </section>
+
+        <section id="emergencySegment" class="emergency-accent-box">
+            <h3 class="emergency-title"><i class="fa-solid fa-triangle-exclamation"></i> Emergency Breakdown Hotline</h3>
+            <p class="emergency-desc">Need immediate resolution? Our premium express dispatch operators bypass regular scheduling queues instantly.</p>
+            <a href="tel:+919930249182" class="btn-emergency-call">
+                <i class="fa-solid fa-phone-volume animate-bounce"></i> CALL EMERGENCY HOTLINE NOW
+            </a>
+        </section>
+
+    </main>
+
+    <div class="bottom-nav-dock">
+        <div class="dock-grid">
+            <a href="https://wa.me/919930249182?text=Hi%20Quickfix%20Mumbai%20I%20want%20to%20book%20a%20primary%20slot" target="_blank" class="dock-btn wa-primary">
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i>
+                <span>WA Primary</span>
+            </a>
+            
+            <a href="tel:+919930249182" class="dock-btn emergency-call-dock">
+                <i class="fa-solid fa-phone" style="font-size: 1.2rem;"></i>
+                <span>EMERGENCY CALL</span>
+            </a>
+            
+            <a href="https://wa.me/919930249182?text=Hi%20Quickfix%20Mumbai%20Emergency%20assistance" target="_blank" class="dock-btn wa-secondary">
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i>
+                <span>WA Second</span>
+            </a>
         </div>
-    </footer>
-
-    <div class="action-dock-footer">
-        <a href="https://wa.me/919930249182?text=Bhai%20I%20want%20to%20book%20a%20priority%20appliance%20repair%20slot%20for%20my%20home" class="dock-btn dock-wa-one" target="_blank">
-            <i class="fa-brands fa-whatsapp"></i> WA Primary
-        </a>
-        <a href="tel:+919930249182" class="dock-btn dock-call">
-            <i class="fa-solid fa-phone-flip"></i> CALL: +91 9930249182
-        </a>
-        <a href="https://wa.me/919930249182?text=Emergency%20Appliance%20Breakdown%20Support%20Required" class="dock-btn dock-wa-two" target="_blank">
-            <i class="fa-brands fa-whatsapp"></i> WA Second
-        </a>
     </div>
 
     <script>
-        // Set standard baseline validation dates
-        document.getElementById('form-date').valueAsDate = new Date();
+        // Auto Sync Baseline Calendar inputs element on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const todayDateString = new Date().toISOString().split('T')[0];
+            document.getElementById('bookDate').value = todayDateString;
+        });
 
-        function setServiceField(val) {
-            document.getElementById('form-service').value = val;
-        }
-
-        // Like Counters System Logic
-        function toggleLike(btn, type) {
-            let target = document.getElementById('stat-' + type);
-            if(btn.classList.contains('liked')) {
-                btn.classList.remove('liked');
-                btn.querySelector('.like-lbl').innerText = 'Like';
-                if(type === 'happy') target.innerText = "14.2k";
-                if(type === 'rating') target.innerText = "4.9/5";
-                if(type === 'resolved') target.innerText = "28k+";
-                if(type === 'expert') target.innerText = "50+";
+        // Toggle Social Proof Like Button States Runtime Element
+        function toggleLikeAction(elementRef) {
+            if(elementRef.classList.contains('liked')) {
+                elementRef.classList.remove('liked');
+                elementRef.innerHTML = `<i class="fa-solid fa-heart"></i> Like`;
+                elementRef.style.color = "var(--text-muted)";
             } else {
-                btn.classList.add('liked');
-                btn.querySelector('.like-lbl').innerText = 'Liked';
-                if(type === 'happy') target.innerText = "14,261";
-                if(type === 'rating') target.innerText = "5.0/5 Max";
-                if(type === 'resolved') target.innerText = "28,491 Fixed";
-                if(type === 'expert') target.innerText = "52 Premium";
+                elementRef.classList.add('liked');
+                elementRef.innerHTML = `<i class="fa-solid fa-heart"></i> Liked`;
+                elementRef.style.color = "#ef4444";
             }
         }
 
-        // Live Real-Time Automation Script Engine
-        function executeBookingSystem(e) {
-            e.preventDefault();
-            let svc = document.getElementById('form-service').value;
-            let dt = document.getElementById('form-date').value;
-            let tm = document.getElementById('form-time').value;
-            let ph = document.getElementById('form-phone').value;
-
-            document.getElementById('booking-form').style.display = 'none';
-            let sbox = document.getElementById('success-message');
-            sbox.style.display = 'block';
-
-            // Generate customized redirect string text
-            let waText = `Hello QuickFix Mumbai, I have requested a doorstep slot via your application system:%0A- *Service Module:* ${svc}%0A- *Date:* ${dt}%0A- *Preferred Slot:* ${tm}%0A- *Contact Phone:* ${ph}%0A%0APlease assign the nearest zone service manager immediately.`;
-            
-            setTimeout(() => {
-                window.open(`https://wa.me/919930249182?text=${waText}`, '_blank');
-            }, 1200);
+        // Direct Item Booking Card interaction triggers setup
+        function setApplianceDropdown(targetVal) {
+            document.getElementById('appServiceDropdown').value = targetVal;
         }
 
-        // Payment Processing Logical Matrix Fixes
-        function switchPaymentMode(mode) {
-            document.getElementById('pay-qr-btn').classList.remove('active');
-            document.getElementById('pay-card-btn').classList.remove('active');
-            document.getElementById('qr-container').style.display = 'none';
-            document.getElementById('card-form-box').style.display = 'none';
-
-            if(mode === 'qr') {
-                document.getElementById('pay-qr-btn').classList.add('active');
-                document.getElementById('qr-container').style.display = 'block';
-            } else {
-                document.getElementById('pay-card-btn').classList.add('active');
-                document.getElementById('card-form-box').style.display = 'block';
-            }
+        // Close PWA App Banner utility safely
+        function closePWABanner() {
+            document.getElementById('pwaBanner').style.display = 'none';
         }
 
-        function triggerLivePaymentSimulation() {
-            let log = document.getElementById('pay-status-msg');
-            log.style.display = 'block';
-            log.style.background = '#fef3c7';
-            log.style.color = '#d97706';
-            log.innerText = "Processing safe encryption verification signature secure handshake...";
-
-            setTimeout(() => {
-                log.style.background = '#d1fae5';
-                log.style.color = '#065f46';
-                log.innerHTML = "🏆 Advance Deposit Authorization Success! Priority emergency ticket #QF-" + Math.floor(100000 + Math.random() * 900000) + " launched live. Technicians routed.";
-                
-                let waEmergencyText = `EMERGENCY ADVANCE DEPOSIT PAID!%0ATicket Reference generated successfully. Please dispatch backup mechanics at once to my address location routing link.`;
-                window.open(`https://wa.me/919930249182?text=${waEmergencyText}`, '_blank');
-            }, 2000);
+        // Trigger PWA Installation Simulation Matrix
+        function triggerPWAInstallationEngine() {
+            alert("QuickFix Mumbai Mobile App Package installation protocol initialized safely on your device!");
+            closePWABanner();
         }
 
-        // Brand Ocean Dynamic Rendering Core Engine
-        const brandDataMock = {
+        // Brand Data Matrix Logs Database repository 
+        const oceanMockDatabase = {
             'Samsung': [
-                { title: 'Samsung Inverter Frost Error', desc: '4E/5E error line component breakdown diagnostics' },
-                { title: 'Washing Machine 4C Jam', desc: 'Water inlet valve filter choking or coil circuit failure' },
-                { title: 'Microwave Heating Failure', desc: 'Magnetron replacement with original high voltage diode' }
+                { icon: '❄️', title: 'Samsung Frost Line (#1)', desc: '4E/5E system error line component breakdown diagnostics cleared.' },
+                { icon: '⚡', title: 'Inverter PCB Reset', desc: 'Blown communication bus lines restored back to modular parameters.' }
             ],
             'LG': [
-                { title: 'LG Linear Compressor Knock', desc: 'Gas pressure equalization or sensor module calibration' },
-                { title: 'Direct Drive OE Drain Error', desc: 'Drain motor failure or circuit loop block fix' },
-                { title: 'LG AC CH-05 Communication', desc: 'Outdoor unit PCB connector restoration protocol' }
+                { icon: '🔊', title: 'Compressor Knocking', desc: 'Linear equalization calibration routines executed over internal valves.' },
+                { icon: '🌊', title: 'OE Drain Error Code', desc: 'Synchronous pump lines blockages extracted entirely in 20 minutes.' }
             ],
             'Whirlpool': [
-                { title: '6th Sense Defrost Sticking', desc: 'Thermal fuse replacement with custom sensor matrix' },
-                { title: 'Whirlpool Top Load Spin Jam', desc: 'Lid switch bypass circuit assembly validation' }
-            ],
-            'IFB': [
-                { title: 'IFB Front Load d0 Error', desc: 'Door interlock latch microswitch component overhaul' },
-                { title: 'Aqua Energy Scale Choke', desc: 'Solenoid bypass and water pressure optimization' }
-            ],
-            'Panasonic': [
-                { title: 'Panasonic Econavi Sensor Fault', desc: 'PCB signal path calibration with genuine elements' }
-            ],
-            'Godrej': [
-                { title: 'Eon Refrigerator Fan Jam', desc: 'Evaporator fan motor replacement and icing clear' }
-            ],
-            'Hitachi': [
-                { title: 'Hitachi Multi-Door Error Red Blink', desc: 'Inverter controller overload diagnostic execution' }
-            ],
-            'Toshiba': [
-                { title: 'Toshiba Washer Drum Balance Tilt', desc: 'Suspension rod mechanical tension adjustment' }
+                { icon: '🧠', title: '6th Sense Module Jam', desc: 'Evaporator thermal relay link nodes replaced with paper warranty stamp.' }
             ],
             'Videocon': [
-                { title: 'Videocon Traditional Chilling Drop', desc: 'Capillary filter replacement and backup gas refilling' }
+                { icon: '📉', title: 'Chilling Drop Fix', desc: 'Capillary modular filters completely updated and backup premium gas refilled.' }
+            ],
+            'Godrej': [
+                { icon: '🧊', title: 'Eon Automatic Icing', desc: 'Automatic de-frost thermal clock cycle optimization system sequence re-aligned.' }
             ]
         };
 
-        function triggerBrandOcean(brandName) {
-            const oceanBlock = document.getElementById('brand-ocean-block');
-            const heading = document.getElementById('ocean-brand-heading');
-            const container = document.getElementById('ocean-cards-container');
+        // Render Dynamic Ocean Grid Modules 
+        function triggerOceanEngine(brandNameKey) {
+            const oceanBox = document.getElementById('oceanBox');
+            const oceanTitle = document.getElementById('oceanTitle');
+            const gridContainer = document.getElementById('oceanGridContainer');
+
+            oceanTitle.innerText = `${brandNameKey.toUpperCase()} CERTIFIED REMEDIES INDEX`;
+            gridContainer.innerHTML = '';
+
+            const logsArray = oceanMockDatabase[brandNameKey] || oceanMockDatabase['Samsung'];
             
-            heading.innerText = `${brandName} Premium Sea Of Solutions`;
-            container.innerHTML = '';
-            
-            // Fetch items
-            const problems = brandDataMock[brandName] || brandDataMock['Samsung'];
-            
-            // Loop array data to dynamically generate up to 25 simulated brand variations
-            for(let i = 0; i < 25; i++) {
-                const currentProb = problems[i % problems.length];
+            logsArray.forEach(log => {
                 const card = document.createElement('div');
                 card.className = 'ocean-card';
                 card.innerHTML = `
-                    <div class="ocean-img-placeholder"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-                    <h5>${currentProb.title} (#${i+1})</h5>
-                    <p>${currentProb.desc} for high retention doorstep conversion fixes.</p>
+                    <div class="ocean-img-placeholder">${log.icon}</div>
+                    <h5>${log.title}</h5>
+                    <p>${log.desc}</p>
                 `;
-                container.appendChild(card);
-            }
-            
-            oceanBlock.style.display = 'block';
-            
-            // Smoothly scroll and center into client window look view
-            oceanBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                gridContainer.appendChild(card);
+            });
+
+            oceanBox.style.display = 'block';
+            oceanBox.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Live Reviews Integration System Panel
-        function processLiveUserFeedback(e) {
-            e.preventDefault();
-            let name = document.getElementById('fb-name').value;
-            let loc = document.getElementById('fb-loc').value;
-            let score = document.getElementById('fb-stars').value;
-            let msg = document.getElementById('fb-msg').value;
-
-            let starsStr = "⭐".repeat(parseInt(score));
-            
-            let area = document.querySelector('.reviews-scroll-area');
-            let div = document.createElement('div');
-            div.className = 'review-post-card';
-            div.style.borderLeft = '3px solid var(--accent)';
-            div.innerHTML = `<div class="rev-head"><span class="rev-name">${name} (${loc})</span><span class="rev-stars">${starsStr}</span></div><p class="rev-text">${msg}</p>`;
-            
-            area.insertBefore(div, area.firstChild);
-            document.getElementById('feedback-form').reset();
-            alert("Thank you! Your verified score feedback is posted live.");
-        }
-
-        // Live Dynamic Random Urgency Countdown Engine Loop (Urgency & Scarcity Tracker)
-        let countdownCount = 14;
-        let filledCount = 177;
-        const countdownElement = document.getElementById('countdown-target-num');
-        const filledElement = document.getElementById('booking-filled-num');
-
+        // Simulation Live Counters Scarcity Module Engine 
+        let currentAvailableSlots = 11;
+        let currentFilledSlots = 182;
         setInterval(() => {
-            if (countdownCount > 2) {
-                countdownCount -= 1;
-                filledCount += 1;
-                countdownElement.innerText = countdownCount;
-                filledElement.innerText = filledCount;
-
-                // Fire corresponding live custom conversion pop-up notifications
-                triggerLiveNotificationToast(filledCount);
+            if(currentAvailableSlots > 3) {
+                currentAvailableSlots -= 1;
+                currentFilledSlots += 1;
+                document.getElementById('availCounter').innerText = currentAvailableSlots;
+                document.getElementById('filledCounter text-green-500').innerText = currentFilledSlots;
             }
-        }, 14000);
+        }, 22000);
 
-        // Toast Notification Pipeline System Asset Array
-        const localRegions = ["Bandra West", "Andheri Lokhandwala", "Borivali West", "Juhu Scheme", "Khar West", "Dadar Central", "Colaba South", "Goregaon East", "Malad Link Road", "Powai Hiranandani"];
-        const randomServices = ["Washing Machine Drum Repair", "Smart Refrigerator Gas Refill", "Inverter PCB Circuit Fix", "Microwave Magnetron Install", "AC Compressor Replacement"];
+        // Core Form Inputs Extraction & Sanitized WhatsApp Forwarding Route Logic
+        function executeWhatsAppFormRoute(eventObj) {
+            eventObj.preventDefault();
 
-        function triggerLiveNotificationToast(count) {
-            const toast = document.getElementById('live-toast-box');
-            const txt = document.getElementById('toast-text-content');
-            
-            let rRegion = localRegions[Math.floor(Math.random() * localRegions.length)];
-            let rSvc = randomServices[Math.floor(Math.random() * randomServices.length)];
+            const name = document.getElementById('custName').value.trim();
+            const service = document.getElementById('appServiceDropdown').value;
+            const date = document.getElementById('bookDate').value;
+            const slot = document.getElementById('timeSlotDropdown').value;
+            const phone = document.getElementById('custMobile').value.trim();
+            const address = document.getElementById('custAddress').value.trim();
 
-            txt.innerHTML = `Expert <span class="t-green">${rSvc}</span> Booked in ${rRegion} Section!`;
-            toast.classList.add('show');
+            const finalStructuredString = `Hello QuickFix Mumbai, I have booked an immediate doorstep technician slot via the app:%0A%0A` +
+                                           `👤 *Customer:* ${encodeURIComponent(name)}%0A` +
+                                           `🔧 *Device Issue:* ${encodeURIComponent(service)}%0A` +
+                                           `📅 *Date Choice:* ${encodeURIComponent(date)}%0A` +
+                                           `🕒 *Timing Slot:* ${encodeURIComponent(slot)}%0A` +
+                                           `📞 *Phone Contact:* ${encodeURIComponent(phone)}%0A` +
+                                           `📍 *Address:* ${encodeURIComponent(address)}%0A%0A` +
+                                           `Please dispatch the route supervisor to my location instantly.`;
 
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 4500);
+            window.open(`https://wa.me/919930249182?text=${finalStructuredString}`, '_blank');
         }
-
-        // Trigger safe delayed starting notification on runtime load sequence
-        setTimeout(() => { triggerLiveNotificationToast(177); }, 3000);
-
-        // Professional PWA Installer Logic Bridge Handlers
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            document.getElementById('pwa-banner').style.display = 'flex';
-        });
-
-        document.getElementById('btn-pwa-install-act').addEventListener('click', async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') {
-                    document.getElementById('pwa-banner').style.display = 'none';
-                }
-                deferredPrompt = null;
-            } else {
-                alert("App is fully active! To install manually, click your mobile browser settings menu options row.");
-            }
-        });
-
-        document.getElementById('btn-pwa-close-act').addEventListener('click', () => {
-            document.getElementById('pwa-banner').style.display = 'none';
-        });
     </script>
 </body>
 </html>
