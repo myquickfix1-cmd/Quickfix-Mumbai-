@@ -3,70 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quickfix Mumbai | Enterprise Control Room v1.6</title>
+    <title>Quickfix Mumbai | Enterprise Command Center v1.6</title>
     <style>
         :root { --primary: #007bff; --success: #28a745; --danger: #dc3545; --warning: #ffc107; --dark: #212529; --light: #f8f9fa; --purple: #6f42c1; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #eef2f7; margin: 0; padding: 15px; color: var(--dark); }
-        .header { display: flex; justify-content: space-between; align-items: center; background: white; padding: 15px 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        .grid-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 20px; }
-        .stat-card { background: white; padding: 18px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 5px solid var(--primary); }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #eef2f7; margin: 0; padding: 10px; color: var(--dark); }
+        
+        .header { display: flex; flex-direction: column; gap: 10px; background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 15px; }
+        @media(min-width: 768px) { .header { flex-direction: row; justify-content: space-between; align-items: center; padding: 15px 25px; } }
+        
+        .grid-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 15px; }
+        @media(min-width: 768px) { .grid-stats { grid-template-columns: repeat(5, 1fr); gap: 15px; } }
+        
+        .stat-card { background: white; padding: 12px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 4px solid var(--primary); }
         .stat-card.earnings { border-left-color: var(--success); }
         .stat-card.advance { border-left-color: #17a2b8; }
         .stat-card.pending { border-left-color: var(--danger); }
         .stat-card.traffic { border-left-color: var(--purple); }
-        .stat-card h3 { margin: 0 0 10px 0; color: #6c757d; font-size: 0.82rem; text-transform: uppercase; }
-        .stat-card p { margin: 0; font-size: 1.5rem; font-weight: bold; }
+        .stat-card h3 { margin: 0 0 5px 0; color: #6c757d; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .stat-card p { margin: 0; font-size: 1.2rem; font-weight: bold; }
+        @media(min-width: 768px) { .stat-card { padding: 18px; border-left-width: 5px; } .stat-card p { font-size: 1.5rem; } }
         
-        .layout-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 20px; }
-        @media(max-width: 992px) { .layout-grid { grid-template-columns: 1fr; } }
+        .layout-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 15px; }
+        @media(min-width: 992px) { .layout-grid { grid-template-columns: 2fr 1fr; gap: 20px; } }
         
-        .section { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; overflow-x: auto; }
-        h2 { margin-top: 0; color: var(--primary); border-bottom: 2px solid #f1f1f1; padding-bottom: 10px; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; min-width: 900px; }
-        th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #edf2f9; vertical-align: middle; font-size: 0.88rem; }
-        th { background: #f8f9fa; color: #495057; font-weight: 600; }
+        .section { background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 15px; }
+        h2 { margin-top: 0; color: var(--primary); border-bottom: 2px solid #f1f1f1; padding-bottom: 8px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
         
-        .badge { padding: 5px 10px; border-radius: 30px; font-size: 0.75rem; font-weight: bold; display: inline-block; text-align: center; }
+        /* RESPONSIVE RESPONSIVE TABLE TO CARD SYSTEM */
+        .responsive-table { width: 100%; border-collapse: collapse; margin-top: 5px; }
+        .responsive-table thead { display: none; } /* Hide headers on mobile */
+        .responsive-table tbody tr { display: block; background: #f8f9fa; border: 1px solid #edf2f9; border-radius: 8px; padding: 12px; margin-bottom: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .responsive-table td { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px dashed #eee; font-size: 0.85rem; text-align: right; }
+        .responsive-table td:last-child { border-bottom: none; }
+        .responsive-table td::before { content: attr(data-label); font-weight: bold; text-align: left; color: #495057; }
+        
+        /* DESKTOP TABLE REVERT */
+        @media(min-width: 768px) {
+            .responsive-table thead { display: table-header-group; }
+            .responsive-table tbody tr { display: table-row; background: transparent; border: none; box-shadow: none; }
+            .responsive-table td { display: table-cell; text-align: left; padding: 10px 12px; border-bottom: 1px solid #edf2f9; }
+            .responsive-table td::before { display: none; }
+        }
+        
+        .badge { padding: 4px 8px; border-radius: 30px; font-size: 0.72rem; font-weight: bold; display: inline-block; text-align: center; }
         .badge-pending { background: #fff3cd; color: #856404; }
         .badge-success { background: #d4edda; color: #155724; }
         .badge-danger { background: #f8d7da; color: #721c24; }
         .badge-info { background: #d1ecf1; color: #0c5460; }
         .badge-purple { background: #e2d9f3; color: #4b2394; }
         
-        select, input, button { padding: 6px 10px; border-radius: 6px; border: 1px solid #ced4da; font-size: 0.85rem; }
-        input[type="number"] { width: 75px; }
+        select, input, button { padding: 6px 8px; border-radius: 6px; border: 1px solid #ced4da; font-size: 0.82rem; max-width: 100%; box-sizing: border-box; }
+        input[type="number"] { width: 75px; text-align: center; }
         button { background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; }
         button:hover { background: #0056b3; }
         
-        .info-link { color: #007bff; text-decoration: none; font-weight: bold; display: block; }
-        .location-text { font-size: 0.78rem; color: #555; max-width: 170px; word-wrap: break-word; display: block; }
-        .btn-action { font-size: 0.72rem; padding: 4px 8px; border-radius: 4px; font-weight: bold; margin-right: 2px; }
+        .info-link { color: #007bff; text-decoration: none; font-weight: bold; display: inline-block; margin-bottom: 2px; }
+        .location-text { font-size: 0.78rem; color: #555; display: block; }
+        .btn-action { font-size: 0.72rem; padding: 4px 8px; border-radius: 4px; font-weight: bold; margin-right: 2px; margin-top: 2px; }
         .btn-confirm { background: var(--success); }
         .btn-cancel { background: var(--danger); }
-        .btn-track { background: var(--purple); color: white; margin-top: 4px; padding: 3px 6px; font-size: 0.72rem; border-radius: 4px; }
+        .btn-track { background: var(--purple); color: white; margin-top: 4px; padding: 4px 8px; font-size: 0.72rem; border-radius: 4px; width: 100%; text-align: center; }
+        @media(min-width: 768px) { .btn-track { width: auto; } }
         
-        .finance-box { background: #f8f9fa; padding: 8px; border-radius: 6px; border: 1px dashed #ced4da; font-size: 0.8rem; }
-        .finance-box div { margin-bottom: 20px; margin-bottom: 3px; }
+        .finance-box { background: white; padding: 6px; border-radius: 6px; border: 1px dashed #ced4da; font-size: 0.78rem; width: 100%; text-align: left; }
+        .finance-box div { margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; gap: 5px; }
+        @media(min-width: 768px) { .finance-box { background: #f8f9fa; width: 130px; } }
         
-        /* MAP BOX & TRAFFIC LOG */
-        .map-container { height: 180px; background: #e3f2fd; border-radius: 8px; border: 2px dashed #90caf9; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #1565c0; font-weight: bold; font-size: 0.85rem; margin-top: 10px; text-align: center; padding: 10px; }
-        .traffic-list { max-height: 250px; overflow-y: auto; padding: 0; margin: 0; list-style: none; }
+        .map-container { height: 160px; background: #e3f2fd; border-radius: 8px; border: 2px dashed #90caf9; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #1565c0; font-weight: bold; font-size: 0.82rem; margin-top: 10px; text-align: center; padding: 10px; }
+        .traffic-list { max-height: 220px; overflow-y: auto; padding: 0; margin: 0; list-style: none; }
         .traffic-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; border-bottom: 1px solid #eee; font-size: 0.8rem; }
-        .traffic-item:hover { background: #f8f9fa; }
-
-        .login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #eef2f7; display: flex; justify-content: center; align-items: center; z-index: 9999; }
-        .login-box { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 350px; text-align: center; }
-        .login-box h2 { border: none; padding: 0; margin-bottom: 20px; }
-        .login-box input { width: 90%; margin-bottom: 15px; padding: 10px; display: block; margin-left: auto; margin-right: auto; }
-        .login-box button { width: 96%; padding: 12px; font-size: 1rem; }
+        
+        .login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #eef2f7; display: flex; justify-content: center; align-items: center; z-index: 9999; padding: 15px; box-sizing: border-box; }
+        .login-box { background: white; padding: 30px 20px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 350px; text-align: center; }
+        .login-box h2 { border: none; padding: 0; margin-bottom: 20px; justify-content: center; }
+        .login-box input { width: 100%; margin-bottom: 15px; padding: 10px; box-sizing: border-box; }
+        .login-box button { width: 100%; padding: 12px; font-size: 1rem; }
         .error-msg { color: red; font-size: 0.9rem; margin-top: 10px; display: none; }
     </style>
 </head>
 <body>
 
+    <!-- SYSTEM ACCESS PANEL -->
     <div id="loginOverlay" class="login-overlay">
         <div class="login-box">
-            <h2>🔐 Quickfix Enterprise Command Center</h2>
+            <h2>🔐 Quickfix Command Center</h2>
             <form id="loginForm">
                 <input type="text" id="username" placeholder="Username" required>
                 <input type="password" id="password" placeholder="Password" required>
@@ -76,78 +96,94 @@
         </div>
     </div>
 
+    <!-- MAIN APP SCREEN -->
     <div id="dashboardContent" style="display: none;">
         <div class="header">
-            <h2 style="color: var(--dark); border: none; padding: 0; margin: 0;">🏢 Quickfix Mumbai Operational Control Room v1.6</h2>
-            <button onclick="logoutAdmin()" style="background: var(--danger); padding: 5px 12px; border-radius: 6px;">Logout</button>
+            <h2 style="color: var(--dark); border: none; padding: 0; margin: 0; font-weight: bold; font-size: 1.2rem;">🏢 Operational Control Room v1.6</h2>
+            <button onclick="logoutAdmin()" style="background: var(--danger); padding: 6px 14px; border-radius: 6px; font-size: 0.85rem; width: 100%; text-align: center;">Logout</button>
         </div>
 
+        <!-- STATS MATRIX CONTAINER -->
         <div class="grid-stats">
-            <div class="stat-card"><h3 style="color: var(--purple);">Total Site Visits</h3><p id="total-visits">142</p></div>
-            <div class="stat-card"><h3>Active Jobs</h3><p id="total-jobs">0</p></div>
-            <div class="stat-card earnings"><h3>Billed Revenue</h3><p id="total-billed">₹0</p></div>
-            <div class="stat-card advance"><h3>Cash In Hand</h3><p id="total-received">₹0</p></div>
-            <div class="stat-card pending"><h3>Outstanding</h3><p id="total-outstanding">₹0</p></div>
+            <div class="stat-card traffic"><h3 style="color: var(--purple);">Visits</h3><p id="total-visits">142</p></div>
+            <div class="stat-card"><h3>Jobs</h3><p id="total-jobs">0</p></div>
+            <div class="stat-card earnings"><h3>Billed</h3><p id="total-billed">₹0</p></div>
+            <div class="stat-card advance"><h3>Received</h3><p id="total-received">₹0</p></div>
+            <div class="stat-card pending"><h3>Due</h3><p id="total-outstanding">₹0</p></div>
         </div>
 
+        <!-- ENGINE REGISTER SECTION -->
         <div class="section">
-            <h2>👷 Field Engineers Ledger & Live GPS Tracking</h2>
-            <table>
+            <h2>👷 Field Engineers Ledger & Location</h2>
+            <table class="responsive-table">
                 <thead>
                     <tr>
                         <th>Technician Name</th>
                         <th>Contact Number</th>
                         <th>Machine Expertise Field</th>
                         <th>Current Duty Status</th>
-                        <th>Job Control & Tracking Action</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody id="workers-table-body">
                     <tr id="tech-T4">
-                        <td><strong>Seraj Husain</strong> <span style="font-size:10px; background:#e6fffa; color:#006d5b; padding:2px 6px; border-radius:4px; font-weight:bold;">Senior Master</span></td>
-                        <td>
+                        <td data-label="Technician"><strong>Seraj Husain</strong> <span style="font-size:9px; background:#e6fffa; color:#006d5b; padding:2px 4px; border-radius:4px; font-weight:bold;">Senior Master</span></td>
+                        <td data-label="Contact">
                             <a href="tel:+919930249182" class="info-link">📞 +91 99302 49182</a>
                             <button class="btn-track" onclick="trackWorkerGPS('Seraj Husain', 'Andheri West')">📍 Live Track</button>
                         </td>
-                        <td><span class="badge" style="background:#e8f0fe; color:#1a73e8;">All Smart Home Appliances, Inverter/PCB Master</span></td>
-                        <td><span class="badge badge-success status-indicator">Available / Idle</span></td>
-                        <td class="action-cell"><span style="color:#6c757d; font-size:0.85rem;">Waiting for lead allocation</span></td>
+                        <td data-label="Expertise"><span class="badge" style="background:#e8f0fe; color:#1a73e8; font-size: 11px;">All Smart Home Appliances, Inverter/PCB Master</span></td>
+                        <td data-label="Status"><span class="badge badge-success status-indicator">Available / Idle</span></td>
+                        <td data-label="Action" class="action-cell"><span style="color:#6c757d; font-size:0.8rem;">Waiting for lead</span></td>
                     </tr>
                     <tr id="tech-T1">
-                        <td><strong>Amit Kumar</strong></td>
-                        <td>
+                        <td data-label="Technician"><strong>Amit Kumar</strong></td>
+                        <td data-label="Contact">
                             <a href="tel:+919811122233" class="info-link">📞 +91 98111 22233</a>
                             <button class="btn-track" onclick="trackWorkerGPS('Amit Kumar', 'Bandra East')">📍 Live Track</button>
                         </td>
-                        <td><span class="badge" style="background:#edf2f7; color:#4a5568;">AC, Inverter/PCB, Smart Refrigerator</span></td>
-                        <td><span class="badge badge-success status-indicator">Available / Idle</span></td>
-                        <td class="action-cell"><span style="color:#6c757d; font-size:0.85rem;">Waiting for lead allocation</span></td>
+                        <td data-label="Expertise"><span class="badge" style="background:#edf2f7; color:#4a5568; font-size: 11px;">AC, Inverter/PCB, Smart Refrigerator</span></td>
+                        <td data-label="Status"><span class="badge badge-success status-indicator">Available / Idle</span></td>
+                        <td data-label="Action" class="action-cell"><span style="color:#6c757d; font-size:0.8rem;">Waiting for lead</span></td>
                     </tr>
                     <tr id="tech-T2">
-                        <td><strong>Suresh Pal</strong></td>
-                        <td>
+                        <td data-label="Technician"><strong>Suresh Pal</strong></td>
+                        <td data-label="Contact">
                             <a href="tel:+919822233344" class="info-link">📞 +91 98222 33344</a>
                             <button class="btn-track" onclick="trackWorkerGPS('Suresh Pal', 'Dadar West')">📍 Live Track</button>
                         </td>
-                        <td><span class="badge" style="background:#edf2f7; color:#4a5568;">Washing machine, Microwave, Advance dishwasher</span></td>
-                        <td><span class="badge badge-success status-indicator">Available / Idle</span></td>
-                        <td class="action-cell"><span style="color:#6c757d; font-size:0.85rem;">Waiting for lead allocation</span></td>
+                        <td data-label="Expertise"><span class="badge" style="background:#edf2f7; color:#4a5568; font-size: 11px;">Washing machine, Microwave, Dishwasher</span></td>
+                        <td data-label="Status"><span class="badge badge-success status-indicator">Available / Idle</span></td>
+                        <td data-label="Action" class="action-cell"><span style="color:#6c757d; font-size:0.8rem;">Waiting for lead</span></td>
+                    </tr>
+                    <!-- RAHUL SHAIKH FIXED BACK HERE -->
+                    <tr id="tech-T3">
+                        <td data-label="Technician"><strong>Rahul Shaikh</strong></td>
+                        <td data-label="Contact">
+                            <a href="tel:+919833344455" class="info-link">📞 +91 98333 44455</a>
+                            <button class="btn-track" onclick="trackWorkerGPS('Rahul Shaikh', 'Goregaon East')">📍 Live Track</button>
+                        </td>
+                        <td data-label="Expertise"><span class="badge" style="background:#edf2f7; color:#4a5568; font-size: 11px;">Premium air dresser, High capacity Dryer</span></td>
+                        <td data-label="Status"><span class="badge badge-success status-indicator">Available / Idle</span></td>
+                        <td data-label="Action" class="action-cell"><span style="color:#6c757d; font-size:0.8rem;">Waiting for lead</span></td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
+        <!-- GRID OVERVIEW MATRIX SYSTEM -->
         <div class="layout-grid">
             
-            <div class="section" style="margin-bottom: 0;">
-                <h2>📅 Live Booking Database & Allocation Matrix</h2>
-                <table>
+            <!-- REPAIR LEADS -->
+            <div class="section">
+                <h2>📅 Live Booking Matrix</h2>
+                <table class="responsive-table">
                     <thead>
                         <tr>
-                            <th>Customer Name</th>
-                            <th>Device Model (10 Items)</th>
-                            <th>Contact & Address</th>
-                            <th>Financials Ledger</th>
+                            <th>Customer</th>
+                            <th>Device (10 Items)</th>
+                            <th>Address</th>
+                            <th>Financials</th>
                             <th>Billing Type</th>
                             <th>Dispatch Engineer</th>
                             <th>Status</th>
@@ -155,8 +191,8 @@
                     </thead>
                     <tbody id="admin-booking-table">
                         <tr id="row-lead1">
-                            <td><strong>Rohan Sharma</strong></td>
-                            <td>
+                            <td data-label="Customer"><strong>Rohan Sharma</strong></td>
+                            <td data-label="Device">
                                 <select class="sel-appliance" style="width: 100%; font-weight: bold; color: #495057;" onchange="recalculateDashboardCore()">
                                     <option value="Inverter/Pcb" selected>10. Inverter/Pcb</option>
                                     <option value="All smart home appliances">1. All smart home appliances</option>
@@ -170,18 +206,18 @@
                                     <option value="Ac">9. Ac</option>
                                 </select>
                             </td>
-                            <td>
+                            <td data-label="Address">
                                 <a href="tel:+919930249182" class="info-link">📞 +91 99302 49182</a>
                                 <span class="location-text">📍 Andheri West, Mumbai</span>
                             </td>
-                            <td>
+                            <td data-label="Financials">
                                 <div class="finance-box">
-                                    <div>Total Bill: ₹<input type="number" class="img-total" class="inp-total" value="1500" oninput="calculateRowFinance('row-lead1')"></div>
-                                    <div>Advance: ₹<input type="number" class="inp-adv" value="199" oninput="calculateRowFinance('row-lead1')"></div>
-                                    <div>Balance: <b class="lbl-bal">₹1301</b></div>
+                                    <div>Total: ₹<input type="number" class="img-total" value="1500" oninput="calculateRowFinance('row-lead1')"></div>
+                                    <div>Adv: ₹<input type="number" class="inp-adv" value="199" oninput="calculateRowFinance('row-lead1')"></div>
+                                    <div>Due: <b class="lbl-bal">₹1301</b></div>
                                 </div>
                             </td>
-                            <td>
+                            <td data-label="Billing Type">
                                 <select class="sel-paymode" onchange="calculateRowFinance('row-lead1')" style="width:100%; margin-bottom:4px; font-size:0.78rem;">
                                     <option value="Pending">⚠️ Balance Pending</option>
                                     <option value="UPI">📱 Paid via UPI</option>
@@ -193,30 +229,33 @@
                                     <option value="T4">Seraj Husain</option>
                                     <option value="T1">Amit Kumar</option>
                                     <option value="T2">Suresh Pal</option>
+                                    <option value="T3">Rahul Shaikh</option>
                                 </select>
                             </td>
-                            <td>
+                            <td data-label="Dispatch">
                                 <select onchange="assignLeadToWorker(this, 'Rohan Sharma', 'row-lead1')" style="width: 100%; margin-bottom: 4px; border-color: var(--primary); font-weight: bold; font-size:0.8rem;">
                                     <option value="">-- Assign Expert --</option>
                                     <option value="T4">Seraj Husain (Senior)</option>
                                     <option value="T1">Amit Kumar</option>
                                     <option value="T2">Suresh Pal</option>
+                                    <option value="T3">Rahul Shaikh</option>
                                 </select>
                                 <div class="lead-action-buttons">
                                     <button class="btn-action btn-confirm" onclick="processLead(this, 'confirm')">Confirm</button>
                                     <button class="btn-action btn-cancel" onclick="processLead(this, 'cancel')">Cancel</button>
                                 </div>
                             </td>
-                            <td><span class="badge badge-pending state-label">Pending</span></td>
+                            <td data-label="Status"><span class="badge badge-pending state-label">Pending</span></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <div style="display: flex; flex-direction: column; gap: 20px;">
+            <!-- ANALYTICS TRACKER -->
+            <div style="display: flex; flex-direction: column; gap: 15px;">
                 
-                <div class="section" style="margin-bottom: 0;">
-                    <h2>📈 Live Customer Traffic & Conversion Tracker</h2>
+                <div class="section">
+                    <h2>📈 Live Customer Traffic Logs</h2>
                     <ul class="traffic-list" id="traffic-logger-hook">
                         <li class="traffic-item">
                             <div><b>User #4910 (Borivali)</b><br><small style="color:#6c757d;">Time: Just now</small></div>
@@ -224,17 +263,17 @@
                         </li>
                         <li class="traffic-item">
                             <div><b>User #4892 (Thane)</b><br><small style="color:#6c757d;">Time: 3 mins ago</small></div>
-                            <span class="badge badge-danger">Left Without Booking ❌</span>
+                            <span class="badge badge-danger">Left No Booking ❌</span>
                         </li>
                         <li class="traffic-item">
                             <div><b>Seraj Husain (Mumbai)</b><br><small style="color:#6c757d;">Time: 12 mins ago</small></div>
-                            <span class="badge badge-success">Ordered Successfully 🎉</span>
+                            <span class="badge badge-success">Booked Order 🎉</span>
                         </li>
                     </ul>
                 </div>
                 
-                <div class="section" style="margin-bottom: 0;">
-                    <h2>📍 Live Field Engineering Radar Map</h2>
+                <div class="section">
+                    <h2>📍 Live Engineering Radar Map</h2>
                     <div class="map-container" id="radar-map-block">
                         🗺️ RADAR ENGINE IDLE<br>
                         <span style="font-size:11px; font-weight:normal; color:#555; margin-top:5px;">Click "Live Track" on any Field Engineer to synchronize geo-nodes.</span>
@@ -276,7 +315,6 @@
             window.location.reload();
         }
 
-        // --- NEW REAL RADAR GEOLOCATION MAP RENDER ENGINE ---
         function trackWorkerGPS(workerName, currentBaseNode) {
             const mapBlock = document.getElementById('radar-map-block');
             mapBlock.style.background = "#e8f5e9";
@@ -284,13 +322,13 @@
             mapBlock.style.borderColor = "#81c784";
             mapBlock.innerHTML = `
                 <div>📍 TRACKING ACTIVE: ${workerName.toUpperCase()}</div>
-                <div style="font-size:12px; font-weight:normal; color:#333; margin-top:4px;">
-                    Current Node: <b>${currentBaseNode}, Mumbai</b><br>
-                    GPS Coordinates: 19.1176° N, 72.8460° E<br>
-                    Status: <span style="color:var(--success); font-weight:bold;">Signal Lock (Moving) 🛰️</span>
+                <div style="font-size:11px; font-weight:normal; color:#333; margin-top:4px;">
+                    Node: <b>${currentBaseNode}, Mumbai</b><br>
+                    Coordinates: 19.1176° N, 72.8460° E<br>
+                    Status: <span style="color:var(--success); font-weight:bold;">Signal Lock (Live) 🛰️</span>
                 </div>
             `;
-            alert(`📡 Pinging GPS Track link code to ${workerName}'s mobile application ledger!`);
+            alert(`📡 Pinging GPS Track link code to ${workerName}'s handset!`);
         }
 
         function calculateRowFinance(rowId) {
@@ -322,22 +360,21 @@
 
             const statusIndicator = workerRow.querySelector('.status-indicator');
             statusIndicator.className = "badge badge-info status-indicator";
-            statusIndicator.innerText = "On Duty (Pending)";
+            statusIndicator.innerText = "On Duty";
 
             const actionCell = workerRow.querySelector('.action-cell');
             actionCell.innerHTML = `
-                <div style="display:flex; flex-direction:column; gap:2px;">
-                    <span style="font-size:0.78rem; color:#0056b3;">💼 Handling: <b>${customerName}</b></span>
+                <div style="display:flex; flex-direction:column; gap:2px; text-align:right; align-items:flex-end;">
+                    <span style="font-size:0.75rem; color:#0056b3;">💼 <b>${customerName}</b></span>
                     <div>
-                        <button class="btn-action btn-confirm" style="padding:2px 6px;" onclick="terminateWorkerJob('${workerId}', 'finished', '${rowId}')">Finished ✅</button>
-                        <button class="btn-action btn-cancel" style="padding:2px 6px;" onclick="terminateWorkerJob('${workerId}', 'pending', '${rowId}')">Stuck ⏳</button>
+                        <button class="btn-action btn-confirm" style="padding:2px 5px;" onclick="terminateWorkerJob('${workerId}', 'finished', '${rowId}')">Done ✅</button>
+                        <button class="btn-action btn-cancel" style="padding:2px 5px;" onclick="terminateWorkerJob('${workerId}', 'pending', '${rowId}')">Stuck ⏳</button>
                     </div>
                 </div>
             `;
             recalculateDashboardCore();
         }
 
-        // --- COMPLETED RECOVERY BLOCK V1.6 ---
         function terminateWorkerJob(workerId, resultState, rowId) {
             const workerRow = document.getElementById(`tech-${workerId}`);
             const mainRow = document.getElementById(rowId);
@@ -345,7 +382,7 @@
             if(resultState === 'finished') {
                 workerRow.querySelector('.status-indicator').className = "badge badge-success status-indicator";
                 workerRow.querySelector('.status-indicator').innerText = "Available / Idle";
-                workerRow.querySelector('.action-cell').innerHTML = `<span style="color:var(--success); font-weight:bold; font-size:0.8rem;">🎉 Job Closed!</span>`;
+                workerRow.querySelector('.action-cell').innerHTML = `<span style="color:var(--success); font-weight:bold; font-size:0.78rem;">🎉 Closed!</span>`;
                 
                 if(mainRow) {
                     const totalBill = mainRow.querySelector('.img-total').value;
@@ -359,7 +396,7 @@
             } else {
                 workerRow.querySelector('.status-indicator').className = "badge badge-danger status-indicator";
                 workerRow.querySelector('.status-indicator').innerText = "Job Stuck";
-                workerRow.querySelector('.action-cell').innerHTML = `<button class="btn-action" style="background:var(--primary); padding:2px 6px;" onclick="resetWorkerStatus('${workerId}')">Clear Worker</button>`;
+                workerRow.querySelector('.action-cell').innerHTML = `<button class="btn-action" style="background:var(--primary); padding:2px 6px;" onclick="resetWorkerStatus('${workerId}')">Clear</button>`;
             }
             recalculateDashboardCore();
         }
@@ -368,7 +405,7 @@
             const workerRow = document.getElementById(`tech-${workerId}`);
             workerRow.querySelector('.status-indicator').className = "badge badge-success status-indicator";
             workerRow.querySelector('.status-indicator').innerText = "Available / Idle";
-            workerRow.querySelector('.action-cell').innerHTML = `<span style="color:#6c757d; font-size:0.85rem;">Waiting for lead allocation</span>`;
+            workerRow.querySelector('.action-cell').innerHTML = `<span style="color:#6c757d; font-size:0.8rem;">Waiting for lead</span>`;
             recalculateDashboardCore();
         }
 
@@ -380,11 +417,11 @@
             if (responseAction === 'confirm') {
                 stateLabel.className = "badge badge-success state-label";
                 stateLabel.innerText = "Confirmed ✅";
-                interactionZone.innerHTML = `<span style="color:var(--success); font-weight:bold; font-size:0.8rem;">Confirmed & Live</span>`;
+                interactionZone.innerHTML = `<span style="color:var(--success); font-weight:bold; font-size:0.78rem;">Live</span>`;
             } else {
                 stateLabel.className = "badge badge-danger state-label";
                 stateLabel.innerText = "Cancelled ❌";
-                interactionZone.innerHTML = `<span style="color:var(--danger); font-weight:bold; font-size:0.8rem;">Cancelled</span>`;
+                interactionZone.innerHTML = `<span style="color:var(--danger); font-weight:bold; font-size:0.78rem;">Cancelled</span>`;
             }
             recalculateDashboardCore();
         }
