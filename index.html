@@ -74,6 +74,20 @@
                 color: #FFFFFF !important;
                 border-color: #334155 !important;
             }
+            /* Added styles for standalone mode greetings */
+            #greetingsSection {
+                background: #1E293B !important;
+                border: 1px solid #334155 !important;
+            }
+            .greetings-list li, .greetings-list strong, .greetings-list i {
+                color: #CBD5E1 !important;
+            }
+            .greetings-list strong {
+                color: #FFFFFF !important;
+            }
+            .greetings-list i {
+                color: #10B981 !important; /* Green ticks for standalone mode too */
+            }
         }
 
         .container {
@@ -692,6 +706,55 @@
             0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(239,68,68,0.5); }
             50% { transform: scale(1.03); box-shadow: 0 0 25px rgba(239,68,68,0.8); }
         }
+
+        /* --- STYLES FOR ADDED GREETINGS SECTION --- */
+        #greetingsSection {
+            background: #fff;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            margin-bottom: 40px;
+        }
+        #greetingsSection h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        #greetingsSection p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .greetings-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        .greetings-list li {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        .greetings-list strong {
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        .greetings-list i {
+            color: #10B981; /* Green ticks for features */
+            font-size: 1rem;
+        }
+        /* Mobile-first adjustments for greetings list */
+        @media(max-width: 640px) {
+            .greetings-list {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -798,6 +861,32 @@
                 <p>Expert Technicians</p>
                 <button class="heart-btn liked" style="color: #ef4444;"><i class="fa-solid fa-heart"></i> Liked</button>
             </div>
+        </section>
+
+        <section id="greetingsSection">
+            <h3>Greetings</h3>
+            <p>Welcome to <strong>Quickfix Mumbai</strong> - India's number 1 Most (Mumbai) - Trusted beloved Revolutionising online Doorstep Service Center.</p>
+            
+            <p><strong>QuickFix is Best, Expert, Quick And Advance Service and Repairing center Since 2010,</strong> boasting 15years+ Experience with 50+ Company Experts Technicians.</p>
+            
+            <p>A Lot Thanks With <strong>3,85,019 Trusted family</strong>.</p>
+            
+            <p>QuickFix Home Appliances Available <strong>24 \ 7 Repairing and Servicing Center</strong>.</p>
+            
+            <p><em>Essential, Expert Repair - Created problems quickly solved.</em></p>
+
+            <ul class="greetings-list">
+                <li><i class="fa-solid fa-circle-check"></i> All smart home appliances</li>
+                <li><i class="fa-solid fa-circle-check"></i> Smart refrigerator</li>
+                <li><i class="fa-solid fa-circle-check"></i> Fridge</li>
+                <li><i class="fa-solid fa-circle-check"></i> Washing machine</li>
+                <li><i class="fa-solid fa-circle-check"></i> Microwave</li>
+                <li><i class="fa-solid fa-circle-check"></i> Premium air dresser</li>
+                <li><i class="fa-solid fa-circle-check"></i> High capacity Air dryer</li>
+                <li><i class="fa-solid fa-circle-check"></i> Advance dish washer</li>
+                <li><i class="fa-solid fa-circle-check"></i> AC (Air Conditioner)</li>
+                <li><i class="fa-solid fa-circle-check"></i> Inverter/PCB repairs</li>
+            </ul>
         </section>
 
         <section id="servicesSegment">
