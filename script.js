@@ -126,6 +126,17 @@ function bookFromBanner() {
     const dateObj = new Date(selectedDate);
     const formattedDate = dateObj.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
 
+    // --- NEW: SAVE TO GOOGLE SHEETS & BROADCAST ---
+    if (typeof saveBookingToDatabase === "function") {
+        saveBookingToDatabase({
+            customer: "Banner User (Eid Offer)",
+            service: "Home Appliance Repair",
+            date: formattedDate,
+            time: selectedTime,
+            payment: "Pending"
+        });
+    }
+
     const finalText = `Hello Quickfix Mumbai! 🌙 I want to claim the Eid 25% OFF Offer.\n\n📆 Scheduled Date: *${formattedDate}*\n⏰ Preferred Time Slot: *${selectedTime}*\n\nPlease confirm my expert technician visit!`;
     window.open(`https://wa.me/919930249182?text=${encodeURIComponent(finalText)}`);
 }
@@ -237,6 +248,17 @@ function bookDirect(keyName) {
     const chosenProblem = checkedOption.value;
     const itemFullTitle = `${keyName} - (Issue: ${chosenProblem})`;
 
+    // --- NEW: SAVE FROM DIRECT CARD CLICK ---
+    if (typeof saveBookingToDatabase === "function") {
+        saveBookingToDatabase({
+            customer: "Card User",
+            service: itemFullTitle,
+            date: new Date().toLocaleDateString('en-IN'),
+            time: "Standard Slot",
+            payment: "Pending"
+        });
+    }
+
     if (typeof openPaymentGateway === "function") {
         openPaymentGateway(itemFullTitle);
     } else {
@@ -263,6 +285,18 @@ function sendWA() {
         const desc = document.getElementById('desc').value;
         if(!date) { alert("Please select a date!"); return; }
         
+        // --- NEW: SAVE FROM MANUAL BOOKING FORM ---
+        if (typeof saveBookingToDatabase === "function") {
+            saveBookingToDatabase({
+                customer: "Form Website Lead",
+                service: item,
+                date: date,
+                time: "Requested Slot",
+                payment: "Pending",
+                description: desc
+            });
+        }
+
         const finalText = `Hello Quickfix! I'd like to schedule a repair on *${date}* for my *${item}*.\nDescription: ${desc}`;
         window.open(`https://wa.me/919930249182?text=${encodeURIComponent(finalText)}`);
     }
