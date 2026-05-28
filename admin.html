@@ -13,10 +13,10 @@
         .stat-card.earnings { border-left-color: var(--success); }
         .stat-card h3 { margin: 0 0 10px 0; color: #6c757d; font-size: 0.9rem; text-transform: uppercase; }
         .stat-card p { margin: 0; font-size: 1.8rem; font-weight: bold; }
-        .section { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 25px; }
+        .section { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 25px; overflow-x: auto; }
         h2 { margin-top: 0; color: var(--primary); border-bottom: 2px solid #f1f1f1; padding-bottom: 10px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #edf2f9; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; min-width: 600px; }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #edf2f9; vertical-align: top; }
         th { background: #f8f9fa; color: #495057; font-weight: 600; }
         .badge { padding: 5px 10px; border-radius: 30px; font-size: 0.8rem; font-weight: bold; display: inline-block; }
         .badge-pending { background: #fff3cd; color: #856404; }
@@ -25,13 +25,16 @@
         button { background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; transition: background 0.2s; }
         button:hover { background: #0056b3; }
 
-        /* --- ACTION BUTTONS --- */
+        /* --- CONTACT & LOCATION INFO STYLES --- */
+        .info-link { color: #007bff; text-decoration: none; font-weight: bold; }
+        .info-link:hover { text-decoration: underline; }
+        .location-text { font-size: 0.85rem; color: #555; max-width: 200px; word-wrap: break-word; display: block; margin-top: 4px; }
+
         .btn-confirm { background: #28a745; margin-top: 5px; font-size: 0.8rem; padding: 5px 10px; }
         .btn-confirm:hover { background: #218838; }
         .btn-cancel { background: #dc3545; margin-top: 5px; font-size: 0.8rem; padding: 5px 10px; }
         .btn-cancel:hover { background: #c82333; }
 
-        /* --- LOGIN POPUP STYLES --- */
         .login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #eef2f7; display: flex; justify-content: center; align-items: center; z-index: 9999; }
         .login-box { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 350px; text-align: center; }
         .login-box h2 { border: none; padding: 0; margin-bottom: 20px; }
@@ -86,19 +89,24 @@
                 <thead>
                     <tr>
                         <th>Customer / Service</th>
-                        <th>Date</th>
+                        <th>Contact & Location</th>
+                        <th>Date & Time</th>
                         <th>Payment</th>
-                        <th>Assign Technician / Actions</th>
+                        <th>Assign & Actions</th>
                         <th>Status</th>
                     </tr>
                 </thead>
                 <tbody id="admin-booking-table">
                     <tr>
-                        <td><strong>Rohan Sharma</strong><br><small>Inverter AC PCB Repair</small></td>
-                        <td>26-May-2026</td>
+                        <td><strong>Rohan Sharma</strong><br><small style="color: #6c757d;">Inverter AC PCB Repair</small></td>
+                        <td>
+                            <a href="tel:+919876543210" class="info-link">📞 +91 98765 43210</a>
+                            <span class="location-text">📍 Andheri West, Near Station, Mumbai</span>
+                        </td>
+                        <td>26-May-2026<br><small style="color:#6c757d;">01:00 PM - 05:00 PM</small></td>
                         <td><span class="badge badge-success">Paid ₹199 (Advance)</span></td>
                         <td>
-                            <select onchange="assignWorker(this)" style="display: block; margin-bottom: 5px;">
+                            <select onchange="assignWorker(this)" style="display: block; margin-bottom: 5px; width: 100%;">
                                 <option>Select Worker</option>
                                 <option value="W1">Amit (AC Expert)</option>
                                 <option value="W2">Suresh (PCB Specialist)</option>
@@ -140,14 +148,12 @@
         const loginForm = document.getElementById('loginForm');
         const errorMsg = document.getElementById('errorMsg');
 
-        // Check login session on load
         if (sessionStorage.getItem('quickfix_admin_logged') === 'true') {
             loginOverlay.style.display = 'none';
             dashboardContent.style.display = 'block';
             initAdminNotifications();
         }
 
-        // Handle Login Submission
         loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const user = document.getElementById('username').value;
@@ -164,46 +170,18 @@
             }
         });
 
-        // Logout Function
         function logoutAdmin() {
             sessionStorage.removeItem('quickfix_admin_logged');
             window.location.reload();
         }
 
-        // --- NOTIFICATION & LEAD SYSTEM ---
         function initAdminNotifications() {
-            // Request browser notification permissions
             if ("Notification" in window) {
-                Notification.requestPermission().then(permission => {
-                    if (permission === "granted") {
-                        console.log("Notification allowed!");
-                    }
-                });
+                Notification.requestPermission();
             }
             updateStats();
-
-            // Mock Notification after 4 seconds to test live alert
-            setTimeout(() => {
-                triggerLeadNotification("Rohan Sharma", "Inverter AC PCB Repair");
-            }, 4000);
         }
 
-        function triggerLeadNotification(customer, service) {
-            if (Notification.permission === "granted") {
-                const options = {
-                    body: `Service: ${service}\nClick to view booking.`,
-                    icon: 'manifest.json',
-                    vibrate: [200, 100, 200],
-                    requireInteraction: true
-                };
-                const notification = new Notification(`🚀 New Lead: ${customer}`, options);
-                notification.onclick = function() {
-                    window.focus();
-                };
-            }
-        }
-
-        // Action Buttons Logic (Confirm / Cancel)
         function changeStatus(button, action, customerName) {
             const row = button.closest('tr');
             const statusBadge = row.querySelector('td:last-child .badge');
@@ -238,13 +216,6 @@
         function addInventory() {
             const name = document.getElementById('part-name').value;
             const qty = document.getElementById('part-qty').value;
-            if(name && qty) {
-                alert("Added " + qty + " units of " + name);
-            }
-        }
-    </script>
-</body>
-</html>
             if(name && qty) {
                 alert("Added " + qty + " units of " + name);
             }
