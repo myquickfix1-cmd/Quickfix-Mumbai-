@@ -45,35 +45,6 @@
             line-height: 1.6;
             padding-bottom: 90px;
             overflow-x: hidden;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        /* High-End Native App Adjustments for PWA Standalone Mode */
-        @media (display-mode: standalone) {
-            body {
-                background-color: #0F172A;
-                color: #F8FAFC;
-            }
-            header {
-                background: #1E293B !important;
-                border-bottom: 1px solid #334155;
-            }
-            .logo, .nav-links a {
-                color: #FFFFFF !important;
-            }
-            .item-card, .trust-box, .brands-container, .booking-section, .brand-ocean-section {
-                background: #1E293B !important;
-                border: 1px solid #334155 !important;
-                color: #FFFFFF !important;
-            }
-            .section-title, .section-subtitle, .item-content h3, label {
-                color: #FFFFFF !important;
-            }
-            input, select, textarea {
-                background: #0F172A !important;
-                color: #FFFFFF !important;
-                border-color: #334155 !important;
-            }
         }
 
         .container {
@@ -89,12 +60,8 @@
             color: #fff;
             text-align: center;
             padding: 10px 20px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
         }
         .tech-bar .dot {
             height: 10px;
@@ -102,6 +69,7 @@
             background-color: var(--danger);
             border-radius: 50%;
             display: inline-block;
+            margin-right: 6px;
             animation: blink 1.2s infinite;
         }
 
@@ -124,11 +92,10 @@
             padding: 15px 20px;
         }
         .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
+            font-size: 1.6rem;
+            font-weight: 700;
             color: var(--secondary);
             text-decoration: none;
-            letter-spacing: -0.5px;
         }
         .logo span { color: var(--primary); }
         
@@ -140,116 +107,27 @@
         .nav-links a {
             text-decoration: none;
             color: var(--text-dark);
-            font-weight: 700;
-            font-size: 0.9rem;
+            font-weight: 600;
+            font-size: 0.95rem;
             transition: color 0.3s;
         }
         .nav-links a:hover { color: var(--primary); }
 
         @media(max-width: 640px) {
-            .nav-container { flex-direction: column; gap: 8px; text-align: center; }
-            .nav-links { gap: 15px; font-size: 0.8rem; }
+            .nav-container { flex-direction: column; gap: 10px; text-align: center; }
+            .nav-links { gap: 12px; font-size: 0.85rem; }
         }
-
-        /* Professional Premium PWA Installer Banner */
-        .pwa-premium-banner {
-            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
-            border-bottom: 3px solid var(--primary);
-            color: #fff;
-            padding: 14px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            z-index: 1100;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        .pwa-info { display: flex; align-items: center; gap: 12px; }
-        .pwa-icon-box {
-            background: var(--primary);
-            width: 42px;
-            height: 42px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            box-shadow: 0 0 10px rgba(255,107,0,0.4);
-        }
-        .pwa-text h5 { font-size: 0.95rem; font-weight: 700; color: #fff; }
-        .pwa-text p { font-size: 0.75rem; color: #94a3b8; }
-        .pwa-btn-group { display: flex; align-items: center; gap: 10px; }
-        .btn-pwa-install {
-            background: linear-gradient(90deg, #ff6b00, #ff8c00);
-            color: #fff;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .btn-pwa-install:hover { transform: scale(1.05); }
-        .btn-pwa-close { background: none; border: none; color: #64748b; font-size: 1.1rem; cursor: pointer; }
 
         /* Hero Layout with Integrated Offer System */
         .hero {
-            background: linear-gradient(rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.94)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.92)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
             color: #fff;
-            padding: 50px 0;
+            padding: 60px 0;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-        }
-
-        /* Business Intro Showcase Header (v5.0 Restored) */
-        .business-intro-header {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 15px;
-            padding: 15px 25px;
-            max-width: 700px;
-            width: 90%;
-            margin-bottom: 25px;
-            backdrop-filter: blur(5px);
-        }
-        .intro-top-tag {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: #ff6b00;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-        .intro-mid-tag {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #3b82f6;
-            margin-bottom: 8px;
-        }
-        .intro-badges-row {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 5px;
-        }
-        .intro-badge-pill {
-            background: rgba(239, 68, 68, 0.15);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            color: #ef4444;
-            padding: 4px 12px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            border-radius: 20px;
-            text-transform: uppercase;
-        }
-        .intro-badge-pill.tech-pill {
-            background: rgba(16, 185, 129, 0.15);
-            border-color: rgba(16, 185, 129, 0.3);
-            color: #10b981;
         }
         
         .hero-main-title {
@@ -275,14 +153,15 @@
         /* DYNAMIC COUNTER LIVE OFFER CARD BLOCK */
         .offer-showcase-box {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            border: 2px solid rgba(255, 107, 0, 0.8);
+            border: 2px solid rgba(255, 107, 0, 0.6);
             border-radius: 20px;
-            padding: 25px;
+            padding: 22px;
             max-width: 500px;
             width: 90%;
             margin: 20px auto 25px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
             text-align: center;
+            position: relative;
         }
         .offer-tag-line {
             color: #3b82f6;
@@ -293,19 +172,22 @@
             margin-bottom: 6px;
         }
         .offer-main-title {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: #fff;
             margin-bottom: 15px;
             line-height: 1.3;
         }
-        .offer-main-title span { color: #ef4444; }
+        .offer-main-title span {
+            color: #ef4444;
+        }
 
+        /* Booking Tracker Boxes */
         .live-counter-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .counter-pill-box {
             background: rgba(255, 255, 255, 0.05);
@@ -318,30 +200,37 @@
             border-color: rgba(239, 68, 68, 0.3);
         }
         .counter-pill-num {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 800;
             color: #22c55e;
             display: block;
             line-height: 1.2;
         }
-        .counter-pill-box.danger-glow .counter-pill-num { color: #ef4444; }
+        .counter-pill-box.danger-glow .counter-pill-num {
+            color: #ef4444;
+            animation: pulseText 1.5s infinite;
+        }
         .counter-pill-lbl {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #94a3b8;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-top: 2px;
         }
+        @keyframes pulseText {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
 
         .mega-discount-alert {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: #f59e0b;
             background: rgba(245, 158, 11, 0.1);
-            padding: 8px 12px;
+            padding: 6px 12px;
             border-radius: 8px;
-            margin-bottom: 18px;
+            margin-bottom: 12px;
             border: 1px solid rgba(245, 158, 11, 0.2);
         }
 
@@ -351,7 +240,43 @@
             text-decoration: underline;
             cursor: pointer;
             display: inline-block;
-            margin-top: 10px;
+            transition: color 0.2s;
+        }
+        .tc-legal-anchor:hover { color: #fff; }
+
+        /* HIGHLIGHT WORDS SYSTEM STYLING */
+        .highlight-phrases-group {
+            margin: 20px auto 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+        }
+        .badge-highlight-one {
+            background: linear-gradient(90deg, rgba(255,107,0,0.15) 0%, rgba(255,107,0,0.05) 100%);
+            border-left: 4px solid var(--primary);
+            color: #ffffff;
+            padding: 8px 16px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 0 8px 8px 0;
+            display: inline-block;
+        }
+        .badge-highlight-two {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #10b981;
+            padding: 6px 14px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 30px;
+            display: inline-block;
         }
 
         .btn-main {
@@ -367,14 +292,12 @@
             display: inline-block;
             transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
-            width: 100%;
         }
         .btn-main:hover {
             background: var(--primary-hover);
             transform: translateY(-2px);
         }
 
-        /* Warranty Card Component */
         .warranty-card {
             background: rgba(16, 185, 129, 0.12);
             border: 2px dashed var(--accent);
@@ -390,22 +313,12 @@
         .warranty-card i { font-size: 2.2rem; color: var(--accent); }
         .warranty-card h4 { color: #fff; margin-bottom: 4px; font-size: 1.05rem; font-weight: 700; }
         .warranty-card p { font-size: 0.85rem; margin: 0; color: #cbd5e1; }
-        .reproblem-badge {
-            display: block;
-            margin-top: 5px;
-            font-weight: 800;
-            color: #10b981;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-        }
 
         @media(max-width: 768px) {
             .hero-main-title { font-size: 2.1rem; }
             .hero-intro-text { font-size: 0.95rem; }
             .offer-main-title { font-size: 1.3rem; }
             .warranty-card { flex-direction: column; text-align: center; }
-            .business-intro-header { padding: 12px; }
-            .intro-top-tag { font-size: 1.1rem; }
         }
 
         /* Trust Box Layout */
@@ -448,6 +361,7 @@
             align-items: center;
             gap: 4px;
             font-weight: 700;
+            transition: color 0.2s;
         }
         .stat-item .heart-btn.liked { color: #ef4444; }
 
@@ -467,7 +381,6 @@
             font-weight: 500;
         }
 
-        /* Comprehensive Services Showcase Layout (v5.0 Recovered Pack) */
         .items-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -510,8 +423,8 @@
             text-decoration: none;
             font-weight: 700;
             font-size: 0.85rem;
+            transition: all 0.3s;
             margin-top: 15px;
-            transition: all 0.2s;
         }
         .btn-card-book:hover { background: var(--primary); }
 
@@ -521,14 +434,15 @@
             padding: 25px 15px;
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.01);
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             border: 1px solid #e2e8f0;
             overflow: hidden;
+            position: relative;
         }
         .brand-slider-track {
             display: flex;
-            width: calc(220px * 10);
-            animation: infiniteScrollMarquee 20s linear infinite;
+            width: calc(250px * 18);
+            animation: infiniteScrollMarquee 25s linear infinite;
             gap: 16px;
         }
         .brands-container:hover .brand-slider-track {
@@ -545,568 +459,149 @@
             font-weight: 700;
             text-align: center;
             border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
             letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
         }
         .brand-badge:hover {
             border-color: var(--primary);
             color: var(--primary);
             background: #fff;
+            transform: translateY(-2px);
         }
         @keyframes infiniteScrollMarquee {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-216px * 5)); }
+            100% { transform: translateX(calc(-216px * 9)); }
         }
 
-        /* Brand Dynamic Ocean/Sea Section Layout */
-        .brand-ocean-section {
-            background: #0f172a;
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 50px;
-            color: #fff;
-            display: none; 
-            border: 2px solid #3b82f6;
-            box-shadow: 0 10px 30px rgba(59,130,246,0.2);
-            text-align: center;
-        }
-        .ocean-title { font-size: 1.6rem; font-weight: 800; color: #3b82f6; margin-bottom: 5px; text-transform: uppercase; }
-        .ocean-subtitle { font-size: 0.9rem; color: #94a3b8; margin-bottom: 25px; }
-        
-        .ocean-grid {
+        .grid-panel {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-            margin-bottom: 25px;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
         }
-        .ocean-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 15px;
-            text-align: left;
-        }
-        .ocean-img-placeholder {
-            height: 120px;
-            background: rgba(255,107,0,0.1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 12px;
-        }
-        .ocean-card h5 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; color: #fff; }
-        .ocean-card p { font-size: 0.8rem; color: #94a3b8; }
+        @media(max-width: 850px) { .grid-panel { grid-template-columns: 1fr; } }
 
-        /* Booking Form Input System Wrapper */
-        .booking-section {
+        .card-panel {
             background: #fff;
-            padding: 35px 25px;
-            border-radius: 24px;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.03);
             border: 1px solid #e2e8f0;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.03);
-            max-width: 600px;
-            margin: 0 auto 50px;
         }
+
         .form-group { margin-bottom: 18px; }
-        .form-group label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--secondary); margin-bottom: 6px; text-transform: uppercase; }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 0.85rem; }
         .form-control {
             width: 100%;
-            padding: 12px 16px;
+            padding: 12px;
             border: 1px solid #cbd5e1;
             border-radius: 10px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-dark);
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        .form-control:focus { border-color: var(--primary); }
-
-        /* Emergency Advanced Priority Hotline Card Box */
-        .emergency-accent-box {
-            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
-            border: 2px solid var(--danger);
-            border-radius: 20px;
-            padding: 25px;
-            margin: 40px 0;
-            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.15);
-            text-align: center;
-        }
-        .emergency-title {
-            font-size: 1.4rem;
-            font-weight: 900;
-            color: #991b1b;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-        .emergency-desc {
             font-size: 0.9rem;
-            color: #7f1d1d;
-            margin-bottom: 20px;
-            font-weight: 500;
+            outline: none;
+            background: #f8fafc;
         }
-        .btn-emergency-call {
-            background: var(--danger);
-            color: white;
-            padding: 14px 30px;
+        .form-control:focus { border-color: var(--primary); background: #fff; }
+
+        .booking-success-box {
+            display: none;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
             border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 800;
-            text-decoration: none;
-            display: inline-flex;
+            padding: 20px;
+            text-align: center;
+            margin-top: 15px;
+        }
+        .booking-success-box img { width: 55px; margin-bottom: 8px; }
+        .booking-success-box h4 { color: #065f46; font-size: 1.1rem; font-weight: 800; }
+        .booking-success-box p { font-size: 0.85rem; color: #047857; margin-top: 4px; font-weight: 600; }
+
+        .emergency-header {
+            display: flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
-            transition: all 0.2s;
-            width: 100%;
-            justify-content: center;
+            margin-bottom: 15px;
+            animation: textBlink 1.5s infinite;
         }
-        .btn-emergency-call:hover {
-            background: #dc2626;
-            transform: scale(1.02);
+        @keyframes textBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
-        /* Native Sticky Dock Bar */
-        .bottom-nav-dock {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(15, 23, 42, 0.96);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding: 12px 16px;
-            z-index: 2000;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
-        }
-        .dock-grid {
+        /* Payment Block alignment grid */
+        .payment-methods {
             display: grid;
-            grid-template-columns: 1fr 1.2fr 1fr;
-            gap: 12px;
-            max-width: 600px;
-            margin: 0 auto;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 8px;
         }
-        .dock-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.75rem;
+        .pay-option {
+            border: 1px solid #e2e8f0;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
             font-weight: 700;
-            padding: 8px;
-            border-radius: 12px;
-            gap: 4px;
+            font-size: 0.85rem;
+            background: #f8fafc;
             transition: all 0.2s;
         }
-        .dock-btn.wa-primary { background: #059669; }
-        .dock-btn.emergency-call-dock { 
-            background: var(--danger); 
-            font-size: 0.8rem; 
-            font-weight: 900;
-            box-shadow: 0 0 15px rgba(239,68,68,0.5);
-            animation: pulseGlow 2s infinite;
-        }
-        .dock-btn.wa-secondary { background: #047857; }
-        
-        @keyframes pulseGlow {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(239,68,68,0.5); }
-            50% { transform: scale(1.03); box-shadow: 0 0 25px rgba(239,68,68,0.8); }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="tech-bar">
-        <span class="dot"></span>
-        <span>MUMBAI HUB: 45+ LINE INSPECTORS ACTIVE IN WESTERN, EASTERN & SOUTH ZONES NOW</span>
-    </div>
-
-    <div class="pwa-premium-banner" id="pwaBanner">
-        <div class="pwa-info">
-            <div class="pwa-icon-box">
-                <i class="fa-solid fa-screwdriver-wrench"></i>
-            </div>
-            <div class="pwa-text">
-                <h5>QuickFix Mumbai Mobile App</h5>
-                <p>Install for Fast 1-Tap Emergency Bookings & Tracking</p>
-            </div>
-        </div>
-        <div class="pwa-btn-group">
-            <button class="btn-pwa-install" id="pwaInstallTrigger">INSTALL</button>
-            <button class="btn-pwa-close" onclick="closePWABanner()"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-    </div>
-
-    <header>
-        <div class="nav-container container">
-            <a href="#" class="logo">QuickFix<span>Mumbai</span></a>
-            <ul class="nav-links">
-                <li><a href="#servicesSegment">Our Services</a></li>
-                <li><a href="#bookingSection">Book Slot</a></li>
-                <li><a href="#emergencySegment" style="color: var(--danger);"><i class="fa-solid fa-bolt"></i> Emergency Fix</a></li>
-            </ul>
-        </div>
-    </header>
-
-    <main class="container">
-        
-        <section class="hero">
-            <div class="business-intro-header">
-                <div class="intro-top-tag">QUICKFIX MUMBAI DIVISION</div>
-                <div class="intro-mid-tag">Mumbai's No.1 Premium Trusted Doorstep Home Appliance Service Hub</div>
-                <div class="intro-badges-row">
-                    <span class="intro-badge-pill">Instant Mechanical Diagnostics</span>
-                    <span class="intro-badge-pill tech-pill">Original Component Resolutions</span>
-                </div>
-            </div>
-
-            <h1 class="hero-main-title">Expert Home Repairs <span>Priceless Service</span></h1>
-            <p class="hero-intro-text">Delivering premium, verified solutions directly straight to your doorstep across all regional zones instantly including Bandra West, Borivali, and Andheri.</p>
-
-            <div class="offer-showcase-box">
-                <div class="offer-tag-line">Exclusive Digital Deal</div>
-                <h3 class="offer-main-title">Flat <span>25% OFF</span> On Full Circuit Overhauling</h3>
-                
-                <div class="live-counter-wrapper">
-                    <div class="counter-pill-box">
-                        <span class="counter-pill-num" id="filledCounter">182</span>
-                        <span class="counter-pill-lbl">Bookings Full Now</span>
-                    </div>
-                    <div class="counter-pill-box danger-glow">
-                        <span class="counter-pill-num" id="availCounter">11</span>
-                        <span class="counter-pill-lbl">Available Now</span>
-                    </div>
-                </div>
-
-                <div class="mega-discount-alert">
-                    <i class="fa-solid fa-bolt"></i> Book your slot with a mega discount 25% don't miss!
-                </div>
-
-                <a href="#bookingSection" class="btn-main">SCHEDULE DOORSTEP INSPECTOR NOW</a>
-                <br>
-                <span class="tc-legal-anchor">*Terms & Conditions Apply</span>
-            </div>
-
-            <div class="warranty-card">
-                <i class="fa-solid fa-shield-halved"></i>
-                <div>
-                    <h4>Certified 180-Day Guarantee Extension Program</h4>
-                    <p>Every dynamic mechanical breakdown fix is backed entirely by an ironclad company paper warrant stamp ledger.</p>
-                    <span class="reproblem-badge"><i class="fa-solid fa-circle-check"></i> Free Service If Repair Problem Occurs</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="trust-box">
-            <div class="stat-item">
-                <h3>14.2k</h3>
-                <p>Happy Customers</p>
-                <button class="heart-btn" onclick="toggleLikeAction(this)"><i class="fa-solid fa-heart"></i> Like</button>
-            </div>
-            <div class="stat-item">
-                <h3>4.9/5</h3>
-                <p>Google Verified</p>
-                <button class="heart-btn" onclick="toggleLikeAction(this)"><i class="fa-solid fa-heart"></i> Like</button>
-            </div>
-            <div class="stat-item">
-                <h3>28k+</h3>
-                <p>Appliances Resolved</p>
-                <button class="heart-btn" onclick="toggleLikeAction(this)"><i class="fa-solid fa-heart"></i> Like</button>
-            </div>
-            <div class="stat-item">
-                <h3>52 Premium</h3>
-                <p>Expert Technicians</p>
-                <button class="heart-btn liked" style="color: #ef4444;"><i class="fa-solid fa-heart"></i> Liked</button>
-            </div>
-        </section>
-
-        <section id="servicesSegment">
-            <h2 class="section-title">Appliances We <span>Service & Repair</span></h2>
-            <p class="section-subtitle">Select your damaged equipment block to load specialized modular engineers layout solutions</p>
-
-            <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-img-box"><i class="fa-solid fa-snowflake"></i></div>
-                    <div class="item-content">
-                        <h3>All Refrigerators Service</h3>
-                        <p class="text-muted" style="font-size: 0.85rem;">Single door, double door, side-by-side inverter gas systems clearance.</p>
-                        <a href="#bookingSection" class="btn-card-book" onclick="setApplianceDropdown('Refrigerator System Repair')">Book Machine Fix</a>
-                    </div>
-                </div>
-                <div class="item-card">
-                    <div class="item-img-box"><i class="fa-solid fa-soap"></i></div>
-                    <div class="item-content">
-                        <h3>Washing Machine Repair</h3>
-                        <p class="text-muted" style="font-size: 0.85rem;">Top load, front load diagnostic configurations and drum bearing resolutions.</p>
-                        <a href="#bookingSection" class="btn-card-book" onclick="setApplianceDropdown('Washing Machine Repair')">Book Machine Fix</a>
-                    </div>
-                </div>
-                <div class="item-card">
-                    <div class="item-img-box"><i class="fa-solid fa-temperature-arrow-up"></i></div>
-                    <div class="item-content">
-                        <h3>Microwave Oven Fix</h3>
-                        <p class="text-muted" style="font-size: 0.85rem;">Magnetron replacement, touch panels rectification, heating terminal overhauls.</p>
-                        <a href="#bookingSection" class="btn-card-book" onclick="setApplianceDropdown('Microwave Oven Fix')">Book Machine Fix</a>
-                    </div>
-                </div>
-                <div class="item-card">
-                    <div class="item-img-box"><i class="fa-solid fa-wind"></i></div>
-                    <div class="item-content">
-                        <h3>Air Conditioner Units (AC)</h3>
-                        <p class="text-muted" style="font-size: 0.85rem;">Split/Window coils restoration, gas filling, dynamic cooling optimization.</p>
-                        <a href="#bookingSection" class="btn-card-book" onclick="setApplianceDropdown('Air Conditioner Units (AC)')">Book Machine Fix</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="brands-container">
-            <div class="brand-slider-track">
-                <div class="brand-badge" onclick="triggerOceanEngine('Samsung')">Samsung</div>
-                <div class="brand-badge" onclick="triggerOceanEngine('LG')">LG</div>
-                <div class="brand-badge" onclick="triggerOceanEngine('Whirlpool')">Whirlpool</div>
-                <div class="brand-badge" onclick="triggerOceanEngine('Videocon')">Videocon</div>
-                <div class="brand-badge" onclick="triggerOceanEngine('Godrej')">Godrej</div>
-                <div class="brand-badge" onclick="triggerOceanEngine('Samsung')">Samsung</div>
-                <div class="brand-badge" onclick="triggerOceanEngine('LG')">LG</div>
-                <div class="brand-badge" onclick="triggerOceanEngine('Whirlpool')">Whirlpool</div>
-                <div class="brand-badge" onclick="triggerOceanEngine('Videocon')">Videocon</div>
-                <div class="brand-badge" onclick="triggerOceanEngine('Godrej')">Godrej</div>
-            </div>
-        </div>
-
-        <section class="brand-ocean-section" id="oceanBox">
-            <h3 class="ocean-title" id="oceanTitle">SAMSUNG SOLUTIONS INDEX</h3>
-            <p class="ocean-subtitle">Touch tracking reveals active verified error code logs solved over doorstep units</p>
-            
-            <div class="ocean-grid" id="oceanGridContainer">
-                </div>
-        </section>
-
-        <section class="booking-section" id="bookingSection">
-            <h3 style="text-align: center; font-size: 1.6rem; font-weight: 800; margin-bottom: 5px;">Aur Time Chunein:</h3>
-            <p style="text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px; font-weight: 500;">Fill required details for verified immediate expert allocation routing</p>
-            
-            <form id="appRegistrationForm" onsubmit="executeWhatsAppFormRoute(event)">
-                <div class="form-group">
-                    <label>Your Full Name:</label>
-                    <input type="text" id="custName" class="form-control" placeholder="Enter your name" required>
-                </div>
-                <div class="form-group">
-                    <label>Chuney Aapki Appliance Service:</label>
-                    <select id="appServiceDropdown" class="form-control" style="font-weight: 600;">
-                        <option value="Air Conditioner Units (AC)">Air Conditioner Units (AC)</option>
-                        <option value="Inverter / PCB Repairs">Inverter / PCB Repairs</option>
-                        <option value="Washing Machine Repair">Washing Machine</option>
-                        <option value="Refrigerator System Repair">Refrigerator</option>
-                        <option value="Microwave Oven Fix">Microwave Oven</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Select Preferred Booking Date:</label>
-                    <input type="date" id="bookDate" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label>Select Preferred Time Slot (Operating 9 AM to 12 AM):</label>
-                    <select id="timeSlotDropdown" class="form-control" style="font-weight: 600;">
-                        <option value="Morning (9 AM - 12 PM)">Morning (9 AM - 12 PM)</option>
-                        <option value="Afternoon (12 PM - 4 PM)">Afternoon (12 PM - 4 PM)</option>
-                        <option value="Evening (4 PM - 8 PM)">Evening (4 PM - 8 PM)</option>
-                        <option value="Late Night Rush (8 PM - 12 AM)">Late Night Rush (8 PM - 12 AM)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Your Mobile Number:</label>
-                    <input type="tel" id="custMobile" class="form-control" placeholder="Enter 10 digit mobile number" required pattern="[0-9]{10}" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
-                </div>
-                <div class="form-group">
-                    <label>Complete Address / Area:</label>
-                    <textarea id="custAddress" class="form-control" rows="3" placeholder="Flat/Room No, Building Name, Local Area, Mumbai" required></textarea>
-                </div>
-
-                <button type="submit" class="btn-main" style="text-transform: uppercase; letter-spacing: 0.5px;">BOOK YOUR SLOT NOW <i class="fa-solid fa-bolt"></i></button>
-            </form>
-        </section>
-
-        <section id="emergencySegment" class="emergency-accent-box">
-            <h3 class="emergency-title"><i class="fa-solid fa-triangle-exclamation"></i> Emergency Breakdown Hotline</h3>
-            <p class="emergency-desc">Need immediate resolution? Our premium express dispatch operators bypass regular scheduling queues instantly.</p>
-            <a href="tel:+919819832282" class="btn-emergency-call">
-                <i class="fa-solid fa-phone-volume animate-bounce"></i> CALL EMERGENCY HOTLINE NOW
-            </a>
-        </section>
-
-    </main>
-
-    <div class="bottom-nav-dock">
-        <div class="dock-grid">
-            <a href="https://wa.me/919819832282?text=Hi%20Quickfix%20Mumbai%20I%20want%20to%20book%20a%20primary%20slot" target="_blank" class="dock-btn wa-primary">
-                <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i>
-                <span>WA Primary</span>
-            </a>
-            
-            <a href="tel:+919819832282" class="dock-btn emergency-call-dock">
-                <i class="fa-solid fa-phone" style="font-size: 1.2rem;"></i>
-                <span>EMERGENCY CALL</span>
-            </a>
-            
-            <a href="https://wa.me/919819832282?text=Hi%20Quickfix%20Mumbai%20Emergency%20assistance" target="_blank" class="dock-btn wa-secondary">
-                <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i>
-                <span>WA Second</span>
-            </a>
-        </div>
-    </div>
-
-    <script>
-        // Airtight Service Worker & PWA Core Engine Configuration
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            // Display banner smoothly once browser triggers PWA compliance flags
-            document.getElementById('pwaBanner').style.display = 'flex';
-        });
-
-        const installBtn = document.getElementById('pwaInstallTrigger');
-        if(installBtn) {
-            installBtn.addEventListener('click', async () => {
-                if (deferredPrompt) {
-                    deferredPrompt.prompt();
-                    const { outcome } = await deferredPrompt.userChoice;
-                    if (outcome === 'accepted') {
-                        console.log('User accepted the PWA install option.');
-                    }
-                    deferredPrompt = null;
-                    closePWABanner();
-                } else {
-                    alert("To install: Open browser settings menu and select 'Add to Home Screen / Install App'.");
-                }
-            });
+        .pay-option.active {
+            border-color: var(--danger);
+            background: #fef2f2;
+            color: var(--danger);
         }
 
-        // PWA Native Registration Call Loop
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js')
-                .then(reg => console.log('Service Worker registered successfully:', reg.scope))
-                .catch(err => console.log('Service Worker installation failed:', err));
-            });
+        #qr-container {
+            text-align: center;
+            margin-top: 20px;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px dashed #cbd5e1;
+            cursor: pointer;
+        }
+        .qr-placeholder {
+            max-width: 140px;
+            margin: 0 auto 10px;
+            display: block;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        // Auto Sync Baseline Calendar inputs element on load
-        document.addEventListener('DOMContentLoaded', () => {
-            const todayDateString = new Date().toISOString().split('T')[0];
-            const dateInput = document.getElementById('bookDate');
-            if(dateInput) dateInput.value = todayDateString;
-        });
-
-        // Toggle Social Proof Like Button States Runtime Element
-        function toggleLikeAction(elementRef) {
-            if(elementRef.classList.contains('liked')) {
-                elementRef.classList.remove('liked');
-                elementRef.innerHTML = `<i class="fa-solid fa-heart"></i> Like`;
-                elementRef.style.color = "var(--text-muted)";
-            } else {
-                elementRef.classList.add('liked');
-                elementRef.innerHTML = `<i class="fa-solid fa-heart"></i> Liked`;
-                elementRef.style.color = "#ef4444";
-            }
+        .payment-log-box {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-align: center;
+            display: none;
         }
 
-        function setApplianceDropdown(targetVal) {
-            document.getElementById('appServiceDropdown').value = targetVal;
+        .card-details-form {
+            display: none;
+            margin-top: 15px;
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #cbd5e1;
+            text-align: left;
         }
 
-        function closePWABanner() {
-            document.getElementById('pwaBanner').style.display = 'none';
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            margin-bottom: 60px;
         }
+        @media(max-width: 768px) { .feedback-grid { grid-template-columns: 1fr; } }
 
-        // Brand Ocean Mock DB Module Matrix
-        const oceanMockDatabase = {
-            'Samsung': [
-                { icon: '❄️', title: 'Samsung Frost Line (#1)', desc: '4E/5E system error line component breakdown diagnostics cleared.' },
-                { icon: '⚡', title: 'Inverter PCB Reset', desc: 'Blown communication bus lines restored back to modular parameters.' }
-            ],
-            'LG': [
-                { icon: '🔊', title: 'Compressor Knocking', desc: 'Linear equalization calibration routines executed over internal valves.' },
-                { icon: '🌊', title: 'OE Drain Error Code', desc: 'Synchronous pump lines blockages extracted entirely in 20 minutes.' }
-            ],
-            'Whirlpool': [
-                { icon: '🧠', title: '6th Sense Module Jam', desc: 'Evaporator thermal relay link nodes replaced with paper warranty stamp.' }
-            ],
-            'Videocon': [
-                { icon: '📉', title: 'Chilling Drop Fix', desc: 'Capillary modular filters completely updated and backup premium gas refilled.' }
-            ],
-            'Godrej': [
-                { icon: '🧊', title: 'Eon Automatic Icing', desc: 'Automatic de-frost thermal clock cycle optimization system sequence re-aligned.' }
-            ]
-        };
-
-        function triggerOceanEngine(brandNameKey) {
-            const oceanBox = document.getElementById('oceanBox');
-            const oceanTitle = document.getElementById('oceanTitle');
-            const gridContainer = document.getElementById('oceanGridContainer');
-
-            oceanTitle.innerText = `${brandNameKey.toUpperCase()} CERTIFIED REMEDIES INDEX`;
-            gridContainer.innerHTML = '';
-
-            const logsArray = oceanMockDatabase[brandNameKey] || oceanMockDatabase['Samsung'];
-            
-            logsArray.forEach(log => {
-                const card = document.createElement('div');
-                card.className = 'ocean-card';
-                card.innerHTML = `
-                    <div class="ocean-img-placeholder">${log.icon}</div>
-                    <h5>${log.title}</h5>
-                    <p>${log.desc}</p>
-                `;
-                gridContainer.appendChild(card);
-            });
-
-            oceanBox.style.display = 'block';
-            oceanBox.scrollIntoView({ behavior: 'smooth' });
+        .rating-box-pro {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 30px;
         }
-
-        // Live Counter Dynamic Scarcity Sim Engine
-        let currentAvailableSlots = 11;
-        let currentFilledSlots = 182;
-        setInterval(() => {
-            if(currentAvailableSlots > 3) {
-                currentAvailableSlots -= 1;
-                currentFilledSlots += 1;
-                document.getElementById('availCounter').innerText = currentAvailableSlots;
-                document.getElementById('filledCounter').innerText = currentFilledSlots;
-            }
-        }, 22000);
-
-        // Core Form WhatsApp Route Logic via updated 9819832282 Gateway
-        function executeWhatsAppFormRoute(eventObj) {
-            eventObj.preventDefault();
-
-            const name = document.getElementById('custName').value.trim();
-            const service = document.getElementById('appServiceDropdown').value;
-            const date = document.getElementById('bookDate').value;
-            const slot = document.getElementById('timeSlotDropdown').value;
-            const phone = document.getElementById('custMobile').value.trim();
-            const address = document.getElementById('custAddress').value.trim();
-
-            const finalStructuredString = `Hello QuickFix Mumbai, I have booked an immediate doorstep technician slot via the app:%0A%0A` +
-                                           `👤 *Customer:* ${encodeURIComponent(name)}%0A` +
-                                           `🔧 *Device Issue:* ${encodeURIComponent(service)}%0A` +
-                                           `📅 *Date Choice:* ${encodeURIComponent(date)}%0A` +
-                                           `🕒 *Timing Slot:* ${encodeURIComponent(slot)}%0A` +
-                                           `📞 *Phone Contact:* ${encodeURIComponent(phone)}%0A` +
-                                           `📍 *Address:* ${encodeURIComponent(address)}%0A%0A` +
-                                           `Please dispatch the route supervisor to my location instantly.`;
-
-            window.open(`https://wa.me/919819832282?text=${finalStructuredString}`, '_blank');
-        }
-    </script>
-</body>
-</html>
+        .rating-summary-pro {
+            display: flex
