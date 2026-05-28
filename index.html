@@ -22,7 +22,6 @@
             --text-muted: #64748B;
             --danger: #EF4444;
             --footer-bg: #0F172A;
-            /* Tiiny Host Premium Brand Blue Bright Horizon Theme */
             --tiiny-blue-gradient: linear-gradient(90deg, #1E40AF 0%, #2563EB 50%, #3B82F6 100%);
         }
 
@@ -113,87 +112,98 @@
             .nav-links { gap: 12px; font-size: 0.85rem; }
         }
 
+        /* RESTORED: Special Premium Hero Layout with Integrated Offer System */
         .hero {
-            background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.88)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.92)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
             color: #fff;
-            padding: 70px 0;
+            padding: 60px 0;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
+        
         .hero-main-title {
-            font-size: 3.2rem;
+            font-size: 3rem;
             font-weight: 900;
             color: #fff;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             line-height: 1.2;
         }
         .hero-main-title span { color: #3b82f6; }
         
-        .greeting-text {
-            font-size: 1.3rem;
+        .hero-intro-text {
+            font-size: 1.1rem;
+            max-width: 750px;
+            color: #cbd5e1;
+            margin: 0 auto 25px;
+            font-weight: 400;
+            padding: 0 15px;
+        }
+
+        /* PREMIUM APP-STYLE OFFER CARD BLOCK */
+        .offer-showcase-box {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 2px solid rgba(255, 107, 0, 0.4);
+            border-radius: 20px;
+            padding: 20px;
+            max-width: 500px;
+            width: 90%;
+            margin: 20px auto 30px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+            text-align: center;
+        }
+        .offer-tag-line {
             color: var(--primary);
-            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 1.5px;
             margin-bottom: 5px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
         }
-
-        .greeting-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.12);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            margin: 0 auto 15px auto;
-            border: 1px solid rgba(255,255,255,0.2);
+        .offer-main-title {
+            font-size: 1.6rem;
+            font-weight: 800;
             color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            margin-bottom: 12px;
         }
-
-        .highlighter-wrapper {
-            margin: 20px 0 30px;
+        .countdown-flex-wrapper {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 12px;
         }
-        .best-highlighter {
-            background: linear-gradient(135deg, var(--primary), #FF8C00);
-            color: #fff;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+        .count-unit-tab {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 10px;
+            padding: 8px;
+            min-width: 65px;
+        }
+        .count-digit-val {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #3b82f6;
+            display: block;
+        }
+        .count-lbl-text {
+            font-size: 0.65rem;
+            color: #94a3b8;
             text-transform: uppercase;
-        }
-        .best-highlighter.accent-color {
-            background: linear-gradient(135deg, var(--accent), #059669);
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-        }
-
-        .hero h2 {
-            font-size: 1.6rem;
             font-weight: 600;
-            margin-bottom: 15px;
-            color: #cbd5e1;
         }
-        .hero p {
-            font-size: 1rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-            padding: 0 10px;
+        .tc-legal-anchor {
+            font-size: 0.75rem;
+            color: #64748b;
+            text-decoration: underline;
+            cursor: pointer;
+            display: inline-block;
+            transition: color 0.2s;
         }
+        .tc-legal-anchor:hover { color: #fff; }
 
         .btn-main {
             background: var(--primary);
@@ -220,7 +230,7 @@
             border-radius: 16px;
             padding: 18px;
             max-width: 650px;
-            margin: 35px auto 0;
+            margin: 25px auto 0;
             display: flex;
             align-items: center;
             gap: 15px;
@@ -231,7 +241,9 @@
         .warranty-card p { font-size: 0.85rem; margin: 0; color: #cbd5e1; }
 
         @media(max-width: 768px) {
-            .hero-main-title { font-size: 2.2rem; }
+            .hero-main-title { font-size: 2.1rem; }
+            .hero-intro-text { font-size: 0.95rem; }
+            .offer-main-title { font-size: 1.3rem; }
             .warranty-card { flex-direction: column; text-align: center; }
         }
 
@@ -420,6 +432,7 @@
             50% { opacity: 0.5; }
         }
 
+        /* FIXED CLEANUP: Payment Block alignment grid */
         .payment-methods {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -526,33 +539,27 @@
 
         .live-item { padding: 12px 0; border-bottom: 1px dashed #e2e8f0; font-size: 0.85rem; }
 
-        .leads-admin-panel {
-            display: none !important;
-        }
+        .leads-admin-panel { display: none !important; }
+        .seo-location-block { display: none !important; }
 
-        /* Hide SEO Block completely from users view but keep content for crawler indexation */
-        .seo-location-block {
-            display: none !important;
-        }
-
-        /* Optimized Fallback PWA Loops Installation window style sheets */
+        /* PWA Prompt Fix Frame Styles */
         .pwa-loop-prompt {
             position: fixed;
             bottom: 105px;
             right: 15px;
             background: #2563eb;
             color: #fff;
-            padding: 10px 14px;
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            padding: 14px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
             z-index: 9999;
-            max-width: 250px;
+            max-width: 280px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
             transform: translateY(200%);
             opacity: 0;
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             pointer-events: none;
         }
         .pwa-loop-prompt.visible {
@@ -560,10 +567,10 @@
             opacity: 1;
             pointer-events: auto;
         }
-        .pwa-buttons { display: flex; justify-content: flex-end; gap: 6px; }
-        .pwa-btn { padding: 5px 10px; border-radius: 4px; border: none; font-size: 0.75rem; font-weight: 700; cursor: pointer; }
+        .pwa-buttons { display: flex; justify-content: flex-end; gap: 8px; }
+        .pwa-btn { padding: 6px 12px; border-radius: 6px; border: none; font-size: 0.8rem; font-weight: 700; cursor: pointer; }
         .pwa-btn.ins { background: #fff; color: #2563eb; }
-        .pwa-btn.lat { background: rgba(255,255,255,0.15); color: #fff; }
+        .pwa-btn.lat { background: rgba(255,255,255,0.18); color: #fff; }
 
         footer {
             background-color: var(--footer-bg);
@@ -661,7 +668,6 @@
             .contact-btn span { font-size: 0.65rem; }
         }
 
-        /* Comfortable Size, Micro Slim Height with Clean Tiiny Host Blue Gradient Style Sheet */
         .live-popup {
             position: fixed;
             bottom: 85px;
@@ -704,6 +710,46 @@
             </ul>
         </div>
     </header>
+
+    <section class="hero">
+        <h1 class="hero-main-title">QuickFix <span>Mumbai</span></h1>
+        
+        <p class="hero-intro-text">
+            Mumbai's No.1 Premium Trusted Doorstep Home Appliance Service Hub. Delivering instant mechanical diagnostics & original modular component resolutions straight to your doorstep.
+        </p>
+
+        <div class="offer-showcase-box">
+            <div class="offer-tag-line">Exclusive Digital Deal</div>
+            <div class="offer-main-title">Flat 25% Off On Full Circuit Overhauling</div>
+            
+            <div class="countdown-flex-wrapper">
+                <div class="count-unit-tab">
+                    <span class="count-digit-val" id="cdHour">02</span>
+                    <span class="count-lbl-text">Hours</span>
+                </div>
+                <div class="count-unit-tab">
+                    <span class="count-digit-val" id="cdMin">44</span>
+                    <span class="count-lbl-text">Mins</span>
+                </div>
+                <div class="count-unit-tab">
+                    <span class="count-digit-val" id="cdSec">59</span>
+                    <span class="count-lbl-text">Secs</span>
+                </div>
+            </div>
+            
+            <span class="tc-legal-anchor" onclick="triggerTCCallback()">*Terms & Conditions Apply</span>
+        </div>
+
+        <a href="#booking" class="btn-main">Schedule Doorstep Inspector Now</a>
+
+        <div class="warranty-card">
+            <i class="fa-solid fa-shield-halved"></i>
+            <div>
+                <h4>Certified 180-Day Guarantee Extension Program</h4>
+                <p>Every dynamic mechanical breakdown fix is backed entirely by an ironclad company paper warrant stamp ledger.</p>
+            </div>
+        </div>
+    </section>
 
     <div class="container">
         <div class="trust-box">
@@ -825,7 +871,7 @@
     <section class="container grid-panel" id="booking">
         
         <div class="card-panel">
-            <h3 style="margin-bottom: 15px;"><i class="fa fa-calendar-alt" style="color: var(--primary);"></i> Fast Customer Booking Form</h3>
+            <h3 style="margin-bottom: 15px;">Fast Customer Booking Form</h3>
             <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 25px;">Complete in 2-3 clicks. <strong>₹99 Service Visit Charge</strong> applies.</p>
             
             <form id="bookingForm" onsubmit="executeFinalBooking(event)">
@@ -967,7 +1013,7 @@
     <section class="container feedback-grid">
         
         <div class="card-panel">
-            <h3><i class="fa fa-comments" style="color: var(--primary);"></i> Suggestions Live Desk</h3>
+            <h3>Suggestions Live Desk</h3>
             <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Minimum 79,201 People Have Left Good Suggestions.</p>
             
             <div class="form-group">
@@ -1028,7 +1074,7 @@
             <div class="footer-col">
                 <a href="#" class="logo" style="color: #fff; display: block; margin-bottom: 15px;">QuickFix<span>Mumbai</span></a>
                 <p>India's leading smart multi-brand home appliances service hub. Providing elite doorstep mechanical and modular circuit level repairs across Western Mumbai zones since 2010.</p>
-                <p style="font-weight: 700; color: #fff;"><i class="fa-solid fa-award text-orange-500"></i> ISO 9001:2015 Certified</p>
+                <p style="font-weight: 700; color: #fff;"><i class="fa-solid fa-award"></i> ISO 9001:2015 Certified</p>
             </div>
             <div class="footer-col">
                 <h4>Quick Actions</h4>
@@ -1100,26 +1146,17 @@
         let pwaDismissedByUser = false;
 
         if ('serviceWorker' in navigator) {
-            const swCode = `
-                self.addEventListener('install', e => e.waitUntil(self.skipWaiting()));
-                self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
-                self.addEventListener('fetch', e => e.respondWith(fetch(e.request)));
-            `;
-            const blob = new Blob([swCode], { type: 'application/javascript' });
-            navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(err => console.error(err));
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log('Service Worker Running Clean:', reg.scope))
+                .catch(err => console.error('SW Error Root:', err));
+            });
         }
 
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             loopPromptEvent = e;
-            if(!pwaDismissedByUser) { setTimeout(displayPwaLoop, 6000); }
-        });
-
-        window.addEventListener('DOMContentLoaded', () => {
-            if(sessionStorage.getItem('pwa_opt_out') === 'true') { pwaDismissedByUser = true; }
-            setTimeout(() => {
-                if(!loopPromptEvent && !pwaDismissedByUser) { displayPwaLoop(); }
-            }, 8000);
+            if(!pwaDismissedByUser) { setTimeout(displayPwaLoop, 2000); }
         });
 
         function displayPwaLoop() {
@@ -1136,10 +1173,8 @@
 
         function triggerPwaInstallation() {
             if(!loopPromptEvent) {
-                alert("Shortcut Feature Synced: Tap the browser option bar (3 vertical dots icon) and select 'Add to Home screen' or 'Install app' to save QuickFix Mumbai app dashboard immediately.");
+                alert("Shortcut Sync: Click your browser options menu icon (three dots on top right) and press 'Add to Home Screen' to save your QuickFix Hub instantly.");
                 pwaDismissedByUser = true;
-                sessionStorage.setItem('pwa_opt_out', 'true');
-                document.getElementById('pwaLoopBox').classList.remove('visible');
                 return;
             }
             loopPromptEvent.prompt();
@@ -1151,6 +1186,25 @@
                     dismissPwaLoopBanner();
                 }
             });
+        }
+
+        // FIXED LATEST: Dynamic Countdown Real-time Clock Engine
+        function startDealTimer() {
+            let h = 2, m = 44, s = 59;
+            setInterval(() => {
+                s--;
+                if(s < 0) { s = 59; m--; }
+                if(m < 0) { m = 59; h--; }
+                if(h < 0) { h = 2; m = 44; s = 59; } // Soft reset loop loop
+                document.getElementById('cdHour').innerText = String(h).padStart(2, '0');
+                document.getElementById('cdMin').innerText = String(m).padStart(2, '0');
+                document.getElementById('cdSec').innerText = String(s).padStart(2, '0');
+            }, 1000);
+        }
+        window.addEventListener('DOMContentLoaded', startDealTimer);
+
+        function triggerTCCallback() {
+            alert("Terms & Conditions: Discount applicable exclusively on full circuit board replacements or multi-appliance bookings. Visit charges extra.");
         }
     </script>
 
@@ -1166,8 +1220,10 @@
         window.addEventListener('DOMContentLoaded', () => {
             if(localStorage.getItem('quickfix_liked') === 'true') {
                 const btn = document.getElementById('globalHeartBtn');
-                btn.classList.add('liked');
-                btn.innerHTML = `<i class="fa-solid fa-heart"></i> Already Liked`;
+                if(btn) {
+                    btn.classList.add('liked');
+                    btn.innerHTML = `<i class="fa-solid fa-heart"></i> Already Liked`;
+                }
             }
             renderSavedFeedSuggestions();
         });
@@ -1320,7 +1376,7 @@
         }
 
         function handleQRClick() {
-            alert("Secure Endpoint Endpoint Checked: Punjab National Bank Account verified ending in 9181.");
+            alert("Secure Endpoint Checked: Punjab National Bank Account verified ending in 9181.");
         }
 
         function executeEmergencySOSAlert() {
@@ -1376,11 +1432,12 @@
             const element = document.createElement('div');
             element.className = 'live-item';
             element.innerHTML = `<strong>${user}:</strong> ${text} <span style="color:#f59e0b; margin-left:5px;">${stars}</span>`;
-            dest.insertBefore(element, dest.firstChild);
+            if(dest) dest.insertBefore(element, dest.firstChild);
         }
 
         function renderSavedFeedSuggestions() {
             const dest = document.getElementById('suggestionFeed');
+            if(!dest) return;
             dest.innerHTML = ""; 
             
             let customStoredList = JSON.parse(localStorage.getItem('quickfix_local_reviews') || "[]");
