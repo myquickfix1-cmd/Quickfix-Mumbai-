@@ -1,6 +1,6 @@
-const CACHE_NAME = 'quickfix-v3'; // <--- dhyan se ise v3 kar dijiye
+const CACHE_NAME = 'quickfix-v3'; // Cache version v3 active
 
-// Install Event: Choti abcडी mein self
+// Install Event: PWA assets ko cache me store karna
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -8,14 +8,14 @@ self.addEventListener('install', (e) => {
         '/',
         '/index.html',
         '/manifest.json',
-        '/style.css',   // <--- Yeh dono nayi files bhi add kar di hain
-        '/script.js'    // <--- Taaki offline bhi app makkhan chale
+        '/style.css',   
+        '/script.js'    
       ]);
-    }).then(() => self.skipWaiting()) // Naye version ko turant chalu karo
+    }).then(() => self.skipWaiting()) 
   );
 });
 
-// Activate Event: Purane kachre (v2) ko saaf karne ke liye
+// Activate Event: Purane cache version ko delete karna
 self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys().then((keys) => {
@@ -30,18 +30,70 @@ self.addEventListener('activate', (e) => {
   );
 });
 
-// Fetch Event: Pehle net se naya uthao, nahi toh cache dikhao (Makkhan Logic)
+// Fetch Event: Network-first approach (Offline dynamic support)
 self.addEventListener('fetch', (e) => {
   e.respondWith(
     fetch(e.request)
       .then((res) => {
-        // Agar net chal raha hai, toh nayi file ko cache mein update karo
         const resClone = res.clone();
         caches.open(CACHE_NAME).then((cache) => {
           cache.put(e.request, resClone);
         });
         return res;
       })
-      .catch(() => caches.match(e.request)) // Agar net nahi hai, toh purana dikhao
+      .catch(() => caches.match(e.request)) 
+  );
+});
+
+// =========================================================================
+// NEW: BACKGROUND PUSH NOTIFICATIONS & CLICK ACTIONS
+// =========================================================================
+
+// Background me Push Notification receive karne ka handler
+self.addEventListener('push', (e) => {
+  let data = { title: '🚀 Quickfix Alert', body: 'Naya booking notification aaya hai!' };
+  
+  if (e.data) {
+    try {
+      data = e.data.json();
+    } catch (err) {
+      data = { title: '🚀 Quickfix Lead', body: e.data.text() };
+    }
+  }
+
+  const options = {
+    body: data.body,
+    icon: '/manifest.json', // Aapke app ka icon handle karega
+    badge: '/manifest.json',
+    vibrate: [200, 100, 200, 100, 200], // Phone vibration pattern
+    requireInteraction: true, // Jab tak owner click na kare screen se na hate
+    data: {
+      url: '/admin.html' // Notification click karne par admin dashboard khule
+    }
+  };
+
+  e.waitUntil(
+    self.registration.showNotification(data.title, options)
+  );
+});
+
+// Notification click hone par Admin panel open karne ka logic
+self.addEventListener('notificationclick', (e) => {
+  e.notification.close(); // Notification ko clear karo
+
+  e.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then((windowClients) => {
+      // Agar admin dashboard pehle se open hai toh use focus karo
+      for (let i = 0; i < windowClients.length; i++) {
+        const client = windowClients[i];
+        if (client.url.includes('/admin.html') && 'focus' in client) {
+          return client.focus();
+        }
+      }
+      // Agar open nahi hai, toh naya tab/window open karo
+      if (clients.openWindow) {
+        return clients.openWindow('/admin.html');
+      }
+    })
   );
 });
