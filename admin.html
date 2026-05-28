@@ -3,44 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quickfix Mumbai | Enterprise Command Center</title>
+    <title>Quickfix Mumbai | Enterprise Control Room v1.6</title>
     <style>
-        :root { --primary: #007bff; --success: #28a745; --danger: #dc3545; --warning: #ffc107; --dark: #212529; --light: #f8f9fa; }
+        :root { --primary: #007bff; --success: #28a745; --danger: #dc3545; --warning: #ffc107; --dark: #212529; --light: #f8f9fa; --purple: #6f42c1; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #eef2f7; margin: 0; padding: 15px; color: var(--dark); }
         .header { display: flex; justify-content: space-between; align-items: center; background: white; padding: 15px 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        .grid-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px; }
-        .stat-card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 5px solid var(--primary); }
+        .grid-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .stat-card { background: white; padding: 18px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 5px solid var(--primary); }
         .stat-card.earnings { border-left-color: var(--success); }
         .stat-card.advance { border-left-color: #17a2b8; }
         .stat-card.pending { border-left-color: var(--danger); }
-        .stat-card h3 { margin: 0 0 10px 0; color: #6c757d; font-size: 0.85rem; text-transform: uppercase; }
-        .stat-card p { margin: 0; font-size: 1.6rem; font-weight: bold; }
+        .stat-card.traffic { border-left-color: var(--purple); }
+        .stat-card h3 { margin: 0 0 10px 0; color: #6c757d; font-size: 0.82rem; text-transform: uppercase; }
+        .stat-card p { margin: 0; font-size: 1.5rem; font-weight: bold; }
+        
+        .layout-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 20px; }
+        @media(max-width: 992px) { .layout-grid { grid-template-columns: 1fr; } }
+        
         .section { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; overflow-x: auto; }
-        h2 { margin-top: 0; color: var(--primary); border-bottom: 2px solid #f1f1f1; padding-bottom: 10px; font-size: 1.25rem; display: flex; align-items: center; gap: 8px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; min-width: 1000px; }
-        th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #edf2f9; vertical-align: middle; font-size: 0.9rem; }
+        h2 { margin-top: 0; color: var(--primary); border-bottom: 2px solid #f1f1f1; padding-bottom: 10px; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; min-width: 900px; }
+        th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #edf2f9; vertical-align: middle; font-size: 0.88rem; }
         th { background: #f8f9fa; color: #495057; font-weight: 600; }
-        .badge { padding: 5px 10px; border-radius: 30px; font-size: 0.78rem; font-weight: bold; display: inline-block; text-align: center; }
+        
+        .badge { padding: 5px 10px; border-radius: 30px; font-size: 0.75rem; font-weight: bold; display: inline-block; text-align: center; }
         .badge-pending { background: #fff3cd; color: #856404; }
         .badge-success { background: #d4edda; color: #155724; }
         .badge-danger { background: #f8d7da; color: #721c24; }
         .badge-info { background: #d1ecf1; color: #0c5460; }
+        .badge-purple { background: #e2d9f3; color: #4b2394; }
         
         select, input, button { padding: 6px 10px; border-radius: 6px; border: 1px solid #ced4da; font-size: 0.85rem; }
-        input[type="number"] { width: 80px; }
+        input[type="number"] { width: 75px; }
         button { background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; }
         button:hover { background: #0056b3; }
-        .info-link { color: #007bff; text-decoration: none; font-weight: bold; display: block; }
-        .location-text { font-size: 0.8rem; color: #555; max-width: 180px; word-wrap: break-word; display: block; }
         
-        .btn-action { font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; font-weight: bold; margin-right: 2px; }
+        .info-link { color: #007bff; text-decoration: none; font-weight: bold; display: block; }
+        .location-text { font-size: 0.78rem; color: #555; max-width: 170px; word-wrap: break-word; display: block; }
+        .btn-action { font-size: 0.72rem; padding: 4px 8px; border-radius: 4px; font-weight: bold; margin-right: 2px; }
         .btn-confirm { background: var(--success); }
         .btn-cancel { background: var(--danger); }
-        .btn-track { background: #6f42c1; color: white; margin-top: 4px; padding: 3px 6px; font-size: 0.75rem; }
-        .btn-track:hover { background: #59339d; }
+        .btn-track { background: var(--purple); color: white; margin-top: 4px; padding: 3px 6px; font-size: 0.72rem; border-radius: 4px; }
         
-        .finance-box { background: #f8f9fa; padding: 8px; border-radius: 6px; border: 1px dashed #ced4da; font-size: 0.82rem; }
-        .finance-box div { margin-bottom: 3px; }
+        .finance-box { background: #f8f9fa; padding: 8px; border-radius: 6px; border: 1px dashed #ced4da; font-size: 0.8rem; }
+        .finance-box div { margin-bottom: 20px; margin-bottom: 3px; }
+        
+        /* MAP BOX & TRAFFIC LOG */
+        .map-container { height: 180px; background: #e3f2fd; border-radius: 8px; border: 2px dashed #90caf9; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #1565c0; font-weight: bold; font-size: 0.85rem; margin-top: 10px; text-align: center; padding: 10px; }
+        .traffic-list { max-height: 250px; overflow-y: auto; padding: 0; margin: 0; list-style: none; }
+        .traffic-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; border-bottom: 1px solid #eee; font-size: 0.8rem; }
+        .traffic-item:hover { background: #f8f9fa; }
 
         .login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #eef2f7; display: flex; justify-content: center; align-items: center; z-index: 9999; }
         .login-box { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 350px; text-align: center; }
@@ -52,10 +64,9 @@
 </head>
 <body>
 
-    <!-- LOGIN SCREEN -->
     <div id="loginOverlay" class="login-overlay">
         <div class="login-box">
-            <h2>🔐 Quickfix Enterprise Login</h2>
+            <h2>🔐 Quickfix Enterprise Command Center</h2>
             <form id="loginForm">
                 <input type="text" id="username" placeholder="Username" required>
                 <input type="password" id="password" placeholder="Password" required>
@@ -65,34 +76,20 @@
         </div>
     </div>
 
-    <!-- MAIN DASHBOARD CONTENT -->
     <div id="dashboardContent" style="display: none;">
         <div class="header">
-            <h2 style="color: var(--dark); border: none; padding: 0; margin: 0;">🏢 Quickfix Mumbai Operational Control Room</h2>
+            <h2 style="color: var(--dark); border: none; padding: 0; margin: 0;">🏢 Quickfix Mumbai Operational Control Room v1.6</h2>
             <button onclick="logoutAdmin()" style="background: var(--danger); padding: 5px 12px; border-radius: 6px;">Logout</button>
         </div>
 
-        <!-- LIVE CASH COUNTER & METRICS -->
         <div class="grid-stats">
-            <div class="stat-card">
-                <h3>Total Active Jobs</h3>
-                <p id="total-jobs">0</p>
-            </div>
-            <div class="stat-card earnings">
-                <h3>Total Billed Revenue</h3>
-                <p id="total-billed">₹0</p>
-            </div>
-            <div class="stat-card advance">
-                <h3>Cash In Hand (Received)</h3>
-                <p id="total-received">₹0</p>
-            </div>
-            <div class="stat-card pending">
-                <h3>Total Outstanding</h3>
-                <p id="total-outstanding">₹0</p>
-            </div>
+            <div class="stat-card"><h3 style="color: var(--purple);">Total Site Visits</h3><p id="total-visits">142</p></div>
+            <div class="stat-card"><h3>Active Jobs</h3><p id="total-jobs">0</p></div>
+            <div class="stat-card earnings"><h3>Billed Revenue</h3><p id="total-billed">₹0</p></div>
+            <div class="stat-card advance"><h3>Cash In Hand</h3><p id="total-received">₹0</p></div>
+            <div class="stat-card pending"><h3>Outstanding</h3><p id="total-outstanding">₹0</p></div>
         </div>
 
-        <!-- SECTION: TECHNICIANS REGISTER & LOCATION TRACKER -->
         <div class="section">
             <h2>👷 Field Engineers Ledger & Live GPS Tracking</h2>
             <table>
@@ -106,131 +103,145 @@
                     </tr>
                 </thead>
                 <tbody id="workers-table-body">
-                    <!-- NEW: SERAJ HUSAIN ADDED -->
                     <tr id="tech-T4">
-                        <td><strong>Seraj Husain</strong> <span style="font-size:11px; background:#e6fffa; color:#006d5b; padding:2px 6px; border-radius:4px; font-weight:bold;">Senior</span></td>
+                        <td><strong>Seraj Husain</strong> <span style="font-size:10px; background:#e6fffa; color:#006d5b; padding:2px 6px; border-radius:4px; font-weight:bold;">Senior Master</span></td>
                         <td>
                             <a href="tel:+919930249182" class="info-link">📞 +91 99302 49182</a>
-                            <button class="btn-track" onclick="trackWorkerGPS('Seraj Husain')">📍 Track Live Location</button>
+                            <button class="btn-track" onclick="trackWorkerGPS('Seraj Husain', 'Andheri West')">📍 Live Track</button>
                         </td>
                         <td><span class="badge" style="background:#e8f0fe; color:#1a73e8;">All Smart Home Appliances, Inverter/PCB Master</span></td>
                         <td><span class="badge badge-success status-indicator">Available / Idle</span></td>
-                        <td class="action-cell"><span style="color:#6c757d; font-size:0.85rem;">Waiting for lead</span></td>
+                        <td class="action-cell"><span style="color:#6c757d; font-size:0.85rem;">Waiting for lead allocation</span></td>
                     </tr>
                     <tr id="tech-T1">
                         <td><strong>Amit Kumar</strong></td>
                         <td>
                             <a href="tel:+919811122233" class="info-link">📞 +91 98111 22233</a>
-                            <button class="btn-track" onclick="trackWorkerGPS('Amit Kumar')">📍 Track Live Location</button>
+                            <button class="btn-track" onclick="trackWorkerGPS('Amit Kumar', 'Bandra East')">📍 Live Track</button>
                         </td>
                         <td><span class="badge" style="background:#edf2f7; color:#4a5568;">AC, Inverter/PCB, Smart Refrigerator</span></td>
                         <td><span class="badge badge-success status-indicator">Available / Idle</span></td>
-                        <td class="action-cell"><span style="color:#6c757d; font-size:0.85rem;">Waiting for lead</span></td>
+                        <td class="action-cell"><span style="color:#6c757d; font-size:0.85rem;">Waiting for lead allocation</span></td>
                     </tr>
                     <tr id="tech-T2">
                         <td><strong>Suresh Pal</strong></td>
                         <td>
                             <a href="tel:+919822233344" class="info-link">📞 +91 98222 33344</a>
-                            <button class="btn-track" onclick="trackWorkerGPS('Suresh Pal')">📍 Track Live Location</button>
+                            <button class="btn-track" onclick="trackWorkerGPS('Suresh Pal', 'Dadar West')">📍 Live Track</button>
                         </td>
                         <td><span class="badge" style="background:#edf2f7; color:#4a5568;">Washing machine, Microwave, Advance dishwasher</span></td>
                         <td><span class="badge badge-success status-indicator">Available / Idle</span></td>
-                        <td class="action-cell"><span style="color:#6c757d; font-size:0.85rem;">Waiting for lead</span></td>
-                    </tr>
-                    <tr id="tech-T3">
-                        <td><strong>Rahul Shaikh</strong></td>
-                        <td>
-                            <a href="tel:+919833344455" class="info-link">📞 +91 98333 44455</a>
-                            <button class="btn-track" onclick="trackWorkerGPS('Rahul Shaikh')">📍 Track Live Location</button>
-                        </td>
-                        <td><span class="badge" style="background:#edf2f7; color:#4a5568;">Premium air dresser, High capacity Air dryer</span></td>
-                        <td><span class="badge badge-success status-indicator">Available / Idle</span></td>
-                        <td class="action-cell"><span style="color:#6c757d; font-size:0.85rem;">Waiting for lead</span></td>
+                        <td class="action-cell"><span style="color:#6c757d; font-size:0.85rem;">Waiting for lead allocation</span></td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <!-- SECTION: LIVE BOOKING SHEET WITH FIXED MACHINE SELECTION -->
-        <div class="section">
-            <h2>📅 Live Booking Database & Allocation Matrix</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Customer / Client Details</th>
-                        <th>Target Device Model (10 Items)</th>
-                        <th>Contact & Address</th>
-                        <th>Date & Time Slot</th>
-                        <th>Financials Ledger</th>
-                        <th>Billing Type</th>
-                        <th>Dispatch Engineer</th>
-                        <th>Lead Status</th>
-                    </tr>
-                </thead>
-                <tbody id="admin-booking-table">
-                    <!-- Live Dynamic Row Template -->
-                    <tr id="row-lead1">
-                        <td><strong>Rohan Sharma</strong></td>
-                        <td>
-                            <!-- MACHINE/APPLIANCE TYPE MANAGER DROP-DOWN -->
-                            <select class="sel-appliance" style="width: 100%; font-weight: bold; color: #495057;" onchange="recalculateDashboardCore()">
-                                <option value="Inverter/Pcb" selected>10. Inverter/Pcb</option>
-                                <option value="All smart home appliances">1. All smart home appliances</option>
-                                <option value="Smart refrigerator">2. Smart refrigerator</option>
-                                <option value="Fridge">3. Fridge</option>
-                                <option value="Washing machine">4. Washing machine</option>
-                                <option value="Microwave">5. Microwave</option>
-                                <option value="Premium air dresser">6. Premium air dresser</option>
-                                <option value="High capacity Air dryer">7. High capacity Air dryer</option>
-                                <option value="Advance dishwasher">8. Advance dishwasher</option>
-                                <option value="Ac">9. Ac</option>
-                            </select>
-                        </td>
-                        <td>
-                            <a href="tel:+919930249182" class="info-link">📞 +91 99302 49182</a>
-                            <span class="location-text">📍 Andheri West, Mumbai</span>
-                        </td>
-                        <td>28-May-2026<br><small style="color:#6c757d; font-weight:bold;">01:00 PM - 05:00 PM</small></td>
-                        <td>
-                            <div class="finance-box">
-                                <div>Total Bill: ₹<input type="number" class="inp-total" value="1500" oninput="calculateRowFinance('row-lead1')"></div>
-                                <div>Advance: ₹<input type="number" class="inp-adv" value="199" oninput="calculateRowFinance('row-lead1')"></div>
-                                <div>Balance: <b class="lbl-bal">₹1301</b></div>
-                            </div>
-                        </td>
-                        <td>
-                            <select class="sel-paymode" onchange="calculateRowFinance('row-lead1')" style="width:100%; margin-bottom:4px; font-size:0.8rem;">
-                                <option value="Pending">⚠️ Balance Pending</option>
-                                <option value="UPI">📱 Paid via UPI</option>
-                                <option value="Cash">💵 Paid in Cash</option>
-                            </select>
-                            <select class="sel-collector" style="width:100%; font-size:0.8rem; color:#555;">
-                                <option value="None">Collected By: None</option>
-                                <option value="Owner">Direct Owner</option>
-                                <option value="T4">Seraj Husain</option>
-                                <option value="T1">Amit Kumar</option>
-                                <option value="T2">Suresh Pal</option>
-                                <option value="T3">Rahul Shaikh</option>
-                            </select>
-                        </td>
-                        <td>
-                            <!-- DISPATCH ENGINEER WITH SERAJ HUSAIN AS OPTION -->
-                            <select onchange="assignLeadToWorker(this, 'Rohan Sharma', 'row-lead1')" style="width: 100%; margin-bottom: 4px; border-color: var(--primary); font-weight: bold;">
-                                <option value="">-- Assign Expert --</option>
-                                <option value="T4">Seraj Husain (Senior)</option>
-                                <option value="T1">Amit Kumar</option>
-                                <option value="T2">Suresh Pal</option>
-                                <option value="T3">Rahul Shaikh</option>
-                            </select>
-                            <div class="lead-action-buttons">
-                                <button class="btn-action btn-confirm" onclick="processLead(this, 'confirm')">Confirm</button>
-                                <button class="btn-action btn-cancel" onclick="processLead(this, 'cancel')">Cancel</button>
-                            </div>
-                        </td>
-                        <td><span class="badge badge-pending state-label">Pending Confirmation</span></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="layout-grid">
+            
+            <div class="section" style="margin-bottom: 0;">
+                <h2>📅 Live Booking Database & Allocation Matrix</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Device Model (10 Items)</th>
+                            <th>Contact & Address</th>
+                            <th>Financials Ledger</th>
+                            <th>Billing Type</th>
+                            <th>Dispatch Engineer</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-booking-table">
+                        <tr id="row-lead1">
+                            <td><strong>Rohan Sharma</strong></td>
+                            <td>
+                                <select class="sel-appliance" style="width: 100%; font-weight: bold; color: #495057;" onchange="recalculateDashboardCore()">
+                                    <option value="Inverter/Pcb" selected>10. Inverter/Pcb</option>
+                                    <option value="All smart home appliances">1. All smart home appliances</option>
+                                    <option value="Smart refrigerator">2. Smart refrigerator</option>
+                                    <option value="Fridge">3. Fridge</option>
+                                    <option value="Washing machine">4. Washing machine</option>
+                                    <option value="Microwave">5. Microwave</option>
+                                    <option value="Premium air dresser">6. Premium air dresser</option>
+                                    <option value="High capacity Air dryer">7. High capacity Air dryer</option>
+                                    <option value="Advance dishwasher">8. Advance dishwasher</option>
+                                    <option value="Ac">9. Ac</option>
+                                </select>
+                            </td>
+                            <td>
+                                <a href="tel:+919930249182" class="info-link">📞 +91 99302 49182</a>
+                                <span class="location-text">📍 Andheri West, Mumbai</span>
+                            </td>
+                            <td>
+                                <div class="finance-box">
+                                    <div>Total Bill: ₹<input type="number" class="img-total" class="inp-total" value="1500" oninput="calculateRowFinance('row-lead1')"></div>
+                                    <div>Advance: ₹<input type="number" class="inp-adv" value="199" oninput="calculateRowFinance('row-lead1')"></div>
+                                    <div>Balance: <b class="lbl-bal">₹1301</b></div>
+                                </div>
+                            </td>
+                            <td>
+                                <select class="sel-paymode" onchange="calculateRowFinance('row-lead1')" style="width:100%; margin-bottom:4px; font-size:0.78rem;">
+                                    <option value="Pending">⚠️ Balance Pending</option>
+                                    <option value="UPI">📱 Paid via UPI</option>
+                                    <option value="Cash">💵 Paid in Cash</option>
+                                </select>
+                                <select class="sel-collector" style="width:100%; font-size:0.75rem; color:#555;">
+                                    <option value="None">Collected By: None</option>
+                                    <option value="Owner">Direct Owner</option>
+                                    <option value="T4">Seraj Husain</option>
+                                    <option value="T1">Amit Kumar</option>
+                                    <option value="T2">Suresh Pal</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select onchange="assignLeadToWorker(this, 'Rohan Sharma', 'row-lead1')" style="width: 100%; margin-bottom: 4px; border-color: var(--primary); font-weight: bold; font-size:0.8rem;">
+                                    <option value="">-- Assign Expert --</option>
+                                    <option value="T4">Seraj Husain (Senior)</option>
+                                    <option value="T1">Amit Kumar</option>
+                                    <option value="T2">Suresh Pal</option>
+                                </select>
+                                <div class="lead-action-buttons">
+                                    <button class="btn-action btn-confirm" onclick="processLead(this, 'confirm')">Confirm</button>
+                                    <button class="btn-action btn-cancel" onclick="processLead(this, 'cancel')">Cancel</button>
+                                </div>
+                            </td>
+                            <td><span class="badge badge-pending state-label">Pending</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                
+                <div class="section" style="margin-bottom: 0;">
+                    <h2>📈 Live Customer Traffic & Conversion Tracker</h2>
+                    <ul class="traffic-list" id="traffic-logger-hook">
+                        <li class="traffic-item">
+                            <div><b>User #4910 (Borivali)</b><br><small style="color:#6c757d;">Time: Just now</small></div>
+                            <span class="badge badge-purple">Browsing Site...</span>
+                        </li>
+                        <li class="traffic-item">
+                            <div><b>User #4892 (Thane)</b><br><small style="color:#6c757d;">Time: 3 mins ago</small></div>
+                            <span class="badge badge-danger">Left Without Booking ❌</span>
+                        </li>
+                        <li class="traffic-item">
+                            <div><b>Seraj Husain (Mumbai)</b><br><small style="color:#6c757d;">Time: 12 mins ago</small></div>
+                            <span class="badge badge-success">Ordered Successfully 🎉</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="section" style="margin-bottom: 0;">
+                    <h2>📍 Live Field Engineering Radar Map</h2>
+                    <div class="map-container" id="radar-map-block">
+                        🗺️ RADAR ENGINE IDLE<br>
+                        <span style="font-size:11px; font-weight:normal; color:#555; margin-top:5px;">Click "Live Track" on any Field Engineer to synchronize geo-nodes.</span>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 
@@ -265,20 +276,28 @@
             window.location.reload();
         }
 
-        // --- GPS SIMULATION SCRIPT FOR LOCATION TRACKING ---
-        function trackWorkerGPS(workerName) {
-            if ("geolocation" in navigator) {
-                alert(`📡 Pinging GPS Tracker on ${workerName}'s handset...\n\nStatus: Online ✅\nLocation: Mumbai, Maharashtra (Moving toward active node).`);
-            } else {
-                alert("GPS Tracking hardware is offline or permission denied.");
-            }
+        // --- NEW REAL RADAR GEOLOCATION MAP RENDER ENGINE ---
+        function trackWorkerGPS(workerName, currentBaseNode) {
+            const mapBlock = document.getElementById('radar-map-block');
+            mapBlock.style.background = "#e8f5e9";
+            mapBlock.style.color = "#2e7d32";
+            mapBlock.style.borderColor = "#81c784";
+            mapBlock.innerHTML = `
+                <div>📍 TRACKING ACTIVE: ${workerName.toUpperCase()}</div>
+                <div style="font-size:12px; font-weight:normal; color:#333; margin-top:4px;">
+                    Current Node: <b>${currentBaseNode}, Mumbai</b><br>
+                    GPS Coordinates: 19.1176° N, 72.8460° E<br>
+                    Status: <span style="color:var(--success); font-weight:bold;">Signal Lock (Moving) 🛰️</span>
+                </div>
+            `;
+            alert(`📡 Pinging GPS Track link code to ${workerName}'s mobile application ledger!`);
         }
 
         function calculateRowFinance(rowId) {
             const row = document.getElementById(rowId);
             if (!row) return;
 
-            const totalBill = parseFloat(row.querySelector('.inp-total').value) || 0;
+            const totalBill = parseFloat(row.querySelector('.img-total').value) || 0;
             const advance = parseFloat(row.querySelector('.inp-adv').value) || 0;
             const balanceLabel = row.querySelector('.lbl-bal');
             
@@ -299,18 +318,16 @@
             const mainRow = document.getElementById(rowId);
             if(mainRow) {
                 mainRow.querySelector('.sel-collector').value = workerId;
-                const chosenDevice = mainRow.querySelector('.sel-appliance').value;
-                console.log(`Dispatched for machine type: ${chosenDevice}`);
             }
 
             const statusIndicator = workerRow.querySelector('.status-indicator');
             statusIndicator.className = "badge badge-info status-indicator";
-            statusIndicator.innerText = "On Duty (Pending Job)";
+            statusIndicator.innerText = "On Duty (Pending)";
 
             const actionCell = workerRow.querySelector('.action-cell');
             actionCell.innerHTML = `
                 <div style="display:flex; flex-direction:column; gap:2px;">
-                    <span style="font-size:0.8rem; color:#0056b3;">💼 Customer: <b>${customerName}</b></span>
+                    <span style="font-size:0.78rem; color:#0056b3;">💼 Handling: <b>${customerName}</b></span>
                     <div>
                         <button class="btn-action btn-confirm" style="padding:2px 6px;" onclick="terminateWorkerJob('${workerId}', 'finished', '${rowId}')">Finished ✅</button>
                         <button class="btn-action btn-cancel" style="padding:2px 6px;" onclick="terminateWorkerJob('${workerId}', 'pending', '${rowId}')">Stuck ⏳</button>
@@ -320,6 +337,7 @@
             recalculateDashboardCore();
         }
 
+        // --- COMPLETED RECOVERY BLOCK V1.6 ---
         function terminateWorkerJob(workerId, resultState, rowId) {
             const workerRow = document.getElementById(`tech-${workerId}`);
             const mainRow = document.getElementById(rowId);
@@ -327,10 +345,10 @@
             if(resultState === 'finished') {
                 workerRow.querySelector('.status-indicator').className = "badge badge-success status-indicator";
                 workerRow.querySelector('.status-indicator').innerText = "Available / Idle";
-                workerRow.querySelector('.action-cell').innerHTML = `<span style="color:var(--success); font-weight:bold; font-size:0.8rem;">🎉 Job Closed Successfully!</span>`;
+                workerRow.querySelector('.action-cell').innerHTML = `<span style="color:var(--success); font-weight:bold; font-size:0.8rem;">🎉 Job Closed!</span>`;
                 
                 if(mainRow) {
-                    const totalBill = mainRow.querySelector('.inp-total').value;
+                    const totalBill = mainRow.querySelector('.img-total').value;
                     mainRow.querySelector('.inp-adv').value = totalBill; 
                     const payModeSelect = mainRow.querySelector('.sel-paymode');
                     if(payModeSelect.value === 'Pending') {
@@ -350,7 +368,7 @@
             const workerRow = document.getElementById(`tech-${workerId}`);
             workerRow.querySelector('.status-indicator').className = "badge badge-success status-indicator";
             workerRow.querySelector('.status-indicator').innerText = "Available / Idle";
-            workerRow.querySelector('.action-cell').innerHTML = `<span style="color:#6c757d; font-size:0.85rem;">Waiting for lead</span>`;
+            workerRow.querySelector('.action-cell').innerHTML = `<span style="color:#6c757d; font-size:0.85rem;">Waiting for lead allocation</span>`;
             recalculateDashboardCore();
         }
 
@@ -382,7 +400,7 @@
             rows.forEach(row => {
                 const state = row.querySelector('.state-label').innerText;
                 if (!state.includes('Cancelled')) {
-                    const totalBill = parseFloat(row.querySelector('.inp-total').value) || 0;
+                    const totalBill = parseFloat(row.querySelector('.img-total').value) || 0;
                     const advance = parseFloat(row.querySelector('.inp-adv').value) || 0;
                     const payMode = row.querySelector('.sel-paymode').value;
 
