@@ -8,6 +8,12 @@
     <meta name="description" content="QuickFix Mumbai is India's No.1 trusted doorstep smart home appliance service center. Specialized in Western Mumbai, Eastern, North & South zones. Expert, quick, and priceless repair near me for Refrigerator, Washing Machine, Microwave, AC, and PCB circuits.">
     <meta name="keywords" content="QuickFix Mumbai, home appliance repair near me, best service center Mumbai, Western Mumbai appliance repair, refrigerator service Mumbai, washing machine repair, AC repair Mumbai, PCB circuit repairs, expert technician near me, quick appliance fix, priceless home services, Bandra West appliance repair, Borivali service center, Andheri quick repair">
     
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#FF6B00">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -112,7 +118,7 @@
             .nav-links { gap: 12px; font-size: 0.85rem; }
         }
 
-        /* RESTORED: Special Premium Hero Layout with Integrated Offer System */
+        /* Hero Layout with Integrated Offer System */
         .hero {
             background: linear-gradient(rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.92)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
             color: #fff;
@@ -144,57 +150,90 @@
             padding: 0 15px;
         }
 
-        /* PREMIUM APP-STYLE OFFER CARD BLOCK */
+        /* DYNAMIC COUNTER LIVE OFFER CARD BLOCK */
         .offer-showcase-box {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            border: 2px solid rgba(255, 107, 0, 0.4);
+            border: 2px solid rgba(255, 107, 0, 0.6);
             border-radius: 20px;
-            padding: 20px;
+            padding: 22px;
             max-width: 500px;
             width: 90%;
-            margin: 20px auto 30px;
+            margin: 20px auto 25px;
             box-shadow: 0 12px 30px rgba(0,0,0,0.4);
             text-align: center;
+            position: relative;
         }
         .offer-tag-line {
-            color: var(--primary);
+            color: #3b82f6;
             font-size: 0.85rem;
             text-transform: uppercase;
             font-weight: 800;
             letter-spacing: 1.5px;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
         .offer-main-title {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: #fff;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
+            line-height: 1.3;
         }
-        .countdown-flex-wrapper {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 12px;
+        .offer-main-title span {
+            color: #ef4444;
         }
-        .count-unit-tab {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 10px;
-            padding: 8px;
-            min-width: 65px;
+
+        /* Booking Tracker Boxes */
+        .live-counter-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 15px;
         }
-        .count-digit-val {
-            font-size: 1.3rem;
+        .counter-pill-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 10px;
+        }
+        .counter-pill-box.danger-glow {
+            background: rgba(239, 68, 68, 0.08);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+        .counter-pill-num {
+            font-size: 1.4rem;
             font-weight: 800;
-            color: #3b82f6;
+            color: #22c55e;
             display: block;
+            line-height: 1.2;
         }
-        .count-lbl-text {
-            font-size: 0.65rem;
+        .counter-pill-box.danger-glow .counter-pill-num {
+            color: #ef4444;
+            animation: pulseText 1.5s infinite;
+        }
+        .counter-pill-lbl {
+            font-size: 0.7rem;
             color: #94a3b8;
-            text-transform: uppercase;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
         }
+        @keyframes pulseText {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .mega-discount-alert {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #f59e0b;
+            background: rgba(245, 158, 11, 0.1);
+            padding: 6px 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
         .tc-legal-anchor {
             font-size: 0.75rem;
             color: #64748b;
@@ -204,6 +243,41 @@
             transition: color 0.2s;
         }
         .tc-legal-anchor:hover { color: #fff; }
+
+        /* HIGHLIGHT WORDS SYSTEM STYLING */
+        .highlight-phrases-group {
+            margin: 20px auto 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+        }
+        .badge-highlight-one {
+            background: linear-gradient(90deg, rgba(255,107,0,0.15) 0%, rgba(255,107,0,0.05) 100%);
+            border-left: 4px solid var(--primary);
+            color: #ffffff;
+            padding: 8px 16px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 0 8px 8px 0;
+            display: inline-block;
+        }
+        .badge-highlight-two {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #10b981;
+            padding: 6px 14px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 30px;
+            display: inline-block;
+        }
 
         .btn-main {
             background: var(--primary);
@@ -354,28 +428,50 @@
         }
         .btn-card-book:hover { background: var(--primary); }
 
+        /* BRAND AUTOMATED INFINITE MARQUEE SLIDER RUNNER */
         .brands-container {
             background: #fff;
-            padding: 30px;
+            padding: 25px 15px;
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.01);
             margin-bottom: 50px;
             border: 1px solid #e2e8f0;
+            overflow: hidden;
+            position: relative;
         }
-        .brand-grid {
+        .brand-slider-track {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
+            width: calc(250px * 18);
+            animation: infiniteScrollMarquee 25s linear infinite;
+            gap: 16px;
+        }
+        .brands-container:hover .brand-slider-track {
+            animation-play-state: paused;
         }
         .brand-badge {
-            background: #f1f5f9;
+            width: 200px;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             color: var(--secondary);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
+            padding: 12px 25px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-align: center;
             border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+        .brand-badge:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: #fff;
+            transform: translateY(-2px);
+        }
+        @keyframes infiniteScrollMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-216px * 9)); }
         }
 
         .grid-panel {
@@ -432,7 +528,7 @@
             50% { opacity: 0.5; }
         }
 
-        /* FIXED CLEANUP: Payment Block alignment grid */
+        /* Payment Block alignment grid */
         .payment-methods {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -542,7 +638,7 @@
         .leads-admin-panel { display: none !important; }
         .seo-location-block { display: none !important; }
 
-        /* PWA Prompt Fix Frame Styles */
+        /* PWA Prompt Frame Styles */
         .pwa-loop-prompt {
             position: fixed;
             bottom: 105px;
@@ -722,22 +818,27 @@
             <div class="offer-tag-line">Exclusive Digital Deal</div>
             <div class="offer-main-title">Flat 25% Off On Full Circuit Overhauling</div>
             
-            <div class="countdown-flex-wrapper">
-                <div class="count-unit-tab">
-                    <span class="count-digit-val" id="cdHour">02</span>
-                    <span class="count-lbl-text">Hours</span>
+            <div class="live-counter-wrapper">
+                <div class="counter-pill-box">
+                    <span class="counter-pill-num" id="liveBookingsNum">182</span>
+                    <span class="counter-pill-lbl">Bookings Full Now</span>
                 </div>
-                <div class="count-unit-tab">
-                    <span class="count-digit-val" id="cdMin">44</span>
-                    <span class="count-lbl-text">Mins</span>
+                <div class="counter-pill-box danger-glow">
+                    <span class="counter-pill-num" id="liveSlotsLeft">8</span>
+                    <span class="counter-pill-lbl">Available Now</span>
                 </div>
-                <div class="count-unit-tab">
-                    <span class="count-digit-val" id="cdSec">59</span>
-                    <span class="count-lbl-text">Secs</span>
-                </div>
+            </div>
+
+            <div class="mega-discount-alert">
+                ⚡ Book your slot with a mega discount 25%, don't miss!
             </div>
             
             <span class="tc-legal-anchor" onclick="triggerTCCallback()">*Terms & Conditions Apply</span>
+        </div>
+
+        <div class="highlight-phrases-group">
+            <div class="badge-highlight-one"># Essential, Expert Service</div>
+            <div class="badge-highlight-two"># We Solved Created Problems</div>
         </div>
 
         <a href="#booking" class="btn-main">Schedule Doorstep Inspector Now</a>
@@ -854,7 +955,16 @@
     <section class="container">
         <div class="brands-container">
             <p style="text-align: center; margin-bottom: 20px; font-weight: 700; color: var(--secondary);">We Serviced And Repairing As All Over Brands:</p>
-            <div class="brand-grid">
+            <div class="brand-slider-track">
+                <div class="brand-badge">Samsung</div>
+                <div class="brand-badge">LG</div>
+                <div class="brand-badge">Bosch</div>
+                <div class="brand-badge">Whirlpool</div>
+                <div class="brand-badge">IFB</div>
+                <div class="brand-badge">Panasonic</div>
+                <div class="brand-badge">Hitachi</div>
+                <div class="brand-badge">Toshiba</div>
+                <div class="brand-badge">Videocon & More</div>
                 <div class="brand-badge">Samsung</div>
                 <div class="brand-badge">LG</div>
                 <div class="brand-badge">Bosch</div>
@@ -1188,20 +1298,31 @@
             });
         }
 
-        // FIXED LATEST: Dynamic Countdown Real-time Clock Engine
-        function startDealTimer() {
-            let h = 2, m = 44, s = 59;
+        // UPGRADED: Dynamic Counter Increments for Live Urgency Engine (Replaces Timer)
+        function startLiveBookingEngine() {
+            let initialBookings = 188;
+            let initialSlots = 12;
+
             setInterval(() => {
-                s--;
-                if(s < 0) { s = 59; m--; }
-                if(m < 0) { m = 59; h--; }
-                if(h < 0) { h = 2; m = 44; s = 59; } // Soft reset loop loop
-                document.getElementById('cdHour').innerText = String(h).padStart(2, '0');
-                document.getElementById('cdMin').innerText = String(m).padStart(2, '0');
-                document.getElementById('cdSec').innerText = String(s).padStart(2, '0');
-            }, 1000);
+                // Randomly increase booking number slightly
+                if (Math.random() > 0.4 && initialSlots > 3) {
+                    initialBookings += Math.floor(Math.random() * 3) + 1;
+                    initialSlots -= Math.floor(Math.random() * 1) + 1;
+                    
+                    document.getElementById('liveBookingsNum').innerText = initialBookings;
+                    document.getElementById('liveSlotsLeft').innerText = initialSlots;
+                }
+                
+                // Soft reset when slots go too low to maintain the FOMO logic infinitely
+                if (initialSlots <= 3) {
+                    initialBookings = 175;
+                    initialSlots = 15;
+                    document.getElementById('liveBookingsNum').innerText = initialBookings;
+                    document.getElementById('liveSlotsLeft').innerText = initialSlots;
+                }
+            }, 7000); // Triggers counter shift updates smoothly every 7 seconds
         }
-        window.addEventListener('DOMContentLoaded', startDealTimer);
+        window.addEventListener('DOMContentLoaded', startLiveBookingEngine);
 
         function triggerTCCallback() {
             alert("Terms & Conditions: Discount applicable exclusively on full circuit board replacements or multi-appliance bookings. Visit charges extra.");
