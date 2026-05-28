@@ -48,7 +48,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Premium App Tweaks for Installed Standalone Mode */
+        /* High-End Native App Adjustments for PWA Standalone Mode */
         @media (display-mode: standalone) {
             body {
                 background-color: #0F172A;
@@ -61,7 +61,7 @@
             .logo, .nav-links a {
                 color: #FFFFFF !important;
             }
-            .item-card, .trust-box, .brands-container, #bookingSection {
+            .item-card, .trust-box, .brands-container, .booking-section, .brand-ocean-section {
                 background: #1E293B !important;
                 border: 1px solid #334155 !important;
                 color: #FFFFFF !important;
@@ -124,7 +124,7 @@
             padding: 15px 20px;
         }
         .logo {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: var(--secondary);
             text-decoration: none;
@@ -151,13 +151,13 @@
             .nav-links { gap: 15px; font-size: 0.8rem; }
         }
 
-        /* Professional PWA Installer Banner */
+        /* Professional Premium PWA Installer Banner */
         .pwa-premium-banner {
             background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
             border-bottom: 3px solid var(--primary);
             color: #fff;
             padding: 14px 20px;
-            display: flex; /* Kept flex for preview control via JS later */
+            display: flex;
             justify-content: space-between;
             align-items: center;
             position: relative;
@@ -197,7 +197,7 @@
         .hero {
             background: linear-gradient(rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.94)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
             color: #fff;
-            padding: 45px 0;
+            padding: 50px 0;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -205,7 +205,7 @@
             justify-content: center;
         }
 
-        /* Business Intro Showcase Header */
+        /* Business Intro Showcase Header (v5.0 Restored) */
         .business-intro-header {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -217,14 +217,14 @@
             backdrop-filter: blur(5px);
         }
         .intro-top-tag {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: #ff6b00;
             letter-spacing: 1px;
             margin-bottom: 5px;
         }
         .intro-mid-tag {
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 600;
             color: #3b82f6;
             margin-bottom: 8px;
@@ -232,9 +232,9 @@
         .intro-badges-row {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 15px;
             flex-wrap: wrap;
-            margin-top: 8px;
+            margin-top: 5px;
         }
         .intro-badge-pill {
             background: rgba(239, 68, 68, 0.15);
@@ -253,10 +253,10 @@
         }
         
         .hero-main-title {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 900;
             color: #fff;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             line-height: 1.2;
@@ -264,7 +264,7 @@
         .hero-main-title span { color: #3b82f6; }
         
         .hero-intro-text {
-            font-size: 1rem;
+            font-size: 1.1rem;
             max-width: 750px;
             color: #cbd5e1;
             margin: 0 auto 25px;
@@ -293,7 +293,7 @@
             margin-bottom: 6px;
         }
         .offer-main-title {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
             color: #fff;
             margin-bottom: 15px;
@@ -301,7 +301,6 @@
         }
         .offer-main-title span { color: #ef4444; }
 
-        /* Booking Tracker Boxes */
         .live-counter-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -325,9 +324,7 @@
             display: block;
             line-height: 1.2;
         }
-        .counter-pill-box.danger-glow .counter-pill-num {
-            color: #ef4444;
-        }
+        .counter-pill-box.danger-glow .counter-pill-num { color: #ef4444; }
         .counter-pill-lbl {
             font-size: 0.75rem;
             color: #94a3b8;
@@ -338,7 +335,7 @@
         }
 
         .mega-discount-alert {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 700;
             color: #f59e0b;
             background: rgba(245, 158, 11, 0.1);
@@ -348,7 +345,36 @@
             border: 1px solid rgba(245, 158, 11, 0.2);
         }
 
-        /* Upgraded Warranty Card with Reproblem Logic */
+        .tc-legal-anchor {
+            font-size: 0.75rem;
+            color: #64748b;
+            text-decoration: underline;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .btn-main {
+            background: var(--primary);
+            color: #fff;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+            width: 100%;
+        }
+        .btn-main:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Warranty Card Component */
         .warranty-card {
             background: rgba(16, 185, 129, 0.12);
             border: 2px dashed var(--accent);
@@ -441,7 +467,7 @@
             font-weight: 500;
         }
 
-        /* Items Showcase Grid */
+        /* Comprehensive Services Showcase Layout (v5.0 Recovered Pack) */
         .items-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -485,6 +511,7 @@
             font-weight: 700;
             font-size: 0.85rem;
             margin-top: 15px;
+            transition: all 0.2s;
         }
         .btn-card-book:hover { background: var(--primary); }
 
@@ -574,7 +601,7 @@
         .ocean-card h5 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; color: #fff; }
         .ocean-card p { font-size: 0.8rem; color: #94a3b8; }
 
-        /* Booking Form Section Wrapper styling */
+        /* Booking Form Input System Wrapper */
         .booking-section {
             background: #fff;
             padding: 35px 25px;
@@ -599,7 +626,7 @@
         }
         .form-control:focus { border-color: var(--primary); }
 
-        /* Emergency Advanced Control Panel Card Block */
+        /* Emergency Advanced Priority Hotline Card Box */
         .emergency-accent-box {
             background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
             border: 2px solid var(--danger);
@@ -643,16 +670,15 @@
             transform: scale(1.02);
         }
 
-        /* Native Sticky App Bar Styles */
+        /* Native Sticky Dock Bar */
         .bottom-nav-dock {
-            fixed: bottom;
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
             background: rgba(15, 23, 42, 0.96);
             backdrop-filter: blur(10px);
-            border-t: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255,255,255,0.1);
             padding: 12px 16px;
             z-index: 2000;
             box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
@@ -707,12 +733,12 @@
                 <i class="fa-solid fa-screwdriver-wrench"></i>
             </div>
             <div class="pwa-text">
-                <h5>QuickFix Mumbai App</h5>
-                <p>Install for Fast 1-Tap Emergency Bookings & Trackings</p>
+                <h5>QuickFix Mumbai Mobile App</h5>
+                <p>Install for Fast 1-Tap Emergency Bookings & Tracking</p>
             </div>
         </div>
         <div class="pwa-btn-group">
-            <button class="btn-pwa-install" onclick="triggerPWAInstallationEngine()">INSTALL</button>
+            <button class="btn-pwa-install" id="pwaInstallTrigger">INSTALL</button>
             <button class="btn-pwa-close" onclick="closePWABanner()"><i class="fa-solid fa-xmark"></i></button>
         </div>
     </div>
@@ -740,8 +766,8 @@
                 </div>
             </div>
 
-            <h2 class="hero-main-title">Expert Home Repairs <span>Priceless Service</span></h2>
-            <p class="hero-intro-text">Delivering premium, verified solutions directly straight to your doorstep across all regional zones instantly.</p>
+            <h1 class="hero-main-title">Expert Home Repairs <span>Priceless Service</span></h1>
+            <p class="hero-intro-text">Delivering premium, verified solutions directly straight to your doorstep across all regional zones instantly including Bandra West, Borivali, and Andheri.</p>
 
             <div class="offer-showcase-box">
                 <div class="offer-tag-line">Exclusive Digital Deal</div>
@@ -749,7 +775,7 @@
                 
                 <div class="live-counter-wrapper">
                     <div class="counter-pill-box">
-                        <span class="counter-pill-num" id="filledCounter text-green-500">182</span>
+                        <span class="counter-pill-num" id="filledCounter">182</span>
                         <span class="counter-pill-lbl">Bookings Full Now</span>
                     </div>
                     <div class="counter-pill-box danger-glow">
@@ -911,7 +937,7 @@
         <section id="emergencySegment" class="emergency-accent-box">
             <h3 class="emergency-title"><i class="fa-solid fa-triangle-exclamation"></i> Emergency Breakdown Hotline</h3>
             <p class="emergency-desc">Need immediate resolution? Our premium express dispatch operators bypass regular scheduling queues instantly.</p>
-            <a href="tel:+919930249182" class="btn-emergency-call">
+            <a href="tel:+919819832282" class="btn-emergency-call">
                 <i class="fa-solid fa-phone-volume animate-bounce"></i> CALL EMERGENCY HOTLINE NOW
             </a>
         </section>
@@ -920,17 +946,17 @@
 
     <div class="bottom-nav-dock">
         <div class="dock-grid">
-            <a href="https://wa.me/919930249182?text=Hi%20Quickfix%20Mumbai%20I%20want%20to%20book%20a%20primary%20slot" target="_blank" class="dock-btn wa-primary">
+            <a href="https://wa.me/919819832282?text=Hi%20Quickfix%20Mumbai%20I%20want%20to%20book%20a%20primary%20slot" target="_blank" class="dock-btn wa-primary">
                 <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i>
                 <span>WA Primary</span>
             </a>
             
-            <a href="tel:+919930249182" class="dock-btn emergency-call-dock">
+            <a href="tel:+919819832282" class="dock-btn emergency-call-dock">
                 <i class="fa-solid fa-phone" style="font-size: 1.2rem;"></i>
                 <span>EMERGENCY CALL</span>
             </a>
             
-            <a href="https://wa.me/919930249182?text=Hi%20Quickfix%20Mumbai%20Emergency%20assistance" target="_blank" class="dock-btn wa-secondary">
+            <a href="https://wa.me/919819832282?text=Hi%20Quickfix%20Mumbai%20Emergency%20assistance" target="_blank" class="dock-btn wa-secondary">
                 <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i>
                 <span>WA Second</span>
             </a>
@@ -938,10 +964,46 @@
     </div>
 
     <script>
+        // Airtight Service Worker & PWA Core Engine Configuration
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // Display banner smoothly once browser triggers PWA compliance flags
+            document.getElementById('pwaBanner').style.display = 'flex';
+        });
+
+        const installBtn = document.getElementById('pwaInstallTrigger');
+        if(installBtn) {
+            installBtn.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    if (outcome === 'accepted') {
+                        console.log('User accepted the PWA install option.');
+                    }
+                    deferredPrompt = null;
+                    closePWABanner();
+                } else {
+                    alert("To install: Open browser settings menu and select 'Add to Home Screen / Install App'.");
+                }
+            });
+        }
+
+        // PWA Native Registration Call Loop
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                .then(reg => console.log('Service Worker registered successfully:', reg.scope))
+                .catch(err => console.log('Service Worker installation failed:', err));
+            });
+        }
+
         // Auto Sync Baseline Calendar inputs element on load
         document.addEventListener('DOMContentLoaded', () => {
             const todayDateString = new Date().toISOString().split('T')[0];
-            document.getElementById('bookDate').value = todayDateString;
+            const dateInput = document.getElementById('bookDate');
+            if(dateInput) dateInput.value = todayDateString;
         });
 
         // Toggle Social Proof Like Button States Runtime Element
@@ -957,23 +1019,15 @@
             }
         }
 
-        // Direct Item Booking Card interaction triggers setup
         function setApplianceDropdown(targetVal) {
             document.getElementById('appServiceDropdown').value = targetVal;
         }
 
-        // Close PWA App Banner utility safely
         function closePWABanner() {
             document.getElementById('pwaBanner').style.display = 'none';
         }
 
-        // Trigger PWA Installation Simulation Matrix
-        function triggerPWAInstallationEngine() {
-            alert("QuickFix Mumbai Mobile App Package installation protocol initialized safely on your device!");
-            closePWABanner();
-        }
-
-        // Brand Data Matrix Logs Database repository 
+        // Brand Ocean Mock DB Module Matrix
         const oceanMockDatabase = {
             'Samsung': [
                 { icon: '❄️', title: 'Samsung Frost Line (#1)', desc: '4E/5E system error line component breakdown diagnostics cleared.' },
@@ -994,7 +1048,6 @@
             ]
         };
 
-        // Render Dynamic Ocean Grid Modules 
         function triggerOceanEngine(brandNameKey) {
             const oceanBox = document.getElementById('oceanBox');
             const oceanTitle = document.getElementById('oceanTitle');
@@ -1020,7 +1073,7 @@
             oceanBox.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Simulation Live Counters Scarcity Module Engine 
+        // Live Counter Dynamic Scarcity Sim Engine
         let currentAvailableSlots = 11;
         let currentFilledSlots = 182;
         setInterval(() => {
@@ -1028,11 +1081,11 @@
                 currentAvailableSlots -= 1;
                 currentFilledSlots += 1;
                 document.getElementById('availCounter').innerText = currentAvailableSlots;
-                document.getElementById('filledCounter text-green-500').innerText = currentFilledSlots;
+                document.getElementById('filledCounter').innerText = currentFilledSlots;
             }
         }, 22000);
 
-        // Core Form Inputs Extraction & Sanitized WhatsApp Forwarding Route Logic
+        // Core Form WhatsApp Route Logic via updated 9819832282 Gateway
         function executeWhatsAppFormRoute(eventObj) {
             eventObj.preventDefault();
 
@@ -1052,7 +1105,7 @@
                                            `📍 *Address:* ${encodeURIComponent(address)}%0A%0A` +
                                            `Please dispatch the route supervisor to my location instantly.`;
 
-            window.open(`https://wa.me/919930249182?text=${finalStructuredString}`, '_blank');
+            window.open(`https://wa.me/919819832282?text=${finalStructuredString}`, '_blank');
         }
     </script>
 </body>
