@@ -1,21 +1,16 @@
 {
-  "name": "Quickfix Mumbai",
-  "short_name": "Quickfix",
-  "start_url": "./index.html",
-  "display": "standalone",
-  "background_color": "#fdfdfd",
-  "theme_color": "#007bff",
-  "orientation": "portrait-primary",
+  "short_name": "QuickFix",
+  "name": "QuickFix Mumbai Hub Terminal",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/2928/2928929.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "https://cdn-icons-png.flaticon.com/512/2928/2928929.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
     }
-  ]
+  ],
+  "start_url": "/index.html",
+  "background_color": "#0B132B",
+  "theme_color": "#0B132B",
+  "display": "standalone",
+  "orientation": "portrait"
 }
