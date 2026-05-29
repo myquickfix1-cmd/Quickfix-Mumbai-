@@ -211,17 +211,25 @@
             </div>
         </section>
 
-        <!-- SECURE PAYMENT SECTION MASKED LOGOS -->
-        <section class="secure-payment-card p-5 mb-8 text-center">
-            <div class="secure-label-flash mb-3">QUICKFIX MUMBAI INTERBANK MAPPING</div>
-            <div class="w-32 h-32 bg-white/5 border border-dashed border-gray-700 rounded-xl mx-auto flex items-center justify-center text-[10px] text-gray-500 uppercase tracking-wider mb-3">
-                [ UPI CENTRAL QR CODE PLACEHOLDER ]
+        <!-- ==========================================================================
+             QUICKFIX MUMBAI INTERBANK MAPPING SECTION (PNB SECURE GATEWAY)
+             ========================================================================== -->
+        <div class="bg-[#1E293B]/40 border border-gray-800 rounded-2xl p-6 text-center my-6">
+            <h3 class="text-sky-400 font-bold text-sm uppercase tracking-wider mb-4">QUICKFIX MUMBAI INTERBANK MAPPING</h3>
+            
+            <!-- PNB TRUST LINE FOR ELITE CUSTOMERS -->
+            <p class="text-[10px] text-gray-400 uppercase tracking-wide mb-3">🏦 Secured via Punjab National Bank Gateway</p>
+            
+            <div class="flex justify-center my-4">
+                <!-- REAL UPI QR CODE IMAGE LINK -->
+                <img src="YOUR_PNB_QR_CODE_IMAGE_URL.png" alt="PNB UPI Central QR" class="w-48 h-48 rounded-xl border-4 border-slate-800 p-2 bg-white" />
             </div>
-            <div class="text-[11px] text-gray-400 font-bold tracking-wider uppercase">
-                STRICT VERIFIED DISPLAY GATEWAY: <br>
-                <span class="text-white font-extrabold text-xs">QUICKFIX MUMBAI</span> | <span class="text-[#0066FF] font-extrabold text-xs">QUICKFIXMUMBAI.COM</span>
-            </div>
-        </section>
+
+            <p class="text-[10px] text-gray-500 uppercase tracking-wider">
+                STRICT VERIFIED DISPLAY GATEWAY:<br>
+                <span class="text-white font-bold">QUICKFIX_MUMBAI</span> | <a href="https://quickfixmumbai.com" class="text-sky-400 underline">QUICKFIXMUMBAI.COM</a>
+            </p>
+        </div>
 
         <!-- INTEGRATED POST-WORK CUSTOMER CLEARANCE GATEWAY -->
         <section class="bg-gradient-to-r from-slate-900 to-[#0F172A] border border-gray-800 rounded-2xl p-5 mb-4 shadow-xl">
@@ -251,32 +259,9 @@
                 </select>
 
                 <textarea id="feedText" rows="2" placeholder="Feed your valuable feedback / Pre-defined conditions..." class="w-full bg-[#0B132B] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#0066FF]"></textarea>
-
-                <button type="submit" class="w-full bg-slate-800 text-emerald-400 border border-emerald-500/30 text-xs font-bold py-2.5 rounded-xl hover:bg-slate-700 transition uppercase tracking-wider">
-                    Submit Clearance Verification
-                </button>
             </form>
         </section>
 
-    </div> <!-- MAIN APP WRAPPER END -->
-
-    <!-- DYNAMIC LIVE SIMULATION POPUP COMPONENT -->
-    <div id="liveSimulationPopup" class="p-3 flex items-start gap-3">
-        <div class="mt-0.5 text-base">⚡</div>
-        <div>
-            <div id="popupTitle" class="text-xs font-extrabold text-white tracking-wide uppercase mb-0.5">VIP Deployment Live</div>
-            <div id="popupBody" class="text-[11px] text-gray-400 leading-relaxed">System trace logic running...</div>
-        </div>
     </div>
-
-    <!-- DYNAMIC CRM CONDITIONAL RESPONSE OVERLAY POPUPS -->
-    <div id="crmModalOverlay" class="crm-modal-overlay">
-        <!-- Renders dynamically from javascript engine -->
-        <div id="crmModalContent" class="w-full max-w-sm rounded-2xl p-6 text-center shadow-2xl transition transform scale-95"></div>
-    </div>
-
-    <!-- TAILWIND PLAY CDN BACKUP SETUP -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="script.js"></script>
 </body>
 </html>
