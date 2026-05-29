@@ -2,6 +2,17 @@
  * QuickFix Mumbai - Version 5.6 Intelligent Brain
  * Part 1: Core Systems, PWA Hook, & Weekend Countdown Timer
  */
+// ==========================================================================
+// PWA OFFICIAL SERVICE WORKER REGISTRATION BRIDGE
+// ==========================================================================
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('QuickFix App Terminal: Service Worker Registered Successfully', reg.scope))
+            .catch(err => console.error('QuickFix App Terminal: Service Worker Registration Failed', err));
+    });
+}
+
 
 document.addEventListener("DOMContentLoaded", function() {
     console.log("QuickFix Mumbai Terminal: Core Engine Active");
