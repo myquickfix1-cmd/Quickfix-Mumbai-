@@ -5,16 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Best Appliance Repair Center Near Me | QuickFix Mumbai Expert Hub</title>
     <meta name="description" content="QuickFix Mumbai is India's No.1 trusted doorstep smart home appliance service center. Specialized in high-end residential towers and luxury appliance brands.">
+    
+    <!-- FIX: Tailwind CSS Play CDN Added to restore premium styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
+    
+    <style>
+        /* Custom animation for marquee ticker to keep it seamless */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            white-space: nowrap;
+            animation: marquee 25s linear infinite;
+        }
+    </style>
 </head>
 <body class="bg-[#0B132B] text-white font-sans antialiased">
 
     <!-- 1. WEEKEND EMERGENCY ALERT BAR WITH TICKING COUNTDOWN -->
-    <div class="emergency-ticker-bg text-center py-2 px-4 text-sm flex flex-wrap justify-center items-center gap-2 sticky top-0 z-50">
-        <span>⚡ PREMIUM EMERGENCY ALERT: HIGH DEMAND IN RESIDENTIAL TOWERS!</span>
+    <div class="bg-gradient-to-r from-[#FF4500] to-[#FF8C00] text-center py-2 px-4 text-sm flex flex-wrap justify-center items-center gap-2 sticky top-0 z-50 shadow-md">
+        <span class="font-bold">⚡ PREMIUM EMERGENCY ALERT: HIGH DEMAND IN RESIDENTIAL TOWERS!</span>
         <span class="font-bold">Slots closing in: 
-            <span id="countdownTimer" class="countdown-digit">03h : 00m : 00s</span>
+            <span id="countdownTimer" class="bg-black/30 px-2 py-0.5 rounded font-mono text-amber-300">03h : 00m : 00s</span>
         </span>
         <a href="#bookingFormSection" class="bg-white text-[#FF4500] px-3 py-0.5 rounded-full text-xs font-extrabold hover:bg-opacity-90 transition shadow-sm">Book Quick</a>
     </div>
@@ -45,7 +62,8 @@
         <!-- CONTINUOUS BRAND TICKER MARQUEE -->
         <div class="overflow-hidden bg-[#0F172A] border-y border-gray-800 py-3 mb-6 -mx-4">
             <div class="animate-marquee text-xs font-bold tracking-widest text-gray-500 uppercase gap-8">
-                <span>SAMSUNG</span> • <span>LG</span> • <span>BOSCH</span> • <span>DAIKIN</span> • <span>PANASONIC</span> • <span>SIEMENS</span> • <span>SAMSUNG</span> • <span>LG</span> • <span>BOSCH</span> • <span>DAIKIN</span> • <span>PANASONIC</span> • <span>SIEMENS</span>
+                <span>SAMSUNG</span> • <span>LG</span> • <span>BOSCH</span> • <span>DAIKIN</span> • <span>PANASONIC</span> • <span>SIEMENS</span> • &nbsp;
+                <span>SAMSUNG</span> • <span>LG</span> • <span>BOSCH</span> • <span>DAIKIN</span> • <span>PANASONIC</span> • <span>SIEMENS</span>
             </div>
         </div>
 
@@ -90,8 +108,8 @@
                     <span class="text-xs bg-blue-500/10 text-blue-400 font-semibold px-2.5 py-1 rounded-md">Tier I</span>
                 </div>
                 
-                <!-- PREMIUM CARD ITEM 10 WITH GLOW ENGINE -->
-                <div class="bg-[#1E293B] border border-[#0066FF]/40 rounded-xl p-4 flex items-center justify-between premium-glow">
+                <!-- PREMIUM CARD ITEM 10 WITH SHADOW GLOW -->
+                <div class="bg-[#1E293B] border border-amber-500/40 rounded-xl p-4 flex items-center justify-between shadow-[0_0_15px_rgba(245,158,11,0.15)]">
                     <div>
                         <span class="text-amber-400 font-mono text-[10px] font-bold block mb-0.5 uppercase tracking-wider">⚡ MOST EXPENSIVE & CRITICAL OFFERING</span>
                         <span class="font-bold text-sm text-white">Advanced PCB & Inverter Circuit Repair</span>
@@ -127,24 +145,19 @@
                             <option value="Bosch">Bosch</option>
                             <option value="Daikin">Daikin</option>
                             <option value="Panasonic">Panasonic</option>
-                            <option value="Other">Other Brand / Match Not Found</option>
+                            <option value="Other">Other Brand</option>
                         </select>
                     </div>
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Diagnostic Issue</label>
-                        <select id="issueSelect" required disabled class="w-full bg-[#0F172A] border border-gray-800 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#0066FF] disabled:opacity-50 transition">
-                            <option value="" disabled selected>Select Brand First</option>
+                        <select id="issueSelect" required class="w-full bg-[#0F172A] border border-gray-800 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#0066FF] transition">
+                            <option value="" disabled selected>Select Fault Type</option>
+                            <option value="No Cooling / Power Fault">No Cooling / Power Fault</option>
+                            <option value="Error Code Display">Error Code Display</option>
+                            <option value="Water Leakage / Noise Issue">Water Leakage / Noise Issue</option>
+                            <option value="PCB Circuit Burned">PCB Circuit Burned</option>
                         </select>
                     </div>
-                </div>
-
-                <!-- INTERFACE VOICE NODE BACKUP SYSTEM -->
-                <div id="voiceNodeBlock" class="hidden bg-red-500/10 border border-red-500/20 rounded-xl p-3 text-center transition">
-                    <div class="flex items-center justify-center gap-2 mb-1">
-                        <span class="mic-active-dot"></span>
-                        <span class="text-xs font-bold text-red-400 uppercase tracking-wider">Interface Voice Node Active</span>
-                    </div>
-                    <p class="text-[11px] text-gray-400">Please explain your custom appliance fault details directly into your mobile microphone device.</p>
                 </div>
 
                 <div>
@@ -200,31 +213,16 @@
                     <p class="text-gray-500 font-mono text-[10px] uppercase mb-1">📍 Lodha World Towers, Lower Parel</p>
                     <p class="text-xs text-gray-300">"The corporate team arrived within 40 minutes for my Bosch wine-cooler circuit repair. Absolute professionalism."</p>
                 </div>
-                <div class="bg-[#1E293B]/40 border border-gray-800 rounded-xl p-4">
-                    <div class="flex justify-between items-center mb-1">
-                        <span class="font-bold text-xs text-white">Meera Joshi</span>
-                        <span class="text-amber-400 text-xs">⭐⭐⭐⭐⭐</span>
-                    </div>
-                    <p class="text-gray-500 font-mono text-[10px] uppercase mb-1">📍 Raheja Artesia, Worli</p>
-                    <p class="text-xs text-gray-300">"Excellent service handling a dual cooling inverter refrigerator PCB fault. Transparent billing parameters."</p>
-                </div>
             </div>
         </section>
 
-        <!-- ==========================================================================
-             QUICKFIX MUMBAI INTERBANK MAPPING SECTION (PNB SECURE GATEWAY)
-             ========================================================================== -->
+        <!-- PNB SECURE GATEWAY MAPPING -->
         <div class="bg-[#1E293B]/40 border border-gray-800 rounded-2xl p-6 text-center my-6">
             <h3 class="text-sky-400 font-bold text-sm uppercase tracking-wider mb-4">QUICKFIX MUMBAI INTERBANK MAPPING</h3>
-            
-            <!-- PNB TRUST LINE FOR ELITE CUSTOMERS -->
             <p class="text-[10px] text-gray-400 uppercase tracking-wide mb-3">🏦 Secured via Punjab National Bank Gateway</p>
-            
             <div class="flex justify-center my-4">
-                <!-- REAL UPI QR CODE IMAGE LINK -->
                 <img src="YOUR_PNB_QR_CODE_IMAGE_URL.png" alt="PNB UPI Central QR" class="w-48 h-48 rounded-xl border-4 border-slate-800 p-2 bg-white" />
             </div>
-
             <p class="text-[10px] text-gray-500 uppercase tracking-wider">
                 STRICT VERIFIED DISPLAY GATEWAY:<br>
                 <span class="text-white font-bold">QUICKFIX_MUMBAI</span> | <a href="https://quickfixmumbai.com" class="text-sky-400 underline">QUICKFIXMUMBAI.COM</a>
@@ -241,23 +239,19 @@
                     <input type="text" id="feedName" required placeholder="Customer Name" class="w-full bg-[#0B132B] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#0066FF]">
                     <input type="text" id="feedTower" required placeholder="Tower / Location Name" class="w-full bg-[#0B132B] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#0066FF]">
                 </div>
-                
                 <div class="grid grid-cols-2 gap-2">
                     <select id="feedBehave" required class="w-full bg-[#0B132B] border border-gray-800 rounded-xl px-2 py-2 text-xs text-white focus:outline-none focus:border-[#0066FF]">
                         <option value="" disabled selected>Serviceman Behavior</option>
                         <option value="Excellent">Excellent & Professional</option>
                         <option value="Good">Good & Courteous</option>
-                        <option value="Average">Average / Standard</option>
                     </select>
-                    <input type="number" id="feedAmount" required placeholder="Paisa Kitna Diya? (Amount)" class="w-full bg-[#0B132B] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#0066FF]">
+                    <input type="number" id="feedAmount" required placeholder="Amount Paid" class="w-full bg-[#0B132B] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#0066FF]">
                 </div>
-
                 <select id="feedSatisfaction" required class="w-full bg-[#0B132B] border border-gray-800 rounded-xl px-2 py-2 text-xs text-white focus:outline-none focus:border-[#0066FF]">
                     <option value="" disabled selected>Kya Quickfix Ki Service Se Aap Khush Hain?</option>
                     <option value="Yes">Yes, Extremely Satisfied</option>
                     <option value="No">No, Facing Issues</option>
                 </select>
-
                 <textarea id="feedText" rows="2" placeholder="Feed your valuable feedback / Pre-defined conditions..." class="w-full bg-[#0B132B] border border-gray-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#0066FF]"></textarea>
             </form>
         </section>
