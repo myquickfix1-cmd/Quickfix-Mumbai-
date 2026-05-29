@@ -3,233 +3,393 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>QuickFix Mumbai - Elite Appliance Repair</title>
+    <title>Best Appliance Repair Center Near Me | QuickFix Mumbai Expert Hub</title>
+    <meta name="description" content="QuickFix Mumbai is India's No.1 trusted doorstep smart home appliance service center.">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        premiumGold: '#D4AF37',
+                        premiumDark: '#0B132B',
+                        quickBlue: '#0066FF'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        @keyframes pulse-border {
+            0%, 100% { border-color: rgba(0, 102, 255, 0.4); }
+            50% { border-color: rgba(212, 175, 55, 1); }
         }
-        body {
-            background-color: #f8fafc;
-            color: #0f172a;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .master-container {
-            width: 100%;
-            max-width: 1200px;
-            background-color: #ffffff;
-            border: 2px dashed #10b981;
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-        }
-
-        .main-title {
-            color: #047857;
-            text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-            font-weight: 800;
-        }
-        .subtitle {
-            text-align: center;
-            font-style: italic;
-            color: #475569;
-            font-size: 0.95rem;
-            margin-bottom: 25px;
-        }
-
-        .badge-premium {
-            background-color: #0f172a;
-            color: #f8fafc;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .badge-premium span {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #34d399;
-            letter-spacing: 1px;
-            display: block;
-            margin-bottom: 5px;
-        }
-        .badge-emergency {
-            background-color: #ef4444;
-            color: white;
-            padding: 14px;
-            border-radius: 10px;
-            margin: 20px 0;
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 10px rgba(239, 68, 68, 0.2);
-        }
-
-        .forms-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-        .box-emergency {
-            border: 1.5px solid #fca5a5;
-            padding: 20px;
-            border-radius: 12px;
-            background-color: #fff5f5;
-        }
-        .box-booking {
-            border: 1.5px solid #93c5fd;
-            padding: 20px;
-            border-radius: 12px;
-            background-color: #eff6ff;
-        }
-        .box-title-red { color: #dc2626; font-size: 1.1rem; margin-bottom: 10px; display: block; }
-        .box-title-blue { color: #2563eb; font-size: 1.1rem; margin-bottom: 10px; display: block; }
-
-        .section-heading {
-            color: #1e293b;
-            font-size: 1.2rem;
-            border-left: 4px solid #10b981;
-            padding-left: 10px;
-            margin: 25px 0 12px 0;
-        }
-
-        ul {
-            list-style-type: none;
-            padding-left: 5px;
-        }
-        li {
-            margin-bottom: 10px;
-            position: relative;
-            padding-left: 20px;
-            font-size: 0.98rem;
-        }
-        li::before {
-            content: "•";
-            color: #10b981;
-            font-weight: bold;
-            font-size: 1.2rem;
-            position: absolute;
-            left: 0;
-            top: -2px;
-        }
-
-        .highlight-yellow {
-            background-color: #fef08a;
-            padding: 4px 8px;
-            font-weight: bold;
-            border-radius: 4px;
-            color: #854d0e;
-        }
-        .phone-link {
-            color: #059669;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        @media (max-width: 768px) {
-            .forms-wrapper {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            .main-title {
-                font-size: 1.5rem;
-            }
-            .badge-premium span {
-                font-size: 1.1rem;
-            }
+        .premium-glow {
+            animation: pulse-border 3s infinite;
         }
     </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-900 font-sans antialiased selection:bg-blue-500 selection:text-white">
 
-    <div class="master-container" contenteditable="true">
-        
-        <h1 class="main-title">💎 QuickFix Mumbai - Elite Responsive Blueprint</h1>
-        <p class="subtitle">[Optimized for Mobile, Tab & Laptop | Target: Western Mumbai Elite Areas]</p>
-
-        <!-- STICKY WORDS 1: ESSENTIAL & EXPERT SERVICE -->
-        <div class="badge-premium">
-            <span>⭐ 1. ESSENTIAL & EXPERT SERVICE</span>
-            <p style="margin: 0; font-size: 0.95rem; color: #94a3b8;">Mumbai's Premium Doorstep Engineering Hub for High-End Luxury Appliances.</p>
-        </div>
-
-        <h3 class="section-heading">📍 SECTION A: Hero & Branding (First 3-Second Retention)</h3>
-        <ul>
-            <li><strong>Premium Greeting:</strong> "Welcome to Quickfix Mumbai - India's Most Trusted & Beloved Revolutionising Online Doorstep Service Center."</li>
-            <li><strong>Core Identity & Legacy:</strong> "QuickFix Mumbai is a Best, Expert, Quickly, Advance Service and Repairing service center Since 2010. Powered by 15+ Years of Industry Excellence and 50+ Corporate Expert Technicians."</li>
-            <li><strong>Social Proof Metric:</strong> "A lot of Thanks to our 3,85,019+ Trusted Families."</li>
-            <li><strong>Premium Grid Portfolio:</strong> Smart Refrigerators, Washing Machines, Microwave Ovens, Premium Air Dresser, High-Capacity Air Dryer, Advanced Dishwasher, AC, Inverter & Normal PCB Repair.</li>
-        </ul>
-
-        <!-- STICKY WORDS 2: CREATED PROBLEMS SHUTOUT QUICKLY -->
-        <div class="badge-emergency">
-            ⚡ 2. CREATED PROBLEMS SHUTOUT QUICKLY — 24/7 RAPID DISPATCH
-        </div>
-
-        <h3 class="section-heading">📍 SECTION B: Adaptive Booking Systems (Separated Interfaces)</h3>
-        <div class="forms-wrapper">
-            <div class="box-emergency">
-                <strong class="box-title-red">🚨 4. DIGITAL EMERGENCY SELECTOR BOX</strong>
-                <p style="font-size: 0.9rem; margin-bottom: 8px; color: #7f1d1d;">- [Machine Type] | [Select Item] | [Select Timing]</p>
-                <p style="font-size: 0.95rem; font-weight: bold;">- Action: "Launch Immediate 45-min Dispatch"</p>
-                <p style="font-size: 0.9rem; margin-top: 5px; color: #991b1b;">- Fee: ₹199 Pre-payment System for VIP Priority.</p>
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl font-black tracking-tight text-gray-900">
+                    QuickFix<span class="text-quickBlue">Mumbai</span>
+                </span>
             </div>
+            <nav class="hidden md:flex space-x-6 text-sm font-semibold text-gray-600">
+                <a href="#services" class="hover:text-quickBlue transition">Our Services</a>
+                <a href="#booking" class="hover:text-quickBlue transition">Book Slot</a>
+                <a href="#urgency" class="text-red-500 hover:text-red-600 transition flex items-center gap-1">⚡ Emergency Fix</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PROMOTIONAL BANNER -->
+    <section class="bg-gradient-to-r from-amber-500 to-orange-600 text-white text-center py-2.5 px-4 text-xs md:text-sm font-bold tracking-wide shadow-inner">
+        Planning for the Weekend? Pre-Book Your Sunday Maintenance Slot & Save 20%! Slots Available: <span class="bg-white text-orange-600 px-1.5 py-0.5 rounded font-extrabold animate-pulse">12 / 100 Left</span>
+    </section>
+
+    <!-- HERO SECTION -->
+    <section class="relative bg-premiumDark text-white pt-16 pb-20 px-4 overflow-hidden text-center">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-blue-900/40 via-premiumDark to-premiumDark pointer-events-none"></div>
+        <div class="relative max-w-4xl mx-auto z-10">
+            <span class="inline-block bg-blue-500/10 border border-blue-400/30 text-blue-400 text-xs uppercase tracking-widest px-3 py-1 rounded-full font-bold mb-4">
+                Elite Home Appliance Service & Engineering Hub
+            </span>
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-6 leading-tight">
+                Serving Mumbai’s Finest Residential Towers Since 2010
+            </h1>
+            <p class="text-gray-400 text-base md:text-xl max-w-2xl mx-auto mb-10 font-medium leading-relaxed">
+                Specialize in hyper-complex circuit overhauls, high-capacity inverter setups, and luxury systems.
+            </p>
             
-            <!-- Calendar Symbol Removed From Here -->
-            <div class="box-booking">
-                <strong class="box-title-blue">5. STANDARD CUSTOMER BOOKING FORM</strong>
-                <p style="font-size: 0.95rem; font-weight: bold;">- Action: Complete in 2-3 Clicks [Booked Now]</p>
-                <p style="font-size: 0.9rem; margin-top: 5px; color: #1e40af;">- Fee: ₹99 Service Visit Charge (Applicable on every item).</p>
+            <!-- TRUST METRICS -->
+            <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mb-8 shadow-2xl">
+                <div class="text-center">
+                    <p class="text-2xl md:text-3xl font-extrabold text-white">4.9/5</p>
+                    <p class="text-[11px] uppercase tracking-wider text-amber-400 font-bold mt-1">★★★★★ Rating</p>
+                    <p class="text-[10px] text-gray-400 mt-0.5">14,280+ Reviews</p>
+                </div>
+                <div class="text-center border-l border-white/10">
+                    <p class="text-2xl md:text-3xl font-extrabold text-white">15+ Years</p>
+                    <p class="text-[11px] uppercase tracking-wider text-gray-400 font-bold mt-1">Excellence</p>
+                </div>
+                <div class="text-center border-l border-white/10">
+                    <p class="text-2xl md:text-3xl font-extrabold text-white">50+</p>
+                    <p class="text-[11px] uppercase tracking-wider text-gray-400 font-bold mt-1">Corporate Engineers</p>
+                </div>
+                <div class="text-center border-l border-white/10">
+                    <p class="text-2xl md:text-3xl font-extrabold text-white">3,85,019+</p>
+                    <p class="text-[11px] uppercase tracking-wider text-gray-400 font-bold mt-1">VIP Families</p>
+                </div>
+            </div>
+
+            <!-- PWA APP INSTALL BANNER -->
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-xl p-4 max-w-xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 border border-blue-400/20 shadow-lg">
+                <div class="text-left">
+                    <h4 class="text-sm font-bold text-white">Install QuickFix App</h4>
+                    <p class="text-xs text-blue-100">Get 1-Click Priority Doorstep Booking from your Home Screen</p>
+                </div>
+                <button class="bg-white text-blue-700 text-xs font-bold px-4 py-2 rounded-lg hover:bg-blue-50 transition shadow-md whitespace-nowrap">
+                    Install App
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE SERVICES SECTION -->
+    <section id="services" class="max-w-6xl mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Select Your Elite Appliance Class</h2>
+            <p class="text-gray-500 text-sm mt-2">Direct deployment engine attached to every terminal card</p>
+        </div>
+
+        <!-- 2x2 Grid Layout for Core Services -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-10">
+            <!-- REFRIGERATOR -->
+            <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold text-gray-400 tracking-wider uppercase">REF</span>
+                        <span class="text-xs font-bold bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full">⭐ 4.9 (3.4k)</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Smart Inverter Refrigerator</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">Gas charging circuits, variable compressors, luxury multi-door sensors diagnostics.</p>
+                </div>
+                <button class="w-full bg-gray-900 text-white text-xs font-bold py-3 rounded-xl hover:bg-gray-800 transition">Quick Book Now</button>
+            </div>
+
+            <!-- HVAC / AC -->
+            <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold text-gray-400 tracking-wider uppercase">HVAC</span>
+                        <span class="text-xs font-bold bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full">⭐ 4.8 (4.1k)</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Luxury Split AC System</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">High-pressure jet hydro cleaning, digital PCB troubleshooting, multi-split modular load tests.</p>
+                </div>
+                <button class="w-full bg-gray-900 text-white text-xs font-bold py-3 rounded-xl hover:bg-gray-800 transition">Quick Book Now</button>
+            </div>
+
+            <!-- WASHING MACHINE & DRYER -->
+            <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold text-gray-400 tracking-wider uppercase">WASH</span>
+                        <span class="text-xs font-bold bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full">⭐ 4.9 (3.9k)</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Washing Machine & Dryer</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">Front load direct drive diagnostics, multi-tub alignment, thermodynamic cycle calibration.</p>
+                </div>
+                <button class="w-full bg-gray-900 text-white text-xs font-bold py-3 rounded-xl hover:bg-gray-800 transition">Quick Book Now</button>
+            </div>
+
+            <!-- DISHWASHER & OVEN -->
+            <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold text-gray-400 tracking-wider uppercase">KIT</span>
+                        <span class="text-xs font-bold bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full">⭐ 4.7 (2.8k)</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Dishwasher & Oven Hub</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">Premium integrated dishwasher internal logic systems, convection magnetron diagnostics.</p>
+                </div>
+                <button class="w-full bg-gray-900 text-white text-xs font-bold py-3 rounded-xl hover:bg-gray-800 transition">Quick Book Now</button>
             </div>
         </div>
 
-        <h3 class="section-heading">📍 SECTION C: Advanced Bookings & Urgency Engine</h3>
-        <ul>
-            <!-- Calendar Symbol Removed From Here As Well -->
-            <li><strong>Weekend Surge Management:</strong> <span class="highlight-yellow">Advance Booking Live on Friday</span> (Specially optimized for Sunday home maintenance appointments).</li>
-            <li><strong>Dynamic Urgency Indicators:</strong> 
-                <br>- "Slots Left: Only 20 bookings remaining out of 200!"
-                <br>- "Slots Left: Only 15 bookings remaining out of 100!"
-            </li>
-            <li><strong>Advanced Countdown Discount Logic:</strong>
-                <br>- Booking Confirmed 3 Days Prior ➡️ <strong>Mega Offer 20% Discount</strong>
-                <br>- Booking Confirmed 2 Days Prior ➡️ <strong>15% Premium Discount</strong>
-                <br>- Booking Confirmed 1 Day Prior ➡️ <strong>10% Express Discount</strong>
-            </li>
-            <li><strong>Live Availability Condition:</strong> Booking slots status always displays "99% Full" to trigger instant response.</li>
-        </ul>
+        <!-- 🌟 THE CROWN JEWEL: HIGHLIGHTED PREMIUM PCB SECTION 🌟 -->
+        <div class="max-w-4xl mx-auto mt-8">
+            <div class="premium-glow relative bg-gradient-to-br from-slate-900 via-premiumDark to-blue-950 text-white border-2 rounded-2xl p-8 shadow-2xl overflow-hidden group">
+                <div class="absolute top-0 right-0 bg-gradient-to-l from-premiumGold to-amber-500 text-slate-950 text-[10px] uppercase tracking-widest font-extrabold px-4 py-1.5 rounded-bl-xl shadow-md">
+                    Most Premium Service
+                </div>
+                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all duration-500"></div>
+                
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
+                    <div class="max-w-xl">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs font-bold bg-blue-500/20 text-blue-400 px-2.5 py-1 rounded-md tracking-wider uppercase border border-blue-500/30">CIRCUITS</span>
+                            <span class="text-xs font-bold text-premiumGold flex items-center gap-1">⚡ Critical Node Masterclass</span>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-black text-white tracking-tight mb-3">
+                            Advanced PCB & Inverter Circuit Repair
+                        </h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            The heart and brain of your smart appliances. Expert micro-soldering, component-level troubleshooting, and genuine inverter board programming.
+                        </p>
+                    </div>
+                    <div class="flex-shrink-0 w-full md:w-auto">
+                        <button class="w-full md:w-auto bg-gradient-to-r from-premiumGold to-amber-500 hover:from-amber-500 hover:to-premiumGold text-slate-950 font-black text-xs uppercase tracking-wider px-8 py-4 rounded-xl shadow-lg hover:scale-[1.02] transition duration-300 whitespace-nowrap">
+                            Book Premium Restoration
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <h3 class="section-heading">📍 SECTION D: Warranties & Posh Society Promises</h3>
-        <ul>
-            <li><strong>6 Months Comprehensive Warranty:</strong> Full assurance with absolute free revisit if the exact problem reoccurs.</li>
-            <li><strong>100% Genuine Certified Spare Parts:</strong> Trusted and preferred by 89,281+ premium homeowners.</li>
-            <li><strong>Transparent Pricing Structure:</strong> Strictly zero hidden costs. Upfront billing pattern liked by 10,759+ residents.</li>
-            <li><strong>50+ Top-Tier Co. Certified Experts:</strong> Thoroughly background-verified corporate specialists suitable for elite gated complexes.</li>
-        </ul>
+    <!-- URGENCY DISPATCH PROTOCOLS -->
+    <section id="urgency" class="bg-gray-100 py-16 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-xs font-bold text-red-600 bg-red-50 px-2.5 py-1 rounded-full uppercase tracking-wider">High Urgency Protocols</span>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mt-2">Critical Breakdown Dispatch Systems</h2>
+                <p class="text-gray-500 text-sm mt-1">Bypass typical queue wait times. Automated priority vehicle positioning tracks for instantaneous Mumbai responses.</p>
+            </div>
 
-        <h3 class="section-heading">📍 SECTION E: Live Channels & Control Checklist</h3>
-        <ul>
-            <li><strong>Live Stream Activity Popups:</strong> Real-time interactive ticker alerts: <em>"2, 5, 10, or 15 mins ago a premium customer booked a smart Refrigerator service in Juhu..."</em></li>
-            <li><strong>Verified Live Feed System:</strong> "(Minimum 79,201 People Live) Leave a Suggestion" ➡️ Live verified user feedback stream.</li>
-            <li><strong>Instant CTA Channels:</strong>
-                <br>- Primary Line & WhatsApp: <a href="tel:+919819832282" class="phone-link">+91 98198 32282</a>
-                <br>- Corporate Secondary Line: <a href="tel:+919930249182" class="phone-link">+91 9930249182</a>
-            </li>
-            <li><strong>Payment Gateways:</strong> Cash | Google Pay | PhonePe | Paytm / Premium Credit Cards. Dedicated static QR layout config.</li>
-            <li><strong>Operations Management:</strong> Centralized Business Admin Dashboard to handle cross-platform lead flows.</li>
-            <li><strong>App Optimization:</strong> Integrated PWA (Progressive Web App) architecture for offline support and persistent device icons.</li>
-        </ul>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- JET SPEED VIP -->
+                <div class="bg-white border-2 border-red-500 rounded-2xl p-6 shadow-md relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-red-500 text-white text-[9px] font-bold px-3 py-1 uppercase tracking-wider rounded-bl-lg">👑 JET-SPEED VIP DISPATCH</div>
+                    <h3 class="text-lg font-black text-gray-900">45-Min Express</h3>
+                    <p class="text-2xl font-extrabold text-red-600 mt-1">₹499</p>
+                    <ul class="text-xs text-gray-600 space-y-2 mt-4 mb-6 font-medium">
+                        <li class="flex items-center gap-2 text-green-600">✓ Guaranteed Arrival within 45 Mins</li>
+                        <li class="flex items-center gap-2">✓ Senior Corporate Engineer Fleet Route</li>
+                        <li class="flex items-center gap-2">✓ Engineered for Live Events, Server Rooms</li>
+                        <li class="flex items-center gap-2 text-gray-400">✓ Fully Refundable / bill adjustment tracking</li>
+                    </ul>
+                    <button class="w-full bg-red-600 text-white text-xs font-bold py-3 rounded-xl hover:bg-red-700 transition">Launch 45-Min VIP Team</button>
+                </div>
 
-    </div>
+                <!-- SAME DAY FAST TRACK -->
+                <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+                    <div class="text-xs font-bold text-gray-400 tracking-wider uppercase">⚡ SAME-DAY FAST TRACK</div>
+                    <h3 class="text-lg font-black text-gray-900 mt-1">1:30 Hr Response</h3>
+                    <p class="text-2xl font-extrabold text-gray-900 mt-1">₹199</p>
+                    <ul class="text-xs text-gray-600 space-y-2 mt-4 mb-6 font-medium">
+                        <li class="flex items-center gap-2 text-gray-900">✓ Dispatch window guaranteed inside 90m</li>
+                        <li class="flex items-center gap-2">✓ Certified Specialist Technical Team Assignment</li>
+                        <li class="flex items-center gap-2">✓ Engineered for standard household faults</li>
+                        <li class="flex items-center gap-2 text-gray-400">✓ Real-time active traffic routing matrix</li>
+                    </ul>
+                    <button class="w-full bg-gray-900 text-white text-xs font-bold py-3 rounded-xl hover:bg-gray-800 transition">Launch 90-Min Fleet</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECURE RESERVATION ENGINE / BOOKING FORM -->
+    <section id="booking" class="max-w-3xl mx-auto px-4 py-16">
+        <div class="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-xl">
+            <div class="text-center mb-6">
+                <h2 class="text-xl font-bold text-gray-900">📞 Book / Order Securely Via Direct Call</h2>
+                <p class="text-xs text-gray-500 max-w-md mx-auto mt-1.5 leading-relaxed">
+                    Premium Call Verification: <span class="font-bold text-gray-900">₹49 Only.</span> (This token amount is 100% Adjusted/Discounted inside your final workspace invoice bill summary when you show the verification call details/screenshot log to our physical engineering specialist during execution).
+                </p>
+                <div class="h-px bg-gray-100 my-4"></div>
+                <h3 class="text-sm font-bold text-quickBlue uppercase tracking-wider">Schedule Dedicated Technical Visit</h3>
+                <p class="text-[11px] text-gray-400">Live dynamic price configuration engine active below</p>
+            </div>
+
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Mobile Number (VIP Verification)</label>
+                    <input type="tel" placeholder="Enter 10-digit mobile number" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-quickBlue transition">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Location / Society Domain</label>
+                    <input type="text" placeholder="e.g. Pali Hill, Juhu Scheme, Lokhandwala" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-quickBlue transition">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Preferred Visit Time Slot</label>
+                        <select class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-quickBlue transition">
+                            <!-- UPDATED BUSINESS OPERATING HOURS FROM 9 AM - 12 AM -->
+                            <option>Morning (09:00 AM - 12:00 PM)</option>
+                            <option>Afternoon (12:00 PM - 04:00 PM)</option>
+                            <option>Evening (04:00 PM - 08:00 PM)</option>
+                            <option>Late Night (08:00 PM - 12:00 AM)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Target Engineering Date</label>
+                        <input type="date" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-quickBlue transition">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Select Primary Issue Symptom</label>
+                    <select class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-quickBlue transition">
+                        <option>Complete System Dead Breakdown</option>
+                        <option>PCB Fault / Error Code Display</option>
+                        <option>Cooling / Heating Inefficiency</option>
+                        <option>Unusual Structural Noise</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 tracking-wider uppercase mb-1">Describe Custom Issue / Voice Record</label>
+                    <div class="relative">
+                        <textarea rows="3" placeholder="Type specific problem metrics here..." class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-quickBlue transition pr-10"></textarea>
+                        <button type="button" class="absolute right-3 bottom-3 text-gray-400 hover:text-red-500 transition">
+                            🎤
+                        </button>
+                    </div>
+                    <span class="text-[10px] text-red-500 font-semibold block mt-1 animate-pulse">Recording system active... speak now</span>
+                </div>
+
+                <!-- DYNAMIC PRICING AND SUBMIT -->
+                <div class="bg-gray-50 rounded-xl p-4 border border-gray-100 text-xs font-medium text-gray-600 space-y-1.5">
+                    <div class="flex justify-between"><span>Standard Diagnostic Registration Token:</span><span>Subtotal: ₹99</span></div>
+                    <div class="flex justify-between text-green-600"><span>Advance Booking Reward Modifier:</span><span>-0% Applied</span></div>
+                    <div class="h-px bg-gray-200 my-1"></div>
+                    <div class="flex justify-between text-sm font-bold text-gray-900"><span>Total Locked Registration Fee:</span><span>₹99</span></div>
+                </div>
+
+                <button type="button" class="w-full bg-quickBlue hover:bg-blue-700 text-white font-bold text-sm py-4 rounded-xl shadow-lg transition">
+                    Confirm Premium Dispatch Reservation
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- BANK ACCOUNT TERMINAL MAPPING & GATEWAY -->
+    <section class="max-w-md mx-auto px-4 pb-16">
+        <div class="bg-slate-900 text-white rounded-2xl p-6 shadow-2xl border border-slate-800 text-center">
+            <div class="text-[10px] text-emerald-400 tracking-widest font-bold uppercase mb-1">Secure Bank Account Terminal Mapping</div>
+            <div class="text-xs text-gray-400 font-medium mb-4">PNB-9181 LINKED</div>
+            
+            <div class="flex items-center justify-center gap-3 mb-6 bg-white/5 py-3 rounded-xl border border-white/5">
+                <div class="w-10 h-10 bg-quickBlue rounded-lg flex items-center justify-center text-sm font-black text-white">QF</div>
+                <div class="text-left">
+                    <p class="text-[11px] uppercase tracking-wider text-gray-400 font-bold">Payee</p>
+                    <p class="text-sm font-bold text-white">QuickFix Mumbai</p>
+                </div>
+            </div>
+
+            <p class="text-xs text-gray-400 mb-3">Select Preferred Core Banking Interface</p>
+            <div class="grid grid-cols-3 gap-3 mb-4">
+                <button class="bg-white/5 hover:bg-white/10 py-2.5 rounded-xl font-bold text-xs border border-white/10 transition">GPay</button>
+                <button class="bg-white/5 hover:bg-white/10 py-2.5 rounded-xl font-bold text-xs border border-white/10 transition">PhonePe</button>
+                <button class="bg-white/5 hover:bg-white/10 py-2.5 rounded-xl font-bold text-xs border border-white/10 transition">Paytm</button>
+            </div>
+            <button class="text-xs text-red-400 hover:text-red-300 font-semibold transition">Cancel Secure Loop</button>
+        </div>
+
+        <!-- TRANSACTION SUCCESS STATE -->
+        <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 mt-6 text-center shadow-sm">
+            <div class="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-2">✓</div>
+            <h4 class="text-sm font-bold text-emerald-900">VIP Reservation Confirmed</h4>
+            <p class="text-[11px] text-emerald-700 mt-0.5">Secure background routing logs transmitted successfully. Tracking dispatch modules operational.</p>
+        </div>
+    </section>
+
+    <!-- POST-WORK CLIENT REVIEW MODULE -->
+    <section class="max-w-2xl mx-auto px-4 pb-16">
+        <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-md">
+            <h3 class="text-sm font-bold text-gray-900 uppercase tracking-wider mb-1 text-center">Client Quality Review Metrics (After Work)</h3>
+            <p class="text-center text-xs text-gray-400 mb-4">Work Performance Rating: <span class="text-amber-500">★ ★ ★ ★ ★</span></p>
+            
+            <div class="space-y-4 text-xs font-semibold text-gray-700">
+                <div>
+                    <label class="block mb-1">1. Apka kam kaisa hua? (Engineering Evaluation)</label>
+                    <input type="text" placeholder="Excellent / Satisfactory / Issues observed" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-xs font-normal focus:outline-none">
+                </div>
+                <div>
+                    <label class="block mb-1">2. Apne paise kitne diye aur kaise diye?</label>
+                    <input type="text" placeholder="e.g. ₹1500 via PNB QR / Cash to technician" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-xs font-normal focus:outline-none">
+                </div>
+                <div>
+                    <label class="block mb-1">3. Max Satisfied: Kya aap hamari service se happy hain?</label>
+                    <input type="text" placeholder="Yes, 100% Satisfied / Bohot Happy Hain" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-xs font-normal focus:outline-none">
+                </div>
+            </div>
+            <button class="w-full bg-gray-900 text-white text-xs font-bold py-3.5 rounded-xl mt-5 hover:bg-gray-800 transition">Log Verification Review</button>
+        </div>
+    </section>
+
+    <!-- GENERAL SUGGESTION FEEDBACK MATRIX -->
+    <section class="max-w-xl mx-auto px-4 pb-20">
+        <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+            <h3 class="text-sm font-bold text-gray-900 uppercase tracking-wider text-center mb-1">Share Your Feedback & Suggestions</h3>
+            <p class="text-center text-xs text-gray-400 mb-4">Help us improve our premium delivery matrix</p>
+            
+            <form class="space-y-3">
+                <div class="text-center text-sm text-amber-500 font-bold mb-2">Your Rating: ★ ★ ★ ★ ★</div>
+                <input type="text" placeholder="Your Name" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none">
+                <input type="text" placeholder="Contact (Optional)" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none">
+                <textarea rows="3" placeholder="What did you like? What was bad? What needs improvement? Suggest anything here..." class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-xs focus:outline-none"></textarea>
+                <button type="button" class="w-full bg-quickBlue text-white text-xs font-bold py-3 rounded-xl transition">Submit General Evaluation</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-premiumDark text-gray-400 text-xs py-8 px-4 border-t border-white/5">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <p>© 2026 Quickfix Service & Repair. All Rights Reserved. <br class="sm:hidden"><span class="text-gray-500">Operational Coverages: Western Mumbai Suburbs Matrix.</span></p>
+            <div class="flex gap-4 text-[11px] font-bold text-gray-500">
+                <a href="#" class="hover:text-white transition">Admin Console</a>
+                <span>•</span>
+                <a href="#" class="hover:text-white transition">Engineer Terminal</a>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
