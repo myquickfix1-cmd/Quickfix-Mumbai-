@@ -1,9 +1,59 @@
 /**
- * QuickFix Mumbai - Version 5.6 Core Stylesheet
- * Custom Marquee Track & Premium UI Glow Systems
+ * QuickFix Mumbai - Version 5.6 Elite CSS Engine
+ * Custom Ticker, Live Popups, Dynamic CRM Glassmorphism Styles
  */
 
-/* 1. Multi-Brand Continuous Marquee Loop Animation */
+/* ==========================================================================
+   1. TOP EMERGENCY TICKER BAR & COUNTDOWN VISUALS
+   ========================================================================== */
+.emergency-ticker-bg {
+    background: linear-gradient(90deg, #FF4500 0%, #FF8C00 100%);
+    color: #FFFFFF;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3);
+}
+
+.countdown-digit {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   2. LIVE ACTIVITY POPUP ENGINE (MUMBAI ELITE TOWERS SIMULATION)
+   ========================================================================== */
+#liveSimulationPopup {
+    position: fixed;
+    bottom: -100px; /* Hidden state by default */
+    left: 20px;
+    right: 20px;
+    max-width: 420px;
+    background: rgba(11, 19, 43, 0.95);
+    border-left: 4px solid #0066FF;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+}
+
+#liveSimulationPopup.popup-active {
+    bottom: 20px; /* Slide in up from bottom */
+    opacity: 1;
+}
+
+@media (min-width: 640px) {
+    #liveSimulationPopup {
+        right: auto; /* Desktop layout left corner fix */
+    }
+}
+
+/* ==========================================================================
+   3. MULTI-BRAND CONTINUOUS MARQUEE LOOP
+   ========================================================================== */
 @keyframes marquee {
     0% { transform: translateX(0%); }
     100% { transform: translateX(-50%); }
@@ -15,7 +65,9 @@
     animation: marquee 25s linear infinite;
 }
 
-/* 2. Item 10 Advanced PCB Premium Card Pulse Effect */
+/* ==========================================================================
+   4. ITEM 10 ADVANCED PCB CIRCUIT CARD GLOW EFFECT (PREMIUM offering)
+   ========================================================================== */
 @keyframes pulse-glow {
     0%, 100% { 
         border-color: rgba(0, 102, 255, 0.4); 
@@ -23,10 +75,81 @@
     }
     50% { 
         border-color: rgba(212, 175, 55, 1); 
-        box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); 
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); 
     }
 }
 
 .premium-glow {
     animation: pulse-glow 3s infinite;
+    border: 2px solid transparent;
+}
+
+/* ==========================================================================
+   5. VOICE NODE SYSTEM BLINKING MIC EFFECT
+   ========================================================================== */
+@keyframes mic-pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.mic-active-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #EF4444;
+    border-radius: 50%;
+    display: inline-block;
+    animation: mic-pulse 2s infinite;
+}
+
+/* ==========================================================================
+   6. SECURE CUSTOM QR GRID & CALL PROTECT LABELS
+   ========================================================================== */
+.secure-payment-card {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(30, 41, 59, 0.5);
+    border-radius: 12px;
+}
+
+.secure-label-flash {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    font-weight: 800;
+    color: #38BDF8;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   7. POST-WORK CRM POPUP GATEWAY (HAPPY VS BAD INTERFACES)
+   ========================================================================== */
+.crm-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.crm-modal-overlay.modal-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.warranty-gold-card {
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 2px solid #D4AF37;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+}
+
+.apology-red-card {
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 2px solid #EF4444;
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.2);
 }
