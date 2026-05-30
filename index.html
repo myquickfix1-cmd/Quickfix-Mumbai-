@@ -65,6 +65,43 @@
         <p class="text-blue-400 text-sm font-medium italic">"It's broken, consider it fixed!"</p>
     </div>
 
+                <button onclick="sendDirectWhatsApp(2)" class="bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#25D366] text-[11px] font-bold py-2 px-3 rounded-xl border border-[#25D366]/30 text-center transition">
+                    🟢 Dispatch Line 2
+                </button>
+            </div>
+        </section>
+
+        <footer class="text-center py-6 border-t border-gray-800">
+            <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">© 2026 QuickFix Mumbai Engineering Fleet</p>
+            <p class="text-[9px] text-gray-600 mt-1">Authorized Smart Appliance Specialists</p>
+        </footer>
+    </div>
+
+    <script>
+        function executeDualRoutingWhatsApp(event) {
+            event.preventDefault();
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const brand = document.getElementById('brandSelect').value;
+            const issue = document.getElementById('issueSelect').value;
+            const tower = document.getElementById('towerInstructions').value;
+            const tier = document.querySelector('input[name="dispatchTier"]:checked').value;
+            
+            const message = `*QuickFix Mumbai: New Lead Dispatch*%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Brand:* ${brand}%0A*Issue:* ${issue}%0A*Tower Protocols:* ${tower}%0A*Priority:* ${tier}`;
+            window.location.href = `https://wa.me/919819832282?text=${message}`;
+        }
+
+        function sendDirectWhatsApp(line) {
+            const message = "Hello QuickFix Mumbai, I need urgent appliance repair service.";
+            window.location.href = `https://wa.me/919819832282?text=${message}`;
+        }
+        
+        function triggerPwaDeployment() {
+            alert("To Install: Click the browser menu (three dots) and select 'Add to Home Screen'.");
+        }
+    </script>
+</body>
+</html>
 
 
   
@@ -76,7 +113,8 @@
 
 
 		
-        <a href="bandra.html" class="relative group rounded-xl overflow-hidden h-32 border border-blue-800">
+       
+	<a href="bandra.html" class="relative group rounded-xl overflow-hidden h-32 border border-blue-800">
             <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-black/60 flex items-center justify-center">
                 <span class="text-white text-xl font-bold">Bandra</span>
