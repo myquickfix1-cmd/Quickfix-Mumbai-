@@ -14,23 +14,37 @@
         <h1 class="text-3xl font-bold mb-6 text-center text-blue-400">Our Service Areas</h1>
         <p class="text-center mb-8 text-sm opacity-80">Select your area to book a technician:</p>
         
-        <div class="bg-[#1C2541] p-6 rounded-lg shadow-lg">
-            <!-- Grid Service Areas -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                <a href="bandra.html" class="p-4 bg-[#2D3748] rounded hover:bg-blue-600 transition text-center font-bold">Bandra</a>
-                <a href="andheri.html" class="p-4 bg-[#2D3748] rounded hover:bg-blue-600 transition text-center font-bold">Andheri</a>
-                <a href="malad.html" class="p-4 bg-[#2D3748] rounded hover:bg-blue-600 transition text-center font-bold">Malad</a>
-            </div>
+                <!-- New Visual Areas Gallery -->
+        <div class="grid grid-cols-1 gap-6 mb-8">
+            
+            <!-- Bandra -->
+            <a href="bandra.html" class="relative group rounded-xl overflow-hidden h-40 shadow-lg">
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500" alt="Bandra Repair" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center">
+                    <span class="text-white text-2xl font-bold">Bandra</span>
+                    <span class="text-blue-300 text-sm">Expert Diagnostics</span>
+                </div>
+            </a>
 
-            <!-- Other Service Areas -->
-            <h3 class="text-blue-400 font-semibold mb-3 border-b border-gray-600 pb-1">Other Service Areas</h3>
-            <ul class="space-y-2">
-                <li><a href="#" onclick="alert('Redirecting to Colaba booking...')" class="block p-2 bg-blue-600 rounded hover:bg-blue-700 transition">Colaba</a></li>
-                <li><a href="#" onclick="alert('Redirecting to Worli booking...')" class="block p-2 bg-blue-600 rounded hover:bg-blue-700 transition">Worli</a></li>
-                <li><a href="#" onclick="alert('Redirecting to BKC booking...')" class="block p-2 bg-blue-600 rounded hover:bg-blue-700 transition">BKC (Bandra Kurla)</a></li>
-                <li><a href="#" onclick="alert('Redirecting to Powai booking...')" class="block p-2 bg-blue-600 rounded hover:bg-blue-700 transition">Powai</a></li>
-            </ul>
+            <!-- Andheri -->
+            <a href="andheri.html" class="relative group rounded-xl overflow-hidden h-40 shadow-lg">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e5341503c?w=500" alt="Andheri Repair" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center">
+                    <span class="text-white text-2xl font-bold">Andheri</span>
+                    <span class="text-blue-300 text-sm">PCB Specialists</span>
+                </div>
+            </a>
+
+            <!-- Malad -->
+            <a href="malad.html" class="relative group rounded-xl overflow-hidden h-40 shadow-lg">
+                <img src="https://images.unsplash.com/photo-1626126569668-97f105742445?w=500" alt="Malad Repair" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center">
+                    <span class="text-white text-2xl font-bold">Malad</span>
+                    <span class="text-blue-300 text-sm">Inverter Repair</span>
+                </div>
+            </a>
         </div>
+
 
         <div class="text-center mt-8">
             <a href="index.html" class="text-blue-400 underline hover:text-blue-300">← Back to Home</a>
