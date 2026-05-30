@@ -6,7 +6,7 @@
     <title>QuickFix Mumbai</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-[#0B132B] text-white">
+<body class="bg-[#0B132B] text-white font-sans">
 
     <div class="relative h-[250px] w-full overflow-hidden">
         <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd756?w=800" class="w-full h-full object-cover">
@@ -16,17 +16,18 @@
         </div>
     </div>
 
-    <div class="p-6">
+    <div class="py-6 px-4">
         <h2 class="text-xl font-bold mb-4">Our Service Network</h2>
         <div class="grid grid-cols-1 gap-4">
-            <div class="h-32 bg-blue-900 rounded-xl flex items-center justify-center">Bandra</div>
-            <div class="h-32 bg-blue-900 rounded-xl flex items-center justify-center">Andheri</div>
+            <a href="bandra.html" class="h-32 bg-blue-900 rounded-xl flex items-center justify-center font-bold">Bandra</a>
+            <a href="andheri.html" class="h-32 bg-blue-900 rounded-xl flex items-center justify-center font-bold">Andheri</a>
+            <a href="malad.html" class="h-32 bg-blue-900 rounded-xl flex items-center justify-center font-bold">Malad</a>
         </div>
     </div>
 
-    <section id="bookingFormSection" class="p-6">
-        <form id="leadDispatchForm">
-            <input type="text" id="custName" placeholder="Full Name" class="w-full p-3 bg-gray-800 rounded-xl mb-3">
+    <section class="p-6">
+        <form id="leadDispatchForm" class="space-y-4">
+            <input type="text" id="custName" placeholder="Full Name" class="w-full p-3 bg-gray-800 rounded-xl text-white">
             <button type="submit" class="w-full bg-blue-600 p-3 rounded-xl font-bold">Confirm Dispatch</button>
         </form>
     </section>
@@ -35,9 +36,5 @@
         <p class="text-gray-500 text-xs">© 2026 QuickFix Mumbai Engineering Fleet</p>
     </footer>
 
-    <script>
-        // Aapka original script yahan add karein
-        console.log("System Ready");
-    </script>
 </body>
 </html>
