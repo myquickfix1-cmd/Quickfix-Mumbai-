@@ -95,45 +95,6 @@
             </div>
         </div>
 
-        <!-- THREE-WAY BALANCED CALL-TO-ACTION (WhatsApp - CALL - WhatsApp) -->
-        <div class="grid grid-cols-3 gap-2 mb-6">
-            <!-- WhatsApp Line 1 -->
-            <button onclick="dialCoreEngine('whatsapp_1')" class="bg-gradient-to-b from-emerald-600 to-teal-700 hover:from-emerald-500 text-white p-2 rounded-xl shadow-md font-black tracking-tight text-[10px] flex flex-col items-center justify-center text-center transition-transform active:scale-95 border border-emerald-500/20 leading-tight">
-                <span class="text-base mb-0.5">💬</span>
-                <span>WHATSAPP</span>
-                <span class="text-[9px] font-bold text-emerald-300">LINE 1</span>
-            </button>
-
-            <!-- CENTRAL CALL BUTTON (Quick Book By Call Terminal) -->
-            <a href="tel:+919819832282" class="bg-gradient-to-b from-[#FF4500] to-[#FF8C00] hover:from-orange-500 text-white p-2 rounded-xl shadow-xl font-black tracking-tight text-[11px] flex flex-col items-center justify-center text-center transition-transform active:scale-95 border border-orange-400/30 scale-105 z-10 leading-tight">
-                <span class="text-base mb-0.5">📞</span>
-                <span>QUICK BOOK</span>
-                <span class="text-[9px] font-extrabold text-yellow-200 tracking-wider">BY CALL</span>
-            </a>
-
-            <!-- WhatsApp Line 2 -->
-            <button onclick="dialCoreEngine('whatsapp_2')" class="bg-gradient-to-b from-blue-600 to-indigo-700 hover:from-blue-500 text-white p-2 rounded-xl shadow-md font-black tracking-tight text-[10px] flex flex-col items-center justify-center text-center transition-transform active:scale-95 border border-blue-500/20 leading-tight">
-                <span class="text-base mb-0.5">💬</span>
-                <span>WHATSAPP</span>
-                <span class="text-[9px] font-bold text-blue-300">LINE 2</span>
-            </button>
-        </div>
-
-        <!-- GEOGRAPHIC SUBURB ENGINE TERMINAL -->
-        <section class="bg-[#1E293B]/60 border border-gray-800 rounded-2xl p-4 mb-6">
-            <h3 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2.5 px-1">Select Western Suburb Service Matrix</h3>
-            <select id="userLocationSelection" class="w-full bg-[#0B132B] border border-gray-700 text-white p-3 rounded-xl text-sm font-semibold outline-none focus:border-blue-500 cursor-pointer">
-                <option value="Bandra West">Bandra West (VIP Suburb)</option>
-                <option value="Andheri West">Andheri West (Lokhandwala / Oshiwara)</option>
-                <option value="Juhu Scheme">Juhu Scheme (JVPD Elite)</option>
-                <option value="Khar West">Khar West</option>
-                <option value="Santacruz West">Santacruz West</option>
-                <option value="Vile Parle West">Vile Parle West</option>
-                <option value="Malad West">Malad West (Mindspace Hub)</option>
-                <option value="Borivali West">Borivali West</option>
-            </select>
-        </section>
-
         <!-- HORIZONTAL INFINITE BRAND SCROLLER -->
         <div class="overflow-hidden bg-[#0F172A] border-y border-gray-800 py-2.5 mb-6 -mx-4">
             <div class="animate-marquee text-xs font-bold tracking-widest text-gray-500 uppercase gap-8">
@@ -241,7 +202,53 @@
             </div>
         </section>
 
-        <!-- CORPORATE ENGINE DISPATCH TERMINAL -->
+        <!-- HIGH-CONVERSION ACTIONS BLOCK (MOVED RIGHT BELOW THE ITEMS ARRAY) -->
+        <div class="bg-gradient-to-b from-[#111A3A]/40 to-[#141E3D]/80 border border-blue-900/30 rounded-2xl p-4 mb-6 shadow-xl">
+            <!-- THREE-WAY BALANCED CALL-TO-ACTION (WhatsApp - CALL - WhatsApp) -->
+            <div class="grid grid-cols-3 gap-2 mb-4">
+                <!-- WhatsApp Line 1 -->
+                <button onclick="dialCoreEngine('whatsapp_1')" class="bg-gradient-to-b from-emerald-600 to-teal-700 hover:from-emerald-500 text-white p-2 rounded-xl shadow-md font-black tracking-tight text-[10px] flex flex-col items-center justify-center text-center transition-transform active:scale-95 border border-emerald-500/20 leading-tight">
+                    <span class="text-base mb-0.5">💬</span>
+                    <span>WHATSAPP</span>
+                    <span class="text-[9px] font-bold text-emerald-300">LINE 1</span>
+                </button>
+
+                <!-- CENTRAL CALL BUTTON (Quick Book By Call Terminal) -->
+                <a href="tel:+919819832282" class="bg-gradient-to-b from-[#FF4500] to-[#FF8C00] hover:from-orange-500 text-white p-2 rounded-xl shadow-xl font-black tracking-tight text-[11px] flex flex-col items-center justify-center text-center transition-transform active:scale-95 border border-orange-400/30 scale-105 z-10 leading-tight">
+                    <span class="text-base mb-0.5">📞</span>
+                    <span>QUICK BOOK</span>
+                    <span class="text-[9px] font-extrabold text-yellow-200 tracking-wider">BY CALL</span>
+                </a>
+
+                <!-- WhatsApp Line 2 -->
+                <button onclick="dialCoreEngine('whatsapp_2')" class="bg-gradient-to-b from-blue-600 to-indigo-700 hover:from-blue-500 text-white p-2 rounded-xl shadow-md font-black tracking-tight text-[10px] flex flex-col items-center justify-center text-center transition-transform active:scale-95 border border-blue-500/20 leading-tight">
+                    <span class="text-base mb-0.5">💬</span>
+                    <span>WHATSAPP</span>
+                    <span class="text-[9px] font-bold text-blue-300">LINE 2</span>
+                </button>
+            </div>
+
+            <!-- GEOGRAPHIC SUBURB ENGINE TERMINAL (EXPANDED REGIONS MATRIX) -->
+            <div>
+                <label class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1.5 px-1">Select Western Suburb Service Matrix</label>
+                <select id="userLocationSelection" class="w-full bg-[#0B132B] border border-blue-900/60 text-white p-3 rounded-xl text-sm font-semibold outline-none focus:border-blue-500 cursor-pointer shadow-inner">
+                    <!-- ENHANCED PREMIUM & RICH AREAS INDEX -->
+                    <option value="Bandra West">Bandra West (VIP Suburb & Pali Hill Elite)</option>
+                    <option value="Juhu Scheme">Juhu Scheme (JVPD Millionaire Block)</option>
+                    <option value="Andheri West">Andheri West (Lokhandwala / Oshiwara Towers)</option>
+                    <option value="Khar West">Khar West (Carter Road Belt)</option>
+                    <option value="Santacruz West">Santacruz West (Premium Residential)</option>
+                    <option value="Vile Parle West">Vile Parle West (Elite Hub)</option>
+                    <option value="Goregaon West">Goregaon West (Oberoi Garden City / Luxury Zone)</option>
+                    <option value="Malad West">Malad West (Mindspace Towers & Palm Spring)</option>
+                    <option value="Kandivali West">Kandivali West (High-Rise Enclaves)</option>
+                    <option value="Borivali West">Borivali West (Premium Suburb)</option>
+                    <option value="Powai Hiranandani">Powai (Hiranandani Gardens VIP Matrix)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- CORPORATE ENGINE DISPATCH TERMINAL (SELECTED FORM PRESERVED EXACTLY AS IS) -->
         <section class="bg-[#141E3D] border border-blue-900/30 rounded-2xl p-5 mb-6 shadow-xl">
             <h3 class="text-lg font-black text-white mb-1">Corporate Lead Dispatch</h3>
             <p class="text-xs text-gray-400 mb-4">Fill out the official diagnostic terminal fields to book your dispatch slots.</p>
@@ -363,7 +370,7 @@
             </p>
             <div class="grid grid-cols-2 gap-2 text-[10px] font-bold text-gray-400 bg-[#070B19]/60 rounded-xl p-3 border border-gray-900/60 text-left mb-4">
                 <div>⏰ TIMINGS: <span class="text-white block mt-0.5">09:00 AM - 12:00 AM</span></div>
-                <div>📍 DEPLOYMENT: <span class="text-white block mt-0.5">Premium Western Suburbs</span></div>
+                <div>📍 DEPLOYMENT: <span class="text-white block mt-0.5">Premium Western Suburbs and overall Mumbai</span></div>
             </div>
             <p class="text-[9px] text-gray-600 tracking-wider uppercase font-medium">
                 &copy; 2026 QuickFix Mumbai. All Engineering Rights Reserved.
