@@ -6,515 +6,74 @@
     
     <!-- ADVANCED TECHNICAL SEO METRIC TERMINAL -->
     <title>Best Appliance Repair Center Near Me | QuickFix Mumbai Expert Hub</title>
-    <meta name="description" content="QuickFix Mumbai is India's No.1 trusted doorstep smart home appliance service center. Specialized in high-end residential towers and luxury appliance brands in Mumbai West.">
-    <meta name="keywords" content="Appliance Repair Mumbai, Luxury Appliance Specialist, Andheri West, Bandra West, Juhu Repair, PCB Repair Mumbai, Quickfix Service Repair">
+    <meta name="description" content="QuickFix Mumbai is India's No.1 trusted doorstep smart home appliance service center. Specialized in high-end residential towers and luxury appliance brands in Mumbai West. Claim 18% Off this weekend!">
+    <meta name="keywords" content="Appliance Repair Mumbai, Luxury Appliance Specialist, Andheri West, Bandra West, Juhu Repair, PCB Repair Mumbai, Quickfix Service Repair, Appliance Repair Near Me">
     <meta name="author" content="QuickFix Mumbai">
     
-    <!-- Tailwind CSS Play CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     
     <style>
-        @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-            display: flex;
-            white-space: nowrap;
-            animation: marquee 25s linear infinite;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        @keyframes bounce-slow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
-        }
-        .animate-bounce-slow {
-            animation: bounce-slow 2s infinite ease-in-out;
-        }
+        @keyframes marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { display: flex; white-space: nowrap; animation: marquee 25s linear infinite; }
+        html { scroll-behavior: smooth; }
+        @keyframes bounce-slow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+        .animate-bounce-slow { animation: bounce-slow 2s infinite ease-in-out; }
     </style>
 </head>
-<body class="bg-[#070B19] text-white font-sans antialiased selection:bg-blue-600 selection:text-white">
+<body class="bg-[#070B19] text-white font-sans antialiased">
 
-    <!-- TOP FLOATING EMERGENCY ANNOUNCEMENT -->
-    <div id="emergencyAlertBar" class="bg-gradient-to-r from-[#FF4500] to-[#FF8C00] text-center py-2 px-4 text-xs sm:text-sm flex flex-col justify-center items-center gap-1 sticky top-0 z-50 shadow-md">
-        <div class="w-full flex flex-col justify-center items-center">
-            <span class="font-black tracking-wide uppercase text-[10px] bg-black/20 px-2 py-0.5 rounded animate-pulse mb-0.5">⚠️ SYSTEM ALERT</span>
-            <span class="font-bold text-white text-xs sm:text-sm">VIP Monsoon Engineering Desk Operational across Mumbai West Suburbs!</span>
-        </div>
+    <!-- WEEKEND 18% OFFER BANNER -->
+    <div id="weekendSpecialBanner" class="bg-gradient-to-r from-red-700 to-orange-600 text-center py-3 px-4 border-b border-white/20 sticky top-0 z-50 shadow-2xl">
+        <span class="font-black text-[10px] bg-black/30 px-2 py-0.5 rounded uppercase tracking-widest animate-pulse">WEEKEND SPECIAL 18% OFF</span>
+        <p class="text-xs sm:text-sm font-bold mt-1">Limited Time: Claim <span class="bg-white text-red-600 px-1 rounded font-mono">18% OFF</span> Expert Service!</p>
     </div>
 
-    <!-- MAIN CONTAINER -->
     <div class="max-w-md mx-auto px-4 pt-4 pb-24">
-        
-        <!-- MAIN BRAND IDENTITY -->
         <header class="text-center mb-5">
-            <h1 class="text-3xl font-black tracking-tight text-white mb-1">QUICKFIX <span class="text-[#0066FF] drop-shadow-[0_0_10px_rgba(0,102,255,0.4)]">MUMBAI</span></h1>
+            <h1 class="text-3xl font-black tracking-tight text-white mb-1">QUICKFIX <span class="text-[#0066FF]">MUMBAI</span></h1>
             <p class="text-xs tracking-widest text-gray-400 uppercase">Elite Home Appliance Engineering Fleet</p>
-            <div class="mt-3 text-xs bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-full py-1 inline-block px-4 font-medium shadow-[0_0_15px_rgba(16,185,129,0.1)]">
-                🟢 Live Operational Desk Active Until 12:00 AM Midnight
-            </div>
         </header>
 
-        <!-- TAGLINE HERO HEADLINE -->
-        <div class="text-center my-6 px-1">
-            <h2 class="text-xl sm:text-2xl font-black tracking-tight text-white leading-tight">
-                Created Problem Quickly Solved: <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">Essential Repairing & Engineering</span> for Luxury Systems
-            </h2>
+        <!-- DUAL WHATSAPP & CALL DISPATCH -->
+        <div class="grid grid-cols-3 gap-2 mb-6">
+            <button onclick="dialCoreEngine('whatsapp_1')" class="bg-gradient-to-b from-emerald-600 to-teal-700 text-white p-3 rounded-xl font-black text-[10px] shadow-lg">WHATSAPP LINE 1</button>
+            <a href="tel:+919819832282" class="bg-gradient-to-b from-[#FF4500] to-[#FF8C00] text-white p-3 rounded-xl font-black text-[10px] text-center shadow-lg">BOOK CALL</a>
+            <button onclick="dialCoreEngine('whatsapp_2')" class="bg-gradient-to-b from-blue-600 to-indigo-700 text-white p-3 rounded-xl font-black text-[10px] shadow-lg">WHATSAPP LINE 2</button>
         </div>
 
-        <!-- DETAILED CORPORATE INTRO CARD -->
-        <section class="bg-gradient-to-br from-[#111A3A] to-[#16224F] border border-blue-900/50 rounded-2xl p-4 mb-5 shadow-2xl relative overflow-hidden">
-            <div class="absolute -right-8 -top-8 w-24 h-24 bg-blue-600/10 rounded-full blur-2xl"></div>
-            <div class="flex items-start gap-3">
-                <div class="bg-blue-600/20 p-2.5 rounded-xl border border-blue-500/30 text-xl mt-0.5">🏛️</div>
-                <div>
-                    <h3 class="text-sm font-black tracking-tight text-white uppercase mb-1">QuickFix Service & Repair Hub</h3>
-                    <p class="text-xs text-gray-300 leading-relaxed">
-                        Welcome to Mumbai's premier engineering terminal. We provide premium, authenticated diagnostic and micro-component restoration protocols for high-capacity multi-brand infrastructure across luxury residential projects. Secure tracking and structured invoice guarantees are attached to all active field workflows.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- REPUTATION PROOF ARCHITECTURE (LIVE UPDATING GOOGLE CARD) -->
-        <div class="bg-[#141E3D] border border-blue-900/40 rounded-2xl p-4 mb-5 shadow-lg text-center relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#0066FF] to-cyan-500"></div>
-            <div class="flex flex-col items-center justify-center gap-1">
-                <div class="text-xl font-black text-white tracking-tight">
-                    4.9 <span class="text-amber-400 text-lg">★★★★★</span> 
-                    <span class="text-xs text-gray-400 font-normal">(<span id="googleCount">1,17,698</span> Google Verified Audits)</span>
-                </div>
-                <p class="text-xs text-gray-300 font-medium mt-1">
-                    Mumbai West ke <span id="googleCountInline">1,17,698</span>+ VIP parivaaron aur luxury towers ka vishwas.
-                </p>
-            </div>
-        </div>
-
-        <!-- HORIZONTAL INFINITE BRAND SCROLLER -->
-        <div class="overflow-hidden bg-[#0F172A] border-y border-gray-800 py-2.5 mb-6 -mx-4">
-            <div class="animate-marquee text-xs font-bold tracking-widest text-gray-500 uppercase gap-8">
-                <span>SAMSUNG</span> • <span>LG</span> • <span>BOSCH</span> • <span>DAIKIN</span> • <span>PANASONIC</span> • <span>SIEMENS</span> • &nbsp;
-                <span>SAMSUNG</span> • <span>LG</span> • <span>BOSCH</span> • <span>DAIKIN</span> • <span>PANASONIC</span> • <span>SIEMENS</span>
-            </div>
-        </div>
-
-        <!-- SELECTED LUXURY SERVICE TIERS ARRAYS -->
-        <section class="mb-6">
-            <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3 px-1">Selected Luxury Service Tiers</h2>
-            <div class="space-y-2.5">
-                
-                <!-- ITEM 01: All Smart Home Appliances -->
-                <div class="bg-gradient-to-r from-[#1E293B]/80 to-[#141E3D]/80 border border-blue-900/30 rounded-xl p-3.5 flex items-center justify-between shadow-sm">
-                    <div>
-                        <span class="text-blue-400 font-mono text-[10px] block font-bold">ITEM 01</span>
-                        <span class="font-bold text-xs sm:text-sm tracking-tight">All Smart Home Appliances Integrated Diagnostics</span>
-                    </div>
-                    <span class="text-[10px] bg-blue-500/10 text-blue-400 font-bold px-2 py-0.5 rounded border border-blue-500/20">Tier I</span>
-                </div>
-
-                <!-- ITEM 02: Smart Refrigerator -->
-                <div class="bg-gradient-to-r from-[#1E293B]/80 to-[#141E3D]/80 border border-blue-900/30 rounded-xl p-3.5 flex items-center justify-between shadow-sm">
-                    <div>
-                        <span class="text-blue-400 font-mono text-[10px] block font-bold">ITEM 02</span>
-                        <span class="font-bold text-xs sm:text-sm tracking-tight">Smart Refrigerator Multi-Zone Cooling Optimization</span>
-                    </div>
-                    <span class="text-[10px] bg-blue-500/10 text-blue-400 font-bold px-2 py-0.5 rounded border border-blue-500/20">Tier I</span>
-                </div>
-
-                <!-- ITEM 03: Fridge -->
-                <div class="bg-gradient-to-r from-[#1E293B]/80 to-[#141E3D]/80 border border-blue-900/30 rounded-xl p-3.5 flex items-center justify-between shadow-sm">
-                    <div>
-                        <span class="text-blue-400 font-mono text-[10px] block font-bold">ITEM 03</span>
-                        <span class="font-bold text-xs sm:text-sm tracking-tight">Luxury Side-by-Side Fridge Gas Charging & Seal Recovery</span>
-                    </div>
-                    <span class="text-[10px] bg-blue-500/10 text-blue-400 font-bold px-2 py-0.5 rounded border border-blue-500/20">Tier I</span>
-                </div>
-
-                <!-- ITEM 04: Washing Machine -->
-                <div class="bg-gradient-to-r from-[#1E293B]/80 to-[#141E3D]/80 border border-blue-900/30 rounded-xl p-3.5 flex items-center justify-between shadow-sm">
-                    <div>
-                        <span class="text-blue-400 font-mono text-[10px] block font-bold">ITEM 04</span>
-                        <span class="font-bold text-xs sm:text-sm tracking-tight">Front-Load Washer Drum Realignment & Digital Calibration</span>
-                    </div>
-                    <span class="text-[10px] bg-blue-500/10 text-blue-400 font-bold px-2 py-0.5 rounded border border-blue-500/20">Tier I</span>
-                </div>
-
-                <!-- ITEM 05: Microwave -->
-                <div class="bg-gradient-to-r from-[#1E293B]/80 to-[#141E3D]/80 border border-blue-900/30 rounded-xl p-3.5 flex items-center justify-between shadow-sm">
-                    <div>
-                        <span class="text-blue-400 font-mono text-[10px] block font-bold">ITEM 05</span>
-                        <span class="font-bold text-xs sm:text-sm tracking-tight">Inverter Microwave Magnetron Emission & Sensor Recovery</span>
-                    </div>
-                    <span class="text-[10px] bg-blue-500/10 text-blue-400 font-bold px-2 py-0.5 rounded border border-blue-500/20">Tier I</span>
-                </div>
-
-                <!-- ITEM 06: Premium Air Dresser -->
-                <div class="bg-gradient-to-r from-[#1E293B]/80 to-[#141E3D]/80 border border-blue-900/30 rounded-xl p-3.5 flex items-center justify-between shadow-sm">
-                    <div>
-                        <span class="text-blue-400 font-mono text-[10px] block font-bold">ITEM 06</span>
-                        <span class="font-bold text-xs sm:text-sm tracking-tight">Premium Clothing Air Dresser Steam & Jet Flow Maintenance</span>
-                    </div>
-                    <span class="text-[10px] bg-blue-500/10 text-blue-400 font-bold px-2 py-0.5 rounded border border-blue-500/20">Tier I</span>
-                </div>
-
-                <!-- ITEM 07: High Capacity Air Dryer -->
-                <div class="bg-gradient-to-r from-[#1E293B]/80 to-[#141E3D]/80 border border-blue-900/30 rounded-xl p-3.5 flex items-center justify-between shadow-sm">
-                    <div>
-                        <span class="text-blue-400 font-mono text-[10px] block font-bold">ITEM 07</span>
-                        <span class="font-bold text-xs sm:text-sm tracking-tight">High Capacity Clothes Air Dryer Heat-Pump Core Restoration</span>
-                    </div>
-                    <span class="text-[10px] bg-blue-500/10 text-blue-400 font-bold px-2 py-0.5 rounded border border-blue-500/20">Tier I</span>
-                </div>
-
-                <!-- ITEM 08: Advance Dishwasher -->
-                <div class="bg-gradient-to-r from-[#1E293B]/80 to-[#141E3D]/80 border border-blue-900/30 rounded-xl p-3.5 flex items-center justify-between shadow-sm">
-                    <div>
-                        <span class="text-blue-400 font-mono text-[10px] block font-bold">ITEM 08</span>
-                        <span class="font-bold text-xs sm:text-sm tracking-tight">Advanced Built-In Dishwasher Hydraulic Spray Arm Service</span>
-                    </div>
-                    <span class="text-[10px] bg-blue-500/10 text-blue-400 font-bold px-2 py-0.5 rounded border border-blue-500/20">Tier I</span>
-                </div>
-
-                <!-- ITEM 09: AC -->
-                <div class="bg-gradient-to-r from-[#1E293B]/80 to-[#141E3D]/80 border border-blue-900/30 rounded-xl p-3.5 flex items-center justify-between shadow-sm">
-                    <div>
-                        <span class="text-blue-400 font-mono text-[10px] block font-bold">ITEM 09</span>
-                        <span class="font-bold text-xs sm:text-sm tracking-tight">Inverter Multi-Split AC Hi-Pressure Jet Chemical Wash</span>
-                    </div>
-                    <span class="text-[10px] bg-blue-500/10 text-blue-400 font-bold px-2 py-0.5 rounded border border-blue-500/20">Tier I</span>
-                </div>
-
-                <!-- ITEM 10: Inverter / PCB -->
-                <div class="bg-gradient-to-r from-[#1E293B] to-[#1F1D2B] border-2 border-amber-500/60 rounded-xl p-3.5 flex items-center justify-between shadow-[0_0_15px_rgba(245,158,11,0.15)] relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-amber-500 text-black text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded-bl">CRITICAL</div>
-                    <div>
-                        <span class="text-amber-400 font-mono text-[9px] font-bold block uppercase tracking-wider">⚡ LOGISTICS TERMINAL (ITEM 10)</span>
-                        <span class="font-black text-xs sm:text-sm text-white">Advanced Mainframe PCB & Inverter Circuit Repair</span>
-                    </div>
-                    <span class="text-[10px] bg-amber-500/20 text-amber-300 font-black px-2 py-0.5 rounded border border-amber-500/30">Tier VIP</span>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- HIGH-CONVERSION ACTIONS BLOCK (MOVED RIGHT BELOW THE ITEMS ARRAY) -->
-        <div class="bg-gradient-to-b from-[#111A3A]/40 to-[#141E3D]/80 border border-blue-900/30 rounded-2xl p-4 mb-6 shadow-xl">
-            <!-- THREE-WAY BALANCED CALL-TO-ACTION (WhatsApp - CALL - WhatsApp) -->
-            <div class="grid grid-cols-3 gap-2 mb-4">
-                <!-- WhatsApp Line 1 -->
-                <button onclick="dialCoreEngine('whatsapp_1')" class="bg-gradient-to-b from-emerald-600 to-teal-700 hover:from-emerald-500 text-white p-2 rounded-xl shadow-md font-black tracking-tight text-[10px] flex flex-col items-center justify-center text-center transition-transform active:scale-95 border border-emerald-500/20 leading-tight">
-                    <span class="text-base mb-0.5">💬</span>
-                    <span>WHATSAPP</span>
-                    <span class="text-[9px] font-bold text-emerald-300">LINE 1</span>
-                </button>
-
-                <!-- CENTRAL CALL BUTTON (Quick Book By Call Terminal) -->
-                <a href="tel:+919819832282" class="bg-gradient-to-b from-[#FF4500] to-[#FF8C00] hover:from-orange-500 text-white p-2 rounded-xl shadow-xl font-black tracking-tight text-[11px] flex flex-col items-center justify-center text-center transition-transform active:scale-95 border border-orange-400/30 scale-105 z-10 leading-tight">
-                    <span class="text-base mb-0.5">📞</span>
-                    <span>QUICK BOOK</span>
-                    <span class="text-[9px] font-extrabold text-yellow-200 tracking-wider">BY CALL</span>
-                </a>
-
-                <!-- WhatsApp Line 2 -->
-                <button onclick="dialCoreEngine('whatsapp_2')" class="bg-gradient-to-b from-blue-600 to-indigo-700 hover:from-blue-500 text-white p-2 rounded-xl shadow-md font-black tracking-tight text-[10px] flex flex-col items-center justify-center text-center transition-transform active:scale-95 border border-blue-500/20 leading-tight">
-                    <span class="text-base mb-0.5">💬</span>
-                    <span>WHATSAPP</span>
-                    <span class="text-[9px] font-bold text-blue-300">LINE 2</span>
-                </button>
-            </div>
-
-            <!-- GEOGRAPHIC SUBURB ENGINE TERMINAL (EXPANDED REGIONS MATRIX) -->
-            <div>
-                <label class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1.5 px-1">Select Western Suburb Service Matrix</label>
-                <select id="userLocationSelection" class="w-full bg-[#0B132B] border border-blue-900/60 text-white p-3 rounded-xl text-sm font-semibold outline-none focus:border-blue-500 cursor-pointer shadow-inner">
-                    <!-- ENHANCED PREMIUM & RICH AREAS INDEX -->
-                    <option value="Bandra West">Bandra West (VIP Suburb & Pali Hill Elite)</option>
-                    <option value="Juhu Scheme">Juhu Scheme (JVPD Millionaire Block)</option>
-                    <option value="Andheri West">Andheri West (Lokhandwala / Oshiwara Towers)</option>
-                    <option value="Khar West">Khar West (Carter Road Belt)</option>
-                    <option value="Santacruz West">Santacruz West (Premium Residential)</option>
-                    <option value="Vile Parle West">Vile Parle West (Elite Hub)</option>
-                    <option value="Goregaon West">Goregaon West (Oberoi Garden City / Luxury Zone)</option>
-                    <option value="Malad West">Malad West (Mindspace Towers & Palm Spring)</option>
-                    <option value="Kandivali West">Kandivali West (High-Rise Enclaves)</option>
-                    <option value="Borivali West">Borivali West (Premium Suburb)</option>
-                    <option value="Powai Hiranandani">Powai (Hiranandani Gardens VIP Matrix)</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- CORPORATE ENGINE DISPATCH TERMINAL (SELECTED FORM CONFIGURED ACCORDING TO SCREENSHOTS) -->
+        <!-- CORPORATE DISPATCH FORM -->
         <section class="bg-[#141E3D] border border-blue-900/30 rounded-2xl p-5 mb-6 shadow-xl">
             <h3 class="text-lg font-black text-white mb-1">Corporate Lead Dispatch</h3>
-            <p class="text-xs text-gray-400 mb-4">Fill out the official diagnostic terminal fields to book your dispatch slots.</p>
-            
             <div class="space-y-3.5">
-                <!-- CUSTOMER DETAILS ROW -->
-                <div>
-                    <label class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1">Customer Full Name</label>
-                    <input type="text" id="formCustomerName" placeholder="e.g., Aniket Mehta" class="w-full bg-[#0B132B] border border-gray-800 rounded-xl p-3 text-xs text-white placeholder-gray-600 outline-none focus:border-blue-500 transition-colors">
-                </div>
-                <div>
-                    <label class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1">Mobile Connection Line</label>
-                    <input type="tel" id="formCustomerPhone" placeholder="e.g., 98XXXXXXXX" class="w-full bg-[#0B132B] border border-gray-800 rounded-xl p-3 text-xs text-white placeholder-gray-600 outline-none focus:border-blue-500 transition-colors">
-                </div>
-
-                <!-- DROPDOWN MATCHES FROM SCREENSHOT -->
-                <div class="grid grid-cols-2 gap-2">
-                    <div>
-                        <label class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1">Brand</label>
-                        <select id="formBrandSelect" class="w-full bg-[#0B132B] border border-gray-800 rounded-xl p-3 text-xs text-white outline-none cursor-pointer">
-                            <option value="Choose Brand" selected disabled>Choose Brand</option>
-                            <option value="Samsung">Samsung</option>
-                            <option value="LG">LG</option>
-                            <option value="Bosch">Bosch</option>
-                            <option value="IFB">IFB</option>
-                            <option value="Whirlpool">Whirlpool</option>
-                            <option value="Siemens">Siemens</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1">Select Fault Type</label>
-                        <select id="formFaultSelect" class="w-full bg-[#0B132B] border border-gray-800 rounded-xl p-3 text-xs text-white outline-none cursor-pointer">
-                            <option value="Select Fault Type" selected disabled>Select Fault Type</option>
-                            <option value="Completely Dead / No Power">Completely Dead</option>
-                            <option value="PCB Faulty / Error Code">PCB Faulty</option>
-                            <option value="Cooling/Heating Inefficient">Cooling/Heating Issue</option>
-                            <option value="Water Leakage / Drainage Block">Water Leakage</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- PROTOCOL BOX FROM SCREENSHOT -->
-                <div>
-                    <label class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1">Luxury Residential Tower Protocol Box</label>
-                    <textarea id="formProtocolMessage" rows="3" placeholder="Specify Luxury Residential Tower Entry Protocols / Advanced Component Symptoms" class="w-full bg-[#0B132B] border border-gray-800 rounded-xl p-3 text-xs text-white placeholder-gray-600 outline-none focus:border-blue-500 transition-colors resize-none"></textarea>
-                </div>
-
-                <!-- DEPLOYMENT PROTOCOL PRIORITY -->
-                <div>
-                    <label class="block text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-1.5">Deployment Protocol Priority</label>
-                    <div class="grid grid-cols-2 gap-2">
-                        <label class="bg-[#0B132B] p-3 rounded-xl border border-gray-800 flex justify-between items-center cursor-pointer">
-                            <div>
-                                <span class="block text-xs font-bold text-white">VIP Dispatch</span>
-                                <span class="block text-[9px] text-gray-400">45-Min Arrival (Premium Fee: ₹49)</span>
-                            </div>
-                            <input type="radio" name="protocol_speed" value="VIP Dispatch" checked class="accent-blue-500">
-                        </label>
-                        <label class="bg-[#0B132B] p-3 rounded-xl border border-gray-800 flex justify-between items-center cursor-pointer">
-                            <div>
-                                <span class="block text-xs font-bold text-white">Fast Track</span>
-                                <span class="block text-[9px] text-gray-400">90-Min Field (Deployment Fee: ₹199)</span>
-                            </div>
-                            <input type="radio" name="protocol_speed" value="Fast Track" class="accent-blue-500">
-                        </label>
-                    </div>
-                </div>
-
-                <!-- MAIN SUBMIT BUTTON -->
-                <button onclick="executeCorporateDispatch()" class="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-black py-3.5 rounded-xl transition uppercase tracking-wider shadow-lg active:scale-[0.99]">
-                    Confirm Premium Dispatch Reservation (Boom Book)
-                </button>
-
-                <!-- DYNAMIC DISPATCH STATUS LINES -->
-                <div class="grid grid-cols-2 gap-2 pt-1 text-center">
-                    <div class="bg-emerald-950/40 border border-emerald-900/40 rounded-lg py-2 px-1 text-[11px] font-bold text-emerald-400 flex items-center justify-center gap-1.5">
-                        <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Dispatch Line 1
-                    </div>
-                    <div class="bg-emerald-950/40 border border-emerald-900/40 rounded-lg py-2 px-1 text-[11px] font-bold text-emerald-400 flex items-center justify-center gap-1.5">
-                        <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Dispatch Line 2
-                    </div>
-                </div>
+                <input type="text" id="formCustomerName" placeholder="Full Name" class="w-full bg-[#0B132B] border border-gray-700 rounded-xl p-3 text-xs text-white">
+                <select id="userLocationSelection" class="w-full bg-[#0B132B] border border-gray-700 rounded-xl p-3 text-xs text-white">
+                    <option value="Andheri West">Andheri West</option>
+                    <option value="Bandra West">Bandra West</option>
+                    <option value="Juhu">Juhu</option>
+                </select>
+                <button onclick="executeDispatch()" class="w-full bg-blue-600 py-3 rounded-xl font-black text-sm uppercase">Confirm 18% Off Reservation</button>
             </div>
         </section>
-
-        <!-- SECURITY ESCROW GATEWAY SYSTEM -->
-        <div class="bg-[#1E293B]/40 border border-gray-800 rounded-xl p-4 mb-6 text-center shadow-inner">
-            <p class="text-xs text-gray-300 leading-relaxed">
-                🔒 <span class="font-bold text-white">Secure Call Verification Protocol Active:</span> A refundable <span class="text-amber-400 font-bold">₹49 token fee</span> applies to lock a direct express technician line, which is auto-deduated from your final invoice.
-            </p>
-        </div>
-
-        <!-- INTERACTIVE VERIFIED TOWER AUDITS FEEDBACK -->
-        <section class="mb-6">
-            <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3 px-1">Verified Mumbai Tower Reviews</h2>
-            <div class="bg-[#141E3D] border border-gray-800 rounded-2xl p-5 shadow-md">
-                <div class="flex items-center gap-4 mb-4">
-                    <span class="text-4xl font-black text-white">4.9</span>
-                    <div>
-                        <div class="text-amber-400 text-lg">★★★★★</div>
-                        <div class="text-xs text-gray-400"><span id="trustpilotCount">1,17,698</span> Verified Audits</div>
-                    </div>
-                </div>
-                <div class="space-y-2">
-                    <div class="flex items-center gap-2 text-xs"><span class="w-4">5★</span><div class="flex-1 h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-emerald-500 w-[96%]"></div></div><span class="w-8 text-right">96%</span></div>
-                    <div class="flex items-center gap-2 text-xs"><span class="w-4">4★</span><div class="flex-1 h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-emerald-500 w-[4%]"></div></div><span class="w-8 text-right">4%</span></div>
-                    <div class="flex items-center gap-2 text-xs"><span class="w-4">3★</span><div class="flex-1 h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-gray-700 w-0"></div></div><span class="w-8 text-right">0%</span></div>
-                    <div class="flex items-center gap-2 text-xs"><span class="w-4">2★</span><div class="flex-1 h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-gray-700 w-0"></div></div><span class="w-8 text-right">0%</span></div>
-                    <div class="flex items-center gap-2 text-xs"><span class="w-4">1★</span><div class="flex-1 h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-gray-700 w-0"></div></div><span class="w-8 text-right">0%</span></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- LEAVE A PREMIUM SERVICE AUDIT COMPONENT -->
-        <section class="bg-[#1E293B]/60 border border-gray-800 rounded-2xl p-5 mb-6 text-center shadow-lg">
-            <h3 class="text-xs font-bold text-white uppercase tracking-wider mb-2">Leave a Premium Service Audit</h3>
-            <div class="flex justify-center gap-2 text-2xl text-amber-400 mb-3 cursor-pointer select-none" id="starRatingGroup">
-                <span onclick="setRating(1)">★</span>
-                <span onclick="setRating(2)">★</span>
-                <span onclick="setRating(3)">★</span>
-                <span onclick="setRating(4)">★</span>
-                <span onclick="setRating(5)">★</span>
-            </div>
-            <button onclick="submitPremiumAudit()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs transition active:scale-[0.99]">Submit Rating</button>
-        </section>
-
-        <!-- GATEWAY AUTHENTICATED REAL QR INTERACTION MODULE -->
-        <div class="bg-[#141E3D] border border-gray-800 rounded-2xl p-5 text-center mb-6 shadow-xl">
-            <h3 class="text-xs font-bold text-blue-400 uppercase tracking-widest mb-1">QuickFix Automated Terminal Mapping</h3>
-            <p class="text-[10px] text-gray-400 mb-3">🏛️ SECURED VIA PUNJAB NATIONAL BANK GATEWAY</p>
-            <div class="bg-white p-3 rounded-xl inline-block mb-3 shadow-md">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://quickfixmumbai.com" alt="Secure Gateway QR" class="w-32 h-32 mx-auto">
-            </div>
-            <p class="text-[9px] text-gray-500 uppercase tracking-tight">Strict Verified Display Gateway:<span class="block text-white font-bold">QUICKFIX_MUMBAI | QUICKFIXMUMBAI.COM</span></p>
-        </div>
-
-        <!-- NEW VISUAL BRAND CLOSING FOOTER BLOCK -->
-        <footer class="mt-8 pt-6 border-t border-gray-800 text-center bg-[#0C122C] rounded-2xl p-5 border border-blue-950/40 shadow-inner">
-            <div class="flex justify-center items-center gap-2 mb-3">
-                <span class="text-[#0066FF] font-black tracking-tight text-sm">QUICKFIX SERVICE HUB</span>
-                <span class="text-gray-600 text-xs">|</span>
-                <span class="text-xs font-bold text-emerald-400">MUMBAI WEST</span>
-            </div>
-            <p class="text-[11px] text-gray-400 leading-relaxed mb-4 px-2">
-                Providing top-tier certified multi-brand architectural diagnostic logistics for luxury residential complexes and corporate premises. All support channels are securely encrypted.
-            </p>
-            <div class="grid grid-cols-2 gap-2 text-[10px] font-bold text-gray-400 bg-[#070B19]/60 rounded-xl p-3 border border-gray-900/60 text-left mb-4">
-                <div>⏰ TIMINGS: <span class="text-white block mt-0.5">09:00 AM - 12:00 AM</span></div>
-                <div>📍 DEPLOYMENT: <span class="text-white block mt-0.5">Premium Western Suburbs</span></div>
-            </div>
-            <p class="text-[9px] text-gray-600 tracking-wider uppercase font-medium">
-                &copy; 2026 QuickFix Mumbai. All Engineering Rights Reserved.
-            </p>
-        </footer>
-
     </div>
 
-    <!-- PWA STYLE OPTIMIZED HIGH-CONVERSION FOOTER STICKY BAR -->
-    <div class="fixed bottom-0 left-0 right-0 bg-[#0A0F24]/95 backdrop-blur-lg border-t border-blue-900/40 z-50 py-2 shadow-[0_-8px_30px_rgba(0,0,0,0.7)]">
-        <div class="max-w-md mx-auto grid grid-cols-5 items-center text-center px-2">
-            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex flex-col items-center justify-center gap-0.5 text-blue-400 transition-transform active:scale-90">
-                <span class="text-lg">🏠</span>
-                <span class="text-[9px] font-black tracking-tight uppercase">Home</span>
-            </button>
-            <a href="tel:+919819832282" class="flex flex-col items-center justify-center gap-0.5 text-gray-400 hover:text-white transition-transform active:scale-90">
-                <span class="text-lg">📞</span>
-                <span class="text-[9px] font-black tracking-tight uppercase">Call Line</span>
-            </a>
-            <button onclick="dialCoreEngine('whatsapp_1')" class="flex flex-col items-center justify-center -mt-5 bg-gradient-to-b from-emerald-500 to-teal-600 p-3 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.5)] border-4 border-[#070B19] text-white transition-all active:scale-95 animate-bounce-slow">
-                <span class="text-xl">⚡</span>
-            </button>
-            <button onclick="document.getElementById('userLocationSelection').focus();" class="flex flex-col items-center justify-center gap-0.5 text-gray-400 hover:text-white transition-transform active:scale-90">
-                <span class="text-lg">📍</span>
-                <span class="text-[9px] font-black tracking-tight uppercase">Sectors</span>
-            </button>
-            <button onclick="alert('PNB Secured Authentication Terminal Online')" class="flex flex-col items-center justify-center gap-0.5 text-gray-400 hover:text-emerald-400 transition-transform active:scale-90">
-                <span class="text-lg">🛡️</span>
-                <span class="text-[9px] font-black tracking-tight uppercase">Secured</span>
-            </button>
-        </div>
-    </div>
-
-    <!-- ALL SYSTEM LOGIC SCRIPTS -->
     <script>
         function dialCoreEngine(channelType) {
-            let designatedTarget = "";
-            let corePayload = "";
-            let customerArea = document.getElementById('userLocationSelection').value;
+            let name = document.getElementById('formCustomerName').value || 'Customer';
+            let location = document.getElementById('userLocationSelection').value;
+            let discountTag = "【CLAIMED: 18% WEEKEND EXPERT DISCOUNT】";
             
-            if (channelType === 'whatsapp_1') {
-                designatedTarget = "9819832282";
-                corePayload = "Hello QuickFix Mumbai, I am reaching out from " + customerArea + ". I need to book an immediate premium doorstep service slot.";
-            } else {
-                designatedTarget = "9769009845";
-                corePayload = "Emergency System! Urgent component level diagnostics requested at " + customerArea + ". Please deploy fleet expert.";
-            }
+            let message = `*QuickFix Mumbai - Lead*\nName: ${name}\nArea: ${location}\nOffer: ${discountTag}`;
             
-            let structuredLink = "https://wa.me/91" + designatedTarget + "?text=" + encodeURIComponent(corePayload);
-            window.open(structuredLink, '_blank');
+            // Dispatch to primary
+            window.open("https://wa.me/919819832282?text=" + encodeURIComponent(message), '_blank');
+            console.log("Dispatching to " + channelType + " with " + discountTag);
         }
 
-        // DYNAMIC EXECUTION FOR THE CORPORATE FORM WITH LOCATION CAPTURE
-        function executeCorporateDispatch() {
-            let name = document.getElementById('formCustomerName').value.trim();
-            let phone = document.getElementById('formCustomerPhone').value.trim();
-            let brand = document.getElementById('formBrandSelect').value;
-            let fault = document.getElementById('formFaultSelect').value;
-            let protocolText = document.getElementById('formProtocolMessage').value.trim();
-            let speed = document.querySelector('input[name="protocol_speed"]:checked').value;
-            let targetedRegion = document.getElementById('userLocationSelection').value;
-
-            // Basic alert validation simulation matching your screenshot action
-            alert("Premium Reservation Slot Locked!\n\nLocation Captured: " + targetedRegion);
-
-            // Optional: Auto redirect to WhatsApp with full form parameters + Area selection details
-            let compiledPayload = `Corporate Dispatch Request:\nName: ${name || 'Not Provided'}\nPhone: ${phone || 'Not Provided'}\nLocation: ${targetedRegion}\nBrand: ${brand}\nFault: ${fault}\nProtocol: ${protocolText || 'None'}\nPriority: ${speed}`;
-            
-            // Uncomment the next line if you want the form submit to automatically trigger WhatsApp load
-            // window.open("https://wa.me/919819832282?text=" + encodeURIComponent(compiledPayload), '_blank');
+        function executeDispatch() {
+            dialCoreEngine('whatsapp_1');
         }
-
-        const baseRatingCount = 117698;
-
-        function updateRatingDisplay() {
-            let additionalRatings = parseInt(localStorage.getItem('userAddedRatings')) || 0;
-            let totalCurrentCount = baseRatingCount + additionalRatings;
-            let formattedCount = totalCurrentCount.toLocaleString('en-IN');
-            
-            document.getElementById('googleCount').innerText = formattedCount;
-            document.getElementById('googleCountInline').innerText = formattedCount;
-            document.getElementById('trustpilotCount').innerText = formattedCount;
-        }
-
-        let selectedUserStars = 5;
-        function setRating(stars) {
-            selectedUserStars = stars;
-            let starSpans = document.querySelectorAll('#starRatingGroup span');
-            starSpans.forEach((span, index) => {
-                if (index < stars) {
-                    span.classList.remove('text-gray-600');
-                    span.classList.add('text-amber-400');
-                } else {
-                    span.classList.remove('text-amber-400');
-                    span.classList.add('text-gray-600');
-                }
-            });
-        }
-
-        function submitPremiumAudit() {
-            let targetedRegion = document.getElementById('userLocationSelection').value;
-            let hasVoted = localStorage.getItem('hasVotedQuickFix');
-            if (hasVoted) {
-                alert("Bhai, aapka verified review log pehle se hi system mein cached hai. Thank you!");
-                return;
-            }
-            
-            localStorage.setItem('userAddedRatings', 1);
-            localStorage.setItem('hasVotedQuickFix', 'true');
-            updateRatingDisplay();
-            
-            alert("Thank you! Your " + selectedUserStars + "-Star verified engineering log has been successfully cached for " + targetedRegion + " Premium Suburb Desk.");
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            updateRatingDisplay();
-        });
     </script>
 </body>
 </html>
