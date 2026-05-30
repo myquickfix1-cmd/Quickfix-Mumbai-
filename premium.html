@@ -33,11 +33,11 @@
 </head>
 <body class="bg-[#0B132B] text-white font-sans antialiased">
 
-    <!-- EMERGENCY ALERT BAR (Fully Functional Script Hook) -->
+    <!-- EMERGENCY ALERT BAR -->
     <div id="emergencyAlertBar" class="bg-gradient-to-r from-[#FF4500] to-[#FF8C00] text-center py-2 px-4 text-xs sm:text-sm flex flex-col justify-center items-center gap-1 sticky top-0 z-50 shadow-md transition-all duration-500">
         <div id="alertContentLayout" class="w-full flex flex-wrap justify-center items-center gap-2">
             <span class="font-black tracking-wide uppercase bg-black/20 px-2 py-0.5 rounded animate-pulse text-[10px]">🚨 SYSTEM ALERT</span>
-            <span class="font-medium text-white" id="dynamicAlertText">VIP Monsoon Engineering Desk Operational across Mumbai West Suburbs!</span>
+            <span class="font-medium text-white">VIP Monsoon Engineering Desk Operational across Mumbai West Suburbs!</span>
         </div>
     </div>
 
@@ -179,7 +179,6 @@
 
     <!-- CENTRAL CONTROL SCRIPTS -->
     <script>
-        // SMART TELEPHONY & WHATSAPP TERMINAL INTERACTION
         function dialCoreEngine(tierType) {
             let corePayload = "";
             let designatedTarget = "";
@@ -197,7 +196,6 @@
             window.open(structuredLink, '_blank');
         }
 
-        // PREMIUM RATING FEEDBACK ALIGNMENT
         function submitPremiumAudit() {
             let targetedRegion = document.getElementById('userLocationSelection').value;
             alert("Thank you! Your 5-Star verified engineering log has been successfully cached for " + targetedRegion + " Premium Terminal.");
