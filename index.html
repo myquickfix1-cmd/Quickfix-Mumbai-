@@ -257,7 +257,11 @@
             <a href="tel:+919819832282" class="inline-flex items-center justify-center bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs py-2.5 px-6 rounded-xl border border-gray-700 transition gap-2">
                 📞 Instant Premium Booking via Call
             </a>
-        </div>
+
+
+	<a href="service-areas.html">Service Areas</a>	
+        
+	</div>
 
         <section class="mb-8">
             <div class="flex justify-between items-center mb-4 px-1">
@@ -427,6 +431,7 @@
             const tier = document.querySelector('input[name="dispatchTier"]:checked').value;
 
             const textPayload = `🚨 *QUICKFIX EMERGENCY DISPATCH LEAD* 🚨\n\n👤 *Client Name:* ${name}\n📞 *Phone Line:* ${phone}\n🏢 *Brand:* ${brand}\n🛠️ *Fault Metric:* ${fault}\n📌 *Tower Protocols:* ${instruction}\n⚡ *Priority Tier:* ${tier}`;
+
             
             // Fires deployment loop link for Primary first, hooks configuration for Secondary backup channel
             const compiledUrl = `https://wa.me/91${PRIMARY_WHATSAPP}?text=${encodeURIComponent(textPayload)}`;
@@ -484,8 +489,8 @@
         function invokeAdminGate() {
             window.location.href = "/admin";
         }
-           <a href="service-areas.html">Service Areas</a>
         
+
     </script>
     
 </body>
