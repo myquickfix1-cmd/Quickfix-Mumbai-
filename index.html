@@ -383,4 +383,45 @@
         });
     </script>
 </body>
+       <script>
+function handleAdminLogin(event) {
+    event.preventDefault();
+    
+    // Inputs ki value read karna
+    const form = document.getElementById('login-form');
+    const usernameInput = form.querySelector('input[type="text"]').value.trim();
+    const passwordInput = form.querySelector('input[type="password"]').value.trim();
+    
+    // Error message element ko dhoodhna
+    let errorMessage = document.getElementById("error-message") || document.querySelector(".text-danger") || document.querySelector("p");
+
+    // --- AAPKA CONFIRMED PASSWORD ---
+    const CORRECT_USERNAME = "admin";
+    const CORRECT_PASSWORD = "AapkaNewPassword123"; // <-- Yahan apna password confirm check kar lijiye
+
+    if (usernameInput === CORRECT_USERNAME && passwordInput === CORRECT_PASSWORD) {
+        localStorage.setItem("admin_logged_in", "true");
+        
+        if (errorMessage) {
+            errorMessage.style.color = "green";
+            errorMessage.innerText = "Access Granted! Loading Terminal...";
+        }
+        
+        // redirect karna jab login successful ho
+        setTimeout(() => {
+            // Agar aapke dashboard ka koi alag dashboard page hai toh uska naam likhein
+            alert("Login Successful! Dashboard Loading..."); 
+        }, 500);
+    } else {
+        if (errorMessage) {
+            errorMessage.style.color = "red";
+            errorMessage.innerText = "⚠️ Access Denied! Invalid Credentials.";
+            errorMessage.style.display = "block";
+        } else {
+            alert("⚠️ Access Denied! Incorrect username or password.");
+        }
+    }
+}
+       </script>
+    
 </html>
