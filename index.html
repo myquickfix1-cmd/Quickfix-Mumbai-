@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuickFix Mumbai | Premium Elite Service</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .animate-pulse { animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+    </style>
 </head>
-<body class="bg-[#0B132B] text-white font-sans">
+<body class="bg-[#0B132B] text-white font-sans pb-24">
 
     <section class="p-6 text-center">
         <h1 class="text-3xl font-black uppercase tracking-tighter">QuickFix <span class="text-[#0066FF]">Mumbai</span></h1>
@@ -14,27 +18,31 @@
     </section>
 
     <section class="px-4 py-2">
-        <div class="bg-[#141E3D] p-4 rounded-2xl border border-blue-500/30">
+        <div class="bg-[#141E3D] p-4 rounded-2xl border border-blue-500/30 mb-4">
             <h2 class="text-md font-bold text-yellow-400">⚡ Weekend 18% Off Active</h2>
-            <p class="text-xs text-gray-300 mt-2">Professional Visit Charge: <span class="font-bold text-white">₹149</span></p>
+            <p class="text-xs text-gray-300 mt-1">Professional Visit Charge: ₹149</p>
         </div>
+        
+        <h2 class="text-xs font-bold text-gray-400 mb-2 uppercase">Select Service Date</h2>
+        <input type="date" id="serviceDate" class="w-full bg-[#141E3D] text-white p-3 rounded-xl border border-gray-700 focus:border-blue-500 outline-none">
     </section>
 
     <section class="px-4 py-4 grid grid-cols-2 gap-3">
-        <button class="bg-blue-600 p-3 rounded-xl border-b-4 border-blue-800">
+        <button class="bg-blue-600 p-3 rounded-xl border-b-4 border-blue-800 text-left">
             <span class="block font-bold text-sm">Elite Priority</span>
             <span class="text-[10px]">₹499 | 45 Mins</span>
         </button>
-        <button class="bg-gray-800 p-3 rounded-xl border-b-4 border-gray-900">
+        <button class="bg-gray-800 p-3 rounded-xl border-b-4 border-gray-900 text-left">
             <span class="block font-bold text-sm">Standard</span>
             <span class="text-[10px]">₹199 | 90 Mins</span>
         </button>
     </section>
 
     <section class="px-4 py-2">
-        <button onclick="alert('Recorder Active')" class="w-full bg-red-900/50 p-3 rounded-xl border border-red-500 mb-4 font-bold text-sm">🎙️ Record Your Problem</button>
+        <button onclick="alert('Recording... Speak your issue!')" class="w-full bg-red-900/50 p-3 rounded-xl border border-red-500 mb-4 font-bold text-sm animate-pulse">🎙️ Record Your Problem</button>
+        
         <h2 class="text-xs font-bold mb-3 uppercase text-gray-400">Our Services</h2>
-        <div class="grid grid-cols-3 gap-2 text-[9px] text-center">
+        <div class="grid grid-cols-3 gap-2 text-[10px] text-center">
             <div class="bg-gray-800 p-2 rounded border border-gray-700">Smart Home</div>
             <div class="bg-gray-800 p-2 rounded border border-gray-700">Smart Fridge</div>
             <div class="bg-gray-800 p-2 rounded border border-gray-700">Fridge</div>
@@ -54,9 +62,13 @@
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=quickfixmumbai.com" class="w-20 h-20">
         </div>
         <p class="text-[10px] font-bold text-blue-500">quickfixmumbai.com</p>
-        <p class="text-[10px] text-gray-500 mt-4">6 Month Warranty | Free Revisit Promise</p>
     </section>
+
+    <div class="fixed bottom-0 left-0 w-full p-4 bg-[#0B132B] border-t border-gray-800 z-50">
+        <button onclick="alert('Booking Initiated for: ' + document.getElementById('serviceDate').value)" class="w-full bg-green-600 py-4 rounded-xl font-black text-lg shadow-[0_0_20px_rgba(22,163,74,0.5)]">
+            ⚡ CONFIRM BOOKING
+        </button>
+    </div>
 
 </body>
 </html>
-
