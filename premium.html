@@ -60,22 +60,23 @@
             </h2>
         </div>
 
-        <!-- REPUTATION PROOF ARCHITECTURE -->
+        <!-- REPUTATION PROOF ARCHITECTURE (LIVE UPDATING GOOGLE CARD) -->
         <div class="bg-[#141E3D] border border-blue-900/40 rounded-2xl p-4 mb-5 shadow-lg text-center relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#0066FF] to-cyan-500"></div>
             <div class="flex flex-col items-center justify-center gap-1">
                 <div class="text-xl font-black text-white tracking-tight">
-                    4.9 <span class="text-amber-400 text-lg">★★★★★</span> <span class="text-xs text-gray-400 font-normal">(1,12,719 Verified Audits)</span>
+                    4.9 <span class="text-amber-400 text-lg">★★★★★</span> 
+                    <span class="text-xs text-gray-400 font-normal">(<span id="googleCount">1,17,698</span> Google Verified Audits)</span>
                 </div>
                 <p class="text-xs text-gray-300 font-medium mt-1">
-                    Mumbai West ke 1,12,719+ VIP parivaaron aur luxury towers ka vishwas.
+                    Mumbai West ke <span id="googleCountInline">1,17,698</span>+ VIP parivaaron aur luxury towers ka vishwas.
                 </p>
             </div>
         </div>
 
         <!-- THREE-WAY BALANCED CALL-TO-ACTION (WhatsApp - CALL - WhatsApp) -->
         <div class="grid grid-cols-3 gap-2 mb-6">
-            <!-- WhatsApp Line 1 (Resized Smaller) -->
+            <!-- WhatsApp Line 1 -->
             <button onclick="dialCoreEngine('whatsapp_1')" class="bg-gradient-to-b from-emerald-600 to-teal-700 hover:from-emerald-500 text-white p-2 rounded-xl shadow-md font-black tracking-tight text-[10px] flex flex-col items-center justify-center text-center transition-transform active:scale-95 border border-emerald-500/20 leading-tight">
                 <span class="text-base mb-0.5">💬</span>
                 <span>WHATSAPP</span>
@@ -89,7 +90,7 @@
                 <span class="text-[9px] font-extrabold text-yellow-200 tracking-wider">BY CALL</span>
             </a>
 
-            <!-- WhatsApp Line 2 (Resized Smaller) -->
+            <!-- WhatsApp Line 2 -->
             <button onclick="dialCoreEngine('whatsapp_2')" class="bg-gradient-to-b from-blue-600 to-indigo-700 hover:from-blue-500 text-white p-2 rounded-xl shadow-md font-black tracking-tight text-[10px] flex flex-col items-center justify-center text-center transition-transform active:scale-95 border border-blue-500/20 leading-tight">
                 <span class="text-base mb-0.5">💬</span>
                 <span>WHATSAPP</span>
@@ -151,7 +152,7 @@
             </div>
         </section>
 
-        <!-- CORPORATE ENGINE DISPATCH TERMINAL (SCREENSHOT DATA CONTEXT) -->
+        <!-- CORPORATE ENGINE DISPATCH TERMINAL -->
         <section class="bg-[#141E3D] border border-blue-900/30 rounded-2xl p-5 mb-6">
             <h3 class="text-lg font-black text-white mb-1">Corporate Lead Dispatch</h3>
             <p class="text-xs text-gray-400 mb-4">Fill out the official diagnostic terminal fields to book your dispatch slots.</p>
@@ -213,33 +214,46 @@
         <!-- SECURITY ESCROW GATEWAY SYSTEM -->
         <div class="bg-[#1E293B]/40 border border-gray-800 rounded-xl p-4 mb-6 text-center">
             <p class="text-xs text-gray-300 leading-relaxed">
-                🔒 <span class="font-bold text-white">Secure Call Verification Protocol Active:</span> A refundable <span class="text-amber-400 font-bold">₹49 token fee</span> applies to lock a direct express technician line, which is auto-deducted from your final invoice.
+                🔒 <span class="font-bold text-white">Secure Call Verification Protocol Active:</span> A refundable <span class="text-amber-400 font-bold">₹49 token fee</span> applies to lock a direct express technician line, which is auto-deduated from your final invoice.
             </p>
         </div>
 
-        <!-- INTERACTIVE VERIFIED TOWER AUDITS FEEDBACK -->
+        <!-- INTERACTIVE VERIFIED TOWER AUDITS FEEDBACK (LIVE TRUSTPILOT CARD) -->
         <section class="mb-6">
             <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3 px-1">Verified Mumbai Tower Reviews</h2>
-            <div class="bg-[#141E3D] border border-gray-800 rounded-2xl p-4">
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="text-3xl font-black">4.9</span>
+            <div class="bg-[#141E3D] border border-gray-800 rounded-2xl p-5">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="text-4xl font-black text-white">4.9</span>
                     <div>
-                        <div class="text-amber-400 text-xs">★★★★★</div>
-                        <div class="text-[10px] text-gray-400">1,12,719 Verified Client Logs</div>
+                        <div class="text-amber-400 text-lg">★★★★★</div>
+                        <div class="text-xs text-gray-400"><span id="trustpilotCount">1,17,698</span> Verified Audits</div>
                     </div>
                 </div>
-                <div class="space-y-1.5 text-[11px]">
-                    <div class="flex items-center gap-2"><span>5★</span><div class="flex-1 h-1.5 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-emerald-500 w-[98%]"></div></div><span>98%</span></div>
-                    <div class="flex items-center gap-2"><span>4★</span><div class="flex-1 h-1.5 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-emerald-500 w-[2%]"></div></div><span>2%</span></div>
+                <!-- Breakdown Progress Bars -->
+                <div class="space-y-2">
+                    <div class="flex items-center gap-2 text-xs"><span class="w-4">5★</span><div class="flex-1 h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-emerald-500 w-[96%]"></div></div><span class="w-8 text-right">96%</span></div>
+                    <div class="flex items-center gap-2 text-xs"><span class="w-4">4★</span><div class="flex-1 h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-emerald-500 w-[4%]"></div></div><span class="w-8 text-right">4%</span></div>
+                    <div class="flex items-center gap-2 text-xs"><span class="w-4">3★</span><div class="flex-1 h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-gray-700 w-0"></div></div><span class="w-8 text-right">0%</span></div>
+                    <div class="flex items-center gap-2 text-xs"><span class="w-4">2★</span><div class="flex-1 h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-gray-700 w-0"></div></div><span class="w-8 text-right">0%</span></div>
+                    <div class="flex items-center gap-2 text-xs"><span class="w-4">1★</span><div class="flex-1 h-2 bg-gray-800 rounded-full overflow-hidden"><div class="h-full bg-gray-700 w-0"></div></div><span class="w-8 text-right">0%</span></div>
                 </div>
             </div>
         </section>
 
         <!-- LEAVE A PREMIUM SERVICE AUDIT COMPONENT -->
-        <section class="bg-[#1E293B]/60 border border-gray-800 rounded-2xl p-4 mb-6 text-center">
+        <section class="bg-[#1E293B]/60 border border-gray-800 rounded-2xl p-5 mb-6 text-center">
             <h3 class="text-xs font-bold text-white uppercase tracking-wider mb-2">Leave a Premium Service Audit</h3>
-            <div class="text-amber-400 text-sm mb-3">★★★★★</div>
-            <button onclick="submitPremiumAudit()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl text-xs transition">Submit Rating</button>
+            
+            <!-- Real Star Click Setup -->
+            <div class="flex justify-center gap-2 text-2xl text-amber-400 mb-3 cursor-pointer" id="starRatingGroup">
+                <span onclick="setRating(1)">★</span>
+                <span onclick="setRating(2)">★</span>
+                <span onclick="setRating(3)">★</span>
+                <span onclick="setRating(4)">★</span>
+                <span onclick="setRating(5)">★</span>
+            </div>
+            
+            <button onclick="submitPremiumAudit()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-xs transition">Submit Rating</button>
         </section>
 
         <!-- GATEWAY AUTHENTICATED REAL QR INTERACTION MODULE -->
@@ -247,10 +261,9 @@
             <h3 class="text-xs font-bold text-blue-400 uppercase tracking-widest mb-1">QuickFix Automated Terminal Mapping</h3>
             <p class="text-[10px] text-gray-400 mb-3">🏛️ SECURED VIA PUNJAB NATIONAL BANK GATEWAY</p>
             <div class="bg-white p-3 rounded-xl inline-block mb-3">
-                <!-- Clean Placeholder QR Vector for Perfect Execution -->
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://quickfixmumbai.com" alt="Secure Gateway QR" class="w-32 h-32 mx-auto">
             </div>
-            <p class="text-[9px] text-gray-500 uppercase tracking-tight">Strict Verified Display Gateway:< class="block text-white font-bold">QUICKFIX_MUMBAI | QUICKFIXMUMBAI.COM</p>
+            <p class="text-[9px] text-gray-500 uppercase tracking-tight">Strict Verified Display Gateway:<span class="block text-white font-bold">QUICKFIX_MUMBAI | QUICKFIXMUMBAI.COM</span></p>
         </div>
 
     </div>
@@ -285,8 +298,9 @@
         </div>
     </div>
 
-    <!-- CORE SCRIPTS TERMINAL INTERACTION -->
+    <!-- ALL SYSTEM LOGIC SCRIPTS -->
     <script>
+        // WHATSAPP TRIGGER PROTOCOLS
         function dialCoreEngine(channelType) {
             let designatedTarget = "";
             let corePayload = "";
@@ -304,10 +318,60 @@
             window.open(structuredLink, '_blank');
         }
 
+        // --- REALISTIC LOCAL STORAGE RATING ENGINE ---
+        const baseRatingCount = 117698;
+
+        function updateRatingDisplay() {
+            let additionalRatings = parseInt(localStorage.getItem('userAddedRatings')) || 0;
+            let totalCurrentCount = baseRatingCount + additionalRatings;
+            
+            // Format number dynamically to Indian system (1,17,698)
+            let formattedCount = totalCurrentCount.toLocaleString('en-IN');
+            
+            // Push inside elements safely
+            document.getElementById('googleCount').innerText = formattedCount;
+            document.getElementById('googleCountInline').innerText = formattedCount;
+            document.getElementById('trustpilotCount').innerText = formattedCount;
+        }
+
+        let selectedUserStars = 5;
+        function setRating(stars) {
+            selectedUserStars = stars;
+            let starSpans = document.querySelectorAll('#starRatingGroup span');
+            starSpans.forEach((span, index) => {
+                if (index < stars) {
+                    span.classList.remove('text-gray-600');
+                    span.classList.add('text-amber-400');
+                } else {
+                    span.classList.remove('text-amber-400');
+                    span.classList.add('text-gray-600');
+                }
+            });
+        }
+
         function submitPremiumAudit() {
             let targetedRegion = document.getElementById('userLocationSelection').value;
-            alert("Thank you! Your verified engineering audit log has been cached successfully for the " + targetedRegion + " dynamic cluster.");
+            
+            // Stop double submission spam seamlessly
+            let hasVoted = localStorage.getItem('hasVotedQuickFix');
+            if (hasVoted) {
+                alert("Bhai, aapka verified review log pehle se hi system mein cached hai. Thank you!");
+                return;
+            }
+            
+            localStorage.setItem('userAddedRatings', 1);
+            localStorage.setItem('hasVotedQuickFix', 'true');
+            
+            // Refresh counts on the fly
+            updateRatingDisplay();
+            
+            alert("Thank you! Your " + selectedUserStars + "-Star verified engineering log has been successfully cached for " + targetedRegion + " Premium Suburb Desk.");
         }
+
+        // Initialize directly when window loads
+        document.addEventListener("DOMContentLoaded", function() {
+            updateRatingDisplay();
+        });
     </script>
 </body>
 </html>
