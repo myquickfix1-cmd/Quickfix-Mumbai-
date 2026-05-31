@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function() {
         setInterval(triggerLivePopup, 20000);
     }
 
-        });
+        
             // ==========================================================================
     // 5. DUAL WHATSAPP LEAD DISPATCH ENGINE (BOOM BOOK SYSTEM)
     // ==========================================================================
@@ -295,7 +295,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 // CONDITION B: BAD CUSTOMER SAFETY VALVE (BYPASS PUBLIC DISPLAY & TRIGGER RECOVERY)
                 modalContent.className = "w-full max-w-sm rounded-2xl p-6 text-center shadow-2xl transition transform scale-100 apology-red-card text-white";
-                modalContent.innerHTML = `
+                                                modalContent.innerHTML = `
                     <div class="text-4xl mb-3">😞</div>
                     <h3 class="text-xl font-black text-red-400 mb-2 uppercase tracking-wide">Priority Escalation</h3>
                     <p class="text-xs text-gray-300 leading-relaxed mb-4">
@@ -305,10 +305,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     </p>
                     <button id="closeCrmModal" class="bg-red-500 hover:bg-red-600 text-white text-xs font-bold px-6 py-2 rounded-xl uppercase tracking-wider transition">Connect Support</button>
                 `;
-                
-                // BACKEND FAULT TRACE LOGGING: Alert backup data stream about the technician fault context
-                console.warn(`CRITICAL INCIDENT ALERT: Performance issue flagged at location: ${clientTower} by client: ${clientName}. Operational trace active.`);
-            }
+            } // Yeh Condition B (else) ka closing bracket hai
+
 
             // Bind closure logic to flush modal instance memory
             document.getElementById("closeCrmModal").addEventListener("click", () => {
