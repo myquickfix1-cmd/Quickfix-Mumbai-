@@ -1,100 +1,4 @@
-creen".');
-            }
-        }
-
-        // SMART WHATSAPP BOOKING ROUTER (LOOP FOR BOTH PARTNERS)
-        function executeDualRoutingWhatsApp(event) {
-            event.preventDefault();
-            const name = document.getElementById('custName').value;
-            const phone = document.getElementById('custPhone').value;
-            const brand = document.getElementById('brandSelect').value;
-            const fault = document.getElementById('issueSelect').value;
-            const instruction = document.getElementById('towerInstructions').value;
-            const tier = document.querySelector('input[name="dispatchTier"]:checked').value;
-
-            const textPayload = `🚨 *QUICKFIX EMERGENCY DISPATCH LEAD* 🚨\n\n👤 *Client Name:* ${name}\n📞 *Phone Line:* ${phone}\n🏢 *Brand:* ${brand}\n🛠️ *Fault Metric:* ${fault}\n📌 *Tower Protocols:* ${instruction}\n⚡ *Priority Tier:* ${tier}`;
-
-            
-            // Fires deployment loop link for Primary first, hooks configuration for Secondary backup channel
-            const compiledUrl = `https://wa.me/91${PRIMARY_WHATSAPP}?text=${encodeURIComponent(textPayload)}`;
-            alert(`✅ Lead Locked! Opening secure dispatch line. If you want to sync this on both partner channels, use the Line 1 and Line 2 dispatch actions right below the form.`);
-            window.open(compiledUrl, '_blank');
-        }
-
-        function sendDirectWhatsApp(lineNumber) {
-            const name = document.getElementById('custName').value || "New Customer";
-            const phone = document.getElementById('custPhone').value || "Not Specified";
-            const brand = document.getElementById('brandSelect').value || "General Brand";
-            const fault = document.getElementById('issueSelect').value || "System Fault Check";
-            
-            const textPayload = `⚡ *QUICKFIX SYSTEM BROADCAST LINE ${lineNumber}* ⚡\n\n👤 *Client:* ${name}\n📞 *Contact:* ${phone}\n🏢 *Brand Selection:* ${brand}\n⚠️ *Issue:* ${fault}`;
-            const targetedNum = (lineNumber === 1) ? PRIMARY_WHATSAPP : SECONDARY_WHATSAPP;
-            
-            window.open(`https://wa.me/91${targetedNum}?text=${encodeURIComponent(textPayload)}`, '_blank');
-        }
-
-        // INTERACTIVE RATINGS ENGINE
-        let selectedAuditStars = 5;
-        function updateReviewStars(starCount) {
-            selectedAuditStars = starCount;
-            const starNodes = document.querySelectorAll('.star-node');
-            starNodes.forEach((node, index) => {
-                if (index < starCount) {
-                    node.classList.add('text-amber-400');
-                    node.classList.remove('text-gray-600');
-                } else {
-                    node.classList.remove('text-amber-400');
-                    node.classList.add('text-gray-600');
-                }
-            });
-        }
-
-        function submitAuditReview() {
-            const loc = document.getElementById('reviewLocationSelector').value;
-            const targetGrid = document.getElementById('reviewsGrid');
-            let starsString = "⭐".repeat(selectedAuditStars);
-
-            const freshReviewCard = document.createElement('div');
-            freshReviewCard.className = "bg-[#1E293B] border border-blue-500/30 rounded-xl p-4 shadow-md";
-            freshReviewCard.innerHTML = `
-                <div class="flex justify-between items-center mb-1">
-                    <span class="font-bold text-xs text-white">Verified Client Profile</span>
-                    <span class="text-amber-400 text-xs">${starsString}</span>
-                </div>
-                <p class="text-sky-400 font-mono text-[9px] uppercase tracking-wider mb-1">📍 High-Rise Estate, ${loc}</p>
-                <p class="text-xs text-gray-300 leading-normal">"Excellent and extremely fast responsive diagnostics setup. Solved the system problem immediately!"</p>
-            `;
-            targetGrid.insertBefore(freshReviewCard, targetGrid.firstChild);
-            alert("✅ Thank you! Your elite engineering verification rating has been parsed successfully.");
-        }
-
-        function invokeAdminGate() {
-            window.location.href = "/admin";
-        }
-        
-
-    </script>
-
-	    <!-- ... (purana content) ... -->
-    <div class="text-center my-4">
-        <button onclick="invokeAdminGate()" class="...">
-            ⚙️ SECURE APP MANAGEMENT ENGINE LOG
-        </button>
-    </div>
-</div> <!-- Main container closing div -->
-
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/919819832282?..." ...>
-    <img src="..." ...>
-</a>
-
-<!-- Footer -->
-<footer class="...">
-    ...
-</footer>
-
-<script>
-    // ... (Aapki puri script yahan honi chahiye)
+ri script yahan honi chahiye)
 </script>
 </body>
 </html>
@@ -265,6 +169,91 @@ creen".');
             <div class="w-full h-full bg-gray-200"></div>
         </div>
         <p class="text-[10px] text-blue-500 font-bold mb-6">QUICKFIXMUMBAI.COM</p>
+        <div class="text-[9px] text-gray-600 px-6">
+            <p>© 2026 QUICKFIX MUMBAI. ALL RIGHTS RESERVED.</p>
+            <p class="mt-1">ENGINEERED FOR ELITE GRADE RESIDENTIAL TERMINALS & HIGH-CAPACITY ARCHITECTURE.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>QuickFix Mumbai | Elite Engineering Terminal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0B132B] text-white font-sans antialiased pb-10">
+
+    <header class="text-center pt-8 pb-4 px-4">
+        <h1 class="text-3xl font-black tracking-tight text-white">QUICKFIX MUMBAI</h1>
+        <p class="text-sm text-blue-400 font-medium italic mt-1">"Master in Home Appliances & Complex Electronics"</p>
+        
+        <div class="mt-4 inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-full px-4 py-1 text-[10px] font-bold">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            LIVE OPERATIONAL DESK ACTIVE UNTIL 12:00 AM MIDNIGHT
+        </div>
+    </header>
+
+    <main class="max-w-md mx-auto px-4 space-y-8">
+
+        <section class="bg-[#141E3D] border border-blue-900/40 p-4 rounded-xl flex justify-between items-center shadow-lg">
+            <div>
+                <h3 class="text-xs font-bold text-white">QuickFix Terminal App</h3>
+                <p class="text-[9px] text-gray-400">Install for instant premium access</p>
+            </div>
+            <button class="bg-[#0066FF] text-[10px] font-extrabold px-5 py-2.5 rounded-lg shadow-blue-500/20 shadow-lg">INSTALL</button>
+        </section>
+
+        <section class="grid grid-cols-2 gap-3">
+            <div class="bg-[#141E3D] p-4 rounded-xl border border-gray-800">
+                <h4 class="text-[9px] font-bold uppercase text-white">High-Level Essential Repairing</h4>
+                <p class="text-[8px] text-gray-400 mt-1">Expert in AC, Fridge & PCB Systems.</p>
+            </div>
+            <div class="bg-[#141E3D] p-4 rounded-xl border border-gray-800">
+                <h4 class="text-[9px] font-bold uppercase text-white">Quick Restore Your Problem</h4>
+                <p class="text-[8px] text-gray-400 mt-1">Restoring performance to 100%.</p>
+            </div>
+            <div class="bg-[#141E3D] p-4 rounded-xl border border-gray-800">
+                <h4 class="text-[9px] font-bold uppercase text-white">Non-Resolved Problems Fixed</h4>
+                <p class="text-[8px] text-gray-400 mt-1">If they couldn't, we will.</p>
+            </div>
+            <div class="bg-[#141E3D] p-4 rounded-xl border border-gray-800">
+                <h4 class="text-[9px] font-bold uppercase text-white">Quick Solved Guaranteed</h4>
+                <p class="text-[8px] text-gray-400 mt-1">Precision diagnostics for complex circuits.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-4 px-1">Specialized Machine Services</h2>
+            <div class="space-y-2">
+                <div class="bg-[#1E293B] p-4 rounded-xl text-xs font-bold border border-gray-800">1. All Smart Home Appliances</div>
+                <div class="bg-[#1E293B] p-4 rounded-xl text-xs font-bold border border-gray-800">2. Smart Refrigerator</div>
+                <div class="bg-[#1E293B] p-4 rounded-xl text-xs font-bold border border-gray-800">3. Fridge</div>
+                <div class="bg-[#1E293B] p-4 rounded-xl text-xs font-bold border border-gray-800">4. Washing Machine</div>
+                <div class="bg-[#1E293B] p-4 rounded-xl text-xs font-bold border border-gray-800">5. Microwave</div>
+                <div class="bg-[#1E293B] p-4 rounded-xl text-xs font-bold border border-gray-800">6. Premium Air Dresser</div>
+                <div class="bg-[#1E293B] p-4 rounded-xl text-xs font-bold border border-gray-800">7. High Capacity Air Dryer</div>
+                <div class="bg-[#1E293B] p-4 rounded-xl text-xs font-bold border border-gray-800">8. Advance Dish Washer</div>
+                <div class="bg-[#1E293B] p-4 rounded-xl text-xs font-bold border border-gray-800">9. AC</div>
+                <div class="bg-[#1E293B] border border-amber-500/40 p-4 rounded-xl text-xs font-bold text-amber-400">10. Inverter/PCB & Advance Machine Wiring</div>
+            </div>
+        </section>
+
+        <section class="bg-[#141E3D] p-5 rounded-2xl border border-gray-800 text-center shadow-2xl">
+            <h3 class="text-xs font-bold mb-3">Leave a Premium Service Audit</h3>
+            <div class="text-amber-400 text-lg mb-3 tracking-widest">★★★★★</div>
+            <button class="w-full bg-[#0066FF] py-3 rounded-xl text-xs font-bold transition-transform active:scale-95">SUBMIT RATING</button>
+        </section>
+    </main>
+
+    <footer class="text-center py-8 border-t border-gray-800 mt-10">
+        <p class="text-[10px] text-gray-500 mb-4">🏦 Secured via Punjab National Bank Gateway</p>
+        <div class="bg-white p-2 mx-auto w-24 h-24 mb-4 rounded-lg">
+            <div class="w-full h-full bg-gray-200"></div> </div>
+        <p class="text-[10px] text-blue-500 font-bold mb-6 underline">QUICKFIXMUMBAI.COM</p>
         <div class="text-[9px] text-gray-600 px-6">
             <p>© 2026 QUICKFIX MUMBAI. ALL RIGHTS RESERVED.</p>
             <p class="mt-1">ENGINEERED FOR ELITE GRADE RESIDENTIAL TERMINALS & HIGH-CAPACITY ARCHITECTURE.</p>
