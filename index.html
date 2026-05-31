@@ -5,66 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuickFix Mumbai | Elite Engineering Desk</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-        .pulse-fix { animation: pulse 2s infinite; }
-    </style>
+    <link rel="manifest" href="manifest.json">
 </head>
-<body class="bg-[#0B132B] text-white font-sans pb-24">
+<body class="bg-[#0B132B] text-white p-5 font-sans min-h-screen">
 
-    <!-- Header Section -->
-    <section class="p-6 text-center">
-        <h1 class="text-3xl font-black uppercase tracking-tighter">QuickFix <span class="text-[#0066FF]">Mumbai</span></h1>
-        <p class="text-blue-400 font-bold italic text-sm">"Elite Engineering Desk"</p>
-        <p class="text-[10px] text-gray-500 mt-2 font-bold uppercase tracking-widest">Master in Home Appliances & Complex Electronics</p>
-    </section>
-
-    <!-- Professional Identity Tags -->
-    <section class="px-4 grid grid-cols-2 gap-2 mb-6">
-        <div class="bg-[#141E3D] p-3 rounded-xl border border-blue-500/30 text-[9px] font-bold text-center">✅ HIGH-LEVEL REPAIRING</div>
-        <div class="bg-[#141E3D] p-3 rounded-xl border border-blue-500/30 text-[9px] font-bold text-center">🔄 QUICK RESTORE</div>
-        <div class="bg-[#141E3D] p-3 rounded-xl border border-blue-500/30 text-[9px] font-bold text-center">🛠️ NON-RESOLVED FIXED</div>
-        <div class="bg-[#141E3D] p-3 rounded-xl border border-blue-500/30 text-[9px] font-bold text-center">⚡ QUICK SOLVED</div>
-    </section>
-
-    <!-- Data Collection Form -->
-    <section class="px-4 mb-6">
-        <input type="text" placeholder="Your Name" class="w-full bg-[#141E3D] p-3 rounded-xl mb-2 border border-gray-700 outline-none">
-        <select class="w-full bg-[#141E3D] p-3 rounded-xl border border-gray-700 outline-none text-gray-400">
-            <option>Select Area (West Mumbai)</option>
-            <option>Bandra</option>
-            <option>Andheri</option>
-            <option>Malad</option>
-        </select>
-    </section>
-
-    <!-- Kalia Style Voice Integration -->
-    <section class="px-4 mb-6">
-        <button id="recordBtn" class="w-full flex items-center justify-center gap-3 bg-red-900/40 border border-red-500/50 py-4 rounded-xl font-bold text-red-100 pulse-fix">
-            <span>🎙️</span> RECORD YOUR PROBLEM (FREE)
-        </button>
-        <p class="text-[9px] text-center text-gray-500 mt-2 italic">"Kalia hears it all—record and get a faster diagnosis!"</p>
-    </section>
-
-    <!-- VIP Priority Dispatch -->
-    <section class="px-4 py-4 border-t border-gray-800">
-        <h2 class="text-[10px] font-bold text-gray-500 mb-3 uppercase tracking-widest">Quick Repair Dispatch</h2>
-        <div class="grid grid-cols-2 gap-3">
-            <button class="bg-blue-700 p-4 rounded-xl border-b-4 border-blue-900">
-                <span class="block font-black text-sm">VIP ELITE</span>
-                <span class="text-[10px] opacity-80">₹499 Pre-Pay | 45m</span>
-            </button>
-            <button class="bg-gray-800 p-4 rounded-xl border-b-4 border-gray-900">
-                <span class="block font-black text-sm">VIP FAST</span>
-                <span class="text-[10px] opacity-80">₹199 Pre-Pay | 90m</span>
-            </button>
-        </div>
-    </section>
-
-    <!-- Sticky Booking -->
-    <div class="fixed bottom-0 left-0 w-full p-4 bg-[#0B132B] border-t border-gray-800 z-50">
-        <button class="w-full bg-green-600 py-4 rounded-xl font-black text-lg shadow-[0_0_20px_rgba(22,163,74,0.3)]">CONFIRM & PAY VIP FEE</button>
+    <!-- Header -->
+    <div class="text-center mb-6">
+        <h1 class="text-3xl font-black uppercase tracking-tighter">QUICKFIX <span class="text-[#0066FF]">MUMBAI</span></h1>
+        <p class="text-[10px] text-blue-400 uppercase tracking-widest font-bold">"Elite Engineering Desk"</p>
     </div>
 
+    <!-- Priority Dispatch -->
+    <div class="grid grid-cols-2 gap-4 mb-6">
+        <button onclick="selectTier('VIP ELITE', 499)" class="bg-[#0066FF] p-4 rounded-xl text-center border-2 border-transparent">
+            <h3 class="font-black uppercase text-sm">VIP ELITE</h3>
+            <p class="text-[10px] opacity-80">₹499 Pre-Pay | 45m</p>
+        </button>
+        <button onclick="selectTier('VIP FAST', 199)" class="bg-[#141E3D] border border-gray-700 p-4 rounded-xl text-center">
+            <h3 class="font-black uppercase text-sm">VIP FAST</h3>
+            <p class="text-[10px] text-gray-500">₹199 Pre-Pay | 90m</p>
+        </button>
+    </div>
+
+    <!-- Appliance Grid: All Added Items -->
+    <div class="grid grid-cols-2 gap-3 mb-6">
+        <button onclick="selectAppliance('Smart Home Appliance')" class="bg-[#141E3D] py-3 rounded-lg text-[10px] font-bold border border-gray-700">Smart Appliances</button>
+        <button onclick="selectAppliance('Smart Refrigerator')" class="bg-[#141E3D] py-3 rounded-lg text-[10px] font-bold border border-gray-700">Smart Fridge</button>
+        <button onclick="selectAppliance('Refrigerator')" class="bg-[#141E3D] py-3 rounded-lg text-[10px] font-bold border border-gray-700">Fridge</button>
+        <button onclick="selectAppliance('Washing Machine')" class="bg-[#141E3D] py-3 rounded-lg text-[10px] font-bold border border-gray-700">Washing Machine</button>
+        <button onclick="selectAppliance('Microwave')" class="bg-[#141E3D] py-3 rounded-lg text-[10px] font-bold border border-gray-700">Microwave</button>
+        <button onclick="selectAppliance('Air Dresser')" class="bg-[#141E3D] py-3 rounded-lg text-[10px] font-bold border border-gray-700">Air Dresser</button>
+        <button onclick="selectAppliance('Air Dryer')" class="bg-[#141E3D] py-3 rounded-lg text-[10px] font-bold border border-gray-700">Air Dryer</button>
+        <button onclick="selectAppliance('Dish Washer')" class="bg-[#141E3D] py-3 rounded-lg text-[10px] font-bold border border-gray-700">Dish Washer</button>
+        <button onclick="selectAppliance('AC')" class="bg-[#141E3D] py-3 rounded-lg text-[10px] font-bold border border-gray-700">AC</button>
+        <button onclick="selectAppliance('Inverter/PCB')" class="bg-[#141E3D] py-3 rounded-lg text-[10px] font-bold border border-gray-700">Inverter/PCB</button>
+        <button onclick="selectAppliance('Machine Wiring')" class="bg-[#141E3D] py-3 rounded-lg text-[10px] font-bold border border-gray-700">Machine Wiring</button>
+    </div>
+
+    <!-- Confirm & Pay -->
+    <button onclick="processPayment()" class="w-full bg-green-600 py-4 rounded-xl font-black text-lg uppercase shadow-lg shadow-green-900/50">
+        CONFIRM & PAY VIP FEE
+    </button>
+
+    <script>
+        let selectedTier = null;
+        let selectedAppliance = null;
+
+        function selectTier(tier, price) { selectedTier = tier; alert("Priority: " + tier + " selected."); }
+        function selectAppliance(item) { selectedAppliance = item; alert("Appliance: " + item + " selected."); }
+
+        function processPayment() {
+            if(!selectedTier || !selectedAppliance) { alert("Please select a Tier and an Appliance!"); return; }
+            alert("Redirecting to Secure Payment for " + selectedTier + "...");
+            
+            setTimeout(() => {
+                const rating = prompt("Service Complete! Please rate your experience (1-5 stars):");
+                if(rating >= 4) {
+                    alert("Thank you! 6-Month Elite Warranty Card activated.");
+                } else {
+                    alert("Senior Engineer assigned for priority re-visit.");
+                }
+            }, 2000);
+        }
+    </script>
 </body>
 </html>
