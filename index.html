@@ -1,98 +1,4 @@
-de mb-3">🏦 Secured via Punjab National Bank Gateway</p>
-            
-            <div class="flex justify-center my-4">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=9819832282@pnb&pn=QUICKFIX_MUMBAI&am=49&cu=INR" alt="PNB UPI Central QR" class="w-48 h-48 rounded-xl border-4 border-slate-800 p-2 bg-white" />
-            </div>
-            
-            <p class="text-[10px] text-gray-500 uppercase tracking-wider">
-                STRICT VERIFIED DISPLAY GATEWAY:<br>
-                <span class="text-white font-bold">QUICKFIX_MUMBAI</span> | <a href="https://quickfixmumbai.com" class="text-sky-400 underline">QUICKFIXMUMBAI.COM</a>
-            </p>
-        </div>
-
-        <div class="text-center my-4">
-            <button onclick="invokeAdminGate()" class="text-[9px] text-gray-600 uppercase tracking-widest font-mono hover:text-blue-500 transition duration-300">
-                ⚙️ SECURE APP MANAGEMENT ENGINE LOG
-            </button>
-        </div>
-
-    </div>
-
-    <footer class="bg-[#070D1F] border-t border-gray-800 text-gray-500 text-center py-6 px-4 text-[11px] uppercase tracking-wider">
-        <div class="max-w-md mx-auto space-y-2">
-            <p>© 2026 <span class="text-gray-300 font-bold">QuickFix Mumbai</span>. All Rights Reserved.</p>
-            <p>Engineered For Elite Grade Residential Terminals & High-Capacity Architecture.</p>
-            <div class="flex justify-center gap-4 text-[10px] text-sky-400/70 font-bold mt-1">
-                <a href="#bookingFormSection" class="hover:underline">Secure Booking</a> • 
-                <a href="tel:+919819832282" class="hover:underline">Corporate Fleet Desk</a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        const PRIMARY_WHATSAPP = "9819832282";
-        const SECONDARY_WHATSAPP = "9769009845";
-
-        function initializeAlertSystem() {
-            const currentDay = new Date().getDay(); 
-            const currentHour = new Date().getHours();
-            const alertLayout = document.getElementById('alertContentLayout');
-            const alertBar = document.getElementById('emergencyAlertBar');
-
-            let isWeekendMode = (currentDay === 5 && currentHour >= 0) || currentDay === 6 || currentDay === 0;
-            const remainingSlots = Math.floor(Math.random() * 6 + 10);
-
-            if (isWeekendMode) {
-                alertBar.className = "bg-gradient-to-r from-[#FF7A00] to-[#FF4500] text-center py-2 px-4 text-xs sm:text-sm flex flex-col justify-center items-center gap-1 sticky top-0 z-50 shadow-md transition-all duration-500";
-                alertLayout.innerHTML = `
-                    <div class="flex flex-wrap justify-center items-center gap-2">
-                        <span class="font-bold">Planning for the Weekend? Pre-Book Your Sunday Maintenance Slot & Save 20%!</span>
-                        <a href="#bookingFormSection" class="bg-white text-[#FF4500] px-3 py-0.5 rounded-full text-xs font-extrabold hover:bg-opacity-90 transition shadow-sm">BOOK QUICK</a>
-                    </div>
-                `;
-            } else {
-                alertLayout.innerHTML = `
-                    <div class="flex flex-wrap justify-center items-center gap-2">
-                        <span class="font-bold">⚡ PREMIUM EMERGENCY ALERT: HIGH DEMAND IN RESIDENTIAL TOWERS!</span>
-                        <span class="font-bold">Slots closing in: <span id="countdownTimer" class="bg-black/30 px-2 py-0.5 rounded font-mono text-amber-300">03h : 00m : 00s</span></span>
-                        <a href="#bookingFormSection" class="bg-white text-[#FF4500] px-3 py-0.5 rounded-full text-xs font-extrabold hover:bg-opacity-90 transition shadow-sm">Quick Book</a>
-                    </div>
-                `;
-                startCountdown(3 * 3600); 
-            }
-        }
-
-        function startCountdown(durationInSeconds) {
-            let timer = durationInSeconds;
-            setInterval(() => {
-                const display = document.getElementById('countdownTimer');
-                if(!display) return;
-                let hours = String(Math.floor(timer / 3600)).padStart(2, '0');
-                let minutes = String(Math.floor((timer % 3600) / 60)).padStart(2, '0');
-                let seconds = String(timer % 60).padStart(2, '0');
-                display.textContent = `${hours}h : ${minutes}m : ${seconds}s`;
-                if (--timer < 0) timer = durationInSeconds;
-            }, 1000);
-        }
-
-        initializeAlertSystem();
-
-        // PWA CORE SHORTCUT DETECTOR
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-        });
-
-        function triggerPwaDeployment() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') console.log('User joined standalone channel.');
-                    deferredPrompt = null;
-                });
-            } else {
-                alert('🚀 QuickFix Premium App Status: To install instantly on your device, press the browser settings/share icon and choose "Add to Home Screen".');
+creen".');
             }
         }
 
@@ -274,5 +180,96 @@ de mb-3">🏦 Secured via Punjab National Bank Gateway</p>
         </section>
 
     </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>QuickFix Mumbai | Elite Engineering Terminal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0B132B] text-white font-sans antialiased pb-10">
+
+    <!-- Header Section -->
+    <header class="text-center pt-8 pb-4 px-4">
+        <h1 class="text-3xl font-black tracking-tight text-white">QUICKFIX MUMBAI</h1>
+        <p class="text-sm text-blue-400 font-medium italic mt-1">"Master in Home Appliances & Complex Electronics"</p>
+        <div class="mt-3 inline-block bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-full px-4 py-1 text-[10px] font-bold">
+            🟢 Live Operational Desk Active Until 12:00 AM Midnight
+        </div>
+    </header>
+
+    <main class="max-w-md mx-auto px-4">
+
+        <!-- PWA Installation -->
+        <section class="bg-[#141E3D] border border-blue-900/40 p-4 rounded-xl mb-6 flex justify-between items-center">
+            <div>
+                <h3 class="text-xs font-bold">QuickFix Terminal App</h3>
+                <p class="text-[9px] text-gray-400">Install for instant premium access</p>
+            </div>
+            <button class="bg-[#0066FF] text-[10px] font-extrabold px-4 py-2 rounded-lg">INSTALL</button>
+        </section>
+
+        <!-- Service Highlights Grid -->
+        <section class="grid grid-cols-2 gap-3 mb-8">
+            <div class="bg-[#141E3D] p-3 rounded-xl border border-gray-800">
+                <h4 class="text-[9px] font-bold uppercase">High-Level Essential Repairing</h4>
+                <p class="text-[8px] text-gray-400 mt-1">Expert in AC, Fridge & PCB Systems.</p>
+            </div>
+            <div class="bg-[#141E3D] p-3 rounded-xl border border-gray-800">
+                <h4 class="text-[9px] font-bold uppercase">Quick Restore Your Problem</h4>
+                <p class="text-[8px] text-gray-400 mt-1">Restoring performance to 100%.</p>
+            </div>
+            <div class="bg-[#141E3D] p-3 rounded-xl border border-gray-800">
+                <h4 class="text-[9px] font-bold uppercase">Non-Resolved Problems Fixed</h4>
+                <p class="text-[8px] text-gray-400 mt-1">If they couldn't, we will.</p>
+            </div>
+            <div class="bg-[#141E3D] p-3 rounded-xl border border-gray-800">
+                <h4 class="text-[9px] font-bold uppercase">Quick Solved Guaranteed</h4>
+                <p class="text-[8px] text-gray-400 mt-1">Precision diagnostics for complex circuits.</p>
+            </div>
+        </section>
+
+        <!-- Machine List -->
+        <section class="mb-8">
+            <h2 class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-4 px-1">Specialized Machine Services</h2>
+            <div class="space-y-2">
+                <div class="bg-[#1E293B] p-4 rounded-xl text-xs font-bold">1. All Smart Home Appliances</div>
+                <div class="bg-[#1E293B] p-4 rounded-xl text-xs font-bold">2. Smart Refrigerator</div>
+                <div class="bg-[#1E293B] p-4 rounded-xl text-xs font-bold">3. Fridge</div>
+                <div class="bg-[#1E293B] p-4 rounded-xl text-xs font-bold">4. Washing Machine</div>
+                <div class="bg-[#1E293B] p-4 rounded-xl text-xs font-bold">5. Microwave</div>
+                <div class="bg-[#1E293B] p-4 rounded-xl text-xs font-bold">6. Premium Air Dresser</div>
+                <div class="bg-[#1E293B] p-4 rounded-xl text-xs font-bold">7. High Capacity Air Dryer</div>
+                <div class="bg-[#1E293B] p-4 rounded-xl text-xs font-bold">8. Advance Dish Washer</div>
+                <div class="bg-[#1E293B] p-4 rounded-xl text-xs font-bold">9. AC</div>
+                <div class="bg-[#1E293B] border border-amber-500/40 p-4 rounded-xl text-xs font-bold text-amber-400">10. Inverter/PCB & Advance Machine Wiring</div>
+            </div>
+        </section>
+
+        <!-- Rating Section -->
+        <section class="bg-[#141E3D] p-5 rounded-2xl border border-gray-800 text-center mb-8">
+            <h3 class="text-xs font-bold mb-3">Leave a Premium Service Audit</h3>
+            <div class="text-amber-400 text-lg mb-3">★★★★★</div>
+            <button class="w-full bg-[#0066FF] py-3 rounded-xl text-xs font-bold">SUBMIT RATING</button>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-8 border-t border-gray-800 mt-4">
+        <p class="text-[10px] text-gray-500 mb-4">🏦 Secured via Punjab National Bank Gateway</p>
+        <div class="bg-white p-2 mx-auto w-24 h-24 mb-4">
+            <!-- QR Placeholder -->
+            <div class="w-full h-full bg-gray-200"></div>
+        </div>
+        <p class="text-[10px] text-blue-500 font-bold mb-6">QUICKFIXMUMBAI.COM</p>
+        <div class="text-[9px] text-gray-600 px-6">
+            <p>© 2026 QUICKFIX MUMBAI. ALL RIGHTS RESERVED.</p>
+            <p class="mt-1">ENGINEERED FOR ELITE GRADE RESIDENTIAL TERMINALS & HIGH-CAPACITY ARCHITECTURE.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
