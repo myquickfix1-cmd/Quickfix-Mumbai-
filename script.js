@@ -193,8 +193,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
         
-                // ==========================================================================
-    // 5. DUAL WHATSAPP LEAD DISPATCH ENGINE (UPGRADED WITH LOCATION & VALIDATION)
+                    // ==========================================================================
+    // 5. DUAL WHATSAPP LEAD DISPATCH ENGINE (BOOM BOOK SYSTEM)
     // ==========================================================================
     const leadForm = document.getElementById("leadDispatchForm");
 
@@ -207,14 +207,19 @@ document.addEventListener("DOMContentLoaded", function() {
             const phone = document.getElementById("custPhone").value.trim();
             const brand = document.getElementById("brandSelect").value;
             const issue = document.getElementById("issueSelect").value;
-            const location = document.getElementById("locationSelect").value; // Naya Location field
             const instructions = document.getElementById("towerInstructions").value.trim() || "None";
             
             // Radio button priority handling safely
             const priorityEl = document.querySelector('input[name="dispatchTier"]:checked');
             const priority = priorityEl ? priorityEl.value : "Standard";
 
-            // ⚠️ DATA SAFETY VALVE: Agar koi info miss ho toh alert dikhayein
+            // 📍 SMART LOCATION HANDLING: Check if user selected "Other"
+            let finalLocation = document.getElementById("locationSelect").value;
+            if (finalLocation === "Other") {
+                finalLocation = document.getElementById("customLocationInput").value.trim();
+            }
+
+            // DATA SAFETY VALVE: Guard rails to check missing info
             if (!name) {
                 alert("⚠️ Please enter your Name before booking!");
                 return;
@@ -231,17 +236,17 @@ document.addEventListener("DOMContentLoaded", function() {
                 alert("⚠️ Please specify the Diagnostic Issue!");
                 return;
             }
-            if (!location) {
-                alert("⚠️ Please select your Location (e.g., Bandra West, Juhu)!");
+            if (!finalLocation) {
+                alert("⚠️ Please select or type your Location!");
                 return;
             }
 
-            // Construct corporate standardized payload layout (Updated with Location)
+            // Construct corporate standardized payload layout
             const textPayload = 
                 `🚀 *QUICKFIX MUMBAI ELITE LEAD DISPATCH* \n\n` +
                 `👤 *Customer Name:* ${name}\n` +
                 `📱 *Connection Line:* ${phone}\n` +
-                `📍 *Service Location:* ${location}\n` + // WhatsApp text mein location jod di hai
+                `📍 *Service Location:* ${finalLocation}\n` +
                 `⚙️ *Appliance Brand:* ${brand}\n` +
                 `🔧 *Diagnostic Issue:* ${issue}\n` +
                 `🏢 *Tower Protocol Box:* ${instructions}\n` +
@@ -269,6 +274,101 @@ document.addEventListener("DOMContentLoaded", function() {
             }, 800);
         });
     }
+
+    // ==========================================================================
+    // 6. CROWN JEWEL GATEWAY: "MUDE KI BAAT" HAPPY VS BAD CRM ENGINE
+    // ==========================================================================
+    const feedbackForm = document.getElementById("feedbackGatewayForm");
+    const overlay = document.getElementById("crmModalOverlay");
+    const modalContent = document.getElementById("crmModalContent");
+
+    if (feedbackForm && overlay && modalContent) {
+        feedbackForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            // Fetch post-work evaluation parameters
+            const clientName = document.getElementById("feedName").value.trim();
+            const clientTower = document.getElementById("feedTower").value.trim();
+            const scoreStatus = document.getElementById("feedSatisfaction").value; // Yes or No check
+
+            // Inject the dynamic visual layout stream
+            overlay.classList.add("modal-open");
+
+            if (scoreStatus === "Yes") {
+                // CONDITION A: HAPPY CUSTOMER PIPELINE (5-STAR LIVE OVERRIDE)
+                modalContent.className = "w-full max-w-sm rounded-2xl p-6 text-center shadow-2xl transition transform scale-100 warranty-gold-card text-white";
+                modalContent.innerHTML = `
+                    <div class="text-4xl mb-3">🛡️</div>
+                    <h3 class="text-xl font-black text-amber-400 mb-2 uppercase tracking-wide">Clearance Confirmed</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed mb-4">
+                        Thank you, <span class="font-extrabold text-white">${clientName}</span>! We are thrilled to hear you had a great experience at <span class="font-medium text-gray-200">${clientTower}</span>. 
+                        <br><br>
+                        <strong>Enjoy Your 6-Months Assured Warranty & Free Revisit Protection!</strong> Your premium priority profile status is officially locked.
+                    </p>
+                    <button id="closeCrmModal" class="bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold px-6 py-2 rounded-xl uppercase tracking-wider transition">Acknowledge</button>
+                `;
+
+                // INTERCEPT & AUTOMATIC OVERRIDE LOOP: Append the custom review live into the grid as 5-Star
+                const reviewsGrid = document.getElementById("reviewsGrid");
+                if (reviewsGrid) {
+                    const newCard = document.createElement("div");
+                    newCard.className = "bg-[#1E293B]/40 border border-gray-800 rounded-xl p-4";
+                    newCard.innerHTML = `
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="font-bold text-xs text-white">${clientName}</span>
+                            <span class="text-amber-400 text-xs">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p class="text-gray-500 font-mono text-[10px] uppercase mb-1">📍 ${clientTower}</p>
+                        <p class="text-xs text-gray-300">"${document.getElementById("feedText").value.trim() || "Excellent premium appliance maintenance parameters deployed."}"</p>
+                    `;
+                    reviewsGrid.insertBefore(newCard, reviewsGrid.firstChild);
+                }
+
+            } else {
+                // CONDITION B: BAD CUSTOMER SAFETY VALVE (BYPASS PUBLIC DISPLAY & TRIGGER RECOVERY)
+                modalContent.className = "w-full max-w-sm rounded-2xl p-6 text-center shadow-2xl transition transform scale-100 apology-red-card text-white";
+                modalContent.innerHTML = `
+                    <div class="text-4xl mb-3">😞</div>
+                    <h3 class="text-xl font-black text-red-400 mb-2 uppercase tracking-wide">Priority Escalation</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed mb-4">
+                        Dear <span class="font-extrabold text-white">${clientName}</span>, we are extremely sorry that our service didn't meet your expectations. Your total satisfaction is our highest corporate priority.
+                        <br><br>
+                        Don't worry! We are scheduling a <strong>priority complementary re-visit with our Senior Corporate Fleet Lead</strong> to resolve your issue permanently at <strong>₹0 charge</strong>.
+                    </p>
+                    <button id="closeCrmModal" class="bg-red-500 hover:bg-red-600 text-white text-xs font-bold px-6 py-2 rounded-xl uppercase tracking-wider transition">Connect Support</button>
+                `;
+            }
+        });
+
+        // Close Modal Script Logic
+        document.addEventListener("click", function(e) {
+            if (e.target && e.target.id === "closeCrmModal") {
+                overlay.classList.remove("modal-open");
+            }
+        });
+    }
+}); // Main DOMContentLoaded Closing Bridge (Line 323 Fixed)
+
+// ==========================================================================
+// GLOBALLY ACCESSIBLE TOGGLE FUNCTION FOR CUSTOM LOCATION INPUT
+// ==========================================================================
+function toggleCustomLocation() {
+    const locationSelect = document.getElementById("locationSelect");
+    const customLocationBlock = document.getElementById("customLocationBlock");
+    const customLocationInput = document.getElementById("customLocationInput");
+
+    if (locationSelect && locationSelect.value === "Other") {
+        customLocationBlock.style.display = "block";
+        customLocationInput.required = true; // Makes typing location mandatory
+    } else {
+        if (customLocationBlock) customLocationBlock.style.display = "none";
+        if (customLocationInput) {
+            customLocationInput.required = false;
+            customLocationInput.value = ""; // Reset value cache securely
+        }
+    }
+}
+
 
 
     // ==========================================================================
