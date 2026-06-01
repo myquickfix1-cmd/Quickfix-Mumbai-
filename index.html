@@ -903,13 +903,10 @@
                 </select>
             </div>
 
-            </select>
-        </div> <!-- Line 904 ka end -->
-
-        <!-- 📍 NAYA CODE YAHAN PASTE KAREIN (Line 905 ki jagah) -->
+               <!-- Puraane dropdown ko hata kar yeh poora block paste karein -->
         <div class="form-group">
             <label>Select Your Location / Area</label>
-            <select class="form-control" id="locationSelect" required>
+            <select class="form-control" id="locationSelect" onchange="toggleCustomLocation()" required>
                 <option value="" disabled selected>Choose Mumbai Hub/Area</option>
                 <option value="Bandra West">Bandra West</option>
                 <option value="Juhu Scheme">Juhu Scheme</option>
@@ -918,8 +915,16 @@
                 <option value="Worli">Worli</option>
                 <option value="Colaba">Colaba</option>
                 <option value="Goregaon">Goregaon</option>
+                <option value="Other">Other Location / List Mein Nahi Hai</option>
             </select>
         </div>
+
+        <!-- Yeh naya text box hai jo "Other" select karne par hi dikhega -->
+        <div class="form-group" id="customLocationBlock" style="display: none; margin-top: 10px;">
+            <label>Type Your Full Location / Address</label>
+            <input type="text" class="form-control" id="customLocationInput" placeholder="Enter your area (e.g., Thane, Powai)">
+        </div>
+
 
         <div class="form-group"> <!-- Line 906 ka start -->
             <label>Emergency Pre-Payment Gateway Selection</label>
