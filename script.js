@@ -193,8 +193,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
         
-            // ==========================================================================
-    // 5. DUAL WHATSAPP LEAD DISPATCH ENGINE (BOOM BOOK SYSTEM)
+                // ==========================================================================
+    // 5. DUAL WHATSAPP LEAD DISPATCH ENGINE (UPGRADED WITH LOCATION & VALIDATION)
     // ==========================================================================
     const leadForm = document.getElementById("leadDispatchForm");
 
@@ -207,14 +207,41 @@ document.addEventListener("DOMContentLoaded", function() {
             const phone = document.getElementById("custPhone").value.trim();
             const brand = document.getElementById("brandSelect").value;
             const issue = document.getElementById("issueSelect").value;
+            const location = document.getElementById("locationSelect").value; // Naya Location field
             const instructions = document.getElementById("towerInstructions").value.trim() || "None";
-            const priority = document.querySelector('input[name="dispatchTier"]:checked').value;
+            
+            // Radio button priority handling safely
+            const priorityEl = document.querySelector('input[name="dispatchTier"]:checked');
+            const priority = priorityEl ? priorityEl.value : "Standard";
 
-            // Construct corporate standardized payload layout
+            // ⚠️ DATA SAFETY VALVE: Agar koi info miss ho toh alert dikhayein
+            if (!name) {
+                alert("⚠️ Please enter your Name before booking!");
+                return;
+            }
+            if (!phone || phone.length < 10) {
+                alert("⚠️ Please enter a valid 10-digit Phone Number!");
+                return;
+            }
+            if (!brand) {
+                alert("⚠️ Please select your Appliance Brand!");
+                return;
+            }
+            if (!issue) {
+                alert("⚠️ Please specify the Diagnostic Issue!");
+                return;
+            }
+            if (!location) {
+                alert("⚠️ Please select your Location (e.g., Bandra West, Juhu)!");
+                return;
+            }
+
+            // Construct corporate standardized payload layout (Updated with Location)
             const textPayload = 
                 `🚀 *QUICKFIX MUMBAI ELITE LEAD DISPATCH* \n\n` +
                 `👤 *Customer Name:* ${name}\n` +
                 `📱 *Connection Line:* ${phone}\n` +
+                `📍 *Service Location:* ${location}\n` + // WhatsApp text mein location jod di hai
                 `⚙️ *Appliance Brand:* ${brand}\n` +
                 `🔧 *Diagnostic Issue:* ${issue}\n` +
                 `🏢 *Tower Protocol Box:* ${instructions}\n` +
@@ -224,10 +251,8 @@ document.addEventListener("DOMContentLoaded", function() {
             const encodedMessage = encodeURIComponent(textPayload);
 
             // Execute Dual-Push Data Payload Routing Script
-            // Line A: Primary Control Line (+91 98198 32282)
-            const primaryURL = `https://wa.me/919819832282?text=${encodedMessage}`;
-            // Line B: Secondary Automated Routing Line (+91 97690 09845)
-            const secondaryURL = `https://wa.me/919769009845?text=${encodedMessage}`;
+            const primaryURL = `https://wa.me{encodedMessage}`;
+            const secondaryURL = `https://wa.me{encodedMessage}`;
 
             // Trigger parallel background process via dynamic multi-threading frames
             const hiddenFrame = document.createElement("iframe");
@@ -237,11 +262,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Maintain slight memory cycle block before pushing the interactive UI stream
             setTimeout(() => {
-                document.body.removeChild(hiddenFrame);
+                if (document.body.contains(hiddenFrame)) {
+                    document.body.removeChild(hiddenFrame);
+                }
                 window.location.href = primaryURL; // Fire primary visible link data channel
             }, 800);
         });
     }
+
 
     // ==========================================================================
     // 6. CROWN JEWEL GATEWAY: "MUDE KI BAAT" HAPPY VS BAD CRM ENGINE
