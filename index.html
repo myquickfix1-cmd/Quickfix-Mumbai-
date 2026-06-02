@@ -1,1196 +1,571 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>Smart Appliances Repairing Hub - QuickFix Mumbai</title>
-    <meta name="description" content="QuickFix Mumbai is India's No.1 trusted doorstep smart home appliance service center. Specialized in Western Mumbai & all areas. Expert repair for Refrigerator, Washing Machine, Microwave, AC, and PCB circuits.">
-    <meta name="keywords" content="QuickFix Mumbai, home appliance repair near me, best service center Mumbai, Western Mumbai appliance repair, refrigerator service Mumbai, washing machine repair, AC repair Mumbai, PCB circuit repairs">
+    <title>Best Appliance Repair Center Near Me | QuickFix Mumbai Expert Hub</title>
+    <meta name="description" content="QuickFix Mumbai is India's No.1 trusted doorstep smart home appliance service center. Specialized in high-end residential towers and luxury appliance brands.">
+    <meta name="keywords" content="Appliance Repair Mumbai, Luxury Appliance Specialist, Luxury Residential Tower Service, PCB Repair Mumbai, Quickfix Service Repair">
+    <meta name="author" content="QuickFix Mumbai">
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
     
     <style>
-        :root {
-            --primary: #FF6B00;
-            --primary-hover: #E05E00;
-            --secondary: #1E293B;
-            --accent: #10B981;
-            --bg-light: #F8FAFC;
-            --text-dark: #0F172A;
-            --text-muted: #64748B;
-            --danger: #EF4444;
-            --footer-bg: #0F172A;
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+        .animate-marquee {
+            display: flex;
+            white-space: nowrap;
+            animation: marquee 25s linear infinite;
+        }
+        html {
             scroll-behavior: smooth;
         }
-
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-            padding-bottom: 90px;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Top Notification Bar */
-        .tech-bar {
-            background: var(--secondary);
-            color: #fff;
-            text-align: center;
-            padding: 10px 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-        .tech-bar .dot {
-            height: 10px;
-            width: 10px;
-            background-color: var(--danger);
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 6px;
-            animation: blink 1.2s infinite;
-        }
-
-        @keyframes blink {
-            0% { opacity: 0.3; }
-            50% { opacity: 1; }
-            100% { opacity: 0.3; }
-        }
-
-        /* Header Navigation */
-        header {
-            background: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-        }
-        .logo {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--secondary);
-            text-decoration: none;
-        }
-        .logo span { color: var(--primary); }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover { color: var(--primary); }
-
-        @media(max-width: 640px) {
-            .nav-container { flex-direction: column; gap: 10px; text-align: center; }
-            .nav-links { gap: 12px; font-size: 0.85rem; }
-        }
-
-        /* Hero Section Premium Arrangements Centered */
-        .hero {
-            background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.88)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
-            color: #fff;
-            padding: 70px 0;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .hero-main-title {
-            font-size: 3.2rem;
-            font-weight: 900;
-            color: #fff;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            line-height: 1.2;
-        }
-        .hero-main-title span { color: #3b82f6; }
-        
-        /* Fixed Greeting Center Display Setup */
-        .greeting-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.12);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            margin: 0 auto 20px auto;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .highlighter-wrapper {
-            margin: 20px 0 30px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .best-highlighter {
-            background: linear-gradient(135deg, var(--primary), #FF8C00);
-            color: #fff;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
-            text-transform: uppercase;
-        }
-        .best-highlighter.accent-color {
-            background: linear-gradient(135deg, var(--accent), #059669);
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-        }
-
-        .hero h2 {
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #cbd5e1;
-        }
-        .hero p {
-            font-size: 1rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-            padding: 0 10px;
-        }
-
-        .btn-main {
-            background: var(--primary);
-            color: #fff;
-            padding: 14px 35px;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.05rem;
-            font-weight: 700;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
-        }
-        .btn-main:hover {
-            background: var(--primary-hover);
-            transform: translateY(-2px);
-        }
-
-        .warranty-card {
-            background: rgba(16, 185, 129, 0.12);
-            border: 2px dashed var(--accent);
-            border-radius: 16px;
-            padding: 18px;
-            max-width: 650px;
-            margin: 35px auto 0;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-align: left;
-        }
-        .warranty-card i { font-size: 2.2rem; color: var(--accent); }
-        .warranty-card h4 { color: #fff; margin-bottom: 4px; font-size: 1.05rem; font-weight: 700; }
-        .warranty-card p { font-size: 0.85rem; margin: 0; color: #cbd5e1; }
-
-        @media(max-width: 768px) {
-            .hero-main-title { font-size: 2.2rem; }
-            .warranty-card { flex-direction: column; text-align: center; }
-        }
-
-        /* Trust Box Layout */
-        .trust-box {
-            background: #fff;
-            border-radius: 16px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin: -40px auto 40px;
-            max-width: 1100px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            text-align: center;
-            position: relative;
-            z-index: 10;
-            border: 1px solid #e2e8f0;
-        }
-        .stat-item {
-            padding: 10px;
-            border-right: 1px solid #e2e8f0;
-        }
-        .stat-item:last-child { border-right: none; }
-        @media(max-width: 768px) { 
-            .trust-box { margin-top: 20px; grid-template-columns: 1fr 1fr; }
-            .stat-item { border-right: none; border-bottom: 1px solid #e2e8f0; }
-            .stat-item:nth-child(3), .stat-item:nth-child(4) { border-bottom: none; }
-        }
-        
-        .stat-item h3 { font-size: 1.5rem; color: var(--secondary); font-weight: 800; margin-bottom: 5px; }
-        .stat-item p { font-size: 0.85rem; color: var(--text-dark); font-weight: 600; }
-        .stat-item .heart-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-top: 4px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            font-weight: 700;
-            transition: color 0.2s;
-        }
-        .stat-item .heart-btn.liked { color: #ef4444; }
-
-        /* Section Global Headers */
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            margin: 40px 0 8px;
-            color: var(--secondary);
-            font-weight: 800;
-        }
-        .section-title span { color: var(--primary); }
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 35px;
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        /* 10 Fixed Items Responsive Layout Grid */
-        .items-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
-        }
-        .item-card {
-            background: #fff;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            border: 1px solid #e2e8f0;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .item-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); }
-        .item-img-box {
-            width: 100%;
-            height: 170px;
-            background: #f1f5f9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--primary);
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .item-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;}
-        .item-content h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--secondary); font-weight: 700; }
-        
-        .btn-card-book {
-            display: block;
-            text-align: center;
-            background: var(--secondary);
-            color: #fff;
-            padding: 11px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.85rem;
-            transition: all 0.3s;
-            margin-top: 15px;
-        }
-        .btn-card-book:hover { background: var(--primary); }
-
-        /* Multi Brand Area */
-        .brands-container {
-            background: #fff;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.01);
-            margin-bottom: 50px;
-            border: 1px solid #e2e8f0;
-        }
-        .brand-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-        }
-        .brand-badge {
-            background: #f1f5f9;
-            color: var(--secondary);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: 1px solid #e2e8f0;
-        }
-
-        /* Responsive Form Panel Splits */
-        .grid-panel {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        @media(max-width: 850px) { .grid-panel { grid-template-columns: 1fr; } }
-
-        .card-panel {
-            background: #fff;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.03);
-            border: 1px solid #e2e8f0;
-        }
-
-        .form-group { margin-bottom: 18px; }
-        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 0.85rem; }
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #cbd5e1;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            outline: none;
-            background: #f8fafc;
-        }
-        .form-control:focus { border-color: var(--primary); background: #fff; }
-
-        .people-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-top: 5px;
-        }
-        .people-option {
-            border: 1px solid #cbd5e1;
-            padding: 12px 5px;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.85rem;
-            background: #f8fafc;
-            transition: all 0.2s;
-        }
-        .people-option.active {
-            border-color: var(--primary);
-            background: rgba(255, 107, 0, 0.08);
-            color: var(--primary);
-        }
-
-        .offer-box {
-            background: #eff6ff;
-            border: 1px solid #bfdbfe;
-            border-radius: 12px;
-            padding: 15px;
-            margin-top: 15px;
-            text-align: center;
-        }
-        .offer-amt { font-size: 1.4rem; color: #2563eb; font-weight: 800; }
-
-        .booking-success-box {
-            display: none;
-            background: #ecfdf5;
-            border: 1px solid #a7f3d0;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            margin-top: 15px;
-        }
-        .booking-success-box img { width: 55px; margin-bottom: 8px; }
-        .booking-success-box h4 { color: #065f46; font-size: 1.2rem; font-weight: 800; }
-
-        /* Emergency Module styling */
-        .emergency-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            animation: textBlink 1.5s infinite;
-        }
-        @keyframes textBlink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .payment-methods {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 8px;
-        }
-        .pay-option {
-            border: 1px solid #e2e8f0;
-            padding: 12px;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.85rem;
-            background: #f8fafc;
-            transition: all 0.2s;
-        }
-        .pay-option.active {
-            border-color: var(--danger);
-            background: #fef2f2;
-            color: var(--danger);
-        }
-
-        #qr-container {
-            text-align: center;
-            margin-top: 20px;
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 12px;
-            border: 2px dashed #cbd5e1;
-            cursor: pointer;
-        }
-        .qr-placeholder {
-            max-width: 140px;
-            margin: 0 auto 10px;
-            display: block;
-            border: 4px solid #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        /* Ratings Desk Splits */
-        .feedback-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-        @media(max-width: 768px) { .feedback-grid { grid-template-columns: 1fr; } }
-
-        .rating-box-pro {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 30px;
-        }
-        .rating-summary-pro {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .big-rating-num { font-size: 3.2rem; font-weight: 800; color: var(--secondary); }
-        .stars-display i { color: #f59e0b; font-size: 1.1rem; }
-        
-        .rating-row { display: flex; align-items: center; margin-bottom: 12px; gap: 12px; }
-        .bar-container { flex-grow: 1; background: #e2e8f0; height: 8px; border-radius: 6px; overflow: hidden; }
-        .bar-fill { height: 100%; background: #f59e0b; }
-
-        .live-item { padding: 12px 0; border-bottom: 1px dashed #e2e8f0; font-size: 0.85rem; }
-
-        /* PWA Looping Sticky Bar layout */
-        .pwa-loop-prompt {
-            position: fixed;
-            bottom: 95px;
-            right: 20px;
-            background: #2563eb;
-            color: #fff;
-            padding: 15px;
-            border-radius: 14px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            z-index: 1001;
-            max-width: 320px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            transform: translateY(200%);
-            opacity: 0;
-            transition: all 0.4s ease;
-            pointer-events: none;
-        }
-        .pwa-loop-prompt.visible {
-            transform: translateY(0);
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .pwa-buttons { display: flex; justify-content: flex-end; gap: 8px; }
-        .pwa-btn { padding: 6px 14px; border-radius: 6px; border: none; font-size: 0.8rem; font-weight: 700; cursor: pointer; }
-        .pwa-btn.ins { background: #fff; color: #2563eb; }
-        .pwa-btn.lat { background: rgba(255,255,255,0.15); color: #fff; }
-
-        /* Image reference Layout Footer Component */
-        footer {
-            background-color: var(--footer-bg);
-            color: #94a3b8;
-            padding: 60px 0 0 0;
-            font-size: 0.9rem;
-            border-top: 4px solid var(--primary);
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 40px;
-            margin-bottom: 4px;
-        }
-        .footer-col h4 {
-            color: #fff;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 8px;
-        }
-        .footer-col h4::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--primary);
-        }
-        .footer-col p { margin-bottom: 15px; font-size: 0.85rem; line-height: 1.6; }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: color 0.2s;
-            font-size: 0.85rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .footer-col ul li a:hover { color: #fff; transform: translateX(3px); }
-        .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 0.85rem; }
-        .footer-contact-item i { color: var(--primary); margin-top: 4px; }
-        
-        .footer-bottom-bar {
-            background-color: #020617;
-            padding: 20px 0;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            margin-top: 40px;
-        }
-        .footer-bottom-bar p { font-size: 0.8rem; color: #64748b; font-weight: 500; }
-
-        /* Sticky Fixed Interaction Box */
-        .sticky-contact {
-            background: #fff;
-            border-top: 1px solid #e2e8f0;
-            padding: 10px 15px;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            display: grid;
-            grid-template-columns: 1fr 1.2fr 1fr;
-            gap: 10px;
-            z-index: 999;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
-            max-width: 1000px;
-            margin: 0 auto;
-            border-radius: 16px 16px 0 0;
-        }
-        .contact-btn {
-            padding: 12px 10px;
-            border-radius: 10px;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 700;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 2px;
-            font-size: 0.75rem;
-            text-align: center;
-        }
-        .contact-btn span { font-weight: 800; font-size: 0.75rem; }
-        .btn-call { background: #2563eb; transform: scale(1.03) translateY(-4px); box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
-        .btn-wa { background: #22c55e; }
-
-        @media(max-width: 600px) {
-            .sticky-contact { padding: 8px; gap: 6px; }
-            .contact-btn { padding: 10px 4px; font-size: 0.65rem; }
-            .contact-btn span { font-size: 0.65rem; }
-        }
-
-        .live-popup {
-            position: fixed;
-            bottom: 85px;
-            left: 20px;
-            background: var(--secondary);
-            color: #fff;
-            padding: 15px 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transform: translateY(180%);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .live-popup.show { transform: translateY(0); }
-        .live-popup i { color: var(--primary); font-size: 1.3rem; }
     </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "QuickFix",
+  "image": "https://quickfixmumbai.com/logo.png",
+  "telephone": "9819832282",
+  "url": "https://quickfixmumbai.com",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Lal Bahadur Shastri (LBS) Marg, Narayan Nagar, Ghatkopar West",
+    "addressLocality": "Mumbai",
+    "addressRegion": "Maharashtra",
+    "postalCode": "400086",
+    "addressCountry": "IN"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Mumbai Western Suburbs"
+  },
+  "description": "QuickFix provides expert home appliance repair in Mumbai. Specialists in smart home appliances, refrigerator, washing machine, microwave, premium air dresser, air dryer, dishwasher, AC, and Inverter/PCB circuit repair. Serving all major areas of Mumbai including Bandra, Andheri, Malad, Kandivali, and Borivali."
+}
+    </script>
+    
 </head>
-<body>
+<body class="bg-[#0B132B] text-white font-sans antialiased">
 
-    <div class="tech-bar">
-        <span class="dot"></span> 49 Expert Technicians Online Now in Mumbai (Western & All Zones)
+	<!-- Single Perfect Hero Section -->
+<!-- Single Perfect Hero Section -->
+<div class="relative h-[250px] w-full overflow-hidden shadow-2xl">
+    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd756?w=800" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-black/70 flex flex-col items-center justify-center text-center px-4">
+        <h1 class="text-2xl font-bold text-white mb-1">Quickfix Mumbai</h1>
+        <p class="text-blue-400 text-sm font-medium italic">"It's broken, consider it fixed!"</p>
     </div>
 
-    <header>
-        <div class="container nav-container">
-            <a href="#" class="logo">QuickFix<span>Mumbai</span></a>
-            <ul class="nav-links">
-                <li><a href="#services">Our Services</a></li>
-                <li><a href="#booking">Book Slot</a></li>
-                <li><a href="#emergency">Emergency Service</a></li>
-            </ul>
-        </div>
-    </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="greeting-badge">Smart Appliances Repairing Hub</div>
-            <h1 class="hero-main-title">QUICKFIX <span>MUMBAI</span></h1>
-            
-            <h2>Welcome to QuickFix | Most Popular In Mumbai</h2>
-            <p>India's number 1 most trusted & beloved revolutionising online doorstep peerwise center since 2010. Providing fast, expert, and advanced repairs 24/7 with reliable and reasonable prices near you.</p>
-            
-            <div class="highlighter-wrapper">
-                <div class="best-highlighter">ESSENTIAL SERVICES GUARANTEED</div>
-                <div class="best-highlighter accent-color">CREATED PROBLEMS RESOLVED FAST</div>
-            </div>
 
-            <a href="#booking" class="btn-main"><i class="fa fa-wrench"></i> Book a Smart Repair Now</a>
+  
 
-            <div class="warranty-card">
-                <i class="fa-solid fa-circle-check"></i>
-                <div>
-                    <h4>Official 6-Month Service Warranty Included</h4>
-                    <p>Commitment: If any re-problem occurs within 6 months, <strong>Free Re-visit & Free Fixing</strong> is fully guaranteed!</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <div class="container">
-        <div class="trust-box">
-            <div class="stat-item">
-                <h3>3,85,019+</h3>
-                <p>Trusted Families Served</p>
+
+
+
+
+
+		
+        <a href="bandra.html" class="relative group rounded-xl overflow-hidden h-32 border border-blue-800">
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/60 flex items-center justify-center">
+                <span class="text-white text-xl font-bold">Bandra</span>
             </div>
-            <div class="stat-item">
-                <h3><span class="l-count">258019</span></h3>
-                <p>Liked Opinions & Feedback</p>
-                <button class="heart-btn" onclick="registerLike(this)"><i class="fa-solid fa-heart"></i> Press to Like</button>
+        </a>
+        <a href="andheri.html" class="relative group rounded-xl overflow-hidden h-32 border border-blue-800">
+            <img src="https://images.unsplash.com/photo-1542744173-8e7e5341503c?w=500" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/60 flex items-center justify-center">
+                <span class="text-white text-xl font-bold">Andheri</span>
             </div>
-            <div class="stat-item">
-                <h3>100% Genuine</h3>
-                <p>Company Spare Parts Used</p>
+        </a>
+        <a href="malad.html" class="relative group rounded-xl overflow-hidden h-32 border border-blue-800">
+            <img src="https://images.unsplash.com/photo-1626126569668-97f105742445?w=500" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-black/60 flex items-center justify-center">
+                <span class="text-white text-xl font-bold">Malad</span>
             </div>
-            <div class="stat-item">
-                <h3>Zero</h3>
-                <p>No Hidden Charges or Fees</p>
+        </a>
+</div>
+	
+
+	
+	
+    <div id="emergencyAlertBar" class="bg-gradient-to-r from-[#FF4500] to-[#FF8C00] text-center py-2 px-4 text-xs sm:text-sm flex flex-col justify-center items-center gap-1 sticky top-0 z-50 shadow-md transition-all duration-500">
+        <div id="alertContentLayout" class="w-full flex flex-wrap justify-center items-center gap-2">
             </div>
-        </div>
     </div>
 
-    <section class="container" id="services">
-        <h2 class="section-title">Smart <span>Appliance Repair Hub</span></h2>
-        <p class="section-subtitle">Carefully focusing on all machine types near me in Western Mumbai & All Areas</p>
+    <div class="max-w-md mx-auto px-4 pt-4 pb-24">
         
-        <div class="items-grid">
-            <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-house-laptop"></i></div>
-                <div class="item-content">
-                    <h3>1. All Smart Home Appliances</h3>
-                    <a href="#booking" onclick="routeBooking('All Smart Home Appliances')" class="btn-card-book">Book Slot Now</a>
-                </div>
+        <header class="text-center mb-5">
+            <h1 class="text-3xl font-black tracking-tight text-white mb-1">QUICKFIX <span class="text-[#0066FF]">MUMBAI</span></h1>
+            <p class="text-xs tracking-widest text-gray-400 uppercase">Elite Home Appliance Engineering Fleet</p>
+            <div class="mt-3 text-xs bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-full py-1 inline-block px-4 font-medium">
+                🟢 Live Operational Desk Active Until 12:00 AM Midnight
             </div>
-            <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-snowflake"></i></div>
-                <div class="item-content">
-                    <h3>2. Smart Refrigerator</h3>
-                    <a href="#booking" onclick="routeBooking('Smart Refrigerator')" class="btn-card-book">Book Slot Now</a>
-                </div>
+        </header>
+
+        <div class="text-center my-6 px-1">
+            <h2 class="text-xl sm:text-2xl font-black tracking-tight text-white leading-tight">
+                Created Problem Quickly Solved: <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">Essential Repairing & Engineering</span> for Luxury Systems
+            </h2>
+        </div>
+
+        <div class="bg-[#141E3D] border border-blue-900/40 rounded-2xl p-4 mb-5 shadow-lg text-center relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#0066FF] to-cyan-500"></div>
+            <p class="text-xs text-gray-300 leading-relaxed">
+                Welcome to <span class="text-[#0066FF] font-bold">QuickFix Mumbai</span>, India's premier engineering terminal engineered exclusively for luxury residential towers and high-end corporate estates. We house a certified, ultra-specialized fleet delivering flawless diagnostics and complex advanced component reconstructions with zero room for error.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2 mb-5">
+            <div class="bg-gradient-to-b from-[#1E293B] to-[#141E3D] border border-amber-500/40 rounded-xl p-2.5 text-center shadow-[0_0_10px_rgba(245,158,11,0.1)]">
+                <div class="text-amber-400 font-black text-sm">★ 4.96 / 5</div>
+                <div class="text-[8px] text-gray-400 uppercase font-bold mt-0.5 tracking-wider">52,480+ Google Ratings</div>
             </div>
-            <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-icicles"></i></div>
-                <div class="item-content">
-                    <h3>3. Fridge</h3>
-                    <a href="#booking" onclick="routeBooking('Fridge')" class="btn-card-book">Book Slot Now</a>
-                </div>
+            <div class="bg-[#1E293B]/80 border border-gray-800 rounded-xl p-2.5 text-center">
+                <div class="text-white font-black text-sm">18,500+</div>
+                <div class="text-[9px] text-gray-400 uppercase font-semibold mt-0.5 tracking-wider">Towers Serviced</div>
             </div>
-            <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-soap"></i></div>
-                <div class="item-content">
-                    <h3>4. Washing Machine</h3>
-                    <a href="#booking" onclick="routeBooking('Washing Machine')" class="btn-card-book">Book Slot Now</a>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-bowl-food"></i></div>
-                <div class="item-content">
-                    <h3>5. Microwave / Micro Oven</h3>
-                    <a href="#booking" onclick="routeBooking('Microwave / Micro Oven')" class="btn-card-book">Book Slot Now</a>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-shirt"></i></div>
-                <div class="item-content">
-                    <h3>6. Premium Air Dresser</h3>
-                    <a href="#booking" onclick="routeBooking('Premium Air Dresser')" class="btn-card-book">Book Slot Now</a>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-wind"></i></div>
-                <div class="item-content">
-                    <h3>7. High Capacity Air Dryer</h3>
-                    <a href="#booking" onclick="routeBooking('High Capacity Air Dryer')" class="btn-card-book">Book Slot Now</a>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-glass-water-droplet"></i></div>
-                <div class="item-content">
-                    <h3>8. Advance Dishwasher</h3>
-                    <a href="#booking" onclick="routeBooking('Advance Dishwasher')" class="btn-card-book">Book Slot Now</a>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-temperature-arrow-down"></i></div>
-                <div class="item-content">
-                    <h3>9. AC (Air Conditioner)</h3>
-                    <a href="#booking" onclick="routeBooking('AC (Air Conditioner)')" class="btn-card-book">Book Slot Now</a>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-microchip"></i></div>
-                <div class="item-content">
-                    <h3>10. Inverter / PCB Repairs</h3>
-                    <a href="#booking" onclick="routeBooking('Inverter / PCB Repairs')" class="btn-card-book">Book Slot Now</a>
-                </div>
+            <div class="bg-[#1E293B]/80 border border-gray-800 rounded-xl p-2.5 text-center">
+                <div class="text-[#0066FF] font-black text-sm">100%</div>
+                <div class="text-[9px] text-gray-400 uppercase font-semibold mt-0.5 tracking-wider">Verified Fleet</div>
             </div>
         </div>
-    </section>
 
-    <section class="container">
-        <div class="brands-container">
-            <p style="text-align: center; margin-bottom: 20px; font-weight: 700; color: var(--secondary);">We Serviced And Repairing As All Over Brands:</p>
-            <div class="brand-grid">
-                <div class="brand-badge">Samsung</div>
-                <div class="brand-badge">LG</div>
-                <div class="brand-badge">Bosch</div>
-                <div class="brand-badge">Whirlpool</div>
-                <div class="brand-badge">IFB</div>
-                <div class="brand-badge">Panasonic</div>
-                <div class="brand-badge">Hitachi</div>
-                <div class="brand-badge">Toshiba</div>
-                <div class="brand-badge">Videocon & More</div>
+        <div class="bg-gradient-to-br from-[#1E293B] to-[#0F172A] border border-[#0066FF]/40 rounded-2xl p-4 mb-6 shadow-xl relative overflow-hidden">
+            <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-[#0066FF]/5 rounded-full blur-xl"></div>
+            <div class="flex items-center justify-between relative z-10">
+                <div class="pr-2">
+                    <h3 class="font-bold text-sm text-white flex items-center gap-1.5">
+                        <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                        Install QuickFix Terminal App
+                    </h3>
+                    <p class="text-xs text-gray-400 mt-0.5">Instant standalone premium booking from home-screen</p>
+                </div>
+                <button id="pwaInstallBtn" onclick="triggerPwaDeployment()" class="bg-[#0066FF] text-white text-xs font-extrabold px-4 py-2.5 rounded-xl shadow-lg hover:bg-blue-600 active:scale-95 transition whitespace-nowrap border border-blue-400/20">Install Now</button>
             </div>
         </div>
-    </section>
 
-    <section class="container grid-panel" id="booking">
-        
-        <div class="card-panel">
-            <h3 style="margin-bottom: 15px;"><i class="fa fa-calendar-alt" style="color: var(--primary);"></i> Fast Customer Booking Form</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 25px;">Complete in 2-3 clicks. <strong>₹99 Service Visit Charge</strong> applies.</p>
-            
-            <form id="bookingForm" onsubmit="executeFinalBooking(event)">
-                <div class="form-group">
-                    <label>Select Machine / Appliance Type</label>
-                    <select class="form-control" id="masterSelectDropdown" required>
-                        <option value="">-- Choose Item --</option>
-                        <option value="All Smart Home Appliances">All Smart Home Appliances</option>
-                        <option value="Smart Refrigerator">Smart Refrigerator</option>
-                        <option value="Fridge">Fridge</option>
-                        <option value="Washing Machine">Washing Machine</option>
-                        <option value="Microwave / Micro Oven">Microwave / Micro Oven</option>
-                        <option value="Premium Air Dresser">Premium Air Dresser</option>
-                        <option value="High Capacity Air Dryer">High Capacity Air Dryer</option>
-                        <option value="Advance Dishwasher">Advance Dishwasher</option>
-                        <option value="AC (Air Conditioner)">AC (Air Conditioner)</option>
-                        <option value="Inverter / PCB Repairs">Inverter / PCB Repairs</option>
-                    </select>
+        <div class="overflow-hidden bg-[#0F172A] border-y border-gray-800 py-3 mb-6 -mx-4">
+            <div class="animate-marquee text-xs font-bold tracking-widest text-gray-500 uppercase gap-8">
+                <span>SAMSUNG</span> • <span>LG</span> • <span>BOSCH</span> • <span>DAIKIN</span> • <span>PANASONIC</span> • <span>SIEMENS</span> • &nbsp;
+                <span>SAMSUNG</span> • <span>LG</span> • <span>BOSCH</span> • <span>DAIKIN</span> • <span>PANASONIC</span> • <span>SIEMENS</span>
+            </div>
+        </div>
+
+        <section class="mb-8">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4 px-1">Selected Luxury Service Tiers</h2>
+            <div class="grid grid-cols-1 gap-3">
+                <div class="bg-[#1E293B]/60 border border-gray-800 rounded-xl p-4 flex items-center justify-between">
+                    <div><span class="text-gray-500 font-mono text-xs block mb-0.5">ITEM 01</span><span class="font-bold text-sm">Smart Refrigerator Cooling Diagnostics</span></div>
+                    <span class="text-xs bg-blue-500/10 text-blue-400 font-semibold px-2.5 py-1 rounded-md">Tier I</span>
+                </div>
+                <div class="bg-[#1E293B]/60 border border-gray-800 rounded-xl p-4 flex items-center justify-between">
+                    <div><span class="text-gray-500 font-mono text-xs block mb-0.5">ITEM 02</span><span class="font-bold text-sm">Front-Load Washer Drum Realignment</span></div>
+                    <span class="text-xs bg-blue-500/10 text-blue-400 font-semibold px-2.5 py-1 rounded-md">Tier I</span>
+                </div>
+                <div class="bg-[#1E293B]/60 border border-gray-800 rounded-xl p-4 flex items-center justify-between">
+                    <div><span class="text-gray-500 font-mono text-xs block mb-0.5">ITEM 03</span><span class="font-bold text-sm">Inverter Multi-Split Jet Chemical Wash</span></div>
+                    <span class="text-xs bg-blue-500/10 text-blue-400 font-semibold px-2.5 py-1 rounded-md">Tier I</span>
+                </div>
+                <div class="bg-[#1E293B]/60 border border-gray-800 rounded-xl p-4 flex items-center justify-between">
+                    <div><span class="text-gray-500 font-mono text-xs block mb-0.5">ITEM 04</span><span class="font-bold text-sm">Microwave Magnetron Emission Recovery</span></div>
+                    <span class="text-xs bg-blue-500/10 text-blue-400 font-semibold px-2.5 py-1 rounded-md">Tier I</span>
+                </div>
+                <div class="bg-[#1E293B]/60 border border-gray-800 rounded-xl p-4 flex items-center justify-between">
+                    <div><span class="text-gray-500 font-mono text-xs block mb-0.5">ITEM 05</span><span class="font-bold text-sm">Dishwasher Electronic Valve Integration</span></div>
+                    <span class="text-xs bg-blue-500/10 text-blue-400 font-semibold px-2.5 py-1 rounded-md">Tier I</span>
+                </div>
+                <div class="bg-[#1E293B]/60 border border-gray-800 rounded-xl p-4 flex items-center justify-between">
+                    <div><span class="text-gray-500 font-mono text-xs block mb-0.5">ITEM 06</span><span class="font-bold text-sm">Condenser Coil Gas Leakage Brazing</span></div>
+                    <span class="text-xs bg-blue-500/10 text-blue-400 font-semibold px-2.5 py-1 rounded-md">Tier I</span>
+                </div>
+                <div class="bg-[#1E293B]/60 border border-gray-800 rounded-xl p-4 flex items-center justify-between">
+                    <div><span class="text-gray-500 font-mono text-xs block mb-0.5">ITEM 07</span><span class="font-bold text-sm">Luxury Wine-Cooler Thermal Calibration</span></div>
+                    <span class="text-xs bg-blue-500/10 text-blue-400 font-semibold px-2.5 py-1 rounded-md">Tier I</span>
+                </div>
+                <div class="bg-[#1E293B]/60 border border-gray-800 rounded-xl p-4 flex items-center justify-between">
+                    <div><span class="text-gray-500 font-mono text-xs block mb-0.5">ITEM 08</span><span class="font-bold text-sm">Top-Load Digital Agitator Overhaul</span></div>
+                    <span class="text-xs bg-blue-500/10 text-blue-400 font-semibold px-2.5 py-1 rounded-md">Tier I</span>
+                </div>
+                <div class="bg-[#1E293B]/60 border border-gray-800 rounded-xl p-4 flex items-center justify-between">
+                    <div><span class="text-gray-500 font-mono text-xs block mb-0.5">ITEM 09</span><span class="font-bold text-sm">Multi-Door Defrost Sensor Mapping</span></div>
+                    <span class="text-xs bg-blue-500/10 text-blue-400 font-semibold px-2.5 py-1 rounded-md">Tier I</span>
                 </div>
                 
-                <div class="form-group">
-                    <label>Advance Booking Options</label>
-                    <select class="form-control" id="bookingDays" onchange="updateLiveDiscount()" required>
-                        <option value="1">1-2 Days Booking (Standard Discount)</option>
-                        <option value="3">3-6 Days Advance Booking (Mega Offer Discount)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Number of People Booking Jointly</label>
-                    <div class="people-grid">
-                        <div class="people-option active" data-value="1-3" onclick="selectPeople(this, 18)">1-3 People</div>
-                        <div class="people-option" data-value="4-6" onclick="selectPeople(this, 12)">4-6 People</div>
-                        <div class="people-option" data-value="7-10" onclick="selectPeople(this, 6)">7-10 People</div>
+                <div class="bg-[#1E293B] border border-amber-500/40 rounded-xl p-4 flex items-center justify-between shadow-[0_0_15px_rgba(245,158,11,0.15)]">
+                    <div>
+                        <span class="text-amber-400 font-mono text-[10px] font-bold block mb-0.5 uppercase tracking-wider">⚡ MOST EXPENSIVE & CRITICAL OFFERING</span>
+                        <span class="font-bold text-sm text-white">Advanced PCB & Inverter Circuit Repair</span>
                     </div>
+                    <span class="text-xs bg-amber-500/20 text-amber-400 font-extrabold px-2.5 py-1 rounded-md border border-amber-500/30">Tier VIP</span>
                 </div>
-
-                <div class="offer-box" id="discountOfferBox">
-                    <h4>Your Applied Discount Offer</h4>
-                    <div class="offer-amt" id="discountDisplay">18% OFF</div>
-                    <p style="font-size: 0.8rem; margin: 0; color: var(--text-muted);">Real-time discount updated dynamically</p>
-                </div>
-
-                <div class="booking-success-box" id="bookingSuccessBox">
-                    <img src="https://i.imgur.com/N6gAnNq.png" alt="Success Check">
-                    <h4>BOOKED ✔️</h4>
-                    <p style="font-size: 0.85rem; color: #047857; margin-top: 4px; font-weight: 600;">Technician details will be shared on call!</p>
-                </div>
-
-                <button type="submit" id="submitActionBtn" class="btn-main" style="width: 100%; margin-top: 20px;">Complete Booking Instantly</button>
-            </form>
-        </div>
-
-        <div class="card-panel" id="emergency" style="border-top: 5px solid var(--danger);">
-            <div class="emergency-header">
-                <span style="background: #fee2e2; color: var(--danger); padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 0.85rem;">CRITICAL HELP</span>
-                <h3 style="color: var(--danger);"><i class="fa fa-bolt"></i> Digital Emergency System</h3>
             </div>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">Launches Immediate 45-Min Dispatch Tracker directly to your home.</p>
+        </section>
+
+        <section id="bookingFormSection" class="bg-[#141E3D] border border-gray-800 rounded-2xl p-5 mb-8 shadow-2xl">
+            <h2 class="text-lg font-bold text-white mb-1">Corporate Lead Dispatch</h2>
+            <p class="text-xs text-gray-400 mb-4">Fill out the official diagnostic terminal fields to book your dispatch.</p>
             
-            <div class="form-group">
-                <label>Select Emergency Failure Item</label>
-                <select class="form-control">
-                    <option>ALL ITEMS / Complete Breakdown</option>
-                    <option>Refrigerator Defrost Loss</option>
-                    <option>Washing Machine Drum Jam Error</option>
-                    <option>PCB Short Circuit Sparking</option>
-                </select>
-            </div>
-
-               <!-- Puraane dropdown ko hata kar yeh poora block paste karein -->
-        <div class="form-group">
-            <label>Select Your Location / Area</label>
-            <select class="form-control" id="locationSelect" onchange="toggleCustomLocation()" required>
-                <option value="" disabled selected>Choose Mumbai Hub/Area</option>
-                <option value="Bandra West">Bandra West</option>
-                <option value="Juhu Scheme">Juhu Scheme</option>
-                <option value="Andheri West">Andheri West</option>
-                <option value="Lower Parel">Lower Parel</option>
-                <option value="Worli">Worli</option>
-                <option value="Colaba">Colaba</option>
-                <option value="Goregaon">Goregaon</option>
-                <option value="Other">Other Location / List Mein Nahi Hai</option>
-            </select>
-        </div>
-
-        <!-- Yeh naya text box hai jo "Other" select karne par hi dikhega -->
-        <div class="form-group" id="customLocationBlock" style="display: none; margin-top: 10px;">
-            <label>Type Your Full Location / Address</label>
-            <input type="text" class="form-control" id="customLocationInput" placeholder="Enter your area (e.g., Thane, Powai)">
-        </div>
-
-
-        <div class="form-group"> <!-- Line 906 ka start -->
-            <label>Emergency Pre-Payment Gateway Selection</label>
-
-
-            <div class="form-group">
-                <label>Emergency Pre-Payment Gateway Selection</label>
-                <div class="payment-methods">
-                    <div class="pay-option" onclick="togglePayment('Cash')">Cash</div>
-                    <div class="pay-option" onclick="togglePayment('GPay')">Google Pay</div>
-                    <div class="pay-option active" onclick="togglePayment('PhonePe')">PhonePe QR</div>
-                    <div class="pay-option" onclick="togglePayment('Card')">Paytm/Card</div>
-                </div>
-            </div>
-
-            <div id="qr-container" onclick="handleQRClick()">
-                <p style="font-size: 0.85rem; font-weight: 700; margin-bottom: 12px; color: var(--secondary);">
-                    <i class="fa fa-hand-pointer"></i> Tap/Touch QR to Verify Punjab National Bank 9181 Account
-                </p>
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=quickfixmumbai@ybl&pn=QuickFix%20Mumbai" alt="PhonePe QR Code" class="qr-placeholder">
-                <div style="font-size: 0.8rem; font-weight: 600; color: var(--text-dark);">₹199 Advance Pre-Payment Mode System</div>
-            </div>
-
-            <button onclick="alert('SOS Alert Received! Emergency 45-Min Dispatch Team Sent.')" class="btn-main" style="width: 100%; background: var(--danger); box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3); margin-top: 20px;">Send Tech SOS Now</button>
-        </div>
-
-    </section>
-
-    <section class="container feedback-grid">
-        
-        <div class="card-panel">
-            <h3><i class="fa fa-comments" style="color: var(--primary);"></i> Suggestions Live Desk</h3>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Minimum 79,201 People Have Left Good Suggestions.</p>
-            
-            <div class="form-group" style="display: flex; gap: 10px;">
-                <input type="text" id="userSuggest" class="form-control" placeholder="Write live recommendation...">
-                <button onclick="submitLiveSuggestion()" class="btn-main" style="padding: 10px 20px;">Submit</button>
-            </div>
-
-            <div id="suggestionFeed" style="max-height: 180px; overflow-y: auto;">
-                <div class="live-item"><strong>Rohan K. (Bandra West):</strong> Best machine repair center near me. Very reliable service.</div>
-                <div class="live-item"><strong>Anjali S. (Borivali East):</strong> Quick fixation of my fridge PCB circuit board within 1 hour!</div>
-            </div>
-        </div>
-
-        <div class="rating-box-pro">
-            <h3>Verified Doorstep Ratings</h3>
-            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 15px;">Based on 3,85,019 verified doorstep jobs in Mumbai.</p>
-            
-            <div class="rating-summary-pro">
-                <div class="big-rating-num">4.9</div>
+            <form id="leadDispatchForm" onsubmit="executeDualRoutingWhatsApp(event)" class="space-y-4">
                 <div>
-                    <div class="stars-display">
-                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Customer Full Name</label>
+                    <input type="text" id="custName" required placeholder="e.g., Aniket Mehta" class="w-full bg-[#0F172A] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#0066FF] transition">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Mobile Connection Line</label>
+                    <input type="tel" id="custPhone" required placeholder="e.g., 98XXXXXXXX" class="w-full bg-[#0F172A] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#0066FF] transition">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Select Appliance Brand</label>
+                        <select id="brandSelect" required class="w-full bg-[#0F172A] border border-gray-800 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#0066FF] transition">
+                            <option value="" disabled selected>Choose Brand</option>
+                            <option value="Samsung">Samsung</option>
+                            <option value="LG">LG</option>
+                            <option value="Bosch">Bosch</option>
+                            <option value="Daikin">Daikin</option>
+                            <option value="Panasonic">Panasonic</option>
+                            <option value="Other">Other Brand</option>
+                        </select>
                     </div>
-                    <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-top: 2px;">Overall Score</div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Diagnostic Issue</label>
+                        <select id="issueSelect" required class="w-full bg-[#0F172A] border border-gray-800 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#0066FF] transition">
+                            <option value="" disabled selected>Select Fault Type</option>
+                            <option value="No Cooling / Power Fault">No Cooling / Power Fault</option>
+                            <option value="Error Code Display">Error Code Display</option>
+                            <option value="Water Leakage / Noise Issue">Water Leakage / Noise Issue</option>
+                            <option value="PCB Circuit Burned">PCB Circuit Burned</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Luxury Residential Tower Protocol Box</label>
+                    <textarea id="towerInstructions" rows="2" placeholder="Specify Luxury Residential Tower Entry Protocols / Advanced Component Symptoms..." class="w-full bg-[#0F172A] border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#0066FF] transition"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Deployment Protocol Priority</label>
+                    <div class="grid grid-cols-2 gap-2 mt-1">
+                        <label class="bg-[#0F172A] border border-gray-800 rounded-xl p-3 flex flex-col justify-between cursor-pointer focus-within:border-[#0066FF]">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-xs font-bold text-amber-400">VIP Dispatch</span>
+                                <input type="radio" name="dispatchTier" value="45-Min VIP Dispatch (₹499 Fee)" checked class="text-[#0066FF] focus:ring-0">
+                            </div>
+                            <span class="text-[10px] text-gray-400">45-Min Arrival Guarantee (Premium Fee: ₹499)</span>
+                        </label>
+                        <label class="bg-[#0F172A] border border-gray-800 rounded-xl p-3 flex flex-col justify-between cursor-pointer focus-within:border-[#0066FF]">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-xs font-bold text-white">Fast Track</span>
+                                <input type="radio" name="dispatchTier" value="90-Min Fast Track (₹199 Fee)" class="text-[#0066FF] focus:ring-0">
+                            </div>
+                            <span class="text-[10px] text-gray-400">90-Min Field Standard Deployment (Fee: ₹199)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-[#0066FF] text-white text-sm font-extrabold py-3.5 rounded-xl shadow-lg hover:bg-blue-600 transition tracking-wide active:scale-95">
+                    Confirm Premium Dispatch Reservation (Boom Book)
+                </button>
+            </form>
+
+            <div class="grid grid-cols-2 gap-2 mt-3">
+                <button onclick="sendDirectWhatsApp(1)" class="bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#25D366] text-[11px] font-bold py-2 px-3 rounded-xl border border-[#25D366]/30 text-center transition">
+                    🟢 Dispatch Line 1
+                </button>
+                <button onclick="sendDirectWhatsApp(2)" class="bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#25D366] text-[11px] font-bold py-2 px-3 rounded-xl border border-[#25D366]/30 text-center transition">
+                    🟢 Dispatch Line 2
+                </button>
+				
+              </div>
+    
+        </section>
+
+		                            	                       
+                                     <div class="text-center py-4">
+    <a href="service-areas.html" class="text-blue-400 font-bold underline">Click here to view our Service Areas</a>
+</div>
+ 
+        <div class="bg-[#0F172A] border border-gray-800 rounded-2xl p-4 mb-8 text-center">
+            <p class="text-xs text-gray-400 mb-3 px-2">
+                🔒 <span class="text-sky-400 font-bold">Secure Call Verification Protocol Active:</span> A refundable <span class="text-white font-bold">₹49 token fee</span> applies to lock a direct express technician line, which is auto-deducted from your final invoice.
+            </p>
+            <a href="tel:+919819832282" class="inline-flex items-center justify-center bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs py-2.5 px-6 rounded-xl border border-gray-700 transition gap-2">
+                📞 Instant Premium Booking via Call
+            </a>
+	</div>
+
+        <section class="mb-8">
+            <div class="flex justify-between items-center mb-4 px-1">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400">Verified Mumbai Tower Reviews</h2>
+                <span class="text-[10px] text-[#0066FF] font-bold uppercase bg-blue-500/10 px-2 py-0.5 rounded">Top Rated App</span>
+            </div>
+            
+            <div class="bg-gradient-to-b from-[#141E3D] to-[#0F172A] border border-gray-800 rounded-xl p-4 mb-4 shadow-inner">
+                <p class="text-xs font-bold text-white mb-2 uppercase tracking-wide text-center sm:text-left">Leave a Premium Service Audit</p>
+                <div class="flex flex-wrap items-center gap-3 justify-center sm:justify-start">
+                    <div class="flex gap-1 text-gray-600 text-lg" id="interactiveStarBlock">
+                        <span class="cursor-pointer hover:text-amber-400 transition star-node text-amber-400" onclick="updateReviewStars(1)">★</span>
+                        <span class="cursor-pointer hover:text-amber-400 transition star-node text-amber-400" onclick="updateReviewStars(2)">★</span>
+                        <span class="cursor-pointer hover:text-amber-400 transition star-node text-amber-400" onclick="updateReviewStars(3)">★</span>
+                        <span class="cursor-pointer hover:text-amber-400 transition star-node text-amber-400" onclick="updateReviewStars(4)">★</span>
+                        <span class="cursor-pointer hover:text-amber-400 transition star-node text-amber-400" onclick="updateReviewStars(5)">★</span>
+                    </div>
+                    <select id="reviewLocationSelector" class="bg-[#1E293B] border border-gray-700 rounded-lg px-2 py-1 text-[11px] text-gray-300 focus:outline-none focus:border-blue-500">
+                        <option value="Bandra West, Mumbai">Bandra West</option>
+                        <option value="Andheri West, Mumbai">Andheri West</option>
+                        <option value="Juhu Tara Road, Mumbai">Juhu Scheme</option>
+                        <option value="Malad West, Mumbai">Malad West</option>
+                        <option value="Khar West, Mumbai">Khar West</option>
+                    </select>
+                    <button onclick="submitAuditReview()" class="bg-[#0066FF] hover:bg-blue-600 text-white text-[10px] font-black px-3 py-1.5 rounded-lg uppercase tracking-wider transition ml-auto">Submit Rating</button>
                 </div>
             </div>
 
-            <div class="rating-row">
-                <span style="width: 30px; font-weight: 600; font-size: 0.85rem;">5★</span>
-                <div class="bar-container"><div class="bar-fill" style="width: 97%;"></div></div>
-                <span style="width: 40px; text-align: right; font-size: 0.85rem; font-weight: 600;">97%</span>
+            <div id="reviewsGrid" class="space-y-3">
+                <div class="bg-[#1E293B]/40 border border-gray-800 rounded-xl p-4 transition hover:border-gray-700">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-xs text-white">Vikram Malhotra</span>
+                        <span class="text-amber-400 text-xs font-serif">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="text-amber-500 font-mono text-[9px] uppercase tracking-wider mb-1">📍 Lodha World Towers, Lower Parel</p>
+                    <p class="text-xs text-gray-300 leading-normal">"The corporate team arrived within 40 minutes for my Bosch wine-cooler circuit repair. Absolute professionalism."</p>
+                </div>
+
+                <div class="bg-[#1E293B]/40 border border-gray-800 rounded-xl p-4 transition hover:border-gray-700">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-xs text-white">Rohan Oberoi</span>
+                        <span class="text-amber-400 text-xs font-serif">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="text-amber-500 font-mono text-[9px] uppercase tracking-wider mb-1">📍 Oberoi Springs, Andheri West (Mumbai West Specialist)</p>
+                    <p class="text-xs text-gray-300 leading-normal">"Best home appliance repair service in Andheri West Mumbai. Handled our high-end double door smart refrigerator PCB reconfiguration flawlessly on same-day emergency basis."</p>
+                </div>
+
+                <div class="bg-[#1E293B]/40 border border-gray-800 rounded-xl p-4 transition hover:border-gray-700">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-xs text-white">Meera Singhania</span>
+                        <span class="text-amber-400 text-xs font-serif">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="text-amber-500 font-mono text-[9px] uppercase tracking-wider mb-1">📍 Sea Princess Enclave, Juhu (Western Zone)</p>
+                    <p class="text-xs text-gray-300 leading-normal">"Excellent multi-split inverter AC jet cleaning. QuickFix Mumbai is definitely the most trusted luxury appliance service hub in Western Mumbai suburbs."</p>
+                </div>
             </div>
-            <div class="rating-row">
-                <span style="width: 30px; font-weight: 600; font-size: 0.85rem;">4★</span>
-                <div class="bar-container"><div class="bar-fill" style="width: 2%;"></div></div>
-                <span style="width: 40px; text-align: right; font-size: 0.85rem; font-weight: 600;">2%</span>
+        </section>
+
+        <div class="bg-[#1E293B]/40 border border-gray-800 rounded-2xl p-6 text-center my-6">
+            <h3 class="text-sky-400 font-bold text-sm uppercase tracking-wider mb-4">QUICKFIX AUTOMATED TERMINAL MAPPING</h3>
+            <p class="text-[10px] text-gray-400 uppercase tracking-wide mb-3">🏦 Secured via Punjab National Bank Gateway</p>
+            
+            <div class="flex justify-center my-4">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=9819832282@pnb&pn=QUICKFIX_MUMBAI&am=49&cu=INR" alt="PNB UPI Central QR" class="w-48 h-48 rounded-xl border-4 border-slate-800 p-2 bg-white" />
             </div>
-            <div class="rating-row">
-                <span style="width: 30px; font-weight: 600; font-size: 0.85rem;">3★</span>
-                <div class="bar-container"><div class="bar-fill" style="width: 1%;"></div></div>
-                <span style="width: 40px; text-align: right; font-size: 0.85rem; font-weight: 600;">1%</span>
-            </div>
+            
+            <p class="text-[10px] text-gray-500 uppercase tracking-wider">
+                STRICT VERIFIED DISPLAY GATEWAY:<br>
+                <span class="text-white font-bold">QUICKFIX_MUMBAI</span> | <a href="https://quickfixmumbai.com" class="text-sky-400 underline">QUICKFIXMUMBAI.COM</a>
+            </p>
         </div>
 
-    </section>
-
-    <footer>
-        <div class="container footer-grid">
-            <div class="footer-col">
-                <a href="#" class="logo" style="color: #fff; display: block; margin-bottom: 15px;">QuickFix<span style="color:var(--primary)">Mumbai</span></a>
-                <p>India's leading smart multi-brand home appliances service hub. Providing elite doorstep mechanical and modular circuit level repairs across Western Mumbai zones since 2010.</p>
-                <p style="font-weight: 700; color: #fff;"><i class="fa-solid fa-award text-orange-500"></i> ISO 9001:2015 Certified</p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Actions</h4>
-                <ul>
-                    <li><a href="#"><i class="fa-solid fa-angle-right"></i> Home Overview</a></li>
-                    <li><a href="#services"><i class="fa-solid fa-angle-right"></i> Services Grid</a></li>
-                    <li><a href="#booking"><i class="fa-solid fa-angle-right"></i> Book Appointment</a></li>
-                    <li><a href="#emergency"><i class="fa-solid fa-angle-right"></i> SOS Emergency</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Services List</h4>
-                <ul>
-                    <li><a href="#booking" onclick="routeBooking('Smart Refrigerator')"><i class="fa-solid fa-angle-right"></i> Refrigerator Fix</a></li>
-                    <li><a href="#booking" onclick="routeBooking('Washing Machine')"><i class="fa-solid fa-angle-right"></i> Washing Machine</a></li>
-                    <li><a href="#booking" onclick="routeBooking('Microwave / Micro Oven')"><i class="fa-solid fa-angle-right"></i> Microwave Repair</a></li>
-                    <li><a href="#booking" onclick="routeBooking('Inverter / PCB Repairs')"><i class="fa-solid fa-angle-right"></i> PCB Circuit Shorting</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact Support</h4>
-                <div class="footer-contact-item">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <span>Quickfix Service Center, Near Western Express Highway, Malad & Borivali Area, Mumbai, Maharashtra.</span>
-                </div>
-                <div class="footer-contact-item">
-                    <i class="fa-solid fa-phone"></i>
-                    <span>+91 98198 32282 / +91 9594406095</span>
-                </div>
-            </div>
+        <div class="text-center my-4">
+            <button onclick="invokeAdminGate()" class="text-[9px] text-gray-600 uppercase tracking-widest font-mono hover:text-blue-500 transition duration-300">
+                ⚙️ SECURE APP MANAGEMENT ENGINE LOG
+            </button>
         </div>
-        <div class="footer-bottom-bar">
-            <div class="container">
-                <p>&copy; 2026 QuickFix Mumbai Home Appliances Service Inc. All Rights Reserved. Crafted for High Conversion.</p>
+
+    </div>
+
+    <footer class="bg-[#070D1F] border-t border-gray-800 text-gray-500 text-center py-6 px-4 text-[11px] uppercase tracking-wider">
+        <div class="max-w-md mx-auto space-y-2">
+            <p>© 2026 <span class="text-gray-300 font-bold">QuickFix Mumbai</span>. All Rights Reserved.</p>
+            <p>Engineered For Elite Grade Residential Terminals & High-Capacity Architecture.</p>
+            <div class="flex justify-center gap-4 text-[10px] text-sky-400/70 font-bold mt-1">
+                <a href="#bookingFormSection" class="hover:underline">Secure Booking</a> • 
+                <a href="tel:+919819832282" class="hover:underline">Corporate Fleet Desk</a>
             </div>
         </div>
     </footer>
 
-    <div id="pwaLoopBox" class="pwa-loop-prompt">
-        <p style="font-size: 0.8rem; font-weight: 700; margin: 0; line-height: 1.4;"><i class="fa-solid fa-cloud-arrow-down"></i> Install QuickFix Mumbai Web App for instant 2-click booking shortcuts from home screen!</p>
-        <div class="pwa-buttons">
-            <button class="pwa-btn lat" onclick="deferPwaLoop()">Later</button>
-            <button class="pwa-btn ins" onclick="triggerPwaInstallation()">Install</button>
-        </div>
-    </div>
-
-    <div class="sticky-contact">
-        <a href="https://wa.me/9198198 32282" target="_blank" class="contact-btn btn-wa">
-            <i class="fab fa-whatsapp" style="font-size:1.3rem;"></i>
-            <span>WA Primary</span>
-        </a>
-        <a href="tel:+9198198 32282" class="contact-btn btn-call">
-            <i class="fa fa-phone" style="font-size:1.3rem;"></i>
-            <span>CALL: +91 98198 32282</span>
-        </a>
-        <a href="https://wa.me/919594406095" target="_blank" class="contact-btn btn-wa" style="background:#16a34a;">
-            <i class="fab fa-whatsapp" style="font-size:1.3rem;"></i>
-            <span>WA Second</span>
-        </a>
-    </div>
-
-    <div class="live-popup" id="liveBookingPopup">
-        <i class="fa-solid fa-circle-check"></i>
-        <div>
-            <span id="popupText">Premium Look: Smart Refrigerator Repair Booked in Borivali 2 mins ago</span>
-            <div style="font-size: 0.75rem; opacity: 0.85;">Verified Doorstep Job Live</div>
-        </div>
-    </div>
-
     <script>
-        // Inline PWA Driver Logic Core Setup
-        let loopPromptEvent;
-        if ('serviceWorker' in navigator) {
-            const swCode = `
-                self.addEventListener('install', e => e.waitUntil(self.skipWaiting()));
-                self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
-                self.addEventListener('fetch', e => e.respondWith(fetch(e.request)));
-            `;
-            const blob = new Blob([swCode], { type: 'application/javascript' });
-            navigator.serviceWorker.register(URL.createObjectURL(blob))
-                .then(() => console.log('Service Worker Running Smoothly'))
-                .catch(err => console.error(err));
+        const PRIMARY_WHATSAPP = "9819832282";
+        const SECONDARY_WHATSAPP = "9769009845";
+
+        function initializeAlertSystem() {
+            const currentDay = new Date().getDay(); 
+            const currentHour = new Date().getHours();
+            const alertLayout = document.getElementById('alertContentLayout');
+            const alertBar = document.getElementById('emergencyAlertBar');
+
+            let isWeekendMode = (currentDay === 5 && currentHour >= 0) || currentDay === 6 || currentDay === 0;
+            const remainingSlots = Math.floor(Math.random() * 6 + 10);
+
+            if (isWeekendMode) {
+                alertBar.className = "bg-gradient-to-r from-[#FF7A00] to-[#FF4500] text-center py-2 px-4 text-xs sm:text-sm flex flex-col justify-center items-center gap-1 sticky top-0 z-50 shadow-md transition-all duration-500";
+                alertLayout.innerHTML = `
+                    <div class="flex flex-wrap justify-center items-center gap-2">
+                        <span class="font-bold">📅 Planning for the Weekend? Pre-Book Your Sunday Maintenance Slot & Save 20%!</span>
+                        <a href="#bookingFormSection" class="bg-white text-[#FF4500] px-3 py-0.5 rounded-full text-xs font-extrabold hover:bg-opacity-90 transition shadow-sm">BOOK QUICK</a>
+                    </div>
+                `;
+            } else {
+                alertLayout.innerHTML = `
+                    <div class="flex flex-wrap justify-center items-center gap-2">
+                        <span class="font-bold">⚡ PREMIUM EMERGENCY ALERT: HIGH DEMAND IN RESIDENTIAL TOWERS!</span>
+                        <span class="font-bold">Slots closing in: <span id="countdownTimer" class="bg-black/30 px-2 py-0.5 rounded font-mono text-amber-300">03h : 00m : 00s</span></span>
+                        <a href="#bookingFormSection" class="bg-white text-[#FF4500] px-3 py-0.5 rounded-full text-xs font-extrabold hover:bg-opacity-90 transition shadow-sm">Quick Book</a>
+                    </div>
+                `;
+                startCountdown(3 * 3600); 
+            }
         }
 
-        // Catch Installation Engine
+        function startCountdown(durationInSeconds) {
+            let timer = durationInSeconds;
+            setInterval(() => {
+                const display = document.getElementById('countdownTimer');
+                if(!display) return;
+                let hours = String(Math.floor(timer / 3600)).padStart(2, '0');
+                let minutes = String(Math.floor((timer % 3600) / 60)).padStart(2, '0');
+                let seconds = String(timer % 60).padStart(2, '0');
+                display.textContent = `${hours}h : ${minutes}m : ${seconds}s`;
+                if (--timer < 0) timer = durationInSeconds;
+            }, 1000);
+        }
+
+        initializeAlertSystem();
+
+        // PWA CORE SHORTCUT DETECTOR
+        let deferredPrompt;
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
-            loopPromptEvent = e;
-            setTimeout(displayPwaLoop, 4000); // Trigger first popup alert after 4s
+            deferredPrompt = e;
         });
 
-        function displayPwaLoop() {
-            const banner = document.getElementById('pwaLoopBox');
-            if(banner) banner.classList.add('visible');
+        function triggerPwaDeployment() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') console.log('User joined standalone channel.');
+                    deferredPrompt = null;
+                });
+            } else {
+                alert('🚀 QuickFix Premium App Status: To install instantly on your device, press the browser settings/share icon and choose "Add to Home Screen".');
+            }
         }
 
-        function deferPwaLoop() {
-            const banner = document.getElementById('pwaLoopBox');
-            if(banner) banner.classList.remove('visible');
-            setTimeout(displayPwaLoop, 20000); // Loop setup retrigger prompt automatically every 20s
+        // SMART WHATSAPP BOOKING ROUTER (LOOP FOR BOTH PARTNERS)
+        function executeDualRoutingWhatsApp(event) {
+            event.preventDefault();
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const brand = document.getElementById('brandSelect').value;
+            const fault = document.getElementById('issueSelect').value;
+            const instruction = document.getElementById('towerInstructions').value;
+            const tier = document.querySelector('input[name="dispatchTier"]:checked').value;
+
+            const textPayload = `🚨 *QUICKFIX EMERGENCY DISPATCH LEAD* 🚨\n\n👤 *Client Name:* ${name}\n📞 *Phone Line:* ${phone}\n🏢 *Brand:* ${brand}\n🛠️ *Fault Metric:* ${fault}\n📌 *Tower Protocols:* ${instruction}\n⚡ *Priority Tier:* ${tier}`;
+
+            
+            // Fires deployment loop link for Primary first, hooks configuration for Secondary backup channel
+            const compiledUrl = `https://wa.me/91${PRIMARY_WHATSAPP}?text=${encodeURIComponent(textPayload)}`;
+            alert(`✅ Lead Locked! Opening secure dispatch line. If you want to sync this on both partner channels, use the Line 1 and Line 2 dispatch actions right below the form.`);
+            window.open(compiledUrl, '_blank');
         }
 
-        function triggerPwaInstallation() {
-            if(!loopPromptEvent) return;
-            loopPromptEvent.prompt();
-            loopPromptEvent.userChoice.then((choice) => {
-                if(choice.outcome === 'accepted') {
-                    document.getElementById('pwaLoopBox').classList.remove('visible');
+        function sendDirectWhatsApp(lineNumber) {
+            const name = document.getElementById('custName').value || "New Customer";
+            const phone = document.getElementById('custPhone').value || "Not Specified";
+            const brand = document.getElementById('brandSelect').value || "General Brand";
+            const fault = document.getElementById('issueSelect').value || "System Fault Check";
+            
+            const textPayload = `⚡ *QUICKFIX SYSTEM BROADCAST LINE ${lineNumber}* ⚡\n\n👤 *Client:* ${name}\n📞 *Contact:* ${phone}\n🏢 *Brand Selection:* ${brand}\n⚠️ *Issue:* ${fault}`;
+            const targetedNum = (lineNumber === 1) ? PRIMARY_WHATSAPP : SECONDARY_WHATSAPP;
+            
+            window.open(`https://wa.me/91${targetedNum}?text=${encodeURIComponent(textPayload)}`, '_blank');
+        }
+
+        // INTERACTIVE RATINGS ENGINE
+        let selectedAuditStars = 5;
+        function updateReviewStars(starCount) {
+            selectedAuditStars = starCount;
+            const starNodes = document.querySelectorAll('.star-node');
+            starNodes.forEach((node, index) => {
+                if (index < starCount) {
+                    node.classList.add('text-amber-400');
+                    node.classList.remove('text-gray-600');
                 } else {
-                    deferPwaLoop();
+                    node.classList.remove('text-amber-400');
+                    node.classList.add('text-gray-600');
                 }
             });
         }
+
+        function submitAuditReview() {
+            const loc = document.getElementById('reviewLocationSelector').value;
+            const targetGrid = document.getElementById('reviewsGrid');
+            let starsString = "⭐".repeat(selectedAuditStars);
+
+            const freshReviewCard = document.createElement('div');
+            freshReviewCard.className = "bg-[#1E293B] border border-blue-500/30 rounded-xl p-4 shadow-md";
+            freshReviewCard.innerHTML = `
+                <div class="flex justify-between items-center mb-1">
+                    <span class="font-bold text-xs text-white">Verified Client Profile</span>
+                    <span class="text-amber-400 text-xs">${starsString}</span>
+                </div>
+                <p class="text-sky-400 font-mono text-[9px] uppercase tracking-wider mb-1">📍 High-Rise Estate, ${loc}</p>
+                <p class="text-xs text-gray-300 leading-normal">"Excellent and extremely fast responsive diagnostics setup. Solved the system problem immediately!"</p>
+            `;
+            targetGrid.insertBefore(freshReviewCard, targetGrid.firstChild);
+            alert("✅ Thank you! Your elite engineering verification rating has been parsed successfully.");
+        }
+
+        function invokeAdminGate() {
+            window.location.href = "/admin";
+        }
+        
+
     </script>
 
-    <script>
-        let selectedGroupDiscount = 18;
+	    <!-- ... (purana content) ... -->
+    <div class="text-center my-4">
+        <button onclick="invokeAdminGate()" class="...">
+            SECURE APP MANAGEMENT ENGINE LOG
+        </button>
+    </div>
+</div> <!-- Main container closing div -->
 
-        // Handles Quick Cards Grid Routing Mechanism
-        function routeBooking(itemName) {
-            const drop = document.getElementById('masterSelectDropdown');
-            if(drop) {
-                drop.value = itemName;
-            }
-            updateLiveDiscount();
-        }
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/919819832282?..." ...>
+    <img src="..." ...>
+</a>
 
-        function selectPeople(element, discountVal) {
-            document.querySelectorAll('.people-option').forEach(opt => opt.classList.remove('active'));
-            element.classList.add('active');
-            selectedGroupDiscount = discountVal;
-            updateLiveDiscount();
-        }
+<!-- Footer -->
+<footer class="...">
+    ...
+</footer>
 
-        function updateLiveDiscount() {
-            const daysSelect = document.getElementById('bookingDays').value;
-            let displayDiscount = selectedGroupDiscount;
-            
-            if (daysSelect === "3") {
-                displayDiscount = 20; 
-            }
-            document.getElementById('discountDisplay').innerText = displayDiscount + "% OFF";
-        }
+<script>
+    // ... (Aapki puri script yahan honi chahiye)
+</script>
+</body>
+</html>
 
-        function executeFinalBooking(e) {
-            e.preventDefault();
-            document.getElementById('discountOfferBox').style.display = "none";
-            document.getElementById('submitActionBtn').style.display = "none";
-            document.getElementById('bookingSuccessBox').style.display = "block";
-        }
-
-        function togglePayment(modeName) {
-            const targets = document.querySelectorAll('.pay-option');
-            targets.forEach(tgt => tgt.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            const box = document.getElementById('qr-container');
-            if(modeName === 'PhonePe' || modeName === 'GPay') {
-                box.style.display = "block";
-            } else {
-                box.style.display = "none";
-            }
-        }
-
-        function handleQRClick() {
-            alert("QR Code Selected! Punjab National Bank Account Number verified safely. Proceed with your standard pre-payment process app interface.");
-        }
-
-        function registerLike(btn) {
-            const textSpan = btn.parentElement.querySelector('.l-count');
-            let num = parseInt(textSpan.innerText);
-            num++;
-            textSpan.innerText = num;
-            btn.classList.add('liked');
-            btn.innerHTML = `<i class="fa-solid fa-heart"></i> Liked!`;
-        }
-
-        function submitLiveSuggestion() {
-            const src = document.getElementById('userSuggest');
-            if(src.value.trim() === "") return;
-            
-            const dest = document.getElementById('suggestionFeed');
-            const element = document.createElement('div');
-            element.className = 'live-item';
-            element.innerHTML = `<strong>You:</strong> ${src
+    
+</body>
+</html>
