@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -839,39 +841,83 @@
         </section>
 
     
-    <!-- Added Advance Booking Option -->
-    <section class="card-panel" id="booking">
-    <h3 class="font-bold text-lg mb-4">Book Your Appliance Doctor</h3>
-    <form id="leadDispatchForm">
-        <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" id="custName" class="form-control" placeholder="Enter name" required>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Smart Appliances Repairing Hub - QuickFix Mumbai</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary: #FF6B00; --secondary: #1E293B; --accent: #10B981; --bg-light: #F8FAFC; }
+        body { background-color: var(--bg-light); font-family: 'Poppins', sans-serif; padding-bottom: 90px; }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .card-panel { background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 4px 25px rgba(0,0,0,0.03); border: 1px solid #e2e8f0; }
+        .form-group { margin-bottom: 18px; }
+        .form-control { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 10px; }
+        .btn-main { background: var(--primary); color: #fff; padding: 14px 35px; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; width: 100%; }
+    </style>
+</head>
+<body>
+
+    <section class="container" id="booking">
+        <h2 class="section-title">Book Your <span>Appliance Doctor</span></h2>
+        <div class="card-panel" style="max-width: 600px; margin: 0 auto;">
+            <form id="leadDispatchForm">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="custName" class="form-control" placeholder="Enter name" required>
+                </div>
+                <div class="form-group">
+                    <label>Your Area in Mumbai</label>
+                    <input type="text" id="custArea" class="form-control" placeholder="e.g. Bandra West" required>
+                </div>
+                <div class="form-group">
+                    <label>Mobile Number</label>
+                    <input type="tel" id="custPhone" class="form-control" placeholder="Enter number" required>
+                </div>
+                <div class="form-group">
+                    <label>Appliance Brand</label>
+                    <select id="brandSelect" class="form-control" required>
+                        <option value="Samsung">Samsung</option>
+                        <option value="LG">LG</option>
+                        <option value="Bosch">Bosch</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Diagnostic Issue</label>
+                    <input type="text" id="issueSelect" class="form-control" placeholder="Describe issue" required>
+                </div>
+                <button type="submit" class="btn-main">Confirm Professional Visit</button>
+            </form>
         </div>
-        <div class="form-group">
-            <label>Your Area in Mumbai</label>
-            <input type="text" id="custArea" class="form-control" placeholder="e.g. Bandra West" required>
-        </div>
-        <div class="form-group">
-            <label>Mobile Number</label>
-            <input type="tel" id="custPhone" class="form-control" placeholder="Enter number" required>
-        </div>
-        <div class="form-group">
-            <label>Appliance Brand</label>
-            <select id="brandSelect" class="form-control" required>
-                <option value="Samsung">Samsung</option>
-                <option value="LG">LG</option>
-                <option value="Bosch">Bosch</option>
-                <option value="Other">Other</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Diagnostic Issue</label>
-            <input type="text" id="issueSelect" class="form-control" placeholder="Describe issue" required>
-        </div>
-        
-        <button type="submit" class="btn-main w-full">Confirm Professional Visit</button>
-    </form>
-</section>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const leadForm = document.getElementById("leadDispatchForm");
+            if (leadForm) {
+                leadForm.addEventListener("submit", function(e) {
+                    e.preventDefault(); // Ye line reload rok degi
+                    
+                    const name = document.getElementById("custName").value;
+                    const area = document.getElementById("custArea").value;
+                    const phone = document.getElementById("custPhone").value;
+                    const brand = document.getElementById("brandSelect").value;
+                    const issue = document.getElementById("issueSelect").value;
+                    
+                    const text = `*New Booking Request*%0AName: ${name}%0AArea: ${area}%0APhone: ${phone}%0ABrand: ${brand}%0AIssue: ${issue}`;
+                    window.open(`https://wa.me/919819832282?text=${text}`, '_blank');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
+
 
 
 <!-- Discount Offer Section (Maintained as requested) -->
