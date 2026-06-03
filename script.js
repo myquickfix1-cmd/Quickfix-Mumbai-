@@ -1,29 +1,38 @@
-// Ye code apne script tag mein replace karein
-const leadForm = document.getElementById("leadDispatchForm");
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // Booking Form Dispatch Engine
+    const leadForm = document.getElementById("leadDispatchForm");
 
-if (leadForm) {
-    leadForm.addEventListener("submit", function(e) {
-        e.preventDefault(); // <--- YE SABSE ZARURI HAI (Page reload rokne ke liye)
-        
-        // Data lein
-        const name = document.getElementById("custName").value;
-        const area = document.getElementById("custArea").value;
-        const phone = document.getElementById("custPhone").value;
-        const brand = document.getElementById("brandSelect").value;
-        const issue = document.getElementById("issueSelect").value;
-        
-        // URL encode karein
-        const textPayload = `🚀 *NEW BOOKING REQUEST*%0A%0A👤 Name: ${name}%0A📍 Area: ${area}%0A📱 Phone: ${phone}%0A⚙️ Brand: ${brand}%0A🔧 Issue: ${issue}`;
-        
-        // WhatsApp kholne ka command
-        const url = `https://wa.me/919819832282?text=${textPayload}`;
-        
-        // Naye tab mein kholein
-        window.open(url, '_blank');
-        
-        console.log("Booking processed successfully!");
-    });
-}
+    if (leadForm) {
+        leadForm.addEventListener("submit", function(e) {
+            e.preventDefault(); // Yeh command page reload hone se rokegi
+
+            // Form inputs se values uthana
+            const name = document.getElementById("custName").value.trim();
+            const area = document.getElementById("custArea").value.trim();
+            const phone = document.getElementById("custPhone").value.trim();
+            const brand = document.getElementById("brandSelect").value;
+            const issue = document.getElementById("issueSelect").value.trim();
+
+            // WhatsApp ke liye message format
+            const textPayload = `🚀 *NEW BOOKING REQUEST*%0A%0A` +
+                                `👤 *Name:* ${name}%0A` +
+                                `📍 *Area:* ${area}%0A` +
+                                `📱 *Phone:* ${phone}%0A` +
+                                `⚙️ *Brand:* ${brand}%0A` +
+                                `🔧 *Issue:* ${issue}`;
+
+            // WhatsApp ka link generate karna
+            const whatsappURL = `https://wa.me/919819832282?text=${textPayload}`;
+
+            // WhatsApp window open karna
+            window.open(whatsappURL, '_blank');
+        });
+    }
+
+    // Yahan baaki apna purana JS code (Timer, PWA etc.) rakhein...
+});
+
 
 /**
  * QuickFix Mumbai - Version 5.6 Intelligent Brain
