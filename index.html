@@ -838,43 +838,46 @@
             </div>
         </section>
 
-        <!-- Booking Section -->
-<section class="card-panel">
-    <h3 class="font-bold text-lg mb-4">Book Your Appliance Doctor</h3>
-    <div class="form-group">
-        <label>Full Name</label>
-        <input type="text" class="form-control" placeholder="Enter name">
-    </div>
-    <div class="form-group">
-        <label>Your Area in Mumbai</label>
-        <input type="text" class="form-control" placeholder="e.g. Bandra West">
-    </div>
-    <div class="form-group">
-        <label>Mobile Number</label>
-        <input type="tel" class="form-control" placeholder="Enter number">
-    </div>
-    <div class="form-group">
-        <label>Any Suggestion or Problem Detail?</label>
-        <textarea class="form-control" rows="3" placeholder="Describe issue"></textarea>
-    </div>
     
     <!-- Added Advance Booking Option -->
-    <div class="form-group">
-        <label>Advance Booking Options</label>
-        <select class="form-control">
-            <option>1-2 Days Booking (Standard Discount)</option>
-            <option>Same Day Priority Booking</option>
-            <option>Extra VIP Booking</option>
-        </select>
-    </div>
-
-    <button class="btn-main w-full">Confirm Professional Visit</button>
+    <section class="card-panel" id="booking">
+    <h3 class="font-bold text-lg mb-4">Book Your Appliance Doctor</h3>
+    <form id="leadDispatchForm">
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="custName" class="form-control" placeholder="Enter name" required>
+        </div>
+        <div class="form-group">
+            <label>Your Area in Mumbai</label>
+            <input type="text" id="custArea" class="form-control" placeholder="e.g. Bandra West" required>
+        </div>
+        <div class="form-group">
+            <label>Mobile Number</label>
+            <input type="tel" id="custPhone" class="form-control" placeholder="Enter number" required>
+        </div>
+        <div class="form-group">
+            <label>Appliance Brand</label>
+            <select id="brandSelect" class="form-control" required>
+                <option value="Samsung">Samsung</option>
+                <option value="LG">LG</option>
+                <option value="Bosch">Bosch</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Diagnostic Issue</label>
+            <input type="text" id="issueSelect" class="form-control" placeholder="Describe issue" required>
+        </div>
+        
+        <button type="submit" class="btn-main w-full">Confirm Professional Visit</button>
+    </form>
 </section>
+
 
 <!-- Discount Offer Section (Maintained as requested) -->
 <section class="offer-box">
     <p class="text-sm font-bold">Your Applied Discount Offer</p>
-    <div class="offer-amt">18% OFF</div>
+    <div class="offer-amt">10% OFF</div>
     <p class="text-[10px] text-gray-500">Real-time discount updated dynamically</p>
 </section>
 
