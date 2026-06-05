@@ -138,3 +138,21 @@ function syncDashboard() {
 // Har 5 second mein update run karein
 setInterval(syncDashboard, 5000);
 
+
+console.log("--- Dashboard Sync Script Loaded ---"); // Ye check karne ke liye ki script chali ya nahi
+
+function syncDashboard() {
+    console.log("Checking for updates..."); // Ye console mein har 5 sec dikhna chahiye
+    
+    // Test logic: agar API nahi hai, toh at least ye message aaye
+    fetch('/get-logs') 
+        .then(response => {
+            if(!response.ok) throw new Error("API path galat hai");
+            return response.json();
+        })
+        .then(data => console.log("Data:", data))
+        .catch(err => console.error("Sync Error:", err.message));
+}
+
+setInterval(syncDashboard, 5000);
+
