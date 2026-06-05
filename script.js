@@ -120,3 +120,21 @@ function toggleCustomLocation() {
     const customBlock = document.getElementById("customLocationBlock");
     customBlock.style.display = (locSelect.value === "Other") ? "block" : "none";
 }
+
+// --- LIVE ADMIN SYNC ENGINE (ADDED) ---
+function syncDashboard() {
+    // Ye sirf admin panel par hi chalna chahiye
+    if (window.location.pathname.includes("admin")) {
+        fetch('/api/live-traffic') // Yahan apne real API ka path dein
+            .then(response => response.json())
+            .then(data => {
+                console.log("Dashboard Updated:", data);
+                // Yahan DOM update karne wala logic likhein
+            })
+            .catch(err => console.log("Syncing..."));
+    }
+}
+
+// Har 5 second mein update run karein
+setInterval(syncDashboard, 5000);
+
