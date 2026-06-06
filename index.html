@@ -2,8 +2,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quickfix Mumbai | Expert Appliance Repair</title>
     
-    <!-- Meta Tags और SEO Code -->
+    <!-- Manifest Link -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(() => console.log('Service Worker Registered Successfully!'))
+                .catch((err) => console.log('SW Registration failed:', err));
+        }
+    </script>
+</head>
+<body>
+    <!-- Baaki ka aapka website content yahan rahega -->
+    <div id="liveTrafficLogs"></div>
+</body>
+</html>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quickfix Mumbai | Expert Admin</title>
+
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="liveTrafficLogs"></div>
+</body>
+</html>
+
+    
+    <!-- Meta Tags aur SEO Code -->
 <title>Quickfix Mumbai | Expert Appliance Repair & Service in West Mumbai</title>
 <meta name="description" content="Quickfix Mumbai offers expert repair services for AC, Refrigerator, and more in West Mumbai. 6-month warranty, fast service, and trusted technicians. Book your Quick repair now!">
 <meta name="keywords" content="Home Appliance service and repair West,est,north,south and centeral Mumbai, Refrigerator repair Mumbai, Refrigerator service Mumbai, Quickfix Mumbai, Home appliance repair expert">
@@ -19,6 +54,7 @@
   "description": "Expert repair and servicing for household appliances including ACs, refrigerators, and PCBs in West Mumbai.",
   "address": {
     "@type": "400050",
+
     "addressLocality": "Mumbai",
     "addressRegion": "Maharashtra",
     "addressCountry": "IN"
@@ -707,9 +743,42 @@
 </head>
 <body>
 
-    <div class="tech-bar">
-        <span class="dot"></span> 49 Expert Technicians Online Now in Mumbai (Western & All Zones)
+<!-- Perfect Compact Section -->
+<style>
+    @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+    .pulsing-dot { animation: blink 1s infinite; height: 10px; width: 10px; border-radius: 50%; display: inline-block; background-color: #28a745; }
+    .compact-ui { font-family: sans-serif; text-align: center; padding: 10px; background: #fff; border-bottom: 1px solid #eee; }
+</style>
+
+<div class="compact-ui">
+    <div style="font-size: 0.85em; font-weight: 600; margin-bottom: 8px;">
+        <span id="status-dot" class="pulsing-dot"></span> 
+        <span id="tech-message">49 Expert Technicians Online Now in West & All Mumbai</span>
     </div>
+    <div style="border: 1px solid #25d366; padding: 6px 12px; border-radius: 50px; background: #f0fff4; display: inline-block;">
+        <span style="font-weight: bold; font-size: 0.85em;">👑 VIP: <span id="slot-count">8</span>/10</span>
+        <a href="https://wa.me/919819832282" style="background: #25d366; color: white; padding: 4px 12px; text-decoration: none; border-radius: 20px; font-weight: bold; font-size: 0.8em; margin-left: 8px;">Book Now ⚡</a>
+    </div>
+</div>
+
+<script>
+    function updateData() {
+        const hours = new Date().getHours();
+        const techMessage = document.getElementById('tech-message');
+        const statusDot = document.getElementById('status-dot');
+        if (hours >= 7 && hours < 24) {
+            techMessage.innerText = "49 Expert Technicians Online Now in West & All Mumbai";
+            statusDot.style.backgroundColor = "#28a745";
+        } else {
+            techMessage.innerHTML = "Service Offline. For Emergency: <b>+91 98198 32282</b>";
+            statusDot.style.backgroundColor = "#dc3545";
+        }
+        document.getElementById('slot-count').innerText = Math.floor(Math.random() * 5) + 5;
+    }
+    setInterval(updateData, 3600000);
+    updateData();
+</script>
+
 
     <header>
         <div class="container nav-container">
@@ -791,7 +860,7 @@
             <div class="item-card">
                 <div class="item-img-box"><i class="fa-solid fa-icicles"></i></div>
                 <div class="item-content">
-                    <h3>3. Overall refrigerator Repair</h3>
+                    <h3>3. All Refrigerators</h3>
                     <a href="#booking" onclick="routeBooking('Fridge')" class="btn-card-book">Book Slot Now</a>
                 </div>
             </div>
@@ -819,7 +888,7 @@
             <div class="item-card">
                 <div class="item-img-box"><i class="fa-solid fa-wind"></i></div>
                 <div class="item-content">
-                    <h3>7. High Capacity Air Dryer</h3>
+                    <h3>7. High Capacity Cloth Dryer</h3>
                     <a href="#booking" onclick="routeBooking('High Capacity Air Dryer')" class="btn-card-book">Book Slot Now</a>
                 </div>
             </div>
@@ -833,14 +902,14 @@
             <div class="item-card">
                 <div class="item-img-box"><i class="fa-solid fa-temperature-arrow-down"></i></div>
                 <div class="item-content">
-                    <h3>9. Washing machine)</h3>
+                    <h3>9. Washing machine</h3>
                     <a href="#booking" onclick="routeBooking('AC (Air Conditioner)')" class="btn-card-book">Book Slot Now</a>
                 </div>
             </div>
             <div class="item-card">
                 <div class="item-img-box"><i class="fa-solid fa-microchip"></i></div>
                 <div class="item-content">
-                    <h3>10. Taof Machines wiring</h3>
+                    <h3>10. Wiring Harness / Critical Faults</h3>
                     <a href="#booking" onclick="routeBooking('Inverter / PCB Repairs')" class="btn-card-book">Book Slot Now</a>
                 </div>
               <div class="item-card">
@@ -871,7 +940,7 @@
                <div class="brand-badge">Godrej</div>
                <div class="brand-badge">Carrier</div>
                <div class="brand-badge">Daikin</div>
-                <div class="brand-badge">Videocon & More</div>
+                <div class="brand-badge">Videocon, Siemens & More</div>
             </div>
         </div>
     </section>
@@ -958,6 +1027,35 @@
         </div>
     </section>
 
+    </section>
+
+<!-- Notification Button Here -->
+<div style="text-align: center; margin: 20px 0;">
+    <button id="notifyBtn" onclick="askNotificationPermission()" style="background:#FF6B00; color:#fff; padding:10px 20px; border-radius:10px; border:none; cursor:pointer; font-weight:bold;">
+        Enable Notifications 🔔
+    </button>
+</div>
+
+<script>
+    function askNotificationPermission() {
+        if (!("Notification" in window)) {
+            alert("Aapka browser notifications support nahi karta!");
+        } else {
+            Notification.requestPermission().then((permission) => {
+                if (permission === "granted") {
+                    alert("Notifications enabled! Ab aapko updates milenge.");
+                } else {
+                    alert("Permission deny kar di gayi hai.");
+                }
+            });
+        }
+    }
+</script>
+
+<script>
+    document.addEventListener...
+
+    
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const leadForm = document.getElementById("leadDispatchForm");
@@ -980,15 +1078,6 @@
 </body>
 </html>
 
-
-
-
-<!-- Discount Offer Section (Maintained as requested) -->
-<section class="offer-box">
-    <p class="text-sm font-bold">Your Applied Discount Offer</p>
-    <div class="offer-amt">12% OFF</div>
-    <p class="text-[10px] text-gray-500">Real-time discount updated dynamically</p>
-</section>
 
         <div class="card-panel">
             <h3><i class="fa fa-comments" style="color: var(--primary);"></i> Suggestions Live Desk</h3>
@@ -1067,7 +1156,7 @@
                 <h4>Contact Support</h4>
                 <div class="footer-contact-item">
                     <i class="fa-solid fa-location-dot"></i>
-                    <span>Quickfix Service Center Near me the bustling 20th Road between Bandra West and Khar West Mumbai- 400050, Maharashtra.</span>
+                    <span>Quickfix Service doorstep Center Near me the bustling 20th Road between Bandra West and Khar West Mumbai- 400050, Maharashtra.</span>
                 </div>
                 <div class="footer-contact-item">
                     <i class="fa-solid fa-phone"></i>
