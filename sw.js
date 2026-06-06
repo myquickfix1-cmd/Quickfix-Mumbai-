@@ -1,49 +1,40 @@
-/**
- * QuickFix Mumbai - PWA Installer Engine
- * Service Worker Activation Stream
- */
-
-const CACHE_NAME = 'quickfix-v5.6-core';
-
-// Native assets list required for standalone app layout offline cache
-const urlsToCache = [
+const CACHE_NAME = 'quickfix-v1';
+const ASSETS = [
   '/',
   '/index.html',
-  '/style.css',
-  '/script.js',
   '/manifest.json'
 ];
 
-self.addEventListener('install', (event) => {
-    event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => {
-            console.log('QuickFix Cache Engine: Pre-caching static skeleton');
-            return cache.addAll(urlsToCache).catch(err => console.log("Cache warming skipped for local setup"));
-        })
-    );
-    self.skipWaiting();
+// 1. Install Event: Files ko cache mein save karne ke liye
+self.addEventListener('install', (e) => {
+  e.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(ASSETS);
+    })
+  );
 });
 
-self.addEventListener('activate', (event) => {
-    event.waitUntil(
-        caches.keys().then((cacheNames) => {
-            return Promise.all(
-                cacheNames.map((cache) => {
-                    if (cache !== CACHE_NAME) {
-                        console.log('QuickFix Cache Engine: Flushing stale cache');
-                        return caches.delete(cache);
-                    }
-                })
-            );
-        })
-    );
-    return self.clients.claim();
+// 2. Fetch Event: Website ko offline chalane ke liye
+self.addEventListener('fetch', (e) => {
+  e.respondWith(
+    caches.match(e.request).then((res) => {
+      return res || fetch(e.request);
+    })
+  );
 });
 
-self.addEventListener('fetch', (event) => {
-    event.respondWith(
-        fetch(event.request).catch(() => {
-            return caches.match(event.request);
-        })
-    );
+// 3. Push Event: Notification dikhane ke liye
+self.addEventListener('push', (event) => {
+  const data = event.data ? event.data.text() : 'Naya Update!';
+  
+  const options = {
+    body: data,
+    icon: 'favicon.ico', // Yahan aap apna icon path dal sakte hain
+    badge: 'favicon.ico'
+  };
+
+  event.waitUntil(
+    // Line 37 ko isse replace/complete karein:
+self.registration.showNotification('QuickFix Mumbai', options)
+
 });
