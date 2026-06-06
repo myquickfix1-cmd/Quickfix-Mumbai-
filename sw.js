@@ -34,7 +34,6 @@ self.addEventListener('push', (event) => {
   };
 
   event.waitUntil(
-    // Line 37 ko isse replace/complete karein:
-self.registration.showNotification('QuickFix Mumbai', options)
-
+    self.registration.showNotification('QuickFix Mumbai', options)
+  );
 });
