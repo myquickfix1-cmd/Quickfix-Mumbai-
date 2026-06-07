@@ -1,14 +1,16 @@
 document.addEventListener("DOMContentLoaded", function() {
     const leadForm = document.getElementById("leadDispatchForm");
 
-    // --- 1. DYNAMIC INJECTION (UI Improvements) ---
+    // --- 1. DYNAMIC INJECTION (Only below Name) ---
     if (leadForm) {
+        const nameInput = document.getElementById("custName"); // Name field ko target kiya
+        
         // Label for Location
         const label = document.createElement("label");
         label.innerText = "Location / City Area:";
         label.style.display = "block";
         label.style.fontWeight = "bold";
-        label.style.marginTop = "15px"; // Gap for title
+        label.style.marginTop = "15px";
         label.style.marginBottom = "5px";
 
         // Location Input
@@ -22,10 +24,9 @@ document.addEventListener("DOMContentLoaded", function() {
         locInput.style.marginBottom = "10px";
         locInput.style.boxSizing = "border-box";
 
-        // Insert before Brand Select
-        const brandSelect = document.getElementById("brandSelect");
-        leadForm.insertBefore(label, brandSelect);
-        leadForm.insertBefore(locInput, brandSelect);
+        // Name field ke baad insert karein (Name field ke parent mein insertAfter logic)
+        nameInput.parentNode.insertBefore(label, nameInput.nextSibling);
+        nameInput.parentNode.insertBefore(locInput, label.nextSibling);
 
         // Fallback Container
         const fallbackDiv = document.createElement("div");
@@ -48,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function() {
             const dateInput = document.getElementById("booking-date")?.value;
             const isAdvance = document.getElementById("calendar-container")?.style.display === 'block';
 
-            // Validation
             if (!/^\d{10}$/.test(phone)) {
                 alert("⚠️ Please enter a valid 10-digit phone number!");
                 return;
@@ -70,14 +70,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 body: new URLSearchParams({ name, phone, location, brand, date: dateStr })
             }).catch(err => console.log("Sheet Sync Error:", err));
 
-            // WhatsApp Trigger
             const newWindow = window.open(whatsappURL, '_blank');
             if (!newWindow) {
                 document.getElementById("fallback-container").style.display = 'block';
                 document.getElementById("whatsappFallback").href = whatsappURL;
             }
 
-            // UI Reset
             setTimeout(() => {
                 submitBtn.disabled = false;
                 submitBtn.innerText = "Confirm Booking";
@@ -85,7 +83,4 @@ document.addEventListener("DOMContentLoaded", function() {
             }, 2000);
         });
     }
-
-    // --- 3. OTHER LOGIC (Timer/Select) ---
-    // (Aapke baaki functions yahan as-is rehenge)
 });
