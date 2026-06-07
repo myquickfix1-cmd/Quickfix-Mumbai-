@@ -185,6 +185,29 @@
     transform: scale(1.02);
 }
 
+/* Naya Booking Type Styles */
+.type-option {
+    border: 2px solid #e2e8f0;
+    padding: 12px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    background: #ffffff;
+    transition: all 0.3s ease;
+    color: #475569;
+}
+
+.type-option.active {
+    border-color: #FF6B00;
+    background: #FFF5EE;
+    color: #FF6B00;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(255, 107, 0, 0.2);
+    transform: scale(1.02);
+}
+
+
 .form-control { 
     width: 100%; 
     padding: 12px; 
