@@ -153,3 +153,58 @@
     border: 2px solid #EF4444;
     box-shadow: 0 0 30px rgba(239, 68, 68, 0.2);
 }
+
+/* ==========================================================================
+   8. BOOKING FORM PREMIUM STYLES (NEW)
+   ========================================================================== */
+.people-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px; 
+    margin-bottom: 20px; 
+}
+
+.people-option { 
+    border: 2px solid #e2e8f0; 
+    padding: 12px; 
+    border-radius: 12px; 
+    text-align: center; 
+    cursor: pointer; 
+    font-weight: 600; 
+    transition: all 0.3s ease; 
+    background: #ffffff;
+    color: #475569;
+}
+
+/* Stable Colorful Active State */
+.people-option.active { 
+    border-color: #FF6B00; 
+    background: #FFF5EE; 
+    color: #FF6B00; 
+    box-shadow: 0 4px 10px rgba(255, 107, 0, 0.2); 
+    transform: scale(1.02);
+}
+
+.form-control { 
+    width: 100%; 
+    padding: 12px; 
+    border: 1px solid #cbd5e1; 
+    border-radius: 10px; 
+    margin-bottom: 15px; 
+    font-size: 0.95rem;
+}
+
+.btn-main { 
+    background: #FF6B00; 
+    color: white; 
+    padding: 15px; 
+    border-radius: 12px; 
+    width: 100%; 
+    border: none; 
+    font-weight: 700; 
+    font-size: 1rem;
+    cursor: pointer; 
+    transition: background 0.3s;
+}
+
+.btn-main:hover { background: #E65A00; }
