@@ -69,9 +69,6 @@
 }
 </script>
 
-
-    
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
@@ -754,7 +751,7 @@
 <div class="compact-ui">
     <div style="font-size: 0.85em; font-weight: 600; margin-bottom: 8px;">
         <span id="status-dot" class="pulsing-dot"></span> 
-        <span id="tech-message">49 Expert Technicians Online Now in West & All Mumbai</span>
+        <span id="tech-message">257 Expert Technicians Online Now in West & All Mumbai</span>
     </div>
     <div style="border: 1px solid #25d366; padding: 6px 12px; border-radius: 50px; background: #f0fff4; display: inline-block;">
         <span style="font-weight: bold; font-size: 0.85em;">👑 VIP: <span id="slot-count">8</span>/10</span>
@@ -946,16 +943,8 @@
         </div>
     </section>
 
-    <section class="container grid-panel" id="booking">
+ 
         
-        <div class="card-panel">
-            <h3 style="margin-bottom: 15px;"><i class="fa fa-calendar-alt" style="color: var(--primary);"></i> Fast Customer Booking Form</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 25px;">Complete in 2-3 clicks. <strong>₹99 Service Visit Charge</strong> applies.</p>
-            
-            </div>
-        </section>
-
-    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -977,7 +966,6 @@
 <body>
 
     <!-- Perfect booking Section -->
-    
     <section class="container" id="booking" style="padding: 20px;">
     <h2 class="section-title">Book Your <span>Appliance Doctor</span></h2>
     <div class="card-panel" style="max-width: 600px; margin: 0 auto; padding: 25px; background: #fff; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
@@ -988,46 +976,47 @@
         </div>
 
         <form id="leadDispatchForm">
-            <div class="form-group" style="margin-bottom: 20px;">
-                <label style="font-weight: 600;">Select Booking Type</label>
-                <div class="booking-type-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
-                    <div class="type-option active" data-val="Today" onclick="handleSelect(this, '.type-option')" style="padding:12px; border:2px solid #007bff; border-radius:8px; text-align:center; cursor:pointer; color:#007bff; background:#eef6ff; font-weight:bold;">Today</div>
-                    <div class="type-option" data-val="Advance" onclick="handleSelect(this, '.type-option')" style="padding:12px; border:2px solid #ddd; border-radius:8px; text-align:center; cursor:pointer;">Advance</div>
-                </div>
+    <div class="form-group" style="margin-bottom: 20px;">
+        <label style="font-weight: 600;">Select Booking Type</label>
+        <div class="booking-type-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+            <div class="type-option active" data-val="Today" onclick="handleSelect(this, '.type-option')" style="padding:12px; border:2px solid #007bff; border-radius:8px; text-align:center; cursor:pointer; color:#007bff; background:#eef6ff; font-weight:bold;">Today</div>
+            <div class="type-option" data-val="Advance" onclick="handleSelect(this, '.type-option')" style="padding:12px; border:2px solid #ddd; border-radius:8px; text-align:center; cursor:pointer;">Advance</div>
+        </div>
+    </div>
+
+    <div id="calendar-container" style="display: none; margin-bottom: 20px;">
+        <label style="font-weight: 600;">Select Date:</label>
+        <input type="date" id="booking-date" style="width:100%; padding:12px; margin-top:5px; border-radius:8px; border:1px solid #ddd;">
+    </div>
+
+    <div class="form-group" style="margin-bottom: 20px;">
+        <label style="font-weight: 600;">Service Level</label>
+        <div class="people-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 10px;">
+            <div class="people-option active" data-val="Normal (₹99)" onclick="handleSelect(this, '.people-option')" style="padding:10px; border:2px solid #007bff; border-radius:8px; text-align:center; cursor:pointer; color:#007bff; background:#eef6ff;">
+                <div style="font-weight:bold;">Normal</div><div style="font-size:0.7rem;">₹99</div>
             </div>
-
-            <div class="form-group" style="margin-bottom: 20px;">
-                <label style="font-weight: 600;">Service Level</label>
-                <div class="people-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 10px;">
-                    <div class="people-option active" data-val="Normal (₹99)" onclick="handleSelect(this, '.people-option')" style="padding:10px; border:2px solid #007bff; border-radius:8px; text-align:center; cursor:pointer; color:#007bff; background:#eef6ff;">
-                        <div style="font-weight:bold;">Normal</div><div style="font-size:0.7rem;">₹99</div>
-                    </div>
-                    <div class="people-option" data-val="VIP (₹499 - 1h)" onclick="handleSelect(this, '.people-option')" style="padding:10px; border:2px solid #ddd; border-radius:8px; text-align:center; cursor:pointer;">
-                        <div style="font-weight:bold;">VIP</div><div style="font-size:0.7rem;">₹499 (1h)</div>
-                    </div>
-                    <div class="people-option" data-val="Extra VIP (₹999 - 45m)" onclick="handleSelect(this, '.people-option')" style="padding:10px; border:2px solid #ddd; border-radius:8px; text-align:center; cursor:pointer;">
-                        <div style="font-weight:bold;">Extra VIP</div><div style="font-size:0.7rem;">₹999 (45m)</div>
-                    </div>
-                </div>
+            <div class="people-option" data-val="VIP (₹499 - 1h)" onclick="handleSelect(this, '.people-option')" style="padding:10px; border:2px solid #ddd; border-radius:8px; text-align:center; cursor:pointer;">
+                <div style="font-weight:bold;">VIP</div><div style="font-size:0.7rem;">₹499 (1h)</div>
             </div>
+            <div class="people-option" data-val="Extra VIP (₹999 - 45m)" onclick="handleSelect(this, '.people-option')" style="padding:10px; border:2px solid #ddd; border-radius:8px; text-align:center; cursor:pointer;">
+                <div style="font-weight:bold;">Extra VIP</div><div style="font-size:0.7rem;">₹999 (45m)</div>
+            </div>
+        </div>
+    </div>
 
-            <label style="font-weight: 600;">Select Appliance Brand</label>
-            <select id="brandSelect" class="form-control" style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd;">
-                <option value="Samsung">Samsung</option><option value="LG">LG</option><option value="Bosch">Bosch</option><option value="Siemens">Siemens</option>
-                <option value="Videocon">Videocon</option><option value="Voltas">Voltas</option><option value="Toshiba">Toshiba</option><option value="Godrej">Godrej</option>
-                <option value="Haier">Haier</option><option value="Hitachi">Hitachi</option><option value="IFB">IFB</option><option value="Lloyd">Lloyd</option>
-                <option value="Whirlpool">Whirlpool</option><option value="Electrolux">Electrolux</option><option value="Daikin">Daikin</option>
-                <option value="Carrier">Carrier</option><option value="Bajaj">Bajaj</option><option value="Amana">Amana</option>
-                <option value="AEG">AEG</option><option value="Faber">Faber</option><option value="Kelvinator">Kelvinator</option>
-                <option value="Other">Other</option>
-            </select>
-            
-            <input type="text" id="custName" placeholder="Full Name" required style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
-            <input type="text" id="custLocation" placeholder="Area / Landmark" required style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
-            <input type="tel" id="custPhone" placeholder="Mobile Number" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd;">
+    <label style="font-weight: 600;">Select Appliance Brand</label>
+    <select id="brandSelect" class="form-control" style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd;">
+        <option value="Samsung">Samsung</option><option value="LG">LG</option><option value="Other">Other</option>
+    </select>
+    
+    <input type="text" id="custName" placeholder="Full Name" required style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
+    <input type="tel" id="custPhone" placeholder="Mobile Number" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd;">
 
-            <button type="submit" style="width:100%; padding:15px; background:#007bff; color:white; border:none; border-radius:10px; font-weight:bold; cursor:pointer;">Confirm Booking</button>
-        </form>
+    <div id="notification" style="display: none; margin-bottom: 15px; padding: 15px; background: #d4edda; color: #155724; border-radius: 8px; text-align: center; font-weight: bold;"></div>
+
+    <button type="submit" style="width:100%; padding:15px; background:#007bff; color:white; border:none; border-radius:10px; font-weight:bold; cursor:pointer;">Confirm Booking</button>
+</form>
+
     </div>
 </section>
 
@@ -1060,6 +1049,9 @@ document.getElementById("leadDispatchForm").addEventListener("submit", function(
     window.open(`https://wa.me/919819832282?text=${encodeURIComponent(msg)}`, '_blank');
 });
 </script>
+
+
+
 
 
 </body>
