@@ -1,158 +1,82 @@
 document.addEventListener("DOMContentLoaded", function() {
     
-    // Booking Form Dispatch Engine
-    const leadForm = document.getElementById("leadDispatchForm");
-
-    if (leadForm) {
-        leadForm.addEventListener("submit", function(e) {
-            e.preventDefault(); // Yeh command page reload hone se rokegi
-
-            // Form inputs se values uthana
-            const name = document.getElementById("custName").value.trim();
-            const area = document.getElementById("custArea").value.trim();
-            const phone = document.getElementById("custPhone").value.trim();
-            const brand = document.getElementById("brandSelect").value;
-            const issue = document.getElementById("issueSelect").value.trim();
-
-            // WhatsApp ke liye message format
-            const textPayload = `🚀 *NEW BOOKING REQUEST*%0A%0A` +
-                                `👤 *Name:* ${name}%0A` +
-                                `📍 *Area:* ${area}%0A` +
-                                `📱 *Phone:* ${phone}%0A` +
-                                `⚙️ *Brand:* ${brand}%0A` +
-                                `🔧 *Issue:* ${issue}`;
-
-            // WhatsApp ka link generate karna
-            const whatsappURL = `https://wa.me/919819832282?text=${textPayload}`;
-
-            // WhatsApp window open karna
-            window.open(whatsappURL, '_blank');
-        });
+    // 1. DYNAMIC COUNTDOWN TIMER
+    const timerDisplay = document.getElementById("countdownTimer");
+    if (timerDisplay) {
+        let totalSeconds = 3 * 60 * 60;
+        setInterval(() => {
+            if (totalSeconds <= 0) totalSeconds = 3 * 60 * 60;
+            let h = Math.floor(totalSeconds / 3600), m = Math.floor((totalSeconds % 3600) / 60), s = totalSeconds % 60;
+            timerDisplay.textContent = `${String(h).padStart(2,'0')}h : ${String(m).padStart(2,'0')}m : ${String(s).padStart(2,'0')}s`;
+            totalSeconds--;
+        }, 1000);
     }
 
-    // Yahan baaki apna purana JS code (Timer, PWA etc.) rakhein...
-});
-
-
-/**
- * QuickFix Mumbai - Version 5.6 Intelligent Brain
- * Optimized & Error-Free Implementation
- */
-
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .catch(err => console.error('Service Worker Registration Failed', err));
-    });
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-    
-    // 1. 3-HOUR DYNAMIC COUNTDOWN TIMER
-    const timerDisplay = document.getElementById("countdownTimer");
-    let totalSeconds = 3 * 60 * 60;
-    setInterval(() => {
-        if (totalSeconds <= 0) totalSeconds = 3 * 60 * 60;
-        let h = Math.floor(totalSeconds / 3600), m = Math.floor((totalSeconds % 3600) / 60), s = totalSeconds % 60;
-        if (timerDisplay) timerDisplay.textContent = `${String(h).padStart(2,'0')}h : ${String(m).padStart(2,'0')}m : ${String(s).padStart(2,'0')}s`;
-        totalSeconds--;
-    }, 1000);
-
-    // 2. LEAD DISPATCH ENGINE (Fixed URL Logic)
+    // 2. BOOKING DISPATCH ENGINE (Calendar + Notification + WhatsApp)
     const leadForm = document.getElementById("leadDispatchForm");
     if (leadForm) {
         leadForm.addEventListener("submit", function(e) {
             e.preventDefault();
+            
             const name = document.getElementById("custName").value.trim();
             const phone = document.getElementById("custPhone").value.trim();
             const brand = document.getElementById("brandSelect").value;
-            const issue = document.getElementById("issueSelect").value;
+            const calendar = document.getElementById("calendar-container");
+            const dateInput = document.getElementById("booking-date");
             
-            if (!name || !phone || !brand || !issue) {
-                alert("⚠️ Please fill all required fields!");
+            const isAdvance = calendar && calendar.style.display === 'block';
+            const selectedDate = dateInput ? dateInput.value : 'Today';
+
+            if (isAdvance && !selectedDate) {
+                alert("⚠️ Please select a date for advance booking!");
                 return;
             }
 
-            const textPayload = `🚀 *QUICKFIX MUMBAI ELITE LEAD*\n👤 Name: ${name}\n📱 Phone: ${phone}\n⚙️ Brand: ${brand}\n🔧 Issue: ${issue}`;
-            const encodedMessage = encodeURIComponent(textPayload);
-            
-            // Fixed Link Protocol
-            const finalWhatsAppURL = `https://wa.me/919819832282?text=${encodedMessage}`;
-            window.location.href = finalWhatsAppURL;
-        });
-    }
-
-    // 3. HAPPY VS BAD CRM ENGINE
-    const feedbackForm = document.getElementById("feedbackGatewayForm");
-    const overlay = document.getElementById("crmModalOverlay");
-    const modalContent = document.getElementById("crmModalContent");
-
-    if (feedbackForm) {
-        feedbackForm.addEventListener("submit", function(e) {
-            e.preventDefault();
-            const clientName = document.getElementById("feedName").value.trim();
-            const scoreStatus = document.getElementById("feedSatisfaction").value;
-
-            overlay.classList.add("modal-open");
-
-            if (scoreStatus === "Yes") {
-                modalContent.innerHTML = `
-                    <div class="text-4xl mb-3">🛡️</div>
-                    <h3 class="text-xl font-black text-amber-400 mb-2">Clearance Confirmed</h3>
-                    <p class="text-xs text-gray-300 mb-4">Thank you ${clientName}! Your 6-Months Warranty is locked.</p>
-                    <button id="closeCrmModal" class="bg-amber-500 text-slate-950 px-6 py-2 rounded-xl">Acknowledge</button>
-                `;
-            } else {
-                modalContent.innerHTML = `
-                    <div class="text-4xl mb-3">😞</div>
-                    <h3 class="text-xl font-black text-red-400 mb-2">Priority Escalation</h3>
-                    <p class="text-xs text-gray-300 mb-4">We're sorry ${clientName}. Senior Lead is scheduled for a free re-visit.</p>
-                    <button id="closeCrmModal" class="bg-red-500 text-white px-6 py-2 rounded-xl">Connect Support</button>
-                `;
+            // Notification Update
+            const note = document.getElementById("notification");
+            if (note) {
+                note.innerText = `Thanks ${name}! Your booking is confirmed for ${isAdvance ? selectedDate : 'Today'}.`;
+                note.style.display = 'block';
             }
+
+            // WhatsApp Payload
+            const textPayload = `🚀 *BOOKING CONFIRMED*%0A%0A👤 *Name:* ${name}%0A📅 *Date:* ${isAdvance ? selectedDate : 'Today'}%0A📱 *Phone:* ${phone}%0A⚙️ *Brand:* ${brand}`;
+            const whatsappURL = `https://wa.me/919819832282?text=${textPayload}`;
+            
+            setTimeout(() => { window.open(whatsappURL, '_blank'); }, 1500);
         });
     }
+
+    // 3. ADMIN SYNC ENGINE
+    function syncDashboard() {
+        if (window.location.pathname.includes("admin")) {
+            console.log("Syncing Admin Data...");
+            // Yahan future mein API call dalenge
+        }
+    }
+    setInterval(syncDashboard, 5000);
+
+    // 4. SELECTION HANDLER
+    window.handleSelect = function(el, selector) {
+        document.querySelectorAll(selector).forEach(item => {
+            item.classList.remove('active');
+            item.style.borderColor = '#ddd';
+            item.style.color = '#000';
+            item.style.background = '#fff';
+        });
+        el.classList.add('active');
+        el.style.borderColor = '#007bff';
+        el.style.color = '#007bff';
+        el.style.background = '#eef6ff';
+
+        const calendar = document.getElementById("calendar-container");
+        if (calendar) {
+            calendar.style.display = (el.getAttribute('data-val') === "Advance") ? "block" : "none";
+        }
+    };
 });
 
-// Toggle Location Handler
-function toggleCustomLocation() {
-    const locSelect = document.getElementById("locationSelect");
-    const customBlock = document.getElementById("customLocationBlock");
-    customBlock.style.display = (locSelect.value === "Other") ? "block" : "none";
+// SERVICE WORKER
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW Registration failed'));
 }
-
-// --- LIVE ADMIN SYNC ENGINE (ADDED) ---
-function syncDashboard() {
-    // Ye sirf admin panel par hi chalna chahiye
-    if (window.location.pathname.includes("admin")) {
-        fetch('/api/live-traffic') // Yahan apne real API ka path dein
-            .then(response => response.json())
-            .then(data => {
-                console.log("Dashboard Updated:", data);
-                // Yahan DOM update karne wala logic likhein
-            })
-            .catch(err => console.log("Syncing..."));
-    }
-}
-
-// Har 5 second mein update run karein
-setInterval(syncDashboard, 5000);
-
-
-console.log("--- Dashboard Sync Script Loaded ---"); // Ye check karne ke liye ki script chali ya nahi
-
-function syncDashboard() {
-    console.log("Checking for updates..."); // Ye console mein har 5 sec dikhna chahiye
-    
-    // Test logic: agar API nahi hai, toh at least ye message aaye
-    fetch('/get-logs') 
-        .then(response => {
-            if(!response.ok) throw new Error("API path galat hai");
-            return response.json();
-        })
-        .then(data => console.log("Data:", data))
-        .catch(err => console.error("Sync Error:", err.message));
-}
-
-setInterval(syncDashboard, 5000);
-
