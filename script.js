@@ -1,86 +1,73 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const leadForm = document.getElementById("leadDispatchForm");
-
-    // --- 1. DYNAMIC INJECTION (Only below Name) ---
-    if (leadForm) {
-        const nameInput = document.getElementById("custName"); // Name field ko target kiya
-        
-        // Label for Location
-        const label = document.createElement("label");
-        label.innerText = "Location / City Area:";
-        label.style.display = "block";
-        label.style.fontWeight = "bold";
-        label.style.marginTop = "15px";
-        label.style.marginBottom = "5px";
-
-        // Location Input
-        const locInput = document.createElement("input");
-        locInput.id = "custLocation";
-        locInput.type = "text";
-        locInput.placeholder = "Enter your city/area";
-        locInput.required = true;
-        locInput.style.width = "100%";
-        locInput.style.padding = "10px";
-        locInput.style.marginBottom = "10px";
-        locInput.style.boxSizing = "border-box";
-
-        // Name field ke baad insert karein (Name field ke parent mein insertAfter logic)
-        nameInput.parentNode.insertBefore(label, nameInput.nextSibling);
-        nameInput.parentNode.insertBefore(locInput, label.nextSibling);
-
-        // Fallback Container
-        const fallbackDiv = document.createElement("div");
-        fallbackDiv.id = "fallback-container";
-        fallbackDiv.style.display = "none";
-        fallbackDiv.style.marginTop = "10px";
-        fallbackDiv.innerHTML = 'Pop-up blocked? <a id="whatsappFallback" href="#" target="_blank">Click here to send manually</a>';
-        leadForm.appendChild(fallbackDiv);
+// --- Like & Trust Functionality ---
+let liked = false;
+function toggleLike(el) {
+    let countEl = document.getElementById('likeCount');
+    let btnEl = document.getElementById('likeBtn');
+    if (!liked) {
+        // Count update logic
+        countEl.innerText = "258020+"; 
+        btnEl.innerHTML = "Liked! ❤";
+        btnEl.style.color = "#ff4757"; // Red color on like
+        liked = true;
     }
+}
 
-    // --- 2. BOOKING DISPATCH ENGINE ---
-    if (leadForm) {
-        leadForm.addEventListener("submit", function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById("custName")?.value.trim();
-            const phone = document.getElementById("custPhone")?.value.trim();
-            const location = document.getElementById("custLocation")?.value.trim();
-            const brand = document.getElementById("brandSelect")?.value;
-            const dateInput = document.getElementById("booking-date")?.value;
-            const isAdvance = document.getElementById("calendar-container")?.style.display === 'block';
+// --- UI Selection Functionality ---
+function handleSelect(el, selector) {
+    document.querySelectorAll(selector).forEach(item => {
+        item.classList.remove('active');
+        item.style.borderColor = '#ddd';
+        item.style.color = '#000';
+        item.style.background = '#fff';
+        item.style.fontWeight = "normal";
+    });
+    el.classList.add('active');
+    el.style.borderColor = '#007bff';
+    el.style.color = '#007bff';
+    el.style.background = '#eef6ff';
+    el.style.fontWeight = "bold";
+}
 
-            if (!/^\d{10}$/.test(phone)) {
-                alert("⚠️ Please enter a valid 10-digit phone number!");
-                return;
-            }
-
-            const submitBtn = leadForm.querySelector('button[type="submit"]');
-            submitBtn.disabled = true;
-            submitBtn.innerText = "Processing...";
-
-            const dateStr = isAdvance && dateInput ? dateInput : 'Today';
-            const textPayload = `🚀 *NEW BOOKING*%0A👤 *Name:* ${name}%0A📍 *Location:* ${location}%0A📱 *Phone:* ${phone}%0A📅 *Date:* ${dateStr}%0A⚙️ *Brand:* ${brand}`;
-            const whatsappURL = `https://wa.me/919819832282?text=${textPayload}`;
-            
-            // --- SYNC TO YOUR SHEET ---
-            const scriptURL = "PASTE_YOUR_WEB_APP_URL_HERE"; 
-            fetch(scriptURL, {
-                method: 'POST',
-                mode: 'no-cors',
-                body: new URLSearchParams({ name, phone, location, brand, date: dateStr })
-            }).catch(err => console.log("Sheet Sync Error:", err));
-
-            const newWindow = window.open(whatsappURL, '_blank');
-            if (!newWindow) {
-                document.getElementById("fallback-container").style.display = 'block';
-                document.getElementById("whatsappFallback").href = whatsappURL;
-            }
-
-            setTimeout(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerText = "Confirm Booking";
-                alert("Booking recorded successfully!");
-            }, 2000);
-        });
+// --- Date Field Toggle Logic ---
+function toggleAdvanceFields(isAdvance) {
+    const advanceFields = document.getElementById('advanceFields');
+    if (isAdvance) {
+        advanceFields.style.display = 'block';
+    } else {
+        advanceFields.style.display = 'none';
+        document.getElementById('bookDate').value = ""; // Clear date if hidden
     }
+}
+
+// --- Form Submission Logic (WhatsApp Integration) ---
+document.getElementById("leadDispatchForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    // Data Gathering
+    const type = document.querySelector('.type-option.active').getAttribute('data-val');
+    const level = document.querySelector('.people-option.active').getAttribute('data-val');
+    const brand = document.getElementById("brandSelect").value;
+    const name = document.getElementById("custName").value;
+    const loc = document.getElementById("custLocation").value;
+    const phone = document.getElementById("custPhone").value;
+    
+    // Date and Time Handling
+    const dateInput = document.getElementById("bookDate").value;
+    const date = dateInput ? dateInput : "Today";
+    const time = document.getElementById("timeSlot").value;
+    
+    // Constructing the Message
+    const msg = `*New Booking Request*\n\n` +
+                `Type: ${type}\n` +
+                `Date: ${date}\n` +
+                `Time Slot: ${time}\n` +
+                `Service Level: ${level}\n` +
+                `Brand: ${brand}\n` +
+                `Name: ${name}\n` +
+                `Location: ${loc}\n` +
+                `Phone: ${phone}`;
+
+    // Redirect to WhatsApp
+    const whatsappUrl = `https://wa.me/919819832282?text=${encodeURIComponent(msg)}`;
+    window.open(whatsappUrl, '_blank');
 });
