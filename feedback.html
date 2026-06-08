@@ -1,21 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body { background-color: #0d1b2a; color: #ffffff; font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px; }
-        .container { max-width: 400px; margin: 30px auto; border: 1px solid #1b263b; padding: 30px; border-radius: 20px; background: #152238; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-        .logo { font-size: 24px; font-weight: bold; color: #4cc9f0; margin-bottom: 10px; }
-        .verified { color: #4ade80; font-size: 14px; margin-bottom: 20px; }
-        .btn { display: block; width: 100%; padding: 18px; margin: 15px 0; background: linear-gradient(90deg, #1b263b, #415a77); color: white; text-decoration: none; border-radius: 10px; font-weight: bold; }
-        .btn:hover { background: #4cc9f0; color: #0d1b2a; }
+        .container { max-width: 400px; margin: 0 auto; padding: 25px; border-radius: 20px; background: #152238; border: 1px solid #415a77; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .logo { font-size: 26px; font-weight: bold; color: #4cc9f0; margin-bottom: 5px; }
+        .sub-logo { font-size: 14px; color: #778da9; margin-bottom: 20px; }
+        .stars { font-size: 30px; color: #fca311; margin-bottom: 15px; }
+        .btn { display: block; width: 100%; padding: 18px; margin: 15px 0; background: #4cc9f0; color: #0d1b2a; border: none; border-radius: 12px; font-weight: bold; font-size: 16px; cursor: pointer; text-decoration: none; }
+        .input-field { width: 100%; padding: 14px; margin: 10px 0; border-radius: 10px; border: 1px solid #415a77; background: #0d1b2a; color: white; box-sizing: border-box; }
+        .footer-link { margin-top: 25px; font-size: 13px; color: #415a77; text-decoration: underline; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="logo">QUICKFIX MUMBAI</div>
-        <div class="verified">✓ STRICTLY VERIFIED GATEWAY</div>
-        <a href="https://bit.ly/QuickFixReview" class="btn">RATE VIP EXPERIENCE (GOOGLE)</a>
-        <a href="https://wa.me/919819832282" class="btn">REPORT TECHNICAL ISSUE</a>
+        <div class="sub-logo">Premium Appliance Repair Service</div>
+        
+        <div class="stars">★★★★★</div>
+        <p>Rate your 5-Star Experience</p>
+        <a href="https://bit.ly/QuickFixReview" target="_blank" class="btn">SUBMIT GOOGLE REVIEW</a>
+
+        <hr style="border: 0; border-top: 1px solid #415a77; margin: 25px 0;">
+
+        <h3>Activate 6-Month Warranty</h3>
+        <input type="text" class="input-field" placeholder="Enter Service ID (e.g., QF-2606-0001)">
+        <input type="text" class="input-field" placeholder="Registered Mobile Number">
+        <button class="btn" style="background: #1b263b; color: white; border: 1px solid #4cc9f0;">VERIFY & ACTIVATE</button>
+
+        <a href="https://wa.me/919819832282" style="color: #4ade80; font-size: 14px; display: block; margin-top: 15px;">Facing issues? Chat with us</a>
+        <br><a href="https://quickfixmumbai.com" class="footer-link">Visit Official Website</a>
     </div>
 </body>
 </html>
