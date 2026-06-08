@@ -765,7 +765,7 @@
         const techMessage = document.getElementById('tech-message');
         const statusDot = document.getElementById('status-dot');
         if (hours >= 7 && hours < 24) {
-            techMessage.innerText = "257 Expert Technicians Online Now in West & All Mumbai";
+            techMessage.innerText = "49 Expert Technicians Online Now in West & All Mumbai";
             statusDot.style.backgroundColor = "#28a745";
         } else {
             techMessage.innerHTML = "Service Offline. For Emergency: <b>+91 98198 32282</b>";
@@ -968,89 +968,80 @@
     <!-- Perfect booking Section -->
     <section class="container" id="booking" style="padding: 20px;">
     <h2 class="section-title">Book Your <span>Appliance Doctor</span></h2>
+    
+    <!-- Like & Trust Section -->
+    <div style="display: flex; justify-content: space-between; margin-bottom: 20px; text-align: center;">
+        <div style="flex:1;"><h3>3,85,019+</h3><p>Trusted Families</p></div>
+        <div style="flex:1; cursor:pointer;" onclick="toggleLike(this)">
+            <h3 id="likeCount">258019+</h3>
+            <p>Liked Opinions <br> <span id="likeBtn">❤ Press to Like</span></p>
+        </div>
+    </div>
+
     <div class="card-panel" style="max-width: 600px; margin: 0 auto; padding: 25px; background: #fff; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
-        
+        <!-- Offer Banner -->
         <div style="background: linear-gradient(135deg, #0056b3, #007bff); color: white; padding: 15px; border-radius: 12px; text-align: center; margin-bottom: 20px;">
             <h4 style="margin: 0; font-size: 1.1rem;">🔥 Special Limited Offer</h4>
             <p style="margin: 5px 0 0; font-size: 0.9rem;">Today: <b>12% OFF</b> | Advance: <b>18% OFF</b></p>
         </div>
 
         <form id="leadDispatchForm">
-    <div class="form-group" style="margin-bottom: 20px;">
-        <label style="font-weight: 600;">Select Booking Type</label>
-        <div class="booking-type-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
-            <div class="type-option active" data-val="Today" onclick="handleSelect(this, '.type-option')" style="padding:12px; border:2px solid #007bff; border-radius:8px; text-align:center; cursor:pointer; color:#007bff; background:#eef6ff; font-weight:bold;">Today</div>
-            <div class="type-option" data-val="Advance" onclick="handleSelect(this, '.type-option')" style="padding:12px; border:2px solid #ddd; border-radius:8px; text-align:center; cursor:pointer;">Advance</div>
-        </div>
-    </div>
-
-    <div id="calendar-container" style="display: none; margin-bottom: 20px;">
-        <label style="font-weight: 600;">Select Date:</label>
-        <input type="date" id="booking-date" style="width:100%; padding:12px; margin-top:5px; border-radius:8px; border:1px solid #ddd;">
-    </div>
-
-    <div class="form-group" style="margin-bottom: 20px;">
-        <label style="font-weight: 600;">Service Level</label>
-        <div class="people-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 10px;">
-            <div class="people-option active" data-val="Normal (₹99)" onclick="handleSelect(this, '.people-option')" style="padding:10px; border:2px solid #007bff; border-radius:8px; text-align:center; cursor:pointer; color:#007bff; background:#eef6ff;">
-                <div style="font-weight:bold;">Normal</div><div style="font-size:0.7rem;">₹99</div>
+            <!-- Booking Type -->
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label style="font-weight: 600;">Select Booking Type</label>
+                <div class="booking-type-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+                    <div class="type-option active" data-val="Today" onclick="toggleAdvanceFields(false); handleSelect(this, '.type-option')" style="padding:12px; border:2px solid #007bff; border-radius:8px; text-align:center; cursor:pointer; color:#007bff; background:#eef6ff; font-weight:bold;">Today</div>
+                    <div class="type-option" data-val="Advance" onclick="toggleAdvanceFields(true); handleSelect(this, '.type-option')" style="padding:12px; border:2px solid #ddd; border-radius:8px; text-align:center; cursor:pointer;">Advance</div>
+                </div>
             </div>
-            <div class="people-option" data-val="VIP (₹499 - 1h)" onclick="handleSelect(this, '.people-option')" style="padding:10px; border:2px solid #ddd; border-radius:8px; text-align:center; cursor:pointer;">
-                <div style="font-weight:bold;">VIP</div><div style="font-size:0.7rem;">₹499 (1h)</div>
+
+            <!-- Date & Time (Conditional) -->
+            <div id="advanceFields" style="display: none; margin-bottom: 20px; background: #f9f9f9; padding: 15px; border-radius: 10px;">
+                <label style="font-weight: 600;">Select Date</label>
+                <input type="date" id="bookDate" style="width:100%; padding:10px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
             </div>
-            <div class="people-option" data-val="Extra VIP (₹999 - 45m)" onclick="handleSelect(this, '.people-option')" style="padding:10px; border:2px solid #ddd; border-radius:8px; text-align:center; cursor:pointer;">
-                <div style="font-weight:bold;">Extra VIP</div><div style="font-size:0.7rem;">₹999 (45m)</div>
+            
+            <label style="font-weight: 600;">Preferred Time Slot</label>
+            <select id="timeSlot" style="width:100%; padding:12px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd;">
+                <option value="07-09 AM">07:00 AM - 09:00 AM</option>
+                <option value="09-11 AM">09:00 AM - 11:00 AM</option>
+                <option value="11-01 PM">11:00 AM - 01:00 PM</option>
+                <option value="01-03 PM">01:00 PM - 03:00 PM</option>
+                <option value="03-05 PM">03:00 PM - 05:00 PM</option>
+                <option value="05-07 PM">05:00 PM - 07:00 PM</option>
+                <option value="07-09 PM">07:00 PM - 09:00 PM</option>
+                <option value="09-12 AM">09:00 PM - 12:00 AM</option>
+            </select>
+
+            <!-- Service Level -->
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label style="font-weight: 600;">Service Level</label>
+                <div class="people-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 10px;">
+                    <div class="people-option active" data-val="Normal" onclick="handleSelect(this, '.people-option')" style="padding:10px; border:2px solid #007bff; border-radius:8px; text-align:center; cursor:pointer; color:#007bff; background:#eef6ff;">
+                        <div style="font-weight:bold;">Normal</div><div style="font-size:0.7rem;">₹99</div>
+                    </div>
+                    <div class="people-option" data-val="VIP" onclick="handleSelect(this, '.people-option')" style="padding:10px; border:2px solid #ddd; border-radius:8px; text-align:center; cursor:pointer;">
+                        <div style="font-weight:bold;">VIP</div><div style="font-size:0.7rem;">₹499 (1h)</div>
+                    </div>
+                    <div class="people-option" data-val="Extra VIP" onclick="handleSelect(this, '.people-option')" style="padding:10px; border:2px solid #ddd; border-radius:8px; text-align:center; cursor:pointer;">
+                        <div style="font-weight:bold;">Extra VIP</div><div style="font-size:0.7rem;">₹999 (45m)</div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <label style="font-weight: 600;">Select Appliance Brand</label>
-    <select id="brandSelect" class="form-control" style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd;">
-        <option value="Samsung">Samsung</option><option value="LG">LG</option><option value="Other">Other</option>
-    </select>
-    
-    <input type="text" id="custName" placeholder="Full Name" required style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
-    <input type="text" id="custLocation" placeholder="Area / Landmark" required style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
-    <input type="tel" id="custPhone" placeholder="Mobile Number" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd;">
+            <!-- Details -->
+            <select id="brandSelect" class="form-control" style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
+                <option value="Samsung">Samsung</option><option value="LG">LG</option><option value="Bosch">Bosch</option><option value="Other">Other</option>
+            </select>
+            <input type="text" id="custName" placeholder="Full Name" required style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
+            <input type="text" id="custLocation" placeholder="Area / Landmark" required style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
+            <input type="tel" id="custPhone" placeholder="Mobile Number" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd;">
 
-    <div id="notification" style="display: none; margin-bottom: 15px; padding: 15px; background: #d4edda; color: #155724; border-radius: 8px; text-align: center; font-weight: bold;"></div>
-
-    <button type="submit" style="width:100%; padding:15px; background:#007bff; color:white; border:none; border-radius:10px; font-weight:bold; cursor:pointer;">Confirm Booking</button>
-</form>
-
-
+            <button type="submit" style="width:100%; padding:15px; background:#007bff; color:white; border:none; border-radius:10px; font-weight:bold; cursor:pointer;">Confirm Booking</button>
+        </form>
     </div>
 </section>
 
-<script>
-function handleSelect(el, selector) {
-    document.querySelectorAll(selector).forEach(item => {
-        item.classList.remove('active');
-        item.style.borderColor = '#ddd';
-        item.style.color = '#000';
-        item.style.background = '#fff';
-        item.style.fontWeight = "normal";
-    });
-    el.classList.add('active');
-    el.style.borderColor = '#007bff';
-    el.style.color = '#007bff';
-    el.style.background = '#eef6ff';
-    el.style.fontWeight = "bold";
-}
-
-document.getElementById("leadDispatchForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    const type = document.querySelector('.type-option.active').getAttribute('data-val');
-    const level = document.querySelector('.people-option.active').getAttribute('data-val');
-    const name = document.getElementById("custName").value;
-    const loc = document.getElementById("custLocation").value;
-    const phone = document.getElementById("custPhone").value;
-    const brand = document.getElementById("brandSelect").value;
-    
-    const msg = `*New Booking Request*\n\nType: ${type}\nLevel: ${level}\nName: ${name}\nLoc: ${loc}\nPhone: ${phone}\nBrand: ${brand}`;
-    window.open(`https://wa.me/919819832282?text=${encodeURIComponent(msg)}`, '_blank');
-});
-</script>
 
 
 
