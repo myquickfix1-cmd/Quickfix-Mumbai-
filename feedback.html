@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warranty Activation | Quickfix Mumbai</title>
     <style>
         body { background-color: #0d1b2a; color: #ffffff; font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px; margin: 0; }
         .container { max-width: 400px; margin: 0 auto; padding: 25px; border-radius: 20px; background: #152238; border: 1px solid #415a77; box-shadow: 0 10px 25px rgba(0,0,0,0.6); display: flex; flex-direction: column; align-items: center; }
@@ -52,11 +54,11 @@
 
     <script>
         function activateWarranty() {
-            const name = document.getElementById('custName').value;
-            const id = document.getElementById('serviceId').value;
-            const mobile = document.getElementById('mobile').value;
+            const name = document.getElementById('custName').value.trim();
+            const id = document.getElementById('serviceId').value.trim();
+            const mobile = document.getElementById('mobile').value.trim();
 
-            if (name && id && mobile) {
+            if (name !== "" && id !== "" && mobile !== "") {
                 document.getElementById('display-name').innerText = name;
                 document.getElementById('display-id').innerText = id;
                 document.getElementById('warranty-form').style.display = 'none';
