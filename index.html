@@ -970,12 +970,45 @@
     <h2 class="section-title">Book Your <span>Appliance Doctor</span></h2>
     
     <!-- Like & Trust Section -->
-    <div style="display: flex; justify-content: space-between; margin-bottom: 20px; text-align: center;">
-        <div style="flex:1;"><h3>148.47k+</h3><p>Trusted Families</p></div>
-        <div style="flex:1; cursor:pointer;" onclick="toggleLike(this)">
-            <h3 id="likeCount">55.89k+</h3>
-            <p>Liked Opinions <br> <span id="likeBtn">❤ Press to Like</span></p>
-        </div>
+    <div style="display: flex; justify-content: space-between; margin-bottom: 20px; text-align: center; font-family: sans-serif;">
+    <div style="flex:1;">
+        <h3>148.47k+</h3>
+        <p>Happy Families</p>
+    </div>
+    
+    <!-- User Interactivity Section -->
+    <div style="flex:1; cursor:pointer;" onclick="toggleLike()">
+        <h3 id="likeCount">55.89k+</h3>
+        <p>Liked Opinions <br> <span id="likeBtn" style="color: gray;">❤ Press to Like</span></p>
+    </div>
+</div>
+
+<script>
+// Initial state setup
+let count = 55.89; 
+let isLiked = false;
+
+function toggleLike() {
+    const likeCountEl = document.getElementById('likeCount');
+    const likeBtnEl = document.getElementById('likeBtn');
+
+    if (!isLiked) {
+        // Like active state
+        count = count + 0.01; // Increases count by 1 (0.01k = 1)
+        likeCountEl.innerText = count.toFixed(2) + "k+";
+        likeBtnEl.innerText = "❤️ Liked";
+        likeBtnEl.style.color = "red";
+        isLiked = true;
+    } else {
+        // Unlike state
+        count = count - 0.01;
+        likeCountEl.innerText = count.toFixed(2) + "k+";
+        likeBtnEl.innerText = "❤ Press to Like";
+        likeBtnEl.style.color = "gray";
+        isLiked = false;
+    }
+}
+</script>
     </div>
 
     <div class="card-panel" style="max-width: 600px; margin: 0 auto; padding: 25px; background: #fff; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
