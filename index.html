@@ -820,11 +820,12 @@
                 <h3>148.4k+</h3>
                 <p>Trusted Families Served</p>
             </div>
-            <div class="stat-item">
-                <h3><span class="l-count">55.89k+</span></h3>
-                <p>Liked Opinions & Feedback</p>
-                <button class="heart-btn" onclick="registerLike(this)"><i class="fa-solid fa-heart"></i> Press to Like</button>
+                        <div class="stat-item" style="cursor:pointer;" onclick="window.toggleLike()">
+                <h3 id="likeCount" style="font-size: 24px; margin-bottom: 5px;">55.890k+</h3>
+                <p style="margin: 0; color: #333;">Liked Opinions & Feedback</p>
+                <span id="likeBtn" style="color: gray; font-size: 14px; display: block; margin-top: 5px;">❤ Press to Like</span>
             </div>
+
             <div class="stat-item">
                 <h3>100% Genuine</h3>
                 <p>Company Spare Parts Used</p>
@@ -918,6 +919,39 @@
                 </div>
             </div>
         </div>
+
+<script>
+(function() {
+    // असली संख्या (55.890k = 55890)
+    let absoluteCount = 55890; 
+    let isLiked = false;
+
+    window.toggleLike = function() {
+        const likeCountEl = document.getElementById('likeCount');
+        const likeBtnEl = document.getElementById('likeBtn');
+
+        if (!likeCountEl || !likeBtnEl) return;
+
+        if (!isLiked) {
+            absoluteCount = absoluteCount + 1; 
+            let kFormat = (absoluteCount / 1000).toFixed(3) + "k+";
+            likeCountEl.innerText = kFormat;
+            likeBtnEl.innerText = "❤️ Liked";
+            likeBtnEl.style.color = "red";
+            isLiked = true;
+        } else {
+            absoluteCount = absoluteCount - 1;
+            let kFormat = (absoluteCount / 1000).toFixed(3) + "k+";
+            likeCountEl.innerText = kFormat;
+            likeBtnEl.innerText = "❤ Press to Like";
+            likeBtnEl.style.color = "gray";
+            isLiked = false;
+        }
+    };
+})();
+</script>
+           
+           
     </section>
 
     <section class="container">
