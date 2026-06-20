@@ -2,51 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Appliance Repair in Andheri | QuickFix Mumbai</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Collapsible function for the "Wikipedia-style" feel
         function toggleSection(id) {
             const el = document.getElementById(id);
             el.classList.toggle('hidden');
         }
     </script>
 </head>
-<body class="bg-white text-gray-900 max-w-2xl mx-auto p-4">
+<body class="bg-gray-50 text-gray-900">
 
     <!-- 1 & 2: Navigation (Previous/Next) -->
-    <nav class="flex justify-between py-4 border-b">
-        <a href="previous_location.html" class="text-blue-700 font-bold">← Previous</a>
-        <a href="next_location.html" class="text-blue-700 font-bold">Next →</a>
+    <nav class="flex justify-between p-4 bg-white shadow-sm sticky top-0 z-50">
+        <a href="index.html" class="text-blue-700 font-bold">← Home</a>
+        <a href="bandra.html" class="text-blue-700 font-bold">Next: Bandra →</a>
     </nav>
 
-    <h1 class="text-3xl font-bold my-6">Appliance Repair in [LOCATION]</h1>
+    <main class="max-w-md mx-auto p-4">
+        <h1 class="text-3xl font-bold my-6 text-blue-600">Appliance Repair in Andheri</h1>
 
-    <!-- Hero Image (Interactive look) -->
-    <div class="overflow-hidden rounded-lg shadow-lg mb-6 hover:scale-105 transition duration-500">
-        <img src="images/repair-service.jpg" class="w-full h-64 object-cover" alt="Service in [Location]">
-    </div>
+        <!-- Hero Image with Hover Effect -->
+        <div class="overflow-hidden rounded-lg shadow-lg mb-6 hover:scale-105 transition duration-500">
+            <img src="images/repair-service.jpg" class="w-full h-64 object-cover" alt="Expert Appliance Repair in Andheri">
+        </div>
 
-    <!-- 3: Wikipedia Style Collapsible Sections -->
-    <div class="space-y-4">
-        <div class="border-b">
-            <button onclick="toggleSection('sec1')" class="w-full text-left py-3 font-bold text-lg">▼ Why Choose Us?</button>
-            <div id="sec1" class="p-4 text-gray-700">Genuine parts, 6-month warranty, and expert technicians.</div>
+        <!-- 3: Interactive Wikipedia Style Sections -->
+        <div class="space-y-4 bg-white p-2 rounded-lg shadow">
+            <div class="border-b">
+                <button onclick="toggleSection('sec1')" class="w-full text-left py-3 font-bold text-lg text-blue-900">▼ Why Choose Us?</button>
+                <div id="sec1" class="p-4 text-gray-700 text-sm">We provide 100% genuine parts, 6-month warranty, and expert diagnostics for all brands in Andheri.</div>
+            </div>
+            <div class="border-b">
+                <button onclick="toggleSection('sec2')" class="w-full text-left py-3 font-bold text-lg text-blue-900">▼ Our Services</button>
+                <div id="sec2" class="p-4 text-sm text-blue-700 grid grid-cols-2 gap-2">
+                    <a href="pcb-repair.html">• Advanced PCB</a>
+                    <a href="2_refrigerator-repair.html">• Refrigerator</a>
+                    <a href="5_microwave-repair.html">• Magnetron</a>
+                    <a href="4_washing-machine-repair.html">• Washing Machine</a>
+                    <a href="3_ac-repair.html">• Split AC</a>
+                    <a href="amc-service.html">• AMC Service</a>
+                </div>
+            </div>
         </div>
-        <div class="border-b">
-            <button onclick="toggleSection('sec2')" class="w-full text-left py-3 font-bold text-lg">▼ Our Services</button>
-            <div id="sec2" class="p-4 text-gray-700">PCB, AC, Fridge, Microwave... (Full List)</div>
-        </div>
-        <div class="border-b">
-            <button onclick="toggleSection('sec3')" class="w-full text-left py-3 font-bold text-lg">▼ Areas Covered</button>
-            <div id="sec3" class="p-4 text-gray-700">Serving all of Mumbai including Bandra, Andheri, Malad...</div>
-        </div>
-    </div>
 
-    <!-- Mumbai Tadka Section -->
-    <div class="mt-8 p-6 bg-blue-50 rounded-xl text-center shadow-inner">
-        <h2 class="text-2xl font-bold text-blue-800">QuickFix Mumbai ka Bharosa</h2>
-        <p class="mt-2">Mumbai ki raftar, QuickFix ka samarpan!</p>
-        <a href="tel:9819832282" class="mt-4 inline-block bg-blue-600 text-white px-8 py-3 rounded-full font-bold">Call Now</a>
+        <!-- Mumbai Tadka Section -->
+        <div class="mt-8 p-6 bg-blue-600 rounded-xl text-center text-white shadow-xl">
+            <h2 class="text-2xl font-bold">QuickFix Mumbai ka Bharosa</h2>
+            <p class="mt-2 italic">Mumbai ki raftar, QuickFix ka samarpan!</p>
+            <a href="tel:9819832282" class="mt-4 inline-block bg-white text-blue-600 px-8 py-3 rounded-full font-bold shadow-lg">Call 9819832282 Now</a>
+        </div>
+    </main>
+
+    <!-- Floating WhatsApp/Call (Chalta-Firta Element) -->
+    <div class="fixed bottom-6 right-6">
+        <a href="https://wa.me/919819832282" class="bg-green-500 text-white p-4 rounded-full shadow-2xl animate-bounce">
+            WhatsApp
+        </a>
     </div>
 
 </body>
