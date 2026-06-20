@@ -2,72 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expert Appliance Repair in Andheri | Quickfix Mumbai</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Collapsible function for the "Wikipedia-style" feel
+        function toggleSection(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+    </script>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-white text-gray-900 max-w-2xl mx-auto p-4">
 
-    <section class="py-12 px-6 max-w-md mx-auto">
-      
-        <!-- Navigation Bar -->
-        <nav class="pb-6 text-center">
-            <a href="1_index.html" class="text-blue-600 font-bold">← Back to Home</a> | 
-            <a href="bandra.html" class="text-blue-600 font-bold">Next: Bandra →</a>
-        </nav>
+    <!-- 1 & 2: Navigation (Previous/Next) -->
+    <nav class="flex justify-between py-4 border-b">
+        <a href="previous_location.html" class="text-blue-700 font-bold">← Previous</a>
+        <a href="next_location.html" class="text-blue-700 font-bold">Next →</a>
+    </nav>
 
-        <h1 class="text-3xl font-bold mb-4 text-blue-600">Trusted Appliance Repair in Andheri</h1>
-        
-        <!-- Hero Image Section -->
-        <section class="location-hero text-center mb-8">
-            <img src="images/repair-service.jpg" alt="Professional Appliance Repair in Andheri" class="w-full h-auto rounded-lg shadow-md">
-            <p class="text-sm mt-2 italic text-gray-600">Professional service at your doorstep.</p>
-        </section>
-        
-        <div class="bg-white p-8 rounded-lg shadow-lg mb-8">
-            <h3 class="text-xl font-semibold mb-4">Our Promise</h3>
-            <p class="text-gray-700 italic">"At Quickfix Mumbai, we bring professional expertise to Andheri. From complex PCB faults to inverter system issues, we don't just visit—we resolve. If it's broken, consider it fixed!"</p>
+    <h1 class="text-3xl font-bold my-6">Appliance Repair in [LOCATION]</h1>
+
+    <!-- Hero Image (Interactive look) -->
+    <div class="overflow-hidden rounded-lg shadow-lg mb-6 hover:scale-105 transition duration-500">
+        <img src="images/repair-service.jpg" class="w-full h-64 object-cover" alt="Service in [Location]">
+    </div>
+
+    <!-- 3: Wikipedia Style Collapsible Sections -->
+    <div class="space-y-4">
+        <div class="border-b">
+            <button onclick="toggleSection('sec1')" class="w-full text-left py-3 font-bold text-lg">▼ Why Choose Us?</button>
+            <div id="sec1" class="p-4 text-gray-700">Genuine parts, 6-month warranty, and expert technicians.</div>
         </div>
-
-        <!-- Expertise -->
-        <div class="grid grid-cols-1 gap-6 mb-8">
-            <div class="bg-white p-6 rounded-lg shadow">
-                <h4 class="font-bold text-blue-900 mb-2">Expert & Advance</h4>
-                <p class="text-sm text-gray-600">Advanced diagnostics for complex PCB and Inverter circuits in Andheri.</p>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow">
-                <h4 class="font-bold text-blue-900 mb-2">Creative Solutions</h4>
-                <p class="text-sm text-gray-600">Smart, cost-effective ways to bring your appliances back to life.</p>
-            </div>
+        <div class="border-b">
+            <button onclick="toggleSection('sec2')" class="w-full text-left py-3 font-bold text-lg">▼ Our Services</button>
+            <div id="sec2" class="p-4 text-gray-700">PCB, AC, Fridge, Microwave... (Full List)</div>
         </div>
-
-        <!-- Service-to-Location Bridge Section -->
-        <section class="service-bridge-links mb-8 bg-blue-50 p-6 rounded-lg">
-            <h3 class="font-bold text-lg mb-4 text-blue-900">Our Services in Andheri:</h3>
-            <ul class="grid grid-cols-2 gap-2 text-sm text-blue-700">
-                <li><a href="1_index.html#advanced-appliances">Advanced Appliances</a></li>
-                <li><a href="pcb-repair.html">Advanced PCB/Circuit</a></li>
-                <li><a href="2_refrigerator-repair.html">Refrigerator Repair</a></li>
-                <li><a href="5_microwave-repair.html">Microwave Magnetron</a></li>
-                <li><a href="dishwasher-repair.html">Dishwasher Repair</a></li>
-                <li><a href="air-dresser-repair.html">Air Dresser Service</a></li>
-                <li><a href="dryer-repair.html">Cloth Dryer Repair</a></li>
-                <li><a href="fridge-specialist.html">Fridge Specialist</a></li>
-                <li><a href="4_washing-machine-repair.html">Washing Machine</a></li>
-                <li><a href="wiring-harness-repair.html">Wiring Harness Faults</a></li>
-                <li><a href="3_ac-repair.html">Split AC Systems</a></li>
-                <li><a href="motherboard-repair.html">Motherboard Repair</a></li>
-                <li><a href="amc-service.html">Annual Maintenance (AMC)</a></li>
-            </ul>
-        </section>
-
-        <!-- Call to Action -->
-        <div class="text-center bg-blue-600 p-6 rounded-lg text-white">
-            <p class="text-lg font-medium mb-4">Stop the trial and error. Get the expert fix in Andheri today!</p>
-            <a href="tel:9819832282" class="bg-white text-blue-600 font-bold py-2 px-6 rounded-full hover:bg-gray-100 transition">
-                Call 9819832282 Now
-            </a>
+        <div class="border-b">
+            <button onclick="toggleSection('sec3')" class="w-full text-left py-3 font-bold text-lg">▼ Areas Covered</button>
+            <div id="sec3" class="p-4 text-gray-700">Serving all of Mumbai including Bandra, Andheri, Malad...</div>
         </div>
-    </section>
+    </div>
+
+    <!-- Mumbai Tadka Section -->
+    <div class="mt-8 p-6 bg-blue-50 rounded-xl text-center shadow-inner">
+        <h2 class="text-2xl font-bold text-blue-800">QuickFix Mumbai ka Bharosa</h2>
+        <p class="mt-2">Mumbai ki raftar, QuickFix ka samarpan!</p>
+        <a href="tel:9819832282" class="mt-4 inline-block bg-blue-600 text-white px-8 py-3 rounded-full font-bold">Call Now</a>
+    </div>
+
 </body>
 </html>
