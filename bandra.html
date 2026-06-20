@@ -99,13 +99,19 @@
             </div>
         </details>
 
-        <!-- BOOKING & SERVICE SECTION (WhatsApp Lead Magnet) -->
+        <!-- =========================================
+     MAINTENANCE SECTION & LEAD GENERATION BLOCK
+     (Har area page ke end mein ise chipkao)
+     ========================================= -->
+
+<!-- BOOKING & SERVICE SECTION (WhatsApp Lead Magnet) -->
 <section class="bg-gray-900 p-8 rounded-2xl border border-gray-700 mt-10 shadow-2xl">
     <h2 class="text-xl font-black text-yellow-500 mb-6 uppercase text-center">Book Expert Service</h2>
     
-    <!-- Form action hi nahi chahiye kyunki script handle karegi -->
+    <!-- Form action humein nahi chahiye, kyunki script handle karegi submission -->
     <form id="bookingForm" class="space-y-4" onsubmit="sendWhatsApp(event)">
-        <!-- Master Service Dropdown -->
+        
+        <!-- Master Service Dropdown (Using your original list from image_1.png) -->
         <select id="serviceType" class="w-full p-4 rounded-xl bg-gray-800 text-white border border-gray-600 font-bold">
             <option>All Home Appliances</option>
             <option>Inverter PCBs & Circuit Repair</option>
@@ -124,6 +130,7 @@
         <input type="text" id="custName" placeholder="Your Name" required class="w-full p-4 rounded-xl bg-gray-800 text-white border border-gray-600">
         <input type="text" id="custArea" placeholder="Area (e.g., Bandra West)" required class="w-full p-4 rounded-xl bg-gray-800 text-white border border-gray-600">
         
+        <!-- YEH BUTTON AB WHATSAPP KHOLEGA -->
         <button type="submit" class="w-full bg-green-600 text-white font-black py-4 rounded-xl uppercase hover:bg-green-700 transition shadow-lg">
             BOOK BY WHATSAPP 📸
         </button>
@@ -135,17 +142,42 @@
         </a>
     </div>
 </section>
-    </section>
-    
-    <nav class="flex justify-between items-center mb-6 border-b pb-4">
-        <a href="malad.html" class="text-blue-700 font-bold">← Back</a>
-        <a href="index.html" class="text-blue-700 font-bold underline">Home</a>
-        <a href="juhu.html" class="text-blue-700 font-bold">Next →</a>
-    </nav>
-    
-   <!-- Footer -->
-    <footer class="p-8 text-center text-gray-500 border-t mt-10">
-        <p>&copy; 2026 QuickFix Mumbai | Advanced Appliance Diagnostics</p>
-    </footer>
+
+<!-- SECTION TAG FALTU THA - HUMNE HATA DIYA -->
+
+<!-- Cleaned-up Bottom Navigation (Isse Andheri/Khar ke liye adjust karo) -->
+<nav class="flex justify-between items-center mb-6 border-b pb-4 sticky top-0 z-50 mt-10 bg-gray-950 px-4">
+    <a href="malad.html" class="text-yellow-500 font-bold text-xs">← Back (Malad)</a>
+    <a href="index.html" class="text-white font-bold underline">Home</a>
+    <a href="juhu.html" class="text-yellow-500 font-bold text-xs">Next (Juhu) →</a>
+</nav>
+
+<!-- Footer (Fixed the look) -->
+<footer class="p-8 text-center text-gray-500 border-t mt-10 bg-gray-900">
+    <p>&copy; 2026 QuickFix Mumbai | Advanced Appliance Diagnostics</p>
+</footer>
+
+<!-- THE MAGIC SCRIPT: THIS MAKES IT WORK -->
+<script>
+    function sendWhatsApp(event) {
+        // Form ko normal tarike se refresh hone se roko
+        event.preventDefault();
+
+        // Customer ki entries fetch karo
+        const service = document.getElementById('serviceType').value;
+        const name = document.getElementById('custName').value;
+        const area = document.getElementById('custArea').value;
+
+        // Apna phone number set karo
+        const phone = "919819832282";
+
+        // WhatsApp message ka template banao
+        const message = `Hi QuickFix, I want to book a service: %0A%0A*Name:* ${name} %0A*Area:* ${area} %0A*Service:* ${service}`;
+
+        // WhatsApp Link open karo new tab mein
+        window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+    }
+</script>
+
 </body>
 </html>
