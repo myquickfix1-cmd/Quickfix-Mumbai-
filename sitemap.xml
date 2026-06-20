@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Home Page -->
+  <url><loc>https://quickfixmumbai.com/index.html</loc><priority>1.00</priority></url>
+  
+  <!-- Service Pages -->
+  <url><loc>https://quickfixmumbai.com/2_refrigerator-repair.html</loc><priority>0.80</priority></url>
+  <url><loc>https://quickfixmumbai.com/3_ac-repair.html</loc><priority>0.80</priority></url>
+  <url><loc>https://quickfixmumbai.com/4_washing-machine-repair.html</loc><priority>0.80</priority></url>
+
+  <!-- Location Pages -->
+  <url><loc>https://quickfixmumbai.com/andheri.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/bandra.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/malad.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/powai.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/hiranandani.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/juhu.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/worli.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/breach-candy.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/prabhadevi.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/khar.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/mahim.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/colaba.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/parel.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/kurla.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/thane.html</loc><priority>0.70</priority></url>
+</urlset>
