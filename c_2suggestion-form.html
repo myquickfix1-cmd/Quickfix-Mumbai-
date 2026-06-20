@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Share Your Feedback | Quickfix Mumbai</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #1E3A8A;
+    --blue-light: #3B82F6;
+    --blue-lighter: #DBEAFE;
+    --white: #FFFFFF;
+    --grey: #F3F4F6;
+    --grey-dark: #6B7280;
+    --text: #1F2937;
+    --border: #E5E7EB;
+    --green: #10B981;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--blue-lighter) 0%, var(--white) 100%);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--white);
+    padding: 16px 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-bottom: 2px solid var(--blue-lighter);
+  }
+
+  .logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: -0.5px;
+  }
+
+  .logo span { color: var(--blue-light); }
+
+  /* ── MAIN ── */
+  .container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 24px;
+  }
+
+  .form-section {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(30,58,138,0.1);
+  }
+
+  .form-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .form-header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+
+  .form-header p {
+    color: var(--grey-dark);
+    font-size: 0.95rem;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text);
+    font-size: 0.9rem;
+  }
+
+  input, textarea, select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--blue-light);
+    box-shadow: 0 0 0 4px rgba(59,130,246,0.1);
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .rating-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  .rating-btn {
+    padding: 10px 16px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    color: var(--grey-dark);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+  }
+
+  .rating-btn:hover {
+    border-color: var(--blue-light);
+    background: var(--blue-lighter);
+  }
+
+  .rating-btn.selected {
+    background: var(--blue-light);
+    color: var(--white);
+    border-color: var(--blue-light);
+  }
+
+  .checkbox-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .checkbox-group:hover {
+    background: var(--blue-lighter);
+    border-color: var(--blue-light);
+  }
+
+  .checkbox-group input[type="checkbox"] {
+    width: auto;
+    cursor: pointer;
+  }
+
+  .checkbox-group label {
+    margin: 0;
+    cursor: pointer;
+    flex: 1;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 20px;
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(30,58,138,0.3);
+  }
+
+  .back-home {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .back-home a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .back-home a:hover {
+    text-decoration: underline;
+  }
+
+  .success-message {
+    display: none;
+    background: #D1FAE5;
+    border: 2px solid var(--green);
+    color: #065F46;
+    padding: 16px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .success-message.show { display: block; }
+
+  @media (max-width: 600px) {
+    .container { margin: 20px auto; padding: 16px; }
+    .form-section { padding: 24px; }
+    .form-header h1 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Quick<span>fix</span></div>
+</header>
+
+<div class="container">
+  <div class="form-section">
+    <div class="form-header">
+      <h1>📝 Share Your Feedback</h1>
+      <p>Help us improve! Your suggestions make us better.</p>
+    </div>
+
+    <div id="successMessage" class="success-message">✅ Thank you! Your feedback has been sent successfully.</div>
+
+    <form id="suggestionForm" onsubmit="submitSuggestion(event)">
+      
+      <!-- Name -->
+      <div class="form-group">
+        <label for="name">Your Name *</label>
+        <input type="text" id="name" placeholder="John Doe" required>
+      </div>
+
+      <!-- Phone -->
+      <div class="form-group">
+        <label for="phone">Phone Number *</label>
+        <input type="tel" id="phone" placeholder="+91 98765 43210" required>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="john@example.com">
+      </div>
+
+      <!-- Service Used -->
+      <div class="form-group">
+        <label for="service">Which service did you use? *</label>
+        <select id="service" required>
+          <option value="">Select Service</option>
+          <option value="Refrigerator Repair">❄️ Refrigerator Repair</option>
+          <option value="AC Repair">🌀 AC Repair</option>
+          <option value="Washing Machine">🫧 Washing Machine</option>
+          <option value="PCB Circuit Repair">🔌 PCB Circuit Repair</option>
+          <option value="Motherboard Repair">💻 Motherboard Repair</option>
+          <option value="Microwave Repair">📡 Microwave Repair</option>
+          <option value="Dishwasher Repair">🍽️ Dishwasher Repair</option>
+          <option value="Air Dresser">👗 Air Dresser</option>
+          <option value="Cloth Dryer">🌬️ Cloth Dryer</option>
+          <option value="Wiring Repair">⚡ Wiring & Faults</option>
+          <option value="Home Appliances">🏠 Home Appliances</option>
+          <option value="AMC Service">📅 AMC Service</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <!-- Rating -->
+      <div class="form-group">
+        <label>How would you rate our service? *</label>
+        <div class="rating-group">
+          <button type="button" class="rating-btn" data-rating="5" onclick="selectRating(5)">⭐⭐⭐⭐⭐ Excellent</button>
+          <button type="button" class="rating-btn" data-rating="4" onclick="selectRating(4)">⭐⭐⭐⭐ Good</button>
+          <button type="button" class="rating-btn" data-rating="3" onclick="selectRating(3)">⭐⭐⭐ Average</button>
+          <button type="button" class="rating-btn" data-rating="2" onclick="selectRating(2)">⭐⭐ Poor</button>
+        </div>
+        <input type="hidden" id="rating" required>
+      </div>
+
+      <!-- What Went Well -->
+      <div class="form-group">
+        <label>What went well? (Select all that apply)</label>
+        <div class="checkbox-group">
+          <input type="checkbox" id="quick" value="Quick Service">
+          <label for="quick">⚡ Quick Service</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="quality" value="Quality Work">
+          <label for="quality">✅ Quality Work</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="transparent" value="Transparent Pricing">
+          <label for="transparent">💰 Transparent Pricing</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="polite" value="Polite & Professional">
+          <label for="polite">🤝 Polite & Professional</label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="warranty" value="Good Warranty">
+          <label for="warranty">🛡️ Good Warranty</label>
+        </div>
+      </div>
+
+      <!-- Improvement Suggestions -->
+      <div class="form-group">
+        <label for="improvement">What could we improve? *</label>
+        <textarea id="improvement" placeholder="Tell us how we can serve you better..." required></textarea>
+      </div>
+
+      <!-- Additional Comments -->
+      <div class="form-group">
+        <label for="comments">Any other comments or suggestions?</label>
+        <textarea id="comments" placeholder="(Optional)"></textarea>
+      </div>
+
+      <!-- Would Recommend -->
+      <div class="form-group">
+        <label>Would you recommend Quickfix to others?</label>
+        <div class="checkbox-group">
+          <input type="checkbox" id="recommend" value="Yes">
+          <label for="recommend">✅ Yes, definitely! I would refer them to my friends & family.</label>
+        </div>
+      </div>
+
+      <!-- Follow-up Permission -->
+      <div class="form-group">
+        <label>Can we follow up on your feedback?</label>
+        <div class="checkbox-group">
+          <input type="checkbox" id="followup" value="Yes">
+          <label for="followup">📞 Yes, you can contact me on the phone number provided.</label>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn">📤 Send Feedback</button>
+    </form>
+
+    <div class="back-home">
+      <a href="/">← Back to Home</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function selectRating(rating) {
+    document.getElementById('rating').value = rating;
+    document.querySelectorAll('.rating-btn').forEach(btn => {
+      btn.classList.remove('selected');
+    });
+    event.target.closest('.rating-btn').classList.add('selected');
+  }
+
+  function submitSuggestion(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const service = document.getElementById('service').value;
+    const rating = document.getElementById('rating').value;
+    const improvement = document.getElementById('improvement').value;
+    const comments = document.getElementById('comments').value;
+    const recommend = document.getElementById('recommend').checked ? 'Yes' : 'No';
+    const followup = document.getElementById('followup').checked ? 'Yes' : 'No';
+
+    const wellPoints = [];
+    if (document.getElementById('quick').checked) wellPoints.push('Quick Service');
+    if (document.getElementById('quality').checked) wellPoints.push('Quality Work');
+    if (document.getElementById('transparent').checked) wellPoints.push('Transparent Pricing');
+    if (document.getElementById('polite').checked) wellPoints.push('Polite & Professional');
+    if (document.getElementById('warranty').checked) wellPoints.push('Good Warranty');
+
+    const message = `
+📝 CUSTOMER FEEDBACK & SUGGESTION
+
+👤 Name: ${name}
+📞 Phone: ${phone}
+📧 Email: ${email || 'Not provided'}
+🔧 Service: ${service}
+⭐ Rating: ${rating}/5 Stars
+
+✅ What Went Well:
+${wellPoints.length > 0 ? wellPoints.join(', ') : 'No specific items selected'}
+
+💡 Improvement Suggestions:
+${improvement}
+
+💬 Additional Comments:
+${comments || 'None'}
+
+🤝 Would Recommend: ${recommend}
+📞 Can Follow Up: ${followup}
+    `;
+
+    const encodedMsg = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/919819832282?text=${encodedMsg}`;
+
+    window.open(whatsappURL, '_blank');
+
+    document.getElementById('successMessage').classList.add('show');
+    setTimeout(() => {
+      document.getElementById('suggestionForm').reset();
+      document.getElementById('successMessage').classList.remove('show');
+    }, 3000);
+  }
+</script>
+
+</body>
+</html>
