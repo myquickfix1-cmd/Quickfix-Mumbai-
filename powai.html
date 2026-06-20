@@ -69,15 +69,48 @@
     </div>
 
     <p class="mt-6 text-blue-950 font-black text-lg">Ho jaiye tension-free, QuickFix team hai aapke saath!</p>
+
+    <!-- Naya Booking Form -->
+<section class="bg-gray-900 p-6 rounded-2xl border border-gray-700 my-6 shadow-xl">
+    <h2 class="text-xl font-black text-yellow-500 mb-6 uppercase text-center">Book Expert Service</h2>
+    <form id="bookingForm" class="space-y-4" onsubmit="sendWhatsApp(event)">
+        <select id="serviceType" class="w-full p-4 rounded-xl bg-gray-800 text-white border border-gray-600 font-bold">
+            <option>All Home Appliances</option>
+            <option>Inverter PCBs & Circuit Repair</option>
+            <option>Refrigerator / Fridge</option>
+            <option>Motherboard</option>
+            <option>Microwave Magnetron Recovery</option>
+            <option>Dishwasher</option>
+            <option>Air Dresser</option>
+            <option>Cloth Dryer</option>
+            <option>Washing Machine</option>
+            <option>Wiring Harness</option>
+            <option>AC</option>
+            <option>AMC</option>
+        </select>
+        <input type="text" id="custName" placeholder="Your Name" required class="w-full p-4 rounded-xl bg-gray-800 text-white border border-gray-600">
+        <input type="text" id="custArea" placeholder="Area (e.g., Bandra West)" required class="w-full p-4 rounded-xl bg-gray-800 text-white border border-gray-600">
+        <button type="submit" class="w-full bg-green-600 text-white font-black py-4 rounded-xl uppercase hover:bg-green-700 transition shadow-lg">BOOK BY WHATSAPP 📸</button>
+    </form>
+    <div class="mt-6">
+        <a href="tel:9819832282" class="block w-full text-center bg-blue-600 text-white py-4 rounded-xl font-black shadow-lg">📞 CALL FOR PRIORITY</a>
+    </div>
+
+<script>
+    function sendWhatsApp(event) {
+        event.preventDefault();
+        const service = document.getElementById('serviceType').value;
+        const name = document.getElementById('custName').value;
+        const area = document.getElementById('custArea').value;
+        const phone = "919819832282";
+        const message = `Hi QuickFix, I want to book a service:%0A%0A*Name:* ${name}%0A*Area:* ${area}%0A*Service:* ${service}`;
+        window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+    }
+</script>
+    
+    
 </section>
-
-
-
-<!-- Final Lead Conversion -->
-<section class="p-6 bg-gray-50">
-    <a href="https://wa.me/919819832282?text=I%20have%20an%20appliance%20issue.%20Photo%20and%20Brand%20attached." class="block bg-green-600 py-4 rounded-xl text-white text-center font-bold mb-3 shadow-lg hover:bg-green-700 transition">📸 WhatsApp Photo for Expert Assessment</a>
-    <a href="tel:9819832282" class="block bg-blue-800 py-4 rounded-xl text-white text-center font-bold hover:bg-blue-900 transition">📞 Priority Call: 9819832282</a>
-</section>
+    
     
 <!-- Footer -->
 <footer class="p-8 text-center border-t mt-5">
