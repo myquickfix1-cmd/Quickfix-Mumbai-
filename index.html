@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Quickfix Mumbai - Home appliance repair expert. Refrigerator repair, AC repair, washing machine repair, microwave repair, PCB repair in Bandra West, Andheri, Borivali. Same-day service all Mumbai.">
+<title>Quickfix Mumbai | Home Appliance Repair | Refrigerator AC Washing Machine Repair</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue: #1E3A8A; --blue-light: #3B82F6; --blue-lighter: #DBEAFE;
+  --white: #FFFFFF; --grey: #F3F4F6; --grey-dark: #6B7280;
+  --text: #1F2937; --border: #E5E7EB; --red: #DC2626; --whatsapp: #25D366;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); line-height: 1.6; }
+
+header {
+  position: sticky; top: 0; z-index: 100; background: var(--white);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-bottom: 2px solid var(--blue-lighter); flex-wrap: wrap; gap: 10px;
+}
+.logo { font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--blue); text-decoration: none; }
+.logo span { color: var(--blue-light); }
+.nav-menu { display: flex; gap: 4px; flex-wrap: wrap; font-size: 0.78rem; }
+.nav-link { padding: 6px 10px; border-radius: 6px; font-weight: 500; text-decoration: none; color: var(--text); transition: all 0.2s; }
+.nav-link:hover, .nav-link.active { background: var(--blue); color: var(--white); }
+.header-btns { display: flex; gap: 10px; }
+.btn-call, .btn-wa { padding: 10px 16px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; border: none; cursor: pointer; }
+.btn-call { background: var(--blue); color: var(--white); }
+.btn-call:hover { background: var(--blue-light); }
+.btn-wa { background: var(--whatsapp); color: var(--white); }
+.btn-wa:hover { opacity: 0.88; }
+
+.hero { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 72px 24px 64px; text-align: center; }
+.hero h1 { font-family: 'Poppins', sans-serif; font-size: clamp(2rem, 8vw, 3.4rem); font-weight: 700; margin-bottom: 16px; }
+.hero h1 span { color: #FCD34D; }
+.hero p { font-size: 1rem; color: rgba(255,255,255,0.9); max-width: 650px; margin: 0 auto 32px; }
+.hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.hero-btns .btn-call, .hero-btns .btn-wa { font-size: 1rem; padding: 14px 28px; background: var(--white); }
+.hero-btns .btn-call { color: var(--blue); }
+.hero-btns .btn-wa { color: var(--whatsapp); }
+.rating-bar { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.2); }
+.rating-item { text-align: center; }
+.rating-item strong { display: block; font-family: 'Poppins', sans-serif; font-size: 1.6rem; color: var(--white); }
+.rating-item span { font-size: 0.78rem; color: rgba(255,255,255,0.8); }
+
+section { padding: 60px 24px; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+.section-title { font-family: 'Poppins', sans-serif; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; color: var(--blue); margin-bottom: 8px; }
+.section-sub { color: var(--grey-dark); font-size: 0.95rem; margin-bottom: 36px; }
+.center { text-align: center; }
+
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+.service-card { background: var(--white); border-radius: 14px; padding: 26px 22px; border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.06); transition: all 0.2s; text-decoration: none; color: var(--text); display: block; }
+.service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 24px rgba(30,58,138,0.15); border-color: var(--blue-light); }
+.service-emoji { font-size: 2.4rem; margin-bottom: 12px; }
+.service-title { font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--blue); margin-bottom: 8px; }
+.service-desc { font-size: 0.88rem; color: var(--grey-dark); margin-bottom: 14px; }
+.service-link { font-size: 0.85rem; font-weight: 600; color: var(--blue-light); }
+
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.why-card { text-align: center; padding: 24px 18px; border-radius: 12px; background: var(--grey); }
+.why-icon { font-size: 2rem; margin-bottom: 10px; }
+.why-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--blue); margin-bottom: 6px; }
+.why-card p { font-size: 0.8rem; color: var(--grey-dark); }
+
+.accordion-section { margin: 16px 0; background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.accordion-header { display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; background: var(--blue-lighter); cursor: pointer; font-weight: 600; color: var(--blue); }
+.accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0 22px; }
+.accordion-content.open { max-height: 800px; padding: 18px 22px; }
+.areas-grid, .brands-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.area-badge, .brand-badge { background: var(--white); border: 2px solid var(--blue-lighter); border-radius: 8px; padding: 10px 14px; text-align: center; font-weight: 600; color: var(--blue); font-size: 0.85rem; }
+.coverage-message { background: #DBEAFE; border-left: 4px solid var(--blue); padding: 14px 18px; border-radius: 8px; margin-top: 16px; color: var(--blue); font-weight: 500; font-size: 0.9rem; }
+
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+.testimonial-card { background: var(--white); border-radius: 12px; padding: 20px; border: 1px solid var(--border); }
+.testimonial-stars { color: #FCD34D; margin-bottom: 10px; }
+.testimonial-text { font-size: 0.9rem; font-style: italic; margin-bottom: 12px; }
+.testimonial-author { font-weight: 600; color: var(--blue); font-size: 0.85rem; }
+
+.cta-band { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); text-align: center; padding: 52px 24px; border-radius: 16px; margin: 48px 24px; }
+.cta-band h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 12px; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+.contact-card { background: var(--grey); border-radius: 12px; padding: 24px; text-align: center; }
+.contact-card .icon { font-size: 2rem; margin-bottom: 10px; }
+.contact-card h3 { font-size: 0.85rem; color: var(--grey-dark); margin-bottom: 6px; text-transform: uppercase; }
+.contact-card a { font-family: 'Poppins', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--blue); text-decoration: none; }
+.contact-card p { font-size: 0.8rem; color: var(--grey-dark); }
+
+footer { background: var(--blue); color: rgba(255,255,255,0.7); text-align: center; padding: 28px 24px; font-size: 0.82rem; }
+footer span { color: var(--white); }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 14px 0; font-size: 0.78rem; }
+.footer-links a { color: rgba(255,255,255,0.8); text-decoration: none; }
+.footer-links a:hover { color: var(--white); text-decoration: underline; }
+
+.float-wa, .float-call { position: fixed; z-index: 999; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; text-decoration: none; border: none; cursor: pointer; right: 24px; }
+.float-wa { background: var(--whatsapp); color: var(--white); bottom: 24px; box-shadow: 0 4px 16px rgba(16,185,129,0.4); }
+.float-call { background: var(--blue); color: var(--white); bottom: 100px; box-shadow: 0 4px 16px rgba(30,58,138,0.4); }
+
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+.modal.active { display: flex; }
+.modal-content { background: var(--white); border-radius: 16px; padding: 32px 28px; max-width: 500px; width: 100%; position: relative; max-height: 90vh; overflow-y: auto; }
+.modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--grey-dark); }
+.modal h2 { font-family: 'Poppins', sans-serif; font-size: 1.6rem; margin-bottom: 8px; color: var(--blue); }
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.9rem; }
+.form-group input, .form-group textarea { width: 100%; padding: 11px 13px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem; }
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--blue-light); box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
+.form-group textarea { resize: vertical; min-height: 70px; }
+.btn-submit { width: 100%; background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 12px; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; }
+.time-slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(85px, 1fr)); gap: 8px; margin-top: 8px; }
+.time-slot { padding: 9px; border: 2px solid var(--border); border-radius: 6px; text-align: center; cursor: pointer; font-weight: 600; font-size: 0.82rem; }
+.time-slot:hover { border-color: var(--blue-light); background: var(--blue-lighter); }
+.time-slot.selected { border-color: var(--blue); background: var(--blue); color: var(--white); }
+
+@media (max-width: 600px) {
+  header { padding: 12px 16px; }
+  section { padding: 40px 16px; }
+  .cta-band { margin: 36px 16px; }
+  .float-call { bottom: 90px; }
+  .areas-grid, .brands-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">Quick<span>fix</span></a>
+  <nav class="nav-menu">
+    <a class="nav-link active" href="index.html">Home</a>
+    <a class="nav-link" href="refrigerator-repair.html">Fridge</a>
+    <a class="nav-link" href="ac-repair.html">AC</a>
+    <a class="nav-link" href="washing-machine-repair.html">Washing M/C</a>
+    <a class="nav-link" href="microwave-repair.html">Microwave</a>
+    <a class="nav-link" href="dishwasher-repair.html">Dishwasher</a>
+    <a class="nav-link" href="pcb-motherboard-repair.html">PCB/MB</a>
+    <a class="nav-link" href="amc-service.html">AMC</a>
+  </nav>
+  <div class="header-btns">
+    <a href="tel:+919819832282" class="btn-call">Call</a>
+    <a href="https://wa.me/919819832282?text=Hi%20Quickfix%2C%20my%20appliance%20needs%20repair" target="_blank" class="btn-wa">Chat</a>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Appliance Repair in Mumbai — <span>Same-Day Expert Service!</span></h1>
+  <p>Refrigerator repair, AC repair, washing machine repair, microwave repair, dishwasher repair, PCB and motherboard repair — all home appliances fixed by expert technicians in Bandra West, Andheri, Borivali, Malad and all Mumbai. 4.8/5 rated by 1200+ customers.</p>
+  <div class="hero-btns">
+    <a href="tel:+919819832282" class="btn-call">Call +91 98198 32282</a>
+    <a href="https://wa.me/919819832282?text=Hi%20Quickfix%2C%20my%20appliance%20needs%20repair" target="_blank" class="btn-wa">WhatsApp Now</a>
+  </div>
+  <div class="rating-bar">
+    <div class="rating-item"><div style="color:#FCD34D;">★★★★★</div><strong>4.8/5</strong><span>1200+ Reviews</span></div>
+    <div class="rating-item"><strong>All Mumbai</strong><span>Covered</span></div>
+    <div class="rating-item"><strong>Same Day</strong><span>Service</span></div>
+    <div class="rating-item"><strong>Expert</strong><span>Technicians</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="container center">
+    <div class="section-label">Our Services</div>
+    <h2 class="section-title">Home Appliance Repair Services in Mumbai</h2>
+    <p class="section-sub">Click any service below for detailed repair info, common problems and instant booking</p>
+  </div>
+  <div class="services-grid">
+    <a href="refrigerator-repair.html" class="service-card">
+      <div class="service-emoji">1</div>
+      <div class="service-title">Refrigerator Repair</div>
+      <p class="service-desc">Fridge not cooling, compressor failure, water leaking, ice maker issues — expert repair for all brands.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+    <a href="ac-repair.html" class="service-card">
+      <div class="service-emoji">2</div>
+      <div class="service-title">AC Repair (Split & Window)</div>
+      <p class="service-desc">AC not cooling, gas refill, PCB board repair, water leakage — same-day air conditioner service.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+    <a href="washing-machine-repair.html" class="service-card">
+      <div class="service-emoji">3</div>
+      <div class="service-title">Washing Machine Repair</div>
+      <p class="service-desc">WM not washing, not spinning, not draining, leaking water — front load and top load repair.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+    <a href="microwave-repair.html" class="service-card">
+      <div class="service-emoji">4</div>
+      <div class="service-title">Microwave Repair</div>
+      <p class="service-desc">Microwave not heating, dead, buttons not working, magnetron replacement — expert oven repair.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+    <a href="dishwasher-repair.html" class="service-card">
+      <div class="service-emoji">5</div>
+      <div class="service-title">Dishwasher Repair</div>
+      <p class="service-desc">Dishwasher not washing, not draining, door latch broken — professional dishwasher service.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+    <a href="pcb-motherboard-repair.html" class="service-card">
+      <div class="service-emoji">6</div>
+      <div class="service-title">PCB & Motherboard Repair</div>
+      <p class="service-desc">Circuit board burnt, BGA chip repair, SMD component replacement — advanced chip-level repair.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+    <a href="amc-service.html" class="service-card">
+      <div class="service-emoji">7</div>
+      <div class="service-title">Annual Maintenance Contract (AMC)</div>
+      <p class="service-desc">Yearly maintenance plans for all appliances — priority service, discounted repairs, regular checkups.</p>
+      <span class="service-link">View Plans →</span>
+    </a>
+    <a href="air-dresser-repair.html" class="service-card">
+      <div class="service-emoji">8</div>
+      <div class="service-title">Premium Air Dresser Repair</div>
+      <p class="service-desc">Air dresser not steaming, not drying, door issues — premium garment care appliance repair.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+    <a href="dryer-repair.html" class="service-card">
+      <div class="service-emoji">9</div>
+      <div class="service-title">High Capacity Cloth Dryer Repair</div>
+      <p class="service-desc">Dryer not heating, not drying clothes, drum not spinning — fast cloth dryer repair service.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+    <a href="wiring-harness-repair.html" class="service-card">
+      <div class="service-emoji">10</div>
+      <div class="service-title">Wiring Harness & Critical Faults</div>
+      <p class="service-desc">Wiring damage, short circuit, critical electrical faults — expert wiring harness repair.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+    <a href="home-appliances-repair.html" class="service-card">
+      <div class="service-emoji">11</div>
+      <div class="service-title">All Home Appliances Repair</div>
+      <p class="service-desc">Any home appliance, any brand, any problem — general appliance repair service across Mumbai.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+    <a href="advanced-appliances-repair.html" class="service-card">
+      <div class="service-emoji">12</div>
+      <div class="service-title">Advanced Home Appliances & Smart Circuits</div>
+      <p class="service-desc">Advanced PCBs, multilayer smart circuit repair — for high-end and smart home appliances.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+  </div>
+</section>
+
+<section style="background: var(--grey);">
+  <div class="container">
+    <div class="center">
+      <div class="section-label">Coverage</div>
+      <h2 class="section-title">We Serve ALL of Mumbai!</h2>
+      <p class="section-sub">Call us — we'll confirm timing and reach you, anywhere in Mumbai!</p>
+    </div>
+    <div class="accordion-section">
+      <div class="accordion-header" onclick="toggleAcc(this)">Service Areas in Mumbai (20+ Locations) <span>▼</span></div>
+      <div class="accordion-content">
+        <div class="areas-grid">
+          <div class="area-badge">Bandra West</div><div class="area-badge">Bandra East</div>
+          <div class="area-badge">Khar West</div><div class="area-badge">Parla West</div>
+          <div class="area-badge">Juhu</div><div class="area-badge">Andheri West</div>
+          <div class="area-badge">Mahim West</div><div class="area-badge">Prabhadevi</div>
+          <div class="area-badge">Worli</div><div class="area-badge">Pawai</div>
+          <div class="area-badge">Hiranandani</div><div class="area-badge">Borivali</div>
+          <div class="area-badge">Malad</div><div class="area-badge">Jogeshwari</div>
+          <div class="area-badge">Kandivali</div><div class="area-badge">Vile Parle</div>
+          <div class="area-badge">Colaba</div><div class="area-badge">Cuff Parade</div>
+          <div class="area-badge">Dadar</div><div class="area-badge">Goregaon</div>
+        </div>
+        <div class="coverage-message"><strong>Area not listed?</strong> We still cover all of Mumbai! Call +91 98198 32282 to confirm.</div>
+      </div>
+    </div>
+    <div class="accordion-section">
+      <div class="accordion-header" onclick="toggleAcc(this)">Brands We Repair (20+ Major Brands) <span>▼</span></div>
+      <div class="accordion-content">
+        <div class="brands-grid">
+          <div class="brand-badge">LG</div><div class="brand-badge">Samsung</div>
+          <div class="brand-badge">Bosch</div><div class="brand-badge">Whirlpool</div>
+          <div class="brand-badge">IFB</div><div class="brand-badge">Godrej</div>
+          <div class="brand-badge">Electrolux</div><div class="brand-badge">Panasonic</div>
+          <div class="brand-badge">Haier</div><div class="brand-badge">Voltas</div>
+          <div class="brand-badge">Daikin</div><div class="brand-badge">Carrier</div>
+          <div class="brand-badge">Dell</div><div class="brand-badge">HP</div>
+          <div class="brand-badge">Lenovo</div><div class="brand-badge">ASUS</div>
+          <div class="brand-badge">Siemens</div><div class="brand-badge">Videocon</div>
+          <div class="brand-badge">Croma</div><div class="brand-badge">Any Other Brand</div>
+        </div>
+        <div class="coverage-message"><strong>Brand not listed?</strong> We repair ALL brands! Just call with your model details.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="center"><div class="section-label">Why Choose Quickfix?</div><h2 class="section-title">Home Appliance Repair Experts in Mumbai</h2></div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">⚡</div><h3>Same-Day Service</h3><p>Call & confirm timing — usually same-day</p></div>
+      <div class="why-card"><div class="why-icon">🏆</div><h3>10+ Years Expert</h3><p>10,000+ repairs completed</p></div>
+      <div class="why-card"><div class="why-icon">💰</div><h3>Transparent Pricing</h3><p>Quote before any repair starts</p></div>
+      <div class="why-card"><div class="why-icon">✅</div><h3>Warranty on Work</h3><p>Service guarantee included</p></div>
+      <div class="why-card"><div class="why-icon">🔬</div><h3>Advanced Diagnostics</h3><p>PCB & circuit-level expertise</p></div>
+      <div class="why-card"><div class="why-icon">📍</div><h3>All Mumbai Covered</h3><p>20+ service areas daily</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--grey);">
+  <div class="container">
+    <div class="center"><div class="section-label">Customer Reviews</div><h2 class="section-title">4.8/5 Rating | 1200+ Happy Customers</h2></div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"Fridge stopped cooling completely. Same-day repair, professional and honest. Highly recommend!" — Priya, Bandra West</div></div>
+      <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"Washing machine motor died. Perfect repair with warranty, no hidden charges!" — Rajesh, Andheri</div></div>
+      <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"AC wasn't cooling in summer heat. Fixed same day, saved my whole family!" — Meena, Borivali</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <h2>Appliance Broken Right Now?</h2>
+  <p>Don't waste time! Call or WhatsApp now — we'll confirm timing and reach you anywhere in Mumbai.</p>
+  <div class="cta-btns">
+    <a href="tel:+919819832282" class="btn-call">Call +91 98198 32282</a>
+    <a href="https://wa.me/919819832282?text=Hi%20Quickfix%2C%20my%20appliance%20needs%20urgent%20repair" target="_blank" class="btn-wa">WhatsApp Urgent</a>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="center"><div class="section-label">Contact Us</div><h2 class="section-title">Get Help Now</h2><p class="section-sub">7 days a week • 7 AM – 8 PM</p></div>
+    <div class="contact-grid">
+      <div class="contact-card"><div class="icon">📞</div><h3>Call</h3><a href="tel:+919819832282">+91 98198 32282</a><p>Instant connection</p></div>
+      <div class="contact-card"><div class="icon">💬</div><h3>WhatsApp</h3><a href="https://wa.me/919819832282?text=Hi%20Quickfix" target="_blank">+91 98198 32282</a><p>Send photos & details</p></div>
+      <div class="contact-card"><div class="icon">📍</div><h3>Coverage</h3><p>All Mumbai — Bandra, Andheri, Borivali & 20+ areas</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <span>Quickfix Mumbai</span> · Home Appliance & Electronics Repair</p>
+  <div class="footer-links">
+    <a href="refrigerator-repair.html">Refrigerator Repair</a>
+    <a href="ac-repair.html">AC Repair</a>
+    <a href="washing-machine-repair.html">Washing Machine</a>
+    <a href="microwave-repair.html">Microwave</a>
+    <a href="dishwasher-repair.html">Dishwasher</a>
+    <a href="pcb-motherboard-repair.html">PCB/Motherboard</a>
+    <a href="amc-service.html">AMC</a>
+    <a href="air-dresser-repair.html">Air Dresser</a>
+    <a href="dryer-repair.html">Dryer</a>
+    <a href="wiring-harness-repair.html">Wiring Harness</a>
+    <a href="home-appliances-repair.html">All Appliances</a>
+    <a href="advanced-appliances-repair.html">Advanced Appliances</a>
+  </div>
+  <p>Serving Bandra West, Andheri, Borivali, Malad, Jogeshwari & all Western Mumbai</p>
+</footer>
+
+<a href="tel:+919819832282" class="float-call" title="Call Now">📞</a>
+<a href="https://wa.me/919819832282?text=Hi%20Quickfix%2C%20my%20appliance%20is%20broken" target="_blank" class="float-wa" title="WhatsApp Now">💬</a>
+
+<div id="bookingModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeBooking()">✕</button>
+    <h2>Book Repair Service</h2>
+    <form onsubmit="submitBooking(event)">
+      <div class="form-group"><label>Service *</label><input type="text" id="bookService" readonly required></div>
+      <div class="form-group"><label>Your Name *</label><input type="text" id="bookName" placeholder="Your Name" required></div>
+      <div class="form-group"><label>Phone *</label><input type="tel" id="bookPhone" placeholder="+91 98765 43210" required></div>
+      <div class="form-group"><label>Location *</label><input type="text" id="bookLocation" placeholder="Bandra West / Andheri etc" required></div>
+      <div class="form-group">
+        <label>Preferred Time Slot *</label>
+        <div class="time-slots">
+          <div class="time-slot" onclick="selectTime(this,'7-9 AM')">7-9 AM</div>
+          <div class="time-slot" onclick="selectTime(this,'9-11 AM')">9-11 AM</div>
+          <div class="time-slot" onclick="selectTime(this,'11-1 PM')">11-1 PM</div>
+          <div class="time-slot" onclick="selectTime(this,'1-3 PM')">1-3 PM</div>
+          <div class="time-slot" onclick="selectTime(this,'3-5 PM')">3-5 PM</div>
+          <div class="time-slot" onclick="selectTime(this,'5-7 PM')">5-7 PM</div>
+        </div>
+        <input type="hidden" id="bookTime" required>
+      </div>
+      <div class="form-group"><label>Problem Description *</label><textarea id="bookProblem" placeholder="Describe your appliance problem..." required></textarea></div>
+      <button type="submit" class="btn-submit">Send Lead to WhatsApp</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function toggleAcc(header){const c=header.nextElementSibling;c.classList.toggle('open');}
+function openBooking(service){document.getElementById('bookService').value=service;document.getElementById('bookingModal').classList.add('active');}
+function closeBooking(){document.getElementById('bookingModal').classList.remove('active');}
+function selectTime(el,time){document.querySelectorAll('.time-slot').forEach(t=>t.classList.remove('selected'));el.classList.add('selected');document.getElementById('bookTime').value=time;}
+function submitBooking(e){
+  e.preventDefault();
+  const service=document.getElementById('bookService').value;
+  const name=document.getElementById('bookName').value;
+  const phone=document.getElementById('bookPhone').value;
+  const location=document.getElementById('bookLocation').value;
+  const time=document.getElementById('bookTime').value;
+  const problem=document.getElementById('bookProblem').value;
+  const msg=`REPAIR BOOKING REQUEST\n\nService: ${service}\nName: ${name}\nPhone: ${phone}\nLocation: ${location}\nPreferred Time: ${time}\n\nProblem: ${problem}\n\nPlease confirm and reach!`;
+  window.open(`https://wa.me/919819832282?text=${encodeURIComponent(msg)}`,'_blank');
+  closeBooking();
+  document.querySelector('form').reset();
+}
+document.getElementById('bookingModal').addEventListener('click',(e)=>{if(e.target===document.getElementById('bookingModal'))closeBooking();});
+</script>
+
+</body>
+</html>
