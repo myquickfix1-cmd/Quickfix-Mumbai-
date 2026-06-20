@@ -99,11 +99,42 @@
             </div>
         </details>
 
-        <!-- CTA -->
-        <div class="grid gap-4">
-            <a href="tel:9819832282" class="bg-blue-800 text-white text-center py-5 rounded-xl font-bold text-lg shadow-lg hover:bg-blue-900 transition">Call Priority Service: 9819832282</a>
-            <a href="https://wa.me/919819832282?text=Hi%20QuickFix,%20I%20need%20premium%20repair%20service%20in%20Bandra%20West" class="bg-green-600 text-white text-center py-5 rounded-xl font-bold text-lg shadow-lg hover:bg-green-700 transition">WhatsApp for Elite Response</a>
-        </div>
+        <!-- BOOKING & SERVICE SECTION (WhatsApp Lead Magnet) -->
+<section class="bg-gray-900 p-8 rounded-2xl border border-gray-700 mt-10 shadow-2xl">
+    <h2 class="text-xl font-black text-yellow-500 mb-6 uppercase text-center">Book Expert Service</h2>
+    
+    <!-- Form action hi nahi chahiye kyunki script handle karegi -->
+    <form id="bookingForm" class="space-y-4" onsubmit="sendWhatsApp(event)">
+        <!-- Master Service Dropdown -->
+        <select id="serviceType" class="w-full p-4 rounded-xl bg-gray-800 text-white border border-gray-600 font-bold">
+            <option>All Home Appliances</option>
+            <option>Inverter PCBs & Circuit Repair</option>
+            <option>Refrigerator / Fridge</option>
+            <option>Motherboard</option>
+            <option>Microwave Magnetron Recovery</option>
+            <option>Dishwasher</option>
+            <option>Air Dresser</option>
+            <option>Cloth Dryer</option>
+            <option>Washing Machine</option>
+            <option>Wiring Harness</option>
+            <option>AC</option>
+            <option>AMC</option>
+        </select>
+
+        <input type="text" id="custName" placeholder="Your Name" required class="w-full p-4 rounded-xl bg-gray-800 text-white border border-gray-600">
+        <input type="text" id="custArea" placeholder="Area (e.g., Bandra West)" required class="w-full p-4 rounded-xl bg-gray-800 text-white border border-gray-600">
+        
+        <button type="submit" class="w-full bg-green-600 text-white font-black py-4 rounded-xl uppercase hover:bg-green-700 transition shadow-lg">
+            BOOK BY WHATSAPP 📸
+        </button>
+    </form>
+
+    <div class="mt-8 border-t border-gray-800 pt-6">
+        <a href="tel:9819832282" class="block w-full text-center bg-blue-600 text-white py-4 rounded-xl font-black shadow-lg">
+            📞 CALL FOR PRIORITY APPOINTMENT
+        </a>
+    </div>
+</section>
     </section>
     
     <nav class="flex justify-between items-center mb-6 border-b pb-4">
