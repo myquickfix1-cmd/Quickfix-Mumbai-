@@ -69,6 +69,7 @@
 <section class="bg-gray-900 p-8 rounded-2xl border border-gray-700 mt-10 shadow-2xl">
     <h2 class="text-xl font-black text-yellow-500 mb-6 uppercase text-center">Book Expert Service</h2>
     
+    <!-- Form action hi nahi chahiye kyunki script handle karegi -->
     <form id="bookingForm" class="space-y-4" onsubmit="sendWhatsApp(event)">
         <!-- Master Service Dropdown -->
         <select id="serviceType" class="w-full p-4 rounded-xl bg-gray-800 text-white border border-gray-600 font-bold">
@@ -100,15 +101,31 @@
         </a>
     </div>
 </section>
-    <!-- Navigation -->
-    <nav class="flex justify-between items-center p-4 bg-gray-950 border-b border-gray-700 sticky top-0 z-50">
-        <a href="juhu.html" class="text-yellow-500 font-bold text-xs">← PREV</a>
-        <a href="index.html" class="text-white font-bold underline">HOME</a>
-        <a href="bandra.html" class="text-yellow-500 font-bold text-xs">NEXT →</a>
-    </nav>
 
-    <footer class="p-8 text-center text-gray-500 border-t mt-10">
-        <p>&copy; 2026 QuickFix Mumbai | Fast Reliable Trusted Advanced Appliance Diagnostics</p>
-    </footer>
+<!-- NAVIGATION -->
+<nav class="flex justify-between items-center p-4 bg-gray-950 border-b border-gray-700 mt-10 sticky top-0 z-50">
+    <a href="juhu.html" class="text-yellow-500 font-bold text-xs">← PREV</a>
+    <a href="index.html" class="text-white font-bold underline">HOME</a>
+    <a href="bandra.html" class="text-yellow-500 font-bold text-xs">NEXT →</a>
+</nav>
+
+<footer class="p-8 text-center text-gray-500 border-t">
+    <p>&copy; 2026 QuickFix Mumbai | Fast Reliable Trusted Advanced Appliance Diagnostics</p>
+</footer>
+
+<!-- YEH SCRIPT ZAROORI HAI -->
+<script>
+    function sendWhatsApp(event) {
+        event.preventDefault();
+        const service = document.getElementById('serviceType').value;
+        const name = document.getElementById('custName').value;
+        const area = document.getElementById('custArea').value;
+        const phone = "919819832282";
+        // Message formatting
+        const message = `Hi QuickFix, I want to book a service:%0A%0A*Name:* ${name}%0A*Area:* ${area}%0A*Service:* ${service}`;
+        window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+    }
+</script>
+
 </body>
 </html>
