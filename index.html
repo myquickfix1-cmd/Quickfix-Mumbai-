@@ -1,1359 +1,410 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quickfix Mumbai | Expert Appliance Repair</title>
-    
-    <!-- Manifest Link -->
-    <link rel="manifest" href="manifest.json">
-    
-    <!-- PWA Service Worker Registration -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js')
-                .then(() => console.log('Service Worker Registered Successfully!'))
-                .catch((err) => console.log('SW Registration failed:', err));
-        }
-    </script>
-</head>
-<body>
-    <!-- Baaki ka aapka website content yahan rahega -->
-    <div id="liveTrafficLogs"></div>
-</body>
-</html>
-
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quickfix Mumbai | Expert Admin</title>
-
-    <script src="script.js" defer></script>
-</head>
-<body>
-    <div id="liveTrafficLogs"></div>
-</body>
-</html>
-
-    
-    <!-- Meta Tags aur SEO Code -->
-<title>Quickfix Mumbai | Expert Appliance Repair & Service in West Mumbai</title>
-<meta name="description" content="Quickfix Mumbai offers expert repair services for AC, Refrigerator, and more in West Mumbai. 6-month warranty, fast service, and trusted technicians. Book your Quick repair now!">
-<meta name="keywords" content="Home Appliance service and repair West,est,north,south and centeral Mumbai, Refrigerator repair Mumbai, Refrigerator service Mumbai, Quickfix Mumbai, Home appliance repair expert">
-<meta name="geo.region" content="IN-MH">
-<meta name="geo.placename" content="Mumbai">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Quickfix Mumbai",
-  "image": "https://quickfixmumbai.com/logo.png", 
-  "description": "Expert repair and servicing for household appliances including ACs, refrigerators, and PCBs in West Mumbai.",
-  "address": {
-    "@type": "400050",
-
-    "addressLocality": "Mumbai",
-    "addressRegion": "Maharashtra",
-    "addressCountry": "IN"
-  },
-  "telephone": "+919819832282",
-  "priceRange": "$$",
-  "areaServed": {
-    "@type": "Place",
-    "name": "West Mumbai"
-  },
-  "url": "https://quickfixmumbai.com"
-}
-</script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
-    <title>Smart Appliances Repairing Hub - QuickFix Mumbai</title>
-    <meta name="description" content="QuickFix Mumbai most trusted doorstep smart home appliance service center. Specialized in Western Mumbai & all areas. Expert repair for Refrigerator, Washing Machine, Microwave, AC, and PCB circuits.">
-    <meta name="keywords" content="QuickFix Mumbai, home appliance repair near me, best service center Mumbai, Western Mumbai appliance repair, refrigerator service Mumbai, washing machine repair, AC repair Mumbai, PCB circuit repairs">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary: #FF6B00;
-            --primary-hover: #E05E00;
-            --secondary: #1E293B;
-            --accent: #10B981;
-            --bg-light: #F8FAFC;
-            --text-dark: #0F172A;
-            --text-muted: #64748B;
-            --danger: #EF4444;
-            --footer-bg: #0F172A;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-            padding-bottom: 90px;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Top Notification Bar */
-        .tech-bar {
-            background: var(--secondary);
-            color: #fff;
-            text-align: center;
-            padding: 10px 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-        .tech-bar .dot {
-            height: 10px;
-            width: 10px;
-            background-color: var(--danger);
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 6px;
-            animation: blink 1.2s infinite;
-        }
-
-        @keyframes blink {
-            0% { opacity: 0.3; }
-            50% { opacity: 1; }
-            100% { opacity: 0.3; }
-        }
-
-        /* Header Navigation */
-        header {
-            background: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-        }
-        .logo {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--secondary);
-            text-decoration: none;
-        }
-        .logo span { color: var(--primary); }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover { color: var(--primary); }
-
-        @media(max-width: 640px) {
-            .nav-container { flex-direction: column; gap: 10px; text-align: center; }
-            .nav-links { gap: 12px; font-size: 0.85rem; }
-        }
-
-        /* Hero Section Premium Arrangements Centered */
-        .hero {
-            background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.88)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
-            color: #fff;
-            padding: 70px 0;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .hero-main-title {
-            font-size: 3.2rem;
-            font-weight: 900;
-            color: #fff;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            line-height: 1.2;
-        }
-        .hero-main-title span { color: #3b82f6; }
-        
-        /* Fixed Greeting Center Display Setup */
-        .greeting-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.12);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            margin: 0 auto 20px auto;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .highlighter-wrapper {
-            margin: 20px 0 30px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .best-highlighter {
-            background: linear-gradient(135deg, var(--primary), #FF8C00);
-            color: #fff;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
-            text-transform: uppercase;
-        }
-        .best-highlighter.accent-color {
-            background: linear-gradient(135deg, var(--accent), #059669);
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-        }
-
-        .hero h2 {
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #cbd5e1;
-        }
-        .hero p {
-            font-size: 1rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-            padding: 0 10px;
-        }
-
-        .btn-main {
-            background: var(--primary);
-            color: #fff;
-            padding: 14px 35px;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.05rem;
-            font-weight: 700;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
-        }
-        .btn-main:hover {
-            background: var(--primary-hover);
-            transform: translateY(-2px);
-        }
-
-        .warranty-card {
-            background: rgba(16, 185, 129, 0.12);
-            border: 2px dashed var(--accent);
-            border-radius: 16px;
-            padding: 18px;
-            max-width: 650px;
-            margin: 35px auto 0;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-align: left;
-        }
-        .warranty-card i { font-size: 2.2rem; color: var(--accent); }
-        .warranty-card h4 { color: #fff; margin-bottom: 4px; font-size: 1.05rem; font-weight: 700; }
-        .warranty-card p { font-size: 0.85rem; margin: 0; color: #cbd5e1; }
-
-        @media(max-width: 768px) {
-            .hero-main-title { font-size: 2.2rem; }
-            .warranty-card { flex-direction: column; text-align: center; }
-        }
-
-        /* Trust Box Layout */
-        .trust-box {
-            background: #fff;
-            border-radius: 16px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin: -40px auto 40px;
-            max-width: 1100px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            text-align: center;
-            position: relative;
-            z-index: 10;
-            border: 1px solid #e2e8f0;
-        }
-        .stat-item {
-            padding: 10px;
-            border-right: 1px solid #e2e8f0;
-        }
-        .stat-item:last-child { border-right: none; }
-        @media(max-width: 768px) { 
-            .trust-box { margin-top: 20px; grid-template-columns: 1fr 1fr; }
-            .stat-item { border-right: none; border-bottom: 1px solid #e2e8f0; }
-            .stat-item:nth-child(3), .stat-item:nth-child(4) { border-bottom: none; }
-        }
-        
-        .stat-item h3 { font-size: 1.5rem; color: var(--secondary); font-weight: 800; margin-bottom: 5px; }
-        .stat-item p { font-size: 0.85rem; color: var(--text-dark); font-weight: 600; }
-        .stat-item .heart-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-top: 4px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            font-weight: 700;
-            transition: color 0.2s;
-        }
-        .stat-item .heart-btn.liked { color: #ef4444; }
-
-        /* Section Global Headers */
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            margin: 40px 0 8px;
-            color: var(--secondary);
-            font-weight: 800;
-        }
-        .section-title span { color: var(--primary); }
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 35px;
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        /* 10 Fixed Items Responsive Layout Grid */
-        .items-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
-        }
-        .item-card {
-            background: #fff;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            border: 1px solid #e2e8f0;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .item-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); }
-        .item-img-box {
-            width: 100%;
-            height: 170px;
-            background: #f1f5f9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--primary);
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .item-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;}
-        .item-content h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--secondary); font-weight: 700; }
-        
-        .btn-card-book {
-            display: block;
-            text-align: center;
-            background: var(--secondary);
-            color: #fff;
-            padding: 11px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.85rem;
-            transition: all 0.3s;
-            margin-top: 15px;
-        }
-        .btn-card-book:hover { background: var(--primary); }
-
-        /* Multi Brand Area */
-        .brands-container {
-            background: #fff;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.01);
-            margin-bottom: 50px;
-            border: 1px solid #e2e8f0;
-        }
-        .brand-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-        }
-        .brand-badge {
-            background: #f1f5f9;
-            color: var(--secondary);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: 1px solid #e2e8f0;
-        }
-
-        /* Responsive Form Panel Splits */
-        
-.grid-panel {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        @media(max-width: 850px) { .grid-panel { grid-template-columns: 1fr; } }
-
-        .card-panel {
-            background: #fff;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.03);
-            border: 1px solid #e2e8f0;
-        }
-
-        .form-group { margin-bottom: 18px; }
-        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 0.85rem; }
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #cbd5e1;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            outline: none;
-            background: #f8fafc;
-        }
-        .form-control:focus { border-color: var(--primary); background: #fff; }
-
-        .people-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-top: 5px;
-        }
-        .people-option {
-            border: 1px solid #cbd5e1;
-            padding: 12px 5px;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.85rem;
-            background: #f8fafc;
-            transition: all 0.2s;
-        }
-        .people-option.active {
-            border-color: var(--primary);
-            background: rgba(255, 107, 0, 0.08);
-            color: var(--primary);
-        }
-
-        .offer-box {
-            background: #eff6ff;
-            border: 1px solid #bfdbfe;
-            border-radius: 12px;
-            padding: 15px;
-            margin-top: 15px;
-            text-align: center;
-        }
-        .offer-amt { font-size: 1.4rem; color: #2563eb; font-weight: 800; }
-
-        .booking-success-box {
-            display: none;
-            background: #ecfdf5;
-            border: 1px solid #a7f3d0;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            margin-top: 15px;
-        }
-        .booking-success-box img { width: 55px; margin-bottom: 8px; }
-        .booking-success-box h4 { color: #065f46; font-size: 1.2rem; font-weight: 800; }
-
-        /* Emergency Module styling */
-        .emergency-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            animation: textBlink 1.5s infinite;
-        }
-        @keyframes textBlink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .payment-methods {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 8px;
-        }
-        .pay-option {
-            border: 1px solid #e2e8f0;
-            padding: 12px;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.85rem;
-            background: #f8fafc;
-            transition: all 0.2s;
-        }
-        .pay-option.active {
-            border-color: var(--danger);
-            background: #fef2f2;
-            color: var(--danger);
-        }
-
-        #qr-container {
-            text-align: center;
-            margin-top: 20px;
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 12px;
-            border: 2px dashed #cbd5e1;
-            cursor: pointer;
-        }
-        .qr-placeholder {
-            max-width: 140px;
-            margin: 0 auto 10px;
-            display: block;
-            border: 4px solid #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        /* Ratings Desk Splits */
-        .feedback-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-        @media(max-width: 768px) { .feedback-grid { grid-template-columns: 1fr; } }
-
-        .rating-box-pro {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 30px;
-        }
-        .rating-summary-pro {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .big-rating-num { font-size: 3.2rem; font-weight: 800; color: var(--secondary); }
-        .stars-display i { color: #f59e0b; font-size: 1.1rem; }
-        
-        .rating-row { display: flex; align-items: center; margin-bottom: 12px; gap: 12px; }
-        .bar-container { flex-grow: 1; background: #e2e8f0; height: 8px; border-radius: 6px; overflow: hidden; }
-        .bar-fill { height: 100%; background: #f59e0b; }
-
-        .live-item { padding: 12px 0; border-bottom: 1px dashed #e2e8f0; font-size: 0.85rem; }
-
-        /* PWA Looping Sticky Bar layout */
-        .pwa-loop-prompt {
-            position: fixed;
-            bottom: 95px;
-            right: 20px;
-            background: #2563eb;
-            color: #fff;
-            padding: 15px;
-            border-radius: 14px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            z-index: 1001;
-            max-width: 320px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            transform: translateY(200%);
-            opacity: 0;
-            transition: all 0.4s ease;
-            pointer-events: none;
-        }
-        .pwa-loop-prompt.visible {
-            transform: translateY(0);
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .pwa-buttons { display: flex; justify-content: flex-end; gap: 8px; }
-        .pwa-btn { padding: 6px 14px; border-radius: 6px; border: none; font-size: 0.8rem; font-weight: 700; cursor: pointer; }
-        .pwa-btn.ins { background: #fff; color: #2563eb; }
-        .pwa-btn.lat { background: rgba(255,255,255,0.15); color: #fff; }
-
-        /* Image reference Layout Footer Component */
-        footer {
-            background-color: var(--footer-bg);
-            color: #94a3b8;
-            padding: 60px 0 0 0;
-            font-size: 0.9rem;
-            border-top: 4px solid var(--primary);
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 40px;
-            margin-bottom: 4px;
-        }
-        .footer-col h4 {
-            color: #fff;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 8px;
-        }
-        .footer-col h4::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--primary);
-        }
-        .footer-col p { margin-bottom: 15px; font-size: 0.85rem; line-height: 1.6; }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: color 0.2s;
-            font-size: 0.85rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .footer-col ul li a:hover { color: #fff; transform: translateX(3px); }
-        .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 0.85rem; }
-        .footer-contact-item i { color: var(--primary); margin-top: 4px; }
-        
-        .footer-bottom-bar {
-            background-color: #020617;
-            padding: 20px 0;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            margin-top: 40px;
-        }
-        .footer-bottom-bar p { font-size: 0.8rem; color: #64748b; font-weight: 500; }
-
-        /* Sticky Fixed Interaction Box */
-        .sticky-contact {
-            background: #fff;
-            border-top: 1px solid #e2e8f0;
-            padding: 10px 15px;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            display: grid;
-            grid-template-columns: 1fr 1.2fr 1fr;
-            gap: 10px;
-            z-index: 999;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
-            max-width: 1000px;
-            margin: 0 auto;
-            border-radius: 16px 16px 0 0;
-        }
-        .contact-btn {
-            padding: 12px 10px;
-            border-radius: 10px;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 700;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 2px;
-            font-size: 0.75rem;
-            text-align: center;
-        }
-        .contact-btn span { font-weight: 800; font-size: 0.75rem; }
-        .btn-call { background: #2563eb; transform: scale(1.03) translateY(-4px); box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
-        .btn-wa { background: #22c55e; }
-
-        @media(max-width: 600px) {
-            .sticky-contact { padding: 8px; gap: 6px; }
-            .contact-btn { padding: 10px 4px; font-size: 0.65rem; }
-            .contact-btn span { font-size: 0.65rem; }
-        }
-
-        .live-popup {
-            position: fixed;
-            bottom: 85px;
-            left: 20px;
-            background: var(--secondary);
-            color: #fff;
-            padding: 15px 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transform: translateY(180%);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .live-popup.show { transform: translateY(0); }
-        .live-popup i { color: var(--primary); font-size: 1.3rem; }
-    </style>
-</head>
-<body>
-
-<!-- Perfect Compact Section -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Quickfix Mumbai - Home appliance repair expert. Refrigerator repair, AC repair, washing machine repair, microwave repair, PCB repair in Bandra West, Andheri, Borivali. Same-day service all Mumbai.">
+<title>Quickfix Mumbai | Home Appliance Repair | Refrigerator AC Washing Machine Repair</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-    @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-    .pulsing-dot { animation: blink 1s infinite; height: 10px; width: 10px; border-radius: 50%; display: inline-block; background-color: #28a745; }
-    .compact-ui { font-family: sans-serif; text-align: center; padding: 10px; background: #fff; border-bottom: 1px solid #eee; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue: #1E3A8A; --blue-light: #3B82F6; --blue-lighter: #DBEAFE;
+  --white: #FFFFFF; --grey: #F3F4F6; --grey-dark: #6B7280;
+  --text: #1F2937; --border: #E5E7EB; --red: #DC2626; --whatsapp: #25D366;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); line-height: 1.6; }
+
+header {
+  position: sticky; top: 0; z-index: 100; background: var(--white);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-bottom: 2px solid var(--blue-lighter); flex-wrap: wrap; gap: 10px;
+}
+.logo { font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--blue); text-decoration: none; }
+.logo span { color: var(--blue-light); }
+.nav-menu { display: flex; gap: 4px; flex-wrap: wrap; font-size: 0.78rem; }
+.nav-link { padding: 6px 10px; border-radius: 6px; font-weight: 500; text-decoration: none; color: var(--text); transition: all 0.2s; }
+.nav-link:hover, .nav-link.active { background: var(--blue); color: var(--white); }
+.header-btns { display: flex; gap: 10px; }
+.btn-call, .btn-wa { padding: 10px 16px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; border: none; cursor: pointer; }
+.btn-call { background: var(--blue); color: var(--white); }
+.btn-call:hover { background: var(--blue-light); }
+.btn-wa { background: var(--whatsapp); color: var(--white); }
+.btn-wa:hover { opacity: 0.88; }
+
+.hero { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 72px 24px 64px; text-align: center; }
+.hero h1 { font-family: 'Poppins', sans-serif; font-size: clamp(2rem, 8vw, 3.4rem); font-weight: 700; margin-bottom: 16px; }
+.hero h1 span { color: #FCD34D; }
+.hero p { font-size: 1rem; color: rgba(255,255,255,0.9); max-width: 650px; margin: 0 auto 32px; }
+.hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.hero-btns .btn-call, .hero-btns .btn-wa { font-size: 1rem; padding: 14px 28px; background: var(--white); }
+.hero-btns .btn-call { color: var(--blue); }
+.hero-btns .btn-wa { color: var(--whatsapp); }
+.rating-bar { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.2); }
+.rating-item { text-align: center; }
+.rating-item strong { display: block; font-family: 'Poppins', sans-serif; font-size: 1.6rem; color: var(--white); }
+.rating-item span { font-size: 0.78rem; color: rgba(255,255,255,0.8); }
+
+section { padding: 60px 24px; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+.section-title { font-family: 'Poppins', sans-serif; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; color: var(--blue); margin-bottom: 8px; }
+.section-sub { color: var(--grey-dark); font-size: 0.95rem; margin-bottom: 36px; }
+.center { text-align: center; }
+
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+.service-card { background: var(--white); border-radius: 14px; padding: 26px 22px; border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.06); transition: all 0.2s; text-decoration: none; color: var(--text); display: block; }
+.service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 24px rgba(30,58,138,0.15); border-color: var(--blue-light); }
+.service-emoji { font-size: 2.4rem; margin-bottom: 12px; }
+.service-title { font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--blue); margin-bottom: 8px; }
+.service-desc { font-size: 0.88rem; color: var(--grey-dark); margin-bottom: 14px; }
+.service-link { font-size: 0.85rem; font-weight: 600; color: var(--blue-light); }
+
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.why-card { text-align: center; padding: 24px 18px; border-radius: 12px; background: var(--grey); }
+.why-icon { font-size: 2rem; margin-bottom: 10px; }
+.why-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--blue); margin-bottom: 6px; }
+.why-card p { font-size: 0.8rem; color: var(--grey-dark); }
+
+.accordion-section { margin: 16px 0; background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.accordion-header { display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; background: var(--blue-lighter); cursor: pointer; font-weight: 600; color: var(--blue); }
+.accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0 22px; }
+.accordion-content.open { max-height: 800px; padding: 18px 22px; }
+.areas-grid, .brands-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.area-badge, .brand-badge { background: var(--white); border: 2px solid var(--blue-lighter); border-radius: 8px; padding: 10px 14px; text-align: center; font-weight: 600; color: var(--blue); font-size: 0.85rem; }
+.coverage-message { background: #DBEAFE; border-left: 4px solid var(--blue); padding: 14px 18px; border-radius: 8px; margin-top: 16px; color: var(--blue); font-weight: 500; font-size: 0.9rem; }
+
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+.testimonial-card { background: var(--white); border-radius: 12px; padding: 20px; border: 1px solid var(--border); }
+.testimonial-stars { color: #FCD34D; margin-bottom: 10px; }
+.testimonial-text { font-size: 0.9rem; font-style: italic; margin-bottom: 12px; }
+.testimonial-author { font-weight: 600; color: var(--blue); font-size: 0.85rem; }
+
+.cta-band { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); text-align: center; padding: 52px 24px; border-radius: 16px; margin: 48px 24px; }
+.cta-band h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 12px; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+.contact-card { background: var(--grey); border-radius: 12px; padding: 24px; text-align: center; }
+.contact-card .icon { font-size: 2rem; margin-bottom: 10px; }
+.contact-card h3 { font-size: 0.85rem; color: var(--grey-dark); margin-bottom: 6px; text-transform: uppercase; }
+.contact-card a { font-family: 'Poppins', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--blue); text-decoration: none; }
+.contact-card p { font-size: 0.8rem; color: var(--grey-dark); }
+
+footer { background: var(--blue); color: rgba(255,255,255,0.7); text-align: center; padding: 28px 24px; font-size: 0.82rem; }
+footer span { color: var(--white); }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 14px 0; font-size: 0.78rem; }
+.footer-links a { color: rgba(255,255,255,0.8); text-decoration: none; }
+.footer-links a:hover { color: var(--white); text-decoration: underline; }
+
+.float-wa, .float-call { position: fixed; z-index: 999; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; text-decoration: none; border: none; cursor: pointer; right: 24px; }
+.float-wa { background: var(--whatsapp); color: var(--white); bottom: 24px; box-shadow: 0 4px 16px rgba(16,185,129,0.4); }
+.float-call { background: var(--blue); color: var(--white); bottom: 100px; box-shadow: 0 4px 16px rgba(30,58,138,0.4); }
+
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+.modal.active { display: flex; }
+.modal-content { background: var(--white); border-radius: 16px; padding: 32px 28px; max-width: 500px; width: 100%; position: relative; max-height: 90vh; overflow-y: auto; }
+.modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--grey-dark); }
+.modal h2 { font-family: 'Poppins', sans-serif; font-size: 1.6rem; margin-bottom: 8px; color: var(--blue); }
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.9rem; }
+.form-group input, .form-group textarea { width: 100%; padding: 11px 13px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem; }
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--blue-light); box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
+.form-group textarea { resize: vertical; min-height: 70px; }
+.btn-submit { width: 100%; background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 12px; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; }
+.time-slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(85px, 1fr)); gap: 8px; margin-top: 8px; }
+.time-slot { padding: 9px; border: 2px solid var(--border); border-radius: 6px; text-align: center; cursor: pointer; font-weight: 600; font-size: 0.82rem; }
+.time-slot:hover { border-color: var(--blue-light); background: var(--blue-lighter); }
+.time-slot.selected { border-color: var(--blue); background: var(--blue); color: var(--white); }
+
+@media (max-width: 600px) {
+  header { padding: 12px 16px; }
+  section { padding: 40px 16px; }
+  .cta-band { margin: 36px 16px; }
+  .float-call { bottom: 90px; }
+  .areas-grid, .brands-grid { grid-template-columns: repeat(2, 1fr); }
+}
 </style>
-
-<div class="compact-ui">
-    <div style="font-size: 0.85em; font-weight: 600; margin-bottom: 8px;">
-        <span id="status-dot" class="pulsing-dot"></span> 
-        <span id="tech-message">129 Expert Technicians Online Now in West & All Mumbai</span>
-    </div>
-    <div style="border: 1px solid #25d366; padding: 6px 12px; border-radius: 50px; background: #f0fff4; display: inline-block;">
-        <span style="font-weight: bold; font-size: 0.85em;">👑 VIP: <span id="slot-count">8</span>/10</span>
-        <a href="https://wa.me/919819832282" style="background: #25d366; color: white; padding: 4px 12px; text-decoration: none; border-radius: 20px; font-weight: bold; font-size: 0.8em; margin-left: 8px;">Book Now ⚡</a>
-    </div>
-</div>
-
-<script>
-    function updateData() {
-        const hours = new Date().getHours();
-        const techMessage = document.getElementById('tech-message');
-        const statusDot = document.getElementById('status-dot');
-        if (hours >= 7 && hours < 24) {
-            techMessage.innerText = "129 Expert Technicians Online Now in West & All Mumbai";
-            statusDot.style.backgroundColor = "#28a745";
-        } else {
-            techMessage.innerHTML = "Service Offline. For Emergency: <b>+91 98198 32282</b>";
-            statusDot.style.backgroundColor = "#dc3545";
-        }
-        document.getElementById('slot-count').innerText = Math.floor(Math.random() * 5) + 5;
-    }
-    setInterval(updateData, 3600000);
-    updateData();
-</script>
-
-
-    <header>
-        <div class="container nav-container">
-            <a href="#" class="logo">QuickFix<span>Mumbai</span></a>
-            <ul class="nav-links">
-                <li><a href="#services">Our Services</a></li>
-                <li><a href="#booking">Book Slot</a></li>
-                <li><a href="#emergency">Emergency Service</a></li>
-            </ul>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="container">
-            <div class="greeting-badge">Smart Appliances Repairing Hub</div>
-            <h1 class="hero-main-title">QUICKFIX <span>MUMBAI</span></h1>
-            
-            <h2>Welcome to QuickFix | Most Popular In Mumbai</h2>
-            <p>Mumbai most trusted & beloved revolutionising online doorstep service center since 2010. 15 years+ Exprinces, with a lot of Thanks with 148.4k+ happy Families  Providing fast, expert, and advanced repairs 24/7 with reliable and reasonable prices near you.</p>
-            
-            <div class="highlighter-wrapper">
-                <div class="best-highlighter">ESSENTIAL SERVICES GUARANTEED</div>
-                <div class="best-highlighter accent-color">CREATED PROBLEMS RESOLVED FAST</div>
-            </div>
-
-            <a href="#booking" class="btn-main"><i class="fa fa-wrench"></i> Book a Smart Repair Now</a>
-
-            <div class="warranty-card">
-                <i class="fa-solid fa-circle-check"></i>
-                <div>
-                    <h4>Official 6-Month Service Warranty Included</h4>
-                    <p>Commitment: If any re-problem occurs within 6 months, <strong>Free Re-visit</strong> is fully guaranteed!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="container">
-        <div class="trust-box">
-            <div class="stat-item">
-                <h3>148.4k+</h3>
-                <p>Trusted Families Served</p>
-            </div>
-                        <div class="stat-item" style="cursor:pointer;" onclick="window.toggleLike()">
-                <h3 id="likeCount" style="font-size: 24px; margin-bottom: 5px;">55.890k+</h3>
-                <p style="margin: 0; color: #333;">Liked Opinions & Feedback</p>
-                <span id="likeBtn" style="color: gray; font-size: 14px; display: block; margin-top: 5px;">❤ Press to Like</span>
-            </div>
-
-            <div class="stat-item">
-                <h3>100% Genuine</h3>
-                <p>Company Spare Parts Used</p>
-            </div>
-            <div class="stat-item">
-                <h3>Zero</h3>
-                <p>No Hidden Charges or Fees</p>
-            </div>
-        </div>
-    </div>
-
-    <section class="container" id="services">
-        <h2 class="section-title">Smart <span>Appliance Repair Hub</span></h2>
-        <p class="section-subtitle">Carefully Service and Repair all types of Machine near me in Special Western Mumbai & over all Mumbai</p>
-        
-        <div class="items-grid">
-            <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-house-laptop"></i></div>
-                <div class="item-content">
-                    <h3>1. Advanced over all Home Appliances</h3>
-                    <a href="#booking" onclick="routeBooking('All Smart Home Appliances')" class="btn-card-book">Book Slot Now</a>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-snowflake"></i></div>
-                <div class="item-content">
-                    <h3>2. Advanced PCBs and Multilayer smart Circuit Repair</h3>
-                    <a href="#booking" onclick="routeBooking('Smart Refrigerator')" class="btn-card-book">Book Slot Now</a>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-icicles"></i></div>
-                <div class="item-content">
-                    <h3>3. All Refrigerators</h3>
-                    <a href="#booking" onclick="routeBooking('Fridge')" class="btn-card-book">Book Slot Now</a>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-soap"></i></div>
-                <div class="item-content">
-                    <h3>4. Microwave magnetron emission recovery system</h3>
-                    <a href="#booking" onclick="routeBooking('Washing Machine')" class="btn-card-book">Book Slot Now</a>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-bowl-food"></i></div>
-                <div class="item-content">
-                    <h3>5. Advanced Dishwasher</h3>
-                    <a href="#booking" onclick="routeBooking('Microwave / Micro Oven')" class="btn-card-book">Book Slot Now</a>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-shirt"></i></div>
-                <div class="item-content">
-                    <h3>6. Premium Air Dresser</h3>
-                    <a href="#booking" onclick="routeBooking('Premium Air Dresser')" class="btn-card-book">Book Slot Now</a>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-wind"></i></div>
-                <div class="item-content">
-                    <h3>7. High Capacity Cloth Dryer</h3>
-                    <a href="#booking" onclick="routeBooking('High Capacity Air Dryer')" class="btn-card-book">Book Slot Now</a>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-glass-water-droplet"></i></div>
-                <div class="item-content">
-                    <h3>8. Fridge</h3>
-                    <a href="#booking" onclick="routeBooking('Advance Dishwasher')" class="btn-card-book">Book Slot Now</a>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-temperature-arrow-down"></i></div>
-                <div class="item-content">
-                    <h3>9. Washing machine</h3>
-                    <a href="#booking" onclick="routeBooking('AC (Air Conditioner)')" class="btn-card-book">Book Slot Now</a>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-microchip"></i></div>
-                <div class="item-content">
-                    <h3>10. Wiring Harness / Critical Faults</h3>
-                    <a href="#booking" onclick="routeBooking('Inverter / PCB Repairs')" class="btn-card-book">Book Slot Now</a>
-                </div>
-              <div class="item-card">
-                <div class="item-img-box"><i class="fa-solid fa-microchip"></i></div>
-                <div class="item-content">
-                    <h3>11. Luxury Split AC System</h3>
-                    <a href="#booking" onclick="routeBooking('Inverter / PCB Repairs')" class="btn-card-book">Book Slot Now</a>
-                </div>
-            </div>
-        </div>
-
-<script>
-(function() {
-    // असली संख्या (55.890k = 55890)
-    let absoluteCount = 55890; 
-    let isLiked = false;
-
-    window.toggleLike = function() {
-        const likeCountEl = document.getElementById('likeCount');
-        const likeBtnEl = document.getElementById('likeBtn');
-
-        if (!likeCountEl || !likeBtnEl) return;
-
-        if (!isLiked) {
-            absoluteCount = absoluteCount + 1; 
-            let kFormat = (absoluteCount / 1000).toFixed(3) + "k+";
-            likeCountEl.innerText = kFormat;
-            likeBtnEl.innerText = "❤️ Liked";
-            likeBtnEl.style.color = "red";
-            isLiked = true;
-        } else {
-            absoluteCount = absoluteCount - 1;
-            let kFormat = (absoluteCount / 1000).toFixed(3) + "k+";
-            likeCountEl.innerText = kFormat;
-            likeBtnEl.innerText = "❤ Press to Like";
-            likeBtnEl.style.color = "gray";
-            isLiked = false;
-        }
-    };
-})();
-</script>
-           
-           
-    </section>
-
-    <section class="container">
-        <div class="brands-container">
-            <p style="text-align: center; margin-bottom: 20px; font-weight: 700; color: var(--secondary);">We Serviced And Repairing As All Over Brands:</p>
-            <div class="brand-grid">
-                <div class="brand-badge">Samsung</div>
-                <div class="brand-badge">LG</div>
-                <div class="brand-badge">Bosch</div>
-                <div class="brand-badge">Whirlpool</div>
-                <div class="brand-badge">IFB</div>
-                <div class="brand-badge">Panasonic</div>
-                <div class="brand-badge">Hitachi</div>
-                <div class="brand-badge">Toshiba</div>
-               <div class="brand-badge">Lloyd</div>
-               <div class="brand-badge">Voltas</div>
-               <div class="brand-badge">Haier</div>
-               <div class="brand-badge">Godrej</div>
-               <div class="brand-badge">Carrier</div>
-               <div class="brand-badge">Daikin</div>
-                <div class="brand-badge">Videocon, Siemens & More</div>
-            </div>
-        </div>
-    </section>
-
- 
-        
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Smart Appliances Repairing Hub - QuickFix Mumbai</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root { --primary: #FF6B00; --secondary: #1E293B; --accent: #10B981; --bg-light: #F8FAFC; }
-        body { background-color: var(--bg-light); font-family: 'Poppins', sans-serif; padding-bottom: 90px; }
-        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .card-panel { background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 4px 25px rgba(0,0,0,0.03); border: 1px solid #e2e8f0; }
-        .form-group { margin-bottom: 18px; }
-        .form-control { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 10px; }
-        .btn-main { background: var(--primary); color: #fff; padding: 14px 35px; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; width: 100%; }
-    </style>
 </head>
 <body>
 
-    <!-- Perfect booking Section -->
-    <section class="container" id="booking" style="padding: 20px;">
-    <h2 class="section-title">Book Your <span>Appliance Doctor</span></h2>
-    
-    <!-- Like & Trust Section -->
-    <div style="display: flex; justify-content: space-between; margin-bottom: 20px; text-align: center; font-family: sans-serif;">
-    <div style="flex:1;">
-        <h3>148.47k+</h3>
-        <p>Happy Families</p>
-    </div>
-    
-    <!-- User Interactivity Section -->
-    <div style="flex:1; cursor:pointer;" onclick="toggleLike()">
-        <h3 id="likeCount">55.89k+</h3>
-        <p>Liked Opinions <br> <span id="likeBtn" style="color: gray;">❤ Press to Like</span></p>
-    </div>
-</div>
+<header>
+  <a href="index.html" class="logo">Quick<span>fix</span></a>
+  <nav class="nav-menu">
+    <a class="nav-link active" href="index.html">Home</a>
+    <a class="nav-link" href="refrigerator-repair.html">Fridge</a>
+    <a class="nav-link" href="ac-repair.html">AC</a>
+    <a class="nav-link" href="washing-machine-repair.html">Washing M/C</a>
+    <a class="nav-link" href="microwave-repair.html">Microwave</a>
+    <a class="nav-link" href="dishwasher-repair.html">Dishwasher</a>
+    <a class="nav-link" href="pcb-motherboard-repair.html">PCB/MB</a>
+    <a class="nav-link" href="amc-service.html">AMC</a>
+  </nav>
+  <div class="header-btns">
+    <a href="tel:+919819832282" class="btn-call">Call</a>
+    <a href="https://wa.me/919819832282?text=Hi%20Quickfix%2C%20my%20appliance%20needs%20repair" target="_blank" class="btn-wa">Chat</a>
+  </div>
+</header>
 
-<script>
-// Initial state setup
-let count = 55.89; 
-let isLiked = false;
-
-function toggleLike() {
-    const likeCountEl = document.getElementById('likeCount');
-    const likeBtnEl = document.getElementById('likeBtn');
-
-    if (!isLiked) {
-        // Like active state
-        count = count + 0.01; // Increases count by 1 (0.01k = 1)
-        likeCountEl.innerText = count.toFixed(2) + "k+";
-        likeBtnEl.innerText = "❤️ Liked";
-        likeBtnEl.style.color = "red";
-        isLiked = true;
-    } else {
-        // Unlike state
-        count = count - 0.01;
-        likeCountEl.innerText = count.toFixed(2) + "k+";
-        likeBtnEl.innerText = "❤ Press to Like";
-        likeBtnEl.style.color = "gray";
-        isLiked = false;
-    }
-}
-</script>
-    </div>
-
-    <div class="card-panel" style="max-width: 600px; margin: 0 auto; padding: 25px; background: #fff; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
-        <!-- Offer Banner -->
-        <div style="background: linear-gradient(135deg, #0056b3, #007bff); color: white; padding: 15px; border-radius: 12px; text-align: center; margin-bottom: 20px;">
-            <h4 style="margin: 0; font-size: 1.1rem;">🔥 Special Limited Offer</h4>
-            <p style="margin: 5px 0 0; font-size: 0.9rem;">Today: <b>12% OFF</b> | Advance: <b>18% OFF</b></p>
-        </div>
-
-        <form id="leadDispatchForm">
-            <!-- Booking Type -->
-            <div class="form-group" style="margin-bottom: 20px;">
-                <label style="font-weight: 600;">Select Booking Type</label>
-                <div class="booking-type-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
-                    <div class="type-option active" data-val="Today" onclick="toggleAdvanceFields(false); handleSelect(this, '.type-option')" style="padding:12px; border:2px solid #007bff; border-radius:8px; text-align:center; cursor:pointer; color:#007bff; background:#eef6ff; font-weight:bold;">Today</div>
-                    <div class="type-option" data-val="Advance" onclick="toggleAdvanceFields(true); handleSelect(this, '.type-option')" style="padding:12px; border:2px solid #ddd; border-radius:8px; text-align:center; cursor:pointer;">Advance</div>
-                </div>
-            </div>
-
-            <!-- Date & Time (Conditional) -->
-            <div id="advanceFields" style="display: none; margin-bottom: 20px; background: #f9f9f9; padding: 15px; border-radius: 10px;">
-                <label style="font-weight: 600;">Select Date</label>
-                <input type="date" id="bookDate" style="width:100%; padding:10px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
-            </div>
-            
-            <label style="font-weight: 600;">Preferred Time Slot</label>
-            <select id="timeSlot" style="width:100%; padding:12px; margin-bottom:20px; border-radius:8px; border:1px solid #ddd;">
-                <option value="07-09 AM">07:00 AM - 09:00 AM</option>
-                <option value="09-11 AM">09:00 AM - 11:00 AM</option>
-                <option value="11-01 PM">11:00 AM - 01:00 PM</option>
-                <option value="01-03 PM">01:00 PM - 03:00 PM</option>
-                <option value="03-05 PM">03:00 PM - 05:00 PM</option>
-                <option value="05-07 PM">05:00 PM - 07:00 PM</option>
-                <option value="07-09 PM">07:00 PM - 09:00 PM</option>
-                <option value="09-12 AM">09:00 PM - 12:00 AM</option>
-            </select>
-
-            <!-- Service Level -->
-            <div class="form-group" style="margin-bottom: 20px;">
-                <label style="font-weight: 600;">Service Level</label>
-                <div class="people-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 10px;">
-                    <div class="people-option active" data-val="Normal" onclick="handleSelect(this, '.people-option')" style="padding:10px; border:2px solid #007bff; border-radius:8px; text-align:center; cursor:pointer; color:#007bff; background:#eef6ff;">
-                        <div style="font-weight:bold;">Normal</div><div style="font-size:0.7rem;">₹99</div>
-                    </div>
-                    <div class="people-option" data-val="VIP" onclick="handleSelect(this, '.people-option')" style="padding:10px; border:2px solid #ddd; border-radius:8px; text-align:center; cursor:pointer;">
-                        <div style="font-weight:bold;">VIP</div><div style="font-size:0.7rem;">₹499 (1h)</div>
-                    </div>
-                    <div class="people-option" data-val="Extra VIP" onclick="handleSelect(this, '.people-option')" style="padding:10px; border:2px solid #ddd; border-radius:8px; text-align:center; cursor:pointer;">
-                        <div style="font-weight:bold;">Extra VIP</div><div style="font-size:0.7rem;">₹999 (45m)</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Details -->
-            <select id="brandSelect" class="form-control" style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
-                <option value="Samsung">Samsung</option><option value="LG">LG</option><option value="Bosch">Bosch</option><option value="Other">Other</option>
-            </select>
-            <input type="text" id="custName" placeholder="Full Name" required style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
-            <input type="text" id="custLocation" placeholder="Area / Landmark" required style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
-            <input type="tel" id="custPhone" placeholder="Mobile Number" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd;">
-
-            <button type="submit" style="width:100%; padding:15px; background:#007bff; color:white; border:none; border-radius:10px; font-weight:bold; cursor:pointer;">Confirm Booking</button>
-        </form>
-    </div>
+<section class="hero">
+  <h1>Appliance Repair in Mumbai — <span>Same-Day Expert Service!</span></h1>
+  <p>Refrigerator repair, AC repair, washing machine repair, microwave repair, dishwasher repair, PCB and motherboard repair — all home appliances fixed by expert technicians in Bandra West, Andheri, Borivali, Malad and all Mumbai. 4.8/5 rated by 1200+ customers.</p>
+  <div class="hero-btns">
+    <a href="tel:+919819832282" class="btn-call">Call +91 98198 32282</a>
+    <a href="https://wa.me/919819832282?text=Hi%20Quickfix%2C%20my%20appliance%20needs%20repair" target="_blank" class="btn-wa">WhatsApp Now</a>
+  </div>
+  <div class="rating-bar">
+    <div class="rating-item"><div style="color:#FCD34D;">★★★★★</div><strong>4.8/5</strong><span>1200+ Reviews</span></div>
+    <div class="rating-item"><strong>All Mumbai</strong><span>Covered</span></div>
+    <div class="rating-item"><strong>Same Day</strong><span>Service</span></div>
+    <div class="rating-item"><strong>Expert</strong><span>Technicians</span></div>
+  </div>
 </section>
 
+<section>
+  <div class="container center">
+    <div class="section-label">Our Services</div>
+    <h2 class="section-title">Home Appliance Repair Services in Mumbai</h2>
+    <p class="section-sub">Click any service below for detailed repair info, common problems and instant booking</p>
+  </div>
+  <div class="services-grid">
+    <a href="refrigerator-repair.html" class="service-card">
+      <div class="service-emoji">1</div>
+      <div class="service-title">Refrigerator Repair</div>
+      <p class="service-desc">Fridge not cooling, compressor failure, water leaking, ice maker issues — expert repair for all brands.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+    <a href="ac-repair.html" class="service-card">
+      <div class="service-emoji">2</div>
+      <div class="service-title">AC Repair (Split & Window)</div>
+      <p class="service-desc">AC not cooling, gas refill, PCB board repair, water leakage — same-day air conditioner service.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+    <a href="washing-machine-repair.html" class="service-card">
+      <div class="service-emoji">3</div>
+      <div class="service-title">Washing Machine Repair</div>
+      <p class="service-desc">WM not washing, not spinning, not draining, leaking water — front load and top load repair.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+    <a href="microwave-repair.html" class="service-card">
+      <div class="service-emoji">4</div>
+      <div class="service-title">Microwave Repair</div>
+      <p class="service-desc">Microwave not heating, dead, buttons not working, magnetron replacement — expert oven repair.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+    <a href="dishwasher-repair.html" class="service-card">
+      <div class="service-emoji">5</div>
+      <div class="service-title">Dishwasher Repair</div>
+      <p class="service-desc">Dishwasher not washing, not draining, door latch broken — professional dishwasher service.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+    <a href="pcb-motherboard-repair.html" class="service-card">
+      <div class="service-emoji">6</div>
+      <div class="service-title">PCB & Motherboard Repair</div>
+      <p class="service-desc">Circuit board burnt, BGA chip repair, SMD component replacement — advanced chip-level repair.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+    <a href="amc-service.html" class="service-card">
+      <div class="service-emoji">7</div>
+      <div class="service-title">Annual Maintenance Contract (AMC)</div>
+      <p class="service-desc">Yearly maintenance plans for all appliances — priority service, discounted repairs, regular checkups.</p>
+      <span class="service-link">View Plans →</span>
+    </a>
+    <a href="air-dresser-repair.html" class="service-card">
+      <div class="service-emoji">8</div>
+      <div class="service-title">Premium Air Dresser Repair</div>
+      <p class="service-desc">Air dresser not steaming, not drying, door issues — premium garment care appliance repair.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+    <a href="dryer-repair.html" class="service-card">
+      <div class="service-emoji">9</div>
+      <div class="service-title">High Capacity Cloth Dryer Repair</div>
+      <p class="service-desc">Dryer not heating, not drying clothes, drum not spinning — fast cloth dryer repair service.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+    <a href="wiring-harness-repair.html" class="service-card">
+      <div class="service-emoji">10</div>
+      <div class="service-title">Wiring Harness & Critical Faults</div>
+      <p class="service-desc">Wiring damage, short circuit, critical electrical faults — expert wiring harness repair.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+    <a href="home-appliances-repair.html" class="service-card">
+      <div class="service-emoji">11</div>
+      <div class="service-title">All Home Appliances Repair</div>
+      <p class="service-desc">Any home appliance, any brand, any problem — general appliance repair service across Mumbai.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+    <a href="advanced-appliances-repair.html" class="service-card">
+      <div class="service-emoji">12</div>
+      <div class="service-title">Advanced Home Appliances & Smart Circuits</div>
+      <p class="service-desc">Advanced PCBs, multilayer smart circuit repair — for high-end and smart home appliances.</p>
+      <span class="service-link">View Repair Details →</span>
+    </a>
+  </div>
+</section>
 
+<section style="background: var(--grey);">
+  <div class="container">
+    <div class="center">
+      <div class="section-label">Coverage</div>
+      <h2 class="section-title">We Serve ALL of Mumbai!</h2>
+      <p class="section-sub">Call us — we'll confirm timing and reach you, anywhere in Mumbai!</p>
+    </div>
+    <div class="accordion-section">
+      <div class="accordion-header" onclick="toggleAcc(this)">Service Areas in Mumbai (20+ Locations) <span>▼</span></div>
+      <div class="accordion-content">
+        <div class="areas-grid">
+          <div class="area-badge">Bandra West</div><div class="area-badge">Bandra East</div>
+          <div class="area-badge">Khar West</div><div class="area-badge">Parla West</div>
+          <div class="area-badge">Juhu</div><div class="area-badge">Andheri West</div>
+          <div class="area-badge">Mahim West</div><div class="area-badge">Prabhadevi</div>
+          <div class="area-badge">Worli</div><div class="area-badge">Pawai</div>
+          <div class="area-badge">Hiranandani</div><div class="area-badge">Borivali</div>
+          <div class="area-badge">Malad</div><div class="area-badge">Jogeshwari</div>
+          <div class="area-badge">Kandivali</div><div class="area-badge">Vile Parle</div>
+          <div class="area-badge">Colaba</div><div class="area-badge">Cuff Parade</div>
+          <div class="area-badge">Dadar</div><div class="area-badge">Goregaon</div>
+        </div>
+        <div class="coverage-message"><strong>Area not listed?</strong> We still cover all of Mumbai! Call +91 98198 32282 to confirm.</div>
+      </div>
+    </div>
+    <div class="accordion-section">
+      <div class="accordion-header" onclick="toggleAcc(this)">Brands We Repair (20+ Major Brands) <span>▼</span></div>
+      <div class="accordion-content">
+        <div class="brands-grid">
+          <div class="brand-badge">LG</div><div class="brand-badge">Samsung</div>
+          <div class="brand-badge">Bosch</div><div class="brand-badge">Whirlpool</div>
+          <div class="brand-badge">IFB</div><div class="brand-badge">Godrej</div>
+          <div class="brand-badge">Electrolux</div><div class="brand-badge">Panasonic</div>
+          <div class="brand-badge">Haier</div><div class="brand-badge">Voltas</div>
+          <div class="brand-badge">Daikin</div><div class="brand-badge">Carrier</div>
+          <div class="brand-badge">Dell</div><div class="brand-badge">HP</div>
+          <div class="brand-badge">Lenovo</div><div class="brand-badge">ASUS</div>
+          <div class="brand-badge">Siemens</div><div class="brand-badge">Videocon</div>
+          <div class="brand-badge">Croma</div><div class="brand-badge">Any Other Brand</div>
+        </div>
+        <div class="coverage-message"><strong>Brand not listed?</strong> We repair ALL brands! Just call with your model details.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<section>
+  <div class="container">
+    <div class="center"><div class="section-label">Why Choose Quickfix?</div><h2 class="section-title">Home Appliance Repair Experts in Mumbai</h2></div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">⚡</div><h3>Same-Day Service</h3><p>Call & confirm timing — usually same-day</p></div>
+      <div class="why-card"><div class="why-icon">🏆</div><h3>10+ Years Expert</h3><p>10,000+ repairs completed</p></div>
+      <div class="why-card"><div class="why-icon">💰</div><h3>Transparent Pricing</h3><p>Quote before any repair starts</p></div>
+      <div class="why-card"><div class="why-icon">✅</div><h3>Warranty on Work</h3><p>Service guarantee included</p></div>
+      <div class="why-card"><div class="why-icon">🔬</div><h3>Advanced Diagnostics</h3><p>PCB & circuit-level expertise</p></div>
+      <div class="why-card"><div class="why-icon">📍</div><h3>All Mumbai Covered</h3><p>20+ service areas daily</p></div>
+    </div>
+  </div>
+</section>
 
+<section style="background: var(--grey);">
+  <div class="container">
+    <div class="center"><div class="section-label">Customer Reviews</div><h2 class="section-title">4.8/5 Rating | 1200+ Happy Customers</h2></div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"Fridge stopped cooling completely. Same-day repair, professional and honest. Highly recommend!" — Priya, Bandra West</div></div>
+      <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"Washing machine motor died. Perfect repair with warranty, no hidden charges!" — Rajesh, Andheri</div></div>
+      <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"AC wasn't cooling in summer heat. Fixed same day, saved my whole family!" — Meena, Borivali</div></div>
+    </div>
+  </div>
+</section>
 
+<div class="cta-band">
+  <h2>Appliance Broken Right Now?</h2>
+  <p>Don't waste time! Call or WhatsApp now — we'll confirm timing and reach you anywhere in Mumbai.</p>
+  <div class="cta-btns">
+    <a href="tel:+919819832282" class="btn-call">Call +91 98198 32282</a>
+    <a href="https://wa.me/919819832282?text=Hi%20Quickfix%2C%20my%20appliance%20needs%20urgent%20repair" target="_blank" class="btn-wa">WhatsApp Urgent</a>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="center"><div class="section-label">Contact Us</div><h2 class="section-title">Get Help Now</h2><p class="section-sub">7 days a week • 7 AM – 8 PM</p></div>
+    <div class="contact-grid">
+      <div class="contact-card"><div class="icon">📞</div><h3>Call</h3><a href="tel:+919819832282">+91 98198 32282</a><p>Instant connection</p></div>
+      <div class="contact-card"><div class="icon">💬</div><h3>WhatsApp</h3><a href="https://wa.me/919819832282?text=Hi%20Quickfix" target="_blank">+91 98198 32282</a><p>Send photos & details</p></div>
+      <div class="contact-card"><div class="icon">📍</div><h3>Coverage</h3><p>All Mumbai — Bandra, Andheri, Borivali & 20+ areas</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <span>Quickfix Mumbai</span> · Home Appliance & Electronics Repair</p>
+  <div class="footer-links">
+    <a href="refrigerator-repair.html">Refrigerator Repair</a>
+    <a href="ac-repair.html">AC Repair</a>
+    <a href="washing-machine-repair.html">Washing Machine</a>
+    <a href="microwave-repair.html">Microwave</a>
+    <a href="dishwasher-repair.html">Dishwasher</a>
+    <a href="pcb-motherboard-repair.html">PCB/Motherboard</a>
+    <a href="amc-service.html">AMC</a>
+    <a href="air-dresser-repair.html">Air Dresser</a>
+    <a href="dryer-repair.html">Dryer</a>
+    <a href="wiring-harness-repair.html">Wiring Harness</a>
+    <a href="home-appliances-repair.html">All Appliances</a>
+    <a href="advanced-appliances-repair.html">Advanced Appliances</a>
+  </div>
+  <p>Serving Bandra West, Andheri, Borivali, Malad, Jogeshwari & all Western Mumbai</p>
+</footer>
+
+<a href="tel:+919819832282" class="float-call" title="Call Now">📞</a>
+<a href="https://wa.me/919819832282?text=Hi%20Quickfix%2C%20my%20appliance%20is%20broken" target="_blank" class="float-wa" title="WhatsApp Now">💬</a>
+
+<div id="bookingModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeBooking()">✕</button>
+    <h2>Book Repair Service</h2>
+    <form onsubmit="submitBooking(event)">
+      <div class="form-group"><label>Service *</label><input type="text" id="bookService" readonly required></div>
+      <div class="form-group"><label>Your Name *</label><input type="text" id="bookName" placeholder="Your Name" required></div>
+      <div class="form-group"><label>Phone *</label><input type="tel" id="bookPhone" placeholder="+91 98765 43210" required></div>
+      <div class="form-group"><label>Location *</label><input type="text" id="bookLocation" placeholder="Bandra West / Andheri etc" required></div>
+      <div class="form-group">
+        <label>Preferred Time Slot *</label>
+        <div class="time-slots">
+          <div class="time-slot" onclick="selectTime(this,'7-9 AM')">7-9 AM</div>
+          <div class="time-slot" onclick="selectTime(this,'9-11 AM')">9-11 AM</div>
+          <div class="time-slot" onclick="selectTime(this,'11-1 PM')">11-1 PM</div>
+          <div class="time-slot" onclick="selectTime(this,'1-3 PM')">1-3 PM</div>
+          <div class="time-slot" onclick="selectTime(this,'3-5 PM')">3-5 PM</div>
+          <div class="time-slot" onclick="selectTime(this,'5-7 PM')">5-7 PM</div>
+        </div>
+        <input type="hidden" id="bookTime" required>
+      </div>
+      <div class="form-group"><label>Problem Description *</label><textarea id="bookProblem" placeholder="Describe your appliance problem..." required></textarea></div>
+      <button type="submit" class="btn-submit">Send Lead to WhatsApp</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function toggleAcc(header){const c=header.nextElementSibling;c.classList.toggle('open');}
+function openBooking(service){document.getElementById('bookService').value=service;document.getElementById('bookingModal').classList.add('active');}
+function closeBooking(){document.getElementById('bookingModal').classList.remove('active');}
+function selectTime(el,time){document.querySelectorAll('.time-slot').forEach(t=>t.classList.remove('selected'));el.classList.add('selected');document.getElementById('bookTime').value=time;}
+function submitBooking(e){
+  e.preventDefault();
+  const service=document.getElementById('bookService').value;
+  const name=document.getElementById('bookName').value;
+  const phone=document.getElementById('bookPhone').value;
+  const location=document.getElementById('bookLocation').value;
+  const time=document.getElementById('bookTime').value;
+  const problem=document.getElementById('bookProblem').value;
+  const msg=`REPAIR BOOKING REQUEST\n\nService: ${service}\nName: ${name}\nPhone: ${phone}\nLocation: ${location}\nPreferred Time: ${time}\n\nProblem: ${problem}\n\nPlease confirm and reach!`;
+  window.open(`https://wa.me/919819832282?text=${encodeURIComponent(msg)}`,'_blank');
+  closeBooking();
+  document.querySelector('form').reset();
+}
+document.getElementById('bookingModal').addEventListener('click',(e)=>{if(e.target===document.getElementById('bookingModal'))closeBooking();});
+</script>
 
 </body>
 </html>
-    
-
-           <div class="card-panel">
-            <h3><i class="fa fa-comments" style="color: var(--primary);"></i> Suggestions Live Desk</h3>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Minimum 79,201 People Have Left Good Suggestions.</p>
-            
-            <div class="form-group" style="display: flex; gap: 10px;">
-                <input type="text" id="userSuggest" class="form-control" placeholder="Write live recommendation...">
-                <button onclick="submitLiveSuggestion()" class="btn-main" style="padding: 10px 20px;">Submit</button>
-            </div>
-
-            <div id="suggestionFeed" style="max-height: 180px; overflow-y: auto;">
-                <div class="live-item"><strong>Rohan K. (Bandra West):</strong> Best machine repair center near me. Very reliable service.</div>
-                <div class="live-item"><strong>Anjali S. (Khar West):</strong> Quick fixation of my fridge PCB circuit board within 1 hour!</div>
-            </div>
-        </div>
-
-        <div class="rating-box-pro">
-            <h3>Verified Doorstep Ratings</h3>
-            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 15px;">Based on 3,85,019 verified doorstep jobs in Mumbai.</p>
-            
-            <div class="rating-summary-pro">
-                <div class="big-rating-num">4.9</div>
-                <div>
-                    <div class="stars-display">
-                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                    </div>
-                    <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-top: 2px;">Overall Score</div>
-                </div>
-            </div>
-
-            <div class="rating-row">
-                <span style="width: 30px; font-weight: 600; font-size: 0.85rem;">5★</span>
-                <div class="bar-container"><div class="bar-fill" style="width: 97%;"></div></div>
-                <span style="width: 40px; text-align: right; font-size: 0.85rem; font-weight: 600;">97%</span>
-            </div>
-            <div class="rating-row">
-                <span style="width: 30px; font-weight: 600; font-size: 0.85rem;">4★</span>
-                <div class="bar-container"><div class="bar-fill" style="width: 2%;"></div></div>
-                <span style="width: 40px; text-align: right; font-size: 0.85rem; font-weight: 600;">2%</span>
-            </div>
-            <div class="rating-row">
-                <span style="width: 30px; font-weight: 600; font-size: 0.85rem;">3★</span>
-                <div class="bar-container"><div class="bar-fill" style="width: 1%;"></div></div>
-                <span style="width: 40px; text-align: right; font-size: 0.85rem; font-weight: 600;">1%</span>
-            </div>
-        </div>
-
-    </section>
-
-    <footer>
-        <div class="container footer-grid">
-            <div class="footer-col">
-                <a href="#" class="logo" style="color: #fff; display: block; margin-bottom: 15px;">QuickFix<span style="color:var(--primary)">Mumbai</span></a>
-                <p>India's smart service & repairing multi-brand home appliances service hub. Providing elite doorstep mechanical and modular circuit level repairs across Western Mumbai and over all Mumbai since 2010.</p>
-                <p style="font-weight: 700; color: #fff;"><i class="fa-solid fa-award text-orange-500"></i> ISO 9001:2015 Certified</p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Actions</h4>
-                <ul>
-                    <li><a href="#"><i class="fa-solid fa-angle-right"></i> Home Overview</a></li>
-                    <li><a href="#services"><i class="fa-solid fa-angle-right"></i> Services Grid</a></li>
-                    <li><a href="#booking"><i class="fa-solid fa-angle-right"></i> Book Appointment</a></li>
-                    <li><a href="#emergency"><i class="fa-solid fa-angle-right"></i> SOS Emergency</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Services List</h4>
-                <ul>
-                    <li><a href="#booking" onclick="routeBooking('Smart Refrigerator')"><i class="fa-solid fa-angle-right"></i> Refrigerator Fix</a></li>
-                    <li><a href="#booking" onclick="routeBooking('Washing Machine')"><i class="fa-solid fa-angle-right"></i> Washing Machine</a></li>
-                    <li><a href="#booking" onclick="routeBooking('Microwave / Micro Oven')"><i class="fa-solid fa-angle-right"></i> Microwave Repair</a></li>
-                    <li><a href="#booking" onclick="routeBooking('Inverter / PCB Repairs')"><i class="fa-solid fa-angle-right"></i> PCB Circuit Shorting</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact Support</h4>
-                <div class="footer-contact-item">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <span>Quickfix Service doorstep Center Near me the bustling 20th Road between Bandra West and Khar West Mumbai- 400050, Maharashtra.</span>
-                </div>
-                <div class="footer-contact-item">
-                    <i class="fa-solid fa-phone"></i>
-                    <span>+91 98198 32282 / +91 9594406095</span>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom-bar">
-            <div class="container">
-                <p>&copy; 2026 QuickFix Mumbai Home Appliances Service Inc. All Rights Reserved. Crafted for High Conversion.</p>
-            </div>
-        </div>
-    </footer>
-
-    <div id="pwaLoopBox" class="pwa-loop-prompt">
-        <p style="font-size: 0.8rem; font-weight: 700; margin: 0; line-height: 1.4;"><i class="fa-solid fa-cloud-arrow-down"></i> Install QuickFix Mumbai Web App for instant 2-click booking shortcuts from home screen!</p>
-        <div class="pwa-buttons">
-            <button class="pwa-btn lat" onclick="deferPwaLoop()">Later</button>
-            <button class="pwa-btn ins" onclick="triggerPwaInstallation()">Install</button>
-        </div>
-    </div>
-
-    <div class="sticky-contact">
-        <a href="https://wa.me/9198198 32282" target="_blank" class="contact-btn btn-wa">
-            <i class="fab fa-whatsapp" style="font-size:1.3rem;"></i>
-            <span>WA Primary</span>
-        </a>
-        <a href="tel:+9198198 32282" class="contact-btn btn-call">
-            <i class="fa fa-phone" style="font-size:1.3rem;"></i>
-            <span>CALL: +91 98198 32282</span>
-        </a>
-        <a href="https://wa.me/919594406095" target="_blank" class="contact-btn btn-wa" style="background:#16a34a;">
-            <i class="fab fa-whatsapp" style="font-size:1.3rem;"></i>
-            <span>WA Second</span>
-        </a>
-    </div>
-
-    <div class="live-popup" id="liveBookingPopup">
-        <i class="fa-solid fa-circle-check"></i>
-        <div>
-            <span id="popupText">Premium Look: Smart Refrigerator Repair Booked in Bandrav west 2 mins ago</span>
-            <div style="font-size: 0.75rem; opacity: 0.85;">Verified Doorstep Job Live</div>
-        </div>
-    </div>
-
-    <script>
-        // Inline PWA Driver Logic Core Setup
-        let loopPromptEvent;
-        if ('serviceWorker' in navigator) {
-            const swCode = `
-                self.addEventListener('install', e => e.waitUntil(self.skipWaiting()));
-                self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
-                self.addEventListener('fetch', e => e.respondWith(fetch(e.request)));
-            `;
-            const blob = new Blob([swCode], { type: 'application/javascript' });
-            navigator.serviceWorker.register(URL.createObjectURL(blob))
-                .then(() => console.log('Service Worker Running Smoothly'))
-                .catch(err => console.error(err));
-        }
-
-        // Catch Installation Engine
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            loopPromptEvent = e;
-            setTimeout(displayPwaLoop, 4000); // Trigger first popup alert after 4s
-        });
-
-        function displayPwaLoop() {
-            const banner = document.getElementById('pwaLoopBox');
-            if(banner) banner.classList.add('visible');
-        }
-
-        function deferPwaLoop() {
-            const banner = document.getElementById('pwaLoopBox');
-            if(banner) banner.classList.remove('visible');
-            setTimeout(displayPwaLoop, 20000); // Loop setup retrigger prompt automatically every 20s
-        }
-
-        function triggerPwaInstallation() {
-            if(!loopPromptEvent) return;
-            loopPromptEvent.prompt();
-            loopPromptEvent.userChoice.then((choice) => {
-                if(choice.outcome === 'accepted') {
-                    document.getElementById('pwaLoopBox').classList.remove('visible');
-                } else {
-                    deferPwaLoop();
-                }
-            });
-        }
-    </script>
-
-    <script>
-        let selectedGroupDiscount = 18;
-
-        // Handles Quick Cards Grid Routing Mechanism
-        function routeBooking(itemName) {
-            const drop = document.getElementById('masterSelectDropdown');
-            if(drop) {
-                drop.value = itemName;
-            }
-            updateLiveDiscount();
-        }
-
-        function selectPeople(element, discountVal) {
-            document.querySelectorAll('.people-option').forEach(opt => opt.classList.remove('active'));
-            element.classList.add('active');
-            selectedGroupDiscount = discountVal;
-            updateLiveDiscount();
-        }
-
-        function updateLiveDiscount() {
-            const daysSelect = document.getElementById('bookingDays').value;
-            let displayDiscount = selectedGroupDiscount;
-            
-            if (daysSelect === "3") {
-                displayDiscount = 20; 
-            }
-            document.getElementById('discountDisplay').innerText = displayDiscount + "% OFF";
-        }
-
-        function executeFinalBooking(e) {
-            e.preventDefault();
-            document.getElementById('discountOfferBox').style.display = "none";
-            document.getElementById('submitActionBtn').style.display = "none";
-            document.getElementById('bookingSuccessBox').style.display = "block";
-        }
-
-        function togglePayment(modeName) {
-            const targets = document.querySelectorAll('.pay-option');
-            targets.forEach(tgt => tgt.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            const box = document.getElementById('qr-container');
-            if(modeName === 'PhonePe' || modeName === 'GPay') {
-                box.style.display = "block";
-            } else {
-                box.style.display = "none";
-            }
-        }
-
-        function handleQRClick() {
-            alert("QR Code Selected! Punjab National Bank Account Number verified safely. Proceed with your standard pre-payment process app interface.");
-        }
-
-        function registerLike(btn) {
-            const textSpan = btn.parentElement.querySelector('.l-count');
-            let num = parseInt(textSpan.innerText);
-            num++;
-            textSpan.innerText = num;
-            btn.classList.add('liked');
-            btn.innerHTML = `<i class="fa-solid fa-heart"></i> Liked!`;
-        }
-
-        function submitLiveSuggestion() {
-            const src = document.getElementById('userSuggest');
-            if(src.value.trim() === "") return;
-            
-            const dest = document.getElementById('suggestionFeed');
-            const element = document.createElement('div');
-            element.className = 'live-item';
-            element.innerHTML = `<strong>You:</strong> ${src
