@@ -4,9 +4,9 @@
   <url><loc>https://quickfixmumbai.com/index.html</loc><priority>1.00</priority></url>
   
   <!-- Service Pages -->
-  <url><loc>https://quickfixmumbai.com/2_refrigerator-repair.html</loc><priority>0.80</priority></url>
-  <url><loc>https://quickfixmumbai.com/3_ac-repair.html</loc><priority>0.80</priority></url>
-  <url><loc>https://quickfixmumbai.com/4_washing-machine-repair.html</loc><priority>0.80</priority></url>
+  <url><loc>https://quickfixmumbai.com/refrigerator-repair.html</loc><priority>0.80</priority></url>
+  <url><loc>https://quickfixmumbai.com/ac-repair.html</loc><priority>0.80</priority></url>
+  <url><loc>https://quickfixmumbai.com/washing-machine-repair.html</loc><priority>0.80</priority></url>
 
   <!-- Location Pages -->
   <url><loc>https://quickfixmumbai.com/andheri.html</loc><priority>0.70</priority></url>
