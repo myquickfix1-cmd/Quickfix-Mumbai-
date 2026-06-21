@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Home Appliance repair Mumbai - All kitchen and home electronics fixed. Mixer grinder, water purifier, geyser, chimney, induction cooktop and more. Same-day repair in Bandra West, Andheri, Borivali. Call +91 98198 32282.">
+<title>Home Appliance Repair Mumbai | All Devices Fixed Same-Day | Quickfix</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue: #1E3A8A; --blue-light: #3B82F6; --blue-lighter: #DBEAFE;
+  --white: #FFFFFF; --grey: #F3F4F6; --grey-dark: #6B7280;
+  --text: #1F2937; --border: #E5E7EB; --red: #DC2626; --whatsapp: #25D366;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); line-height: 1.6; }
+header { position: sticky; top: 0; z-index: 100; background: var(--white); display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-bottom: 2px solid var(--blue-lighter); flex-wrap: wrap; gap: 10px; }
+.logo { font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--blue); text-decoration: none; }
+.logo span { color: var(--blue-light); }
+.nav-menu { display: flex; gap: 4px; flex-wrap: wrap; font-size: 0.78rem; }
+.nav-link { padding: 6px 10px; border-radius: 6px; font-weight: 500; text-decoration: none; color: var(--text); }
+.nav-link:hover, .nav-link.active { background: var(--blue); color: var(--white); }
+.header-btns { display: flex; gap: 10px; }
+.btn-call, .btn-wa { padding: 10px 16px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; border: none; cursor: pointer; }
+.btn-call { background: var(--blue); color: var(--white); }
+.btn-wa { background: var(--whatsapp); color: var(--white); }
+.breadcrumb { background: var(--grey); padding: 10px 24px; font-size: 0.82rem; color: var(--grey-dark); }
+.breadcrumb a { color: var(--blue); text-decoration: none; }
+.hero { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 56px 24px 48px; text-align: center; }
+.hero h1 { font-family: 'Poppins', sans-serif; font-size: clamp(1.8rem, 7vw, 3rem); font-weight: 700; margin-bottom: 14px; }
+.hero h1 span { color: #FCD34D; }
+.hero p { font-size: 0.98rem; color: rgba(255,255,255,0.92); max-width: 700px; margin: 0 auto 28px; }
+.hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.hero-btns .btn-call, .hero-btns .btn-wa { font-size: 1rem; padding: 14px 26px; background: var(--white); }
+.hero-btns .btn-call { color: var(--blue); }
+.hero-btns .btn-wa { color: var(--whatsapp); }
+section { padding: 50px 24px; }
+.container { max-width: 1050px; margin: 0 auto; }
+.section-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+.section-title { font-family: 'Poppins', sans-serif; font-size: clamp(1.5rem, 4vw, 2.1rem); font-weight: 700; color: var(--blue); margin-bottom: 8px; }
+.section-sub { color: var(--grey-dark); font-size: 0.95rem; margin-bottom: 32px; }
+.center { text-align: center; }
+.problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+.problem-card { background: var(--white); border-radius: 14px; padding: 26px 22px; border-left: 5px solid var(--red); box-shadow: 0 4px 12px rgba(220,38,38,0.1); }
+.problem-num { display: inline-block; background: var(--red); color: var(--white); width: 26px; height: 26px; border-radius: 50%; text-align: center; line-height: 26px; font-weight: 700; font-size: 0.85rem; margin-bottom: 10px; }
+.problem-title { font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--red); margin-bottom: 8px; }
+.problem-desc { font-size: 0.88rem; color: var(--grey-dark); margin-bottom: 10px; }
+.problem-list { font-size: 0.81rem; color: var(--grey-dark); list-style: none; margin: 10px 0; }
+.problem-list li { padding: 3px 0; }
+.problem-list li:before { content: "→ "; color: var(--red); font-weight: 700; margin-right: 4px; }
+.problem-cta { display: inline-block; background: var(--red); color: var(--white); padding: 9px 16px; border-radius: 6px; font-weight: 600; font-size: 0.82rem; border: none; cursor: pointer; margin-top: 10px; }
+.problem-cta:hover { background: #B91C1C; }
+.faq-item { background: var(--grey); border-radius: 10px; padding: 18px 20px; margin-bottom: 12px; }
+.faq-q { font-weight: 700; color: var(--blue); font-size: 0.95rem; margin-bottom: 6px; }
+.faq-a { font-size: 0.88rem; color: var(--grey-dark); }
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+.why-card { text-align: center; padding: 20px 16px; border-radius: 12px; background: var(--grey); }
+.why-icon { font-size: 1.8rem; margin-bottom: 8px; }
+.why-card h3 { font-size: 0.9rem; font-weight: 600; color: var(--blue); margin-bottom: 4px; }
+.why-card p { font-size: 0.78rem; color: var(--grey-dark); }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.related-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-decoration: none; color: var(--text); transition: all 0.2s; }
+.related-card:hover { border-color: var(--blue-light); transform: translateY(-3px); }
+.related-card strong { color: var(--blue); font-size: 0.9rem; display: block; margin-bottom: 4px; }
+.related-card span { font-size: 0.78rem; color: var(--grey-dark); }
+.cta-band { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); text-align: center; padding: 48px 24px; border-radius: 16px; margin: 40px 24px; }
+.cta-band h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 10px; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+footer { background: var(--blue); color: rgba(255,255,255,0.7); text-align: center; padding: 26px 24px; font-size: 0.8rem; }
+footer span { color: var(--white); }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 12px 0; font-size: 0.76rem; }
+.footer-links a { color: rgba(255,255,255,0.8); text-decoration: none; }
+.float-wa, .float-call { position: fixed; z-index: 999; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; text-decoration: none; border: none; cursor: pointer; right: 22px; }
+.float-wa { background: var(--whatsapp); color: var(--white); bottom: 22px; box-shadow: 0 4px 16px rgba(16,185,129,0.4); }
+.float-call { background: var(--blue); color: var(--white); bottom: 96px; box-shadow: 0 4px 16px rgba(30,58,138,0.4); }
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+.modal.active { display: flex; }
+.modal-content { background: var(--white); border-radius: 16px; padding: 30px 26px; max-width: 480px; width: 100%; position: relative; max-height: 88vh; overflow-y: auto; }
+.modal-close { position: absolute; top: 14px; right: 14px; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--grey-dark); }
+.modal h2 { font-family: 'Poppins', sans-serif; font-size: 1.4rem; margin-bottom: 6px; color: var(--blue); }
+.form-group { margin-bottom: 14px; }
+.form-group label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.88rem; }
+.form-group input, .form-group textarea { width: 100%; padding: 10px 12px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.92rem; }
+.form-group textarea { resize: vertical; min-height: 65px; }
+.btn-submit { width: 100%; background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 11px; border: none; border-radius: 8px; font-weight: 700; font-size: 0.95rem; cursor: pointer; }
+.time-slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 7px; margin-top: 7px; }
+.time-slot { padding: 8px; border: 2px solid var(--border); border-radius: 6px; text-align: center; cursor: pointer; font-weight: 600; font-size: 0.78rem; }
+.time-slot.selected { border-color: var(--blue); background: var(--blue); color: var(--white); }
+@media (max-width: 600px) { header { padding: 12px 16px; } section { padding: 36px 16px; } .cta-band { margin: 30px 16px; } .float-call { bottom: 86px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">Quick<span>fix</span></a>
+  <nav class="nav-menu">
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="refrigerator-repair.html">Fridge</a>
+    <a class="nav-link" href="ac-repair.html">AC</a>
+    <a class="nav-link" href="washing-machine-repair.html">Washing M/C</a>
+    <a class="nav-link" href="microwave-repair.html">Microwave</a>
+    <a class="nav-link" href="dishwasher-repair.html">Dishwasher</a>
+    <a class="nav-link active" href="home-appliances-repair.html">All Appliances</a>
+    <a class="nav-link" href="amc-service.html">AMC</a>
+  </nav>
+  <div class="header-btns">
+    <a href="tel:+919819832282" class="btn-call">Call</a>
+    <a href="https://wa.me/919819832282?text=My%20home%20appliance%20needs%20repair" target="_blank" class="btn-wa">Chat</a>
+  </div>
+</header>
+
+<div class="breadcrumb"><a href="index.html">Home</a> › Home Appliance Repair</div>
+
+<section class="hero">
+  <h1>Home Appliance Repair in Mumbai — <span>Every Device, One Number!</span></h1>
+  <p>Mixer grinder dead? Water purifier leaking? Geyser not heating? Chimney not suctioning? Induction cooktop not working? Whatever home appliance is giving trouble, our technicians repair it same-day across Bandra West, Andheri, Borivali, Malad and all Mumbai.</p>
+  <div class="hero-btns">
+    <a href="tel:+919819832282" class="btn-call">Call +91 98198 32282</a>
+    <a href="https://wa.me/919819832282?text=My%20home%20appliance%20needs%20repair" target="_blank" class="btn-wa">Book Repair on WhatsApp</a>
+  </div>
+</section>
+
+<section style="background: var(--grey);">
+  <div class="container">
+    <div class="center">
+      <div class="section-label">Home Appliance Problems</div>
+      <h2 class="section-title">9 Most Common Home Appliance Problems We Fix</h2>
+      <p class="section-sub">Find your exact appliance problem below and book a same-day repair instantly</p>
+    </div>
+    <div class="problems-grid">
+
+      <div class="problem-card">
+        <div class="problem-num">1</div>
+        <div class="problem-title">Mixer Grinder Dead or Weak</div>
+        <p class="problem-desc">Mixer not starting, motor running weak, jar not locking, blades not rotating properly.</p>
+        <ul class="problem-list">
+          <li>Mixer grinder not starting at all</li>
+          <li>Mixer motor weak or slow speed</li>
+          <li>Jar not locking on mixer base</li>
+          <li>Mixer blades not rotating properly</li>
+          <li>Mixer grinder making burning smell</li>
+          <li>Motor coil burnt in mixer</li>
+          <li>Mixer overload protection tripping</li>
+          <li>Jar gasket leaking during use</li>
+        </ul>
+        <button class="problem-cta" onclick="openBooking('Mixer Grinder Repair')">Book Repair Now</button>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-num">2</div>
+        <div class="problem-title">Water Purifier Not Working</div>
+        <p class="problem-desc">RO not producing water, leaking from unit, filter light not resetting, bad taste in water.</p>
+        <ul class="problem-list">
+          <li>Water purifier not producing water</li>
+          <li>RO purifier leaking from unit</li>
+          <li>Filter change light not resetting</li>
+          <li>Water purifier making noise</li>
+          <li>Bad taste or smell in purified water</li>
+          <li>RO membrane clogged not filtering</li>
+          <li>Purifier pump not working properly</li>
+          <li>UV light not turning on in purifier</li>
+          <li>Slow water flow from purifier tap</li>
+        </ul>
+        <button class="problem-cta" onclick="openBooking('Water Purifier Repair')">Book Repair Now</button>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-num">3</div>
+        <div class="problem-title">Geyser Not Heating Water</div>
+        <p class="problem-desc">Water heater not heating, taking too long, tripping the switch, or leaking from the tank.</p>
+        <ul class="problem-list">
+          <li>Geyser not heating water at all</li>
+          <li>Water heater taking too long to heat</li>
+          <li>Geyser tripping electric switch</li>
+          <li>Geyser leaking water from tank</li>
+          <li>Heating element burnt in geyser</li>
+          <li>Thermostat fault geyser not cutting off</li>
+          <li>Geyser making loud noise while heating</li>
+          <li>Water coming out lukewarm only</li>
+        </ul>
+        <button class="problem-cta" onclick="openBooking('Geyser Repair')">Book Repair Now</button>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-num">4</div>
+        <div class="problem-title">Kitchen Chimney Not Suctioning</div>
+        <p class="problem-desc">Chimney motor weak, not pulling smoke or odour, filter clogged with grease, making loud noise.</p>
+        <ul class="problem-list">
+          <li>Kitchen chimney not suctioning smoke</li>
+          <li>Chimney motor weak suction power</li>
+          <li>Grease filter clogged in chimney</li>
+          <li>Chimney making loud noise while running</li>
+          <li>Chimney not removing kitchen odour</li>
+          <li>Auto clean function not working chimney</li>
+          <li>Chimney lights not turning on</li>
+          <li>Chimney motor not starting at all</li>
+        </ul>
+        <button class="problem-cta" onclick="openBooking('Chimney Repair')">Book Repair Now</button>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-num">5</div>
+        <div class="problem-title">Induction Cooktop Not Working</div>
+        <p class="problem-desc">Induction not heating, display showing error, not detecting cookware, switching off suddenly.</p>
+        <ul class="problem-list">
+          <li>Induction cooktop not heating at all</li>
+          <li>Induction display showing error code</li>
+          <li>Induction not detecting pan or cookware</li>
+          <li>Induction switching off suddenly</li>
+          <li>Induction touch panel not responding</li>
+          <li>Induction coil fault not working</li>
+          <li>Induction overheating and shutting down</li>
+          <li>Induction fan not running properly</li>
+        </ul>
+        <button class="problem-cta" onclick="openBooking('Induction Cooktop Repair')">Book Repair Now</button>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-num">6</div>
+        <div class="problem-title">Gas Stove / Hob Burner Issues</div>
+        <p class="problem-desc">Burner not igniting, weak flame, gas smell, auto ignition not clicking properly.</p>
+        <ul class="problem-list">
+          <li>Gas stove burner not igniting</li>
+          <li>Auto ignition not clicking on stove</li>
+          <li>Weak flame on gas burner</li>
+          <li>Gas smell from stove burner</li>
+          <li>Burner flame uneven or yellow</li>
+          <li>Knob not turning properly on stove</li>
+          <li>Gas stove burner clogged with debris</li>
+        </ul>
+        <button class="problem-cta" onclick="openBooking('Gas Stove Repair')">Book Repair Now</button>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-num">7</div>
+        <div class="problem-title">Vacuum Cleaner Not Suctioning</div>
+        <p class="problem-desc">Vacuum cleaner losing suction power, motor not running, dust bag full indicator stuck.</p>
+        <ul class="problem-list">
+          <li>Vacuum cleaner not suctioning properly</li>
+          <li>Vacuum motor not running at all</li>
+          <li>Vacuum cleaner losing suction power</li>
+          <li>Dust bag full indicator stuck</li>
+          <li>Vacuum hose blocked with debris</li>
+          <li>Vacuum cleaner making loud noise</li>
+          <li>Brush roll not spinning in vacuum</li>
+        </ul>
+        <button class="problem-cta" onclick="openBooking('Vacuum Cleaner Repair')">Book Repair Now</button>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-num">8</div>
+        <div class="problem-title">Iron Box / Steam Iron Not Heating</div>
+        <p class="problem-desc">Iron not heating up, steam function not working, water leaking from steam holes.</p>
+        <ul class="problem-list">
+          <li>Iron box not heating up at all</li>
+          <li>Steam iron not producing steam</li>
+          <li>Water leaking from iron steam holes</li>
+          <li>Iron temperature dial not working</li>
+          <li>Iron auto shut off not resetting</li>
+          <li>Steam iron tripping electric switch</li>
+        </ul>
+        <button class="problem-cta" onclick="openBooking('Iron Box Repair')">Book Repair Now</button>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-num">9</div>
+        <div class="problem-title">OTG / Oven Toaster Griller Not Working</div>
+        <p class="problem-desc">OTG not heating, rotisserie not turning, timer knob not functioning, heating element dead.</p>
+        <ul class="problem-list">
+          <li>OTG oven not heating at all</li>
+          <li>Oven toaster griller heating element dead</li>
+          <li>Rotisserie function not turning in OTG</li>
+          <li>OTG timer knob not functioning</li>
+          <li>OTG door not closing properly</li>
+          <li>Oven temperature not reaching set point</li>
+        </ul>
+        <button class="problem-cta" onclick="openBooking('OTG Oven Repair')">Book Repair Now</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="center">
+      <div class="section-label">Frequently Asked Questions</div>
+      <h2 class="section-title">Home Appliance Repair FAQs in Mumbai</h2>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do you repair small kitchen appliances like mixers and OTGs?</div>
+      <div class="faq-a">Yes, along with major appliances we also repair mixer grinders, OTGs, induction cooktops, gas stoves, water purifiers, geysers, chimneys, and vacuum cleaners.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How much does general home appliance repair cost?</div>
+      <div class="faq-a">Small appliance repairs like mixer motor or iron heating element cost around ₹300-800. Geyser and chimney repairs range from ₹600-2000 depending on the fault.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can you repair appliances from any brand?</div>
+      <div class="faq-a">Yes, we service all major brands across kitchen and home appliances including Philips, Bajaj, Prestige, Havells, Kent, and more.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is same-day repair available for small appliances?</div>
+      <div class="faq-a">Yes, most small appliance repairs are completed on the same visit since the common faults are quick to diagnose and fix.</div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--grey);">
+  <div class="container">
+    <div class="center"><h2 class="section-title">Why Repair With Quickfix?</h2></div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">⚡</div><h3>Same-Day Service</h3><p>Quick appliance repair response</p></div>
+      <div class="why-card"><div class="why-icon">🏆</div><h3>Expert Technicians</h3><p>10+ years experience</p></div>
+      <div class="why-card"><div class="why-icon">💰</div><h3>Fair Pricing</h3><p>Quote before any repair</p></div>
+      <div class="why-card"><div class="why-icon">✅</div><h3>Warranty</h3><p>Guarantee on all repairs</p></div>
+      <div class="why-card"><div class="why-icon">📱</div><h3>All Brands</h3><p>Every major brand covered</p></div>
+      <div class="why-card"><div class="why-icon">📍</div><h3>All Mumbai</h3><p>20+ areas covered</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="center"><h2 class="section-title">Related Repair Services</h2></div>
+    <div class="related-grid">
+      <a href="refrigerator-repair.html" class="related-card"><strong>Refrigerator Repair</strong><span>Fridge not cooling & more</span></a>
+      <a href="microwave-repair.html" class="related-card"><strong>Microwave Repair</strong><span>Heating & rotation issues</span></a>
+      <a href="advanced-appliances-repair.html" class="related-card"><strong>Advanced Appliances</strong><span>Smart & premium devices</span></a>
+      <a href="amc-service.html" class="related-card"><strong>Annual Maintenance (AMC)</strong><span>Yearly maintenance plans</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <h2>Any Home Appliance Acting Up? Fix It Today!</h2>
+  <p>Same-day repair for every home appliance across Bandra West, Andheri, Borivali and all Mumbai areas.</p>
+  <div class="cta-btns">
+    <a href="tel:+919819832282" class="btn-call">Call +91 98198 32282</a>
+    <a href="https://wa.me/919819832282?text=My%20home%20appliance%20needs%20repair" target="_blank" class="btn-wa">Book Repair on WhatsApp</a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 <span>Quickfix Mumbai</span> · Home Appliance & Electronics Repair</p>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="refrigerator-repair.html">Refrigerator Repair</a>
+    <a href="ac-repair.html">AC Repair</a>
+    <a href="washing-machine-repair.html">Washing Machine</a>
+    <a href="microwave-repair.html">Microwave</a>
+    <a href="dishwasher-repair.html">Dishwasher</a>
+    <a href="pcb-motherboard-repair.html">PCB/Motherboard</a>
+    <a href="wiring-harness-repair.html">Wiring Harness</a>
+    <a href="amc-service.html">AMC</a>
+    <a href="air-dresser-repair.html">Air Dresser</a>
+    <a href="dryer-repair.html">Dryer</a>
+    <a href="advanced-appliances-repair.html">Advanced Appliances</a>
+  </div>
+  <p>Serving Bandra West, Andheri, Borivali, Malad & all Western Mumbai</p>
+</footer>
+
+<a href="tel:+919819832282" class="float-call" title="Call Now">📞</a>
+<a href="https://wa.me/919819832282?text=My%20home%20appliance%20needs%20repair" target="_blank" class="float-wa" title="WhatsApp Now">💬</a>
+
+<div id="bookingModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeBooking()">✕</button>
+    <h2>Book Home Appliance Repair</h2>
+    <form onsubmit="submitBooking(event)">
+      <div class="form-group"><label>Problem *</label><input type="text" id="bookService" readonly required></div>
+      <div class="form-group"><label>Your Name *</label><input type="text" id="bookName" placeholder="Your Name" required></div>
+      <div class="form-group"><label>Phone *</label><input type="tel" id="bookPhone" placeholder="+91 98765 43210" required></div>
+      <div class="form-group"><label>Location *</label><input type="text" id="bookLocation" placeholder="Bandra West / Andheri etc" required></div>
+      <div class="form-group">
+        <label>Preferred Time Slot *</label>
+        <div class="time-slots">
+          <div class="time-slot" onclick="selectTime(this,'7-9 AM')">7-9 AM</div>
+          <div class="time-slot" onclick="selectTime(this,'9-11 AM')">9-11 AM</div>
+          <div class="time-slot" onclick="selectTime(this,'11-1 PM')">11-1 PM</div>
+          <div class="time-slot" onclick="selectTime(this,'1-3 PM')">1-3 PM</div>
+          <div class="time-slot" onclick="selectTime(this,'3-5 PM')">3-5 PM</div>
+          <div class="time-slot" onclick="selectTime(this,'5-7 PM')">5-7 PM</div>
+        </div>
+        <input type="hidden" id="bookTime" required>
+      </div>
+      <div class="form-group"><label>Additional Details</label><textarea id="bookProblem" placeholder="Any more details about the problem..."></textarea></div>
+      <button type="submit" class="btn-submit">Send Lead to WhatsApp</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function openBooking(service){document.getElementById('bookService').value=service;document.getElementById('bookingModal').classList.add('active');}
+function closeBooking(){document.getElementById('bookingModal').classList.remove('active');}
+function selectTime(el,time){document.querySelectorAll('.time-slot').forEach(t=>t.classList.remove('selected'));el.classList.add('selected');document.getElementById('bookTime').value=time;}
+function submitBooking(e){
+  e.preventDefault();
+  const service=document.getElementById('bookService').value;
+  const name=document.getElementById('bookName').value;
+  const phone=document.getElementById('bookPhone').value;
+  const location=document.getElementById('bookLocation').value;
+  const time=document.getElementById('bookTime').value;
+  const problem=document.getElementById('bookProblem').value;
+  const msg=`HOME APPLIANCE REPAIR BOOKING\n\nProblem: ${service}\nName: ${name}\nPhone: ${phone}\nLocation: ${location}\nPreferred Time: ${time}\n\nDetails: ${problem}\n\nPlease confirm and reach!`;
+  window.open(`https://wa.me/919819832282?text=${encodeURIComponent(msg)}`,'_blank');
+  closeBooking();
+  document.querySelector('form').reset();
+}
+document.getElementById('bookingModal').addEventListener('click',(e)=>{if(e.target===document.getElementById('bookingModal'))closeBooking();});
+</script>
+
+</body>
+</html>
