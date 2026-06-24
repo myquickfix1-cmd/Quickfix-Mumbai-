@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Appliance repair in Dahisar East & West - Fridge, AC, Washing Machine, Microwave & all 13 services. Same-day service across Dahisar Check Naka, Anand Nagar. Call +91 98198 32282.">
+<title>Appliance Repair in Dahisar Mumbai | 24x7 Same-Day Service | Quickfix</title>
+<link rel="canonical" href="https://quickfixmumbai.com/dahisar-appliance-repair.html">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue: #1E3A8A; --blue-light: #3B82F6; --blue-lighter: #DBEAFE;
+  --white: #FFFFFF; --grey: #F3F4F6; --grey-dark: #6B7280;
+  --text: #1F2937; --border: #E5E7EB; --red: #DC2626; --whatsapp: #25D366; --green: #10B981;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); line-height: 1.6; }
+header { position: sticky; top: 0; z-index: 100; background: var(--white); display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-bottom: 2px solid var(--blue-lighter); flex-wrap: wrap; gap: 10px; }
+.logo { font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--blue); text-decoration: none; }
+.logo span { color: var(--blue-light); }
+.header-btns { display: flex; gap: 10px; }
+.btn-call, .btn-wa { padding: 10px 16px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; border: none; cursor: pointer; }
+.btn-call { background: var(--blue); color: var(--white); }
+.btn-wa { background: var(--whatsapp); color: var(--white); }
+.breadcrumb { background: var(--grey); padding: 10px 24px; font-size: 0.82rem; color: var(--grey-dark); }
+.breadcrumb a { color: var(--blue); text-decoration: none; }
+.hero { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 50px 24px 42px; text-align: center; }
+.hero-badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 6px 16px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 16px; }
+.hero h1 { font-family: 'Poppins', sans-serif; font-size: clamp(1.7rem, 6.5vw, 2.7rem); font-weight: 700; margin-bottom: 14px; }
+.hero h1 span { color: #FCD34D; }
+.hero p { font-size: 0.96rem; color: rgba(255,255,255,0.92); max-width: 700px; margin: 0 auto 26px; }
+.hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.hero-btns .btn-call, .hero-btns .btn-wa { font-size: 0.98rem; padding: 13px 24px; background: var(--white); }
+.hero-btns .btn-call { color: var(--blue); }
+.hero-btns .btn-wa { color: var(--whatsapp); }
+section { padding: 44px 24px; }
+.container { max-width: 1050px; margin: 0 auto; }
+.section-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+.section-title { font-family: 'Poppins', sans-serif; font-size: clamp(1.4rem, 4vw, 1.9rem); font-weight: 700; color: var(--blue); margin-bottom: 8px; }
+.section-sub { color: var(--grey-dark); font-size: 0.92rem; margin-bottom: 28px; }
+.center { text-align: center; }
+.locality-chips { display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; }
+.locality-chip { background: var(--white); border: 1.5px solid var(--border); border-radius: 18px; padding: 8px 16px; font-size: 0.82rem; font-weight: 600; color: var(--text); text-decoration: none; }
+.locality-chip:hover { border-color: var(--blue-light); background: var(--blue-lighter); color: var(--blue); }
+.area-dropdown { max-width: 700px; margin: 0 auto; border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; }
+.area-dropdown-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: var(--white); cursor: pointer; font-weight: 700; color: var(--blue); font-family: 'Poppins', sans-serif; font-size: 1rem; }
+.area-dropdown-header:hover { background: var(--blue-lighter); }
+.area-dropdown-header .chevron { transition: transform 0.25s; font-size: 0.85rem; }
+.area-dropdown-header.open .chevron { transform: rotate(180deg); }
+.area-dropdown-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: var(--grey); }
+.area-dropdown-body.open { max-height: 600px; }
+.area-dropdown-body .locality-chips { padding: 18px; }
+.rating-badge { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--white); border: 1.5px solid var(--border); border-radius: 24px; padding: 10px 22px; max-width: 280px; margin: 0 auto 24px; }
+.rating-badge .badge-stars { color: #FCD34D; font-size: 1rem; }
+.rating-badge .badge-num { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--text); font-size: 1.05rem; }
+.rating-badge .badge-count { color: var(--grey-dark); font-size: 0.85rem; }
+.review-form-box { background: var(--white); border-radius: 14px; padding: 22px; max-width: 500px; margin: 0 auto 32px; border: 1.5px solid var(--border); }
+.review-form-box h3 { font-family: 'Poppins', sans-serif; color: var(--blue); font-size: 1.05rem; margin-bottom: 4px; text-align: center; }
+.review-form-box p.sub { font-size: 0.8rem; color: var(--grey-dark); text-align: center; margin-bottom: 14px; }
+.star-picker { display: flex; gap: 6px; justify-content: center; font-size: 1.7rem; margin-bottom: 14px; cursor: pointer; }
+.star-picker span { color: var(--border); transition: color 0.15s; }
+.star-picker span.filled { color: #FCD34D; }
+.review-form-box input, .review-form-box textarea { width: 100%; padding: 9px 12px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.9rem; margin-bottom: 11px; }
+.review-form-box textarea { min-height: 65px; resize: vertical; }
+.btn-review-submit { width: 100%; background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 10px; border: none; border-radius: 8px; font-weight: 700; font-size: 0.92rem; cursor: pointer; }
+.review-msg { text-align: center; font-size: 0.82rem; margin-top: 9px; font-weight: 600; }
+.review-msg.success { color: var(--whatsapp); }
+.live-reviews-label { text-align: center; font-size: 0.76rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey-dark); margin: 28px 0 16px; }
+.review-loading { text-align: center; color: var(--grey-dark); font-size: 0.85rem; padding: 18px; grid-column: 1/-1; }
+.services-grid-compact { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.service-mini-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 16px; text-decoration: none; color: var(--text); transition: all 0.2s; }
+.service-mini-card:hover { border-color: var(--blue-light); transform: translateY(-3px); box-shadow: 0 6px 16px rgba(30,58,138,0.1); }
+.service-mini-card strong { color: var(--blue); font-size: 0.92rem; display: block; margin-bottom: 4px; font-family: 'Poppins', sans-serif; }
+.service-mini-card span { font-size: 0.78rem; color: var(--grey-dark); }
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+.why-card { text-align: center; padding: 20px 16px; border-radius: 12px; background: var(--grey); }
+.why-icon { font-size: 1.8rem; margin-bottom: 8px; }
+.why-card h3 { font-size: 0.9rem; font-weight: 600; color: var(--blue); margin-bottom: 4px; }
+.why-card p { font-size: 0.78rem; color: var(--grey-dark); }
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+.testimonial-card { background: var(--white); border-radius: 12px; padding: 18px; border: 1px solid var(--border); }
+.testimonial-stars { color: #FCD34D; margin-bottom: 8px; font-size: 0.9rem; }
+.testimonial-text { font-size: 0.87rem; font-style: italic; margin-bottom: 10px; }
+.testimonial-author { font-weight: 600; color: var(--blue); font-size: 0.82rem; }
+.faq-item { background: var(--grey); border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
+.faq-q { font-weight: 700; color: var(--blue); font-size: 0.92rem; margin-bottom: 5px; }
+.faq-a { font-size: 0.86rem; color: var(--grey-dark); }
+.cta-band { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); text-align: center; padding: 44px 24px; border-radius: 16px; margin: 36px 24px; }
+.cta-band h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.4rem, 4vw, 1.9rem); margin-bottom: 10px; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.page-nav { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 20px 24px; max-width: 1050px; margin: 0 auto; flex-wrap: wrap; }
+.page-nav a { display: flex; align-items: center; gap: 6px; background: var(--grey); border: 1px solid var(--border); padding: 10px 16px; border-radius: 8px; text-decoration: none; color: var(--blue); font-weight: 600; font-size: 0.85rem; }
+.page-nav a:hover { background: var(--blue-lighter); }
+.page-nav .home-link { background: var(--blue); color: var(--white); border: none; }
+footer { background: var(--blue); color: rgba(255,255,255,0.7); text-align: center; padding: 24px 24px; font-size: 0.78rem; }
+footer span { color: var(--white); }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 12px 0; font-size: 0.74rem; }
+.footer-links a { color: rgba(255,255,255,0.8); text-decoration: none; }
+.float-wa, .float-call { position: fixed; z-index: 999; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; text-decoration: none; border: none; cursor: pointer; right: 20px; }
+.float-wa { background: var(--whatsapp); color: var(--white); bottom: 20px; box-shadow: 0 4px 16px rgba(16,185,129,0.4); }
+.float-call { background: var(--blue); color: var(--white); bottom: 92px; box-shadow: 0 4px 16px rgba(30,58,138,0.4); }
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+.modal.active { display: flex; }
+.modal-content { background: var(--white); border-radius: 16px; padding: 28px 24px; max-width: 460px; width: 100%; position: relative; max-height: 88vh; overflow-y: auto; }
+.modal-close { position: absolute; top: 14px; right: 14px; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--grey-dark); }
+.modal h2 { font-family: 'Poppins', sans-serif; font-size: 1.3rem; margin-bottom: 6px; color: var(--blue); }
+.form-group { margin-bottom: 13px; }
+.form-group label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.86rem; }
+.form-group input, .form-group textarea { width: 100%; padding: 10px 12px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.9rem; }
+.form-group textarea { resize: vertical; min-height: 60px; }
+.btn-submit { width: 100%; background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 11px; border: none; border-radius: 8px; font-weight: 700; font-size: 0.92rem; cursor: pointer; }
+.time-slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(75px, 1fr)); gap: 6px; margin-top: 6px; }
+.time-slot { padding: 7px; border: 2px solid var(--border); border-radius: 6px; text-align: center; cursor: pointer; font-weight: 600; font-size: 0.76rem; }
+.time-slot.selected { border-color: var(--blue); background: var(--blue); color: var(--white); }
+.time-slot-emergency { border-color: #FCA5A5; color: var(--red); font-weight: 700; grid-column: span 2; }
+.time-slot-emergency:hover { background: #FEE2E2; border-color: var(--red); }
+.time-slot-emergency.selected { background: var(--red); border-color: var(--red); color: var(--white); }
+@media (max-width: 600px) { header { padding: 12px 16px; } section { padding: 34px 16px; } .cta-band { margin: 28px 16px; } .float-call { bottom: 84px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">Quick<span>fix</span></a>
+  <div class="header-btns">
+    <a href="tel:+919819832282" class="btn-call">Call</a>
+    <a href="https://wa.me/919819832282?text=I%20need%20appliance%20repair%20in%20Dahisar" target="_blank" class="btn-wa">Chat</a>
+  </div>
+</header>
+
+<div class="breadcrumb"><a href="index.html">Home</a> › Service Areas › Dahisar</div>
+
+<section class="hero">
+  <h1>Appliance Repair in <span>Dahisar</span></h1>
+  <div class="hero-badge" style="margin-top:-10px;">🕐 24x7 Service • ⭐ 4.8/5 Rated</div>
+  <p>From Dahisar Check Naka to Anand Nagar — fridge, AC, washing machine and every appliance repaired same-day, across Dahisar East and West, right at Mumbai's northern edge.</p>
+  <div class="hero-btns">
+    <a href="tel:+919819832282" class="btn-call">📞 Call +91 98198 32282</a>
+    <a href="https://wa.me/919819832282?text=I%20need%20appliance%20repair%20in%20Dahisar" target="_blank" class="btn-wa">📲 Book by WhatsApp</a>
+  </div>
+</section>
+
+<section style="background: var(--grey);">
+  <div class="container">
+    <div class="center">
+      <div class="section-label">Localities We Cover</div>
+      <h2 class="section-title">Every Corner of Dahisar East & West</h2>
+      <p class="section-sub">From Check Naka to Anand Nagar, we reach you the same day</p>
+    </div>
+    <div class="area-dropdown">
+      <div class="area-dropdown-header" onclick="toggleAreaDropdown(this)">
+        <span>📍 View All Dahisar Localities (7)</span>
+        <span class="chevron">▼</span>
+      </div>
+      <div class="area-dropdown-body">
+        <div class="locality-chips">
+          <a href="https://wa.me/919819832282?text=I%20need%20appliance%20repair%20near%20Dahisar%20Station" target="_blank" class="locality-chip">Dahisar Station</a>
+          <a href="https://wa.me/919819832282?text=I%20need%20appliance%20repair%20near%20Dahisar%20Check%20Naka" target="_blank" class="locality-chip">Dahisar Check Naka</a>
+          <a href="https://wa.me/919819832282?text=I%20need%20appliance%20repair%20near%20Anand%20Nagar%20Dahisar" target="_blank" class="locality-chip">Anand Nagar</a>
+          <a href="https://wa.me/919819832282?text=I%20need%20appliance%20repair%20near%20Kandarpada%20Dahisar" target="_blank" class="locality-chip">Kandarpada</a>
+          <a href="https://wa.me/919819832282?text=I%20need%20appliance%20repair%20near%20Rawalpada" target="_blank" class="locality-chip">Rawalpada</a>
+          <a href="https://wa.me/919819832282?text=I%20need%20appliance%20repair%20near%20Western%20Express%20Highway%20Dahisar" target="_blank" class="locality-chip">Western Express Highway</a>
+          <a href="https://wa.me/919819832282?text=I%20need%20appliance%20repair%20near%20Mira%20Road%20border%20Dahisar" target="_blank" class="locality-chip">Mira Road Border</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="center">
+      <div class="section-label">All Services in Dahisar</div>
+      <h2 class="section-title">13 Repair Services — One Call Away</h2>
+      <p class="section-sub">Tap any service below for full details, common problems, and instant booking</p>
+    </div>
+    <div class="services-grid-compact">
+      <a href="refrigerator-repair.html" class="service-mini-card"><strong>Refrigerator Repair</strong><span>Not cooling, leakage, no light</span></a>
+      <a href="ac-repair.html" class="service-mini-card"><strong>Luxury Split AC Repair</strong><span>Not cooling, gas refill, PCB</span></a>
+      <a href="washing-machine-repair.html" class="service-mini-card"><strong>Washing Machine Repair</strong><span>Not spinning, not draining</span></a>
+      <a href="microwave-repair.html" class="service-mini-card"><strong>Microwave Repair</strong><span>Not heating, no light</span></a>
+      <a href="dishwasher-repair.html" class="service-mini-card"><strong>Advanced Dishwasher Repair</strong><span>Not washing, leakage</span></a>
+      <a href="pcb-motherboard-repair.html" class="service-mini-card"><strong>PCB & Motherboard Repair</strong><span>Chip-level circuit fixes</span></a>
+      <a href="wiring-harness-repair.html" class="service-mini-card"><strong>Wiring Harness Repair</strong><span>Short circuit, burnt wiring</span></a>
+      <a href="advanced-appliances-repair.html" class="service-mini-card"><strong>Advanced Home Appliances</strong><span>Smart & premium devices</span></a>
+      <a href="home-appliances-repair.html" class="service-mini-card"><strong>All Home Appliances</strong><span>Mixer, geyser, chimney & more</span></a>
+      <a href="air-dresser-repair.html" class="service-mini-card"><strong>Premium Air Dresser Repair</strong><span>Not steaming, door issues</span></a>
+      <a href="dryer-repair.html" class="service-mini-card"><strong>High Capacity Cloth Dryer</strong><span>Not heating, not drying</span></a>
+      <a href="amc-service.html" class="service-mini-card"><strong>Annual Maintenance (AMC)</strong><span>Yearly plans, all appliances</span></a>
+      <a href="microwave-repair.html" class="service-mini-card"><strong>Magnetron Emission Recovery</strong><span>Microwave magnetron repair</span></a>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--grey);">
+  <div class="container">
+    <div class="center"><div class="section-label">Why Dahisar Trusts Us</div><h2 class="section-title">Local, Reliable, Same-Day</h2></div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">⚡</div><h3>Same-Day Visit</h3><p>Fast response across Check Naka and Anand Nagar</p></div>
+      <div class="why-card"><div class="why-icon">🏆</div><h3>10+ Years Experience</h3><p>Trusted across Dahisar East and West for over a decade</p></div>
+      <div class="why-card"><div class="why-icon">💰</div><h3>Transparent Pricing</h3><p>Quote given before any repair begins, no surprises</p></div>
+      <div class="why-card"><div class="why-icon">✅</div><h3>Warranty on Repairs</h3><p>Every job backed by a service guarantee</p></div>
+      <div class="why-card"><div class="why-icon">🔬</div><h3>Border Area Coverage</h3><p>We don't say no even at Mumbai's northern boundary</p></div>
+      <div class="why-card"><div class="why-icon">🕐</div><h3>24x7 Availability</h3><p>Genuine round-the-clock service, every day of the week</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="center"><div class="section-label">Customer Reviews</div><h2 class="section-title">What Dahisar Residents Say</h2></div>
+    <div class="rating-badge">
+      <span class="badge-stars">★★★★★</span>
+      <span class="badge-num">4.8</span>
+      <span class="badge-count">(2,559 Reviews)</span>
+    </div>
+    <div class="testimonials-grid" style="margin-bottom: 32px;">
+      <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"Fridge near Check Naka stopped cooling overnight. Technician came next morning, fixed it fast." — Pravin, Dahisar Check Naka</div></div>
+      <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"AC in our Anand Nagar flat had a gas leak. Quick refill and proper testing before they left." — Komal, Anand Nagar</div></div>
+      <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"Washing machine PCB fault near Kandarpada sorted in one visit. Fair pricing." — Ramesh, Kandarpada</div></div>
+    </div>
+
+    <div class="review-form-box">
+      <h3>⭐ Rate Your Dahisar Service</h3>
+      <p class="sub">Used our service? Leave a review — visible to everyone on this page.</p>
+      <div class="star-picker" id="starPicker">
+        <span data-val="1">★</span><span data-val="2">★</span><span data-val="3">★</span><span data-val="4">★</span><span data-val="5">★</span>
+      </div>
+      <input type="text" id="reviewName" placeholder="Your Name *">
+      <input type="text" id="reviewArea" placeholder="Your Locality in Dahisar">
+      <textarea id="reviewText" placeholder="Tell others about your experience... *"></textarea>
+      <button class="btn-review-submit" onclick="submitReview()">Submit Review</button>
+      <div id="reviewMsg" class="review-msg"></div>
+    </div>
+
+    <div class="live-reviews-label">What Dahisar Customers Are Saying Right Now</div>
+    <div id="liveReviews" class="testimonials-grid">
+      <div class="review-loading">Loading reviews...</div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--grey);">
+  <div class="container">
+    <div class="center"><div class="section-label">Frequently Asked Questions</div><h2 class="section-title">Dahisar Appliance Repair FAQs</h2></div>
+
+    <div class="faq-item"><div class="faq-q">Dahisar East aur West dono jagah service milti hai?</div><div class="faq-a">Bilkul! Dahisar East aur West dono cover karte hain, Check Naka se Mira Road border tak — same-day repair milega.</div></div>
+    <div class="faq-item"><div class="faq-q">Dahisar mein exactly kahan-kahan jaate ho?</div><div class="faq-a">Dahisar Check Naka, Anand Nagar, Kandarpada, Rawalpada, Western Express Highway, Mira Road border area — sab jagah!</div></div>
+    <div class="faq-item"><div class="faq-q">Dahisar Mumbai ke last point pe hai, phir bhi aate ho?</div><div class="faq-a">Haan bilkul! Dahisar Mumbai suburban ka northern boundary hai, hum yahan tak bhi same-day service dete hain.</div></div>
+    <div class="faq-item"><div class="faq-q">Anand Nagar ya Check Naka mein kitni jaldi pohonchte ho?</div><div class="faq-a">2-3 ghante mein technician pohonch jata hai, time aur availability pe depend karta hai.</div></div>
+    <div class="faq-item"><div class="faq-q">Konse appliances repair karte ho Dahisar mein?</div><div class="faq-a">Sab 13 services — fridge, AC, washing machine, microwave, dishwasher, PCB-motherboard, wiring harness, air dresser, dryer — ek hi call mein!</div></div>
+    <div class="faq-item"><div class="faq-q">Dahisar East ka rate alag hai West se?</div><div class="faq-a">Nahi bhai, rate same hai pure Dahisar mein, East ho ya West.</div></div>
+    <div class="faq-item"><div class="faq-q">Raat ko bhi book kar sakte hai Dahisar mein?</div><div class="faq-a">Haan, genuinely 24x7 hain! Raat ko bhi call ya message karo, emergency slot bhi hai.</div></div>
+    <div class="faq-item"><div class="faq-q">AMC plan milta hai Dahisar walo ke liye?</div><div class="faq-a">Bilkul milta hai! Yearly plan le lo, saal bhar tension-free, sab appliances ek plan mein cover.</div></div>
+    <div class="faq-item"><div class="faq-q">Mera fridge Anand Nagar mein excess frost ho raha hai, kya problem hai?</div><div class="faq-a">Defrost circuit ka fault hota hai PCB mein, ya door seal se moisture aa rahi hoti hai. Technician dono check karta hai visit mein.</div></div>
+    <div class="faq-item"><div class="faq-q">Mira Road border ke paas bhi service milti hai?</div><div class="faq-a">Haan, Dahisar-Mira Road border area mein bhi service dete hain, thoda extra time lag sakta hai.</div></div>
+    <div class="faq-item"><div class="faq-q">AC repair ka kharcha kitna aata hai Dahisar mein?</div><div class="faq-a">Zyada tar ₹1000 se ₹5000 ke beech — gas refill ho ya PCB fault, final price kaam shuru karne se pehle confirm karte hain.</div></div>
+    <div class="faq-item"><div class="faq-q">Spare parts khud arrange karne padenge?</div><div class="faq-a">Common parts technician hi lekar aata hai. Premium model ka rare part order karna padta hai kabhi-kabhi.</div></div>
+    <div class="faq-item"><div class="faq-q">Rawalpada mein bhi service hoti hai?</div><div class="faq-a">Haan, regularly! Rawalpada aur Kandarpada jaisi residential societies mein bhi service dete hain.</div></div>
+    <div class="faq-item"><div class="faq-q">WhatsApp pe book karna better hai ya call?</div><div class="faq-a">Dono equally fast! WhatsApp pe photo bhej sakte ho, technician sahi tools lekar aata hai.</div></div>
+    <div class="faq-item"><div class="faq-q">Repair ke baad warranty milti hai?</div><div class="faq-a">Haan, har repair pe service warranty milti hai, details visit ke time bata dete hain.</div></div>
+    <div class="faq-item"><div class="faq-q">Bhai mera washing machine spin hi nahi kar raha, fix hoga Dahisar mein?</div><div class="faq-a">Bilkul! Motor capacitor weak hua hoga ya belt issue hoga — same visit mein check kar ke solve kar denge.</div></div>
+    <div class="faq-item"><div class="faq-q">Microwave plate ghoom rahi hai but heat nahi ho raha, kya karu?</div><div class="faq-a">Magnetron ka issue hota hai zyada tar. Humse contact karo, same-day check ho jayega.</div></div>
+    <div class="faq-item"><div class="faq-q">Office ka PCB board achanak band ho gaya, urgent aa sakte ho?</div><div class="faq-a">Haan bhai, chip-level PCB repair same-day milta hai Dahisar mein bhi — turant book karo.</div></div>
+    <div class="faq-item"><div class="faq-q">Wiring se jalne ki smell aa rahi hai, emergency mein bula sakta hoon?</div><div class="faq-a">Bilkul! Ye serious hai — appliance turant band karo, emergency call karo. Wiring fault jaldi check karna zaroori hai.</div></div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <h2>Appliance Trouble in Dahisar? We're Minutes Away.</h2>
+  <p>24x7 same-day repair across Check Naka, Anand Nagar and every Dahisar locality.</p>
+  <div class="cta-btns">
+    <a href="tel:+919819832282" class="btn-call">📞 Call +91 98198 32282</a>
+    <a href="https://wa.me/919819832282?text=I%20need%20appliance%20repair%20in%20Dahisar" target="_blank" class="btn-wa">📲 Book by WhatsApp</a>
+  </div>
+</div>
+
+<nav class="page-nav">
+  <a href="kandivali-appliance-repair.html">← Previous: Kandivali</a>
+  <a href="index.html" class="home-link">🏠 Home</a>
+  <a href="powai-appliance-repair.html">Next: Powai →</a>
+</nav>
+
+<footer>
+  <p>© 2025 <span>Quickfix Mumbai</span> · Home Appliance & Electronics Repair</p>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="refrigerator-repair.html">Refrigerator</a>
+    <a href="ac-repair.html">AC Repair</a>
+    <a href="kandivali-appliance-repair.html">Kandivali</a>
+    <a href="borivali-appliance-repair.html">Borivali</a>
+  </div>
+  <p>Serving Dahisar & all Mumbai — 24x7</p>
+</footer>
+
+<a href="tel:+919819832282" class="float-call" title="Call Now">📞</a>
+<a href="https://wa.me/919819832282?text=I%20need%20appliance%20repair%20in%20Dahisar" target="_blank" class="float-wa" title="WhatsApp Now">💬</a>
+
+<div id="bookingModal" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeBooking()">✕</button>
+    <h2>📲 Book by WhatsApp</h2>
+    <p style="color: var(--grey-dark); font-size: 0.85rem; margin-bottom: 14px;">Fill this out — it sends straight to our WhatsApp.</p>
+    <form onsubmit="submitBooking(event)">
+      <div class="form-group"><label>Service *</label><input type="text" id="bookService" value="Dahisar - General Inquiry" required></div>
+      <div class="form-group"><label>Your Name *</label><input type="text" id="bookName" placeholder="Your Name" required></div>
+      <div class="form-group"><label>Phone *</label><input type="tel" id="bookPhone" placeholder="+91 98765 43210" required></div>
+      <div class="form-group"><label>Locality in Dahisar *</label><input type="text" id="bookLocation" placeholder="e.g. Check Naka, Anand Nagar" required></div>
+      <div class="form-group">
+        <label>Preferred Time Slot *</label>
+        <div class="time-slots">
+          <div class="time-slot" onclick="selectTime(this,'7-9 AM')">7-9 AM</div>
+          <div class="time-slot" onclick="selectTime(this,'9-11 AM')">9-11 AM</div>
+          <div class="time-slot" onclick="selectTime(this,'11-1 PM')">11-1 PM</div>
+          <div class="time-slot" onclick="selectTime(this,'1-3 PM')">1-3 PM</div>
+          <div class="time-slot" onclick="selectTime(this,'3-5 PM')">3-5 PM</div>
+          <div class="time-slot" onclick="selectTime(this,'5-7 PM')">5-7 PM</div>
+          <div class="time-slot" onclick="selectTime(this,'7-9 PM')">7-9 PM</div>
+          <div class="time-slot" onclick="selectTime(this,'9 PM-12 AM')">9-12 AM</div>
+          <div class="time-slot time-slot-emergency" onclick="selectTime(this,'🚨 Emergency (12 AM-7 AM)')">🚨 Emergency</div>
+        </div>
+        <input type="hidden" id="bookTime" required>
+      </div>
+      <div class="form-group"><label>Problem Description *</label><textarea id="bookProblem" placeholder="Describe your appliance problem..." required></textarea></div>
+      <button type="submit" class="btn-submit">📲 Send via WhatsApp</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function openBooking(service){document.getElementById('bookService').value=service;document.getElementById('bookingModal').classList.add('active');}
+function closeBooking(){document.getElementById('bookingModal').classList.remove('active');}
+function selectTime(el,time){document.querySelectorAll('.time-slot').forEach(t=>t.classList.remove('selected'));el.classList.add('selected');document.getElementById('bookTime').value=time;}
+function submitBooking(e){
+  e.preventDefault();
+  const service=document.getElementById('bookService').value;
+  const name=document.getElementById('bookName').value;
+  const phone=document.getElementById('bookPhone').value;
+  const location=document.getElementById('bookLocation').value;
+  const time=document.getElementById('bookTime').value;
+  const problem=document.getElementById('bookProblem').value;
+  const msg=`DAHISAR REPAIR BOOKING\n\nService: ${service}\nName: ${name}\nPhone: ${phone}\nLocality: ${location}\nPreferred Time: ${time}\n\nProblem: ${problem}\n\nPlease confirm and reach!`;
+  window.open(`https://wa.me/919819832282?text=${encodeURIComponent(msg)}`,'_blank');
+  closeBooking();
+  document.querySelector('form').reset();
+}
+document.getElementById('bookingModal').addEventListener('click',(e)=>{if(e.target===document.getElementById('bookingModal'))closeBooking();});
+
+function toggleAreaDropdown(header){
+  header.classList.toggle('open');
+  const body = header.nextElementSibling;
+  body.classList.toggle('open');
+}
+
+let selectedRating = 0;
+document.querySelectorAll('#starPicker span').forEach(star => {
+  star.addEventListener('click', () => {
+    selectedRating = parseInt(star.getAttribute('data-val'));
+    document.querySelectorAll('#starPicker span').forEach(s => {
+      s.classList.toggle('filled', parseInt(s.getAttribute('data-val')) <= selectedRating);
+    });
+  });
+});
+
+const AREA_KEY = 'dahisar';
+
+async function submitReview(){
+  const name = document.getElementById('reviewName').value.trim();
+  const area = document.getElementById('reviewArea').value.trim();
+  const text = document.getElementById('reviewText').value.trim();
+  const msgEl = document.getElementById('reviewMsg');
+
+  if(!name || !text || selectedRating === 0){
+    msgEl.textContent = 'Please add your name, a star rating, and your review.';
+    msgEl.style.color = '#DC2626';
+    return;
+  }
+
+  const review = {
+    name, area, text,
+    rating: selectedRating,
+    date: new Date().toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' })
+  };
+
+  try{
+    const key = 'review:' + AREA_KEY + ':' + Date.now() + ':' + Math.random().toString(36).slice(2,7);
+    const result = await window.storage.set(key, JSON.stringify(review), true);
+    if(!result) throw new Error('save failed');
+
+    msgEl.textContent = '✅ Thank you! Your review is now live below.';
+    msgEl.className = 'review-msg success';
+
+    document.getElementById('reviewName').value = '';
+    document.getElementById('reviewArea').value = '';
+    document.getElementById('reviewText').value = '';
+    selectedRating = 0;
+    document.querySelectorAll('#starPicker span').forEach(s => s.classList.remove('filled'));
+
+    loadReviews();
+  } catch(err){
+    msgEl.textContent = 'Could not submit right now. Please try again.';
+    msgEl.style.color = '#DC2626';
+  }
+}
+
+async function loadReviews(){
+  const container = document.getElementById('liveReviews');
+  try{
+    const list = await window.storage.list('review:' + AREA_KEY + ':', true);
+    if(!list || !list.keys || list.keys.length === 0){
+      container.innerHTML = '<p style="text-align:center; color:var(--grey-dark); font-size:0.85rem; grid-column:1/-1;">No reviews yet — be the first to share your experience!</p>';
+      return;
+    }
+
+    const reviews = [];
+    for(const key of list.keys){
+      try{
+        const res = await window.storage.get(key, true);
+        if(res && res.value) reviews.push(JSON.parse(res.value));
+      } catch(e){ /* skip broken entries */ }
+    }
+
+    if(reviews.length === 0){
+      container.innerHTML = '<p style="text-align:center; color:var(--grey-dark); font-size:0.85rem; grid-column:1/-1;">No reviews yet — be the first to share your experience!</p>';
+      return;
+    }
+
+    reviews.reverse();
+
+    container.innerHTML = reviews.map(r => `
+      <div class="testimonial-card">
+        <div class="testimonial-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div>
+        <div class="testimonial-text">"${r.text.replace(/</g,'&lt;')}"</div>
+        <div class="testimonial-author">${r.name.replace(/</g,'&lt;')}${r.area ? ', ' + r.area.replace(/</g,'&lt;') : ''} · ${r.date || ''}</div>
+      </div>
+    `).join('');
+  } catch(err){
+    container.innerHTML = '<p style="text-align:center; color:var(--grey-dark); font-size:0.85rem; grid-column:1/-1;">Reviews are temporarily unavailable.</p>';
+  }
+}
+
+loadReviews();
+</script>
+
+</body>
+</html>
