@@ -1,32 +1,51 @@
 {
-  "short_name": "QuickFix",
-  "name": "QuickFix Mumbai Hub Terminal",
+  "name": "Quickfix Mumbai - Appliance Repair",
+  "short_name": "Quickfix",
+  "description": "24x7 Home Appliance Repair across Mumbai - Fridge, AC, Washing Machine & more. Same-day service, trusted by 2,559+ customers.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFFFFF",
+  "theme_color": "#1E3A8A",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    }
-  ],
-  "start_url": "/index.html",
-  "background_color": "#0B132B",
-  "theme_color": "#0B132B",
-  "display": "standalone",
-  "orientation": "portrait"
-}
-{
-  "short_name": "QuickFix",
-  "name": "QuickFix Mumbai Hub Terminal",
-  "icons": [
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
-  "start_url": "/index.html",
-  "background_color": "#0B132B",
-  "theme_color": "#0B132B",
-  "display": "standalone",
-  "orientation": "portrait"
+  "shortcuts": [
+    {
+      "name": "Book by WhatsApp",
+      "short_name": "Book Now",
+      "url": "/index.html#contact",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Call Quickfix",
+      "short_name": "Call",
+      "url": "tel:+919819832282",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    }
+  ]
 }
