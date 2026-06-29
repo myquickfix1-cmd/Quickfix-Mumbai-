@@ -1,35 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Home Page -->
-  <url><loc>https://quickfixmumbai.com/index.html</loc><priority>1.00</priority></url>
-  
-  <!-- Service Pages -->
-  <url><loc>https://quickfixmumbai.com/refrigerator-repair.html</loc><priority>0.80</priority></url>
-  <url><loc>https://quickfixmumbai.com/ac-repair.html</loc><priority>0.80</priority></url>
-  <url><loc>https://quickfixmumbai.com/washing-machine-repair.html</loc><priority>0.80</priority></url>
-  <url><loc>https://quickfixmumbai.com/microwave-repair.html</loc><priority>0.80</priority></url>
-	<url><loc>https://quickfixmumbai.com/dishwasher-repair.html</loc><priority>0.80</priority></url>
-	<url><loc>https://quickfixmumbai.com/pcb-motherboard-repair.html</loc><priority>0.80</priority></url>
-	<url><loc>https://quickfixmumbai.com/amc-service.html</loc><priority>0.80</priority></url>
-	<url><loc>https://quickfixmumbai.com/air-dresser-repair.html</loc><priority>0.80</priority></url>
-	<url><loc>https://quickfixmumbai.com/dryer-repair.html</loc><priority>0.80</priority></url>
-	<url><loc>https://quickfixmumbai.com/wiring-harness-repair.html</loc><priority>0.80</priority></url>
-	<url><loc>https://quickfixmumbai.com/home-appliace-repair.html</loc><priority>0.80</priority></url>
-	<url><loc>https://quickfixmumbai.com/advance-appliace-repair.html</loc><priority>0.80</priority></url>
-  <!-- Location Pages -->
-  <url><loc>https://quickfixmumbai.com/andheri.html</loc><priority>0.70</priority></url>
-  <url><loc>https://quickfixmumbai.com/bandra.html</loc><priority>0.70</priority></url>
-  <url><loc>https://quickfixmumbai.com/malad.html</loc><priority>0.70</priority></url>
-  <url><loc>https://quickfixmumbai.com/powai.html</loc><priority>0.70</priority></url>
-  <url><loc>https://quickfixmumbai.com/hiranandani.html</loc><priority>0.70</priority></url>
-  <url><loc>https://quickfixmumbai.com/juhu.html</loc><priority>0.70</priority></url>
-  <url><loc>https://quickfixmumbai.com/worli.html</loc><priority>0.70</priority></url>
-  <url><loc>https://quickfixmumbai.com/breach-candy.html</loc><priority>0.70</priority></url>
-  <url><loc>https://quickfixmumbai.com/prabhadevi.html</loc><priority>0.70</priority></url>
-  <url><loc>https://quickfixmumbai.com/khar.html</loc><priority>0.70</priority></url>
-  <url><loc>https://quickfixmumbai.com/mahim.html</loc><priority>0.70</priority></url>
-  <url><loc>https://quickfixmumbai.com/colaba.html</loc><priority>0.70</priority></url>
-  <url><loc>https://quickfixmumbai.com/parel.html</loc><priority>0.70</priority></url>
-  <url><loc>https://quickfixmumbai.com/kurla.html</loc><priority>0.70</priority></url>
-  <url><loc>https://quickfixmumbai.com/thane.html</loc><priority>0.70</priority></url>
+
+  <url>
+    <loc>https://quickfixmumbai.com/</loc>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://quickfixmumbai.com/home-appliances-repair.html</loc>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://quickfixmumbai.com/amc-service.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://quickfixmumbai.com/inquiry.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://quickfixmumbai.com/suggestion-form.html</loc>
+    <priority>0.50</priority>
+  </url>
+
+  <url>
+    <loc>https://quickfixmumbai.com/ac-repair.html</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://quickfixmumbai.com/refrigerator-repair.html</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://quickfixmumbai.com/washing-machine-repair.html</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://quickfixmumbai.com/microwave-repair.html</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://quickfixmumbai.com/dishwasher-repair.html</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://quickfixmumbai.com/dryer-repair.html</loc>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://quickfixmumbai.com/advanced-appliances-repair.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://quickfixmumbai.com/air-dresser-repair.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://quickfixmumbai.com/pcb-motherboard-repair.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://quickfixmumbai.com/wiring-harness-repair.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url><loc>https://quickfixmumbai.com/suburban-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/altamount-road-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/andheri-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/bandra-west-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/borivali-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/breach-candy-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/chuna-bhatti-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/cuffe-parade-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/dahisar-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/goregaon-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/hiranandani-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/juhu-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/kalina-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/kandivali-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/khar-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/lokhandwala-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/malabar-hill-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/mulund-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/pali-hill-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/powai-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/santacruz-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/tilak-nagar-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/versova-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/vile-parle-appliance-repair.html</loc><priority>0.70</priority></url>
+  <url><loc>https://quickfixmumbai.com/worli-appliance-repair.html</loc><priority>0.70</priority></url>
+
 </urlset>
