@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+# Block search engines from indexing private portals
+Disallow: /admin.html
+Disallow: /worker.html
+
+# Link directly to your new sitemap
 Sitemap: https://quickfixmumbai.com/sitemap.xml
