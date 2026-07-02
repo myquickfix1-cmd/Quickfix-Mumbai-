@@ -18,11 +18,18 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --blue: #1E3A8A; --blue-light: #3B82F6; --blue-lighter: #DBEAFE;
-  --white: #FFFFFF; --grey: #F3F4F6; --grey-dark: #6B7280;
-  --text: #1F2937; --border: #E5E7EB; --red: #DC2626; --whatsapp: #25D366;
+  --blue: #1E3A8A;
+  --blue-light: #1D4ED8;   /* Contrast badhane ke liye safe dark blue */
+  --blue-lighter: #DBEAFE;
+  --white: #FFFFFF;
+  --grey: #F3F4F6;
+  --grey-dark: #374151;  /* Grey background par text saaf dikhne ke liye dark grey */
+  --text: #111827;       /* Maximum legibility ke liye pure dark blackish text */
+  --border: #D1D5DB;
+  --red: #DC2626;
+  --whatsapp: #128C7E;   /* WhatsApp button par white text ke sath clear contrast */
 }
-html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; }
 body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); line-height: 1.6; }
 
 header {
@@ -40,9 +47,7 @@ header {
 .btn-call, .btn-wa { padding: 10px 16px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; border: none; cursor: pointer; }
 .btn-call { background: var(--blue); color: var(--white); }
 .btn-call:hover { background: var(--blue-light); }
-.btn-wa { background: var(--whatsapp); color: var(--white); }
-.btn-wa:hover { opacity: 0.88; }
-
+.btn-wa { background: var(--whatsapp); color: var(--white); font-weight: 700; }
 .install-banner { display: none; background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 12px 20px; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .install-banner.show { display: flex; }
 .install-banner-text { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; font-weight: 600; }
