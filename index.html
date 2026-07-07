@@ -14,8 +14,15 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Quickfix">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
-<style>
+<!-- Preconnect to speed up DNS lookup -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Asynchronous Loading for Speed Boost -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
+</noscript>
+  <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --blue: #1E3A8A;
@@ -117,7 +124,9 @@ section { padding: 60px 24px; }
 .review-form-box { background: var(--white); border-radius: 14px; padding: 24px; max-width: 520px; margin: 0 auto 36px; border: 1.5px solid var(--border); }
 .review-form-box h3 { font-family: 'Poppins', sans-serif; color: var(--blue); font-size: 1.1rem; margin-bottom: 4px; text-align: center; }
 .review-form-box p.sub { font-size: 0.82rem; color: var(--grey-dark); text-align: center; margin-bottom: 16px; }
-
+header {
+    min-height: 70px;
+}
 .rating-summary-box { background: var(--white); border: 1.5px solid var(--border); border-radius: 14px; padding: 24px; max-width: 560px; margin: 0 auto 28px; }
 .rating-summary-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
 .rating-bars { flex: 1; min-width: 180px; }
