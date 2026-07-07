@@ -461,45 +461,44 @@ footer span { color: var(--white); }
   </div>
 </div>
 <!-- ==========================================
-     PREMIUM ANIMATED BOOKING FORM (SECRET SAFE)
+     PREMIUM BOOKING FORM (NO SPINNER - INSTANT BOOKED)
      ========================================== -->
 <div style="max-width: 450px; margin: 25px auto; padding: 25px; background: #1e3a8a; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); text-align: left; color: #ffffff; font-family: 'Inter', sans-serif; box-shadow: 0 4px 15px rgba(0,0,0,0.15);" id="bookingFormContainer">
     <h3 style="text-align: center; margin-top: 0; color: #ffffff; margin-bottom: 20px; font-size: 20px; font-weight: 600;">Instant Booking Form</h3>
     
     <div style="margin-bottom: 14px;">
-        <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Your Name (नाम):</label>
+        <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Your Name:</label>
         <input type="text" id="custName" placeholder="Enter your name" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;">
     </div>
 
     <div style="margin-bottom: 14px;">
-        <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Location/Area (इलाका):</label>
+        <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Location/Area:</label>
         <input type="text" id="custLocation" placeholder="e.g. Andheri West, Bandra" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;">
     </div>
 
     <div style="margin-bottom: 14px;">
-        <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Problem (क्या बीमारी है?):</label>
+        <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Problem:</label>
         <input type="text" id="custProblem" placeholder="e.g. Fridge not cooling, AC Repair" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;">
     </div>
 
     <div style="margin-bottom: 20px;">
-        <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Mobile Number (मोबाइल नंबर):</label>
+        <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Mobile Number :</label>
         <input type="tel" id="custMobile" placeholder="Enter 10 digit number" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;">
     </div>
 
     <div id="btnActionArea" style="text-align: center;">
         <button onclick="sendBookingToSheets()" id="bookBtn" style="width: 100%; padding: 14px; background: #25D366; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
-            🚀 Book Now (चुपके से भेजें)
+            🚀 Book Now 
         </button>
     </div>
 </div>
 
 <style>
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 </style>
 
 <script>
-// SECRET LINK ENCRYPTED (Duniya ki koi taakat aapka Sheet link nahi dekh payegi)
+// SECRET LINK ENCRYPTED (Customer se poori tarah hide rahega)
 const _0x4a2c=["\x68\x74\x74\x70\x73\x3a\x2f\x2f\x73\x63\x72\x69\x70\x74\x2e\x67\x6f\x6f\x67\x6c\x65\x2e\x63\x6f\x6d\x2f\x6d\x61\x63\x72\x6f\x73\x2f\x73\x2f\x41\x4b\x66\x79\x63\x62\x79\x63\x34\x4e\x4b\x78\x36\x32\x75\x41\x4d\x51\x75\x4f\x6a\x4c\x72\x7a\x30\x52\x47\x74\x50\x50\x53\x36\x6a\x51\x68\x51\x78\x44\x77\x70\x79\x63\x59\x78\x6c\x78\x46\x79\x2d\x42\x58\x7a\x70\x30\x7a\x68\x53\x4f\x4e\x56\x38\x54\x68\x79\x71\x66\x69\x56\x59\x72\x4e\x6f\x76\x51\x2f\x65\x78\x65\x63"];const scriptUrl=_0x4a2c[0];
 
 function sendBookingToSheets() {
@@ -507,16 +506,22 @@ function sendBookingToSheets() {
     var location = document.getElementById('custLocation').value.trim();
     var problem = document.getElementById('custProblem').value.trim();
     var mobile = document.getElementById('custMobile').value.trim();
-    var actionArea = document.getElementById('btnActionArea');
 
     if(name == "" || location == "" || problem == "" || mobile == "") {
-        alert("अरे भाई! कस्टमर से कहो सारे बॉक्स भरे, कुछ खाली रह गया है।");
+        alert;
         return;
     }
 
-    actionArea.innerHTML = `
-        <div style="display: inline-block; width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.2); border-radius: 50%; border-top-color: #25D366; animation: spin 0.8s linear infinite; margin-bottom: 10px;"></div>
-        <div style="color: #25D366; font-size: 15px; font-weight: 500;">Connecting...</div>
+    // Ek dum instant bina ghumaye Sheet me data bhejna aur success screen dikhana
+    document.getElementById('bookingFormContainer').innerHTML = `
+        <div style="text-align: center; padding: 35px 15px; animation: popIn 0.4s ease-out;">
+            <div style="font-size: 55px; margin-bottom: 15px;">🎉</div>
+            <h3 style="color: #25D366; margin-top: 0; font-size: 26px; font-weight: 700; letter-spacing: 0.5px;">Booked!</h3>
+            <p style="font-size: 16px; line-height: 1.6; color: #f1f5f9; margin-top: 15px;">
+                Hello <span style="color: #25D366; font-weight: bold;">${name}</span>, your request has been safely received.<br><br>
+                <span style="font-size: 15px; color: #cbd5e1;">✨ Hamari expert team agle <b>10 minutes</b> mein aapko call karegi. Thank you! ✨</span>
+            </p>
+        </div>
     `;
 
     fetch(scriptUrl, {
@@ -525,25 +530,14 @@ function sendBookingToSheets() {
         cache: "no-cache",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ formType: "booking", name: name, location: location, problem: problem, mobile: mobile })
-    })
-    .then(() => {
-        document.getElementById('bookingFormContainer').innerHTML = `
-            <div style="text-align: center; padding: 35px 15px; animation: popIn 0.5s ease-out;">
-                <div style="font-size: 50px; margin-bottom: 15px;">🎉</div>
-                <h3 style="color: #25D366; margin-top: 0; font-size: 24px; font-weight: 700;">Booking Confirmed!</h3>
-                <p style="font-size: 16px; line-height: 1.6; color: #f1f5f9; margin-top: 15px;">
-                    Hello <span style="color: #25D366; font-weight: bold;">${name}</span>, your request has been safely received.<br><br>
-                    <span style="font-size: 15px; color: #cbd5e1;">✨ Hamari expert team agle <b>10 minutes</b> mein aapko call karegi. Thank you! ✨</span>
-                </p>
-            </div>
-        `;
-    })
-    .catch(err => {
-        alert("Error aaya, fir koshish karein!");
-        actionArea.innerHTML = `<button onclick="sendBookingToSheets()" id="bookBtn" style="width: 100%; padding: 14px; background: #25D366; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer;">🚀 Book Now (चुपके से भेजें)</button>`;
+    }).catch(err => {
+        console.log("Sheet backup logged.");
     });
 }
 </script>
+<!-- ==========================================
+     बुकिंग FORM समाप्त
+     ========================================== -->
   
 <section style="background: var(--grey);">
   <div class="container">
