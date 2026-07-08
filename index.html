@@ -19,8 +19,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Asynchronous Loading for Speed Boost -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+ <style>
+ /* Header ka space reserve rakhne ke liye taaki layout shift na ho */
+main, h1 {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-display: swap;
+}
+  .hero-section {
+    min-height: 250px; /* Aapke mobile header ki ek tentative height */
+  }
+</style>
+  
 <noscript>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
 </noscript>
   <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -731,13 +742,22 @@ It does not touch or override any of your existing classes.
 </footer>
 
 <a href="tel:+919819832282" class="float-call" title="Call Now" aria-label="Call Quickfix Mumbai Support">📞</a>
-<a href="https://wa.me/919819832282?text=Hi%20Quickfix%2C%20my%20appliance%20is%20broken" target="_blank" class="float-wa" title="WhatsApp Us" aria-label="Chat with Quickfix Mumbai on WhatsApp">💬</a>
+ <a href="https://wa.me/919819832282?text=Hi%20Quickfix%2C%20my%20appliance%20is%20broken" target="_blank" class="float-wa" title="WhatsApp Us" aria-label="Chat with Quickfix Mumbai on WhatsApp" style="background-color: #128C7E;">💬</a>
+<!-- Script jo Page load hone ke 0.5 sec baad chalega taaki layout block na ho -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      if (typeof fetchReviews === 'function') {
+        fetchReviews(); 
+      }
+    }, 500); 
+  });
+</script>
+
 <div id="bookingModal" class="modal">
   <div class="modal-content">
     <button class="modal-close" onclick="closeBooking()">✕</button>
-    <h2>📲 Book by WhatsApp</h2>
-    <p style="color: var(--grey-dark); font-size: 0.85rem; margin-bottom: 14px;">Fill this out — it sends straight to our WhatsApp, no separate account needed.</p>
-    <form onsubmit="submitBooking(event)">
+    <h2>📲 Book by WhatsApp</h2> 
       <div class="form-group"><label>Service *</label><input type="text" id="bookService" readonly required></div>
       <div class="form-group"><label>Your Name *</label><input type="text" id="bookName" placeholder="Your Name" required></div>
       <div class="form-group"><label>Phone *</label><input type="tel" id="bookPhone" placeholder="+91 98765 43210" required></div>
