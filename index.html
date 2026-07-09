@@ -222,8 +222,6 @@ footer span { color: var(--white); }
   .areas-grid, .brands-grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
 
@@ -257,13 +255,13 @@ footer span { color: var(--white); }
 <section class="hero">
   <div style="display:inline-block; background:rgba(255,255,255,0.2); padding:6px 16px; border-radius:20px; font-size:0.78rem; font-weight:700; letter-spacing:1px; margin-bottom:16px;">🕐 24x7 SERVICE AVAILABLE</div>
   <h1>Appliance Repair in Mumbai India — <span>Same-Day Expert Service!</span></h1>
-  <p>Refrigerator repair, AC repair, washing machine repair, microwave repair, dishwasher repair, PCB and motherboard repair — all home appliances fixed by expert technicians in Bandra West, Andheri, Borivali, Malad and all Mumbai. 4.8/5 rated by 2,559 trusted families.</p>
+  <p>Refrigerator repair, AC repair, washing machine repair, microwave repair, dishwasher repair, PCB and motherboard repair — all home appliances fixed by expert technicians in Bandra West, Andheri, Borivali, Malad and all Mumbai. 4.8/5 rated by <span id="heroCount">2,559</span> trusted families.</p>
   <div class="hero-btns">
     <a href="tel:+919819832282" class="btn-call">Call +91 98198 32282</a>
     <a href="https://wa.me/919819832282?text=Hi%20Quickfix%2C%20my%20appliance%20needs%20repair" target="_blank" class="btn-wa">WhatsApp Now</a>
   </div>
   <div class="rating-bar">
-    <div class="rating-item"><div style="color:#FCD34D;">★★★★★</div><strong>4.8/5</strong><span>2,559 Reviews</span></div>
+    <div class="rating-item"><div style="color:#FCD34D;">★★★★★</div><strong>4.8/5</strong><span><span id="topCount">2,559</span> Reviews</span></div>
     <div class="rating-item"><strong>All Mumbai</strong><span>Covered</span></div>
     <div class="rating-item"><strong>Same Day</strong><span>Service</span></div>
     <div class="rating-item"><strong>Expert</strong><span>Technicians</span></div>
@@ -428,7 +426,7 @@ footer span { color: var(--white); }
         <div class="rating-summary-score">
           <div class="big-num">4.8</div>
           <div class="stars-row">★★★★★</div>
-          <div class="count-text">(2,559)</div>
+          <div class="count-text">(<span id="summaryCount">2,559</span>)</div>
         </div>
       </div>
     </div>
@@ -621,14 +619,6 @@ function showBookingSuccess(name) {
   </div>
 </section>
 
-<!-- ============================================================
-COPY-PASTE INSTRUCTIONS:
-Replace your EXISTING gallery + brands <section> blocks with the
-TWO sections below. Everything else on your page (CSS, header,
-footer, scripts) stays exactly as it is — do not touch anything
-outside these two sections.
-============================================================ -->
-
 <section>
   <div class="container">
     <div class="center">
@@ -657,11 +647,6 @@ outside these two sections.
   </div>
 </section>
 
-<!-- ============================================================
-ADD THIS CSS to your existing <style> block (anywhere inside it).
-This styles .gallery-item images and .brand-logo-slot text badges.
-It does not touch or override any of your existing classes.
-============================================================ -->
 <style>
 .gallery-item img {
   width: 100%;
@@ -827,6 +812,22 @@ document.querySelectorAll('#starPicker span').forEach(star => {
   });
 });
 
+// ---- Rating counter (dynamic) ----
+// BASE_REVIEW_COUNT = starting social-proof number (already shown before real reviews existed).
+// Har naya real review isme add hoke total count banata hai — jitna sheet mein badhega, utna yahan dikhega.
+const BASE_REVIEW_COUNT = 2559;
+
+function updateRatingCount(realReviewCount){
+  const total = BASE_REVIEW_COUNT + realReviewCount;
+  const formatted = total.toLocaleString('en-IN');
+  const heroEl = document.getElementById('heroCount');
+  const topEl = document.getElementById('topCount');
+  const summaryEl = document.getElementById('summaryCount');
+  if(heroEl) heroEl.textContent = formatted;
+  if(topEl) topEl.textContent = formatted;
+  if(summaryEl) summaryEl.textContent = formatted;
+}
+
 // Submit a new review - saved to Google Sheet via Apps Script, visible to everyone
 async function submitReview(){
   const name = document.getElementById('reviewName').value.trim();
@@ -873,6 +874,9 @@ async function loadReviews(){
   try{
     const res = await fetch(scriptUrl + '?action=reviews', { cache: "no-cache" });
     const reviews = await res.json();
+
+    // update the 3 rating-count numbers using the real review count from the sheet
+    updateRatingCount(Array.isArray(reviews) ? reviews.length : 0);
 
     if(!reviews || reviews.length === 0){
       container.innerHTML = '<p style="text-align:center; color:var(--grey-dark); font-size:0.85rem; grid-column:1/-1;">No reviews yet — be the first to share your experience!</p>';
