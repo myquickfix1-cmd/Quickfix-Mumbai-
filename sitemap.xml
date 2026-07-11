@@ -6,18 +6,13 @@
 <url><loc>https://quickfixmumbai.com/inquiry.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
 <url><loc>https://quickfixmumbai.com/suggestion-form.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
 
-<!-- ===================== SERVICE PAGES ===================== -->
+<!-- ===================== SERVICE PAGES (7 — trimmed scope) ===================== -->
 <url><loc>https://quickfixmumbai.com/refrigerator-repair.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
-<url><loc>https://quickfixmumbai.com/ac-repair.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
 <url><loc>https://quickfixmumbai.com/washing-machine-repair.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
 <url><loc>https://quickfixmumbai.com/microwave-repair.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
 <url><loc>https://quickfixmumbai.com/dishwasher-repair.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-<url><loc>https://quickfixmumbai.com/pcb-motherboard-repair.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-<url><loc>https://quickfixmumbai.com/wiring-harness-repair.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-<url><loc>https://quickfixmumbai.com/advanced-appliances-repair.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-<url><loc>https://quickfixmumbai.com/home-appliances-repair.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-<url><loc>https://quickfixmumbai.com/air-dresser-repair.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
 <url><loc>https://quickfixmumbai.com/dryer-repair.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+<url><loc>https://quickfixmumbai.com/air-dresser-repair.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
 <url><loc>https://quickfixmumbai.com/amc-service.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
 
 <!-- ===================== AREA PAGES (Original batch) ===================== -->
