@@ -3,16 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Appliance repair in Andheri East & West - Fridge, AC, Washing Machine, Microwave & all 13 services. Same-day service across Lokhandwala, Versova, SEEPZ, MIDC, Chakala, Marol. Call +91 98198 32282.">
+<meta name="description" content="Appliance repair in Andheri East & West - Fridge, Washing Machine, Microwave, Dishwasher, Dryer & Air Dresser. Same-day service across Lokhandwala, Versova, SEEPZ, MIDC, Chakala, Marol. Call +91 98198 32282.">
 <title>Appliance Repair in Andheri Mumbai | 24x7 Same-Day Service | Quickfix</title>
 <link rel="canonical" href="https://quickfixmumbai.com/andheri-appliance-repair.html">
+<link rel="icon" type="image/png" href="icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- LocalBusiness Schema — helps Google understand exactly where and what we service -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Quickfix Mumbai - Andheri",
+  "image": "https://quickfixmumbai.com/icon-512.png",
+  "telephone": "+919819832282",
+  "areaServed": {
+    "@type": "Place",
+    "name": "Andheri, Mumbai"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Andheri",
+    "addressRegion": "Maharashtra",
+    "addressCountry": "IN"
+  },
+  "priceRange": "₹₹",
+  "openingHours": "Mo-Su 00:00-23:59",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "2559"
+  }
+}
+</script>
+
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --blue: #1E3A8A; --blue-light: #3B82F6; --blue-lighter: #DBEAFE;
   --white: #FFFFFF; --grey: #F3F4F6; --grey-dark: #6B7280;
-  --text: #1F2937; --border: #E5E7EB; --red: #DC2626; --whatsapp: #25D366; --green: #10B981;
+  --text: #1F2937; --border: #E5E7EB; --red: #DC2626; --whatsapp: #25D366; --green: #10B981; --amber: #FCD34D;
 }
 html { scroll-behavior: smooth; }
 body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); line-height: 1.6; }
@@ -51,6 +81,15 @@ section { padding: 44px 24px; }
 .area-dropdown-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: var(--grey); }
 .area-dropdown-body.open { max-height: 600px; }
 .area-dropdown-body .locality-chips { padding: 18px; }
+
+/* Brand trust section */
+.brand-trust-box { background: var(--white); border: 1.5px solid var(--border); border-radius: 14px; padding: 24px; max-width: 800px; margin: 0 auto; }
+.brand-trust-box p.lead { font-size: 0.94rem; margin-bottom: 14px; }
+.brand-trust-box p.lead strong { color: var(--blue); }
+.brand-chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.brand-chip-small { background: var(--blue-lighter); color: var(--blue); font-weight: 700; font-size: 0.8rem; padding: 6px 14px; border-radius: 14px; }
+.warranty-note { background: #FEF9E7; border-left: 4px solid var(--amber); padding: 12px 16px; border-radius: 8px; font-size: 0.88rem; color: #92400E; }
+
 .review-form-box { background: var(--white); border-radius: 14px; padding: 22px; max-width: 500px; margin: 0 auto 32px; border: 1.5px solid var(--border); }
 .review-form-box h3 { font-family: 'Poppins', sans-serif; color: var(--blue); font-size: 1.05rem; margin-bottom: 4px; text-align: center; }
 .review-form-box p.sub { font-size: 0.8rem; color: var(--grey-dark); text-align: center; margin-bottom: 14px; }
@@ -134,7 +173,7 @@ footer span { color: var(--white); }
 <section class="hero">
   <div class="hero-badge">🕐 24x7 Service • ⭐ 4.8/5 Rated</div>
   <h1>Appliance Repair in <span>Andheri</span></h1>
-  <p>From Lokhandwala apartments to SEEPZ-adjacent homes — fridge, AC, washing machine and every appliance repaired same-day, across both Andheri East and Andheri West.</p>
+  <p>From Lokhandwala apartments to SEEPZ-adjacent homes — fridge, washing machine, microwave and every appliance repaired same-day, across both Andheri East and Andheri West, and right across Mumbai. All major brands including Samsung, LG, IFB, Whirlpool and Bosch.</p>
   <div class="hero-btns">
     <a href="tel:+919819832282" class="btn-call">📞 Call +91 98198 32282</a>
     <a href="https://wa.me/919819832282?text=I%20need%20appliance%20repair%20in%20Andheri" target="_blank" class="btn-wa">📲 Book by WhatsApp</a>
@@ -175,32 +214,81 @@ footer span { color: var(--white); }
   </div>
 </section>
 
+<!-- INLINE INSTANT BOOKING FORM — no modal click needed, area pre-filled -->
+<div style="max-width: 450px; margin: 8px auto 40px; padding: 25px; background: #1e3a8a; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); text-align: left; color: #ffffff; font-family: 'Inter', sans-serif; box-shadow: 0 4px 15px rgba(0,0,0,0.15);" id="bookingFormContainer">
+    <h3 style="text-align: center; margin-top: 0; color: #ffffff; margin-bottom: 20px; font-size: 20px; font-weight: 600;">Book Repair in Andheri — Instant</h3>
+
+    <div style="margin-bottom: 14px;">
+        <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Your Name:</label>
+        <input type="text" id="custName" placeholder="Enter your name" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;">
+    </div>
+
+    <div style="margin-bottom: 14px;">
+        <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Locality in Andheri:</label>
+        <input type="text" id="custLocation" placeholder="e.g. Lokhandwala, Versova, MIDC" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;">
+    </div>
+
+    <div style="margin-bottom: 14px;">
+        <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Problem:</label>
+        <input type="text" id="custProblem" placeholder="e.g. Fridge not cooling, WM not spinning" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;">
+    </div>
+
+    <div style="margin-bottom: 8px;">
+        <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Mobile Number:</label>
+        <input type="tel" id="custMobile" placeholder="Enter 10 digit number" maxlength="10" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;">
+    </div>
+    <div id="bookFormError" style="min-height: 20px; color: #FCA5A5; font-size: 13px; margin-bottom: 8px; text-align: center;"></div>
+    <div style="text-align: center;">
+        <button onclick="sendBookingToSheets()" id="bookBtn" style="width: 100%; padding: 14px; background: #25D366; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+            🚀 Book Now
+        </button>
+    </div>
+</div>
+
 <section>
   <div class="container">
     <div class="center">
       <div class="section-label">All Services in Andheri</div>
-      <h2 class="section-title">13 Repair Services — One Call Away</h2>
+      <h2 class="section-title">7 Repair Services — One Call Away</h2>
       <p class="section-sub">Tap any service below for full details, common problems, and instant booking</p>
     </div>
     <div class="services-grid-compact">
-      <a href="refrigerator-repair.html" class="service-mini-card"><strong>Refrigerator Repair</strong><span>Not cooling, leakage, no light</span></a>
-      <a href="ac-repair.html" class="service-mini-card"><strong>Luxury Split AC Repair</strong><span>Not cooling, gas refill, PCB</span></a>
-      <a href="washing-machine-repair.html" class="service-mini-card"><strong>Washing Machine Repair</strong><span>Not spinning, not draining</span></a>
-      <a href="microwave-repair.html" class="service-mini-card"><strong>Microwave Repair</strong><span>Not heating, no light</span></a>
-      <a href="dishwasher-repair.html" class="service-mini-card"><strong>Advanced Dishwasher Repair</strong><span>Not washing, leakage</span></a>
-      <a href="pcb-motherboard-repair.html" class="service-mini-card"><strong>PCB & Motherboard Repair</strong><span>Chip-level circuit fixes</span></a>
-      <a href="wiring-harness-repair.html" class="service-mini-card"><strong>Wiring Harness Repair</strong><span>Short circuit, burnt wiring</span></a>
-      <a href="advanced-appliances-repair.html" class="service-mini-card"><strong>Advanced Home Appliances</strong><span>Smart & premium devices</span></a>
-      <a href="home-appliances-repair.html" class="service-mini-card"><strong>All Home Appliances</strong><span>Mixer, geyser, chimney & more</span></a>
-      <a href="air-dresser-repair.html" class="service-mini-card"><strong>Premium Air Dresser Repair</strong><span>Not steaming, door issues</span></a>
-      <a href="dryer-repair.html" class="service-mini-card"><strong>High Capacity Cloth Dryer</strong><span>Not heating, not drying</span></a>
-      <a href="amc-service.html" class="service-mini-card"><strong>Annual Maintenance (AMC)</strong><span>Yearly plans, all appliances</span></a>
-      <a href="microwave-repair.html" class="service-mini-card"><strong>Magnetron Emission Recovery</strong><span>Microwave magnetron repair</span></a>
+      <a href="refrigerator-repair.html" class="service-mini-card"><strong>Refrigerator Repair</strong><span>Not cooling, PCB fault, compressor issue, water leakage, ice maker fault, noisy operation & more</span></a>
+      <a href="washing-machine-repair.html" class="service-mini-card"><strong>Washing Machine Repair</strong><span>Not spinning, not draining, motor issue, drain pump fault, door lock issue, PCB fault & more</span></a>
+      <a href="microwave-repair.html" class="service-mini-card"><strong>Microwave Repair</strong><span>Not heating, no light, magnetron fault, turntable not rotating, sparking, door issue & more</span></a>
+      <a href="dishwasher-repair.html" class="service-mini-card"><strong>Dishwasher Repair</strong><span>Not washing, not draining, leakage, spray arm block, door latch fault, no power & more</span></a>
+      <a href="dryer-repair.html" class="service-mini-card"><strong>Cloth Dryer Repair</strong><span>Not heating, not drying, drum not spinning, vent block, noisy operation, burning smell & more</span></a>
+      <a href="air-dresser-repair.html" class="service-mini-card"><strong>Premium Air Dresser Repair</strong><span>Not steaming, not drying, door issue, panel fault, water tank issue, sensor fault & more</span></a>
+      <a href="amc-service.html" class="service-mini-card"><strong>Annual Maintenance (AMC)</strong><span>Appliance-wise plans, priority visits, discounted parts, regular checkups, all brands & more</span></a>
     </div>
   </div>
 </section>
 
+<!-- BRAND TRUST SECTION — warranty-expired customer targeting -->
 <section style="background: var(--grey);">
+  <div class="container">
+    <div class="center">
+      <div class="section-label">All Major Brands</div>
+      <h2 class="section-title">Samsung, LG & Every Brand — Serviced in Andheri</h2>
+    </div>
+    <div class="brand-trust-box">
+      <p class="lead">We repair <strong>Samsung, LG, IFB, Whirlpool, Bosch, Godrej</strong> and every other major brand across Andheri East & West — as an independent, experienced local service.</p>
+      <div class="brand-chip-row">
+        <span class="brand-chip-small">Samsung</span>
+        <span class="brand-chip-small">LG</span>
+        <span class="brand-chip-small">IFB</span>
+        <span class="brand-chip-small">Whirlpool</span>
+        <span class="brand-chip-small">Bosch</span>
+        <span class="brand-chip-small">Godrej</span>
+      </div>
+      <div class="warranty-note">
+        <strong>Company warranty khatam ho gayi?</strong> Koi tension nahi — same-day visit, genuine parts, transparent pricing, aur humari apni 6-month service warranty ke saath.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
   <div class="container">
     <div class="center"><div class="section-label">Why Andheri Trusts Us</div><h2 class="section-title">Local, Reliable, Same-Day</h2></div>
     <div class="why-grid">
@@ -214,16 +302,16 @@ footer span { color: var(--white); }
   </div>
 </section>
 
-<section>
+<section style="background: var(--grey);">
   <div class="container">
     <div class="center"><div class="section-label">Customer Reviews</div><h2 class="section-title">What Andheri Residents Say</h2></div>
     <div class="rating-badge">
       <span class="badge-stars">★★★★★</span>
       <span class="badge-num">4.8</span>
-      <span class="badge-count">(2,559 Reviews)</span>
+      <span class="badge-count">(<span id="areaReviewCount">2,559</span> Reviews)</span>
     </div>
     <div class="testimonials-grid">
-      <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"AC in our Lokhandwala flat stopped cooling in peak summer. Technician arrived within 2 hours." — Karan, Lokhandwala</div></div>
+      <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"Washing machine in our Lokhandwala flat stopped spinning right before a guest visit. Technician arrived within 2 hours." — Karan, Lokhandwala</div></div>
       <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"Office microwave near SEEPZ stopped heating. Fixed quickly without disrupting our workday." — Priyanka, MIDC</div></div>
       <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"Washing machine wasn't draining near Versova. Honest diagnosis, fair price, quick fix." — Rohan, Versova</div></div>
     </div>
@@ -235,7 +323,7 @@ footer span { color: var(--white); }
         <span data-val="1">★</span><span data-val="2">★</span><span data-val="3">★</span><span data-val="4">★</span><span data-val="5">★</span>
       </div>
       <input type="text" id="reviewName" placeholder="Your Name *">
-      <input type="text" id="reviewArea" placeholder="Your Locality in Andheri">
+      <input type="text" id="reviewLocality" placeholder="Your Locality in Andheri (e.g. Lokhandwala)">
       <textarea id="reviewText" placeholder="Tell others about your experience... *"></textarea>
       <button class="btn-review-submit" onclick="submitReview()">Submit Review</button>
       <div id="reviewMsg" class="review-msg"></div>
@@ -254,27 +342,25 @@ footer span { color: var(--white); }
 
     <div class="faq-item"><div class="faq-q">Andheri East aur West dono jagah service milti hai?</div><div class="faq-a">Bilkul! Andheri East aur West dono cover karte hain, MIDC/SEEPZ business area bhi included hai — same-day repair milega.</div></div>
     <div class="faq-item"><div class="faq-q">Andheri mein exactly kahan-kahan jaate ho?</div><div class="faq-a">Lokhandwala, Versova, D.N. Nagar, Seven Bungalows, Oshiwara, MIDC, SEEPZ, Chakala, Marol, Saki Naka, JB Nagar, Sahar, Veera Desai Road — sab jagah!</div></div>
-    <div class="faq-item"><div class="faq-q">Office ka fridge ya AC kharab hai SEEPZ mein, woh bhi karte ho?</div><div class="faq-a">Haan bhai! Home appliances ke saath office fridge, water purifier, AC bhi MIDC-SEEPZ commercial area mein service karte hain.</div></div>
+    <div class="faq-item"><div class="faq-q">Office ka fridge kharab hai SEEPZ mein, woh bhi karte ho?</div><div class="faq-a">Haan bhai! Home appliances ke saath office fridge, water purifier bhi MIDC-SEEPZ commercial area mein service karte hain.</div></div>
     <div class="faq-item"><div class="faq-q">Lokhandwala ya Versova mein kitni jaldi pohonchte ho?</div><div class="faq-a">2-3 ghante mein technician pohonch jata hai, time aur availability pe depend karta hai — but jaldi aate hain ye sure hai.</div></div>
-    <div class="faq-item"><div class="faq-q">Konse appliances repair karte ho Andheri mein?</div><div class="faq-a">Sab 13 services — fridge, AC, washing machine, microwave, dishwasher, PCB-motherboard, wiring harness, air dresser, dryer — ek hi call mein sab!</div></div>
+    <div class="faq-item"><div class="faq-q">Konse appliances repair karte ho Andheri mein?</div><div class="faq-a">7 services — refrigerator, washing machine, microwave, dishwasher, cloth dryer, air dresser, aur AMC plans — ek hi call mein sab!</div></div>
     <div class="faq-item"><div class="faq-q">Andheri East ka rate alag hai West se?</div><div class="faq-a">Nahi bhai, rate same hai pure Andheri mein, chahe East ho ya West — koi alag pricing nahi.</div></div>
     <div class="faq-item"><div class="faq-q">Raat ko bhi book kar sakte hai Andheri mein?</div><div class="faq-a">Haan, genuinely 24x7 hain! Raat ko bhi call ya message karo, emergency slot bhi hai jab zaroorat ho.</div></div>
-    <div class="faq-item"><div class="faq-q">AMC plan milta hai Andheri walo ke liye?</div><div class="faq-a">Bilkul milta hai! Yearly plan le lo, fir saara saal tension-free, sab appliances ek plan mein cover.</div></div>
-    <div class="faq-item"><div class="faq-q">Mera AC MIDC ke paas thanda hi nahi kar raha, kya hoga?</div><div class="faq-a">Aam taur pe gas kam hota hai, filter dirty hota hai, ya continuous commercial use se PCB fault aata hai. On-spot diagnose kar ke quote dete hain.</div></div>
+    <div class="faq-item"><div class="faq-q">AMC plan milta hai Andheri walo ke liye?</div><div class="faq-a">Haan bilkul milta hai — lekin ek cheez clear karni zaroori hai: AMC plan appliance-wise customize hota hai, generic ek-jaisa plan sabke liye nahi hota. Sirf fridge ke liye alag plan, fridge + washing machine combo alag, aur agar ghar mein 4-5 appliances hain toh unka combined plan bhi milta hai. Jitne appliances utna hi plan aur cost decide hota hai — call karo, apne appliances batao, hum sahi plan suggest kar denge.</div></div>
     <div class="faq-item"><div class="faq-q">Lokhandwala Complex ki high-rise building mein service karte ho?</div><div class="faq-a">Haan, regularly! High-rise towers mein bina extra access charge ke service dete hain Lokhandwala mein.</div></div>
     <div class="faq-item"><div class="faq-q">Fridge repair ka kharcha kitna aata hai Andheri mein?</div><div class="faq-a">Zyada tar repairs ₹600 se ₹3000 ke beech, problem ke hisab se — final price kaam shuru karne se pehle confirm karte hain.</div></div>
+    <div class="faq-item"><div class="faq-q">Fridge cooling nahi kar raha but compressor chal raha hai, PCB fault ho sakta hai?</div><div class="faq-a">Haan, ye common hai — compressor sahi chal raha ho phir bhi cooling na ho toh control board (PCB) ka relay ya sensor circuit fault ho sakta hai. Poora board replace karne se pehle chip-level diagnose karte hain, isse cost bhi kam aata hai.</div></div>
     <div class="faq-item"><div class="faq-q">Spare parts khud arrange karne padenge?</div><div class="faq-a">Common parts technician hi lekar aata hai. Premium model ka rare part ho to thoda order karna padta hai, baaki ready rehta hai.</div></div>
     <div class="faq-item"><div class="faq-q">Veera Desai Road ke media offices mein bhi service hoti hai?</div><div class="faq-a">Haan, residential aur commercial dono appliances service karte hain Veera Desai Road ke media-production hub mein.</div></div>
     <div class="faq-item"><div class="faq-q">WhatsApp pe book karna better hai ya call?</div><div class="faq-a">Dono equally fast! WhatsApp pe photo bhej sakte ho, isse technician sahi tools lekar aata hai.</div></div>
     <div class="faq-item"><div class="faq-q">Repair ke baad warranty milti hai?</div><div class="faq-a">Haan, har repair pe service warranty milti hai, details visit ke time bata dete hain.</div></div>
-    <div class="faq-item"><div class="faq-q">Bhai mera washing machine spin hi nahi kar raha, Andheri mein fix hoga?</div><div class="faq-a">Bilkul fix hoga! Motor capacitor weak hua hoga ya belt issue hoga — technician same visit mein check kar ke spin problem solve kar dega.</div></div>
+    <div class="faq-item"><div class="faq-q">Bhai mera washing machine spin hi nahi kar raha, Andheri mein fix hoga?</div><div class="faq-a">Bilkul fix hoga! Spin na hona kai wajah se ho sakta hai — motor capacitor weak hona, drive belt loose ya damaged hona, door lock sensor fault, load-imbalance sensor ka issue, ya control board (PCB) ka motor ko signal na dena. Exact cause machine khole bina pakka nahi bataya ja sakta — hamara technician on-spot poora diagnose karega aur jo bhi chahiye, part badalna ho ya adjustment, sahi fix kar dega same visit mein.</div></div>
     <div class="faq-item"><div class="faq-q">Microwave garam nahi kar raha, sirf ghoom raha hai — ye normal hai?</div><div class="faq-a">Nahi, ye magnetron ka issue hai zyada tar. Plate ghumti hai but heating nahi hoti — humse contact karo, same-day check ho jayega.</div></div>
     <div class="faq-item"><div class="faq-q">Ghar mein guests aa rahe hai aur fridge ka light nahi jal raha, urgent fix ho sakta hai?</div><div class="faq-a">Bilkul! Chhota issue hai zyada tar — bulb ya door switch ka fault. Same-day visit book karo, jaldi sort ho jayega guests aane se pehle.</div></div>
-    <div class="faq-item"><div class="faq-q">AC se paani chhoot raha hai room mein, kya karu?</div><div class="faq-a">Drain pipe block hua hoga ya filter dirty hoga. Turant band kar do AC, humein call karo — same-day clean kar denge.</div></div>
     <div class="faq-item"><div class="faq-q">Dishwasher mein utensil clean nahi ho rahe, fix ho jayega?</div><div class="faq-a">Haan, zyada tar spray arm block hota hai ya detergent issue hota hai. Technician check kar ke same visit mein fix kar dega.</div></div>
-    <div class="faq-item"><div class="faq-q">Office ka PCB board chalte chalte band ho gaya, urgent repair milega?</div><div class="faq-a">Haan bhai, PCB/motherboard chip-level repair same-day milta hai Andheri mein, office ho ya ghar — turant book karo.</div></div>
     <div class="faq-item"><div class="faq-q">Mera dryer kapde sukha hi nahi raha, problem kya ho sakti hai?</div><div class="faq-a">Heating element burn hua hoga ya vent block hoga. Ek visit mein dekh lete hain, zyada tar same-day solve ho jata hai.</div></div>
-    <div class="faq-item"><div class="faq-q">Wiring se jalne ki smell aa rahi hai, kya emergency mein bula sakta hoon?</div><div class="faq-a">Bilkul! Ye serious hai — appliance turant band karo, humein emergency call karo. Wiring harness fault ko jaldi check karna zaroori hai.</div></div>
+    <div class="faq-item"><div class="faq-q">Air dresser steam nahi kar raha, fix hoga?</div><div class="faq-a">Bilkul! Water tank sensor ya heating panel ka fault ho sakta hai — technician same visit mein diagnose kar ke sahi karega.</div></div>
   </div>
 </section>
 
@@ -288,17 +374,17 @@ footer span { color: var(--white); }
 </div>
 
 <nav class="page-nav">
-  <a href="bandra-west-appliance-repair.html">← Previous: Bandra West</a>
+  <a href="vile-parle-appliance-repair.html">← Previous: Vile Parle</a>
   <a href="index.html" class="home-link">🏠 Home</a>
-  <a href="mulund-appliance-repair.html">Next: Mulund →</a>
+  <a href="ghatkopar-appliance-repair.html">Next: Ghatkopar West →</a>
 </nav>
 
 <footer>
-  <p>© 2025 <span>Quickfix Mumbai</span> · Home Appliance & Electronics Repair</p>
+  <p>© 2026 <span>Quickfix Mumbai</span> · Home Appliance & Electronics Repair</p>
   <div class="footer-links">
     <a href="index.html">Home</a>
     <a href="refrigerator-repair.html">Refrigerator</a>
-    <a href="ac-repair.html">AC Repair</a>
+    <a href="washing-machine-repair.html">Washing Machine</a>
     <a href="bandra-west-appliance-repair.html">Bandra West</a>
     <a href="mulund-appliance-repair.html">Mulund</a>
     <a href="khar-appliance-repair.html">Khar</a>
@@ -342,6 +428,61 @@ footer span { color: var(--white); }
 </div>
 
 <script>
+// Same Google Apps Script backend used across the whole site (Sheet + Gmail + WhatsApp notify)
+const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4zI3hmCRy2V3dGwcUiYjuIe-8GhEyHbehjcnemWcvEzn02XT/exec";
+
+// Inline instant booking form — same Sheet backend, tags location as "Andheri - <locality>"
+function sendBookingToSheets() {
+    var name = document.getElementById('custName').value.trim();
+    var location = document.getElementById('custLocation').value.trim();
+    var problem = document.getElementById('custProblem').value.trim();
+    var mobile = document.getElementById('custMobile').value.trim();
+    var errBox = document.getElementById('bookFormError');
+    errBox.textContent = "";
+
+    if(name == "" || problem == "" || mobile == "") {
+        errBox.textContent = "⚠️ Please fill all required fields before booking.";
+        return;
+    }
+    if(!/^[6-9]\d{9}$/.test(mobile)) {
+        errBox.textContent = "⚠️ Please enter a valid 10-digit mobile number.";
+        return;
+    }
+
+    var bookBtn = document.getElementById('bookBtn');
+    bookBtn.disabled = true;
+    bookBtn.textContent = "Sending...";
+
+    var fullLocation = location ? ("Andheri - " + location) : "Andheri";
+
+    fetch(scriptUrl, {
+        method: "POST",
+        mode: "no-cors",
+        cache: "no-cache",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ formType: "booking", name: name, location: fullLocation, problem: problem, mobile: mobile })
+    }).then(() => {
+        showBookingSuccess(name);
+    }).catch(err => {
+        errBox.textContent = "⚠️ Network issue. Please try again or WhatsApp us directly.";
+        bookBtn.disabled = false;
+        bookBtn.textContent = "🚀 Book Now";
+    });
+}
+
+function showBookingSuccess(name) {
+    document.getElementById('bookingFormContainer').innerHTML = `
+        <div style="text-align: center; padding: 35px 15px;">
+            <div style="font-size: 55px; margin-bottom: 15px;">🎉</div>
+            <h3 style="color: #25D366; margin-top: 0; font-size: 26px; font-weight: 700;">Booked!</h3>
+            <p style="font-size: 16px; line-height: 1.6; color: #f1f5f9; margin-top: 15px;">
+                Dear <span style="color: #25D366; font-weight: bold;">${name}</span>, thank you! We've received your Andheri appliance service request.<br><br>
+                <span style="font-size: 15px; color: #cbd5e1;">✨ Our team is reviewing it now. A technician will call shortly to schedule the visit. ✨</span>
+            </p>
+        </div>
+    `;
+}
+
 function openBooking(service){document.getElementById('bookService').value=service;document.getElementById('bookingModal').classList.add('active');}
 function closeBooking(){document.getElementById('bookingModal').classList.remove('active');}
 function selectTime(el,time){document.querySelectorAll('.time-slot').forEach(t=>t.classList.remove('selected'));el.classList.add('selected');document.getElementById('bookTime').value=time;}
@@ -353,6 +494,16 @@ function submitBooking(e){
   const location=document.getElementById('bookLocation').value;
   const time=document.getElementById('bookTime').value;
   const problem=document.getElementById('bookProblem').value;
+
+  // Log this lead to the same Sheet as every other booking on the site
+  fetch(scriptUrl, {
+    method: "POST",
+    mode: "no-cors",
+    cache: "no-cache",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ formType: "booking", name: name, location: "Andheri - " + location, problem: `[${service}] ${problem}`, mobile: phone, time: time })
+  }).catch(err => { console.log("Sheet backup logged."); });
+
   const msg=`ANDHERI REPAIR BOOKING\n\nService: ${service}\nName: ${name}\nPhone: ${phone}\nLocality: ${location}\nPreferred Time: ${time}\n\nProblem: ${problem}\n\nPlease confirm and reach!`;
   window.open(`https://wa.me/919819832282?text=${encodeURIComponent(msg)}`,'_blank');
   closeBooking();
@@ -376,76 +527,75 @@ document.querySelectorAll('#starPicker span').forEach(star => {
   });
 });
 
-const AREA_KEY = 'andheri';
+// This area's identity — kept only for tagging new reviews submitted from this page
+const AREA_NAME = "Andheri";
+const BASE_REVIEW_COUNT = 2559;
 
+// Submit review — goes to the SAME Google Sheet as every other page, tagged with this area
 async function submitReview(){
   const name = document.getElementById('reviewName').value.trim();
-  const area = document.getElementById('reviewArea').value.trim();
+  const locality = document.getElementById('reviewLocality').value.trim();
   const text = document.getElementById('reviewText').value.trim();
   const msgEl = document.getElementById('reviewMsg');
 
   if(!name || !text || selectedRating === 0){
     msgEl.textContent = 'Please add your name, a star rating, and your review.';
+    msgEl.className = 'review-msg';
     msgEl.style.color = '#DC2626';
     return;
   }
 
-  const review = {
-    name, area, text,
-    rating: selectedRating,
-    date: new Date().toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' })
-  };
+  const areaValue = locality ? `${AREA_NAME} - ${locality}` : AREA_NAME;
 
   try{
-    const key = 'review:' + AREA_KEY + ':' + Date.now() + ':' + Math.random().toString(36).slice(2,7);
-    const result = await window.storage.set(key, JSON.stringify(review), true);
-    if(!result) throw new Error('save failed');
+    await fetch(scriptUrl, {
+      method: "POST",
+      mode: "no-cors",
+      cache: "no-cache",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ formType: "review", name, area: areaValue, text, rating: selectedRating })
+    });
 
-    msgEl.textContent = '✅ Thank you! Your review is now live below.';
+    msgEl.textContent = '✅ Thank you! Your review has been submitted.';
     msgEl.className = 'review-msg success';
 
     document.getElementById('reviewName').value = '';
-    document.getElementById('reviewArea').value = '';
+    document.getElementById('reviewLocality').value = '';
     document.getElementById('reviewText').value = '';
     selectedRating = 0;
     document.querySelectorAll('#starPicker span').forEach(s => s.classList.remove('filled'));
 
-    loadReviews();
+    setTimeout(loadReviews, 1500);
   } catch(err){
     msgEl.textContent = 'Could not submit right now. Please try again.';
+    msgEl.className = 'review-msg';
     msgEl.style.color = '#DC2626';
   }
 }
 
+// Load ALL reviews site-wide (not filtered by area) — same pool shown on every page, no date shown
 async function loadReviews(){
   const container = document.getElementById('liveReviews');
   try{
-    const list = await window.storage.list('review:' + AREA_KEY + ':', true);
-    if(!list || !list.keys || list.keys.length === 0){
-      container.innerHTML = '<p style="text-align:center; color:var(--grey-dark); font-size:0.85rem; grid-column:1/-1;">No reviews yet — be the first to share your experience!</p>';
-      return;
-    }
+    const res = await fetch(scriptUrl + '?action=reviews', { cache: "no-cache" });
+    const allReviews = await res.json();
+    const reviews = Array.isArray(allReviews) ? allReviews : [];
 
-    const reviews = [];
-    for(const key of list.keys){
-      try{
-        const res = await window.storage.get(key, true);
-        if(res && res.value) reviews.push(JSON.parse(res.value));
-      } catch(e){ /* skip broken entries */ }
-    }
+    // global count = same base + same total review count as every other page on the site
+    const total = BASE_REVIEW_COUNT + reviews.length;
+    const countEl = document.getElementById('areaReviewCount');
+    if(countEl) countEl.textContent = total.toLocaleString('en-IN');
 
     if(reviews.length === 0){
       container.innerHTML = '<p style="text-align:center; color:var(--grey-dark); font-size:0.85rem; grid-column:1/-1;">No reviews yet — be the first to share your experience!</p>';
       return;
     }
 
-    reviews.reverse();
-
-    container.innerHTML = reviews.map(r => `
+    container.innerHTML = reviews.slice().reverse().slice(0,6).map(r => `
       <div class="testimonial-card">
         <div class="testimonial-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div>
-        <div class="testimonial-text">"${r.text.replace(/</g,'&lt;')}"</div>
-        <div class="testimonial-author">${r.name.replace(/</g,'&lt;')}${r.area ? ', ' + r.area.replace(/</g,'&lt;') : ''} · ${r.date || ''}</div>
+        <div class="testimonial-text">"${String(r.text).replace(/</g,'&lt;')}"</div>
+        <div class="testimonial-author">${String(r.name).replace(/</g,'&lt;')}${r.area ? ', ' + String(r.area).replace(/</g,'&lt;') : ''}</div>
       </div>
     `).join('');
   } catch(err){
