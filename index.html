@@ -7,6 +7,7 @@
 <title>Quickfix Mumbai | Home Appliance Repair | Refrigerator Washing Machine Microwave</title>
 <link rel="canonical" href="https://quickfixmumbai.com/index.html">
 <link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icon-192.png">
 <meta name="theme-color" content="#1E3A8A">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="mobile-web-app-capable" content="yes">
@@ -267,6 +268,12 @@ footer span { color: var(--white); }
   </div>
 </section>
 
+<div style="background: #FEF9E7; border-bottom: 2px solid #D97706; padding: 14px 24px; text-align: center;">
+  <p style="font-size: 0.92rem; color: #92400E; font-weight: 600; margin: 0;">
+    🎉 <strong>First-Time Customer Offer:</strong> Diagnosis visit at just ₹250 (regular ₹499) — book your first repair with us today!
+  </p>
+</div>
+
 <section>
   <div class="container center">
     <div class="section-label">Our Services</div>
@@ -277,13 +284,13 @@ footer span { color: var(--white); }
     <a href="refrigerator-repair.html" class="service-card">
       <div class="service-emoji">1</div>
       <div class="service-title">Refrigerator Repair</div>
-      <p class="service-desc">Fridge not cooling, compressor failure, water leaking, ice maker issues — double/single door expert repair for all brands.</p>
+      <p class="service-desc">Fridge not cooling, compressor failure, water leaking, ice maker issues — expert repair for all brands.</p>
       <span class="service-link">View Repair Details →</span>
     </a>
     <a href="washing-machine-repair.html" class="service-card">
       <div class="service-emoji">2</div>
       <div class="service-title">Washing Machine Repair</div>
-      <p class="service-desc">Washing Machine not washing, not spinning, not draining, leaking water — front load and top load repair.</p>
+      <p class="service-desc">WM not washing, not spinning, not draining, leaking water — front load and top load repair.</p>
       <span class="service-link">View Repair Details →</span>
     </a>
     <a href="microwave-repair.html" class="service-card">
@@ -324,7 +331,7 @@ footer span { color: var(--white); }
     <div class="center">
       <div class="section-label">Coverage</div>
       <h2 class="section-title">We Serve ALL of Mumbai!</h2>
-      <p class="section-sub">Call us — we'll confirm timing and reach you, overall in Mumbai!</p>
+      <p class="section-sub">Call us — we'll confirm timing and reach you, anywhere in Mumbai!</p>
     </div>
     <div class="accordion-section">
       <div class="accordion-header" onclick="toggleAcc(this)">Service Areas in Mumbai (20+ Locations) <span>▼</span></div>
@@ -366,12 +373,36 @@ footer span { color: var(--white); }
   <div class="container">
     <div class="center"><div class="section-label">Why Choose Quickfix?</div><h2 class="section-title">Home Appliance Repair Experts in Mumbai</h2></div>
     <div class="why-grid">
-      <div class="why-card"><div class="why-icon">⚡</div><h3>Same-Day Service 99%</h3><p>Call & confirm timing — usually same-day</p></div>
+      <div class="why-card"><div class="why-icon">⚡</div><h3>Same-Day Service</h3><p>Call & confirm timing — usually same-day</p></div>
       <div class="why-card"><div class="why-icon">🏆</div><h3>10+ Years Expert</h3><p>10,000+ repairs completed</p></div>
       <div class="why-card"><div class="why-icon">💰</div><h3>Transparent Pricing</h3><p>Quote before any repair starts</p></div>
       <div class="why-card"><div class="why-icon">✅</div><h3>Warranty on Work</h3><p>6-month service guarantee included</p></div>
       <div class="why-card"><div class="why-icon">🔧</div><h3>Genuine Parts</h3><p>Only company-genuine spares used</p></div>
       <div class="why-card"><div class="why-icon">📍</div><h3>All Mumbai Covered</h3><p>20+ service areas daily</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="center">
+      <div class="section-label">Our Recent Work</div>
+      <h2 class="section-title">Real Repairs, Real Homes Across Mumbai</h2>
+      <p class="section-sub">A glimpse of our technicians at work — proper diagnosis, not guesswork</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+      <div style="border-radius: 12px; overflow: hidden; border: 1px solid var(--border);">
+        <img src="samsung-double-door-refrigerator-repair-bkc.jpg" alt="Samsung double door refrigerator repair in BKC Mumbai" style="width: 100%; height: 200px; object-fit: cover; display: block;" loading="lazy">
+      </div>
+      <div style="border-radius: 12px; overflow: hidden; border: 1px solid var(--border);">
+        <img src="pcb-circuit-checking-juhu.jpg" alt="PCB circuit board diagnostic check for appliance repair in Juhu Mumbai" style="width: 100%; height: 200px; object-fit: cover; display: block;" loading="lazy">
+      </div>
+      <div style="border-radius: 12px; overflow: hidden; border: 1px solid var(--border);">
+        <img src="panasonic-washing-machine-repair-chembur.jpg" alt="Panasonic washing machine repair in Pestom Sagar Chembur Mumbai" style="width: 100%; height: 200px; object-fit: cover; display: block;" loading="lazy">
+      </div>
+      <div style="border-radius: 12px; overflow: hidden; border: 1px solid var(--border);">
+        <img src="lg-no-power-diagnostic-ghatkopar-west.jpg" alt="LG appliance no power diagnostic check in Ghatkopar West Mumbai" style="width: 100%; height: 200px; object-fit: cover; display: block;" loading="lazy">
+      </div>
     </div>
   </div>
 </section>
@@ -501,7 +532,7 @@ function sendBookingToSheets() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ formType: "booking", name: name, location: location, problem: problem, mobile: mobile })
     }).then(() => {
-        showBookingSuccess(name);
+        showBookingSuccess(name, mobile);
     }).catch(err => {
         errBox.textContent = "⚠️ Network issue. Please try again or WhatsApp us directly.";
         bookBtn.disabled = false;
@@ -509,15 +540,18 @@ function sendBookingToSheets() {
     });
 }
 
-function showBookingSuccess(name) {
+function showBookingSuccess(name, mobile) {
+    const cancelMsg = encodeURIComponent(`Hi, I'd like to cancel/reschedule my booking. Name: ${name}, Mobile: ${mobile}`);
     document.getElementById('bookingFormContainer').innerHTML = `
         <div style="text-align: center; padding: 35px 15px; animation: popIn 0.4s ease-out;">
             <div style="font-size: 55px; margin-bottom: 15px;">🎉</div>
             <h3 style="color: #25D366; margin-top: 0; font-size: 26px; font-weight: 700; letter-spacing: 0.5px;">Booked!</h3>
             <p style="font-size: 16px; line-height: 1.6; color: #f1f5f9; margin-top: 15px;">
                 Dear <span style="color: #25D366; font-weight: bold;">${name}</span>, thank you! We've received your appliance service details.<br><br>
-                <span style="font-size: 15px; color: #cbd5e1;">✨ Our expert team is reviewing your request. A technician will call you shortly to schedule the visit. Quickfix Mumbai! ✨</span>
+                <span style="font-size: 15px; color: #cbd5e1;">✨ Our expert team is reviewing your request. A technician will call you shortly to schedule the visit. Quickfix Mumbai! ✨</span><br><br>
+                <span style="font-size: 13px; color: #cbd5e1;">Need to cancel or reschedule? Just call or WhatsApp us — no forms needed.</span>
             </p>
+            <a href="https://wa.me/919819832282?text=${cancelMsg}" target="_blank" style="display: inline-block; margin-top: 16px; color: #cbd5e1; font-size: 13px; text-decoration: underline;">Need to cancel or reschedule? Tap here to message us</a>
         </div>
     `;
 }
@@ -636,6 +670,7 @@ function showBookingSuccess(name) {
       <div class="contact-card"><div class="icon">💬</div><h3>WhatsApp</h3><a href="https://wa.me/919819832282?text=Hi%20Quickfix" target="_blank">+91 98198 32282</a><p>Send photos & details</p></div>
       <div class="contact-card"><div class="icon">📍</div><h3>Coverage</h3><p>All Mumbai — Bandra, Andheri, Borivali & 20+ areas</p></div>
       <div class="contact-card"><div class="icon">📝</div><h3>Have a Question?</h3><a href="inquiry.html">Send an Inquiry</a><p>No pressure, just answers</p></div>
+      <div class="contact-card"><div class="icon">🔧</div><h3>Are You a Technician?</h3><a href="join-our-team.html">Join Our Team</a><p>Steady work, fair pay, growth</p></div>
     </div>
   </div>
 </section>
