@@ -18,7 +18,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" as="style" onload="this.rel='stylesheet'">
 
-<!-- LocalBusiness Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -51,7 +50,8 @@
   --border: #D1D5DB;
   --red: #DC2626;
   --whatsapp: #128C7E;
-  --placeholder: #6B7280; /* AA-compliant placeholder grey, was too light before */
+  --placeholder: #6B7280;
+  --amber: #D97706;
 }
   html { scroll-behavior: smooth; }
 body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); line-height: 1.6; }
@@ -126,7 +126,7 @@ section { padding: 60px 24px; }
 
 .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
 .testimonial-card { background: var(--white); border-radius: 12px; padding: 20px; border: 1px solid var(--border); }
-.testimonial-stars { color: #B45309; margin-bottom: 10px; } /* darker amber for contrast on white */
+.testimonial-stars { color: #B45309; margin-bottom: 10px; }
 .testimonial-text { font-size: 0.9rem; font-style: italic; margin-bottom: 12px; }
 .testimonial-author { font-weight: 600; color: var(--blue); font-size: 0.85rem; }
 
@@ -139,7 +139,7 @@ section { padding: 60px 24px; }
 .rating-bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
 .rating-bar-row .star-num { font-size: 0.8rem; color: var(--grey-dark); width: 10px; }
 .rating-bar-track { flex: 1; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
-.rating-bar-fill { height: 100%; background: #D97706; border-radius: 4px; } /* darker amber for contrast */
+.rating-bar-fill { height: 100%; background: #D97706; border-radius: 4px; }
 .rating-summary-score { text-align: center; min-width: 110px; }
 .rating-summary-score .big-num { font-family: 'Poppins', sans-serif; font-size: 2.4rem; font-weight: 700; color: var(--text); line-height: 1; }
 .rating-summary-score .stars-row { color: #B45309; font-size: 1.1rem; margin: 4px 0; }
@@ -152,7 +152,7 @@ section { padding: 60px 24px; }
 .review-form-box textarea { min-height: 70px; resize: vertical; }
 .btn-review-submit { width: 100%; background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 11px; border: none; border-radius: 8px; font-weight: 700; font-size: 0.95rem; cursor: pointer; }
 .review-msg { text-align: center; font-size: 0.85rem; margin-top: 10px; font-weight: 600; }
-.review-msg.success { color: #0F766E; } /* darker teal for contrast, was too light green */
+.review-msg.success { color: #0F766E; }
 .live-reviews-label { text-align: center; font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey-dark); margin: 30px 0 18px; }
 .review-loading { text-align: center; color: var(--grey-dark); font-size: 0.85rem; padding: 20px; }
 
@@ -185,10 +185,10 @@ section { padding: 60px 24px; }
 .contact-card a { font-family: 'Poppins', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--blue); text-decoration: none; }
 .contact-card p { font-size: 0.8rem; color: var(--grey-dark); }
 
-footer { background: var(--blue); color: rgba(255,255,255,0.85); text-align: center; padding: 28px 24px; font-size: 0.82rem; } /* bumped from 0.7 for contrast */
+footer { background: var(--blue); color: rgba(255,255,255,0.85); text-align: center; padding: 28px 24px; font-size: 0.82rem; }
 footer span { color: var(--white); }
 .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 14px 0; font-size: 0.78rem; }
-.footer-links a { color: rgba(255,255,255,0.92); text-decoration: none; } /* bumped from 0.8 for contrast */
+.footer-links a { color: rgba(255,255,255,0.92); text-decoration: none; }
 .footer-links a:hover { color: var(--white); text-decoration: underline; }
 
 .float-wa, .float-call { position: fixed; z-index: 999; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; text-decoration: none; border: none; cursor: pointer; right: 24px; }
@@ -214,6 +214,25 @@ footer span { color: var(--white); }
 .time-slot-emergency { border-color: #FCA5A5; color: var(--red); font-weight: 700; grid-column: span 2; }
 .time-slot-emergency:hover { background: #FEE2E2; border-color: var(--red); }
 .time-slot-emergency.selected { background: var(--red); border-color: var(--red); color: var(--white); }
+
+.offer-box { max-width: 650px; margin: 0 auto; padding: 30px 24px; background: var(--white); border: 1.5px solid var(--border); border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center; }
+.offer-badge { display: inline-block; background: var(--amber); color: var(--white); padding: 8px 20px; border-radius: 50px; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.5px; }
+.offer-title { font-family: 'Poppins', sans-serif; margin: 22px 0 10px; font-size: clamp(1.3rem, 4vw, 1.7rem); color: var(--blue); line-height: 1.4; }
+.offer-price { font-family: 'Poppins', sans-serif; font-size: clamp(2rem, 6vw, 2.6rem); font-weight: 800; color: var(--whatsapp); }
+.offer-price .old-price { font-size: 1.2rem; color: #9CA3AF; text-decoration: line-through; font-weight: 600; margin-left: 8px; }
+.offer-list { margin: 20px auto; max-width: 300px; text-align: left; font-size: 0.94rem; line-height: 2; color: var(--text); }
+.offer-btn { display: inline-block; padding: 14px 32px; background: var(--blue); color: var(--white); text-decoration: none; border-radius: 50px; font-weight: 700; }
+.offer-btn:hover { background: var(--blue-light); }
+.offer-note { margin-top: 14px; font-size: 0.78rem; color: var(--grey-dark); }
+
+.emergency-box { max-width: 650px; margin: 0 auto; padding: 22px 24px; background: linear-gradient(135deg, #7F1D1D 0%, #DC2626 100%); border-radius: 16px; text-align: center; color: var(--white); box-shadow: 0 10px 30px rgba(220,38,38,0.25); }
+.emergency-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.2); padding: 6px 16px; border-radius: 50px; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.5px; }
+.emergency-title { font-family: 'Poppins', sans-serif; font-size: clamp(1.2rem, 4vw, 1.5rem); font-weight: 700; margin: 14px 0 6px; }
+.emergency-sub { font-size: 0.88rem; color: rgba(255,255,255,0.9); margin-bottom: 16px; }
+.emergency-price { font-family: 'Poppins', sans-serif; font-size: clamp(1.8rem, 5vw, 2.2rem); font-weight: 800; margin-bottom: 4px; }
+.emergency-price span { font-size: 0.85rem; font-weight: 500; color: rgba(255,255,255,0.85); }
+.emergency-slots { font-size: 0.8rem; color: #FDE68A; font-weight: 700; margin-bottom: 16px; }
+.emergency-btn { display: inline-block; padding: 13px 30px; background: var(--white); color: #DC2626; text-decoration: none; border-radius: 50px; font-weight: 800; font-size: 0.95rem; }
 
 @media (max-width: 600px) {
   header { padding: 12px 16px; }
@@ -268,11 +287,31 @@ footer span { color: var(--white); }
   </div>
 </section>
 
-<div style="background: #FEF9E7; border-bottom: 2px solid #D97706; padding: 14px 24px; text-align: center;">
-  <p style="font-size: 0.92rem; color: #92400E; font-weight: 600; margin: 0;">
-    🎉 <strong>First-Time Customer Offer:</strong> Diagnosis visit at just ₹250 (regular ₹499) — book your first repair with us today!
-  </p>
-</div>
+<section style="padding-bottom: 20px;">
+  <div class="emergency-box">
+    <div class="emergency-badge">🚨 URGENT? WE'RE READY RIGHT NOW</div>
+    <div class="emergency-title">Emergency Appliance Repair — Today</div>
+    <div class="emergency-sub">Fridge, washing machine, or any appliance down? Skip the wait.</div>
+    <div class="emergency-price">₹1999 <span>flat emergency visit</span></div>
+    <div class="emergency-slots">⚡ Limited emergency slots available in your area today</div>
+    <a href="tel:+919819832282" class="emergency-btn">📞 Call Now — Get Priority Visit</a>
+  </div>
+</section>
+
+<section style="padding-top: 20px;">
+  <div class="offer-box">
+    <div class="offer-badge">🔥 LIMITED-TIME NEW CUSTOMER OFFER</div>
+    <h2 class="offer-title">Doorstep Technician Visit & Expert Diagnosis</h2>
+    <div class="offer-price">₹299 <span class="old-price">₹499</span></div>
+    <div class="offer-list">
+      ✔ Professional Diagnosis<br>
+      ✔ Genuine Repairs<br>
+      ✔ Up to 6-Month Service Warranty
+    </div>
+    <a href="tel:+919819832282" class="offer-btn">📞 Book Technician Now</a>
+    <div class="offer-note">*T&C Apply — valid for first-time customers only</div>
+  </div>
+</section>
 
 <section>
   <div class="container center">
@@ -463,9 +502,6 @@ footer span { color: var(--white); }
   </div>
 </div>
 
-<!-- ==========================================
-     PREMIUM BOOKING FORM (NO SPINNER - INSTANT BOOKED)
-     ========================================== -->
 <div style="max-width: 450px; margin: 25px auto; padding: 25px; background: #1e3a8a; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); text-align: left; color: #ffffff; font-family: 'Inter', sans-serif; box-shadow: 0 4px 15px rgba(0,0,0,0.15);" id="bookingFormContainer">
     <h3 style="text-align: center; margin-top: 0; color: #ffffff; margin-bottom: 20px; font-size: 20px; font-weight: 600;">Instant Booking Form</h3>
     
@@ -501,7 +537,6 @@ footer span { color: var(--white); }
 </style>
 
 <script>
-// Google Apps Script Web App URL — QuickFix Mumbai backend (Sheet + Gmail + WhatsApp notify)
 const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4zI3hmCRy2V3dGwcUiYjuIe-8GhEyHbehjcnemWcvEzn02XT/exec";
 
 function sendBookingToSheets() {
@@ -556,9 +591,6 @@ function showBookingSuccess(name, mobile) {
     `;
 }
 </script>
-<!-- ==========================================
-     बुकिंग FORM समाप्त
-     ========================================== -->
   
 <section style="background: var(--grey);">
   <div class="container">
@@ -706,14 +738,12 @@ function showBookingSuccess(name, mobile) {
 <script>
 function toggleAcc(header){const c=header.nextElementSibling;c.classList.toggle('open');}
 
-// Area dropdown toggle
 function toggleAreaDropdown(header){
   header.classList.toggle('open');
   const body = header.nextElementSibling;
   body.classList.toggle('open');
 }
 
-// Star rating picker
 let selectedRating = 0;
 document.querySelectorAll('#starPicker span').forEach(star => {
   star.addEventListener('click', () => {
@@ -724,7 +754,6 @@ document.querySelectorAll('#starPicker span').forEach(star => {
   });
 });
 
-// ---- Rating counter (dynamic) ----
 const BASE_REVIEW_COUNT = 2559;
 
 function updateRatingCount(realReviewCount){
@@ -738,7 +767,6 @@ function updateRatingCount(realReviewCount){
   if(summaryEl) summaryEl.textContent = formatted;
 }
 
-// Submit a new review - saved to Google Sheet via Apps Script, visible to everyone
 async function submitReview(){
   const name = document.getElementById('reviewName').value.trim();
   const area = document.getElementById('reviewArea').value.trim();
@@ -778,7 +806,6 @@ async function submitReview(){
   }
 }
 
-// Load all reviews from the Google Sheet (via Apps Script doGet) so every visitor sees them
 async function loadReviews(){
   const container = document.getElementById('liveReviews');
   try{
@@ -806,7 +833,6 @@ async function loadReviews(){
 
 loadReviews();
 
-// PWA Install Prompt Handling
 let deferredInstallPrompt = null;
 
 window.addEventListener('beforeinstallprompt', (e) => {
