@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Quickfix Mumbai |best & Expert home appliance repair service. We fix Refrigerator, Washing Machine, Microwave, Dishwasher, Dryer & Air Dresser — genuine parts, 6-month warranty.">  
+<meta name="description" content="Quickfix Mumbai | Expert home appliance repair service. We fix Refrigerator, Washing Machine, Microwave, Dishwasher, Dryer & Air Dresser — genuine parts, 6-month warranty.">  
 <title>Quickfix Mumbai | Home Appliance Repair | Refrigerator Washing Machine Microwave</title>
 <link rel="canonical" href="https://quickfixmumbai.com/index.html">
 <link rel="manifest" href="manifest.json">
@@ -292,7 +292,7 @@ footer span { color: var(--white); }
     <div class="emergency-badge">🚨 URGENT? WE'RE READY RIGHT NOW</div>
     <div class="emergency-title">Emergency Appliance Repair — Today</div>
     <div class="emergency-sub">Fridge, washing machine, or any appliance down? Skip the wait.</div>
-    <div class="emergency-price">₹1199 <span>flat emergency visit</span></div>
+    <div class="emergency-price">₹1999 <span>flat emergency visit</span></div>
     <div class="emergency-slots">⚡ Limited emergency slots available in your area today</div>
     <a href="tel:+919819832282" class="emergency-btn">📞 Call Now — Get Priority Visit</a>
   </div>
@@ -323,7 +323,7 @@ footer span { color: var(--white); }
     <a href="refrigerator-repair.html" class="service-card">
       <div class="service-emoji">1</div>
       <div class="service-title">Refrigerator Repair</div>
-      <p class="service-desc">Fridge not cooling, compressor failure, water leaking, ice maker issues —|best & expert repair for all brands.</p>
+      <p class="service-desc">Fridge not cooling, compressor failure, water leaking, ice maker issues — expert repair for all brands.</p>
       <span class="service-link">View Repair Details →</span>
     </a>
     <a href="washing-machine-repair.html" class="service-card">
@@ -335,7 +335,7 @@ footer span { color: var(--white); }
     <a href="microwave-repair.html" class="service-card">
       <div class="service-emoji">3</div>
       <div class="service-title">Microwave Repair</div>
-      <p class="service-desc">Microwave not heating, dead, buttons not working, magnetron replacement —|best & expert oven repair.</p>
+      <p class="service-desc">Microwave not heating, dead, buttons not working, magnetron replacement — expert oven repair.</p>
       <span class="service-link">View Repair Details →</span>
     </a>
     <a href="dishwasher-repair.html" class="service-card">
@@ -504,31 +504,58 @@ footer span { color: var(--white); }
 
 <div style="max-width: 450px; margin: 25px auto; padding: 25px; background: #1e3a8a; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); text-align: left; color: #ffffff; font-family: 'Inter', sans-serif; box-shadow: 0 4px 15px rgba(0,0,0,0.15);" id="bookingFormContainer">
     <h3 style="text-align: center; margin-top: 0; color: #ffffff; margin-bottom: 20px; font-size: 20px; font-weight: 600;">Instant Booking Form</h3>
-    
-    <div style="margin-bottom: 14px;">
-        <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Your Name:</label>
-        <input type="text" id="custName" placeholder="Enter your name" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;">
+
+    <div id="bookStep1">
+        <div style="margin-bottom: 14px;">
+            <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Your Name:</label>
+            <input type="text" id="custName" placeholder="Enter your name" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;">
+        </div>
+
+        <div style="margin-bottom: 14px;">
+            <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Location/Area:</label>
+            <input type="text" id="custLocation" placeholder="e.g. Andheri West, Bandra" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;">
+        </div>
+
+        <div style="margin-bottom: 14px;">
+            <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Problem:</label>
+            <input type="text" id="custProblem" placeholder="e.g. Fridge not cooling, WM not spinning" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;">
+        </div>
+
+        <div style="margin-bottom: 8px;">
+            <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Mobile Number :</label>
+            <input type="tel" id="custMobile" placeholder="Enter 10 digit number" maxlength="10" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;">
+        </div>
+        <div id="bookFormError" style="min-height: 20px; color: #FCA5A5; font-size: 13px; margin-bottom: 8px; text-align: center;"></div>
+        <div style="text-align: center;">
+            <button onclick="goToStep2()" id="continueBtn" style="width: 100%; padding: 14px; background: #25D366; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+                Continue →
+            </button>
+        </div>
     </div>
 
-    <div style="margin-bottom: 14px;">
-        <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Location/Area:</label>
-        <input type="text" id="custLocation" placeholder="e.g. Andheri West, Bandra" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;">
-    </div>
+    <div id="bookStep2" style="display: none;">
+        <p style="font-size: 13px; color: #cbd5e1; margin-bottom: 16px;">Almost done! When should the technician visit?</p>
+        <div style="margin-bottom: 14px;">
+            <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Date:</label>
+            <input type="date" id="custDate" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;">
+        </div>
 
-    <div style="margin-bottom: 14px;">
-        <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Problem:</label>
-        <input type="text" id="custProblem" placeholder="e.g. Fridge not cooling, WM not spinning" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;">
-    </div>
-
-    <div style="margin-bottom: 8px;">
-        <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Mobile Number :</label>
-        <input type="tel" id="custMobile" placeholder="Enter 10 digit number" maxlength="10" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;">
-    </div>
-    <div id="bookFormError" style="min-height: 20px; color: #FCA5A5; font-size: 13px; margin-bottom: 8px; text-align: center;"></div>
-   <div id="btnActionArea" style="text-align: center;">
-        <button onclick="sendBookingToSheets()" id="bookBtn" style="width: 100%; padding: 14px; background: #25D366; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
-            🚀 Book Now 
-        </button>
+        <div style="margin-bottom: 18px;">
+            <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Time Slot:</label>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+                <div class="time-slot-btn" data-slot="Morning (9 AM - 1 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Morning<br>9-1</div>
+                <div class="time-slot-btn" data-slot="Afternoon (1 PM - 5 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Afternoon<br>1-5</div>
+                <div class="time-slot-btn" data-slot="Evening (5 PM - 9 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Evening<br>5-9</div>
+            </div>
+            <input type="hidden" id="custSlot" value="">
+        </div>
+        <div id="bookFormError2" style="min-height: 20px; color: #FCA5A5; font-size: 13px; margin-bottom: 8px; text-align: center;"></div>
+        <div style="display: flex; gap: 10px;">
+            <button onclick="backToStep1()" style="flex: 0 0 auto; padding: 14px 18px; background: rgba(255,255,255,0.15); color: white; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer;">← Back</button>
+            <button onclick="sendBookingToSheets()" id="bookBtn" style="flex: 1; padding: 14px; background: #25D366; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+                🚀 Confirm Booking
+            </button>
+        </div>
     </div>
 </div>
 
@@ -539,7 +566,7 @@ footer span { color: var(--white); }
 <script>
 const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4zI3hmCRy2V3dGwcUiYjuIe-8GhEyHbehjcnemWcvEzn02XT/exec";
 
-function sendBookingToSheets() {
+function goToStep2() {
     var name = document.getElementById('custName').value.trim();
     var location = document.getElementById('custLocation').value.trim();
     var problem = document.getElementById('custProblem').value.trim();
@@ -548,11 +575,34 @@ function sendBookingToSheets() {
     errBox.textContent = "";
 
     if(name == "" || location == "" || problem == "" || mobile == "") {
-        errBox.textContent = "⚠️ Please fill all fields before booking.";
+        errBox.textContent = "⚠️ Please fill all fields before continuing.";
         return;
     }
     if(!/^[6-9]\d{9}$/.test(mobile)) {
         errBox.textContent = "⚠️ Please enter a valid 10-digit mobile number.";
+        return;
+    }
+    document.getElementById('bookStep1').style.display = 'none';
+    document.getElementById('bookStep2').style.display = 'block';
+}
+
+function backToStep1() {
+    document.getElementById('bookStep2').style.display = 'none';
+    document.getElementById('bookStep1').style.display = 'block';
+}
+
+function sendBookingToSheets() {
+    var name = document.getElementById('custName').value.trim();
+    var location = document.getElementById('custLocation').value.trim();
+    var problem = document.getElementById('custProblem').value.trim();
+    var date = document.getElementById('custDate').value;
+    var slot = document.getElementById('custSlot').value;
+    var mobile = document.getElementById('custMobile').value.trim();
+    var errBox2 = document.getElementById('bookFormError2');
+    errBox2.textContent = "";
+
+    if(slot == "") {
+        errBox2.textContent = "⚠️ Please select a preferred time slot.";
         return;
     }
 
@@ -560,33 +610,55 @@ function sendBookingToSheets() {
     bookBtn.disabled = true;
     bookBtn.textContent = "Sending...";
 
+    var fullProblem = problem + (date ? ` | Preferred Date: ${date}` : '') + (slot ? ` | Slot: ${slot}` : '');
+
     fetch(scriptUrl, {
         method: "POST",
         mode: "no-cors",
         cache: "no-cache",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ formType: "booking", name: name, location: location, problem: problem, mobile: mobile })
+        body: JSON.stringify({ formType: "booking", name: name, location: location, problem: fullProblem, mobile: mobile })
     }).then(() => {
-        showBookingSuccess(name, mobile);
+        showBookingSuccess(name, mobile, date, slot);
     }).catch(err => {
-        errBox.textContent = "⚠️ Network issue. Please try again or WhatsApp us directly.";
+        errBox2.textContent = "⚠️ Network issue. Please try again or WhatsApp us directly.";
         bookBtn.disabled = false;
-        bookBtn.textContent = "🚀 Book Now";
+        bookBtn.textContent = "🚀 Confirm Booking";
     });
 }
 
-function showBookingSuccess(name, mobile) {
+function selectSlot(el) {
+    document.querySelectorAll('.time-slot-btn').forEach(function(btn) {
+        btn.style.background = '#fff';
+        btn.style.color = '#1e3a8a';
+        btn.style.borderColor = '#cbd5e1';
+    });
+    el.style.background = '#1e3a8a';
+    el.style.color = '#fff';
+    el.style.borderColor = '#1e3a8a';
+    document.getElementById('custSlot').value = el.getAttribute('data-slot');
+}
+
+(function(){
+    var dateInput = document.getElementById('custDate');
+    if(dateInput){
+        var today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    }
+})();
+
+function showBookingSuccess(name, mobile, date, slot) {
     const cancelMsg = encodeURIComponent(`Hi, I'd like to cancel/reschedule my booking. Name: ${name}, Mobile: ${mobile}`);
+    const scheduleLine = (date || slot) ? `<br>Scheduled: ${date || 'Date TBC'} — ${slot || 'Slot TBC'}` : '';
     document.getElementById('bookingFormContainer').innerHTML = `
         <div style="text-align: center; padding: 35px 15px; animation: popIn 0.4s ease-out;">
             <div style="font-size: 55px; margin-bottom: 15px;">🎉</div>
             <h3 style="color: #25D366; margin-top: 0; font-size: 26px; font-weight: 700; letter-spacing: 0.5px;">Booked!</h3>
             <p style="font-size: 16px; line-height: 1.6; color: #f1f5f9; margin-top: 15px;">
-                Dear <span style="color: #25D366; font-weight: bold;">${name}</span>, thank you! We've received your appliance service details.<br><br>
-                <span style="font-size: 15px; color: #cbd5e1;">✨ Our expert team is reviewing your request. A technician will call you shortly to schedule the visit. Quickfix Mumbai! ✨</span><br><br>
-                <span style="font-size: 13px; color: #cbd5e1;">Need to cancel or reschedule? Just call or WhatsApp us — no forms needed.</span>
+                Dear <span style="color: #25D366; font-weight: bold;">${name}</span>, thank you! We've received your appliance service details.${scheduleLine}<br><br>
+                <span style="font-size: 15px; color: #cbd5e1;">✨ Our expert team is reviewing your request. A technician will call you shortly to confirm. Quickfix Mumbai! ✨</span>
             </p>
-            <a href="https://wa.me/919819832282?text=${cancelMsg}" target="_blank" style="display: inline-block; margin-top: 16px; color: #cbd5e1; font-size: 13px; text-decoration: underline;">Need to cancel or reschedule? Tap here to message us</a>
+            <a href="https://wa.me/919819832282?text=${cancelMsg}" target="_blank" style="display: inline-block; margin-top: 18px; padding: 11px 24px; background: rgba(255,255,255,0.15); color: #ffffff; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none;">✕ Cancel / Reschedule Booking</a>
         </div>
     `;
 }
