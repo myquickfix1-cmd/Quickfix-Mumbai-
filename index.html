@@ -646,14 +646,20 @@ function sendBookingToSheets() {
     bookBtn.disabled = true;
     bookBtn.textContent = "Sending...";
 
-    var fullProblem = problem + (date ? ` | Preferred Date: ${date}` : '') + (slot ? ` | Slot: ${slot}` : '');
-
     fetch(scriptUrl, {
         method: "POST",
         mode: "no-cors",
         cache: "no-cache",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ formType: "booking", name: name, location: location, problem: fullProblem, mobile: mobile })
+        body: JSON.stringify({
+            formType: "booking",
+            name: name,
+            location: location,
+            problem: problem,
+            mobile: mobile,
+            date: date,
+            time: slot
+        })
     }).then(() => {
         showBookingSuccess(name, mobile, date, slot);
     }).catch(err => {
