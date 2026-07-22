@@ -157,6 +157,15 @@ footer span { color: var(--white); }
         <input type="text" id="custProblem" placeholder="e.g. Fridge not cooling, WM not spinning" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
     <div style="margin-bottom: 8px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Mobile Number:</label>
         <input type="tel" id="custMobile" placeholder="Enter 10 digit number" maxlength="10" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
+    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Date:</label>
+        <input type="date" id="custDate" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
+    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Time Slot:</label>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+            <div class="time-slot-btn" data-slot="Morning (9 AM - 1 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Morning<br>9-1</div>
+            <div class="time-slot-btn" data-slot="Afternoon (1 PM - 5 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Afternoon<br>1-5</div>
+            <div class="time-slot-btn" data-slot="Evening (5 PM - 9 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Evening<br>5-9</div>
+        </div>
+        <input type="hidden" id="custSlot" value=""></div>
     <div id="bookFormError" style="min-height: 20px; color: #FCA5A5; font-size: 13px; margin-bottom: 8px; text-align: center;"></div>
     <div style="text-align: center;"><button onclick="sendBookingToSheets()" id="bookBtn" style="width: 100%; padding: 14px; background: #25D366; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">🚀 Book Now</button></div>
 </div>
@@ -342,17 +351,33 @@ function sendBookingToSheets() {
     errBox.textContent = "";
     if(name == "" || problem == "" || mobile == "") { errBox.textContent = "⚠️ Please fill all required fields before booking."; return; }
     if(!/^[6-9]\d{9}$/.test(mobile)) { errBox.textContent = "⚠️ Please enter a valid 10-digit mobile number."; return; }
+    var date = document.getElementById('custDate').value;
+    var slot = document.getElementById('custSlot').value;
+    if(slot == "") { errBox.textContent = "⚠️ Please select a preferred time slot."; return; }
     var bookBtn = document.getElementById('bookBtn');
     bookBtn.disabled = true; bookBtn.textContent = "Sending...";
     var fullLocation = location ? ("Worli - " + location) : "Worli";
     fetch(scriptUrl, { method: "POST", mode: "no-cors", cache: "no-cache", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ formType: "booking", name: name, location: fullLocation, problem: problem, mobile: mobile })
-    }).then(() => { showBookingSuccess(name); }).catch(() => {
+        body: JSON.stringify({ formType: "booking", name: name, location: fullLocation, problem: problem, mobile: mobile, date: date, time: slot })
+    }).then(() => { showBookingSuccess(name, date, slot); }).catch(() => {
         errBox.textContent = "⚠️ Network issue. Please try again or WhatsApp us directly."; bookBtn.disabled = false; bookBtn.textContent = "🚀 Book Now";
     });
 }
-function showBookingSuccess(name) {
-    document.getElementById('bookingFormContainer').innerHTML = `<div style="text-align: center; padding: 35px 15px;"><div style="font-size: 55px; margin-bottom: 15px;">🎉</div><h3 style="color: #25D366; margin-top: 0; font-size: 26px; font-weight: 700;">Booked!</h3><p style="font-size: 16px; line-height: 1.6; color: #f1f5f9; margin-top: 15px;">Dear <span style="color: #25D366; font-weight: bold;">${name}</span>, thank you! We've received your Worli appliance service request.<br><br><span style="font-size: 15px; color: #cbd5e1;">✨ Our team is reviewing it now. A technician will call shortly to schedule the visit. ✨</span></p></div>`;
+
+function selectSlot(el) {
+    document.querySelectorAll('.time-slot-btn').forEach(function(btn) {
+        btn.style.background = '#fff'; btn.style.color = '#1e3a8a'; btn.style.borderColor = '#cbd5e1';
+    });
+    el.style.background = '#1e3a8a'; el.style.color = '#fff'; el.style.borderColor = '#1e3a8a';
+    document.getElementById('custSlot').value = el.getAttribute('data-slot');
+}
+(function(){
+    var d = document.getElementById('custDate');
+    if(d){ var today = new Date().toISOString().split('T')[0]; d.setAttribute('min', today); }
+})();
+
+function showBookingSuccess(name, date, slot) {
+    document.getElementById('bookingFormContainer').innerHTML = `<div style="text-align: center; padding: 35px 15px;"><div style="font-size: 55px; margin-bottom: 15px;">🎉</div><h3 style="color: #25D366; margin-top: 0; font-size: 26px; font-weight: 700;">Booked!</h3><p style="font-size: 16px; line-height: 1.6; color: #f1f5f9; margin-top: 15px;">Dear <span style="color: #25D366; font-weight: bold;">${name}</span>, thank you! We've received your Worli appliance service request.${(date||slot) ? '<br>Scheduled: ' + (date || 'Date TBC') + ' — ' + (slot || 'Slot TBC') : ''}<br><br><span style="font-size: 15px; color: #cbd5e1;">✨ Our team is reviewing it now. A technician will call shortly to schedule the visit. ✨</span></p></div>`;
 }
 
 
