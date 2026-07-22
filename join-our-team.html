@@ -209,8 +209,8 @@ function submitApplication(){
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       formType: "technician_application",
-      name: name, mobile: phone, location: area,
-      problem: `Specialization: ${specialization} | Experience: ${experience} | Notes: ${message}`
+      name: name, mobile: phone, area: area,
+      specialization: specialization, experience: experience, notes: message
     })
   }).then(() => {
     document.querySelector('.apply-form-box').innerHTML = `
