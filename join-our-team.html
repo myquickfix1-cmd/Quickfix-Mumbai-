@@ -6,7 +6,10 @@
 <meta name="description" content="Join Quickfix Mumbai as a repair technician — steady work, fair pay, training on all major brands, growth opportunities. Apply now.">
 <title>Join Our Team | Technician Jobs at Quickfix Mumbai</title>
 <link rel="canonical" href="https://quickfixmumbai.com/join-our-team.html">
-<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="manifest" href="manifest-technician.json">
+<link rel="icon" type="image/png" href="icon-technician-192.png">
+<meta name="theme-color" content="#1E3A8A">
+<link rel="apple-touch-icon" href="icon-technician-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -99,6 +102,17 @@ footer span { color: var(--white); }
     <a href="https://wa.me/919819832282?text=I%20want%20to%20join%20as%20a%20technician" target="_blank" class="btn-wa">📲 WhatsApp Us</a>
   </div>
 </section>
+
+<div id="installBanner" style="display:none; max-width: 650px; margin: 24px auto 0; padding: 18px 22px; background: var(--grey); border: 1.5px solid var(--border); border-radius: 14px; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;">
+  <div style="display:flex; align-items:center; gap:12px;">
+    <span style="font-size: 1.8rem;">📲</span>
+    <div>
+      <div style="font-weight:700; color: var(--blue); font-size: 0.95rem;">Install Quickfix Technician (QT)</div>
+      <div style="font-size: 0.8rem; color: var(--grey-dark);">Get job updates faster — no Play Store needed, installs straight from this page</div>
+    </div>
+  </div>
+  <button onclick="installPWA()" style="background: var(--blue); color: #fff; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 700; font-size: 0.88rem; cursor: pointer;">Install App</button>
+</div>
 
 <section>
   <div class="container">
@@ -221,6 +235,32 @@ function submitApplication(){
       </div>`;
   }).catch(() => {
     errBox.textContent = "⚠️ Network issue. Please try again or WhatsApp us directly.";
+  });
+}
+
+let deferredInstallPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  document.getElementById('installBanner').style.display = 'flex';
+});
+
+function installPWA(){
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+    deferredInstallPrompt.userChoice.then(() => {
+      document.getElementById('installBanner').style.display = 'none';
+      deferredInstallPrompt = null;
+    });
+  } else {
+    alert('If you don\'t see an install prompt, check your browser menu for "Add to Home Screen" or "Install App".');
+  }
+}
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => { /* sw.js not found, install banner still works */ });
   });
 }
 </script>
