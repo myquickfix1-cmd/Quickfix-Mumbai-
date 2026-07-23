@@ -6,44 +6,58 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Quickfix Mumbai | Admin Dashboard</title>
 <style>
-:root { --primary: #1E3A8A; --success: #28a745; --danger: #dc3545; --warning: #ffc107; --dark: #212529; --grey: #f8f9fa; }
+:root { --primary: #1E3A8A; --success: #28a745; --danger: #dc3545; --warning: #D97706; --dark: #212529; --grey: #f8f9fa; --wa: #128C7E; }
 * { box-sizing: border-box; }
 body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #eef2f7; margin: 0; padding: 10px; color: var(--dark); }
 .header { display: flex; flex-direction: column; gap: 10px; background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 15px; }
 @media(min-width: 768px) { .header { flex-direction: row; justify-content: space-between; align-items: center; padding: 15px 25px; } }
 .grid-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 15px; }
-@media(min-width: 768px) { .grid-stats { grid-template-columns: repeat(3, 1fr); gap: 15px; } }
+@media(min-width: 768px) { .grid-stats { grid-template-columns: repeat(4, 1fr); gap: 15px; } }
 .stat-card { background: white; padding: 14px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 4px solid var(--primary); }
-.stat-card h3 { margin: 0 0 5px 0; color: #6c757d; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
-.stat-card p { margin: 0; font-size: 1.4rem; font-weight: bold; }
+.stat-card h3 { margin: 0 0 5px 0; color: #6c757d; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.stat-card p { margin: 0; font-size: 1.3rem; font-weight: bold; }
 .section { background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 15px; }
 .section-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 2px solid #f1f1f1; padding-bottom: 8px; flex-wrap: wrap; gap: 8px; }
-h2 { margin: 0; color: var(--primary); font-size: 1.05rem; }
-button { background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; padding: 8px 14px; border-radius: 6px; font-size: 0.85rem; }
+h2 { margin: 0; color: var(--primary); font-size: 1.02rem; }
+button { background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; padding: 8px 14px; border-radius: 6px; font-size: 0.83rem; }
 button.secondary { background: #6c757d; }
 button.danger { background: var(--danger); }
+button.success { background: var(--success); }
+button.wa { background: var(--wa); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+input, select { padding: 8px 10px; border-radius: 6px; border: 1px solid #ced4da; font-size: 0.85rem; width: 100%; box-sizing: border-box; }
 .responsive-table { width: 100%; border-collapse: collapse; margin-top: 5px; }
 .responsive-table thead { display: none; }
 .responsive-table tbody tr { display: block; background: var(--grey); border: 1px solid #edf2f9; border-radius: 8px; padding: 12px; margin-bottom: 12px; }
-.responsive-table td { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; padding: 6px 0; border-bottom: 1px dashed #eee; font-size: 0.85rem; text-align: right; }
+.responsive-table td { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; padding: 6px 0; border-bottom: 1px dashed #eee; font-size: 0.83rem; text-align: right; }
 .responsive-table td:last-child { border-bottom: none; }
 .responsive-table td::before { content: attr(data-label); font-weight: bold; text-align: left; color: #495057; flex-shrink: 0; }
-@media(min-width: 900px) {
+@media(min-width: 1000px) {
   .responsive-table thead { display: table-header-group; }
   .responsive-table tbody tr { display: table-row; background: transparent; border: none; }
-  .responsive-table td { display: table-cell; text-align: left; padding: 10px 12px; border-bottom: 1px solid #edf2f9; }
+  .responsive-table td { display: table-cell; text-align: left; padding: 10px 10px; border-bottom: 1px solid #edf2f9; vertical-align: top; }
   .responsive-table td::before { display: none; }
 }
 .empty-state { text-align: center; color: #6c757d; padding: 24px; font-size: 0.9rem; }
 .info-link { color: var(--primary); text-decoration: none; font-weight: bold; display: inline-block; }
-.wa-link { color: #128C7E; text-decoration: none; font-weight: bold; display: inline-block; margin-left: 8px; }
+.wa-link { color: var(--wa); text-decoration: none; font-weight: bold; display: inline-block; margin-left: 8px; }
+.badge { padding: 4px 10px; border-radius: 30px; font-size: 0.72rem; font-weight: bold; display: inline-block; }
+.badge-new { background: #fff3cd; color: #856404; }
+.badge-assigned { background: #d1ecf1; color: #0c5460; }
+.badge-done { background: #d4edda; color: #155724; }
+.badge-warranty-active { background: #d4edda; color: #155724; }
+.badge-warranty-expired { background: #f8d7da; color: #721c24; }
 .login-overlay { position: fixed; inset: 0; background: #eef2f7; display: flex; justify-content: center; align-items: center; z-index: 9999; padding: 15px; }
 .login-box { background: white; padding: 30px 20px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 350px; text-align: center; }
 .login-box h2 { margin-bottom: 20px; text-align: center; }
-.login-box input { width: 100%; margin-bottom: 15px; padding: 10px; box-sizing: border-box; border: 1.5px solid #ced4da; border-radius: 6px; font-size: 0.95rem; }
+.login-box input { margin-bottom: 15px; padding: 10px; }
 .login-box button { width: 100%; padding: 12px; font-size: 1rem; }
 .error-msg { color: var(--danger); font-size: 0.85rem; margin-top: 10px; display: none; }
 .loading-msg { text-align: center; color: #6c757d; padding: 20px; font-size: 0.88rem; }
+.add-form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin-bottom: 10px; }
+.follow-up-card { background: #FEF9E7; border-left: 4px solid var(--warning); border-radius: 8px; padding: 12px 14px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+.traffic-item { display: flex; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid #eee; font-size: 0.82rem; }
+.small-note { font-size: 0.76rem; color: #6c757d; margin-top: 4px; }
 </style>
 </head>
 <body>
@@ -52,8 +66,8 @@ button.danger { background: var(--danger); }
   <div class="login-box">
     <h2>🔐 Quickfix Admin</h2>
     <form id="loginForm">
-      <input type="text" id="username" placeholder="Username" autocomplete="username" required>
-      <input type="password" id="password" placeholder="Password" autocomplete="current-password" required>
+      <input type="text" id="username" placeholder="Username" autocomplete="username" required style="width:100%;">
+      <input type="password" id="password" placeholder="Password" autocomplete="current-password" required style="width:100%;">
       <button type="submit">Log In</button>
       <p id="errorMsg" class="error-msg"></p>
     </form>
@@ -70,22 +84,55 @@ button.danger { background: var(--danger); }
   </div>
 
   <div class="grid-stats">
-    <div class="stat-card"><h3>Total Bookings</h3><p id="stat-bookings">—</p></div>
-    <div class="stat-card"><h3>Technician Applications</h3><p id="stat-technicians">—</p></div>
-    <div class="stat-card"><h3>Last Refreshed</h3><p id="stat-refreshed" style="font-size:0.85rem;">—</p></div>
+    <div class="stat-card"><h3>Bookings Today</h3><p id="stat-today">—</p></div>
+    <div class="stat-card"><h3>Pending / Assigned</h3><p id="stat-pending">—</p></div>
+    <div class="stat-card"><h3>Completed (Total)</h3><p id="stat-done">—</p></div>
+    <div class="stat-card"><h3>Last Refreshed</h3><p id="stat-refreshed" style="font-size:0.8rem;">—</p></div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>🟢 On the Site Right Now (last 5 min)</h2></div>
+    <div id="traffic-list"><div class="empty-state">No recent activity.</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>⏰ Follow-Ups Due (2-4 days after service)</h2></div>
+    <div id="followup-list"><div class="empty-state">Nothing due right now.</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>💌 Re-engagement Due (~2 months after service)</h2></div>
+    <div id="reengagement-list"><div class="empty-state">Nothing due right now.</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>👷 Active Technician Team</h2></div>
+    <div class="add-form-grid">
+      <input type="text" id="newTechName" placeholder="Name">
+      <input type="tel" id="newTechMobile" placeholder="Mobile (10 digit)">
+      <input type="text" id="newTechSpec" placeholder="Specialization">
+      <input type="text" id="newTechArea" placeholder="Area">
+      <button onclick="addTechnician()">+ Add Technician</button>
+    </div>
+    <div id="team-error" style="color: var(--danger); font-size: 0.82rem; margin-bottom: 8px;"></div>
+    <div id="team-loading" class="loading-msg">Loading team…</div>
+    <table class="responsive-table" id="team-table" style="display:none;">
+      <thead><tr><th>Name</th><th>Contact</th><th>Specialization</th><th>Area</th></tr></thead>
+      <tbody id="team-body"></tbody>
+    </table>
   </div>
 
   <div class="section">
     <div class="section-head"><h2>📅 Customer Bookings</h2></div>
     <div id="bookings-loading" class="loading-msg">Loading bookings…</div>
     <table class="responsive-table" id="bookings-table" style="display:none;">
-      <thead><tr><th>Received</th><th>Customer</th><th>Location</th><th>Problem</th><th>Contact</th><th>Preferred Visit</th></tr></thead>
+      <thead><tr><th>Received</th><th>Customer</th><th>Location</th><th>Problem</th><th>Contact</th><th>Status / Warranty</th><th>Actions</th></tr></thead>
       <tbody id="bookings-body"></tbody>
     </table>
   </div>
 
   <div class="section">
-    <div class="section-head"><h2>👷 Technician Applications</h2></div>
+    <div class="section-head"><h2>🔧 Technician Applications</h2></div>
     <div id="technicians-loading" class="loading-msg">Loading applications…</div>
     <table class="responsive-table" id="technicians-table" style="display:none;">
       <thead><tr><th>Received</th><th>Name</th><th>Area</th><th>Specialization</th><th>Experience</th><th>Contact</th><th>Notes</th></tr></thead>
@@ -101,6 +148,8 @@ const loginOverlay = document.getElementById('loginOverlay');
 const dashboardContent = document.getElementById('dashboardContent');
 const errorMsg = document.getElementById('errorMsg');
 
+let LAST_DATA = { bookings: [], technicians: [], team: [], liveTraffic: [] };
+
 function getToken() { return sessionStorage.getItem('quickfix_admin_token'); }
 
 async function tryAutoLogin() {
@@ -111,16 +160,14 @@ async function tryAutoLogin() {
   await loadAdminData();
 }
 
-document.getElementById('loginForm').addEventListener('submit', async function(e) {
+document.getElementById('loginForm').addEventListener('submit', async function (e) {
   e.preventDefault();
   errorMsg.style.display = 'none';
   const username = document.getElementById('username').value.trim();
   const password = document.getElementById('password').value;
-
   try {
     const res = await fetch(scriptUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain' },
+      method: 'POST', headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify({ action: 'admin_login', username: username, password: password })
     });
     const result = await res.json();
@@ -144,66 +191,260 @@ function logoutAdmin() {
   window.location.reload();
 }
 
-function waLink(mobile) {
-  if (!mobile) return '';
+function waLink(mobile, text) {
+  if (!mobile) return '#';
   const clean = String(mobile).replace(/\D/g, '');
   const num = clean.length === 10 ? '91' + clean : clean;
-  return `https://wa.me/${num}`;
+  return `https://wa.me/${num}${text ? '?text=' + encodeURIComponent(text) : ''}`;
 }
 
 function escapeHtml(str) {
   return String(str || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
+function escJs(str) {
+  return String(str || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+}
+
+function fmtDate(d) {
+  if (!d) return '';
+  const dt = new Date(d);
+  if (isNaN(dt.getTime())) return String(d);
+  return dt.toLocaleString('en-IN');
+}
+
+function daysAgo(d) {
+  if (!d) return null;
+  const dt = new Date(d);
+  if (isNaN(dt.getTime())) return null;
+  return Math.floor((Date.now() - dt.getTime()) / (1000 * 60 * 60 * 24));
+}
+
+async function callAction(payload) {
+  const token = getToken();
+  const res = await fetch(scriptUrl, {
+    method: 'POST', headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify({ ...payload, token: token })
+  });
+  return res.json();
+}
+
+// ---------- ADD TECHNICIAN ----------
+async function addTechnician() {
+  const name = document.getElementById('newTechName').value.trim();
+  const mobile = document.getElementById('newTechMobile').value.trim();
+  const spec = document.getElementById('newTechSpec').value.trim();
+  const area = document.getElementById('newTechArea').value.trim();
+  const errBox = document.getElementById('team-error');
+  errBox.textContent = '';
+  if (!name || !mobile) { errBox.textContent = '⚠️ Name and mobile are required.'; return; }
+  if (!/^[6-9]\d{9}$/.test(mobile)) { errBox.textContent = '⚠️ Enter a valid 10-digit mobile number.'; return; }
+  try {
+    const result = await callAction({ action: 'add_technician', name, mobile, specialization: spec, area });
+    if (result.status === 'success') {
+      document.getElementById('newTechName').value = '';
+      document.getElementById('newTechMobile').value = '';
+      document.getElementById('newTechSpec').value = '';
+      document.getElementById('newTechArea').value = '';
+      await loadAdminData();
+    } else {
+      errBox.textContent = '⚠️ ' + (result.message || 'Could not add technician.');
+    }
+  } catch (err) {
+    errBox.textContent = '⚠️ Network error.';
+  }
+}
+
+// ---------- ASSIGN LEAD ----------
+async function assignLead(bookingId, selectEl) {
+  const [techName, techMobile] = selectEl.value.split('||');
+  if (!techName) return;
+  const result = await callAction({ action: 'assign_lead', bookingId, techName, techMobile });
+  if (result.status === 'success') {
+    await loadAdminData();
+  } else {
+    alert('Could not assign: ' + (result.message || 'unknown error'));
+  }
+}
+
+// ---------- MARK DONE ----------
+async function markDone(bookingId) {
+  if (!confirm('Mark this job as completed? This starts the 6-month warranty clock.')) return;
+  const result = await callAction({ action: 'mark_done', bookingId });
+  if (result.status === 'success') {
+    await loadAdminData();
+  } else {
+    alert('Could not update: ' + (result.message || 'unknown error'));
+  }
+}
+
+// ---------- NOTIFY CUSTOMER (technician assigned) ----------
+function notifyCustomer(mobile, customerName, techName, techMobile, date, time) {
+  const visitLine = (date || time) ? ` around ${date || ''} ${time || ''}`.trim() : ' shortly';
+  const msg = `Dear ${customerName}, this is Quickfix Mumbai. Your technician *${techName}* (${techMobile}) will visit you${visitLine}. Feel free to call them directly if needed. Thank you for choosing us!`;
+  window.open(waLink(mobile, msg), '_blank');
+}
+
+// ---------- SEND THANK YOU (same day as Done) ----------
+function sendThankYou(bookingId, mobile, customerName, techName) {
+  const msg = `Dear ${customerName}, thank you! ${techName ? techName + ' has' : 'We have'} completed your service. If anything feels off, just reply here — we'll sort it out. Your repair is backed by our 6-month service warranty. 🙏`;
+  window.open(waLink(mobile, msg), '_blank');
+  callAction({ action: 'mark_sent', bookingId, field: 'thankyou' }).then(() => loadAdminData());
+}
+
+// ---------- SEND FOLLOW-UP (2-4 days later) ----------
+function sendFollowUp(bookingId, mobile, customerName) {
+  const msg = `Hi ${customerName}, hope everything's working well since our visit! If you're happy with the service, we'd really appreciate a quick review. If there's any issue at all, just reply here and we'll fix it right away.`;
+  window.open(waLink(mobile, msg), '_blank');
+  callAction({ action: 'mark_sent', bookingId, field: 'followup' }).then(() => loadAdminData());
+}
+
+// ---------- SEND RE-ENGAGEMENT (~2 months later) ----------
+function sendReengagement(bookingId, mobile, customerName) {
+  const msg = `Hi ${customerName}, just checking in — hope your appliance is still running smoothly since our last visit! Whenever you need us again, we're just a call or message away. 🙂`;
+  window.open(waLink(mobile, msg), '_blank');
+  callAction({ action: 'mark_sent', bookingId, field: 'reengagement' }).then(() => loadAdminData());
+}
+
+function statusBadge(status) {
+  if (status === 'Done') return '<span class="badge badge-done">Done</span>';
+  if (status === 'Assigned') return '<span class="badge badge-assigned">Assigned</span>';
+  return '<span class="badge badge-new">New</span>';
+}
+
+function warrantyBadge(warrantyUntil) {
+  if (!warrantyUntil) return '';
+  const until = new Date(warrantyUntil);
+  const active = until.getTime() >= Date.now();
+  return `<span class="badge ${active ? 'badge-warranty-active' : 'badge-warranty-expired'}">${active ? 'Warranty till ' + until.toLocaleDateString('en-IN') : 'Warranty expired'}</span>`;
+}
+
+function renderTeamOptions(team) {
+  let opts = '<option value="">-- Assign technician --</option>';
+  team.forEach(t => { opts += `<option value="${escapeHtml(t.name)}||${escapeHtml(t.mobile)}">${escapeHtml(t.name)} (${escapeHtml(t.specialization) || 'General'})</option>`; });
+  return opts;
+}
+
 async function loadAdminData() {
   const token = getToken();
   if (!token) { window.location.reload(); return; }
 
-  document.getElementById('bookings-loading').style.display = 'block';
-  document.getElementById('bookings-table').style.display = 'none';
-  document.getElementById('technicians-loading').style.display = 'block';
-  document.getElementById('technicians-table').style.display = 'none';
-
   try {
     const res = await fetch(`${scriptUrl}?action=admin_data&token=${encodeURIComponent(token)}`, { cache: 'no-cache' });
     const result = await res.json();
+    if (result.status !== 'success') { sessionStorage.removeItem('quickfix_admin_token'); window.location.reload(); return; }
 
-    if (result.status !== 'success') {
-      // Token invalid/expired — force re-login
-      sessionStorage.removeItem('quickfix_admin_token');
-      window.location.reload();
-      return;
-    }
-
+    LAST_DATA = result;
     const bookings = result.bookings || [];
     const technicians = result.technicians || [];
+    const team = result.team || [];
+    const liveTraffic = result.liveTraffic || [];
 
-    document.getElementById('stat-bookings').innerText = bookings.length;
-    document.getElementById('stat-technicians').innerText = technicians.length;
     document.getElementById('stat-refreshed').innerText = new Date().toLocaleTimeString('en-IN');
 
+    const todayStr = new Date().toDateString();
+    const bookingsToday = bookings.filter(b => b.timestamp && new Date(b.timestamp).toDateString() === todayStr).length;
+    const pendingCount = bookings.filter(b => b.status !== 'Done').length;
+    const doneCount = bookings.filter(b => b.status === 'Done').length;
+    document.getElementById('stat-today').innerText = bookingsToday;
+    document.getElementById('stat-pending').innerText = pendingCount;
+    document.getElementById('stat-done').innerText = doneCount;
+
+    // ---- Live traffic ----
+    const trafficEl = document.getElementById('traffic-list');
+    if (liveTraffic.length === 0) {
+      trafficEl.innerHTML = '<div class="empty-state">No recent activity.</div>';
+    } else {
+      trafficEl.innerHTML = liveTraffic.map(t => `
+        <div class="traffic-item"><span>${escapeHtml(t.page)}</span><span>${fmtDate(t.timestamp)}</span></div>
+      `).join('');
+    }
+
+    // ---- Follow-ups due (2-4 days after Done, not yet sent) ----
+    const followUps = bookings.filter(b => {
+      if (b.status !== 'Done' || b.followUpSentAt) return false;
+      const d = daysAgo(b.completedDate);
+      return d !== null && d >= 2 && d <= 6;
+    });
+    const followEl = document.getElementById('followup-list');
+    followEl.innerHTML = followUps.length === 0 ? '<div class="empty-state">Nothing due right now.</div>' : followUps.map(b => `
+      <div class="follow-up-card">
+        <div><strong>${escapeHtml(b.name)}</strong> — ${escapeHtml(b.location)} <span class="small-note">(serviced ${daysAgo(b.completedDate)} days ago)</span></div>
+        <button class="wa" onclick="sendFollowUp('${b.bookingId}','${escJs(b.mobile)}','${escJs(b.name)}')">📲 Send Follow-Up</button>
+      </div>
+    `).join('');
+
+    // ---- Re-engagement due (~2 months after Done, not yet sent) ----
+    const reengagements = bookings.filter(b => {
+      if (b.status !== 'Done' || b.reengagementSentAt) return false;
+      const d = daysAgo(b.completedDate);
+      return d !== null && d >= 55 && d <= 90;
+    });
+    const reEl = document.getElementById('reengagement-list');
+    reEl.innerHTML = reengagements.length === 0 ? '<div class="empty-state">Nothing due right now.</div>' : reengagements.map(b => `
+      <div class="follow-up-card">
+        <div><strong>${escapeHtml(b.name)}</strong> — ${escapeHtml(b.location)} <span class="small-note">(serviced ${daysAgo(b.completedDate)} days ago)</span></div>
+        <button class="wa" onclick="sendReengagement('${b.bookingId}','${escJs(b.mobile)}','${escJs(b.name)}')">📲 Send Check-In</button>
+      </div>
+    `).join('');
+
+    // ---- Team table ----
+    const teamBody = document.getElementById('team-body');
+    if (team.length === 0) {
+      teamBody.innerHTML = '';
+      document.getElementById('team-loading').innerHTML = '<div class="empty-state">No technicians added yet.</div>';
+    } else {
+      teamBody.innerHTML = team.map(t => `
+        <tr>
+          <td data-label="Name">${escapeHtml(t.name)}</td>
+          <td data-label="Contact"><a href="tel:${escapeHtml(t.mobile)}" class="info-link">📞 ${escapeHtml(t.mobile)}</a><a href="${waLink(t.mobile)}" target="_blank" class="wa-link">💬</a></td>
+          <td data-label="Specialization">${escapeHtml(t.specialization) || '—'}</td>
+          <td data-label="Area">${escapeHtml(t.area) || '—'}</td>
+        </tr>
+      `).join('');
+      document.getElementById('team-loading').style.display = 'none';
+      document.getElementById('team-table').style.display = 'table';
+    }
+
+    // ---- Bookings table ----
     const bBody = document.getElementById('bookings-body');
     if (bookings.length === 0) {
       bBody.innerHTML = '';
       document.getElementById('bookings-loading').innerHTML = '<div class="empty-state">No bookings yet.</div>';
     } else {
-      bBody.innerHTML = bookings.map(b => `
+      bBody.innerHTML = bookings.map(b => {
+        let actionsHtml = '';
+        if (b.status === 'New' || !b.status) {
+          actionsHtml = `<select onchange="assignLead('${b.bookingId}', this)">${renderTeamOptions(team)}</select>`;
+        } else if (b.status === 'Assigned') {
+          actionsHtml = `
+            <button class="wa" style="margin-bottom:4px;" onclick="notifyCustomer('${escJs(b.mobile)}','${escJs(b.name)}','${escJs(b.techName)}','${escJs(b.techMobile)}','${escJs(b.date)}','${escJs(b.time)}')">📲 Notify Customer</button>
+            <button class="success" onclick="markDone('${b.bookingId}')">✅ Mark Done</button>
+          `;
+        } else if (b.status === 'Done') {
+          if (!b.thankYouSentAt) {
+            actionsHtml = `<button class="wa" onclick="sendThankYou('${b.bookingId}','${escJs(b.mobile)}','${escJs(b.name)}','${escJs(b.techName)}')">📲 Send Thank You</button>`;
+          } else {
+            actionsHtml = `<span class="small-note">✓ Thank-you sent</span>`;
+          }
+        }
+        const techLine = b.techName ? `<div class="small-note">👷 ${escapeHtml(b.techName)} (${escapeHtml(b.techMobile)})</div>` : '';
+        return `
         <tr>
-          <td data-label="Received">${escapeHtml(new Date(b.timestamp).toLocaleString('en-IN'))}</td>
+          <td data-label="Received">${fmtDate(b.timestamp)}</td>
           <td data-label="Customer">${escapeHtml(b.name)}</td>
           <td data-label="Location">${escapeHtml(b.location)}</td>
           <td data-label="Problem">${escapeHtml(b.problem)}</td>
-          <td data-label="Contact">
-            <a href="tel:${escapeHtml(b.mobile)}" class="info-link">📞 ${escapeHtml(b.mobile)}</a>
-            <a href="${waLink(b.mobile)}" target="_blank" class="wa-link">💬</a>
-          </td>
-          <td data-label="Preferred Visit">${escapeHtml(b.date) || '—'} ${escapeHtml(b.time) || ''}</td>
-        </tr>
-      `).join('');
+          <td data-label="Contact"><a href="tel:${escapeHtml(b.mobile)}" class="info-link">📞 ${escapeHtml(b.mobile)}</a><a href="${waLink(b.mobile)}" target="_blank" class="wa-link">💬</a></td>
+          <td data-label="Status">${statusBadge(b.status)}${techLine}${warrantyBadge(b.warrantyUntil) ? '<div style="margin-top:4px;">' + warrantyBadge(b.warrantyUntil) + '</div>' : ''}</td>
+          <td data-label="Actions">${actionsHtml}</td>
+        </tr>`;
+      }).join('');
       document.getElementById('bookings-loading').style.display = 'none';
       document.getElementById('bookings-table').style.display = 'table';
     }
 
+    // ---- Technician applications table ----
     const tBody = document.getElementById('technicians-body');
     if (technicians.length === 0) {
       tBody.innerHTML = '';
@@ -211,15 +452,12 @@ async function loadAdminData() {
     } else {
       tBody.innerHTML = technicians.map(t => `
         <tr>
-          <td data-label="Received">${escapeHtml(new Date(t.timestamp).toLocaleString('en-IN'))}</td>
+          <td data-label="Received">${fmtDate(t.timestamp)}</td>
           <td data-label="Name">${escapeHtml(t.name)}</td>
           <td data-label="Area">${escapeHtml(t.area)}</td>
           <td data-label="Specialization">${escapeHtml(t.specialization)}</td>
           <td data-label="Experience">${escapeHtml(t.experience)}</td>
-          <td data-label="Contact">
-            <a href="tel:${escapeHtml(t.mobile)}" class="info-link">📞 ${escapeHtml(t.mobile)}</a>
-            <a href="${waLink(t.mobile)}" target="_blank" class="wa-link">💬</a>
-          </td>
+          <td data-label="Contact"><a href="tel:${escapeHtml(t.mobile)}" class="info-link">📞 ${escapeHtml(t.mobile)}</a><a href="${waLink(t.mobile)}" target="_blank" class="wa-link">💬</a></td>
           <td data-label="Notes">${escapeHtml(t.notes) || '—'}</td>
         </tr>
       `).join('');
@@ -230,6 +468,7 @@ async function loadAdminData() {
   } catch (err) {
     document.getElementById('bookings-loading').innerHTML = '<div class="empty-state">⚠️ Could not load data. Check your connection and try Refresh.</div>';
     document.getElementById('technicians-loading').innerHTML = '';
+    document.getElementById('team-loading').innerHTML = '';
   }
 }
 
