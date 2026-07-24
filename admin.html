@@ -91,6 +91,25 @@ input, select { padding: 8px 10px; border-radius: 6px; border: 1px solid #ced4da
   </div>
 
   <div class="section">
+    <div class="section-head"><h2>🔍 Customer History (search by mobile)</h2></div>
+    <div class="add-form-grid" style="grid-template-columns: 2fr 1fr;">
+      <input type="tel" id="lookupMobile" placeholder="Enter 10-digit mobile number">
+      <button onclick="lookupCustomer()">Search</button>
+    </div>
+    <div id="lookup-result"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>🚩 Open Complaints</h2></div>
+    <div id="complaints-list"><div class="empty-state">No open complaints.</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>⭐ Top Repeat Customers</h2></div>
+    <div id="top-customers-list"><div class="empty-state">Not enough data yet.</div></div>
+  </div>
+
+  <div class="section">
     <div class="section-head"><h2>🟢 On the Site Right Now (last 5 min)</h2></div>
     <div id="traffic-list"><div class="empty-state">No recent activity.</div></div>
   </div>
@@ -148,7 +167,7 @@ const loginOverlay = document.getElementById('loginOverlay');
 const dashboardContent = document.getElementById('dashboardContent');
 const errorMsg = document.getElementById('errorMsg');
 
-let LAST_DATA = { bookings: [], technicians: [], team: [], liveTraffic: [] };
+let LAST_DATA = { bookings: [], technicians: [], team: [], liveTraffic: [], complaints: [] };
 
 function getToken() { return sessionStorage.getItem('quickfix_admin_token'); }
 
@@ -230,6 +249,72 @@ async function callAction(payload) {
 }
 
 // ---------- ADD TECHNICIAN ----------
+// ---------- CUSTOMER HISTORY LOOKUP ----------
+function lookupCustomer() {
+  const mobile = document.getElementById('lookupMobile').value.trim();
+  const resultEl = document.getElementById('lookup-result');
+  if (!/^[6-9]\d{9}$/.test(mobile)) {
+    resultEl.innerHTML = '<p style="color:var(--danger); font-size:0.85rem;">⚠️ Enter a valid 10-digit mobile number.</p>';
+    return;
+  }
+  const bookings = (LAST_DATA.bookings || []).filter(b => b.mobile === mobile);
+  const complaints = (LAST_DATA.complaints || []).filter(c => c.mobile === mobile);
+
+  if (bookings.length === 0) {
+    resultEl.innerHTML = `
+      <p class="small-note">No booking history found for ${escapeHtml(mobile)}.</p>
+      <div class="add-form-grid" style="grid-template-columns: 2fr 1fr; margin-top:8px;">
+        <input type="text" id="complaintNote" placeholder="Log a note / complaint for this number">
+        <button class="danger" onclick="logComplaint('${escJs(mobile)}', '')">🚩 Log Complaint</button>
+      </div>`;
+    return;
+  }
+
+  const name = bookings[0].name;
+  const rows = bookings.map(b => `
+    <div class="traffic-item">
+      <span>${fmtDate(b.timestamp)} — ${escapeHtml(b.location)} — ${escapeHtml(b.problem)}</span>
+      <span>${statusBadge(b.status)} ${warrantyBadge(b.warrantyUntil)}</span>
+    </div>
+  `).join('');
+
+  const complaintRows = complaints.map(c => `
+    <div class="traffic-item"><span>${fmtDate(c.timestamp)} — ${escapeHtml(c.note)}</span><span>${c.resolved === 'Yes' ? '✅ Resolved' : '🚩 Open'}</span></div>
+  `).join('');
+
+  resultEl.innerHTML = `
+    <div style="background:var(--grey); border-radius:8px; padding:12px 14px; margin-top:10px;">
+      <p style="margin:0 0 8px;"><strong>${escapeHtml(name)}</strong> — ${bookings.length} total booking${bookings.length > 1 ? 's' : ''}</p>
+      ${rows}
+      ${complaintRows ? '<p style="margin:10px 0 4px; font-weight:bold; font-size:0.85rem;">Complaint history:</p>' + complaintRows : ''}
+      <div class="add-form-grid" style="grid-template-columns: 2fr 1fr; margin-top:10px;">
+        <input type="text" id="complaintNote" placeholder="Log a note / complaint for this customer">
+        <button class="danger" onclick="logComplaint('${escJs(mobile)}', '${escJs(name)}')">🚩 Log Complaint</button>
+      </div>
+    </div>`;
+}
+
+async function logComplaint(mobile, name) {
+  const note = document.getElementById('complaintNote').value.trim();
+  if (!note) { alert('Please enter a note describing the complaint.'); return; }
+  const result = await callAction({ action: 'log_complaint', mobile, name, note });
+  if (result.status === 'success') {
+    await loadAdminData();
+    lookupCustomer();
+  } else {
+    alert('Could not log complaint: ' + (result.message || 'unknown error'));
+  }
+}
+
+async function resolveComplaint(complaintId) {
+  const result = await callAction({ action: 'resolve_complaint', complaintId });
+  if (result.status === 'success') {
+    await loadAdminData();
+  } else {
+    alert('Could not resolve: ' + (result.message || 'unknown error'));
+  }
+}
+
 async function addTechnician() {
   const name = document.getElementById('newTechName').value.trim();
   const mobile = document.getElementById('newTechMobile').value.trim();
@@ -339,6 +424,7 @@ async function loadAdminData() {
     const technicians = result.technicians || [];
     const team = result.team || [];
     const liveTraffic = result.liveTraffic || [];
+    const complaints = result.complaints || [];
 
     document.getElementById('stat-refreshed').innerText = new Date().toLocaleTimeString('en-IN');
 
@@ -359,6 +445,29 @@ async function loadAdminData() {
         <div class="traffic-item"><span>${escapeHtml(t.page)}</span><span>${fmtDate(t.timestamp)}</span></div>
       `).join('');
     }
+
+    // ---- Complaints ----
+    const openComplaints = complaints.filter(c => c.resolved !== 'Yes');
+    const complaintsEl = document.getElementById('complaints-list');
+    complaintsEl.innerHTML = openComplaints.length === 0 ? '<div class="empty-state">No open complaints.</div>' : openComplaints.map(c => `
+      <div class="follow-up-card" style="background:#FEF2F2; border-left-color: var(--danger);">
+        <div><strong>${escapeHtml(c.name) || 'Unknown'}</strong> — ${escapeHtml(c.mobile)} <span class="small-note">(${fmtDate(c.timestamp)})</span><br><span style="font-size:0.85rem;">${escapeHtml(c.note)}</span></div>
+        <button class="success" onclick="resolveComplaint('${c.complaintId}')">✅ Mark Resolved</button>
+      </div>
+    `).join('');
+
+    // ---- Top repeat customers ----
+    const byMobile = {};
+    bookings.forEach(b => {
+      if (!b.mobile) return;
+      if (!byMobile[b.mobile]) byMobile[b.mobile] = { name: b.name, mobile: b.mobile, count: 0 };
+      byMobile[b.mobile].count++;
+    });
+    const topCustomers = Object.values(byMobile).filter(c => c.count > 1).sort((a, b) => b.count - a.count).slice(0, 10);
+    const topEl = document.getElementById('top-customers-list');
+    topEl.innerHTML = topCustomers.length === 0 ? '<div class="empty-state">Not enough data yet — repeat customers will show up here.</div>' : topCustomers.map(c => `
+      <div class="traffic-item"><span><strong>${escapeHtml(c.name)}</strong> — ${escapeHtml(c.mobile)}</span><span>${c.count} bookings</span></div>
+    `).join('');
 
     // ---- Follow-ups due (2-4 days after Done, not yet sent) ----
     const followUps = bookings.filter(b => {

@@ -210,6 +210,14 @@ section { padding: 60px 24px; }
 
 footer { background: var(--blue); color: rgba(255,255,255,0.85); text-align: center; padding: 28px 24px; font-size: 0.82rem; }
 footer span { color: var(--white); }
+.footer-accordion { border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; overflow: hidden; margin-bottom: 8px; }
+.footer-accordion-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: rgba(255,255,255,0.08); cursor: pointer; font-weight: 700; color: #fff; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.footer-accordion-header .chevron { transition: transform 0.25s; font-size: 0.75rem; }
+.footer-accordion-header.open .chevron { transform: rotate(180deg); }
+.footer-accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: rgba(0,0,0,0.1); }
+.footer-accordion-body.open { max-height: 280px; overflow-y: auto; }
+.footer-accordion-body .footer-links { flex-direction: column; align-items: flex-start; gap: 6px; padding: 14px 16px; margin: 0; }
+.footer-accordion-body .footer-links a { text-align: left; }
 .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 14px 0; font-size: 0.78rem; }
 .footer-links a { color: rgba(255,255,255,0.92); text-decoration: none; }
 .footer-links a:hover { color: var(--white); text-decoration: underline; }
@@ -820,10 +828,13 @@ function showBookingSuccess(name, mobile, date, slot) {
 <footer>
   <p>© 2026 <span>Quickfix Mumbai</span> · Home Appliance & Electronics Repair</p>
 
-  <div style="max-width: 1100px; margin: 20px auto 0; text-align: left; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 0 20px;">
-    <div>
-      <div style="font-weight:700; color:#fff; font-size:0.82rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">Our Services</div>
-      <div class="footer-links" style="flex-direction:column; align-items:flex-start; gap:6px;">
+  <div style="max-width: 500px; margin: 20px auto 0; text-align: left;">
+    <div class="footer-accordion">
+      <div class="footer-accordion-header" onclick="toggleFooterAcc(this)">
+        <span>Our Services</span><span class="chevron">▼</span>
+      </div>
+      <div class="footer-accordion-body">
+        <div class="footer-links">
         <a href="refrigerator-repair.html">Refrigerator Repair</a>
         <a href="washing-machine-repair.html">Washing Machine</a>
         <a href="microwave-repair.html">Microwave</a>
@@ -832,12 +843,15 @@ function showBookingSuccess(name, mobile, date, slot) {
         <a href="air-dresser-repair.html">Air Dresser</a>
         <a href="amc-service.html">AMC</a>
         <a href="inquiry.html">Inquiry & Contact</a>
+        </div>
       </div>
     </div>
-
-    <div>
-      <div style="font-weight:700; color:#fff; font-size:0.82rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">Repair Guides</div>
-      <div class="footer-links" style="flex-direction:column; align-items:flex-start; gap:6px; max-height: 260px; overflow-y:auto;">
+    <div class="footer-accordion">
+      <div class="footer-accordion-header" onclick="toggleFooterAcc(this)">
+        <span>Repair Guides</span><span class="chevron">▼</span>
+      </div>
+      <div class="footer-accordion-body">
+        <div class="footer-links">
     <a href="air-dresser-not-steaming.html">Air Dresser Not Steaming</a>
     <a href="bosch-dishwasher-not-cleaning.html">Bosch Dishwasher Not Cleaning</a>
     <a href="bosch-washing-machine-e18-error.html">Bosch Washing Machine E18 Error</a>
@@ -859,24 +873,30 @@ function showBookingSuccess(name, mobile, date, slot) {
     <a href="whirlpool-dryer-drum-not-spinning.html">Whirlpool Dryer Drum Not Spinning</a>
     <a href="whirlpool-refrigerator-water-leaking.html">Whirlpool Refrigerator Water Leaking</a>
     <a href="whirlpool-washing-machine-not-draining.html">Whirlpool Washing Machine Not Draining</a>
+        </div>
       </div>
     </div>
-
-    <div>
-      <div style="font-weight:700; color:#fff; font-size:0.82rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">Self-Care Tips</div>
-      <div class="footer-links" style="flex-direction:column; align-items:flex-start; gap:6px;">
+    <div class="footer-accordion">
+      <div class="footer-accordion-header" onclick="toggleFooterAcc(this)">
+        <span>Self-Care Tips</span><span class="chevron">▼</span>
+      </div>
+      <div class="footer-accordion-body">
+        <div class="footer-links">
     <a href="air-dresser-maintenance-tips-mumbai.html">Air Dresser Maintenance Tips Mumbai</a>
     <a href="cloth-dryer-maintenance-tips-mumbai.html">Cloth Dryer Maintenance Tips Mumbai</a>
     <a href="dishwasher-maintenance-tips-mumbai.html">Dishwasher Maintenance Tips Mumbai</a>
     <a href="microwave-maintenance-tips-mumbai.html">Microwave Maintenance Tips Mumbai</a>
     <a href="refrigerator-maintenance-tips-mumbai.html">Refrigerator Maintenance Tips Mumbai</a>
     <a href="washing-machine-maintenance-tips-mumbai.html">Washing Machine Maintenance Tips Mumbai</a>
+        </div>
       </div>
     </div>
-
-    <div>
-      <div style="font-weight:700; color:#fff; font-size:0.82rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">Service Areas</div>
-      <div class="footer-links" style="flex-direction:column; align-items:flex-start; gap:6px; max-height: 260px; overflow-y:auto;">
+    <div class="footer-accordion">
+      <div class="footer-accordion-header" onclick="toggleFooterAcc(this)">
+        <span>Service Areas</span><span class="chevron">▼</span>
+      </div>
+      <div class="footer-accordion-body">
+        <div class="footer-links">
     <a href="all-mumbai-appliance-repair.html">All Mumbai</a>
     <a href="altamount-road-appliance-repair.html">Altamount Road</a>
     <a href="andheri-appliance-repair.html">Andheri</a>
@@ -922,6 +942,7 @@ function showBookingSuccess(name, mobile, date, slot) {
     <a href="vikhroli-appliance-repair.html">Vikhroli</a>
     <a href="vile-parle-appliance-repair.html">Vile Parle</a>
     <a href="worli-appliance-repair.html">Worli</a>
+        </div>
       </div>
     </div>
   </div>
@@ -946,6 +967,12 @@ function showBookingSuccess(name, mobile, date, slot) {
 function toggleAcc(header){const c=header.nextElementSibling;c.classList.toggle('open');}
 
 function toggleAreaDropdown(header){
+  header.classList.toggle('open');
+  const body = header.nextElementSibling;
+  body.classList.toggle('open');
+}
+
+function toggleFooterAcc(header){
   header.classList.toggle('open');
   const body = header.nextElementSibling;
   body.classList.toggle('open');
