@@ -87,6 +87,12 @@
     <priority>0.80</priority>
   </url>
   <url>
+    <loc>https://quickfixmumbai.com/check-warranty.html</loc>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
     <loc>https://quickfixmumbai.com/dishwasher-not-draining.html</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Check your Quickfix Mumbai service warranty status — enter your mobile number and warranty code to see your coverage details.">
+<title>Check Your Warranty | Quickfix Mumbai</title>
+<link rel="canonical" href="https://quickfixmumbai.com/check-warranty.html">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue: #1E3A8A; --blue-light: #1D4ED8; --blue-lighter: #DBEAFE;
+  --white: #FFFFFF; --grey: #F3F4F6; --grey-dark: #374151;
+  --text: #111827; --border: #D1D5DB; --red: #DC2626; --whatsapp: #128C7E; --amber: #D97706; --green: #0F766E;
+}
+body { font-family: 'Inter', sans-serif; background: var(--grey); color: var(--text); line-height: 1.6; margin: 0; }
+header { position: sticky; top: 0; z-index: 100; background: var(--white); display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-bottom: 2px solid var(--blue-lighter); flex-wrap: wrap; gap: 10px; }
+.header-btns { display: flex; gap: 10px; }
+.btn-call, .btn-wa { padding: 10px 16px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; border: none; cursor: pointer; }
+.btn-call { background: var(--blue); color: var(--white); }
+.btn-wa { background: var(--whatsapp); color: var(--white); }
+.breadcrumb { background: var(--white); padding: 10px 24px; font-size: 0.82rem; color: var(--grey-dark); border-bottom: 1px solid var(--border); }
+.breadcrumb a { color: var(--blue); text-decoration: none; }
+.hero { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 40px 24px 34px; text-align: center; }
+.hero h1 { font-family: 'Poppins', sans-serif; font-size: clamp(1.5rem, 5vw, 2.1rem); font-weight: 700; margin-bottom: 10px; }
+.hero p { font-size: 0.92rem; color: rgba(255,255,255,0.9); max-width: 500px; margin: 0 auto; }
+.container { max-width: 480px; margin: -20px auto 40px; padding: 0 20px; }
+.check-box { background: var(--white); border-radius: 16px; padding: 28px 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.check-box label { display: block; font-weight: 600; font-size: 0.88rem; margin-bottom: 6px; color: var(--text); }
+.check-box input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.95rem; margin-bottom: 16px; }
+.check-box .hint { font-size: 0.78rem; color: var(--grey-dark); margin: -10px 0 16px; }
+.btn-check { width: 100%; background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 13px; border: none; border-radius: 8px; font-weight: 700; font-size: 0.95rem; cursor: pointer; }
+.msg-box { margin-top: 16px; padding: 12px 14px; border-radius: 8px; font-size: 0.88rem; display: none; }
+.msg-box.error { background: #FEF2F2; color: #991B1B; display: block; }
+.result-card { margin-top: 20px; background: var(--grey); border-radius: 12px; padding: 20px; display: none; }
+.result-card.show { display: block; }
+.result-card .status-line { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 1.05rem; margin-bottom: 14px; }
+.result-card .status-line.active { color: var(--green); }
+.result-card .status-line.expired { color: var(--red); }
+.result-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed var(--border); font-size: 0.88rem; }
+.result-row:last-child { border-bottom: none; }
+.result-row span:first-child { color: var(--grey-dark); }
+.result-row span:last-child { font-weight: 600; text-align: right; }
+.result-cta { margin-top: 18px; text-align: center; }
+.faq-item { background: var(--white); border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
+.faq-q { font-weight: 700; color: var(--blue); font-size: 0.9rem; margin-bottom: 5px; }
+.faq-a { font-size: 0.85rem; color: var(--grey-dark); }
+footer { background: var(--blue); color: rgba(255,255,255,0.85); text-align: center; padding: 24px 24px; font-size: 0.78rem; }
+footer span { color: var(--white); }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 12px 0; font-size: 0.74rem; }
+.footer-links a { color: rgba(255,255,255,0.92); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo" aria-label="Quickfix Mumbai - Home" style="display:flex;align-items:center;gap:10px;">
+  <img src="logo.png" alt="Quickfix Mumbai Logo" style="width:38px;height:38px;border-radius:8px;">
+  <span style="line-height:1.15;">
+    <span style="display:block; font-family:'Poppins',sans-serif; font-weight:700; color:var(--blue);">Quick<span style="color:var(--blue-light);">fix</span> Mumbai</span>
+    <small style="display:block;font-size:10px;font-weight:300; color:var(--grey-dark);">Appliances Repair &amp; Care</small>
+  </span>
+</a>
+  <div class="header-btns">
+    <a href="tel:+919819832282" class="btn-call">Call</a>
+    <a href="https://wa.me/919819832282" target="_blank" class="btn-wa">Chat</a>
+  </div>
+</header>
+
+<div class="breadcrumb"><a href="index.html">Home</a> › Check Your Warranty</div>
+
+<section class="hero">
+  <h1>Check Your Service Warranty</h1>
+  <p>Enter your mobile number and the 6-digit code sent to you after your service to see your coverage status.</p>
+</section>
+
+<div class="container">
+  <div class="check-box">
+    <label>Mobile Number</label>
+    <input type="tel" id="wMobile" placeholder="10-digit mobile number" maxlength="10">
+
+    <label>Warranty Code</label>
+    <input type="text" id="wCode" placeholder="6-digit code from your WhatsApp" maxlength="6">
+    <p class="hint">This code was sent to your WhatsApp when your service was completed. Don't have it? Message us below.</p>
+
+    <button class="btn-check" onclick="checkWarranty()" id="checkBtn">🔍 Check Warranty Status</button>
+    <div id="msgBox" class="msg-box"></div>
+
+    <div class="result-card" id="resultCard">
+      <div class="status-line" id="statusLine"></div>
+      <div class="result-row"><span>Name</span><span id="rName"></span></div>
+      <div class="result-row"><span>Appliance / Issue</span><span id="rProblem"></span></div>
+      <div class="result-row"><span>Location</span><span id="rLocation"></span></div>
+      <div class="result-row"><span>Service Completed</span><span id="rCompleted"></span></div>
+      <div class="result-row"><span>Warranty Valid Until</span><span id="rUntil"></span></div>
+      <div class="result-cta">
+        <a href="#" id="resultWaBtn" target="_blank" class="btn-wa" style="padding:11px 20px; border-radius:8px; text-decoration:none; display:inline-block;">📲 Report an Issue</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <div class="faq-item"><div class="faq-q">Warranty code kahan milega?</div><div class="faq-a">Jab bhi tumhara service complete hota hai, WhatsApp pe ek 6-digit code aur ye link bheja jata hai. Message history mein check karo.</div></div>
+    <div class="faq-item"><div class="faq-q">Code kho gaya hai, kya karein?</div><div class="faq-a">Humein call ya WhatsApp karo apna mobile number aur naam bata ke — hum turant confirm kar denge aur code dobara bhej denge.</div></div>
+    <div class="faq-item"><div class="faq-q">Warranty mein kya cover hota hai?</div><div class="faq-a">Wahi part/repair jo humne kiya tha, agar wahi issue dobara aata hai to bina extra charge ke fix karte hain — 6 mahine tak.</div></div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 <span>Quickfix Mumbai</span> · Home Appliance & Electronics Repair</p>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="amc-service.html">AMC Plans</a>
+    <a href="inquiry.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4zI3hmCRy2V3dGwcUiYjuIe-8GhEyHbehjcnemWcvEzn02XT/exec";
+
+function fmtDate(d) {
+  if (!d) return '—';
+  const dt = new Date(d);
+  if (isNaN(dt.getTime())) return String(d);
+  return dt.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+async function checkWarranty() {
+  const mobile = document.getElementById('wMobile').value.trim();
+  const code = document.getElementById('wCode').value.trim();
+  const msgBox = document.getElementById('msgBox');
+  const resultCard = document.getElementById('resultCard');
+  msgBox.style.display = 'none';
+  resultCard.classList.remove('show');
+
+  if (!/^[6-9]\d{9}$/.test(mobile)) {
+    msgBox.textContent = '⚠️ Please enter a valid 10-digit mobile number.';
+    msgBox.className = 'msg-box error';
+    return;
+  }
+  if (!/^\d{6}$/.test(code)) {
+    msgBox.textContent = '⚠️ Please enter the 6-digit warranty code.';
+    msgBox.className = 'msg-box error';
+    return;
+  }
+
+  const btn = document.getElementById('checkBtn');
+  btn.disabled = true;
+  btn.textContent = 'Checking...';
+
+  try {
+    const res = await fetch(`${scriptUrl}?action=check_warranty&mobile=${encodeURIComponent(mobile)}&code=${encodeURIComponent(code)}`, { cache: 'no-cache' });
+    const result = await res.json();
+
+    if (result.status === 'success') {
+      const until = new Date(result.warrantyUntil);
+      const active = until.getTime() >= Date.now();
+      document.getElementById('statusLine').innerHTML = active
+        ? '✅ Warranty Active'
+        : '⏱️ Warranty Expired';
+      document.getElementById('statusLine').className = 'status-line ' + (active ? 'active' : 'expired');
+      document.getElementById('rName').textContent = result.name || '—';
+      document.getElementById('rProblem').textContent = result.problem || '—';
+      document.getElementById('rLocation').textContent = result.location || '—';
+      document.getElementById('rCompleted').textContent = fmtDate(result.completedDate);
+      document.getElementById('rUntil').textContent = fmtDate(result.warrantyUntil);
+      const waMsg = encodeURIComponent(`Hi, I'm checking in about my service (warranty). Name: ${result.name}, Mobile: ${mobile}. Issue: `);
+      document.getElementById('resultWaBtn').href = `https://wa.me/919819832282?text=${waMsg}`;
+      resultCard.classList.add('show');
+    } else if (result.status === 'not_found') {
+      msgBox.textContent = '⚠️ We couldn\'t find a matching record. Double-check your mobile number and code, or message us directly.';
+      msgBox.className = 'msg-box error';
+    } else {
+      msgBox.textContent = '⚠️ ' + (result.message || 'Something went wrong. Please try again.');
+      msgBox.className = 'msg-box error';
+    }
+  } catch (err) {
+    msgBox.textContent = '⚠️ Network issue. Please try again or WhatsApp us directly.';
+    msgBox.className = 'msg-box error';
+  }
+
+  btn.disabled = false;
+  btn.textContent = '🔍 Check Warranty Status';
+}
+</script>
+
+<script src="tracking.js"></script>
+</body>
+</html>
