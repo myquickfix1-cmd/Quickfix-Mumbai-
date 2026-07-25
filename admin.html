@@ -115,6 +115,11 @@ input, select { padding: 8px 10px; border-radius: 6px; border: 1px solid #ced4da
   </div>
 
   <div class="section">
+    <div class="section-head"><h2>⚠️ Warranty Expiring Soon (next 14 days)</h2></div>
+    <div id="warranty-expiring-list"><div class="empty-state">Nothing expiring soon.</div></div>
+  </div>
+
+  <div class="section">
     <div class="section-head"><h2>⏰ Follow-Ups Due (2-4 days after service)</h2></div>
     <div id="followup-list"><div class="empty-state">Nothing due right now.</div></div>
   </div>
@@ -370,11 +375,18 @@ function notifyCustomer(mobile, customerName, techName, techMobile, date, time) 
   window.open(waLink(mobile, msg), '_blank');
 }
 
-// ---------- SEND THANK YOU (same day as Done) ----------
-function sendThankYou(bookingId, mobile, customerName, techName) {
-  const msg = `Dear ${customerName}, thank you! ${techName ? techName + ' has' : 'We have'} completed your service. If anything feels off, just reply here — we'll sort it out. Your repair is backed by our 6-month service warranty. 🙏`;
+// ---------- SEND THANK YOU (same day as Done) — includes warranty code + link ----------
+function sendThankYou(bookingId, mobile, customerName, techName, warrantyCode) {
+  const codeLine = warrantyCode ? `\n\nYour warranty code: *${warrantyCode}*\nCheck your warranty anytime: https://quickfixmumbai.com/check-warranty.html` : '';
+  const msg = `Dear ${customerName}, thank you! ${techName ? techName + ' has' : 'We have'} completed your service. If anything feels off, just reply here — we'll sort it out. Your repair is backed by our 6-month service warranty.${codeLine} 🙏`;
   window.open(waLink(mobile, msg), '_blank');
   callAction({ action: 'mark_sent', bookingId, field: 'thankyou' }).then(() => loadAdminData());
+}
+
+// ---------- SEND WARRANTY EXPIRING REMINDER ----------
+function sendWarrantyReminder(mobile, customerName, daysLeft, untilDateStr) {
+  const msg = `Hi ${customerName}, just a heads-up — your 6-month service warranty with us ends in ${daysLeft} day${daysLeft === 1 ? '' : 's'} (${untilDateStr}). If anything's not working right, let us know before then and we'll take care of it at no extra charge!`;
+  window.open(waLink(mobile, msg), '_blank');
 }
 
 // ---------- SEND FOLLOW-UP (2-4 days later) ----------
@@ -469,6 +481,25 @@ async function loadAdminData() {
       <div class="traffic-item"><span><strong>${escapeHtml(c.name)}</strong> — ${escapeHtml(c.mobile)}</span><span>${c.count} bookings</span></div>
     `).join('');
 
+    // ---- Warranty expiring soon (within 14 days, still active) ----
+    const expiringSoon = bookings.filter(b => {
+      if (b.status !== 'Done' || !b.warrantyUntil) return false;
+      const until = new Date(b.warrantyUntil);
+      if (isNaN(until.getTime())) return false;
+      const daysLeft = Math.floor((until.getTime() - Date.now()) / (1000 * 60 * 60 * 24));
+      return daysLeft >= 0 && daysLeft <= 14;
+    });
+    const expiringEl = document.getElementById('warranty-expiring-list');
+    expiringEl.innerHTML = expiringSoon.length === 0 ? '<div class="empty-state">Nothing expiring soon.</div>' : expiringSoon.map(b => {
+      const until = new Date(b.warrantyUntil);
+      const daysLeft = Math.floor((until.getTime() - Date.now()) / (1000 * 60 * 60 * 24));
+      return `
+      <div class="follow-up-card">
+        <div><strong>${escapeHtml(b.name)}</strong> — ${escapeHtml(b.location)} <span class="small-note">(${daysLeft} day${daysLeft === 1 ? '' : 's'} left)</span></div>
+        <button class="wa" onclick="sendWarrantyReminder('${escJs(b.mobile)}','${escJs(b.name)}',${daysLeft},'${escJs(until.toLocaleDateString('en-IN'))}')">📲 Send Reminder</button>
+      </div>`;
+    }).join('');
+
     // ---- Follow-ups due (2-4 days after Done, not yet sent) ----
     const followUps = bookings.filter(b => {
       if (b.status !== 'Done' || b.followUpSentAt) return false;
@@ -532,7 +563,7 @@ async function loadAdminData() {
           `;
         } else if (b.status === 'Done') {
           if (!b.thankYouSentAt) {
-            actionsHtml = `<button class="wa" onclick="sendThankYou('${b.bookingId}','${escJs(b.mobile)}','${escJs(b.name)}','${escJs(b.techName)}')">📲 Send Thank You</button>`;
+            actionsHtml = `<button class="wa" onclick="sendThankYou('${b.bookingId}','${escJs(b.mobile)}','${escJs(b.name)}','${escJs(b.techName)}','${escJs(b.warrantyCode)}')">📲 Send Thank You</button>`;
           } else {
             actionsHtml = `<span class="small-note">✓ Thank-you sent</span>`;
           }
@@ -545,7 +576,7 @@ async function loadAdminData() {
           <td data-label="Location">${escapeHtml(b.location)}</td>
           <td data-label="Problem">${escapeHtml(b.problem)}</td>
           <td data-label="Contact"><a href="tel:${escapeHtml(b.mobile)}" class="info-link">📞 ${escapeHtml(b.mobile)}</a><a href="${waLink(b.mobile)}" target="_blank" class="wa-link">💬</a></td>
-          <td data-label="Status">${statusBadge(b.status)}${techLine}${warrantyBadge(b.warrantyUntil) ? '<div style="margin-top:4px;">' + warrantyBadge(b.warrantyUntil) + '</div>' : ''}</td>
+          <td data-label="Status">${statusBadge(b.status)}${techLine}${warrantyBadge(b.warrantyUntil) ? '<div style="margin-top:4px;">' + warrantyBadge(b.warrantyUntil) + '</div>' : ''}${b.warrantyCode ? '<div class="small-note">Code: <strong>' + escapeHtml(b.warrantyCode) + '</strong></div>' : ''}</td>
           <td data-label="Actions">${actionsHtml}</td>
         </tr>`;
       }).join('');
