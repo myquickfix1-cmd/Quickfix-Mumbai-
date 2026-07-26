@@ -165,11 +165,17 @@ input, select, textarea { padding: 8px 10px; border-radius: 6px; border: 1px sol
 
   <div class="section">
     <div class="section-head"><h2>📅 Customer Bookings</h2></div>
+    <p class="small-note" style="margin-bottom:8px;">Shows Pending, In Process, and jobs completed within the last 30 days. Older completed jobs move to the Archive below — search by mobile number still finds everything.</p>
     <div id="bookings-loading" class="loading-msg">Loading bookings…</div>
     <table class="responsive-table" id="bookings-table" style="display:none;">
       <thead><tr><th>Received</th><th>Customer</th><th>Location</th><th>Problem</th><th>Contact</th><th>Status / Warranty</th><th>Billing</th><th>Notes</th><th>Actions</th></tr></thead>
       <tbody id="bookings-body"></tbody>
     </table>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>📦 Archived Completed Jobs (30+ days old)</h2></div>
+    <div id="archive-container"><div class="empty-state">Loading…</div></div>
   </div>
 
   <div class="section">
@@ -626,6 +632,108 @@ function renderTeamOptions(team, placeholder) {
   return opts;
 }
 
+function renderBookingRow(b, team) {
+  let actionsHtml = '';
+  if (b.status === 'Done') {
+    const parts = [];
+    if (!b.thankYouSentAt) {
+      parts.push(`<button class="wa small" onclick="sendThankYou('${b.bookingId}','${escJs(b.mobile)}','${escJs(b.name)}','${escJs(b.techName)}','${escJs(b.warrantyCode)}')">📲 Thank You</button>`);
+    }
+    parts.push(`<button class="secondary small" onclick="sendFollowUp('${b.bookingId}','${escJs(b.mobile)}','${escJs(b.name)}')">📲 Follow-Up${b.followUpSentAt ? ' (resend)' : ''}</button>`);
+    parts.push(`<button class="secondary small" onclick="sendReengagement('${b.bookingId}','${escJs(b.mobile)}','${escJs(b.name)}')">📲 Check-In${b.reengagementSentAt ? ' (resend)' : ''}</button>`);
+    parts.push(`<button class="secondary small" onclick="openPhotoModal('${b.bookingId}')">📷 ${(b.serialPhoto || b.appliancePhoto) ? 'Update' : 'Add'} Photos</button>`);
+    actionsHtml = `<div class="action-group">${parts.join('')}</div>`;
+  } else if (b.status === 'In Process') {
+    actionsHtml = `<div class="action-group">
+      <button class="wa small" onclick="notifyCustomer('${escJs(b.mobile)}','${escJs(b.name)}','${escJs(b.techName)}','${escJs(b.techMobile)}','${escJs(b.date)}','${escJs(b.time)}')">📲 Notify Customer</button>
+      <button class="success small" onclick="markDone('${b.bookingId}')">✅ Mark Done</button>
+      <select onchange="escalateSenior('${b.bookingId}', this)" title="Escalate to a senior technician if needed">${renderTeamOptions(team, '-- Escalate to senior --')}</select>
+    </div>`;
+  } else {
+    actionsHtml = `<select onchange="assignLead('${b.bookingId}', this)">${renderTeamOptions(team, '-- Assign technician --')}</select>`;
+  }
+
+  const techLine = b.techName ? `<div class="small-note">Technician: <strong>${escapeHtml(b.techName)}</strong> · ${escapeHtml(b.techMobile)}</div>` : '';
+  const seniorLine = b.seniorName ? `<div class="small-note">Senior: <strong>${escapeHtml(b.seniorName)}</strong> · ${escapeHtml(b.seniorMobile)}</div>` : '';
+  const repeatLine = b.repeatStatus && b.repeatStatus !== 'New' ? `<div style="margin-top:4px;"><span class="badge badge-repeat">${escapeHtml(b.repeatStatus)}</span></div>` : '';
+  const wBadge = warrantyBadge(b.completedDate, b.warrantyUntil);
+  const codeLine = b.warrantyCode ? `<div class="small-note">Code: <strong>${escapeHtml(b.warrantyCode)}</strong></div>` : '';
+  const photoLinks = [];
+  if (b.serialPhoto) photoLinks.push(`<a href="${escapeHtml(b.serialPhoto)}" target="_blank" class="info-link">📷 Serial</a>`);
+  if (b.appliancePhoto) photoLinks.push(`<a href="${escapeHtml(b.appliancePhoto)}" target="_blank" class="info-link">📷 Appliance</a>`);
+  const photoLine = photoLinks.length ? `<div class="small-note">${photoLinks.join(' &nbsp; ')}</div>` : '';
+
+  const billingHtml = b.status === 'Done'
+    ? `<div>${b.amount ? '₹' + escapeHtml(b.amount) : '<span class="small-note">No amount set</span>'}</div>
+       <div class="small-note">${escapeHtml(b.paymentMode) || 'Mode not set'}</div>
+       <button class="secondary small" onclick="editBilling('${b.bookingId}','${escJs(b.amount)}','${escJs(b.paymentMode)}')">✏️ Edit</button>`
+    : `<span class="small-note">Set on completion</span>`;
+
+  const notesHtml = `
+    <div style="max-width:160px;">${b.notes ? escapeHtml(b.notes) : '<span class="small-note">No notes</span>'}</div>
+    <button class="secondary small" onclick="editNotes('${b.bookingId}','${escJs(b.notes)}')">✏️ ${b.notes ? 'Edit' : 'Add'}</button>`;
+
+  return `
+  <tr>
+    <td data-label="Received">${fmtDate(b.timestamp)}</td>
+    <td data-label="Customer">${escapeHtml(b.name)}${repeatLine}</td>
+    <td data-label="Location">${escapeHtml(b.location)}</td>
+    <td data-label="Problem">${escapeHtml(b.problem)}</td>
+    <td data-label="Contact"><a href="tel:${escapeHtml(b.mobile)}" class="info-link">📞 ${escapeHtml(b.mobile)}</a><a href="${waLink(b.mobile)}" target="_blank" class="wa-link">💬</a></td>
+    <td data-label="Status">${statusBadge(b.status)}${techLine}${seniorLine}${wBadge ? '<div style="margin-top:4px;">' + wBadge + '</div>' : ''}${codeLine}${photoLine}</td>
+    <td data-label="Billing">${billingHtml}</td>
+    <td data-label="Notes">${notesHtml}</td>
+    <td data-label="Actions">${actionsHtml}</td>
+  </tr>`;
+}
+
+function renderArchive(archivedBookings, team) {
+  const container = document.getElementById('archive-container');
+  if (archivedBookings.length === 0) {
+    container.innerHTML = '<div class="empty-state">No archived jobs yet — completed jobs move here automatically after 30 days.</div>';
+    return;
+  }
+
+  // Group by month-year of completion date
+  const groups = {};
+  archivedBookings.forEach(b => {
+    const d = new Date(b.completedDate);
+    const key = d.toLocaleDateString('en-IN', { month: 'long', year: 'numeric' });
+    if (!groups[key]) groups[key] = [];
+    groups[key].push(b);
+  });
+
+  // Sort group keys by actual date, most recent first
+  const sortedKeys = Object.keys(groups).sort((a, b) => {
+    const da = new Date(groups[a][0].completedDate);
+    const db = new Date(groups[b][0].completedDate);
+    return db - da;
+  });
+
+  container.innerHTML = sortedKeys.map((key, idx) => `
+    <div class="footer-accordion" style="border-color:#dee2e6;">
+      <div class="archive-header" onclick="toggleArchiveMonth(this)" style="display:flex; justify-content:space-between; align-items:center; padding:12px 14px; background:var(--grey); cursor:pointer; font-weight:700; color:var(--primary); font-size:0.88rem; border-radius:8px;">
+        <span>📦 ${key} (${groups[key].length} job${groups[key].length === 1 ? '' : 's'})</span>
+        <span class="chevron" style="transition: transform 0.2s;">▼</span>
+      </div>
+      <div class="archive-body" style="max-height:0; overflow:hidden; transition:max-height 0.3s ease;">
+        <table class="responsive-table" style="margin-top:8px;">
+          <thead><tr><th>Received</th><th>Customer</th><th>Location</th><th>Problem</th><th>Contact</th><th>Status / Warranty</th><th>Billing</th><th>Notes</th><th>Actions</th></tr></thead>
+          <tbody>${groups[key].map(b => renderBookingRow(b, team)).join('')}</tbody>
+        </table>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleArchiveMonth(header) {
+  const body = header.nextElementSibling;
+  const chevron = header.querySelector('.chevron');
+  const isOpen = body.style.maxHeight && body.style.maxHeight !== '0px';
+  body.style.maxHeight = isOpen ? '0' : '3000px';
+  chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+}
+
 async function loadAdminData() {
   const token = getToken();
   if (!token) { window.location.reload(); return; }
@@ -741,69 +849,22 @@ async function loadAdminData() {
       document.getElementById('team-table').style.display = 'table';
     }
 
-    // ---- Bookings table ----
+    // ---- Bookings table (active) + Archive (Done jobs completed 30+ days ago) ----
+    const RECENT_DAYS = 30;
+    const activeBookings = bookings.filter(b => !(b.status === 'Done' && daysAgo(b.completedDate) !== null && daysAgo(b.completedDate) > RECENT_DAYS));
+    const archivedBookings = bookings.filter(b => b.status === 'Done' && daysAgo(b.completedDate) !== null && daysAgo(b.completedDate) > RECENT_DAYS);
+
     const bBody = document.getElementById('bookings-body');
-    if (bookings.length === 0) {
+    if (activeBookings.length === 0) {
       bBody.innerHTML = '';
-      document.getElementById('bookings-loading').innerHTML = '<div class="empty-state">No bookings yet.</div>';
+      document.getElementById('bookings-loading').innerHTML = '<div class="empty-state">No active bookings right now.</div>';
     } else {
-      bBody.innerHTML = bookings.map(b => {
-        let actionsHtml = '';
-        if (b.status === 'Done') {
-          const parts = [];
-          if (!b.thankYouSentAt) {
-            parts.push(`<button class="wa small" onclick="sendThankYou('${b.bookingId}','${escJs(b.mobile)}','${escJs(b.name)}','${escJs(b.techName)}','${escJs(b.warrantyCode)}')">📲 Thank You</button>`);
-          }
-          parts.push(`<button class="secondary small" onclick="sendFollowUp('${b.bookingId}','${escJs(b.mobile)}','${escJs(b.name)}')">📲 Follow-Up${b.followUpSentAt ? ' (resend)' : ''}</button>`);
-          parts.push(`<button class="secondary small" onclick="sendReengagement('${b.bookingId}','${escJs(b.mobile)}','${escJs(b.name)}')">📲 Check-In${b.reengagementSentAt ? ' (resend)' : ''}</button>`);
-          parts.push(`<button class="secondary small" onclick="openPhotoModal('${b.bookingId}')">📷 ${(b.serialPhoto || b.appliancePhoto) ? 'Update' : 'Add'} Photos</button>`);
-          actionsHtml = `<div class="action-group">${parts.join('')}</div>`;
-        } else if (b.status === 'In Process') {
-          actionsHtml = `<div class="action-group">
-            <button class="wa small" onclick="notifyCustomer('${escJs(b.mobile)}','${escJs(b.name)}','${escJs(b.techName)}','${escJs(b.techMobile)}','${escJs(b.date)}','${escJs(b.time)}')">📲 Notify Customer</button>
-            <button class="success small" onclick="markDone('${b.bookingId}')">✅ Mark Done</button>
-            <select onchange="escalateSenior('${b.bookingId}', this)" title="Escalate to a senior technician if needed">${renderTeamOptions(team, '-- Escalate to senior --')}</select>
-          </div>`;
-        } else {
-          actionsHtml = `<select onchange="assignLead('${b.bookingId}', this)">${renderTeamOptions(team, '-- Assign technician --')}</select>`;
-        }
-
-        const techLine = b.techName ? `<div class="small-note">Technician: <strong>${escapeHtml(b.techName)}</strong> · ${escapeHtml(b.techMobile)}</div>` : '';
-        const seniorLine = b.seniorName ? `<div class="small-note">Senior: <strong>${escapeHtml(b.seniorName)}</strong> · ${escapeHtml(b.seniorMobile)}</div>` : '';
-        const repeatLine = b.repeatStatus && b.repeatStatus !== 'New' ? `<div style="margin-top:4px;"><span class="badge badge-repeat">${escapeHtml(b.repeatStatus)}</span></div>` : '';
-        const wBadge = warrantyBadge(b.completedDate, b.warrantyUntil);
-        const codeLine = b.warrantyCode ? `<div class="small-note">Code: <strong>${escapeHtml(b.warrantyCode)}</strong></div>` : '';
-        const photoLinks = [];
-        if (b.serialPhoto) photoLinks.push(`<a href="${escapeHtml(b.serialPhoto)}" target="_blank" class="info-link">📷 Serial</a>`);
-        if (b.appliancePhoto) photoLinks.push(`<a href="${escapeHtml(b.appliancePhoto)}" target="_blank" class="info-link">📷 Appliance</a>`);
-        const photoLine = photoLinks.length ? `<div class="small-note">${photoLinks.join(' &nbsp; ')}</div>` : '';
-
-        const billingHtml = b.status === 'Done'
-          ? `<div>${b.amount ? '₹' + escapeHtml(b.amount) : '<span class="small-note">No amount set</span>'}</div>
-             <div class="small-note">${escapeHtml(b.paymentMode) || 'Mode not set'}</div>
-             <button class="secondary small" onclick="editBilling('${b.bookingId}','${escJs(b.amount)}','${escJs(b.paymentMode)}')">✏️ Edit</button>`
-          : `<span class="small-note">Set on completion</span>`;
-
-        const notesHtml = `
-          <div style="max-width:160px;">${b.notes ? escapeHtml(b.notes) : '<span class="small-note">No notes</span>'}</div>
-          <button class="secondary small" onclick="editNotes('${b.bookingId}','${escJs(b.notes)}')">✏️ ${b.notes ? 'Edit' : 'Add'}</button>`;
-
-        return `
-        <tr>
-          <td data-label="Received">${fmtDate(b.timestamp)}</td>
-          <td data-label="Customer">${escapeHtml(b.name)}${repeatLine}</td>
-          <td data-label="Location">${escapeHtml(b.location)}</td>
-          <td data-label="Problem">${escapeHtml(b.problem)}</td>
-          <td data-label="Contact"><a href="tel:${escapeHtml(b.mobile)}" class="info-link">📞 ${escapeHtml(b.mobile)}</a><a href="${waLink(b.mobile)}" target="_blank" class="wa-link">💬</a></td>
-          <td data-label="Status">${statusBadge(b.status)}${techLine}${seniorLine}${wBadge ? '<div style="margin-top:4px;">' + wBadge + '</div>' : ''}${codeLine}${photoLine}</td>
-          <td data-label="Billing">${billingHtml}</td>
-          <td data-label="Notes">${notesHtml}</td>
-          <td data-label="Actions">${actionsHtml}</td>
-        </tr>`;
-      }).join('');
+      bBody.innerHTML = activeBookings.map(b => renderBookingRow(b, team)).join('');
       document.getElementById('bookings-loading').style.display = 'none';
       document.getElementById('bookings-table').style.display = 'table';
     }
+
+    renderArchive(archivedBookings, team);
 
     // ---- Technician applications table ----
     const tBody = document.getElementById('technicians-body');
