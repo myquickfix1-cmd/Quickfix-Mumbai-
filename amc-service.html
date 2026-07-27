@@ -7,6 +7,9 @@
 <title>AMC Service Mumbai | Annual Maintenance Contract | Quickfix</title>
 <link rel="canonical" href="https://quickfixmumbai.com/amc-service.html">
 <link rel="icon" type="image/png" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1E3A8A">
+<link rel="apple-touch-icon" href="icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
@@ -156,6 +159,18 @@ footer span { color: var(--white); }
     <a href="https://wa.me/919819832282?text=I%20need%20an%20AMC%20plan" target="_blank" class="btn-wa">📲 Ask About AMC</a>
   </div>
 </section>
+
+<div id="installBanner" style="display:none; max-width: 650px; margin: 24px auto 0; padding: 18px 22px; background: #F3F4F6; border: 1.5px solid #D1D5DB; border-radius: 14px; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;">
+  <div style="display:flex; align-items:center; gap:12px;">
+    <span style="font-size: 1.8rem;">📲</span>
+    <div>
+      <div style="font-weight:700; color: #1E3A8A; font-size: 0.95rem;">Install Quickfix Mumbai</div>
+      <div style="font-size: 0.8rem; color: #374151;">Keep us one tap away — no Play Store needed, installs straight from this page</div>
+    </div>
+  </div>
+  <button onclick="installPWA()" style="background: #1E3A8A; color: #fff; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 700; font-size: 0.88rem; cursor: pointer;">Install App</button>
+</div>
+
 
 <section>
   <div class="container">
@@ -380,6 +395,32 @@ async function loadReviews(){
 loadReviews();
 </script>
 
+<script>
+let deferredInstallPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  const b = document.getElementById('installBanner');
+  if (b) b.style.display = 'flex';
+});
+function installPWA(){
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+    deferredInstallPrompt.userChoice.then(() => {
+      const b = document.getElementById('installBanner');
+      if (b) b.style.display = 'none';
+      deferredInstallPrompt = null;
+    });
+  } else {
+    alert('If you don\'t see an install prompt, check your browser menu for "Add to Home Screen" or "Install App".');
+  }
+}
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
+</script>
 <script src="tracking.js"></script>
 </body>
 </html>
