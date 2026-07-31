@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Free Refrigerator Problem Checker - answer a few quick questions and find out honestly if it's a quick DIY fix or needs a technician. By Quickfix Mumbai.">
+<title>Refrigerator Problem Checker | Is It DIY or Technician? | Quickfix Mumbai</title>
+<link rel="canonical" href="https://quickfixmumbai.com/refrigerator-diy-checker.html">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Refrigerator Problem Checker",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "provider": { "@type": "Organization", "name": "Quickfix Mumbai" }
+}
+</script>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue: #1E3A8A; --blue-light: #3B82F6; --blue-lighter: #DBEAFE;
+  --white: #FFFFFF; --grey: #F3F4F6; --grey-dark: #6B7280;
+  --text: #1F2937; --border: #E5E7EB; --red: #DC2626; --whatsapp: #25D366; --green: #10B981; --amber: #D97706;
+  --cyan: #22D3EE;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); line-height: 1.6; }
+header { position: sticky; top: 0; z-index: 100; background: var(--white); display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-bottom: 2px solid var(--blue-lighter); flex-wrap: wrap; gap: 10px; }
+.logo { font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--blue); text-decoration: none; }
+.logo span { color: var(--blue-light); }
+.header-btns { display: flex; gap: 10px; }
+.btn-call, .btn-wa { padding: 10px 16px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; border: none; cursor: pointer; }
+.btn-call { background: var(--blue); color: var(--white); }
+.btn-wa { background: var(--whatsapp); color: var(--white); }
+.breadcrumb { background: var(--grey); padding: 10px 24px; font-size: 0.82rem; color: var(--grey-dark); }
+.breadcrumb a { color: var(--blue); text-decoration: none; }
+.hero { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 46px 24px 40px; text-align: center; }
+.hero-badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 6px 16px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 16px; }
+.hero h1 { font-family: 'Poppins', sans-serif; font-size: clamp(1.5rem, 6vw, 2.3rem); font-weight: 700; margin-bottom: 12px; }
+.hero h1 span { color: #FCD34D; }
+.hero p { font-size: 0.95rem; color: rgba(255,255,255,0.92); max-width: 620px; margin: 0 auto; }
+section { padding: 36px 24px; }
+.container { max-width: 640px; margin: 0 auto; }
+.checker-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 16px; padding: 26px 22px; box-shadow: 0 10px 30px rgba(30,58,138,0.08); }
+.progress-track { height: 6px; background: var(--grey); border-radius: 6px; overflow: hidden; margin-bottom: 22px; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--blue-light), var(--cyan)); width: 20%; transition: width 0.3s; }
+.step-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue-light); margin-bottom: 8px; }
+.q-text { font-family: 'Poppins', sans-serif; font-size: 1.15rem; font-weight: 600; color: var(--text); margin-bottom: 18px; }
+.option-btn { display: block; width: 100%; text-align: left; background: var(--grey); border: 1.5px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; font-size: 0.92rem; font-weight: 500; color: var(--text); cursor: pointer; transition: all 0.15s; }
+.option-btn:hover { border-color: var(--blue-light); background: var(--blue-lighter); }
+.back-link { display: inline-block; margin-top: 6px; font-size: 0.82rem; color: var(--grey-dark); cursor: pointer; text-decoration: underline; }
+.result-badge { display: inline-block; padding: 6px 16px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 14px; }
+.result-badge.diy { background: #DCFCE7; color: #166534; }
+.result-badge.urgent { background: #FEE2E2; color: #991B1B; }
+.result-badge.ok { background: var(--blue-lighter); color: var(--blue); }
+.result-title { font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+.result-text { font-size: 0.93rem; color: var(--grey-dark); margin-bottom: 18px; }
+.result-text b { color: var(--text); }
+.safety-note { background: #FEF9E7; border-left: 4px solid var(--amber); padding: 12px 16px; border-radius: 8px; font-size: 0.86rem; color: #92400E; margin-bottom: 18px; }
+.restart-link { font-size: 0.82rem; color: var(--blue); cursor: pointer; text-decoration: underline; display: inline-block; margin-top: 4px; }
+.mini-form input { width: 100%; padding: 11px 12px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.9rem; margin-bottom: 11px; color: var(--text); }
+.mini-form label { display: block; font-size: 0.82rem; color: var(--grey-dark); margin-bottom: 5px; }
+.btn-submit-lead { width: 100%; background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 13px; border: none; border-radius: 8px; font-weight: 700; font-size: 0.95rem; cursor: pointer; }
+.form-msg { text-align: center; font-size: 0.82rem; margin-top: 9px; font-weight: 600; }
+footer { background: var(--blue); color: rgba(255,255,255,0.85); text-align: center; padding: 24px 24px; font-size: 0.78rem; }
+footer span { color: var(--white); }
+.float-wa, .float-call { position: fixed; z-index: 999; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; text-decoration: none; border: none; cursor: pointer; right: 20px; }
+.float-wa { background: var(--whatsapp); color: var(--white); bottom: 20px; box-shadow: 0 4px 16px rgba(16,185,129,0.4); }
+.float-call { background: var(--blue); color: var(--white); bottom: 92px; box-shadow: 0 4px 16px rgba(30,58,138,0.4); }
+@media (max-width: 600px) { header { padding: 12px 16px; } section { padding: 28px 16px; } .checker-card { padding: 20px 16px; } .float-call { bottom: 84px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo" aria-label="Quickfix Mumbai - Home" style="display:flex;align-items:center;gap:10px;">
+    <img src="logo.png" alt="Quickfix Mumbai Logo" style="width:38px;height:38px;border-radius:8px;">
+    <span style="line-height:1.15;">
+      <span style="display:block;">Quick<span>fix</span> Mumbai</span>
+      <small style="display:block;font-size:10px;font-weight:300;">Appliances Repair &amp; Care</small>
+    </span>
+  </a>
+  <div class="header-btns">
+    <a href="tel:+919819832282" class="btn-call">Call</a>
+    <a href="https://wa.me/919819832282?text=I%20need%20refrigerator%20repair" target="_blank" class="btn-wa">Chat</a>
+  </div>
+</header>
+
+<div class="breadcrumb"><a href="index.html">Home</a> › Refrigerator Problem Checker</div>
+
+<section class="hero">
+  <div class="hero-badge">🧊 Free • Takes 30 Seconds</div>
+  <h1>Is It a <span>Quick Fix</span> or Do You Need a Technician?</h1>
+  <p>Answer 4 quick questions about your refrigerator. We'll give you an honest answer — a safe DIY tip if it's minor, or a clear heads-up if it genuinely needs a technician.</p>
+</section>
+
+<section>
+  <div class="container">
+    <div class="checker-card">
+
+      <div id="quizArea">
+        <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%;"></div></div>
+        <div id="questionBox"></div>
+      </div>
+
+      <div id="resultArea" style="display:none;"></div>
+
+    </div>
+  </div>
+</section>
+
+<a href="https://wa.me/919819832282?text=I%20need%20refrigerator%20repair" target="_blank" class="float-wa" aria-label="WhatsApp">📲</a>
+<a href="tel:+919819832282" class="float-call" aria-label="Call">📞</a>
+
+<footer>
+  <div><span>Quickfix Mumbai</span> — Appliance Repair &amp; Care</div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px 14px;margin:12px 0;">
+    <span style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);padding:5px 12px;border-radius:20px;font-size:0.7rem;white-space:nowrap;">✅ Verified Business</span>
+    <span style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);padding:5px 12px;border-radius:20px;font-size:0.7rem;white-space:nowrap;">✅ Doorstep Service — All Mumbai</span>
+  </div>
+  <div class="footer-links" style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:12px 0;font-size:0.74rem;">
+    <a href="index.html" style="color:rgba(255,255,255,0.92);text-decoration:none;">Home</a>
+    <a href="refrigerator-repair.html" style="color:rgba(255,255,255,0.92);text-decoration:none;">Fridge Repair</a>
+  </div>
+  <div>&copy; 2026 Quickfix Mumbai. All rights reserved.</div>
+</footer>
+
+<script>
+const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4zI3hmCRy2V3dGwcUiYjuIe-8GhEyHbehjcnemWcvEzn02XT/exec";
+
+// Each question: id, text, options[{label, value}]
+const QUESTIONS = [
+  {
+    id: 'cooling',
+    text: 'Is your refrigerator cooling at all?',
+    options: [
+      { label: 'Not cooling at all', value: 'none' },
+      { label: 'Cooling, but not enough', value: 'weak' },
+      { label: 'Cooling fine — different issue', value: 'fine' }
+    ]
+  },
+  {
+    id: 'noise',
+    text: 'Any unusual noise from it?',
+    options: [
+      { label: 'Loud buzzing or grinding', value: 'loud' },
+      { label: 'Repeated clicking on and off', value: 'clicking' },
+      { label: 'No unusual noise', value: 'none' }
+    ]
+  },
+  {
+    id: 'leak',
+    text: 'Any water leakage or ice buildup?',
+    options: [
+      { label: 'Water pooling inside or underneath', value: 'water' },
+      { label: 'Ice building up on back wall / freezer', value: 'ice' },
+      { label: 'Neither', value: 'none' }
+    ]
+  },
+  {
+    id: 'door',
+    text: 'Does the door close and seal properly?',
+    options: [
+      { label: 'Yes, seals fine', value: 'ok' },
+      { label: 'No — gap, or won\u2019t stay shut', value: 'bad' }
+    ]
+  }
+];
+
+let answers = {};
+let currentStep = 0;
+
+function renderQuestion() {
+  const q = QUESTIONS[currentStep];
+  document.getElementById('progressFill').style.width = Math.round(((currentStep) / QUESTIONS.length) * 100) + '%';
+  const box = document.getElementById('questionBox');
+  let html = '<div class="step-label">Question ' + (currentStep + 1) + ' of ' + QUESTIONS.length + '</div>';
+  html += '<div class="q-text">' + q.text + '</div>';
+  q.options.forEach(function(opt) {
+    html += '<button type="button" class="option-btn" onclick="answerQuestion(\'' + q.id + '\',\'' + opt.value + '\')">' + opt.label + '</button>';
+  });
+  if (currentStep > 0) {
+    html += '<span class="back-link" onclick="goBack()">&larr; Back</span>';
+  }
+  box.innerHTML = html;
+}
+
+function answerQuestion(id, value) {
+  answers[id] = value;
+  if (currentStep < QUESTIONS.length - 1) {
+    currentStep++;
+    renderQuestion();
+  } else {
+    document.getElementById('progressFill').style.width = '100%';
+    showResult();
+  }
+}
+
+function goBack() {
+  if (currentStep > 0) {
+    currentStep--;
+    renderQuestion();
+  }
+}
+
+function diagnose() {
+  const a = answers;
+  // Urgent: cooling problem combined with a mechanical/electrical noise sign
+  if (a.cooling === 'none' && (a.noise === 'loud' || a.noise === 'clicking')) {
+    return {
+      severity: 'urgent',
+      title: 'Likely a Cooling System Problem',
+      text: 'Based on your answers, there\u2019s a good chance the compressor or cooling system itself is the problem. Continuing to run the fridge like this can make things worse and risks further damage.',
+      tip: 'A technician inspection is genuinely the right call here — this isn\u2019t a safe DIY fix.'
+    };
+  }
+  if (a.cooling === 'none') {
+    return {
+      severity: 'urgent',
+      title: 'No Cooling Needs a Closer Look',
+      text: 'A refrigerator that isn\u2019t cooling at all is almost always a technician job — could be gas, thermostat, or compressor related, and it\u2019s hard to tell which without opening it up.',
+      tip: 'Move perishables out for now and get it inspected soon rather than waiting it out.'
+    };
+  }
+  if (a.cooling === 'weak' && a.door === 'bad') {
+    return {
+      severity: 'diy',
+      title: 'Probably Just the Door Seal',
+      text: 'Weak cooling combined with a door that isn\u2019t sealing properly usually means cold air is escaping. Worth trying before anything else.',
+      tip: 'Check the rubber gasket for gaps, food debris, or warping, and make sure the fridge isn\u2019t overloaded blocking the door from closing fully. This alone often restores cooling within a few hours.'
+    };
+  }
+  if (a.leak === 'ice') {
+    return {
+      severity: 'diy',
+      title: 'Sounds Like a Blocked Defrost Drain',
+      text: 'Ice building up on the back wall or in the freezer is a very common, genuinely DIY-fixable issue.',
+      tip: 'Try a manual defrost (switch off, leave the door open for a few hours to melt the buildup) and check that the small defrost drain hole at the back isn\u2019t blocked.'
+    };
+  }
+  if (a.leak === 'water') {
+    return {
+      severity: 'diy',
+      title: 'Likely a Clogged Drain Line',
+      text: 'Water pooling inside or underneath is usually the defrost drain line getting blocked with debris — not a major fault.',
+      tip: 'Check and clear the drain hole at the back of the fridge interior. If water keeps coming back after clearing it, that\u2019s when it\u2019s worth a technician visit.'
+    };
+  }
+  if (a.cooling === 'weak') {
+    return {
+      severity: 'diy',
+      title: 'Might Just Need Some Breathing Room',
+      text: 'Reduced cooling with no noise or leak often comes down to airflow or overloading rather than a fault.',
+      tip: 'Make sure vents inside aren\u2019t blocked by food, the fridge has a couple of inches of gap from the wall, and it isn\u2019t overloaded. Give it 24 hours — if it\u2019s still weak, get it checked.'
+    };
+  }
+  if (a.noise === 'clicking') {
+    return {
+      severity: 'urgent',
+      title: 'That Clicking Is Worth Checking Soon',
+      text: 'Repeated clicking on and off usually points to a compressor relay or electrical issue.',
+      tip: 'This is an electrical component — not something to open up yourself. A technician visit is the safer, honest recommendation here.'
+    };
+  }
+  return {
+    severity: 'ok',
+    title: 'Nothing Alarming in Your Answers',
+    text: 'Based on what you\u2019ve told us, your fridge doesn\u2019t show the classic warning signs of a major fault.',
+    tip: 'If there\u2019s still something specific bothering you that we didn\u2019t ask about, tell our technician directly — happy to take a look.'
+  };
+}
+
+function showResult() {
+  const r = diagnose();
+  document.getElementById('quizArea').style.display = 'none';
+  const badgeClass = r.severity;
+  const badgeLabel = r.severity === 'urgent' ? 'TECHNICIAN RECOMMENDED' : (r.severity === 'diy' ? 'TRY THIS FIRST' : 'LOOKS OKAY');
+
+  let html = '';
+  html += '<div class="result-badge ' + badgeClass + '">' + badgeLabel + '</div>';
+  html += '<div class="result-title">' + r.title + '</div>';
+  html += '<div class="result-text">' + r.text + '</div>';
+  if (r.severity === 'urgent') {
+    html += '<div class="safety-note">⚠️ ' + r.tip + '</div>';
+  } else {
+    html += '<div class="result-text"><b>Try this:</b> ' + r.tip + '</div>';
+  }
+  html += '<div style="margin:20px 0;height:1px;background:var(--border);"></div>';
+
+  if (r.severity === 'urgent') {
+    html += '<p style="font-size:0.9rem;font-weight:600;margin-bottom:12px;">Get a technician out today:</p>';
+  } else {
+    html += '<p style="font-size:0.9rem;font-weight:600;margin-bottom:12px;">Tried it and still not fixed? Book a technician:</p>';
+  }
+
+  html += '<div class="mini-form">' +
+    '<label>Your Name</label><input type="text" id="leadName" placeholder="Enter your name">' +
+    '<label>Locality / Area</label><input type="text" id="leadLocation" placeholder="e.g. Bandra West">' +
+    '<label>Mobile Number</label><input type="tel" id="leadMobile" placeholder="10 digit number" maxlength="10">' +
+    '<button class="btn-submit-lead" onclick="submitLead()">🚀 Book a Technician</button>' +
+    '<div id="leadMsg" class="form-msg"></div>' +
+    '</div>';
+
+  html += '<div style="text-align:center;"><span class="restart-link" onclick="restartQuiz()">Start over</span></div>';
+
+  const resultArea = document.getElementById('resultArea');
+  resultArea.innerHTML = html;
+  resultArea.style.display = 'block';
+
+  // fire-and-forget diagnostic log (does not block the UI)
+  try {
+    fetch(scriptUrl, {
+      method: "POST", mode: "no-cors", cache: "no-cache",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ formType: "diy_checker", appliance: "Refrigerator", answers: answers, result: r.title })
+    });
+  } catch (e) {}
+}
+
+function submitLead() {
+  const name = document.getElementById('leadName').value.trim();
+  const location = document.getElementById('leadLocation').value.trim();
+  const mobile = document.getElementById('leadMobile').value.trim();
+  const msgEl = document.getElementById('leadMsg');
+  if (!name || !mobile) {
+    msgEl.textContent = '⚠️ Please add your name and mobile number.';
+    msgEl.style.color = '#DC2626';
+    return;
+  }
+  if (!/^[6-9]\d{9}$/.test(mobile)) {
+    msgEl.textContent = '⚠️ Please enter a valid 10-digit mobile number.';
+    msgEl.style.color = '#DC2626';
+    return;
+  }
+  const r = diagnose();
+  fetch(scriptUrl, {
+    method: "POST", mode: "no-cors", cache: "no-cache",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ formType: "booking", name: name, location: location || "Not specified", problem: "Refrigerator - " + r.title, mobile: mobile })
+  }).then(function() {
+    document.querySelector('.mini-form').innerHTML = '<div style="text-align:center;padding:10px 0;"><div style="font-size:40px;">🎉</div><p style="font-weight:600;margin-top:8px;">Thanks, ' + name + '! Our team will call you shortly to schedule the visit.</p></div>';
+  }).catch(function() {
+    msgEl.textContent = '⚠️ Network issue — please WhatsApp us directly instead.';
+    msgEl.style.color = '#DC2626';
+  });
+}
+
+function restartQuiz() {
+  answers = {};
+  currentStep = 0;
+  document.getElementById('resultArea').style.display = 'none';
+  document.getElementById('quizArea').style.display = 'block';
+  renderQuestion();
+}
+
+renderQuestion();
+</script>
+<script src="tracking.js"></script>
+</body>
+</html>

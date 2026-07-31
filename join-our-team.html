@@ -66,6 +66,8 @@ section { padding: 44px 24px; }
 .faq-q { font-weight: 700; color: var(--blue); font-size: 0.92rem; margin-bottom: 5px; }
 .faq-a { font-size: 0.86rem; color: var(--grey-dark); }
 footer { background: var(--blue); color: rgba(255,255,255,0.85); text-align: center; padding: 24px 24px; font-size: 0.78rem; }
+.trust-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 14px; margin: 12px 0; }
+.trust-strip span { display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.72rem; white-space: nowrap; }
 footer span { color: var(--white); }
 .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 12px 0; font-size: 0.74rem; }
 .footer-links a { color: rgba(255,255,255,0.92); text-decoration: none; }
@@ -74,6 +76,54 @@ footer span { color: var(--white); }
 .float-call { background: var(--blue); color: var(--white); bottom: 92px; box-shadow: 0 4px 16px rgba(30,58,138,0.4); }
 @media (max-width: 600px) { header { padding: 12px 16px; } section { padding: 34px 16px; } .float-call { bottom: 84px; } }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Kya mujhe sab brands ka experience chahiye?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nahi, ek brand/appliance mein bhi strong experience hai toh apply karo — hum training se baaki brands sikha dete hain."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Payment kaise hota hai?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Per-job rate ke hisab se, details call pe discuss karenge jab aap apply karenge."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Apna vehicle hona zaroori hai?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Preferred hai kyunki Mumbai mein multiple areas cover karne padte hain, lekin exceptions pe baat ho sakti hai."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Application ke baad kitna time lagega reply aane mein?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1-2 din ke andar call ya WhatsApp pe contact karte hain."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Part-time bhi kaam kar sakte hain?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Haan, scheduling flexible hai — apply karte waqt apni availability bhi bata dena."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -185,6 +235,10 @@ footer span { color: var(--white); }
 
 <footer>
   <p>© 2026 <span>Quickfix Mumbai</span> · Home Appliance & Electronics Repair</p>
+    <div class="trust-strip">
+    <span>✅ Verified Business</span>
+    <span>✅ Doorstep Service — All Mumbai</span>
+  </div>
   <div class="footer-links">
     <a href="index.html">Home</a>
     <a href="inquiry.html">Contact</a>

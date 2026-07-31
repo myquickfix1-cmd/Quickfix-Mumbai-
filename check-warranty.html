@@ -49,10 +49,44 @@ header { position: sticky; top: 0; z-index: 100; background: var(--white); displ
 .faq-q { font-weight: 700; color: var(--blue); font-size: 0.9rem; margin-bottom: 5px; }
 .faq-a { font-size: 0.85rem; color: var(--grey-dark); }
 footer { background: var(--blue); color: rgba(255,255,255,0.85); text-align: center; padding: 24px 24px; font-size: 0.78rem; }
+.trust-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 14px; margin: 12px 0; }
+.trust-strip span { display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.72rem; white-space: nowrap; }
 footer span { color: var(--white); }
 .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 12px 0; font-size: 0.74rem; }
 .footer-links a { color: rgba(255,255,255,0.92); text-decoration: none; }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Warranty code kahan milega?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Jab bhi tumhara service complete hota hai, WhatsApp pe ek 6-digit code aur ye link bheja jata hai. Message history mein check karo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Code kho gaya hai, kya karein?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Humein call ya WhatsApp karo apna mobile number aur naam bata ke — hum turant confirm kar denge aur code dobara bhej denge."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Warranty mein kya cover hota hai?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wahi part/repair jo humne kiya tha, agar wahi issue dobara aata hai to bina extra charge ke fix karte hain — 6 mahine tak."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -111,6 +145,10 @@ footer span { color: var(--white); }
 
 <footer>
   <p>© 2026 <span>Quickfix Mumbai</span> · Home Appliance & Electronics Repair</p>
+    <div class="trust-strip">
+    <span>✅ Verified Business</span>
+    <span>✅ Doorstep Service — All Mumbai</span>
+  </div>
   <div class="footer-links">
     <a href="index.html">Home</a>
     <a href="amc-service.html">AMC Plans</a>

@@ -88,6 +88,8 @@ header { position: sticky; top: 0; z-index: 100; background: var(--white); displ
 .cta-band .btn-wa { color: var(--whatsapp); }
 
 footer { background: var(--blue); color: rgba(255,255,255,0.85); text-align: center; padding: 24px 24px; font-size: 0.78rem; }
+.trust-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 14px; margin: 12px 0; }
+.trust-strip span { display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.72rem; white-space: nowrap; }
 footer span { color: var(--white); }
 .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 12px 0; font-size: 0.74rem; }
 .footer-links a { color: rgba(255,255,255,0.92); text-decoration: none; }
@@ -97,6 +99,46 @@ footer span { color: var(--white); }
 .float-call { background: var(--blue); color: var(--white); bottom: 92px; box-shadow: 0 4px 16px rgba(30,58,138,0.4); }
 @media (max-width: 600px) { header { padding: 12px 16px; } .article-body { padding: 30px 0; } .float-call { bottom: 84px; } }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wash aur rinse sahi ho raha hai but spin nahi ho raha, ye kya matlab hai?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Iska matlab machine ke early stages theek hain — fault specifically spin-stage components mein hai, jaise motor brushes, belt, ya door lock sensor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Load unbalance hone par machine spin skip kar deti hai, ye normal hai?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Haan, ye ek safety feature hai, fault nahi. Load ko evenly redistribute karke dobara try karo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Belt khud check kar sakte hain?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Visual check possible hai agar aap machine ke peeche access kar sakte ho, lekin belt replace karna technician se hi karwana safe hai, alignment sahi hona zaroori hai."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ye issue kitni der mein fix ho jata hai visit mein?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Belt ya door lock sensor ka case ho toh same visit mein 30-45 minute mein fix ho jata hai. Motor ya PCB replace karna pade toh part availability pe depend karta hai."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -175,7 +217,7 @@ footer span { color: var(--white); }
     <p>If spinning still fails after these checks, the cause is likely the belt, motor brushes, or control board — that's when a proper diagnostic visit is worth booking.</p>
 
     <h2>Is This Covered Under Warranty?</h2>
-    <p>If your IFB machine is still under company warranty, a manufacturer claim usually covers motor or PCB faults. Once warranty has expired, an independent repair with genuine parts and our own 6-month service warranty is typically faster than the manufacturer's service queue.</p>
+    <p>If your IFB machine is still under company warranty, a manufacturer claim usually covers motor or PCB faults. Once warranty has expired, an independent repair with genuine parts and our own 3-month service warranty is typically faster than the manufacturer's service queue.</p>
 
     <div class="related-links">
       <h3>Related Reading</h3>
@@ -210,7 +252,7 @@ footer span { color: var(--white); }
 
 <div class="cta-band">
   <h2>IFB Washing Machine Not Spinning?</h2>
-  <p>Same-day visit across Mumbai — genuine parts, 6-month warranty.</p>
+  <p>Same-day visit across Mumbai — genuine parts, 3-month warranty.</p>
   <div class="cta-btns">
     <a href="tel:+919819832282" class="btn-call">📞 Call +91 98198 32282</a>
     <a href="https://wa.me/919819832282?text=My%20IFB%20washing%20machine%20is%20not%20spinning" target="_blank" class="btn-wa">📲 Book by WhatsApp</a>
@@ -219,6 +261,10 @@ footer span { color: var(--white); }
 
 <footer>
   <p>© 2026 <span>Quickfix Mumbai</span> · Home Appliance & Electronics Repair</p>
+    <div class="trust-strip">
+    <span>✅ Verified Business</span>
+    <span>✅ Doorstep Service — All Mumbai</span>
+  </div>
   <div class="footer-links">
     <a href="index.html">Home</a>
     <a href="washing-machine-repair.html">Washing Machine Repair</a>
