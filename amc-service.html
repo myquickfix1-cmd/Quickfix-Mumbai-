@@ -38,6 +38,18 @@ header { position: sticky; top: 0; z-index: 100; background: var(--white); displ
 .nav-link { padding: 6px 10px; border-radius: 6px; font-weight: 500; text-decoration: none; color: var(--text); }
 .nav-link:hover, .nav-link.active { background: var(--blue); color: var(--white); }
 .header-btns { display: flex; gap: 10px; }
+.nav-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 40px; height: 40px; background: rgba(30,58,138,0.08); border: 1px solid rgba(30,58,138,0.18); border-radius: 8px; cursor: pointer; padding: 0; }
+.nav-toggle span { width: 20px; height: 2px; background: var(--blue); border-radius: 2px; margin: 0 auto; transition: transform 0.2s, opacity 0.2s; }
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+@media (max-width: 780px) {
+  header { position: relative; }
+  .nav-toggle { display: flex; order: 3; }
+  .nav-menu { display: none; width: 100%; order: 5; flex-direction: column; gap: 2px; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); padding: 10px 16px 18px; border-radius: 0 0 16px 16px; box-shadow: 0 16px 30px rgba(0,0,0,0.18); border-top: 1px solid var(--border); }
+  .nav-menu.open { display: flex; }
+  .nav-link { padding: 12px 14px; border-radius: 8px; }
+}
 .btn-call, .btn-wa { padding: 10px 16px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; border: none; cursor: pointer; }
 .btn-call { background: var(--blue); color: var(--white); }
 .btn-wa { background: var(--whatsapp); color: var(--white); }
@@ -113,6 +125,8 @@ section { padding: 44px 24px; }
 .cta-band h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.4rem, 4vw, 1.9rem); margin-bottom: 10px; }
 .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 footer { background: var(--blue); color: rgba(255,255,255,0.85); text-align: center; padding: 24px 24px; font-size: 0.78rem; }
+.trust-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 14px; margin: 12px 0; }
+.trust-strip span { display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.72rem; white-space: nowrap; }
 footer span { color: var(--white); }
 .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 12px 0; font-size: 0.74rem; }
 .footer-links a { color: rgba(255,255,255,0.92); text-decoration: none; }
@@ -121,6 +135,118 @@ footer span { color: var(--white); }
 .float-call { background: var(--blue); color: var(--white); bottom: 92px; box-shadow: 0 4px 16px rgba(30,58,138,0.4); }
 @media (max-width: 600px) { header { padding: 12px 16px; } section { padding: 34px 16px; } .cta-band { margin: 28px 16px; } .float-call { bottom: 84px; } }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "AMC plan kaise decide hota hai, price kya hoti hai?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Plan aur price dono appliance count aur type pe depend karte hain — sirf fridge ke liye alag, fridge+washing machine combo alag, 5+ appliances ke liye whole-home plan. Call karo apne appliances batao, hum same-day quote de denge."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ek hi appliance ke liye AMC le sakte hain?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Haan bilkul, Single Appliance plan isi ke liye hai — fridge, washing machine, microwave, dishwasher, dryer, ya air dresser, jo bhi chahiye."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "AMC mein kya-kya cover hota hai?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Preventive checkups (saal mein 2 baar), priority service booking, discounted spare parts, aur genuine parts guarantee — sab plans mein."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "AMC mein repair bhi free hota hai?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Checkups aur diagnosis included hote hain. Agar part replace karna pade, toh AMC customers ko discounted rate milta hai — poora free nahi hota, but savings significant hoti hai."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Company warranty abhi active hai, AMC lena chahiye?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AMC company warranty khatam hone ke baad sabse zyada value deta hai. Chaho toh abhi bhi le sakte ho — warranty khatam hote hi AMC benefits automatically start ho jayenge."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kitne appliances ke baad Whole-Home plan sahi rehta hai?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Zyada tar 5 ya usse zyada appliances ho toh whole-home plan best value deta hai — per-appliance cost sabse kam ho jata hai."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Emergency repair AMC mein priority milti hai?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Haan, AMC customers ko priority scheduling milti hai — Whole-Home plan mein toh same-day emergency response bhi included hai."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "AMC beech mein cancel kar sakte hain?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Details call pe discuss kar lete hain — flexible rehte hain, koi hidden lock-in nahi hai."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Sab brands cover hote hain AMC mein?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Haan, Samsung, LG, IFB, Whirlpool, Bosch, Godrej — sab major brands ke appliances AMC mein le sakte ho."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Preventive checkup mein kya hota hai exactly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Technician appliance ki poori health check karta hai — cooling/heating performance, wear-and-tear parts, electrical connections — taaki badi problem hone se pehle chhoti fix ho jaye."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Naya appliance liya hai, AMC abhi le sakte hain?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Haan, company warranty ke saath bhi AMC le sakte ho — preventive checkups turant start ho jayenge, repair benefits warranty khatam hone ke baad kaam aayenge."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Genuine parts guarantee kya matlab hai?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AMC ke andar jo bhi part replace hoga, wo company-genuine hoga — koi local ya duplicate part nahi."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "AMC customers ke liye har visit pe diagnosis charge lagta hai?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Non-AMC customers ke liye standard ₹499 per appliance diagnosis charge hai. AMC plan mein preventive checkups included hote hain — is charge se alag, AMC ke terms visit ke time discuss kar lete hain."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -132,7 +258,7 @@ footer span { color: var(--white); }
     <small style="display:block;font-size:10px;font-weight:300;">Appliances Repair &amp; Care</small>
   </span>
 </a>
-  <nav class="nav-menu">
+  <nav class="nav-menu" id="navMenu">
     <a class="nav-link" href="index.html">Home</a>
     <a class="nav-link" href="refrigerator-repair.html">Fridge</a>
     <a class="nav-link" href="washing-machine-repair.html">Washing M/C</a>
@@ -146,7 +272,25 @@ footer span { color: var(--white); }
     <a href="tel:+919819832282" class="btn-call" aria-label="Call Quickfix Mumbai">Call</a>
     <a href="https://wa.me/919819832282?text=I%20need%20an%20AMC%20plan" target="_blank" class="btn-wa" aria-label="Chat with Quickfix Mumbai on WhatsApp">Chat</a>
   </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+<script>
+(function(){
+  var btn = document.getElementById('navToggle');
+  var menu = document.getElementById('navMenu');
+  if (btn && menu) {
+    btn.addEventListener('click', function(){
+      var open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); btn.setAttribute('aria-expanded','false'); });
+    });
+  }
+})();
+</script>
 
 <div class="breadcrumb"><a href="index.html">Home</a> › Services › AMC (Annual Maintenance)</div>
 
@@ -282,7 +426,7 @@ footer span { color: var(--white); }
 <section style="background: var(--grey);">
   <div class="container">
     <div class="center"><div class="section-label">Customer Reviews</div><h2 class="section-title">What Customers Say</h2></div>
-    <div class="rating-badge"><span class="badge-stars">★★★★★</span><span class="badge-num">4.8</span><span class="badge-count">(<span id="reviewCount">2,559</span> Reviews)</span></div>
+    <div class="rating-badge"><span class="badge-stars">★★★★★</span><span class="badge-num">4.8</span><span class="badge-count">(<span id="reviewCount">2.5k</span> Reviews)</span></div>
     <div class="testimonials-grid">
       <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"Took the multi-appliance AMC for fridge and washing machine. Preventive checkup caught a fridge issue before it got worse." — Sanjay, Andheri</div></div>
       <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><div class="testimonial-text">"Whole-home plan is genuinely worth it with 5 appliances. Priority booking actually works." — Farida, Bandra West</div></div>
@@ -333,6 +477,10 @@ footer span { color: var(--white); }
 
 <footer>
   <p>© 2026 <span>Quickfix Mumbai</span> · Home Appliance & Electronics Repair</p>
+    <div class="trust-strip">
+    <span>✅ Verified Business</span>
+    <span>✅ Doorstep Service — All Mumbai</span>
+  </div>
   <div class="footer-links">
     <a href="index.html">Home</a>
     <a href="refrigerator-repair.html">Refrigerator</a>
@@ -360,6 +508,10 @@ document.querySelectorAll('#starPicker span').forEach(star => {
 });
 
 const BASE_REVIEW_COUNT = 2559;
+function formatReviewCount(n){
+  if (n >= 1000) { return (Math.floor(n/100)/10).toFixed(1).replace(/\.0$/, '') + 'k'; }
+  return n.toLocaleString('en-IN');
+}
 
 async function submitReview(){
   const name = document.getElementById('reviewName').value.trim();
@@ -383,7 +535,7 @@ async function loadReviews(){
     const res = await fetch(scriptUrl + '?action=reviews', { cache: "no-cache" });
     const reviews = await res.json();
     const countEl = document.getElementById('reviewCount');
-    if(countEl) countEl.textContent = (BASE_REVIEW_COUNT + (Array.isArray(reviews) ? reviews.length : 0)).toLocaleString('en-IN');
+    if(countEl) countEl.textContent = formatReviewCount(BASE_REVIEW_COUNT + (Array.isArray(reviews) ? reviews.length : 0));
     if(!reviews || reviews.length === 0){ container.innerHTML = '<p style="text-align:center; color:var(--grey-dark); font-size:0.85rem; grid-column:1/-1;">No reviews yet — be the first to share your experience!</p>'; return; }
     container.innerHTML = reviews.slice().reverse().slice(0,6).map(r => `
       <div class="testimonial-card"><div class="testimonial-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div>

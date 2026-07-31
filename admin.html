@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="robots" content="noindex, nofollow">  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
@@ -326,7 +325,7 @@ async function callAction(payload) {
 // ---------- MESSAGE TEMPLATES (single source of truth — used for both preview and send) ----------
 function msgThankYou(customerName, techName, warrantyCode) {
   const codeLine = warrantyCode ? `\n\nYour warranty code: ${warrantyCode}\nCheck your warranty anytime: https://quickfixmumbai.com/check-warranty.html` : '';
-  return `Dear ${customerName}, thank you! ${techName ? techName + ' has' : 'We have'} completed your service. If anything feels off, just reply here — we'll sort it out. Your repair is backed by our 6-month service warranty.${codeLine} 🙏`;
+  return `Dear ${customerName}, thank you! ${techName ? techName + ' has' : 'We have'} completed your service. If anything feels off, just reply here — we'll sort it out. Your repair is backed by our 3-month service warranty.${codeLine} 🙏`;
 }
 function msgFollowUp(customerName) {
   return `Hi ${customerName}, hope everything's working well since our visit! If you're happy with the service, we'd really appreciate a quick review. If there's any issue at all, just reply here and we'll fix it right away.`;
@@ -335,7 +334,7 @@ function msgReengagement(customerName) {
   return `Hi ${customerName}, just checking in — hope your appliance is still running smoothly since our last visit! Whenever you need us again, we're just a call or message away. 🙂`;
 }
 function msgWarrantyReminder(customerName, daysLeft, untilDateStr) {
-  return `Hi ${customerName}, just a heads-up — your 6-month service warranty with us ends in ${daysLeft} day${daysLeft === 1 ? '' : 's'} (${untilDateStr}). If anything's not working right, let us know before then and we'll take care of it at no extra charge!`;
+  return `Hi ${customerName}, just a heads-up — your 3-month service warranty with us ends in ${daysLeft} day${daysLeft === 1 ? '' : 's'} (${untilDateStr}). If anything's not working right, let us know before then and we'll take care of it at no extra charge!`;
 }
 function msgNotifyCustomer(customerName, techName, techMobile, date, time) {
   const visitLine = (date || time) ? ` around ${date || ''} ${time || ''}`.trim() : ' shortly';
