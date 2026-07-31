@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5RMPDJNQ');</script>
+  <!-- Google Tag Manager -->
+<script>
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5RMPDJNQ');
+  }, 1000);
+});
+</script>
 <!-- End Google Tag Manager -->
-  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Quickfix Mumbai | Expert home appliance repair service. We fix Refrigerator, Washing Machine, Microwave, Dishwasher, Dryer & Air Dresser — genuine parts, 3-month warranty.">  
@@ -335,6 +340,9 @@ footer span { color: var(--white); }
   }
   header { background: rgba(11,17,48,0.94); }
   .service-card, .why-card, .testimonial-card, .review-form-box { background: rgba(255,255,255,0.95); }
+  .hero-btns {
+  min-height: 50px;
+}
 }
 </style>
 </head>
@@ -345,7 +353,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <header>
   <a href="index.html" class="logo" aria-label="Quickfix Mumbai - Home" style="display:flex;align-items:center;gap:10px;">
-    <img src="logo.png" alt="Quickfix Mumbai Logo" style="width:38px;height:38px;border-radius:8px;">
+    <img src="logo.png" alt="Quickfix Mumbai Logo" width="38" height="38" style="width:38px;height:38px;border-radius:8px;" loading="eager">
     <span style="line-height:1.15;">
       <span style="display:block;">Quick<span>fix</span> Mumbai</span>
       <small style="display:block;font-size:10px;font-weight:300;">Appliances Repair &amp; Care</small>
