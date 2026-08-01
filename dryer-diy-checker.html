@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Free Refrigerator Problem Checker - answer a few quick questions and find out honestly if it's a quick DIY fix or needs a technician. By Quickfix Mumbai.">
-<title>Refrigerator Problem Checker | Is It DIY or Technician? | Quickfix Mumbai</title>
-<link rel="canonical" href="https://quickfixmumbai.com/refrigerator-diy-checker.html">
+<meta name="description" content="Free Dryer Problem Checker - answer a few quick questions and find out honestly if it's a quick DIY fix or needs a technician. By Quickfix Mumbai.">
+<title>Dryer Problem Checker | Is It DIY or Technician? | Quickfix Mumbai</title>
+<link rel="canonical" href="https://quickfixmumbai.com/dryer-diy-checker.html">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -13,7 +13,7 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Refrigerator Problem Checker",
+  "name": "Dryer Problem Checker",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any",
   "provider": { "@type": "Organization", "name": "Quickfix Mumbai" }
@@ -87,16 +87,16 @@ footer span { color: var(--white); }
   </a>
   <div class="header-btns">
     <a href="tel:+919819832282" class="btn-call">Call</a>
-    <a href="https://wa.me/919819832282?text=I%20need%20refrigerator%20repair" target="_blank" class="btn-wa">Chat</a>
+    <a href="https://wa.me/919819832282?text=I%20need%20dryer%20repair" target="_blank" class="btn-wa">Chat</a>
   </div>
 </header>
 
-<div class="breadcrumb"><a href="index.html">Home</a> › Refrigerator Problem Checker</div>
+<div class="breadcrumb"><a href="index.html">Home</a> › Dryer Problem Checker</div>
 
 <section class="hero">
-  <div class="hero-badge">🧊 Free • Takes 30 Seconds</div>
+  <div class="hero-badge">🌬️ Free • Takes 30 Seconds</div>
   <h1>Is It a <span>Quick Fix</span> or Do You Need a Technician?</h1>
-  <p>Answer 4 quick questions about your refrigerator. We'll give you an honest answer — a safe DIY tip if it's minor, or a clear heads-up if it genuinely needs a technician.</p>
+  <p>Answer a few quick questions about your clothes dryer. We'll give you an honest answer — a safe DIY tip if it's minor, or a clear heads-up if it genuinely needs a technician.</p>
 </section>
 
 <section>
@@ -114,7 +114,7 @@ footer span { color: var(--white); }
   </div>
 </section>
 
-<a href="https://wa.me/919819832282?text=I%20need%20refrigerator%20repair" target="_blank" class="float-wa" aria-label="WhatsApp">📲</a>
+<a href="https://wa.me/919819832282?text=I%20need%20dryer%20repair" target="_blank" class="float-wa" aria-label="WhatsApp">📲</a>
 <a href="tel:+919819832282" class="float-call" aria-label="Call">📞</a>
 
 <footer>
@@ -125,7 +125,7 @@ footer span { color: var(--white); }
   </div>
   <div class="footer-links" style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:12px 0;font-size:0.74rem;">
     <a href="index.html" style="color:rgba(255,255,255,0.92);text-decoration:none;">Home</a>
-    <a href="refrigerator-repair.html" style="color:rgba(255,255,255,0.92);text-decoration:none;">Fridge Repair</a>
+    <a href="dryer-repair.html" style="color:rgba(255,255,255,0.92);text-decoration:none;">Dryer Repair</a>
   </div>
   <div>&copy; 2026 Quickfix Mumbai. All rights reserved.</div>
 </footer>
@@ -136,38 +136,29 @@ const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4z
 // Each question: id, text, options[{label, value}]
 const QUESTIONS = [
   {
-    id: 'cooling',
-    text: 'Is your refrigerator cooling at all?',
+    id: 'smell',
+    text: 'Any burning smell while it runs?',
     options: [
-      { label: 'Not cooling at all', value: 'none' },
-      { label: 'Cooling, but not enough', value: 'weak' },
-      { label: 'Cooling fine — different issue', value: 'fine' }
+      { label: 'Yes, burning smell', value: 'burning' },
+      { label: 'No unusual smell', value: 'none' }
     ]
   },
   {
-    id: 'noise',
-    text: 'Any unusual noise from it?',
+    id: 'main',
+    text: 'What\u2019s the main issue?',
     options: [
-      { label: 'Loud buzzing or grinding', value: 'loud' },
-      { label: 'Repeated clicking on and off', value: 'clicking' },
-      { label: 'No unusual noise', value: 'none' }
+      { label: 'Not heating (tumbles, but no heat)', value: 'no_heat' },
+      { label: 'Not tumbling at all', value: 'no_tumble' },
+      { label: 'Taking much longer than usual to dry', value: 'slow' },
+      { label: 'Loud grinding noise', value: 'noise' }
     ]
   },
   {
-    id: 'leak',
-    text: 'Any water leakage or ice buildup?',
+    id: 'lint',
+    text: 'When did you last clean the lint filter?',
     options: [
-      { label: 'Water pooling inside or underneath', value: 'water' },
-      { label: 'Ice building up on back wall / freezer', value: 'ice' },
-      { label: 'Neither', value: 'none' }
-    ]
-  },
-  {
-    id: 'door',
-    text: 'Does the door close and seal properly?',
-    options: [
-      { label: 'Yes, seals fine', value: 'ok' },
-      { label: 'No — gap, or won\u2019t stay shut', value: 'bad' }
+      { label: 'Recently, it\u2019s clean', value: 'clean' },
+      { label: 'Honestly, not sure / a while ago', value: 'unsure' }
     ]
   }
 ];
@@ -210,67 +201,50 @@ function goBack() {
 
 function diagnose() {
   const a = answers;
-  // Urgent: cooling problem combined with a mechanical/electrical noise sign
-  if (a.cooling === 'none' && (a.noise === 'loud' || a.noise === 'clicking')) {
+  if (a.smell === 'burning') {
     return {
       severity: 'urgent',
-      title: 'Likely a Cooling System Problem',
-      text: 'Based on your answers, there\u2019s a good chance the compressor or cooling system itself is the problem. Continuing to run the fridge like this can make things worse and risks further damage.',
-      tip: 'A technician inspection is genuinely the right call here — this isn\u2019t a safe DIY fix.'
+      title: 'Stop the Dryer — Burning Smell Is a Fire Risk',
+      text: 'A burning smell from a dryer is often built-up lint overheating, and this is a genuine fire hazard if ignored.',
+      tip: 'Switch it off immediately. As a safety step you can clean the lint filter and check the exhaust vent yourself, but get a technician to inspect it before running it again — don\u2019t wait this one out.'
     };
   }
-  if (a.cooling === 'none') {
+  if (a.main === 'slow' || (a.main === 'no_heat' && a.lint === 'unsure')) {
+    return {
+      severity: 'diy',
+      title: 'Almost Certainly a Lint or Vent Blockage',
+      text: 'Slow drying and heat trouble are, by far, most commonly caused by a clogged lint filter or blocked exhaust vent restricting airflow.',
+      tip: 'Clean the lint filter thoroughly and check the exhaust vent/duct isn\u2019t blocked or crushed. This alone fixes the majority of these cases. If it\u2019s still slow or not heating after that, get it checked.'
+    };
+  }
+  if (a.main === 'no_heat') {
     return {
       severity: 'urgent',
-      title: 'No Cooling Needs a Closer Look',
-      text: 'A refrigerator that isn\u2019t cooling at all is almost always a technician job — could be gas, thermostat, or compressor related, and it\u2019s hard to tell which without opening it up.',
-      tip: 'Move perishables out for now and get it inspected soon rather than waiting it out.'
+      title: 'Heating Element May Have Failed',
+      text: 'With the lint filter already clean and it still not heating, this usually points to the heating element or thermostat.',
+      tip: 'This is a technician job — not something safe to open up and test yourself.'
     };
   }
-  if (a.cooling === 'weak' && a.door === 'bad') {
-    return {
-      severity: 'diy',
-      title: 'Probably Just the Door Seal',
-      text: 'Weak cooling combined with a door that isn\u2019t sealing properly usually means cold air is escaping. Worth trying before anything else.',
-      tip: 'Check the rubber gasket for gaps, food debris, or warping, and make sure the fridge isn\u2019t overloaded blocking the door from closing fully. This alone often restores cooling within a few hours.'
-    };
-  }
-  if (a.leak === 'ice') {
-    return {
-      severity: 'diy',
-      title: 'Sounds Like a Blocked Defrost Drain',
-      text: 'Ice building up on the back wall or in the freezer is a very common, genuinely DIY-fixable issue.',
-      tip: 'Try a manual defrost (switch off, leave the door open for a few hours to melt the buildup) and check that the small defrost drain hole at the back isn\u2019t blocked.'
-    };
-  }
-  if (a.leak === 'water') {
-    return {
-      severity: 'diy',
-      title: 'Likely a Clogged Drain Line',
-      text: 'Water pooling inside or underneath is usually the defrost drain line getting blocked with debris — not a major fault.',
-      tip: 'Check and clear the drain hole at the back of the fridge interior. If water keeps coming back after clearing it, that\u2019s when it\u2019s worth a technician visit.'
-    };
-  }
-  if (a.cooling === 'weak') {
-    return {
-      severity: 'diy',
-      title: 'Might Just Need Some Breathing Room',
-      text: 'Reduced cooling with no noise or leak often comes down to airflow or overloading rather than a fault.',
-      tip: 'Make sure vents inside aren\u2019t blocked by food, the fridge has a couple of inches of gap from the wall, and it isn\u2019t overloaded. Give it 24 hours — if it\u2019s still weak, get it checked.'
-    };
-  }
-  if (a.noise === 'clicking') {
+  if (a.main === 'no_tumble') {
     return {
       severity: 'urgent',
-      title: 'That Clicking Is Worth Checking Soon',
-      text: 'Repeated clicking on and off usually points to a compressor relay or electrical issue.',
-      tip: 'This is an electrical component — not something to open up yourself. A technician visit is the safer, honest recommendation here.'
+      title: 'Likely a Belt or Motor Issue',
+      text: 'A drum that won\u2019t tumble at all, while the dryer still powers on, usually points to a broken belt or motor problem.',
+      tip: 'This one genuinely needs a technician — not a simple DIY fix.'
+    };
+  }
+  if (a.main === 'noise') {
+    return {
+      severity: 'diy',
+      title: 'Check for Objects in the Drum First',
+      text: 'Loud grinding noise is sometimes just a coin, button, or small object caught in the drum.',
+      tip: 'Check pockets and the drum for stray objects. If the grinding continues with an empty drum, that points to a bearing or drum issue — worth a technician visit.'
     };
   }
   return {
     severity: 'ok',
     title: 'Nothing Alarming in Your Answers',
-    text: 'Based on what you\u2019ve told us, your fridge doesn\u2019t show the classic warning signs of a major fault.',
+    text: 'Based on what you\u2019ve told us, your dryer doesn\u2019t show the classic warning signs of a major fault.',
     tip: 'If there\u2019s still something specific bothering you that we didn\u2019t ask about, tell our technician directly — happy to take a look.'
   };
 }
@@ -317,7 +291,7 @@ function showResult() {
     fetch(scriptUrl, {
       method: "POST", mode: "no-cors", cache: "no-cache",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ formType: "diy_checker", appliance: "Refrigerator", answers: answers, result: r.title })
+      body: JSON.stringify({ formType: "diy_checker", appliance: "Dryer", answers: answers, result: r.title })
     });
   } catch (e) {}
 }
@@ -341,7 +315,7 @@ function submitLead() {
   fetch(scriptUrl, {
     method: "POST", mode: "no-cors", cache: "no-cache",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ formType: "booking", name: name, location: location || "Not specified", problem: "Refrigerator - " + r.title, mobile: mobile })
+    body: JSON.stringify({ formType: "booking", name: name, location: location || "Not specified", problem: "Dryer - " + r.title, mobile: mobile })
   }).then(function() {
     document.querySelector('.mini-form').innerHTML = '<div style="text-align:center;padding:10px 0;"><div style="font-size:40px;">🎉</div><p style="font-weight:600;margin-top:8px;">Thanks, ' + name + '! Our team will call you shortly to schedule the visit.</p></div>';
   }).catch(function() {

@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Free Refrigerator Problem Checker - answer a few quick questions and find out honestly if it's a quick DIY fix or needs a technician. By Quickfix Mumbai.">
-<title>Refrigerator Problem Checker | Is It DIY or Technician? | Quickfix Mumbai</title>
-<link rel="canonical" href="https://quickfixmumbai.com/refrigerator-diy-checker.html">
+<meta name="description" content="Free Washing Machine Problem Checker - answer a few quick questions and find out honestly if it's a quick DIY fix or needs a technician. By Quickfix Mumbai.">
+<title>Washing Machine Problem Checker | Is It DIY or Technician? | Quickfix Mumbai</title>
+<link rel="canonical" href="https://quickfixmumbai.com/washing-machine-diy-checker.html">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -13,7 +13,7 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Refrigerator Problem Checker",
+  "name": "Washing Machine Problem Checker",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any",
   "provider": { "@type": "Organization", "name": "Quickfix Mumbai" }
@@ -87,16 +87,16 @@ footer span { color: var(--white); }
   </a>
   <div class="header-btns">
     <a href="tel:+919819832282" class="btn-call">Call</a>
-    <a href="https://wa.me/919819832282?text=I%20need%20refrigerator%20repair" target="_blank" class="btn-wa">Chat</a>
+    <a href="https://wa.me/919819832282?text=I%20need%20washing%20machine%20repair" target="_blank" class="btn-wa">Chat</a>
   </div>
 </header>
 
-<div class="breadcrumb"><a href="index.html">Home</a> › Refrigerator Problem Checker</div>
+<div class="breadcrumb"><a href="index.html">Home</a> › Washing Machine Problem Checker</div>
 
 <section class="hero">
-  <div class="hero-badge">🧊 Free • Takes 30 Seconds</div>
+  <div class="hero-badge">🌀 Free • Takes 30 Seconds</div>
   <h1>Is It a <span>Quick Fix</span> or Do You Need a Technician?</h1>
-  <p>Answer 4 quick questions about your refrigerator. We'll give you an honest answer — a safe DIY tip if it's minor, or a clear heads-up if it genuinely needs a technician.</p>
+  <p>Answer a few quick questions about your washing machine. We'll give you an honest answer — a safe DIY tip if it's minor, or a clear heads-up if it genuinely needs a technician.</p>
 </section>
 
 <section>
@@ -114,7 +114,7 @@ footer span { color: var(--white); }
   </div>
 </section>
 
-<a href="https://wa.me/919819832282?text=I%20need%20refrigerator%20repair" target="_blank" class="float-wa" aria-label="WhatsApp">📲</a>
+<a href="https://wa.me/919819832282?text=I%20need%20washing%20machine%20repair" target="_blank" class="float-wa" aria-label="WhatsApp">📲</a>
 <a href="tel:+919819832282" class="float-call" aria-label="Call">📞</a>
 
 <footer>
@@ -125,7 +125,7 @@ footer span { color: var(--white); }
   </div>
   <div class="footer-links" style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:12px 0;font-size:0.74rem;">
     <a href="index.html" style="color:rgba(255,255,255,0.92);text-decoration:none;">Home</a>
-    <a href="refrigerator-repair.html" style="color:rgba(255,255,255,0.92);text-decoration:none;">Fridge Repair</a>
+    <a href="washing-machine-repair.html" style="color:rgba(255,255,255,0.92);text-decoration:none;">Washing Machine Repair</a>
   </div>
   <div>&copy; 2026 Quickfix Mumbai. All rights reserved.</div>
 </footer>
@@ -136,38 +136,38 @@ const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4z
 // Each question: id, text, options[{label, value}]
 const QUESTIONS = [
   {
-    id: 'cooling',
-    text: 'Is your refrigerator cooling at all?',
+    id: 'power',
+    text: 'Does the machine start at all?',
     options: [
-      { label: 'Not cooling at all', value: 'none' },
-      { label: 'Cooling, but not enough', value: 'weak' },
-      { label: 'Cooling fine — different issue', value: 'fine' }
+      { label: 'Nothing happens, no power', value: 'none' },
+      { label: 'Starts but stops midway', value: 'stops' },
+      { label: 'Starts and runs fine', value: 'fine' }
     ]
   },
   {
-    id: 'noise',
-    text: 'Any unusual noise from it?',
+    id: 'smell_noise',
+    text: 'Any burning smell or loud banging during spin?',
     options: [
-      { label: 'Loud buzzing or grinding', value: 'loud' },
-      { label: 'Repeated clicking on and off', value: 'clicking' },
-      { label: 'No unusual noise', value: 'none' }
-    ]
-  },
-  {
-    id: 'leak',
-    text: 'Any water leakage or ice buildup?',
-    options: [
-      { label: 'Water pooling inside or underneath', value: 'water' },
-      { label: 'Ice building up on back wall / freezer', value: 'ice' },
+      { label: 'Burning smell', value: 'burning' },
+      { label: 'Loud banging during spin', value: 'banging' },
       { label: 'Neither', value: 'none' }
     ]
   },
   {
-    id: 'door',
-    text: 'Does the door close and seal properly?',
+    id: 'water',
+    text: 'Any issue with water filling or draining?',
     options: [
-      { label: 'Yes, seals fine', value: 'ok' },
-      { label: 'No — gap, or won\u2019t stay shut', value: 'bad' }
+      { label: 'Not filling with water', value: 'no_fill' },
+      { label: 'Not draining after wash', value: 'no_drain' },
+      { label: 'Water fills and drains fine', value: 'fine' }
+    ]
+  },
+  {
+    id: 'result',
+    text: 'How do the clothes come out?',
+    options: [
+      { label: 'Still quite wet after spin', value: 'wet' },
+      { label: 'Dry and clean, no issue there', value: 'fine' }
     ]
   }
 ];
@@ -210,67 +210,66 @@ function goBack() {
 
 function diagnose() {
   const a = answers;
-  // Urgent: cooling problem combined with a mechanical/electrical noise sign
-  if (a.cooling === 'none' && (a.noise === 'loud' || a.noise === 'clicking')) {
+  if (a.smell_noise === 'burning') {
     return {
       severity: 'urgent',
-      title: 'Likely a Cooling System Problem',
-      text: 'Based on your answers, there\u2019s a good chance the compressor or cooling system itself is the problem. Continuing to run the fridge like this can make things worse and risks further damage.',
-      tip: 'A technician inspection is genuinely the right call here — this isn\u2019t a safe DIY fix.'
+      title: 'Stop Using It — Burning Smell Is Serious',
+      text: 'A burning smell from a washing machine usually means a motor or belt issue, and continuing to run it is a genuine fire risk.',
+      tip: 'Switch it off at the plug right away and don\u2019t run another cycle. This needs a technician, not a DIY attempt.'
     };
   }
-  if (a.cooling === 'none') {
+  if (a.power === 'none') {
+    return {
+      severity: 'diy',
+      title: 'Check the Basics First',
+      text: 'No power at all is often something simple before it\u2019s a machine fault.',
+      tip: 'Check the plug, socket, and MCB/switchboard — try another appliance in the same socket to confirm power is reaching it. If power is fine and the machine still won\u2019t start, that\u2019s a technician job.'
+    };
+  }
+  if (a.smell_noise === 'banging') {
+    return {
+      severity: 'diy',
+      title: 'Probably Just an Unbalanced Load',
+      text: 'Loud banging during spin is very often clothes bunched up on one side rather than a fault.',
+      tip: 'Stop the cycle, redistribute the clothes evenly around the drum, and restart. If it still bangs loudly with a balanced, normal-sized load, that points to a suspension or bearing issue — worth a technician visit.'
+    };
+  }
+  if (a.water === 'no_fill') {
+    return {
+      severity: 'diy',
+      title: 'Likely a Water Supply Issue',
+      text: 'Not filling with water is usually about supply, not the machine itself.',
+      tip: 'Check the tap is fully open, the inlet hose isn\u2019t kinked, and there\u2019s actually water pressure in that line. If water is confirmed reaching the machine and it still won\u2019t fill, that\u2019s a technician check.'
+    };
+  }
+  if (a.water === 'no_drain') {
+    return {
+      severity: 'diy',
+      title: 'Check the Drain Hose and Filter',
+      text: 'Water not draining out is commonly a blocked filter or a kinked/blocked drain hose.',
+      tip: 'Check the drain hose at the back for kinks, and clean the drain filter if your machine has one (usually a small door near the bottom front). If it still won\u2019t drain after that, it\u2019s a technician job.'
+    };
+  }
+  if (a.power === 'stops') {
     return {
       severity: 'urgent',
-      title: 'No Cooling Needs a Closer Look',
-      text: 'A refrigerator that isn\u2019t cooling at all is almost always a technician job — could be gas, thermostat, or compressor related, and it\u2019s hard to tell which without opening it up.',
-      tip: 'Move perishables out for now and get it inspected soon rather than waiting it out.'
+      title: 'Stopping Mid-Cycle Needs a Look',
+      text: 'A machine that starts but stops partway through is usually an electrical or control board issue, hard to diagnose safely without opening it up.',
+      tip: 'A technician inspection is the honest recommendation here rather than guessing at a DIY fix.'
     };
   }
-  if (a.cooling === 'weak' && a.door === 'bad') {
+  if (a.result === 'wet') {
     return {
       severity: 'diy',
-      title: 'Probably Just the Door Seal',
-      text: 'Weak cooling combined with a door that isn\u2019t sealing properly usually means cold air is escaping. Worth trying before anything else.',
-      tip: 'Check the rubber gasket for gaps, food debris, or warping, and make sure the fridge isn\u2019t overloaded blocking the door from closing fully. This alone often restores cooling within a few hours.'
-    };
-  }
-  if (a.leak === 'ice') {
-    return {
-      severity: 'diy',
-      title: 'Sounds Like a Blocked Defrost Drain',
-      text: 'Ice building up on the back wall or in the freezer is a very common, genuinely DIY-fixable issue.',
-      tip: 'Try a manual defrost (switch off, leave the door open for a few hours to melt the buildup) and check that the small defrost drain hole at the back isn\u2019t blocked.'
-    };
-  }
-  if (a.leak === 'water') {
-    return {
-      severity: 'diy',
-      title: 'Likely a Clogged Drain Line',
-      text: 'Water pooling inside or underneath is usually the defrost drain line getting blocked with debris — not a major fault.',
-      tip: 'Check and clear the drain hole at the back of the fridge interior. If water keeps coming back after clearing it, that\u2019s when it\u2019s worth a technician visit.'
-    };
-  }
-  if (a.cooling === 'weak') {
-    return {
-      severity: 'diy',
-      title: 'Might Just Need Some Breathing Room',
-      text: 'Reduced cooling with no noise or leak often comes down to airflow or overloading rather than a fault.',
-      tip: 'Make sure vents inside aren\u2019t blocked by food, the fridge has a couple of inches of gap from the wall, and it isn\u2019t overloaded. Give it 24 hours — if it\u2019s still weak, get it checked.'
-    };
-  }
-  if (a.noise === 'clicking') {
-    return {
-      severity: 'urgent',
-      title: 'That Clicking Is Worth Checking Soon',
-      text: 'Repeated clicking on and off usually points to a compressor relay or electrical issue.',
-      tip: 'This is an electrical component — not something to open up yourself. A technician visit is the safer, honest recommendation here.'
+      title: 'Probably Overloading or Balance',
+      text: 'Clothes coming out still quite wet often comes down to overloading the drum or an unbalanced load stopping the spin from reaching full speed.',
+      tip: 'Try a smaller, evenly distributed load next time and see if it improves. If it stays wet with a normal load, get it checked.'
     };
   }
   return {
     severity: 'ok',
     title: 'Nothing Alarming in Your Answers',
-    text: 'Based on what you\u2019ve told us, your fridge doesn\u2019t show the classic warning signs of a major fault.',
+    text: 'Based on what you\u2019ve told us, your machine doesn\u2019t show the classic warning signs of a major fault.',
     tip: 'If there\u2019s still something specific bothering you that we didn\u2019t ask about, tell our technician directly — happy to take a look.'
   };
 }
@@ -317,7 +316,7 @@ function showResult() {
     fetch(scriptUrl, {
       method: "POST", mode: "no-cors", cache: "no-cache",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ formType: "diy_checker", appliance: "Refrigerator", answers: answers, result: r.title })
+      body: JSON.stringify({ formType: "diy_checker", appliance: "Washing Machine", answers: answers, result: r.title })
     });
   } catch (e) {}
 }
@@ -341,7 +340,7 @@ function submitLead() {
   fetch(scriptUrl, {
     method: "POST", mode: "no-cors", cache: "no-cache",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ formType: "booking", name: name, location: location || "Not specified", problem: "Refrigerator - " + r.title, mobile: mobile })
+    body: JSON.stringify({ formType: "booking", name: name, location: location || "Not specified", problem: "Washing Machine - " + r.title, mobile: mobile })
   }).then(function() {
     document.querySelector('.mini-form').innerHTML = '<div style="text-align:center;padding:10px 0;"><div style="font-size:40px;">🎉</div><p style="font-weight:600;margin-top:8px;">Thanks, ' + name + '! Our team will call you shortly to schedule the visit.</p></div>';
   }).catch(function() {

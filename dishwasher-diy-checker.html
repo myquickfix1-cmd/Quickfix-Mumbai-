@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Free Refrigerator Problem Checker - answer a few quick questions and find out honestly if it's a quick DIY fix or needs a technician. By Quickfix Mumbai.">
-<title>Refrigerator Problem Checker | Is It DIY or Technician? | Quickfix Mumbai</title>
-<link rel="canonical" href="https://quickfixmumbai.com/refrigerator-diy-checker.html">
+<meta name="description" content="Free Dishwasher Problem Checker - answer a few quick questions and find out honestly if it's a quick DIY fix or needs a technician. By Quickfix Mumbai.">
+<title>Dishwasher Problem Checker | Is It DIY or Technician? | Quickfix Mumbai</title>
+<link rel="canonical" href="https://quickfixmumbai.com/dishwasher-diy-checker.html">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -13,7 +13,7 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Refrigerator Problem Checker",
+  "name": "Dishwasher Problem Checker",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any",
   "provider": { "@type": "Organization", "name": "Quickfix Mumbai" }
@@ -87,16 +87,16 @@ footer span { color: var(--white); }
   </a>
   <div class="header-btns">
     <a href="tel:+919819832282" class="btn-call">Call</a>
-    <a href="https://wa.me/919819832282?text=I%20need%20refrigerator%20repair" target="_blank" class="btn-wa">Chat</a>
+    <a href="https://wa.me/919819832282?text=I%20need%20dishwasher%20repair" target="_blank" class="btn-wa">Chat</a>
   </div>
 </header>
 
-<div class="breadcrumb"><a href="index.html">Home</a> › Refrigerator Problem Checker</div>
+<div class="breadcrumb"><a href="index.html">Home</a> › Dishwasher Problem Checker</div>
 
 <section class="hero">
-  <div class="hero-badge">🧊 Free • Takes 30 Seconds</div>
+  <div class="hero-badge">🍽️ Free • Takes 30 Seconds</div>
   <h1>Is It a <span>Quick Fix</span> or Do You Need a Technician?</h1>
-  <p>Answer 4 quick questions about your refrigerator. We'll give you an honest answer — a safe DIY tip if it's minor, or a clear heads-up if it genuinely needs a technician.</p>
+  <p>Answer a few quick questions about your dishwasher. We'll give you an honest answer — a safe DIY tip if it's minor, or a clear heads-up if it genuinely needs a technician.</p>
 </section>
 
 <section>
@@ -114,7 +114,7 @@ footer span { color: var(--white); }
   </div>
 </section>
 
-<a href="https://wa.me/919819832282?text=I%20need%20refrigerator%20repair" target="_blank" class="float-wa" aria-label="WhatsApp">📲</a>
+<a href="https://wa.me/919819832282?text=I%20need%20dishwasher%20repair" target="_blank" class="float-wa" aria-label="WhatsApp">📲</a>
 <a href="tel:+919819832282" class="float-call" aria-label="Call">📞</a>
 
 <footer>
@@ -125,7 +125,7 @@ footer span { color: var(--white); }
   </div>
   <div class="footer-links" style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:12px 0;font-size:0.74rem;">
     <a href="index.html" style="color:rgba(255,255,255,0.92);text-decoration:none;">Home</a>
-    <a href="refrigerator-repair.html" style="color:rgba(255,255,255,0.92);text-decoration:none;">Fridge Repair</a>
+    <a href="dishwasher-repair.html" style="color:rgba(255,255,255,0.92);text-decoration:none;">Dishwasher Repair</a>
   </div>
   <div>&copy; 2026 Quickfix Mumbai. All rights reserved.</div>
 </footer>
@@ -136,38 +136,30 @@ const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4z
 // Each question: id, text, options[{label, value}]
 const QUESTIONS = [
   {
-    id: 'cooling',
-    text: 'Is your refrigerator cooling at all?',
+    id: 'main',
+    text: 'What\u2019s the main issue?',
     options: [
-      { label: 'Not cooling at all', value: 'none' },
-      { label: 'Cooling, but not enough', value: 'weak' },
-      { label: 'Cooling fine — different issue', value: 'fine' }
+      { label: 'Utensils not coming out clean', value: 'not_clean' },
+      { label: 'Not draining water out', value: 'no_drain' },
+      { label: 'Leaking water', value: 'leak' },
+      { label: 'Not starting at all', value: 'no_start' }
     ]
   },
   {
-    id: 'noise',
-    text: 'Any unusual noise from it?',
+    id: 'leak_where',
+    text: 'If leaking — where from?',
     options: [
-      { label: 'Loud buzzing or grinding', value: 'loud' },
-      { label: 'Repeated clicking on and off', value: 'clicking' },
-      { label: 'No unusual noise', value: 'none' }
+      { label: 'From the door, front side', value: 'door' },
+      { label: 'From underneath the machine', value: 'bottom' },
+      { label: 'Not leaking', value: 'none' }
     ]
   },
   {
-    id: 'leak',
-    text: 'Any water leakage or ice buildup?',
+    id: 'loading',
+    text: 'Is it loaded within the marked capacity, not overloaded?',
     options: [
-      { label: 'Water pooling inside or underneath', value: 'water' },
-      { label: 'Ice building up on back wall / freezer', value: 'ice' },
-      { label: 'Neither', value: 'none' }
-    ]
-  },
-  {
-    id: 'door',
-    text: 'Does the door close and seal properly?',
-    options: [
-      { label: 'Yes, seals fine', value: 'ok' },
-      { label: 'No — gap, or won\u2019t stay shut', value: 'bad' }
+      { label: 'Yes, normal load', value: 'ok' },
+      { label: 'Often loaded quite full', value: 'overloaded' }
     ]
   }
 ];
@@ -210,67 +202,50 @@ function goBack() {
 
 function diagnose() {
   const a = answers;
-  // Urgent: cooling problem combined with a mechanical/electrical noise sign
-  if (a.cooling === 'none' && (a.noise === 'loud' || a.noise === 'clicking')) {
+  if (a.main === 'leak' && a.leak_where === 'bottom') {
     return {
       severity: 'urgent',
-      title: 'Likely a Cooling System Problem',
-      text: 'Based on your answers, there\u2019s a good chance the compressor or cooling system itself is the problem. Continuing to run the fridge like this can make things worse and risks further damage.',
-      tip: 'A technician inspection is genuinely the right call here — this isn\u2019t a safe DIY fix.'
+      title: 'Leak From Underneath Needs a Technician',
+      text: 'Water leaking from the bottom of the machine usually points to a damaged hose, seal, or pump — not something visible or fixable from outside.',
+      tip: 'Switch it off and avoid running further cycles until it\u2019s checked, to avoid water damage. This one\u2019s a technician job.'
     };
   }
-  if (a.cooling === 'none') {
-    return {
-      severity: 'urgent',
-      title: 'No Cooling Needs a Closer Look',
-      text: 'A refrigerator that isn\u2019t cooling at all is almost always a technician job — could be gas, thermostat, or compressor related, and it\u2019s hard to tell which without opening it up.',
-      tip: 'Move perishables out for now and get it inspected soon rather than waiting it out.'
-    };
-  }
-  if (a.cooling === 'weak' && a.door === 'bad') {
+  if (a.main === 'leak' && a.leak_where === 'door') {
     return {
       severity: 'diy',
-      title: 'Probably Just the Door Seal',
-      text: 'Weak cooling combined with a door that isn\u2019t sealing properly usually means cold air is escaping. Worth trying before anything else.',
-      tip: 'Check the rubber gasket for gaps, food debris, or warping, and make sure the fridge isn\u2019t overloaded blocking the door from closing fully. This alone often restores cooling within a few hours.'
+      title: 'Probably the Door Seal or Overloading',
+      text: 'Leaks from the front/door are commonly a worn door gasket or the machine loaded past the fill line, pushing water out during the wash.',
+      tip: 'Check the door seal for gaps, cracks, or trapped food debris, and make sure you\u2019re not overloading past the marked capacity. If the leak continues with a clean seal and normal load, get it checked.'
     };
   }
-  if (a.leak === 'ice') {
+  if (a.main === 'not_clean') {
     return {
       severity: 'diy',
-      title: 'Sounds Like a Blocked Defrost Drain',
-      text: 'Ice building up on the back wall or in the freezer is a very common, genuinely DIY-fixable issue.',
-      tip: 'Try a manual defrost (switch off, leave the door open for a few hours to melt the buildup) and check that the small defrost drain hole at the back isn\u2019t blocked.'
+      title: 'Check the Spray Arms First',
+      text: 'Utensils not coming out clean is very often a blocked spray arm or dishes blocking its rotation, not a machine fault.',
+      tip: 'Check the spray arm holes for food debris and make sure no tall utensil is blocking it from spinning freely. Also confirm you\u2019re using enough detergent. If it\u2019s still not cleaning properly after that, a technician visit makes sense.'
     };
   }
-  if (a.leak === 'water') {
+  if (a.main === 'no_drain') {
     return {
       severity: 'diy',
-      title: 'Likely a Clogged Drain Line',
-      text: 'Water pooling inside or underneath is usually the defrost drain line getting blocked with debris — not a major fault.',
-      tip: 'Check and clear the drain hole at the back of the fridge interior. If water keeps coming back after clearing it, that\u2019s when it\u2019s worth a technician visit.'
+      title: 'Likely a Blocked Filter',
+      text: 'Water not draining out is commonly food debris blocking the filter at the base of the machine.',
+      tip: 'Remove and clean the filter basket at the bottom of the dishwasher — this is the single most common cause. If it still won\u2019t drain after cleaning it, that points to a pump issue needing a technician.'
     };
   }
-  if (a.cooling === 'weak') {
+  if (a.main === 'no_start') {
     return {
       severity: 'diy',
-      title: 'Might Just Need Some Breathing Room',
-      text: 'Reduced cooling with no noise or leak often comes down to airflow or overloading rather than a fault.',
-      tip: 'Make sure vents inside aren\u2019t blocked by food, the fridge has a couple of inches of gap from the wall, and it isn\u2019t overloaded. Give it 24 hours — if it\u2019s still weak, get it checked.'
-    };
-  }
-  if (a.noise === 'clicking') {
-    return {
-      severity: 'urgent',
-      title: 'That Clicking Is Worth Checking Soon',
-      text: 'Repeated clicking on and off usually points to a compressor relay or electrical issue.',
-      tip: 'This is an electrical component — not something to open up yourself. A technician visit is the safer, honest recommendation here.'
+      title: 'Check the Door Latch and Power',
+      text: 'Most dishwashers won\u2019t start unless the door is fully latched shut, and this is the most common reason for a machine that seems dead.',
+      tip: 'Make sure the door clicks fully shut, check the power supply, and see if a child lock has been accidentally enabled. If none of that helps, it\u2019s a technician check.'
     };
   }
   return {
     severity: 'ok',
     title: 'Nothing Alarming in Your Answers',
-    text: 'Based on what you\u2019ve told us, your fridge doesn\u2019t show the classic warning signs of a major fault.',
+    text: 'Based on what you\u2019ve told us, your dishwasher doesn\u2019t show the classic warning signs of a major fault.',
     tip: 'If there\u2019s still something specific bothering you that we didn\u2019t ask about, tell our technician directly — happy to take a look.'
   };
 }
@@ -317,7 +292,7 @@ function showResult() {
     fetch(scriptUrl, {
       method: "POST", mode: "no-cors", cache: "no-cache",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ formType: "diy_checker", appliance: "Refrigerator", answers: answers, result: r.title })
+      body: JSON.stringify({ formType: "diy_checker", appliance: "Dishwasher", answers: answers, result: r.title })
     });
   } catch (e) {}
 }
@@ -341,7 +316,7 @@ function submitLead() {
   fetch(scriptUrl, {
     method: "POST", mode: "no-cors", cache: "no-cache",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ formType: "booking", name: name, location: location || "Not specified", problem: "Refrigerator - " + r.title, mobile: mobile })
+    body: JSON.stringify({ formType: "booking", name: name, location: location || "Not specified", problem: "Dishwasher - " + r.title, mobile: mobile })
   }).then(function() {
     document.querySelector('.mini-form').innerHTML = '<div style="text-align:center;padding:10px 0;"><div style="font-size:40px;">🎉</div><p style="font-weight:600;margin-top:8px;">Thanks, ' + name + '! Our team will call you shortly to schedule the visit.</p></div>';
   }).catch(function() {
