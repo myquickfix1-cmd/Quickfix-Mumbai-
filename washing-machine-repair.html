@@ -73,7 +73,18 @@ section { padding: 44px 24px; }
 .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
 .problem-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 20px; }
 .problem-card h3 { color: var(--blue); font-family: 'Poppins', sans-serif; font-size: 1rem; margin-bottom: 8px; }
-.problem-card p { font-size: 0.88rem; color: var(--grey-dark); }
+.problem-card p { font-size: 0.88rem; color: var(--grey-dark); margin-bottom: 8px; line-height: 1.55; }
+.problem-card p strong { color: var(--text); }
+.problem-card .pc-sub { font-weight: 400; font-size: 0.78em; color: var(--grey-dark); }
+.pc-reasons { margin: 6px 0 12px 18px; padding: 0; font-size: 0.85rem; color: var(--grey-dark); line-height: 1.7; }
+.pc-reasons li { margin-bottom: 2px; }
+.pc-cta-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.pc-cta { flex: 1; min-width: 130px; text-align: center; padding: 9px 10px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; text-decoration: none; cursor: pointer; }
+.pc-cta-wa { background: var(--whatsapp); color: #fff; }
+.pc-cta-wa:hover { opacity: 0.9; }
+.pc-cta-form { background: var(--blue-lighter); color: var(--blue); border: 1.5px solid var(--blue); }
+.pc-cta-form:hover { background: var(--blue); color: #fff; }
+.problem-cta:hover { text-decoration: underline; }
 .brand-trust-box { background: var(--white); border: 1.5px solid var(--border); border-radius: 14px; padding: 24px; max-width: 800px; margin: 0 auto; }
 .brand-trust-box p.lead { font-size: 0.94rem; margin-bottom: 14px; }
 .brand-trust-box p.lead strong { color: var(--blue); }
@@ -334,6 +345,7 @@ footer span { color: var(--white); }
 </script>
 
 <div class="breadcrumb"><a href="index.html">Home</a> › Services › Washing Machine Repair</div>
+<div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px;"><img src="panasonic-washing-machine-repair-chembur.webp" alt="Panasonic washing machine repair — real Quickfix job in Mumbai" loading="lazy" style="width: 100%; max-height: 320px; object-fit: cover; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">Panasonic washing machine repair — real Quickfix job in Mumbai</p></div>
 
 <section class="hero">
   <div class="hero-badge">🕐 24x7 Service • ⭐ 4.8/5 Rated</div>
@@ -343,8 +355,10 @@ footer span { color: var(--white); }
     <a href="tel:+919819832282" class="btn-call">📞 Call +91 98198 32282</a>
     <a href="https://wa.me/919819832282?text=I%20need%20washing%20machine%20repair" target="_blank" class="btn-wa">📲 Book by WhatsApp</a>
   </div>
-  <p style="margin-top:16px; font-size:0.85rem;"><a href="washing-machine-diy-checker.html" style="color:#fff; text-decoration:underline; font-weight:600;">🌀 Not sure if it's serious? Try our free 30-second Washing Machine Checker →</a></p>
+  <p style="margin-top:16px; font-size:0.85rem;"><a href="washing-machine-diy-checker.html" style="color:#fff; text-decoration:underline; font-weight:600;">🌀 Not sure if it's serious? Try our free 30-second Washing Machine Easy Self Check →</a></p>
 </section>
+
+<div class="container" style="padding-top:24px; padding-bottom:0;"><div class="qf-quickbook-slot" data-appliance="Washing Machine"></div></div>
 
 <div id="installBanner" style="display:none; max-width: 650px; margin: 24px auto 0; padding: 18px 22px; background: #F3F4F6; border: 1.5px solid #D1D5DB; border-radius: 14px; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;">
   <div style="display:flex; align-items:center; gap:12px;">
@@ -371,10 +385,11 @@ footer span { color: var(--white); }
     <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Date:</label>
         <input type="date" id="custDate" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
     <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Time Slot:</label>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
-            <div class="time-slot-btn" data-slot="Morning (9 AM - 1 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Morning<br>9-1</div>
-            <div class="time-slot-btn" data-slot="Afternoon (1 PM - 5 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Afternoon<br>1-5</div>
-            <div class="time-slot-btn" data-slot="Evening (5 PM - 9 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Evening<br>5-9</div>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+            <div class="time-slot-btn" data-slot="Slot 1 (9:00 AM - 12:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Slot 1<br>9-12</div>
+                <div class="time-slot-btn" data-slot="Slot 2 (12:00 PM - 3:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Slot 2<br>12-3</div>
+                <div class="time-slot-btn" data-slot="Slot 3 (3:00 PM - 6:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Slot 3<br>3-6</div>
+                <div class="time-slot-btn" data-slot="Slot 4 (6:00 PM - 9:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Slot 4<br>6-9</div>
         </div>
         <input type="hidden" id="custSlot" value=""></div>
     <div id="bookFormError" style="min-height: 20px; color: #FCA5A5; font-size: 13px; margin-bottom: 8px; text-align: center;"></div>
@@ -389,15 +404,15 @@ footer span { color: var(--white); }
       <p class="section-sub">Every fault has a real technical cause — our technicians diagnose before they repair</p>
     </div>
     <div class="problem-grid">
-      <div class="problem-card"><h3>Motor Not Spinning</h3><p>Motor capacitor weak, drive belt loose or damaged, or motor winding fault — each diagnosed separately before repair.</p></div>
-      <div class="problem-card"><h3>Front Load Drain Pump Issue</h3><p>Pump blockage from lint/debris, worn pump bearing, or pump motor failure — common in front load machines, fixed same visit where possible.</p></div>
-      <div class="problem-card"><h3>Not Draining Water</h3><p>Blocked drain filter, kinked drain hose, or drain pump fault — diagnosed before any part is replaced.</p></div>
-      <div class="problem-card"><h3>Door Lock / Sensor Fault</h3><p>Door interlock switch failure or sensor circuit fault can stop a cycle mid-way — tested and repaired on-site.</p></div>
-      <div class="problem-card"><h3>Water Leaking</h3><p>Damaged door seal, loose hose connection, or tub crack — precise cause identified first.</p></div>
-      <div class="problem-card"><h3>Control Board (PCB) Issue</h3><p>If the motor isn't receiving the right signal, the control board itself may be at fault — chip-level diagnosis available.</p></div>
-      <div class="problem-card"><h3>Excessive Vibration / Machine Shaking</h3><p>Unbalanced load sensor fault, worn shock absorbers, or uneven leveling — checked and corrected on-site.</p></div>
-      <div class="problem-card"><h3>Foul Smell From Machine</h3><p>Detergent build-up, blocked drain filter, or mould in the rubber gasket (common in front-load machines) — cleaned and resolved.</p></div>
-      <div class="problem-card"><h3>Machine Not Starting At All</h3><p>Power supply fault, door interlock not engaging, or a tripped thermal fuse — diagnosed with proper test equipment before any part is replaced.</p></div>
+      <div class="problem-card"><h3>Washing Machine Motor Not Spinning <span class="pc-sub">(Kapde ghoom nahi rahe)</span></h3><ul class="pc-reasons"><li>Worn-out or slipped belt</li><li>Faulty running capacitor</li><li>Motor winding fault</li><li>Drive coupler broken</li><li>Any other mechanical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20washing%20machine%20has%20a%20motor%20not%20spinning.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Washing Machine - Washing Machine Motor Not Spinning'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Front Load Drain Pump Fault <span class="pc-sub">(Paani nahi nikal raha)</span></h3><ul class="pc-reasons"><li>Lint or debris blocking pump</li><li>Drain pump motor failure</li><li>Blocked drain hose</li><li>Any other internal fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20washing%20machine%20has%20a%20drain%20pump%20issue.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Washing Machine - Front Load Drain Pump Fault'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Washing Machine Not Draining <span class="pc-sub">(Paani ruk raha hai, nikal nahi raha)</span></h3><ul class="pc-reasons"><li>Blocked drain filter</li><li>Kinked or blocked hose</li><li>Drain pump motor fault</li><li>Any other internal fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20washing%20machine%20is%20not%20draining%20water.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Washing Machine - Washing Machine Not Draining'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Door Lock / Sensor Fault <span class="pc-sub">(Door lock nahi ho raha ya cycle ruk rahi hai)</span></h3><ul class="pc-reasons"><li>Door interlock switch failure</li><li>Sensor circuit fault</li><li>Control board signal break</li><li>Any other electrical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20washing%20machine%20has%20a%20door%20lock%20or%20sensor%20fault.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Washing Machine - Door Lock / Sensor Fault'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Washing Machine Water Leakage <span class="pc-sub">(Machine se paani leak ho raha hai)</span></h3><ul class="pc-reasons"><li>Damaged door seal</li><li>Loose hose connection</li><li>Crack in outer tub</li><li>Worn-out gasket</li><li>Any other internal fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20washing%20machine%20is%20leaking%20water.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Washing Machine - Washing Machine Water Leakage'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Control Board (PCB) Fault <span class="pc-sub">(Buttons kaam nahi kar rahe)</span></h3><ul class="pc-reasons"><li>Burnt tracks on control board</li><li>Signal circuit break to motor</li><li>Membrane keypad failure</li><li>Any other internal electrical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20washing%20machine%20has%20a%20control%20board%20issue.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Washing Machine - Control Board (PCB) Fault'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Excessive Vibration <span class="pc-sub">(Spin ke time machine zyada hilti hai)</span></h3><ul class="pc-reasons"><li>Load sensor fault</li><li>Worn-out shock absorber</li><li>Machine not levelled properly</li><li>Suspension spring failure</li><li>Any other mechanical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20washing%20machine%20has%20excessive%20vibration.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Washing Machine - Excessive Vibration'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Foul Smell From Machine <span class="pc-sub">(Machine se badbu aa rahi hai)</span></h3><ul class="pc-reasons"><li>Detergent build-up in dispenser</li><li>Blocked drain filter</li><li>Fungus in rubber gasket (front-load)</li><li>Any other maintenance issue</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20washing%20machine%20has%20a%20foul%20smell.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Washing Machine - Foul Smell From Machine'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Washing Machine Not Starting <span class="pc-sub">(Machine start hi nahi ho rahi)</span></h3><ul class="pc-reasons"><li>Power supply fault at socket</li><li>Door interlock not engaging</li><li>Thermal fuse tripped</li><li>Main control board fault</li><li>Any other electrical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20washing%20machine%20is%20not%20starting%20at%20all.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Washing Machine - Washing Machine Not Starting'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
     </div>
   </div>
 </section>
@@ -674,5 +689,6 @@ if ('serviceWorker' in navigator) {
 <script src="tracking.js"></script>
 <script src="search-index.js"></script>
 <script src="site-search.js"></script>
+<script src="quick-book.js"></script>
 </body>
 </html>

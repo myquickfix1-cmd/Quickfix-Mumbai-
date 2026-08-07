@@ -73,7 +73,18 @@ section { padding: 44px 24px; }
 .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
 .problem-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 20px; }
 .problem-card h3 { color: var(--blue); font-family: 'Poppins', sans-serif; font-size: 1rem; margin-bottom: 8px; }
-.problem-card p { font-size: 0.88rem; color: var(--grey-dark); }
+.problem-card p { font-size: 0.88rem; color: var(--grey-dark); margin-bottom: 8px; line-height: 1.55; }
+.problem-card p strong { color: var(--text); }
+.problem-card .pc-sub { font-weight: 400; font-size: 0.78em; color: var(--grey-dark); }
+.pc-reasons { margin: 6px 0 12px 18px; padding: 0; font-size: 0.85rem; color: var(--grey-dark); line-height: 1.7; }
+.pc-reasons li { margin-bottom: 2px; }
+.pc-cta-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.pc-cta { flex: 1; min-width: 130px; text-align: center; padding: 9px 10px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; text-decoration: none; cursor: pointer; }
+.pc-cta-wa { background: var(--whatsapp); color: #fff; }
+.pc-cta-wa:hover { opacity: 0.9; }
+.pc-cta-form { background: var(--blue-lighter); color: var(--blue); border: 1.5px solid var(--blue); }
+.pc-cta-form:hover { background: var(--blue); color: #fff; }
+.problem-cta:hover { text-decoration: underline; }
 .brand-trust-box { background: var(--white); border: 1.5px solid var(--border); border-radius: 14px; padding: 24px; max-width: 800px; margin: 0 auto; }
 .brand-trust-box p.lead { font-size: 0.94rem; margin-bottom: 14px; }
 .brand-trust-box p.lead strong { color: var(--blue); }
@@ -334,6 +345,7 @@ footer span { color: var(--white); }
 </script>
 
 <div class="breadcrumb"><a href="index.html">Home</a> › Services › Microwave Repair</div>
+<div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px;"><img src="pcb-circuit-checking-juhu.webp" alt="PCB circuit diagnostic check by our technician" loading="lazy" style="width: 100%; max-height: 320px; object-fit: cover; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">PCB circuit diagnostic check by our technician</p></div>
 
 <section class="hero">
   <div class="hero-badge">🕐 24x7 Service • ⭐ 4.8/5 Rated</div>
@@ -343,8 +355,10 @@ footer span { color: var(--white); }
     <a href="tel:+919819832282" class="btn-call">📞 Call +91 98198 32282</a>
     <a href="https://wa.me/919819832282?text=I%20need%20microwave%20repair" target="_blank" class="btn-wa">📲 Book by WhatsApp</a>
   </div>
-  <p style="margin-top:16px; font-size:0.85rem;"><a href="microwave-diy-checker.html" style="color:#fff; text-decoration:underline; font-weight:600;">📟 Not sure if it's serious? Try our free 30-second Microwave Checker →</a></p>
+  <p style="margin-top:16px; font-size:0.85rem;"><a href="microwave-diy-checker.html" style="color:#fff; text-decoration:underline; font-weight:600;">📟 Not sure if it's serious? Try our free 30-second Microwave Easy Self Check →</a></p>
 </section>
+
+<div class="container" style="padding-top:24px; padding-bottom:0;"><div class="qf-quickbook-slot" data-appliance="Microwave"></div></div>
 
 <div id="installBanner" style="display:none; max-width: 650px; margin: 24px auto 0; padding: 18px 22px; background: #F3F4F6; border: 1.5px solid #D1D5DB; border-radius: 14px; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;">
   <div style="display:flex; align-items:center; gap:12px;">
@@ -371,10 +385,11 @@ footer span { color: var(--white); }
     <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Date:</label>
         <input type="date" id="custDate" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
     <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Time Slot:</label>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
-            <div class="time-slot-btn" data-slot="Morning (9 AM - 1 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Morning<br>9-1</div>
-            <div class="time-slot-btn" data-slot="Afternoon (1 PM - 5 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Afternoon<br>1-5</div>
-            <div class="time-slot-btn" data-slot="Evening (5 PM - 9 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Evening<br>5-9</div>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+            <div class="time-slot-btn" data-slot="Slot 1 (9:00 AM - 12:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Slot 1<br>9-12</div>
+                <div class="time-slot-btn" data-slot="Slot 2 (12:00 PM - 3:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Slot 2<br>12-3</div>
+                <div class="time-slot-btn" data-slot="Slot 3 (3:00 PM - 6:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Slot 3<br>3-6</div>
+                <div class="time-slot-btn" data-slot="Slot 4 (6:00 PM - 9:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Slot 4<br>6-9</div>
         </div>
         <input type="hidden" id="custSlot" value=""></div>
     <div id="bookFormError" style="min-height: 20px; color: #FCA5A5; font-size: 13px; margin-bottom: 8px; text-align: center;"></div>
@@ -389,15 +404,15 @@ footer span { color: var(--white); }
       <p class="section-sub">Every fault has a real technical cause — our technicians diagnose before they repair</p>
     </div>
     <div class="problem-grid">
-      <div class="problem-card"><h3>Not Heating At All</h3><p>Magnetron failure, high-voltage diode fault, or capacitor issue — the most common heating failure, needs proper testing to isolate.</p></div>
-      <div class="problem-card"><h3>Magnetron Emission Recovery</h3><p>Plate turns but no heat — usually a magnetron emission drop. Chip and component-level diagnosis before full magnetron replacement.</p></div>
-      <div class="problem-card"><h3>No Display / No Power</h3><p>Fuse blown, control board fault, or power supply issue — tested with proper equipment.</p></div>
-      <div class="problem-card"><h3>Sparking Inside</h3><p>Damaged waveguide cover, metal object inside, or mica plate wear — stop using immediately and get it checked.</p></div>
-      <div class="problem-card"><h3>Turntable Not Rotating</h3><p>Turntable motor fault or drive coupler wear — usually a quick, low-cost fix.</p></div>
-      <div class="problem-card"><h3>Door Not Closing Properly</h3><p>Door latch/hook wear or hinge misalignment — safety-critical, repaired promptly.</p></div>
-      <div class="problem-card"><h3>Buttons/Keypad Not Responding</h3><p>Membrane keypad fault or control board signal issue — diagnosed before replacement.</p></div>
-      <div class="problem-card"><h3>Uneven Heating</h3><p>Waveguide cover damage or turntable motor irregular speed — checked and corrected.</p></div>
-      <div class="problem-card"><h3>Loud Humming Noise</h3><p>Cooling fan wear or transformer hum — diagnosed to rule out more serious faults.</p></div>
+      <div class="problem-card"><h3>Microwave Not Heating <span class="pc-sub">(Chal raha hai par garam nahi ho raha)</span></h3><ul class="pc-reasons"><li>Magnetron failure</li><li>High-voltage diode fault</li><li>High-voltage capacitor failure</li><li>Main fuse blown</li><li>Any other internal electrical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20microwave%20is%20on%20but%20not%20heating.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Microwave - Microwave Not Heating'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Magnetron Emission Recovery <span class="pc-sub">(Plate ghoomti hai par garmi nahi aati)</span></h3><ul class="pc-reasons"><li>Weakened magnetron output</li><li>Ageing high-voltage capacitor</li><li>Partial diode failure</li><li>Any other internal fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20microwave%20has%20weak%20heating.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Microwave - Magnetron Emission Recovery'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>No Display / No Power <span class="pc-sub">(Display ya power hi nahi aa raha)</span></h3><ul class="pc-reasons"><li>Main fuse blown</li><li>Control board failure</li><li>Power supply fault</li><li>Any other internal electrical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20microwave%20has%20no%20display%20or%20power.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Microwave - No Display / No Power'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Sparking Inside Microwave <span class="pc-sub">(Andar spark ho raha hai)</span></h3><ul class="pc-reasons"><li>Damaged waveguide cover</li><li>Metal object inside cavity</li><li>Worn-out mica plate</li><li>Any other internal fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20microwave%20is%20sparking%20inside.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Microwave - Sparking Inside Microwave'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Turntable Not Rotating <span class="pc-sub">(Turntable ghoom nahi raha)</span></h3><ul class="pc-reasons"><li>Turntable motor failure</li><li>Broken drive coupler</li><li>Misaligned roller ring</li><li>Any other mechanical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20microwave%20has%20a%20turntable%20not%20rotating.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Microwave - Turntable Not Rotating'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Door Not Closing Properly <span class="pc-sub">(Door sahi se band nahi ho raha)</span></h3><ul class="pc-reasons"><li>Worn-out door latch</li><li>Hinge misalignment</li><li>Door switch failure</li><li>Any other mechanical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20microwave%20has%20a%20door%20not%20closing.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Microwave - Door Not Closing Properly'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Keypad Not Responding <span class="pc-sub">(Buttons dabane par response nahi aa raha)</span></h3><ul class="pc-reasons"><li>Faulty membrane keypad</li><li>Control board signal break</li><li>Any other internal electrical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20microwave%20has%20an%20unresponsive%20keypad.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Microwave - Keypad Not Responding'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Uneven Heating <span class="pc-sub">(Khana kahi garam kahi thanda reh jaata hai)</span></h3><ul class="pc-reasons"><li>Damaged waveguide cover</li><li>Uneven turntable rotation speed</li><li>Any other internal fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20microwave%20has%20uneven%20heating.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Microwave - Uneven Heating'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Loud Humming Noise <span class="pc-sub">(Zor ki humming awaaz aa rahi hai)</span></h3><ul class="pc-reasons"><li>Worn-out cooling fan</li><li>Transformer hum from ageing component</li><li>Any other mechanical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20microwave%20is%20making%20a%20loud%20humming%20noise.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Microwave - Loud Humming Noise'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
     </div>
   </div>
 </section>
@@ -656,5 +671,6 @@ if ('serviceWorker' in navigator) {
 <script src="tracking.js"></script>
 <script src="search-index.js"></script>
 <script src="site-search.js"></script>
+<script src="quick-book.js"></script>
 </body>
 </html>

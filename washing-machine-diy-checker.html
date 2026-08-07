@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Free Washing Machine Problem Checker - answer a few quick questions and find out honestly if it's a quick DIY fix or needs a technician. By Quickfix Mumbai.">
-<title>Washing Machine Problem Checker | Is It DIY or Technician? | Quickfix Mumbai</title>
+<meta name="description" content="Free Washing Machine Easy Self Check - answer a few quick questions and find out honestly if it's a quick DIY fix or needs a technician. By Quickfix Mumbai.">
+<title>Washing Machine Easy Self Check | Is It DIY or Technician? | Quickfix Mumbai</title>
 <link rel="canonical" href="https://quickfixmumbai.com/washing-machine-diy-checker.html">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Washing Machine Problem Checker",
+  "name": "Washing Machine Easy Self Check",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any",
   "provider": { "@type": "Organization", "name": "Quickfix Mumbai" }
@@ -91,7 +91,8 @@ footer span { color: var(--white); }
   </div>
 </header>
 
-<div class="breadcrumb"><a href="index.html">Home</a> › Washing Machine Problem Checker</div>
+<div class="breadcrumb"><a href="index.html">Home</a> › Washing Machine Easy Self Check</div>
+<div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px;"><img src="circuit-repair-colaba.webp" alt="Circuit repair in progress by our technician" loading="lazy" style="width: 100%; max-height: 320px; object-fit: cover; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">Circuit repair in progress by our technician</p></div>
 
 <section class="hero">
   <div class="hero-badge">🌀 Free • Takes 30 Seconds</div>
@@ -215,7 +216,8 @@ function diagnose() {
       severity: 'urgent',
       title: 'Stop Using It — Burning Smell Is Serious',
       text: 'A burning smell from a washing machine usually means a motor or belt issue, and continuing to run it is a genuine fire risk.',
-      tip: 'Switch it off at the plug right away and don\u2019t run another cycle. This needs a technician, not a DIY attempt.'
+      tip: 'Switch it off at the plug right away and don\u2019t run another cycle. This needs a technician, not a DIY attempt.',
+      warn: 'Agar paani leak ho raha hai toh main switch off kar de — taaki short-circuit ya PCB board jalne se bache. Aur agar motor se dhuan/smell aaye toh machine bilkul use na kare.'
     };
   }
   if (a.power === 'none') {
@@ -247,7 +249,8 @@ function diagnose() {
       severity: 'diy',
       title: 'Check the Drain Hose and Filter',
       text: 'Water not draining out is commonly a blocked filter or a kinked/blocked drain hose.',
-      tip: 'Check the drain hose at the back for kinks, and clean the drain filter if your machine has one (usually a small door near the bottom front). If it still won\u2019t drain after that, it\u2019s a technician job.'
+      tip: 'Check the drain hose at the back for kinks, and clean the drain filter if your machine has one (usually a small door near the bottom front). If it still won\u2019t drain after that, it\u2019s a technician job.',
+      warn: 'Agar iske saath paani leak bhi ho raha hai, toh main switch off kar de — taaki short-circuit ya PCB board jalne se bache.'
     };
   }
   if (a.power === 'stops') {
@@ -286,6 +289,7 @@ function showResult() {
   html += '<div class="result-text">' + r.text + '</div>';
   if (r.severity === 'urgent') {
     html += '<div class="safety-note">⚠️ ' + r.tip + '</div>';
+    if (r.warn) { html += '<div class="safety-note" style="background:#FEE2E2; border-left-color:#DC2626; color:#991B1B;">⚠️ ' + r.warn + '</div>'; }
   } else {
     html += '<div class="result-text"><b>Try this:</b> ' + r.tip + '</div>';
   }

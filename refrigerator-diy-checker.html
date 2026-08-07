@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Free Refrigerator Problem Checker - answer a few quick questions and find out honestly if it's a quick DIY fix or needs a technician. By Quickfix Mumbai.">
-<title>Refrigerator Problem Checker | Is It DIY or Technician? | Quickfix Mumbai</title>
+<meta name="description" content="Free Refrigerator Easy Self Check - answer a few quick questions and find out honestly if it's a quick DIY fix or needs a technician. By Quickfix Mumbai.">
+<title>Refrigerator Easy Self Check | Is It DIY or Technician? | Quickfix Mumbai</title>
 <link rel="canonical" href="https://quickfixmumbai.com/refrigerator-diy-checker.html">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Refrigerator Problem Checker",
+  "name": "Refrigerator Easy Self Check",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any",
   "provider": { "@type": "Organization", "name": "Quickfix Mumbai" }
@@ -91,7 +91,8 @@ footer span { color: var(--white); }
   </div>
 </header>
 
-<div class="breadcrumb"><a href="index.html">Home</a> › Refrigerator Problem Checker</div>
+<div class="breadcrumb"><a href="index.html">Home</a> › Refrigerator Easy Self Check</div>
+<div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px;"><img src="samsung-double-door-refrigerator-repair-bkc.webp" alt="Samsung refrigerator repair — real Quickfix job in Mumbai" loading="lazy" style="width: 100%; max-height: 320px; object-fit: cover; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">Samsung refrigerator repair — real Quickfix job in Mumbai</p></div>
 
 <section class="hero">
   <div class="hero-badge">🧊 Free • Takes 30 Seconds</div>
@@ -216,7 +217,8 @@ function diagnose() {
       severity: 'urgent',
       title: 'Likely a Cooling System Problem',
       text: 'Based on your answers, there\u2019s a good chance the compressor or cooling system itself is the problem. Continuing to run the fridge like this can make things worse and risks further damage.',
-      tip: 'A technician inspection is genuinely the right call here — this isn\u2019t a safe DIY fix.'
+      tip: 'A technician inspection is genuinely the right call here — this isn\u2019t a safe DIY fix.',
+      warn: 'Agar fridge bilkul thanda nahi ho raha ya gas smell/leak lag rahi hai, toh turant power off karke door band rakhe — taaki compressor par load na pade aur bacha hua saaman kharab na ho.'
     };
   }
   if (a.cooling === 'none') {
@@ -224,7 +226,8 @@ function diagnose() {
       severity: 'urgent',
       title: 'No Cooling Needs a Closer Look',
       text: 'A refrigerator that isn\u2019t cooling at all is almost always a technician job — could be gas, thermostat, or compressor related, and it\u2019s hard to tell which without opening it up.',
-      tip: 'Move perishables out for now and get it inspected soon rather than waiting it out.'
+      tip: 'Move perishables out for now and get it inspected soon rather than waiting it out.',
+      warn: 'Agar fridge bilkul thanda nahi ho raha ya gas smell/leak lag rahi hai, toh turant power off karke door band rakhe — taaki compressor par load na pade aur bacha hua saaman kharab na ho.'
     };
   }
   if (a.cooling === 'weak' && a.door === 'bad') {
@@ -287,6 +290,7 @@ function showResult() {
   html += '<div class="result-text">' + r.text + '</div>';
   if (r.severity === 'urgent') {
     html += '<div class="safety-note">⚠️ ' + r.tip + '</div>';
+    if (r.warn) { html += '<div class="safety-note" style="background:#FEE2E2; border-left-color:#DC2626; color:#991B1B;">⚠️ ' + r.warn + '</div>'; }
   } else {
     html += '<div class="result-text"><b>Try this:</b> ' + r.tip + '</div>';
   }
