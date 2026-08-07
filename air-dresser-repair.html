@@ -73,7 +73,18 @@ section { padding: 44px 24px; }
 .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
 .problem-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 20px; }
 .problem-card h3 { color: var(--blue); font-family: 'Poppins', sans-serif; font-size: 1rem; margin-bottom: 8px; }
-.problem-card p { font-size: 0.88rem; color: var(--grey-dark); }
+.problem-card p { font-size: 0.88rem; color: var(--grey-dark); margin-bottom: 8px; line-height: 1.55; }
+.problem-card p strong { color: var(--text); }
+.problem-card .pc-sub { font-weight: 400; font-size: 0.78em; color: var(--grey-dark); }
+.pc-reasons { margin: 6px 0 12px 18px; padding: 0; font-size: 0.85rem; color: var(--grey-dark); line-height: 1.7; }
+.pc-reasons li { margin-bottom: 2px; }
+.pc-cta-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.pc-cta { flex: 1; min-width: 130px; text-align: center; padding: 9px 10px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; text-decoration: none; cursor: pointer; }
+.pc-cta-wa { background: var(--whatsapp); color: #fff; }
+.pc-cta-wa:hover { opacity: 0.9; }
+.pc-cta-form { background: var(--blue-lighter); color: var(--blue); border: 1.5px solid var(--blue); }
+.pc-cta-form:hover { background: var(--blue); color: #fff; }
+.problem-cta:hover { text-decoration: underline; }
 .brand-trust-box { background: var(--white); border: 1.5px solid var(--border); border-radius: 14px; padding: 24px; max-width: 800px; margin: 0 auto; }
 .brand-trust-box p.lead { font-size: 0.94rem; margin-bottom: 14px; }
 .brand-trust-box p.lead strong { color: var(--blue); }
@@ -334,6 +345,7 @@ footer span { color: var(--white); }
 </script>
 
 <div class="breadcrumb"><a href="index.html">Home</a> › Services › Air Dresser Repair</div>
+<div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px;"><img src="pcb-circuit-checking-juhu.webp" alt="PCB circuit diagnostic check by our technician" loading="lazy" style="width: 100%; max-height: 320px; object-fit: cover; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">PCB circuit diagnostic check by our technician</p></div>
 
 <section class="hero">
   <div class="hero-badge">🕐 24x7 Service • ⭐ 4.8/5 Rated</div>
@@ -343,8 +355,10 @@ footer span { color: var(--white); }
     <a href="tel:+919819832282" class="btn-call">📞 Call +91 98198 32282</a>
     <a href="https://wa.me/919819832282?text=I%20need%20air%20dresser%20repair" target="_blank" class="btn-wa">📲 Book by WhatsApp</a>
   </div>
-  <p style="margin-top:16px; font-size:0.85rem;"><a href="air-dresser-diy-checker.html" style="color:#fff; text-decoration:underline; font-weight:600;">👔 Not sure if it's serious? Try our free 30-second Air Dresser Checker →</a></p>
+  <p style="margin-top:16px; font-size:0.85rem;"><a href="air-dresser-diy-checker.html" style="color:#fff; text-decoration:underline; font-weight:600;">👔 Not sure if it's serious? Try our free 30-second Air Dresser Easy Self Check →</a></p>
 </section>
+
+<div class="container" style="padding-top:24px; padding-bottom:0;"><div class="qf-quickbook-slot" data-appliance="Air Dresser"></div></div>
 
 <div id="installBanner" style="display:none; max-width: 650px; margin: 24px auto 0; padding: 18px 22px; background: #F3F4F6; border: 1.5px solid #D1D5DB; border-radius: 14px; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;">
   <div style="display:flex; align-items:center; gap:12px;">
@@ -371,10 +385,11 @@ footer span { color: var(--white); }
     <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Date:</label>
         <input type="date" id="custDate" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
     <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Time Slot:</label>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
-            <div class="time-slot-btn" data-slot="Morning (9 AM - 1 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Morning<br>9-1</div>
-            <div class="time-slot-btn" data-slot="Afternoon (1 PM - 5 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Afternoon<br>1-5</div>
-            <div class="time-slot-btn" data-slot="Evening (5 PM - 9 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Evening<br>5-9</div>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+            <div class="time-slot-btn" data-slot="Slot 1 (9:00 AM - 12:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Slot 1<br>9-12</div>
+                <div class="time-slot-btn" data-slot="Slot 2 (12:00 PM - 3:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Slot 2<br>12-3</div>
+                <div class="time-slot-btn" data-slot="Slot 3 (3:00 PM - 6:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Slot 3<br>3-6</div>
+                <div class="time-slot-btn" data-slot="Slot 4 (6:00 PM - 9:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Slot 4<br>6-9</div>
         </div>
         <input type="hidden" id="custSlot" value=""></div>
     <div id="bookFormError" style="min-height: 20px; color: #FCA5A5; font-size: 13px; margin-bottom: 8px; text-align: center;"></div>
@@ -389,15 +404,15 @@ footer span { color: var(--white); }
       <p class="section-sub">Every fault has a real technical cause — our technicians diagnose before they repair</p>
     </div>
     <div class="problem-grid">
-      <div class="problem-card"><h3>Not Steaming</h3><p>Water tank sensor fault, steam generator heating element failure, or blocked steam nozzle — diagnosed before repair.</p></div>
-      <div class="problem-card"><h3>Not Drying Properly</h3><p>Air circulation fan fault, heating element issue, or vent blockage — checked with proper equipment.</p></div>
-      <div class="problem-card"><h3>Door Not Closing / Sealing</h3><p>Door hinge misalignment or seal wear — affects both steam and drying performance if not fixed.</p></div>
-      <div class="problem-card"><h3>Control Panel Fault</h3><p>Touch panel not responding or display fault — control board signal issue, chip-level diagnosis available.</p></div>
-      <div class="problem-card"><h3>Water Tank Sensor Error</h3><p>Sensor reading incorrect water level even when filled — cleaned or replaced depending on the fault.</p></div>
-      <div class="problem-card"><h3>Unusual Noise During Cycle</h3><p>Fan motor wear or hanger mechanism fault — checked and resolved on-site.</p></div>
-      <div class="problem-card"><h3>Odour Not Removed</h3><p>Deodorizing filter saturated or steam generator underperforming — diagnosed and corrected.</p></div>
-      <div class="problem-card"><h3>Not Powering On</h3><p>Power supply fault or main control board issue — tested with proper equipment before repair.</p></div>
-      <div class="problem-card"><h3>Cycle Stops Midway</h3><p>Door sensor fault, overheat protection trip, or timer/control fault — diagnosed to find the real cause.</p></div>
+      <div class="problem-card"><h3>Air Dresser Not Steaming <span class="pc-sub">(Steam nahi aa rahi)</span></h3><ul class="pc-reasons"><li>Water tank sensor fault</li><li>Steam generator heating element failure</li><li>Blocked nozzle</li><li>Any other internal fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20air%20dresser%20is%20not%20steaming.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Air Dresser - Air Dresser Not Steaming'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Air Dresser Not Drying Properly <span class="pc-sub">(Kapde poori tarah sukh nahi rahe)</span></h3><ul class="pc-reasons"><li>Air circulation fan fault</li><li>Heating element issue</li><li>Blocked vent</li><li>Any other internal fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20air%20dresser%20is%20not%20drying%20properly.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Air Dresser - Air Dresser Not Drying Properly'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Door Not Closing / Sealing <span class="pc-sub">(Door sahi se band nahi ho raha)</span></h3><ul class="pc-reasons"><li>Hinge misalignment</li><li>Worn-out door seal</li><li>Any other mechanical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20air%20dresser%20has%20a%20door%20not%20closing.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Air Dresser - Door Not Closing / Sealing'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Control Panel Fault <span class="pc-sub">(Touch panel response nahi de raha)</span></h3><ul class="pc-reasons"><li>Touch panel hardware fault</li><li>Display circuit issue</li><li>Control board signal break</li><li>Any other internal electrical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20air%20dresser%20has%20a%20control%20panel%20fault.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Air Dresser - Control Panel Fault'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Water Tank Sensor Error <span class="pc-sub">(Tank bhara hone par bhi 'empty' dikha raha hai)</span></h3><ul class="pc-reasons"><li>Faulty water level sensor</li><li>Sensor contact corrosion</li><li>Any other internal fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20air%20dresser%20has%20a%20water%20tank%20sensor%20error.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Air Dresser - Water Tank Sensor Error'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Unusual Noise During Cycle <span class="pc-sub">(Cycle ke time ajeeb awaaz aa rahi hai)</span></h3><ul class="pc-reasons"><li>Worn-out fan motor</li><li>Hanger mechanism fault</li><li>Any other mechanical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20air%20dresser%20is%20making%20unusual%20noise.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Air Dresser - Unusual Noise During Cycle'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Odour Not Removed <span class="pc-sub">(Smell poori tarah nahi jaa rahi)</span></h3><ul class="pc-reasons"><li>Saturated deodorizing filter</li><li>Underperforming steam generator</li><li>Any other internal fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20air%20dresser%20still%20has%20odour%20after%20a%20cycle.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Air Dresser - Odour Not Removed'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Not Powering On <span class="pc-sub">(Machine power on hi nahi ho rahi)</span></h3><ul class="pc-reasons"><li>Power supply fault</li><li>Main control board failure</li><li>Any other internal electrical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20air%20dresser%20is%20not%20powering%20on.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Air Dresser - Not Powering On'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Cycle Stops Midway <span class="pc-sub">(Cycle beech mein hi ruk ja rahi hai)</span></h3><ul class="pc-reasons"><li>Door sensor fault</li><li>Overheat protection trip</li><li>Timer/control fault</li><li>Any other internal fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20air%20dresser%20has%20a%20cycle%20stopping%20midway.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Air Dresser - Cycle Stops Midway'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
     </div>
   </div>
 </section>
@@ -654,5 +669,6 @@ if ('serviceWorker' in navigator) {
 <script src="tracking.js"></script>
 <script src="search-index.js"></script>
 <script src="site-search.js"></script>
+<script src="quick-book.js"></script>
 </body>
 </html>
