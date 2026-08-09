@@ -340,6 +340,10 @@ function msgNotifyCustomer(customerName, techName, techMobile, date, time) {
   const visitLine = (date || time) ? ` around ${date || ''} ${time || ''}`.trim() : ' shortly';
   return `Dear ${customerName}, this is Quickfix Mumbai. Your technician *${techName}* (${techMobile}) will visit you${visitLine}. Feel free to call them directly if needed. Thank you for choosing us!`;
 }
+function msgNotifyTechnician(customerName, mobile, location, problem, date, time) {
+  const visitLine = (date || time) ? `\nPreferred time: ${date || ''} ${time || ''}`.trim() : '';
+  return `New job assigned — Quickfix Mumbai\n\nCustomer: ${customerName}\nMobile: ${mobile}\nLocation: ${location}\nProblem: ${problem}${visitLine}\n\nPlease confirm and reach out to the customer directly.`;
+}
 
 // ---------- ADD TECHNICIAN ----------
 async function addTechnician() {
@@ -358,8 +362,11 @@ async function addTechnician() {
       document.getElementById('newTechMobile').value = '';
       document.getElementById('newTechSpec').value = '';
       document.getElementById('newTechArea').value = '';
+      errBox.style.color = '#166534';
+      errBox.textContent = `✅ ${name} added — their login PIN is ${result.pin}. Please share this PIN with them directly (it won't be shown again on this screen, but you can always look it up in the Team sheet).`;
       await loadAdminData();
     } else {
+      errBox.style.color = '';
       errBox.textContent = '⚠️ ' + (result.message || 'Could not add technician.');
     }
   } catch (err) {
@@ -524,6 +531,10 @@ function notifyCustomer(mobile, customerName, techName, techMobile, date, time) 
   window.open(waLink(mobile, msgNotifyCustomer(customerName, techName, techMobile, date, time)), '_blank');
 }
 
+function notifyTechnician(techMobile, customerName, custMobile, location, problem, date, time) {
+  window.open(waLink(techMobile, msgNotifyTechnician(customerName, custMobile, location, problem, date, time)), '_blank');
+}
+
 // ---------- SEND THANK YOU ----------
 function sendThankYou(bookingId, mobile, customerName, techName, warrantyCode) {
   window.open(waLink(mobile, msgThankYou(customerName, techName, warrantyCode)), '_blank');
@@ -646,6 +657,7 @@ function renderBookingRow(b, team) {
   } else if (b.status === 'In Process') {
     actionsHtml = `<div class="action-group">
       <button class="wa small" onclick="notifyCustomer('${escJs(b.mobile)}','${escJs(b.name)}','${escJs(b.techName)}','${escJs(b.techMobile)}','${escJs(b.date)}','${escJs(b.time)}')">📲 Notify Customer</button>
+      <button class="wa small" onclick="notifyTechnician('${escJs(b.techMobile)}','${escJs(b.name)}','${escJs(b.mobile)}','${escJs(b.location)}','${escJs(b.problem)}','${escJs(b.date)}','${escJs(b.time)}')">🔧 Notify Technician</button>
       <button class="success small" onclick="markDone('${b.bookingId}')">✅ Mark Done</button>
       <select onchange="escalateSenior('${b.bookingId}', this)" title="Escalate to a senior technician if needed">${renderTeamOptions(team, '-- Escalate to senior --')}</select>
     </div>`;
