@@ -9,8 +9,6 @@
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#1E3A8A">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="apple-touch-icon" href="icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -139,6 +137,7 @@ footer span { color: var(--white); }
 .float-wa, .float-call { position: fixed; z-index: 999; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; text-decoration: none; border: none; cursor: pointer; right: 20px; }
 .float-wa { background: var(--whatsapp); color: var(--white); bottom: 20px; box-shadow: 0 4px 16px rgba(16,185,129,0.4); }
 .float-call { background: var(--blue); color: var(--white); bottom: 92px; box-shadow: 0 4px 16px rgba(30,58,138,0.4); }
+.float-account { background: var(--white); color: var(--blue); bottom: 164px; border: 2px solid var(--blue); box-shadow: 0 4px 16px rgba(30,58,138,0.25); }
 @media (max-width: 600px) { header { padding: 12px 16px; } section { padding: 34px 16px; } .cta-band { margin: 28px 16px; } .float-call { bottom: 84px; } }
 </style>
 <script type="application/ld+json">
@@ -306,7 +305,7 @@ footer span { color: var(--white); }
 
 <header>
   <a href="index.html" class="logo" aria-label="Quickfix Mumbai - Home" style="display:flex;align-items:center;gap:10px;">
-  <img src="logo.png" alt="Quickfix Mumbai Logo" width="38" height="38" loading="eager" fetchpriority="high" style="width:38px;height:38px;border-radius:8px;">
+  <img src="logo.png" alt="Quickfix Mumbai Logo" style="width:38px;height:38px;border-radius:8px;">
   <span style="line-height:1.15;">
     <span style="display:block;">Quick<span>fix</span> Mumbai</span>
     <small style="display:block;font-size:10px;font-weight:300;">Appliances Repair &amp; Care</small>
@@ -323,13 +322,16 @@ footer span { color: var(--white); }
     <a class="nav-link" href="amc-service.html">AMC</a>
   </nav>
   <div class="header-btns">
-    <a href="tel:+919819832282" class="btn-call" aria-label="Call Quickfix Mumbai">Call</a>
+    <a href="my-account.html" style="padding:10px 14px;border-radius:10px;font-weight:600;font-size:0.85rem;text-decoration:none;display:flex;align-items:center;gap:6px;background:#fff;color:var(--blue);border:1.5px solid var(--blue);box-shadow:0 4px 14px rgba(15,27,76,0.08);" aria-label="My Account">👤 My Account</a>
+    <a href="tel:+919819832282" class="btn-call" aria-label="Call Quickfix Mumbai">Inquiry</a>
     <a href="https://wa.me/919819832282?text=I%20need%20refrigerator%20repair" target="_blank" class="btn-wa" aria-label="Chat with Quickfix Mumbai on WhatsApp">Chat</a>
   </div>
   <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
     <span></span><span></span><span></span>
   </button>
 </header>
+<div style="background:#F0FDF4;border-bottom:1px solid #BBF7D0;padding:8px 16px;text-align:center;font-size:0.76rem;color:#166534;font-weight:600;letter-spacing:0.2px;">✓ Honest Diagnosis &nbsp;·&nbsp; ✓ 100% Bill Adjustment &nbsp;·&nbsp; ✓ No Hidden Charges &nbsp;·&nbsp; ✓ Genuine Parts &amp; 3-Month Warranty</div>
+
 <script>
 (function(){
   var btn = document.getElementById('navToggle');
@@ -352,7 +354,7 @@ footer span { color: var(--white); }
   <h1>Refrigerator Repair in <span>Mumbai</span></h1>
   <p>Not cooling, PCB board fault, compressor failure, water leakage, ice maker issues — same-day doorstep refrigerator repair, genuine parts, 3-month warranty, across all Mumbai.</p>
   <div class="hero-btns">
-    <a href="tel:+919819832282" class="btn-call">📞 Call +91 98198 32282</a>
+    <a href="tel:+919819832282" class="btn-call">📞 Inquiry: +91 98198 32282</a>
     <a href="https://wa.me/919819832282?text=I%20need%20refrigerator%20repair" target="_blank" class="btn-wa">📲 Book by WhatsApp</a>
   </div>
   <p style="margin-top:16px; font-size:0.85rem;"><a href="refrigerator-diy-checker.html" style="color:#fff; text-decoration:underline; font-weight:600;">🧊 Not sure if it's serious? Try our free 30-second Fridge Easy Self Check →</a></p>
@@ -406,10 +408,10 @@ footer span { color: var(--white); }
       <p class="section-sub">Every fault has a real technical cause — our technicians diagnose before they repair</p>
     </div>
     <div class="problem-grid">
-      <div class="problem-card"><h3>Refrigerator Not Cooling <span class="pc-sub">(Fridge thanda nahi ho raha)</span></h3><ul class="pc-reasons"><li>Gas/refrigerant leakage in cooling coil</li><li>Burnt compressor relay or capacitor</li><li>Thermostat temperature sensor failure</li><li>Main PCB board power break</li><li>Any other internal electrical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20is%20not%20cooling.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Refrigerator Not Cooling'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Refrigerator Not Cooling <span class="pc-sub">(Fridge thanda nahi ho raha)</span></h3><ul class="pc-reasons"><li>Gas/refrigerant leakage in cooling coil</li><li>Burnt compressor relay or capacitor</li><li>Thermostat temperature sensor failure</li><li>Main PCB board power break</li><li>Any other internal electrical fault</li><li>Brand codes: Samsung PCB relay fault, LG/Whirlpool/Godrej cooling faults</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20is%20not%20cooling.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Refrigerator Not Cooling'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
       <div class="problem-card"><h3>Refrigerator PCB Board Fault <span class="pc-sub">(Control board kaam nahi kar raha)</span></h3><ul class="pc-reasons"><li>Burnt tracks on control board</li><li>Relay or triac failure</li><li>Sensor signal circuit fault</li><li>Moisture or power-surge damage</li><li>Any other internal electrical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20has%20a%20PCB%20board%20fault.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Refrigerator PCB Board Fault'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
       <div class="problem-card"><h3>Compressor Not Starting <span class="pc-sub">(Compressor start nahi ho raha)</span></h3><ul class="pc-reasons"><li>Overload protector trip</li><li>Starting capacitor failure</li><li>Compressor winding fault</li><li>Relay stuck or burnt</li><li>Low voltage supply at socket</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20has%20a%20compressor%20not%20starting.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Compressor Not Starting'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
-      <div class="problem-card"><h3>Refrigerator Water Leakage <span class="pc-sub">(Fridge se paani leak ho raha hai)</span></h3><ul class="pc-reasons"><li>Blocked defrost drain line</li><li>Damaged door gasket seal</li><li>Cracked drain pan</li><li>Ice build-up blocking drain</li><li>Any other internal fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20is%20leaking%20water.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Refrigerator Water Leakage'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Refrigerator Water Leakage <span class="pc-sub">(Fridge se paani leak ho raha hai)</span></h3><ul class="pc-reasons"><li>Blocked defrost drain line</li><li>Damaged door gasket seal</li><li>Cracked drain pan</li><li>Ice build-up blocking drain</li><li>Any other internal fault</li><li>Common on Whirlpool double-door models with blocked defrost drains</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20is%20leaking%20water.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Refrigerator Water Leakage'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
       <div class="problem-card"><h3>Ice Maker Not Working <span class="pc-sub">(Ice maker kaam nahi kar raha)</span></h3><ul class="pc-reasons"><li>Water inlet valve fault</li><li>Frozen or blocked water line</li><li>Ice-maker module failure</li><li>Low water supply pressure</li><li>Any other internal fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20has%20an%20ice%20maker%20not%20working.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Ice Maker Not Working'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
       <div class="problem-card"><h3>Unusual Noise or Vibration <span class="pc-sub">(Ajeeb awaaz ya vibration aa rahi hai)</span></h3><ul class="pc-reasons"><li>Worn-out fan motor bearing</li><li>Loose compressor mounting</li><li>Condenser fan obstruction</li><li>Uneven floor levelling</li><li>Any other mechanical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20is%20making%20unusual%20noise.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Unusual Noise or Vibration'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
       <div class="problem-card"><h3>Freezer Frost Build-up <span class="pc-sub">(Freezer mein zyada barf jam rahi hai)</span></h3><ul class="pc-reasons"><li>Faulty defrost timer</li><li>Defrost heater failure</li><li>Door seal air leak</li><li>Thermostat malfunction</li><li>Any other internal fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20has%20frost%20build-up.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Freezer Frost Build-up'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
@@ -418,6 +420,48 @@ footer span { color: var(--white); }
     </div>
   </div>
 </section>
+
+<section>
+  <div class="container">
+    <div class="center">
+      <div class="section-label">Digital Display Panels</div>
+      <h2 class="section-title">Refrigerator Error Codes — By Brand</h2>
+      <p class="section-sub">Match the code on your display to the likely fault — then book with one tap</p>
+    </div>
+    <div style="max-width:760px;margin:24px auto 0;display:flex;flex-direction:column;gap:16px;">
+      <div class="problem-card">
+        <h3>Cooling &amp; Temperature Sensor Codes <span class="pc-sub">(22, 2E, Er 22, E2)</span></h3>
+        <ul class="pc-reasons">
+          <li>LG: Er 22 / Er 15 — Evaporator fan / room temp sensor fault</li>
+          <li>Samsung: 22E / 2E — Refrigeration compartment sensor error</li>
+          <li>Whirlpool: E2 / F2 — Thermistor resistance short circuit</li>
+          <li>Haier / Godrej: E1 / E2 — Internal sensor disconnect</li>
+        </ul>
+        <div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20fridge%20is%20showing%20a%20sensor%20error%20code.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Sensor Fix via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Sensor Error Code'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div>
+      </div>
+      <div class="problem-card">
+        <h3>Defrost &amp; Heater Codes <span class="pc-sub">(Er dH, 4E, 5E, Rd)</span></h3>
+        <ul class="pc-reasons">
+          <li>LG: Er dH — Defrost heater / thermal fuse failure</li>
+          <li>Samsung: 4E / 5E / 14E — Defrost sensor / drain-line frost</li>
+          <li>Bosch / Siemens: E20 / F1 — Defrost cycle timeout</li>
+        </ul>
+        <div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20fridge%20is%20showing%20a%20defrost%2Fheater%20error%20code.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Defrost Fix via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Defrost Error Code'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div>
+      </div>
+      <div class="problem-card">
+        <h3>Inverter &amp; Communication Codes <span class="pc-sub">(Er CO, 84E, 85E, E4)</span></h3>
+        <ul class="pc-reasons">
+          <li>LG: Er CO — Communication error between main &amp; display panel</li>
+          <li>Samsung: 84E / 85E — Inverter compressor locked-rotor fault</li>
+          <li>Panasonic / Whirlpool: E4 / F4 — Power inverter voltage fault</li>
+        </ul>
+        <div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20fridge%20is%20showing%20an%20inverter%2Fcommunication%20error%20code.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Inverter Check via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Inverter Error Code'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div>
+      </div>
+      <p style="text-align:center;font-size:0.78rem;color:var(--grey-dark);">Code not listed here, or your fridge doesn't have a digital display? Send a photo of the display or describe the problem on WhatsApp — we'll identify it.</p>
+    </div>
+  </div>
+</section>
+
 
 <section style="background: var(--grey);">
   <div class="container">
@@ -454,7 +498,7 @@ footer span { color: var(--white); }
   <div class="container">
     <div class="center"><div class="section-label">Why Choose Us</div><h2 class="section-title">Trusted Refrigerator Repair</h2></div>
     <div class="why-grid">
-      <div class="why-card"><div class="why-icon">⚡</div><h3>Same-Day Visit</h3><p>Call & confirm timing across Mumbai</p></div>
+      <div class="why-card"><div class="why-icon">⚡</div><h3>Same-Day Visit</h3><p>Inquiry & confirm timing across Mumbai</p></div>
       <div class="why-card"><div class="why-icon">🏆</div><h3>10+ Years Expert</h3><p>Thousands of fridge repairs completed</p></div>
       <div class="why-card"><div class="why-icon">💰</div><h3>Transparent Pricing</h3><p>Quote before any repair begins</p></div>
       <div class="why-card"><div class="why-icon">✅</div><h3>3-Month Warranty</h3><p>Every repair backed by our guarantee</p></div>
@@ -531,7 +575,7 @@ footer span { color: var(--white); }
   <h2>Fridge Not Cooling? We're Ready.</h2>
   <p>Same-day refrigerator repair across Mumbai — genuine parts, 3-month warranty.</p>
   <div class="cta-btns">
-    <a href="tel:+919819832282" class="btn-call">📞 Call +91 98198 32282</a>
+    <a href="tel:+919819832282" class="btn-call">📞 Inquiry: +91 98198 32282</a>
     <a href="https://wa.me/919819832282?text=I%20need%20refrigerator%20repair" target="_blank" class="btn-wa">📲 Book by WhatsApp</a>
   </div>
 </div>
@@ -543,6 +587,7 @@ footer span { color: var(--white); }
     <span>✅ Doorstep Service — All Mumbai</span>
   </div>
   <div class="footer-links">
+    <a href="suggestion-form.html">Feedback</a>
     <a href="index.html">Home</a>
     <a href="washing-machine-repair.html">Washing Machine</a>
     <a href="microwave-repair.html">Microwave</a>
@@ -555,6 +600,7 @@ footer span { color: var(--white); }
 </footer>
 
 <a href="tel:+919819832282" class="float-call" title="Call Now">📞</a>
+<a href="my-account.html" class="float-account" title="My Account" aria-label="My Account">👤</a>
 <a href="https://wa.me/919819832282?text=I%20need%20refrigerator%20repair" target="_blank" class="float-wa" title="WhatsApp Now">💬</a>
 
 <script>
@@ -675,5 +721,6 @@ if ('serviceWorker' in navigator) {
 <script src="search-index.js"></script>
 <script src="site-search.js"></script>
 <script src="quick-book.js"></script>
+<script src="photo-loader.js" defer></script>
 </body>
 </html>

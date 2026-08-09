@@ -74,6 +74,7 @@ footer span { color: var(--white); }
 .float-wa, .float-call { position: fixed; z-index: 999; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; text-decoration: none; border: none; cursor: pointer; right: 20px; }
 .float-wa { background: var(--whatsapp); color: var(--white); bottom: 20px; box-shadow: 0 4px 16px rgba(16,185,129,0.4); }
 .float-call { background: var(--blue); color: var(--white); bottom: 92px; box-shadow: 0 4px 16px rgba(30,58,138,0.4); }
+.float-account { background: var(--white); color: var(--blue); bottom: 164px; border: 2px solid var(--blue); box-shadow: 0 4px 16px rgba(30,58,138,0.25); }
 @media (max-width: 600px) { header { padding: 12px 16px; } section { padding: 34px 16px; } .float-call { bottom: 84px; } }
 </style>
 <script type="application/ld+json">
@@ -136,14 +137,15 @@ footer span { color: var(--white); }
   </span>
 </a>
   <div class="header-btns">
-    <a href="tel:+919819832282" class="btn-call">Call</a>
+    <a href="my-account.html" style="padding:10px 14px;border-radius:10px;font-weight:600;font-size:0.85rem;text-decoration:none;display:flex;align-items:center;gap:6px;background:#fff;color:var(--blue);border:1.5px solid var(--blue);box-shadow:0 4px 14px rgba(15,27,76,0.08);" aria-label="My Account">👤 My Account</a>
+    <a href="tel:+919819832282" class="btn-call">Inquiry</a>
     <a href="https://wa.me/919819832282?text=I%20want%20to%20join%20as%20a%20technician" target="_blank" class="btn-wa">Chat</a>
   </div>
 </header>
+<div style="background:#F0FDF4;border-bottom:1px solid #BBF7D0;padding:8px 16px;text-align:center;font-size:0.76rem;color:#166534;font-weight:600;letter-spacing:0.2px;">✓ Honest Diagnosis &nbsp;·&nbsp; ✓ 100% Bill Adjustment &nbsp;·&nbsp; ✓ No Hidden Charges &nbsp;·&nbsp; ✓ Genuine Parts &amp; 3-Month Warranty</div>
+
 
 <div class="breadcrumb"><a href="index.html">Home</a> › Join Our Team</div>
-<div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px;"><img src="circuit-checkup-repair-bandra-west.webp" alt="On-site circuit checkup by our technician" loading="lazy" style="width: 100%; max-height: 320px; object-fit: cover; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">On-site circuit checkup by our technician</p></div>
-
 <section class="hero">
   <div class="hero-badge">🔧 WE'RE HIRING</div>
   <h1>Join Our <span>Team</span></h1>
@@ -153,6 +155,7 @@ footer span { color: var(--white); }
     <a href="https://wa.me/919819832282?text=I%20want%20to%20join%20as%20a%20technician" target="_blank" class="btn-wa">📲 WhatsApp Us</a>
   </div>
 </section>
+<div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px;"><img src="circuit-checkup-repair-bandra-west.webp" alt="On-site circuit checkup by our technician" loading="lazy" style="width: 100%; max-height: 320px; object-fit: cover; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">On-site circuit checkup by our technician</p></div>
 
 <div id="installBanner" style="display:none; max-width: 650px; margin: 24px auto 0; padding: 18px 22px; background: var(--grey); border: 1.5px solid var(--border); border-radius: 14px; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;">
   <div style="display:flex; align-items:center; gap:12px;">
@@ -241,6 +244,7 @@ footer span { color: var(--white); }
     <span>✅ Doorstep Service — All Mumbai</span>
   </div>
   <div class="footer-links">
+    <a href="suggestion-form.html">Feedback</a>
     <a href="index.html">Home</a>
     <a href="inquiry.html">Contact</a>
   </div>
@@ -248,6 +252,7 @@ footer span { color: var(--white); }
 </footer>
 
 <a href="tel:+919819832282" class="float-call" title="Call Now">📞</a>
+<a href="my-account.html" class="float-account" title="My Account" aria-label="My Account">👤</a>
 <a href="https://wa.me/919819832282?text=I%20want%20to%20join%20as%20a%20technician" target="_blank" class="float-wa" title="WhatsApp Now">💬</a>
 
 <script>
@@ -323,5 +328,6 @@ if ('serviceWorker' in navigator) {
 <script src="tracking.js"></script>
 <script src="search-index.js"></script>
 <script src="site-search.js"></script>
+<script src="photo-loader.js" defer></script>
 </body>
 </html>

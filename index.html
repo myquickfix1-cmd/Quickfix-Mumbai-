@@ -281,6 +281,7 @@ footer span { color: var(--white); }
 .float-wa, .float-call { position: fixed; z-index: 999; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; text-decoration: none; border: none; cursor: pointer; right: 24px; }
 .float-wa { background: var(--whatsapp); color: var(--white); bottom: 24px; box-shadow: 0 4px 16px rgba(16,185,129,0.4); }
 .float-call { background: var(--blue); color: var(--white); bottom: 100px; box-shadow: 0 4px 16px rgba(30,58,138,0.4); }
+.float-account { background: var(--white); color: var(--blue); bottom: 172px; border: 2px solid var(--blue); box-shadow: 0 4px 16px rgba(30,58,138,0.25); }
 
 .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
 .modal.active { display: flex; }
@@ -362,13 +363,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="nav-link" href="amc-service.html">AMC</a>
   </nav>
   <div class="header-btns">
-    <a href="tel:+919819832282" class="btn-call" aria-label="Call Quickfix Mumbai">Call</a>
+    <a href="my-account.html" style="padding:10px 14px;border-radius:10px;font-weight:600;font-size:0.85rem;text-decoration:none;display:flex;align-items:center;gap:6px;background:#fff;color:var(--blue);border:1.5px solid var(--blue);box-shadow:0 4px 14px rgba(15,27,76,0.08);" aria-label="My Account">👤 My Account</a>
+    <a href="tel:+919819832282" class="btn-call" aria-label="Call Quickfix Mumbai">Inquiry</a>
     <a href="https://wa.me/919819832282?text=Hi%20Quickfix%2C%20my%20appliance%20needs%20repair" target="_blank" class="btn-wa" aria-label="Chat with Quickfix Mumbai on WhatsApp">Chat</a>
   </div>
   <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
     <span></span><span></span><span></span>
   </button>
 </header>
+<div style="background:#F0FDF4;border-bottom:1px solid #BBF7D0;padding:8px 16px;text-align:center;font-size:0.76rem;color:#166534;font-weight:600;letter-spacing:0.2px;">✓ Honest Diagnosis &nbsp;·&nbsp; ✓ 100% Bill Adjustment &nbsp;·&nbsp; ✓ No Hidden Charges &nbsp;·&nbsp; ✓ Genuine Parts &amp; 3-Month Warranty</div>
+
 <script>
 (function(){
   var btn = document.getElementById('navToggle');
@@ -398,7 +402,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <h1>Appliance Repair in Mumbai India — <span>Same-Day Expert Service!</span></h1>
   <p>Refrigerator repair, washing machine repair, microwave repair, dishwasher repair, dryer repair, and air dresser repair — every home appliance fixed by expert technicians in Bandra West, Andheri, Borivali, Malad and all Mumbai. 4.8/5 rated by <span id="heroCount">2.5k</span> trusted families.</p>
   <div class="hero-btns">
-    <a href="tel:+919819832282" class="btn-call" aria-label="Call Quickfix Mumbai on +91 98198 32282">Call +91 98198 32282</a>
+    <a href="tel:+919819832282" class="btn-call" aria-label="Call Quickfix Mumbai on +91 98198 32282">Inquiry: +91 98198 32282</a>
     <a href="https://wa.me/919819832282?text=Hi%20Quickfix%2C%20my%20appliance%20needs%20repair" target="_blank" class="btn-wa" aria-label="Book a repair via WhatsApp">WhatsApp Now</a>
   </div>
   <div class="rating-bar">
@@ -419,8 +423,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       ✔ Genuine Repairs<br>
       ✔ Up to 3-Month Service Warranty
     </div>
-    <a href="tel:+919819832282" class="offer-btn">📞 Book Technician Now</a>
-    <div class="offer-note">*T&C Apply</div>
+    <div class="offer-note">*T&C Apply — use Inquiry / WhatsApp above to book</div>
   </div>
 </section>
 
@@ -544,11 +547,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section>
   <div class="container">
     <div class="center"><div class="section-label">Our Promise</div><h2 class="section-title">Honest Diagnosis, Honest Pricing</h2></div>
-    <div class="why-grid">
-      <div class="why-card"><div class="why-icon">🛡️</div><h3>Standard Doorstep Diagnostic</h3><p>Genuine & professional checkup by certified technicians — zero hidden charges or surprise costs.</p></div>
-      <div class="why-card"><div class="why-icon">🤝</div><h3>100% Bill Adjustment</h3><p>Diagnostic charges are fully adjusted/deducted from your final repair bill upon service confirmation.</p></div>
-      <div class="why-card"><div class="why-icon">📋</div><h3>Upfront Honest Estimate</h3><p>Detailed problem breakdown and transparent estimate provided before starting any repair work.</p></div>
-      <div class="why-card"><div class="why-icon">🛠️</div><h3>Quality First Approach</h3><p>We only charge for what is genuinely required — using 100% original factory spare parts with 3 months warranty.</p></div>
+    <div class="promise-list" style="max-width:640px; margin:20px auto 0; display:flex; flex-direction:column; gap:14px;">
+      <div style="display:flex; align-items:flex-start; gap:12px;"><span style="flex-shrink:0; width:24px; height:24px; border-radius:50%; background:#16a34a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700;">✓</span><p style="margin:0;"><strong>Standard Doorstep Diagnostic</strong> — Genuine & professional checkup by certified technicians, zero hidden charges or surprise costs.</p></div>
+      <div style="display:flex; align-items:flex-start; gap:12px;"><span style="flex-shrink:0; width:24px; height:24px; border-radius:50%; background:#16a34a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700;">✓</span><p style="margin:0;"><strong>100% Bill Adjustment</strong> — Diagnostic charges fully adjusted/deducted from your final repair bill upon service confirmation.</p></div>
+      <div style="display:flex; align-items:flex-start; gap:12px;"><span style="flex-shrink:0; width:24px; height:24px; border-radius:50%; background:#16a34a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700;">✓</span><p style="margin:0;"><strong>Upfront Honest Estimate</strong> — Detailed problem breakdown and transparent estimate before starting any repair work.</p></div>
+      <div style="display:flex; align-items:flex-start; gap:12px;"><span style="flex-shrink:0; width:24px; height:24px; border-radius:50%; background:#16a34a; color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700;">✓</span><p style="margin:0;"><strong>Quality First Approach</strong> — We only charge for what is genuinely required, using 100% original factory spare parts with 3-month warranty.</p></div>
     </div>
   </div>
 </section>
@@ -628,7 +631,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <h2>Appliance Broken Right Now?</h2>
   <p>Don't waste time! Call or WhatsApp now — we'll confirm timing and reach you anywhere in Mumbai.</p>
   <div class="cta-btns">
-    <a href="tel:+919819832282" class="btn-call" aria-label="Call Quickfix Mumbai now for urgent repair">Call +91 98198 32282</a>
+    <a href="tel:+919819832282" class="btn-call" aria-label="Call Quickfix Mumbai now for urgent repair">Inquiry: +91 98198 32282</a>
     <a href="https://wa.me/919819832282?text=Hi%20Quickfix%2C%20my%20appliance%20needs%20urgent%20repair" target="_blank" class="btn-wa" aria-label="WhatsApp Quickfix Mumbai for urgent repair">WhatsApp Urgent</a>
   </div>
 </div>
@@ -919,6 +922,7 @@ function showBookingSuccess(name, mobile, date, slot) {
       </div>
       <div class="footer-accordion-body">
         <div class="footer-links">
+    <a href="suggestion-form.html">Feedback</a>
         <a href="refrigerator-repair.html">Refrigerator Repair</a>
         <a href="washing-machine-repair.html">Washing Machine</a>
         <a href="microwave-repair.html">Microwave</a>
@@ -928,6 +932,7 @@ function showBookingSuccess(name, mobile, date, slot) {
         <a href="amc-service.html">AMC</a>
         <a href="check-warranty.html">Check Your Warranty</a>
         <a href="inquiry.html">Inquiry & Contact</a>
+        <a href="my-account.html">My Account</a>
         <a href="join-our-team.html">Join Our Team (For Technicians)</a>
         <a href="https://quickfixmumbai.blogspot.com/2026/08/refrigerator-repair-services-in-mumbai.html?m=1" target="_blank" rel="noopener">Our Blog</a>
         </div>
@@ -1038,6 +1043,7 @@ function showBookingSuccess(name, mobile, date, slot) {
 </footer>
 
 <a href="tel:+919819832282" class="float-call" title="Call Now" aria-label="Call Quickfix Mumbai Support">📞</a>
+<a href="my-account.html" class="float-account" title="My Account" aria-label="My Account">👤</a>
  <a href="https://wa.me/919819832282?text=Hi%20Quickfix%2C%20my%20appliance%20is%20broken" target="_blank" class="float-wa" title="WhatsApp Us" aria-label="Chat with Quickfix Mumbai on WhatsApp" style="background-color: #128C7E;">💬</a>
 
 <script>
@@ -1194,5 +1200,6 @@ if ('serviceWorker' in navigator) {
 <script src="search-index.js"></script>
 <script src="site-search.js"></script>
 <script src="quick-book.js"></script>
+<script src="photo-loader.js" defer></script>
 </body>
 </html>

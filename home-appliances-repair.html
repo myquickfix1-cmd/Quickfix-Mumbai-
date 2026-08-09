@@ -92,6 +92,7 @@ footer span { color: var(--white); }
 .float-wa, .float-call { position: fixed; z-index: 999; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; text-decoration: none; border: none; cursor: pointer; right: 20px; }
 .float-wa { background: var(--whatsapp); color: var(--white); bottom: 20px; box-shadow: 0 4px 16px rgba(16,185,129,0.4); }
 .float-call { background: var(--blue); color: var(--white); bottom: 92px; box-shadow: 0 4px 16px rgba(30,58,138,0.4); }
+.float-account { background: var(--white); color: var(--blue); bottom: 164px; border: 2px solid var(--blue); box-shadow: 0 4px 16px rgba(30,58,138,0.25); }
 @media (max-width: 600px) { header { padding: 12px 16px; } section { padding: 34px 16px; } .cta-band { margin: 28px 16px; } .float-call { bottom: 84px; } }
 </style>
 <script type="application/ld+json">
@@ -163,13 +164,16 @@ footer span { color: var(--white); }
     <a class="nav-link" href="amc-service.html" style="padding:6px 10px;border-radius:6px;font-weight:500;text-decoration:none;color:var(--text);">AMC</a>
   </nav>
   <div class="header-btns">
-    <a href="tel:+919819832282" class="btn-call">Call</a>
+    <a href="my-account.html" style="padding:10px 14px;border-radius:10px;font-weight:600;font-size:0.85rem;text-decoration:none;display:flex;align-items:center;gap:6px;background:#fff;color:var(--blue);border:1.5px solid var(--blue);box-shadow:0 4px 14px rgba(15,27,76,0.08);" aria-label="My Account">👤 My Account</a>
+    <a href="tel:+919819832282" class="btn-call">Inquiry</a>
     <a href="https://wa.me/919819832282?text=I%20need%20appliance%20repair" target="_blank" class="btn-wa">Chat</a>
   </div>
   <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
     <span></span><span></span><span></span>
   </button>
 </header>
+<div style="background:#F0FDF4;border-bottom:1px solid #BBF7D0;padding:8px 16px;text-align:center;font-size:0.76rem;color:#166534;font-weight:600;letter-spacing:0.2px;">✓ Honest Diagnosis &nbsp;·&nbsp; ✓ 100% Bill Adjustment &nbsp;·&nbsp; ✓ No Hidden Charges &nbsp;·&nbsp; ✓ Genuine Parts &amp; 3-Month Warranty</div>
+
 <script>
 (function(){
   var btn = document.getElementById('navToggle');
@@ -187,17 +191,16 @@ footer span { color: var(--white); }
 </script>
 
 <div class="breadcrumb"><a href="index.html">Home</a> › Home Appliance Repair</div>
-<div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px;"><img src="circuit-checkup-repair-bandra-west.webp" alt="On-site circuit checkup by our technician" loading="lazy" style="width: 100%; max-height: 320px; object-fit: cover; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">On-site circuit checkup by our technician</p></div>
-
 <section class="hero">
   <div class="hero-badge">🕐 24x7 Service • ⭐ 4.8/5 Rated</div>
   <h1>Home Appliance Repair in Mumbai — <span>One Number, Every Fix</span></h1>
   <p>Refrigerator, Washing Machine, Microwave, Dishwasher, Cloth Dryer, Air Dresser — same-day doorstep repair across Bandra West, Andheri, Borivali, Malad and all Mumbai. Genuine parts, 3-month warranty.</p>
   <div class="hero-btns">
-    <a href="tel:+919819832282" class="btn-call">📞 Call +91 98198 32282</a>
+    <a href="tel:+919819832282" class="btn-call">📞 Inquiry: +91 98198 32282</a>
     <a href="https://wa.me/919819832282?text=I%20need%20appliance%20repair" target="_blank" class="btn-wa">📲 Book by WhatsApp</a>
   </div>
 </section>
+<div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px;"><img src="circuit-checkup-repair-bandra-west.webp" alt="On-site circuit checkup by our technician" loading="lazy" style="width: 100%; max-height: 320px; object-fit: cover; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">On-site circuit checkup by our technician</p></div>
 
 <div style="max-width: 450px; margin: 30px auto; padding: 25px; background: #1e3a8a; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); text-align: left; color: #ffffff; font-family: 'Inter', sans-serif; box-shadow: 0 4px 15px rgba(0,0,0,0.15);" id="bookingFormContainer">
     <h3 style="text-align: center; margin-top: 0; color: #ffffff; margin-bottom: 20px; font-size: 20px; font-weight: 600;">Book a Repair — Instant</h3>
@@ -246,7 +249,7 @@ footer span { color: var(--white); }
   <div class="container">
     <div class="center"><div class="section-label">Why Choose Us</div><h2 class="section-title">Why Repair With Quickfix?</h2></div>
     <div class="why-grid">
-      <div class="why-card"><div class="why-icon">⚡</div><h3>Same-Day Service</h3><p>Call & confirm timing across Mumbai</p></div>
+      <div class="why-card"><div class="why-icon">⚡</div><h3>Same-Day Service</h3><p>Inquiry & confirm timing across Mumbai</p></div>
       <div class="why-card"><div class="why-icon">🏆</div><h3>Expert Technicians</h3><p>Trained across all major brands</p></div>
       <div class="why-card"><div class="why-icon">💰</div><h3>Transparent Pricing</h3><p>Quote before any repair begins</p></div>
       <div class="why-card"><div class="why-icon">✅</div><h3>3-Month Warranty</h3><p>Every repair backed by our guarantee</p></div>
@@ -285,7 +288,7 @@ footer span { color: var(--white); }
   <h2>Any Appliance Acting Up? Fix It Today!</h2>
   <p>Same-day repair across Bandra West, Andheri, Borivali and all Mumbai areas.</p>
   <div class="cta-btns">
-    <a href="tel:+919819832282" class="btn-call">📞 Call +91 98198 32282</a>
+    <a href="tel:+919819832282" class="btn-call">📞 Inquiry: +91 98198 32282</a>
     <a href="https://wa.me/919819832282?text=I%20need%20appliance%20repair" target="_blank" class="btn-wa">📲 Book by WhatsApp</a>
   </div>
 </div>
@@ -297,6 +300,7 @@ footer span { color: var(--white); }
     <span>✅ Doorstep Service — All Mumbai</span>
   </div>
   <div class="footer-links">
+    <a href="suggestion-form.html">Feedback</a>
     <a href="index.html">Home</a>
     <a href="refrigerator-repair.html">Refrigerator</a>
     <a href="washing-machine-repair.html">Washing Machine</a>
@@ -310,6 +314,7 @@ footer span { color: var(--white); }
 </footer>
 
 <a href="tel:+919819832282" class="float-call" title="Call Now">📞</a>
+<a href="my-account.html" class="float-account" title="My Account" aria-label="My Account">👤</a>
 <a href="https://wa.me/919819832282?text=I%20need%20appliance%20repair" target="_blank" class="float-wa" title="WhatsApp Now">💬</a>
 
 <script>
@@ -354,5 +359,6 @@ function selectSlot(el) {
 <script src="tracking.js"></script>
 <script src="search-index.js"></script>
 <script src="site-search.js"></script>
+<script src="photo-loader.js" defer></script>
 </body>
 </html>

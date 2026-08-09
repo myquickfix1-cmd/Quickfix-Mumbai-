@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Share Your Feedback | Quickfix Mumbai</title>
+<meta name="description" content="Share your feedback or suggestion about Quickfix Mumbai's home appliance repair service. Help us improve doorstep repair for refrigerators, washing machines, microwaves and more.">
+<link rel="canonical" href="https://quickfixmumbai.com/suggestion-form.html">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -231,6 +233,8 @@
 <header>
   <div class="logo">Quick<span>fix</span></div>
 </header>
+<div style="background:#F0FDF4;border-bottom:1px solid #BBF7D0;padding:8px 16px;text-align:center;font-size:0.76rem;color:#166534;font-weight:600;letter-spacing:0.2px;">✓ Honest Diagnosis &nbsp;·&nbsp; ✓ 100% Bill Adjustment &nbsp;·&nbsp; ✓ No Hidden Charges &nbsp;·&nbsp; ✓ Genuine Parts &amp; 3-Month Warranty</div>
+
 
 <div class="container">
   <div class="form-section">
@@ -360,6 +364,8 @@
 </div>
 
 <script>
+const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4zI3hmCRy2V3dGwcUiYjuIe-8GhEyHbehjcnemWcvEzn02XT/exec";
+
   function selectRating(rating) {
     document.getElementById('rating').value = rating;
     document.querySelectorAll('.rating-btn').forEach(btn => {
@@ -413,6 +419,26 @@ ${comments || 'None'}
     const encodedMsg = encodeURIComponent(message);
     const whatsappURL = `https://wa.me/919819832282?text=${encodedMsg}`;
 
+    fetch(scriptUrl, {
+        method: "POST",
+        mode: "no-cors",
+        cache: "no-cache",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            formType: "feedback",
+            name: name,
+            phone: phone,
+            email: email,
+            service: service,
+            rating: rating,
+            wellPoints: wellPoints.join(', '),
+            improvement: improvement,
+            comments: comments,
+            recommend: recommend,
+            followup: followup
+        })
+    }).catch(() => { /* still open WhatsApp below even if the sheet save fails */ });
+
     window.open(whatsappURL, '_blank');
 
     document.getElementById('successMessage').classList.add('show');
@@ -424,5 +450,6 @@ ${comments || 'None'}
 </script>
 
 <script src="tracking.js"></script>
+<script src="photo-loader.js" defer></script>
 </body>
 </html>
