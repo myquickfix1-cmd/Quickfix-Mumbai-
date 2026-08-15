@@ -101,7 +101,7 @@ footer span { color: var(--white); }
   <h1>Is It a <span>Quick Fix</span> or Do You Need a Technician?</h1>
   <p>Answer a few quick questions about your dishwasher. We'll give you an honest answer — a safe DIY tip if it's minor, or a clear heads-up if it genuinely needs a technician.</p>
 </section>
-<div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px;"><img src="lg-dishwasher-repair-mumbai.webp" alt="On-site circuit checkup by our technician" loading="lazy" style="width: 100%; max-height: 320px; object-fit: cover; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">On-site circuit checkup by our technician</p></div>
+<div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px;"><img src="lg-dishwasher-repair-mumbai.webp" alt="LG dishwasher repair — real Quickfix job in Mumbai" loading="lazy" style="width: 100%; max-height: 320px; object-fit: cover; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">On-site circuit checkup by our technician</p></div>
 
 <section>
   <div class="container">
@@ -141,6 +141,18 @@ const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4z
 // Each question: id, text, options[{label, value}]
 const QUESTIONS = [
   {
+    id: 'brand',
+    text: 'Which brand is your dishwasher?',
+    options: [
+      { label: 'LG', value: 'LG' },
+      { label: 'Samsung', value: 'Samsung' },
+      { label: 'Bosch', value: 'Bosch' },
+      { label: 'Whirlpool', value: 'Whirlpool' },
+      { label: 'IFB', value: 'IFB' },
+      { label: 'Other / Not sure', value: 'Other' }
+    ]
+  },
+  {
     id: 'main',
     text: 'What\u2019s the main issue?',
     options: [
@@ -168,6 +180,18 @@ const QUESTIONS = [
     ]
   }
 ];
+
+const BRAND_CODES = {
+  drain: { Samsung: '5C / 5E / OE', Bosch: 'E24', LG: 'usually a blinking drain icon, not a numeric code', IFB: 'usually a blinking drain icon, not a numeric code', Whirlpool: 'usually a blinking drain icon, not a numeric code', Other: '' },
+  leak: { Samsung: 'LC / LE', Bosch: 'E15', LG: 'usually a blinking leak icon, not a numeric code', IFB: 'usually a blinking leak icon, not a numeric code', Whirlpool: 'usually a blinking leak icon, not a numeric code', Other: '' }
+};
+function brandNote(category) {
+  const brand = answers.brand;
+  if (!brand || brand === 'Other') return '';
+  const code = BRAND_CODES[category] && BRAND_CODES[category][brand];
+  if (!code) return '';
+  return ` If your ${brand} display shows a code, this usually matches ${code}.`;
+}
 
 let answers = {};
 let currentStep = 0;
@@ -211,7 +235,7 @@ function diagnose() {
     return {
       severity: 'urgent',
       title: 'Leak From Underneath Needs a Technician',
-      text: 'Water leaking from the bottom of the machine usually points to a damaged hose, seal, or pump — not something visible or fixable from outside.',
+      text: 'Water leaking from the bottom of the machine usually points to a damaged hose, seal, or pump — not something visible or fixable from outside.' + brandNote('leak'),
       tip: 'Switch it off and avoid running further cycles until it\u2019s checked, to avoid water damage. This one\u2019s a technician job.'
     };
   }
@@ -235,7 +259,7 @@ function diagnose() {
     return {
       severity: 'diy',
       title: 'Likely a Blocked Filter',
-      text: 'Water not draining out is commonly food debris blocking the filter at the base of the machine.',
+      text: 'Water not draining out is commonly food debris blocking the filter at the base of the machine.' + brandNote('drain'),
       tip: 'Remove and clean the filter basket at the bottom of the dishwasher — this is the single most common cause. If it still won\u2019t drain after cleaning it, that points to a pump issue needing a technician.',
       warn: 'Agar paani andar ruk gaya hai aur drain nahi ho raha, toh machine ko aur run na kare — taaki motor water-logging se jam na ho jaye.'
     };

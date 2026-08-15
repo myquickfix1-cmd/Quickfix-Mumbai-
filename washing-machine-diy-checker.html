@@ -101,7 +101,7 @@ footer span { color: var(--white); }
   <h1>Is It a <span>Quick Fix</span> or Do You Need a Technician?</h1>
   <p>Answer a few quick questions about your washing machine. We'll give you an honest answer — a safe DIY tip if it's minor, or a clear heads-up if it genuinely needs a technician.</p>
 </section>
-<div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px;"><img src="panasonic-washing-machine-repair-chembur.webp" alt="Circuit repair in progress by our technician" loading="lazy" style="width: 100%; max-height: 320px; object-fit: cover; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">Circuit repair in progress by our technician</p></div>
+<div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px;"><img src="panasonic-washing-machine-repair-chembur.webp" alt="Washing machine repair — real Quickfix job in Mumbai" loading="lazy" style="width: 100%; max-height: 320px; object-fit: cover; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">Circuit repair in progress by our technician</p></div>
 
 <section>
   <div class="container">
@@ -141,6 +141,20 @@ const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4z
 // Each question: id, text, options[{label, value}]
 const QUESTIONS = [
   {
+    id: 'brand',
+    text: 'Which brand is your washing machine?',
+    options: [
+      { label: 'LG', value: 'LG' },
+      { label: 'Samsung', value: 'Samsung' },
+      { label: 'Bosch', value: 'Bosch' },
+      { label: 'Haier', value: 'Haier' },
+      { label: 'Whirlpool', value: 'Whirlpool' },
+      { label: 'IFB', value: 'IFB' },
+      { label: 'Godrej', value: 'Godrej' },
+      { label: 'Other / Not sure', value: 'Other' }
+    ]
+  },
+  {
     id: 'power',
     text: 'Does the machine start at all?',
     options: [
@@ -176,6 +190,19 @@ const QUESTIONS = [
     ]
   }
 ];
+
+const BRAND_CODES = {
+  fill: { Samsung: '4E', LG: 'IE', Bosch: 'E13/E15', Haier: 'E1', Whirlpool: 'F8E1', IFB: 'usually a blinking tap icon, not a numeric code', Godrej: 'usually a blinking tap icon, not a numeric code', Other: '' },
+  drain: { Samsung: '5C / SUD', LG: 'OE', Bosch: 'E18', Haier: 'E2', Whirlpool: 'F9E1', IFB: 'usually a blinking drain icon, not a numeric code', Godrej: 'usually a blinking drain icon, not a numeric code', Other: '' },
+  control: { Samsung: 'dE / dC', LG: 'PE / tE', Bosch: 'E01', Haier: 'E3', Whirlpool: 'F2E3', IFB: 'usually a blinking door-lock icon, not a numeric code', Godrej: 'usually a blinking door-lock icon, not a numeric code', Other: '' }
+};
+function brandNote(category) {
+  const brand = answers.brand;
+  if (!brand || brand === 'Other') return '';
+  const code = BRAND_CODES[category] && BRAND_CODES[category][brand];
+  if (!code) return '';
+  return ` If your ${brand} display shows a code, this usually matches ${code}.`;
+}
 
 let answers = {};
 let currentStep = 0;
@@ -244,7 +271,7 @@ function diagnose() {
     return {
       severity: 'diy',
       title: 'Likely a Water Supply Issue',
-      text: 'Not filling with water is usually about supply, not the machine itself.',
+      text: 'Not filling with water is usually about supply, not the machine itself.' + brandNote('fill'),
       tip: 'Check the tap is fully open, the inlet hose isn\u2019t kinked, and there\u2019s actually water pressure in that line. If water is confirmed reaching the machine and it still won\u2019t fill, that\u2019s a technician check.'
     };
   }
@@ -252,7 +279,7 @@ function diagnose() {
     return {
       severity: 'diy',
       title: 'Check the Drain Hose and Filter',
-      text: 'Water not draining out is commonly a blocked filter or a kinked/blocked drain hose.',
+      text: 'Water not draining out is commonly a blocked filter or a kinked/blocked drain hose.' + brandNote('drain'),
       tip: 'Check the drain hose at the back for kinks, and clean the drain filter if your machine has one (usually a small door near the bottom front). If it still won\u2019t drain after that, it\u2019s a technician job.',
       warn: 'Agar iske saath paani leak bhi ho raha hai, toh main switch off kar de — taaki short-circuit ya PCB board jalne se bache.'
     };
@@ -261,7 +288,7 @@ function diagnose() {
     return {
       severity: 'urgent',
       title: 'Stopping Mid-Cycle Needs a Look',
-      text: 'A machine that starts but stops partway through is usually an electrical or control board issue, hard to diagnose safely without opening it up.',
+      text: 'A machine that starts but stops partway through is usually an electrical or control board issue, hard to diagnose safely without opening it up.' + brandNote('control'),
       tip: 'A technician inspection is the honest recommendation here rather than guessing at a DIY fix.'
     };
   }

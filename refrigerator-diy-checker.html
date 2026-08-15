@@ -99,7 +99,7 @@ footer span { color: var(--white); }
 <section class="hero">
   <div class="hero-badge">🧊 Free • Takes 30 Seconds</div>
   <h1>Is It a <span>Quick Fix</span> or Do You Need a Technician?</h1>
-  <p>Answer 4 quick questions about your refrigerator. We'll give you an honest answer — a safe DIY tip if it's minor, or a clear heads-up if it genuinely needs a technician.</p>
+  <p>Tell us the brand and answer a few quick questions about your refrigerator. We'll give you an honest answer — a safe DIY tip if it's minor, or a clear heads-up if it genuinely needs a technician.</p>
 </section>
 <div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px;"><img src="samsung-double-door-refrigerator-repair-bkc.webp" alt="Samsung refrigerator repair — real Quickfix job in Mumbai" loading="lazy" style="width: 100%; max-height: 320px; object-fit: cover; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">Samsung refrigerator repair — real Quickfix job in Mumbai</p></div>
 
@@ -141,6 +141,19 @@ const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4z
 // Each question: id, text, options[{label, value}]
 const QUESTIONS = [
   {
+    id: 'brand',
+    text: 'Which brand is your refrigerator?',
+    options: [
+      { label: 'LG', value: 'LG' },
+      { label: 'Samsung', value: 'Samsung' },
+      { label: 'Bosch / Siemens', value: 'Bosch/Siemens' },
+      { label: 'Haier', value: 'Haier' },
+      { label: 'Whirlpool', value: 'Whirlpool' },
+      { label: 'Godrej', value: 'Godrej' },
+      { label: 'Other / Not sure', value: 'Other' }
+    ]
+  },
+  {
     id: 'cooling',
     text: 'Is your refrigerator cooling at all?',
     options: [
@@ -176,6 +189,19 @@ const QUESTIONS = [
     ]
   }
 ];
+
+const BRAND_CODES = {
+  cooling: { Samsung: '22E / 2E', LG: 'Er 22 / Er 15', Whirlpool: 'E2 / F2', 'Bosch/Siemens': 'E20 / F1 (Defrost timeout, can look like weak cooling)', Godrej: 'E1 / E2', Haier: 'E1 / E2', Other: '' },
+  inverter: { Samsung: '84E / 85E', LG: 'Er CO', Whirlpool: 'E4 / F4', 'Bosch/Siemens': 'F1', Godrej: 'E1', Haier: 'E1', Other: '' },
+  defrost: { Samsung: '4E / 5E / 14E', LG: 'Er dH', Whirlpool: 'E2 / F2', 'Bosch/Siemens': 'E20 / F1', Godrej: 'E2', Haier: 'E2', Other: '' }
+};
+function brandNote(category) {
+  const brand = answers.brand;
+  if (!brand || brand === 'Other') return '';
+  const code = BRAND_CODES[category] && BRAND_CODES[category][brand];
+  if (!code) return '';
+  return ` If your ${brand} display shows a code, this usually matches ${code}.`;
+}
 
 let answers = {};
 let currentStep = 0;
@@ -220,7 +246,7 @@ function diagnose() {
     return {
       severity: 'urgent',
       title: 'Likely a Cooling System Problem',
-      text: 'Based on your answers, there\u2019s a good chance the compressor or cooling system itself is the problem. Continuing to run the fridge like this can make things worse and risks further damage.',
+      text: 'Based on your answers, there\u2019s a good chance the compressor or cooling system itself is the problem. Continuing to run the fridge like this can make things worse and risks further damage.' + brandNote('inverter'),
       tip: 'A technician inspection is genuinely the right call here — this isn\u2019t a safe DIY fix.',
       warn: 'Agar fridge bilkul thanda nahi ho raha ya gas smell/leak lag rahi hai, toh turant power off karke door band rakhe — taaki compressor par load na pade aur bacha hua saaman kharab na ho.'
     };
@@ -229,7 +255,7 @@ function diagnose() {
     return {
       severity: 'urgent',
       title: 'No Cooling Needs a Closer Look',
-      text: 'A refrigerator that isn\u2019t cooling at all is almost always a technician job — could be gas, thermostat, or compressor related, and it\u2019s hard to tell which without opening it up.',
+      text: 'A refrigerator that isn\u2019t cooling at all is almost always a technician job — could be gas, thermostat, or compressor related, and it\u2019s hard to tell which without opening it up.' + brandNote('cooling'),
       tip: 'Move perishables out for now and get it inspected soon rather than waiting it out.',
       warn: 'Agar fridge bilkul thanda nahi ho raha ya gas smell/leak lag rahi hai, toh turant power off karke door band rakhe — taaki compressor par load na pade aur bacha hua saaman kharab na ho.'
     };
@@ -246,7 +272,7 @@ function diagnose() {
     return {
       severity: 'diy',
       title: 'Sounds Like a Blocked Defrost Drain',
-      text: 'Ice building up on the back wall or in the freezer is a very common, genuinely DIY-fixable issue.',
+      text: 'Ice building up on the back wall or in the freezer is a very common, genuinely DIY-fixable issue.' + brandNote('defrost'),
       tip: 'Try a manual defrost (switch off, leave the door open for a few hours to melt the buildup) and check that the small defrost drain hole at the back isn\u2019t blocked.'
     };
   }
@@ -270,7 +296,7 @@ function diagnose() {
     return {
       severity: 'urgent',
       title: 'That Clicking Is Worth Checking Soon',
-      text: 'Repeated clicking on and off usually points to a compressor relay or electrical issue.',
+      text: 'Repeated clicking on and off usually points to a compressor relay or electrical issue.' + brandNote('inverter'),
       tip: 'This is an electrical component — not something to open up yourself. A technician visit is the safer, honest recommendation here.'
     };
   }

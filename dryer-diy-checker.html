@@ -101,7 +101,7 @@ footer span { color: var(--white); }
   <h1>Is It a <span>Quick Fix</span> or Do You Need a Technician?</h1>
   <p>Answer a few quick questions about your clothes dryer. We'll give you an honest answer — a safe DIY tip if it's minor, or a clear heads-up if it genuinely needs a technician.</p>
 </section>
-<div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px;"><img src="samsung-dryer-heatpump-repair-mumbai.webp" alt="Circuit repair in progress by our technician" loading="lazy" style="width: 100%; max-height: 320px; object-fit: cover; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">Circuit repair in progress by our technician</p></div>
+<div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px;"><img src="samsung-dryer-heatpump-repair-mumbai.webp" alt="Samsung dryer repair — real Quickfix job in Mumbai" loading="lazy" style="width: 100%; max-height: 320px; object-fit: cover; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">Circuit repair in progress by our technician</p></div>
 
 <section>
   <div class="container">
@@ -141,6 +141,17 @@ const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4z
 // Each question: id, text, options[{label, value}]
 const QUESTIONS = [
   {
+    id: 'brand',
+    text: 'Which brand is your dryer?',
+    options: [
+      { label: 'LG', value: 'LG' },
+      { label: 'Samsung', value: 'Samsung' },
+      { label: 'Whirlpool', value: 'Whirlpool' },
+      { label: 'Bosch', value: 'Bosch' },
+      { label: 'Other / Not sure', value: 'Other' }
+    ]
+  },
+  {
     id: 'smell',
     text: 'Any burning smell while it runs?',
     options: [
@@ -167,6 +178,18 @@ const QUESTIONS = [
     ]
   }
 ];
+
+const BRAND_NOTES = {
+  no_heat: { Samsung: 'heat-pump compressor or condenser coil fault is the most common cause on Samsung heat-pump models', LG: 'heat-pump compressor or condenser coil fault is the most common cause on LG heat-pump models', Whirlpool: 'heating element or thermal fuse failure is the most common cause on Whirlpool models', Bosch: 'heating element or thermal fuse failure is the most common cause on Bosch models', Other: '' },
+  no_tumble: { Samsung: 'a worn or snapped drive belt is the most common cause', LG: 'a worn or snapped drive belt is the most common cause', Whirlpool: 'a worn or snapped drive belt is the most common cause', Bosch: 'a worn or snapped drive belt is the most common cause', Other: '' }
+};
+function brandNote(category) {
+  const brand = answers.brand;
+  if (!brand || brand === 'Other') return '';
+  const note = BRAND_NOTES[category] && BRAND_NOTES[category][brand];
+  if (!note) return '';
+  return ` On ${brand} models, ${note}.`;
+}
 
 let answers = {};
 let currentStep = 0;
@@ -227,7 +250,7 @@ function diagnose() {
     return {
       severity: 'urgent',
       title: 'Heating Element May Have Failed',
-      text: 'With the lint filter already clean and it still not heating, this usually points to the heating element or thermostat.',
+      text: 'With the lint filter already clean and it still not heating, this usually points to the heating element or thermostat.' + brandNote('no_heat'),
       tip: 'This is a technician job — not something safe to open up and test yourself.'
     };
   }
@@ -235,7 +258,7 @@ function diagnose() {
     return {
       severity: 'urgent',
       title: 'Likely a Belt or Motor Issue',
-      text: 'A drum that won\u2019t tumble at all, while the dryer still powers on, usually points to a broken belt or motor problem.',
+      text: 'A drum that won\u2019t tumble at all, while the dryer still powers on, usually points to a broken belt or motor problem.' + brandNote('no_tumble'),
       tip: 'This one genuinely needs a technician — not a simple DIY fix.'
     };
   }

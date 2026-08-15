@@ -141,6 +141,17 @@ const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4z
 // Each question: id, text, options[{label, value}]
 const QUESTIONS = [
   {
+    id: 'brand',
+    text: 'Which brand is your microwave?',
+    options: [
+      { label: 'LG', value: 'LG' },
+      { label: 'Samsung', value: 'Samsung' },
+      { label: 'IFB', value: 'IFB' },
+      { label: 'Whirlpool', value: 'Whirlpool' },
+      { label: 'Other / Not sure', value: 'Other' }
+    ]
+  },
+  {
     id: 'power',
     text: 'Does the microwave turn on at all (light, display, etc.)?',
     options: [
@@ -167,6 +178,18 @@ const QUESTIONS = [
     ]
   }
 ];
+
+const BRAND_NOTES = {
+  no_heat: { Samsung: 'a failed magnetron or high-voltage diode/capacitor is the most common cause', LG: 'a failed magnetron or high-voltage diode/capacitor is the most common cause', IFB: 'the door interlock switch often fails first, cutting power to the magnetron', Whirlpool: 'the door interlock switch often fails first, cutting power to the magnetron', Other: '' },
+  not_rotating: { Samsung: 'the turntable motor or coupler underneath the tray is the usual cause', LG: 'the turntable motor or coupler underneath the tray is the usual cause', IFB: 'the turntable motor or coupler underneath the tray is the usual cause', Whirlpool: 'the turntable motor or coupler underneath the tray is the usual cause', Other: '' }
+};
+function brandNote(category) {
+  const brand = answers.brand;
+  if (!brand || brand === 'Other') return '';
+  const note = BRAND_NOTES[category] && BRAND_NOTES[category][brand];
+  if (!note) return '';
+  return ` On ${brand} models, ${note}.`;
+}
 
 let answers = {};
 let currentStep = 0;
@@ -219,7 +242,7 @@ function diagnose() {
     return {
       severity: 'urgent',
       title: 'Heating Faults Need a Technician',
-      text: 'When a microwave turns on, the light and turntable work, but it doesn\u2019t heat, the magnetron or a high-voltage component has usually failed.',
+      text: 'When a microwave turns on, the light and turntable work, but it doesn\u2019t heat, the magnetron or a high-voltage component has usually failed.' + brandNote('no_heat'),
       tip: 'This isn\u2019t a safe DIY area — the internal components carry high voltage even unplugged. Please get a technician to check it rather than opening it up.'
     };
   }
@@ -235,7 +258,7 @@ function diagnose() {
     return {
       severity: 'diy',
       title: 'Probably Just the Turntable Ring',
-      text: 'A turntable not spinning is very often the roller ring underneath being out of place, not a motor fault.',
+      text: 'A turntable not spinning is very often the roller ring underneath being out of place, not a motor fault.' + brandNote('not_rotating'),
       tip: 'Take out the glass tray and check the roller ring is seated correctly and the coupling isn\u2019t broken. If it still won\u2019t turn after resetting it, that\u2019s a technician job.'
     };
   }
