@@ -101,7 +101,7 @@ footer span { color: var(--white); }
   <h1>Is It a <span>Quick Fix</span> or Do You Need a Technician?</h1>
   <p>Answer a few quick questions about your air dresser / garment steam care unit. We'll give you an honest answer — a safe DIY tip if it's minor, or a clear heads-up if it genuinely needs a technician.</p>
 </section>
-<div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px;"><img src="samsung-air-dresser-repair-mumbai.webp" alt="On-site circuit checkup by our technician" loading="lazy" style="width: 100%; max-height: 320px; object-fit: cover; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">On-site circuit checkup by our technician</p></div>
+<div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px;"><img src="samsung-air-dresser-repair-mumbai.webp" alt="Samsung Air Dresser repair — real Quickfix job in Mumbai" loading="lazy" style="width: 100%; max-height: 320px; object-fit: cover; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">On-site circuit checkup by our technician</p></div>
 
 <section>
   <div class="container">
@@ -141,6 +141,15 @@ const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4z
 // Each question: id, text, options[{label, value}]
 const QUESTIONS = [
   {
+    id: 'brand',
+    text: 'Which brand is your air dresser / styler?',
+    options: [
+      { label: 'LG Styler', value: 'LG' },
+      { label: 'Samsung AirDresser', value: 'Samsung' },
+      { label: 'Other / Not sure', value: 'Other' }
+    ]
+  },
+  {
     id: 'main',
     text: 'What\u2019s the main issue?',
     options: [
@@ -167,6 +176,18 @@ const QUESTIONS = [
     ]
   }
 ];
+
+const BRAND_NOTES = {
+  no_steam: { LG: 'a water tank sensor or heater module fault is the most common cause on LG Styler units', Samsung: 'a fan motor or heating coil fault is the most common cause on Samsung AirDresser units', Other: '' },
+  damp: { LG: 'a heater module or airflow fault is the most common cause on LG Styler units', Samsung: 'a fan motor or heating coil fault is the most common cause on Samsung AirDresser units', Other: '' }
+};
+function brandNote(category) {
+  const brand = answers.brand;
+  if (!brand || brand === 'Other') return '';
+  const note = BRAND_NOTES[category] && BRAND_NOTES[category][brand];
+  if (!note) return '';
+  return ` ${note.charAt(0).toUpperCase() + note.slice(1)}.`;
+}
 
 let answers = {};
 let currentStep = 0;
@@ -227,7 +248,7 @@ function diagnose() {
     return {
       severity: 'urgent',
       title: 'Likely a Heating or Steam Generator Fault',
-      text: 'With the water tank confirmed full and properly seated and still no steam, the issue is likely inside the steam generator itself.',
+      text: 'With the water tank confirmed full and properly seated and still no steam, the issue is likely inside the steam generator itself.' + brandNote('no_steam'),
       tip: 'This needs a technician — not something to open up yourself.'
     };
   }
@@ -235,7 +256,7 @@ function diagnose() {
     return {
       severity: 'diy',
       title: 'Check the Vent Filter and Door Seal',
-      text: 'Clothes staying damp after a full cycle is commonly a blocked filter/vent, or the door not sealing fully during the cycle.',
+      text: 'Clothes staying damp after a full cycle is commonly a blocked filter/vent, or the door not sealing fully during the cycle.' + brandNote('damp'),
       tip: 'Clean the lint/vent filter if your model has one, and make sure the door was fully closed for the whole cycle, without a bulky garment blocking it. If it\u2019s still damp after that, get it checked.'
     };
   }
