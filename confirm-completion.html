@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Confirm your Quickfix Mumbai repair job — enter your mobile number and the 4-digit code sent to you to confirm your technician's visit is complete.">
+<title>Confirm Your Repair | Quickfix Mumbai</title>
+<link rel="canonical" href="https://quickfixmumbai.com/confirm-completion.html">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue: #1E3A8A; --blue-light: #1D4ED8; --blue-lighter: #DBEAFE;
+  --white: #FFFFFF; --grey: #F3F4F6; --grey-dark: #374151;
+  --text: #111827; --border: #D1D5DB; --red: #DC2626; --whatsapp: #128C7E; --amber: #D97706; --green: #0F766E;
+}
+body { font-family: 'Inter', sans-serif; background: var(--grey); color: var(--text); line-height: 1.6; margin: 0; }
+header { position: sticky; top: 0; z-index: 100; background: var(--white); display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-bottom: 2px solid var(--blue-lighter); flex-wrap: wrap; gap: 10px; }
+.header-btns { display: flex; gap: 10px; }
+.btn-call, .btn-wa { padding: 10px 16px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; border: none; cursor: pointer; }
+.btn-call { background: var(--blue); color: var(--white); }
+.btn-wa { background: var(--whatsapp); color: var(--white); }
+.breadcrumb { background: var(--white); padding: 10px 24px; font-size: 0.82rem; color: var(--grey-dark); border-bottom: 1px solid var(--border); }
+.breadcrumb a { color: var(--blue); text-decoration: none; }
+.hero { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 40px 24px 34px; text-align: center; }
+.hero h1 { font-family: 'Poppins', sans-serif; font-size: clamp(1.5rem, 5vw, 2.1rem); font-weight: 700; margin-bottom: 10px; }
+.hero p { font-size: 0.92rem; color: rgba(255,255,255,0.9); max-width: 500px; margin: 0 auto; }
+.container { max-width: 480px; margin: -20px auto 40px; padding: 0 20px; }
+.check-box { background: var(--white); border-radius: 16px; padding: 28px 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.check-box label { display: block; font-weight: 600; font-size: 0.88rem; margin-bottom: 6px; color: var(--text); }
+.check-box input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.95rem; margin-bottom: 16px; }
+.check-box .hint { font-size: 0.78rem; color: var(--grey-dark); margin: -10px 0 16px; }
+.btn-check { width: 100%; background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 13px; border: none; border-radius: 8px; font-weight: 700; font-size: 0.95rem; cursor: pointer; }
+.msg-box { margin-top: 16px; padding: 12px 14px; border-radius: 8px; font-size: 0.88rem; display: none; }
+.msg-box.error { background: #FEF2F2; color: #991B1B; display: block; }
+.msg-box.success { background: #F0FDF4; color: #166534; display: block; }
+.result-card { margin-top: 20px; background: var(--grey); border-radius: 12px; padding: 22px; display: none; text-align: center; }
+.result-card.show { display: block; }
+.result-card .big-tick { font-size: 2.4rem; margin-bottom: 8px; }
+.result-card h3 { font-family: 'Poppins', sans-serif; color: var(--green); margin-bottom: 8px; }
+.result-card p { font-size: 0.88rem; color: var(--grey-dark); }
+footer { background: var(--blue); color: rgba(255,255,255,0.85); text-align: center; padding: 24px 24px; font-size: 0.78rem; }
+.trust-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 14px; margin: 12px 0; }
+.trust-strip span { display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.72rem; white-space: nowrap; }
+footer span { color: var(--white); }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 12px 0; font-size: 0.74rem; }
+.footer-links a { color: rgba(255,255,255,0.92); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo" aria-label="Quickfix Mumbai - Home" style="display:flex;align-items:center;gap:10px;">
+  <img src="logo.png" alt="Quickfix Mumbai Logo" style="width:38px;height:38px;border-radius:8px;">
+  <span style="line-height:1.15;">
+    <span style="display:block; font-family:'Poppins',sans-serif; font-weight:700; color:var(--blue);">Quick<span style="color:var(--blue-light);">fix</span> Mumbai</span>
+    <small style="display:block;font-size:10px;font-weight:300; color:var(--grey-dark);">Appliances Repair &amp; Care</small>
+  </span>
+</a>
+  <div class="header-btns">
+    <a href="my-account.html" style="padding:10px 14px;border-radius:10px;font-weight:600;font-size:0.85rem;text-decoration:none;display:flex;align-items:center;gap:6px;background:#fff;color:var(--blue);border:1.5px solid var(--blue);box-shadow:0 4px 14px rgba(15,27,76,0.08);" aria-label="My Account">👤 My Account</a>
+    <a href="tel:+919819832282" class="btn-call">Inquiry</a>
+    <a href="https://wa.me/919819832282" target="_blank" class="btn-wa">Chat</a>
+  </div>
+</header>
+<div style="background:#F0FDF4;border-bottom:1px solid #BBF7D0;padding:8px 16px;text-align:center;font-size:0.76rem;color:#166534;font-weight:600;letter-spacing:0.2px;">✓ Honest Diagnosis &nbsp;·&nbsp; ✓ 100% Bill Adjustment &nbsp;·&nbsp; ✓ No Hidden Charges &nbsp;·&nbsp; ✓ Genuine Parts &amp; 3-Month Warranty</div>
+
+<div class="breadcrumb"><a href="index.html">Home</a> › Confirm Your Repair</div>
+
+<section class="hero">
+  <h1>Confirm Your Repair Is Complete</h1>
+  <p>Your technician gave you a 4-digit code before leaving. Enter it below to confirm the job — this helps us make sure every visit is genuinely completed to your satisfaction.</p>
+</section>
+
+<div class="container">
+  <div class="check-box">
+    <label>Mobile Number</label>
+    <input type="tel" id="cMobile" placeholder="10-digit mobile number" maxlength="10">
+
+    <label>Confirmation Code</label>
+    <input type="text" id="cCode" placeholder="4-digit code from your technician" maxlength="4">
+    <p class="hint">Your technician shows or tells you this code once the repair and testing is done, right before they leave.</p>
+
+    <button class="btn-check" onclick="confirmCompletion()" id="confirmBtn">✅ Confirm My Repair</button>
+    <div id="msgBox" class="msg-box"></div>
+
+    <div class="result-card" id="resultCard">
+      <div class="big-tick">✅</div>
+      <h3>Confirmed — Thank You!</h3>
+      <p>Your repair is marked complete in our records. If anything feels off with the appliance, just message us on WhatsApp anytime — your 3-month warranty covers this exact repair.</p>
+    </div>
+  </div>
+
+  <p style="text-align:center; font-size:0.8rem; color:var(--grey-dark); margin-top:20px;">Didn't get a code, or lost it? <a href="https://wa.me/919819832282" target="_blank" style="color:var(--blue); font-weight:600;">Message us on WhatsApp</a> and we'll sort it out.</p>
+</div>
+
+<footer>
+  <p>© 2026 <span>Quickfix Mumbai</span> · Home Appliance & Electronics Repair</p>
+    <div class="trust-strip">
+    <span>✅ Verified Business</span>
+    <span>✅ Doorstep Service — All Mumbai</span>
+  </div>
+  <div class="footer-links">
+    <a href="suggestion-form.html">Feedback</a>
+    <a href="index.html">Home</a>
+    <a href="check-warranty.html">Check Warranty</a>
+    <a href="inquiry.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4zI3hmCRy2V3dGwcUiYjuIe-8GhEyHbehjcnemWcvEzn02XT/exec";
+
+async function confirmCompletion() {
+  const mobile = document.getElementById('cMobile').value.trim();
+  const code = document.getElementById('cCode').value.trim();
+  const msgBox = document.getElementById('msgBox');
+  const resultCard = document.getElementById('resultCard');
+  msgBox.style.display = 'none';
+  resultCard.classList.remove('show');
+
+  if (!/^[6-9]\d{9}$/.test(mobile)) {
+    msgBox.textContent = '⚠️ Please enter a valid 10-digit mobile number.';
+    msgBox.className = 'msg-box error';
+    return;
+  }
+  if (!/^\d{4}$/.test(code)) {
+    msgBox.textContent = '⚠️ Please enter the 4-digit code your technician gave you.';
+    msgBox.className = 'msg-box error';
+    return;
+  }
+
+  const btn = document.getElementById('confirmBtn');
+  btn.disabled = true;
+  btn.textContent = 'Confirming...';
+
+  try {
+    const res = await fetch(`${scriptUrl}?action=confirm_completion&mobile=${encodeURIComponent(mobile)}&code=${encodeURIComponent(code)}`, { cache: 'no-cache' });
+    const result = await res.json();
+
+    if (result.status === 'success') {
+      resultCard.classList.add('show');
+      document.querySelector('.check-box > label').style.display = 'none';
+    } else if (result.status === 'not_found') {
+      msgBox.textContent = '⚠️ We couldn\'t match that number and code. Double-check both, or message us directly.';
+      msgBox.className = 'msg-box error';
+    } else {
+      msgBox.textContent = '⚠️ ' + (result.message || 'Something went wrong. Please try again.');
+      msgBox.className = 'msg-box error';
+    }
+  } catch (err) {
+    msgBox.textContent = '⚠️ Network issue. Please try again or WhatsApp us directly.';
+    msgBox.className = 'msg-box error';
+  }
+
+  btn.disabled = false;
+  btn.textContent = '✅ Confirm My Repair';
+}
+</script>
+
+<script src="tracking.js"></script>
+<script src="search-index.js"></script>
+<script src="site-search.js"></script>
+<script src="photo-loader.js" defer></script>
+</body>
+</html>

@@ -93,6 +93,7 @@ input, select, textarea { padding: 8px 10px; border-radius: 6px; border: 1px sol
 <div id="dashboardContent" style="display: none;">
   <div class="header">
     <h2 style="color: var(--dark);">🏢 Quickfix Mumbai — Admin Dashboard</h2>
+    <button class="success" style="margin: 8px 0 4px;" onclick="addManualLead()">☎️ + Add Lead from Phone Call</button>
     <div style="display:flex; gap:8px;">
       <button class="secondary" onclick="loadAdminData()">🔄 Refresh</button>
       <button class="danger" onclick="logoutAdmin()">Logout</button>
@@ -124,6 +125,11 @@ input, select, textarea { padding: 8px 10px; border-radius: 6px; border: 1px sol
   <div class="section">
     <div class="section-head"><h2>⭐ Top Repeat Customers</h2></div>
     <div id="top-customers-list"><div class="empty-state">Not enough data yet.</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>🔧 Technician Performance</h2></div>
+    <div id="tech-performance-list"><div class="empty-state">Not enough data yet.</div></div>
   </div>
 
   <div class="section">
@@ -526,6 +532,92 @@ async function editNotes(bookingId, currentNotes) {
   else alert('Could not save notes: ' + (result.message || 'unknown error'));
 }
 
+// ---------- LEAD-TO-JOB WORKFLOW ----------
+const VISIT_STATUSES = ['Assigned', 'On the Way', 'Reached', 'Diagnosing', 'Diagnosis Done', 'Repair Done'];
+
+async function updateVisitStatus(bookingId, visitStatus) {
+  if (!visitStatus) return;
+  const result = await callAction({ action: 'update_visit_status', bookingId, visitStatus });
+  if (result.status === 'success') await loadAdminData();
+  else alert('Could not update visit status: ' + (result.message || 'unknown error'));
+}
+
+async function doCheckin(bookingId) {
+  const result = await callAction({ action: 'checkin', bookingId });
+  if (result.status === 'success') await loadAdminData();
+  else alert('Could not check in: ' + (result.message || 'unknown error'));
+}
+
+async function doCheckout(bookingId) {
+  const result = await callAction({ action: 'checkout', bookingId });
+  if (result.status === 'success') await loadAdminData();
+  else alert('Could not check out: ' + (result.message || 'unknown error'));
+}
+
+async function editDiagnosis(bookingId, currentNotes, currentEstimate) {
+  const diagnosisNotes = prompt('Diagnosis — what\'s actually wrong:', currentNotes || '');
+  if (diagnosisNotes === null) return;
+  const estimateAmount = prompt('Estimated repair cost (₹):', currentEstimate || '');
+  if (estimateAmount === null) return;
+  const result = await callAction({ action: 'save_diagnosis', bookingId, diagnosisNotes, estimateAmount });
+  if (result.status === 'success') await loadAdminData();
+  else alert('Could not save diagnosis: ' + (result.message || 'unknown error'));
+}
+
+async function setCustomerApproval(bookingId, approved) {
+  const result = await callAction({ action: 'set_customer_approval', bookingId, approved });
+  if (result.status === 'success') await loadAdminData();
+  else alert('Could not save approval: ' + (result.message || 'unknown error'));
+}
+
+async function editRepairProof(bookingId, currentPart, currentTesting) {
+  const replacedPart = prompt('Part replaced (leave blank if none):', currentPart || '');
+  if (replacedPart === null) return;
+  const testingResult = prompt('Testing result after repair:', currentTesting || 'Working fine, tested on-site');
+  if (testingResult === null) return;
+  const result = await callAction({ action: 'save_repair_proof', bookingId, replacedPart, testingResult });
+  if (result.status === 'success') await loadAdminData();
+  else alert('Could not save repair proof: ' + (result.message || 'unknown error'));
+}
+
+async function sendCompletionCode(bookingId, mobile, name) {
+  const result = await callAction({ action: 'generate_completion_code', bookingId });
+  if (result.status !== 'success') {
+    alert('Could not generate code: ' + (result.message || 'unknown error'));
+    return;
+  }
+  const msg = `Hi ${name}, your Quickfix Mumbai repair is done! Please confirm it here: https://quickfixmumbai.com/confirm-completion.html — your confirmation code is *${result.code}*. This helps us make sure the job was done right.`;
+  window.open(waLink(mobile, msg), '_blank');
+  await loadAdminData();
+}
+
+async function adminCancelBooking(bookingId) {
+  const reason = prompt('Reason for cancellation (customer request / cost too high / part unavailable / other):');
+  if (reason === null) return;
+  const result = await callAction({ action: 'admin_cancel_booking', bookingId, reason });
+  if (result.status === 'success') await loadAdminData();
+  else alert('Could not cancel: ' + (result.message || 'unknown error'));
+}
+
+async function addManualLead() {
+  const name = prompt('Customer name:');
+  if (!name) return;
+  const mobile = prompt('Customer mobile (10 digits):');
+  if (!mobile) return;
+  const location = prompt('Location / address:');
+  if (location === null) return;
+  const problem = prompt('Problem / appliance issue:');
+  if (problem === null) return;
+  const leadSource = prompt('Lead source: Phone Call / Walk-in / Referral / Other', 'Phone Call') || 'Phone Call';
+  const result = await callAction({ action: 'create_manual_lead', name, mobile, location, problem, leadSource });
+  if (result.status === 'success') {
+    alert('Lead added — it now appears in the Pending list below, ready to assign.');
+    await loadAdminData();
+  } else {
+    alert('Could not add lead: ' + (result.message || 'unknown error'));
+  }
+}
+
 // ---------- NOTIFY CUSTOMER (technician assigned) ----------
 function notifyCustomer(mobile, customerName, techName, techMobile, date, time) {
   window.open(waLink(mobile, msgNotifyCustomer(customerName, techName, techMobile, date, time)), '_blank');
@@ -655,14 +747,31 @@ function renderBookingRow(b, team) {
     parts.push(`<button class="secondary small" onclick="openPhotoModal('${b.bookingId}')">📷 ${(b.serialPhoto || b.appliancePhoto) ? 'Update' : 'Add'} Photos</button>`);
     actionsHtml = `<div class="action-group">${parts.join('')}</div>`;
   } else if (b.status === 'In Process') {
+    const visitOptions = VISIT_STATUSES.map(s => `<option value="${s}" ${b.visitStatus === s ? 'selected' : ''}>${s}</option>`).join('');
+    const approvalLine = b.customerApproved === 'Yes'
+      ? `<span class="small-note" style="color:#166534;font-weight:600;">✅ Customer approved</span>`
+      : b.customerApproved === 'No'
+        ? `<span class="small-note" style="color:#DC2626;font-weight:600;">❌ Customer declined</span>`
+        : (b.diagnosisNotes ? `<div class="action-group" style="flex-direction:row;gap:4px;"><button class="success small" onclick="setCustomerApproval('${b.bookingId}','Yes')">✅ Approved</button><button class="danger small" onclick="setCustomerApproval('${b.bookingId}','No')">❌ Declined</button></div>` : '');
     actionsHtml = `<div class="action-group">
+      <select onchange="updateVisitStatus('${b.bookingId}', this.value)" title="Visit status">${visitOptions}</select>
+      ${!b.checkinTime ? `<button class="secondary small" onclick="doCheckin('${b.bookingId}')">📍 Check-in</button>` : `<span class="small-note">In: ${fmtDate(b.checkinTime)}</span>`}
+      ${b.checkinTime && !b.checkoutTime ? `<button class="secondary small" onclick="doCheckout('${b.bookingId}')">🚪 Check-out</button>` : ''}
+      <button class="secondary small" onclick="editDiagnosis('${b.bookingId}','${escJs(b.diagnosisNotes)}','${escJs(b.estimateAmount)}')">📋 ${b.diagnosisNotes ? 'Edit' : 'Add'} Diagnosis${b.estimateAmount ? ' — ₹' + escapeHtml(String(b.estimateAmount)) : ''}</button>
+      ${approvalLine}
+      <button class="secondary small" onclick="editRepairProof('${b.bookingId}','${escJs(b.replacedPart)}','${escJs(b.testingResult)}')">🔧 Repair Proof</button>
+      ${b.customerConfirmation ? `<span class="small-note" style="color:#166534;font-weight:600;">✅ ${escapeHtml(b.customerConfirmation)}</span>` : `<button class="secondary small" onclick="sendCompletionCode('${b.bookingId}','${escJs(b.mobile)}','${escJs(b.name)}')">🔑 Send Confirmation Code</button>`}
       <button class="wa small" onclick="notifyCustomer('${escJs(b.mobile)}','${escJs(b.name)}','${escJs(b.techName)}','${escJs(b.techMobile)}','${escJs(b.date)}','${escJs(b.time)}')">📲 Notify Customer</button>
       <button class="wa small" onclick="notifyTechnician('${escJs(b.techMobile)}','${escJs(b.name)}','${escJs(b.mobile)}','${escJs(b.location)}','${escJs(b.problem)}','${escJs(b.date)}','${escJs(b.time)}')">🔧 Notify Technician</button>
       <button class="success small" onclick="markDone('${b.bookingId}')">✅ Mark Done</button>
+      <button class="danger small" onclick="adminCancelBooking('${b.bookingId}')">🚫 Cancel</button>
       <select onchange="escalateSenior('${b.bookingId}', this)" title="Escalate to a senior technician if needed">${renderTeamOptions(team, '-- Escalate to senior --')}</select>
     </div>`;
   } else {
-    actionsHtml = `<select onchange="assignLead('${b.bookingId}', this)">${renderTeamOptions(team, '-- Assign technician --')}</select>`;
+    actionsHtml = `<div class="action-group">
+      <select onchange="assignLead('${b.bookingId}', this)">${renderTeamOptions(team, '-- Assign technician --')}</select>
+      <button class="danger small" onclick="adminCancelBooking('${b.bookingId}')">🚫 Cancel</button>
+    </div>`;
   }
 
   const techLine = b.techName ? `<div class="small-note">Technician: <strong>${escapeHtml(b.techName)}</strong> · ${escapeHtml(b.techMobile)}</div>` : '';
@@ -842,6 +951,24 @@ async function loadAdminData() {
     document.getElementById('top-customers-list').innerHTML = topCustomers.length === 0 ? '<div class="empty-state">Not enough data yet — repeat customers will show up here.</div>' : topCustomers.map(c => `
       <div class="traffic-item"><span><strong>${escapeHtml(c.name)}</strong> — ${escapeHtml(c.mobile)}</span><span>${c.count} bookings</span></div>
     `).join('');
+
+    // ---- Technician performance (computed from bookings already loaded — no extra sheet needed) ----
+    const byTech = {};
+    bookings.forEach(b => {
+      if (!b.techName) return;
+      if (!byTech[b.techName]) byTech[b.techName] = { name: b.techName, assigned: 0, done: 0, cancelled: 0, ratingSum: 0, ratingCount: 0 };
+      byTech[b.techName].assigned++;
+      if (b.status === 'Done') byTech[b.techName].done++;
+      if (b.status === 'Cancelled') byTech[b.techName].cancelled++;
+      const r = parseFloat(b.customerRating);
+      if (!isNaN(r)) { byTech[b.techName].ratingSum += r; byTech[b.techName].ratingCount++; }
+    });
+    const techStats = Object.values(byTech).sort((a, b) => b.done - a.done);
+    document.getElementById('tech-performance-list').innerHTML = techStats.length === 0 ? '<div class="empty-state">Not enough data yet — shows up once jobs are assigned.</div>' : techStats.map(t => {
+      const completionRate = t.assigned ? Math.round((t.done / t.assigned) * 100) : 0;
+      const avgRating = t.ratingCount ? (t.ratingSum / t.ratingCount).toFixed(1) : '—';
+      return `<div class="traffic-item"><span><strong>${escapeHtml(t.name)}</strong> — ${t.assigned} assigned, ${t.done} completed (${completionRate}%)</span><span>${avgRating !== '—' ? '⭐ ' + avgRating : 'No ratings yet'}</span></div>`;
+    }).join('');
 
     // ---- Team table ----
     const teamBody = document.getElementById('team-body');

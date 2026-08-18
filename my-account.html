@@ -59,6 +59,8 @@ header { position: sticky; top: 0; z-index: 100; background: var(--white); displ
 .status-done { background: #DCFCE7; color: #166534; }
 .booking-meta { font-size: 0.82rem; color: var(--grey-dark); margin-bottom: 3px; }
 .warranty-line { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border); font-size: 0.8rem; color: var(--green); font-weight: 600; }
+.btn-cancel { margin-top: 10px; width: 100%; padding: 9px; border-radius: 8px; border: 1.5px solid #DC2626; background: #fff; color: #DC2626; font-weight: 600; font-size: 0.82rem; cursor: pointer; }
+.btn-cancel:disabled { opacity: 0.6; cursor: default; }
 .empty-state { text-align: center; padding: 30px 20px; color: var(--grey-dark); font-size: 0.9rem; }
 .warranty-cta { text-align: center; font-size: 0.82rem; color: var(--grey-dark); margin-top: 20px; }
 .warranty-cta a { color: var(--blue); font-weight: 600; text-decoration: none; }
@@ -110,7 +112,7 @@ header { position: sticky; top: 0; z-index: 100; background: var(--white); displ
       <span class="logout-link" onclick="doLogout()">Log out</span>
     </div>
 
-    <div class="bookings-label">Your Booking History</div>
+    <div class="bookings-label">Your Booking History <span id="bookingCount" style="text-transform:none;font-weight:600;color:var(--blue);"></span></div>
     <div id="bookingsList"></div>
 
     <p class="warranty-cta">Need to verify a warranty? <a href="check-warranty.html">Check your warranty code here →</a></p>
@@ -183,6 +185,8 @@ async function loadBookings(mobile) {
     const res = await fetch(`${scriptUrl}?action=my_bookings&mobile=${encodeURIComponent(mobile)}`, { cache: 'no-cache' });
     const data = await res.json();
     const bookings = (data.status === 'success' && Array.isArray(data.bookings)) ? data.bookings : [];
+    const countEl = document.getElementById('bookingCount');
+    if (countEl) countEl.textContent = bookings.length ? `(${bookings.length})` : '';
 
     if (bookings.length === 0) {
       listEl.innerHTML = '<div class="empty-state">No bookings yet. <a href="index.html" style="color:var(--blue);font-weight:600;">Book your first repair →</a></div>';
@@ -205,11 +209,38 @@ async function loadBookings(mobile) {
           <div class="booking-meta">📅 ${fmtDate(b.date) || 'Date TBC'}${b.timeSlot ? ' — ' + b.timeSlot : ''}</div>
           ${b.technicianName ? `<div class="booking-meta">🔧 Technician: ${String(b.technicianName).replace(/</g,'&lt;')}</div>` : ''}
           ${warrantyHtml}
+          ${b.status === 'Pending' ? `<button class="btn-cancel" onclick="cancelBooking('${b.bookingId}', this)">Cancel this booking</button>` : ''}
         </div>
       `;
     }).join('');
   } catch (e) {
     listEl.innerHTML = '<p class="empty-state">Could not load bookings right now. Please try again.</p>';
+  }
+}
+
+async function cancelBooking(bookingId, btn) {
+  if (!confirm('Cancel this booking? This can\'t be undone.')) return;
+  btn.disabled = true;
+  btn.textContent = 'Cancelling...';
+  const mobile = sessionStorage.getItem('qf_mobile');
+  try {
+    const res = await fetch(scriptUrl, {
+      method: 'POST', cache: 'no-cache',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ action: 'cancel_booking', bookingId: bookingId, mobile: mobile })
+    });
+    const data = await res.json();
+    if (data.status === 'success') {
+      loadBookings(mobile);
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Cancel this booking';
+      alert(data.message || 'Could not cancel — please try again or WhatsApp us.');
+    }
+  } catch (e) {
+    btn.disabled = false;
+    btn.textContent = 'Cancel this booking';
+    alert('Network issue — please try again or WhatsApp us.');
   }
 }
 
