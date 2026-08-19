@@ -729,9 +729,15 @@ function warrantyBadge(completedDate, warrantyUntil) {
   return `<span class="badge ${active ? 'badge-warranty-active' : 'badge-warranty-expired'}" title="Started ${startStr}">${label}</span>`;
 }
 
+function isTechOnline(t) {
+  if (!t.lastActive) return false;
+  const last = new Date(t.lastActive).getTime();
+  return (Date.now() - last) < 3 * 60 * 1000; // "online" = active within the last 3 minutes
+}
+
 function renderTeamOptions(team, placeholder) {
   let opts = `<option value="">${placeholder}</option>`;
-  team.forEach(t => { opts += `<option value="${escapeHtml(t.name)}||${escapeHtml(t.mobile)}">${escapeHtml(t.name)} (${escapeHtml(t.specialization) || 'General'})</option>`; });
+  team.forEach(t => { opts += `<option value="${escapeHtml(t.name)}||${escapeHtml(t.mobile)}">${isTechOnline(t) ? '🟢' : '⚫'} ${escapeHtml(t.name)} (${escapeHtml(t.specialization) || 'General'})</option>`; });
   return opts;
 }
 

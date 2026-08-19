@@ -1,49 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quickfix Technician App</title>
-    <meta name="robots" content="noindex, nofollow">
-    <style>
-        body { font-family: sans-serif; background: #f4f7f6; margin: 0; padding: 15px; }
-        .worker-header { background: #212529; color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;}
-        .job-card { background: white; border-radius: 10px; padding: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 15px; border-top: 4px solid #007bff; }
-        .status-toggle { background: #28a745; color: white; border: none; padding: 10px 15px; border-radius: 5px; font-weight: bold; width: 100%; cursor: pointer; margin-top: 10px;}
-        .status-online { background: #00c853; color: white; padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quickfix Technician App</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="icon-technician-192.png">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --blue: #1E3A8A; --blue-light: #1D4ED8; --green: #16A34A; --red: #DC2626; --grey: #F3F4F6; --border: #D1D5DB; --text: #111827; --grey-dark: #374151; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--grey); color: var(--text); min-height: 100vh; }
+header { background: var(--blue); color: #fff; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10; }
+header h1 { font-size: 1.1rem; font-weight: 700; }
+header button { background: rgba(255,255,255,0.15); border: none; color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 0.78rem; cursor: pointer; }
+.tabs { display: flex; background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 52px; z-index: 9; }
+.tab { flex: 1; text-align: center; padding: 12px; font-weight: 600; font-size: 0.85rem; color: var(--grey-dark); cursor: pointer; border-bottom: 3px solid transparent; }
+.tab.active { color: var(--blue); border-bottom-color: var(--blue); }
+.container { max-width: 480px; margin: 0 auto; padding: 16px; }
+.login-box { max-width: 380px; margin: 60px auto; background: #fff; border-radius: 14px; padding: 28px 22px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.login-box h2 { text-align: center; margin-bottom: 18px; color: var(--blue); }
+.login-box input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 1rem; margin-bottom: 14px; }
+.login-box button { width: 100%; background: var(--blue); color: #fff; padding: 13px; border: none; border-radius: 8px; font-weight: 700; font-size: 0.95rem; cursor: pointer; }
+.err { color: var(--red); font-size: 0.85rem; margin-top: 6px; display: none; }
+.card { background: #fff; border-radius: 12px; padding: 16px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.card h3 { font-size: 1rem; margin-bottom: 6px; color: var(--blue); }
+.meta { font-size: 0.85rem; color: var(--grey-dark); margin: 3px 0; }
+.badge { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; background: #DBEAFE; color: var(--blue); margin-bottom: 6px; }
+.btn { display: block; width: 100%; padding: 11px; border: none; border-radius: 8px; font-weight: 700; font-size: 0.88rem; cursor: pointer; margin-top: 8px; }
+.btn-accept { background: var(--green); color: #fff; }
+.btn-secondary { background: var(--grey); color: var(--text); border: 1px solid var(--border); }
+.btn-danger { background: #fff; color: var(--red); border: 1.5px solid var(--red); }
+.btn-blue { background: var(--blue); color: #fff; }
+.btn-row { display: flex; gap: 8px; }
+.btn-row .btn { margin-top: 0; }
+.empty { text-align: center; color: var(--grey-dark); padding: 40px 20px; font-size: 0.9rem; }
+select.visit-select { width: 100%; padding: 10px; border-radius: 8px; border: 1.5px solid var(--border); font-size: 0.88rem; margin-top: 8px; }
+.approve-row { display: flex; gap: 8px; margin-top: 8px; }
+.approve-row .btn { flex: 1; }
+.tag-ok { color: var(--green); font-weight: 700; font-size: 0.85rem; }
+.tag-no { color: var(--red); font-weight: 700; font-size: 0.85rem; }
+</style>
 </head>
 <body>
 
-    <div class="worker-header">
-        <h3>👨‍🔧 Technician Portal</h3>
-        <span class="status-online">● Duty Online</span>
-    </div>
+<div id="loginScreen">
+  <div class="login-box">
+    <h2>🔧 Technician Login</h2>
+    <input type="tel" id="loginMobile" placeholder="Your 10-digit mobile number" maxlength="10">
+    <input type="tel" id="loginPin" placeholder="4-digit PIN" maxlength="4">
+    <button onclick="techLogin()" id="loginBtn">Login</button>
+    <div class="err" id="loginErr"></div>
+  </div>
+</div>
 
-    <h2>My Jobs For Today</h2>
-    
-    <div id="worker-jobs-container">
-        <!-- Sample Job Card -->
-        <div class="job-card">
-            <h4 style="margin:0 0 5px 0; color:#007bff;">Job ID: #QF9920</h4>
-            <p><strong>Customer:</strong> Rohan Sharma</p>
-            <p><strong>Address:</strong> Andheri West, Near Metro Station, Mumbai</p>
-            <p><strong>Issue:</strong> AC Cooling is zero, PCB error code showing.</p>
-            <p><strong>Payment Done:</strong> ₹199 Advance Received</p>
-            <button class="status-toggle" onclick="completeJob(this)">➔ Mark as Job Completed</button>
-        </div>
-    </div>
+<div id="appScreen" style="display:none;">
+  <header>
+    <h1 id="welcomeMsg">🔧 Quickfix</h1>
+    <button onclick="techLogout()">Logout</button>
+  </header>
+  <div class="tabs">
+    <div class="tab active" id="tabLeadsBtn" onclick="switchTab('leads')">Available Leads</div>
+    <div class="tab" id="tabJobsBtn" onclick="switchTab('jobs')">My Jobs</div>
+  </div>
+  <div class="container">
+    <div id="leadsPane"><div class="empty">Loading...</div></div>
+    <div id="jobsPane" style="display:none;"><div class="empty">Loading...</div></div>
+  </div>
+</div>
 
-    <script>
-        function completeJob(button) {
-            if(confirm("Bhai, kya kaam sach me complete ho gaya hai?")) {
-                button.innerHTML = "✓ Job Completed";
-                button.style.background = "#6c757d";
-                button.disabled = true;
-                // Yahan se Automatic Admin Dashboard par update chala jayega backend ke through
-            }
-        }
-    </script>
-<script src="tracking.js"></script>
+<script>
+const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4zI3hmCRy2V3dGwcUiYjuIe-8GhEyHbehjcnemWcvEzn02XT/exec";
+let techToken = sessionStorage.getItem('qf_tech_token') || '';
+let techName = sessionStorage.getItem('qf_tech_name') || '';
+let currentTab = 'leads';
+let pollTimer = null;
+
+function esc(s) { return String(s == null ? '' : s).replace(/</g, '&lt;'); }
+
+async function callAction(payload) {
+  try {
+    const res = await fetch(scriptUrl, {
+      method: 'POST', cache: 'no-cache',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(Object.assign({ techToken: techToken }, payload))
+    });
+    return await res.json();
+  } catch (e) {
+    return { status: 'error', message: 'Network issue — please check your connection and try again.' };
+  }
+}
+
+async function techLogin() {
+  const mobile = document.getElementById('loginMobile').value.trim();
+  const pin = document.getElementById('loginPin').value.trim();
+  const errBox = document.getElementById('loginErr');
+  errBox.style.display = 'none';
+  if (!/^[6-9]\d{9}$/.test(mobile) || !/^\d{4}$/.test(pin)) {
+    errBox.textContent = 'Enter a valid 10-digit mobile number and 4-digit PIN.';
+    errBox.style.display = 'block';
+    return;
+  }
+  const btn = document.getElementById('loginBtn');
+  btn.disabled = true; btn.textContent = 'Logging in...';
+  const result = await callAction({ action: 'technician_login', mobile: mobile, pin: pin });
+  btn.disabled = false; btn.textContent = 'Login';
+  if (result.status === 'success') {
+    techToken = result.techToken;
+    techName = result.name;
+    sessionStorage.setItem('qf_tech_token', techToken);
+    sessionStorage.setItem('qf_tech_name', techName);
+    showApp();
+  } else {
+    errBox.textContent = result.message || 'Login failed.';
+    errBox.style.display = 'block';
+  }
+}
+
+function techLogout() {
+  sessionStorage.removeItem('qf_tech_token');
+  sessionStorage.removeItem('qf_tech_name');
+  techToken = ''; techName = '';
+  if (pollTimer) clearInterval(pollTimer);
+  document.getElementById('appScreen').style.display = 'none';
+  document.getElementById('loginScreen').style.display = 'block';
+}
+
+function showApp() {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('appScreen').style.display = 'block';
+  document.getElementById('welcomeMsg').textContent = '🔧 ' + techName;
+  loadLeads();
+  loadJobs();
+  if (pollTimer) clearInterval(pollTimer);
+  pollTimer = setInterval(() => { loadLeads(); loadJobs(); }, 30000);
+}
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.getElementById('tabLeadsBtn').classList.toggle('active', tab === 'leads');
+  document.getElementById('tabJobsBtn').classList.toggle('active', tab === 'jobs');
+  document.getElementById('leadsPane').style.display = tab === 'leads' ? 'block' : 'none';
+  document.getElementById('jobsPane').style.display = tab === 'jobs' ? 'block' : 'none';
+}
+
+async function loadLeads() {
+  const pane = document.getElementById('leadsPane');
+  try {
+    const res = await fetch(`${scriptUrl}?action=technician_available_leads&techToken=${encodeURIComponent(techToken)}`, { cache: 'no-cache' });
+    const data = await res.json();
+    if (data.status !== 'success') {
+      if (data.message === 'Please log in again.') { techLogout(); return; }
+      pane.innerHTML = `<div class="empty">${esc(data.message || 'Could not load leads.')}</div>`;
+      return;
+    }
+    if (data.leads.length === 0) {
+      pane.innerHTML = '<div class="empty">No open leads right now — check back soon.</div>';
+      return;
+    }
+    pane.innerHTML = data.leads.map(l => `
+      <div class="card">
+        <span class="badge">${esc(l.leadSource || 'Website')}</span>
+        <h3>${esc(l.machine)}</h3>
+        <div class="meta">📍 Area: ${esc(l.areaPreview)}</div>
+        ${l.preferredDate ? `<div class="meta">📅 ${esc(l.preferredDate)} ${esc(l.timeSlot)}</div>` : ''}
+        <button class="btn btn-accept" onclick="acceptLead('${l.bookingId}', this)">✅ Accept This Lead</button>
+      </div>
+    `).join('');
+  } catch (e) {
+    pane.innerHTML = '<div class="empty">Network issue — pull down to retry.</div>';
+  }
+}
+
+async function acceptLead(bookingId, btn) {
+  btn.disabled = true; btn.textContent = 'Accepting...';
+  const result = await callAction({ action: 'accept_lead', bookingId: bookingId });
+  if (result.status === 'success') {
+    switchTab('jobs');
+    loadLeads();
+    loadJobs();
+    // Auto-opens WhatsApp with the customer's message pre-filled — this sends
+    // from YOUR own WhatsApp (not the Quickfix business number), you just need
+    // to tap Send. Only a paid WhatsApp Business API can send fully automatically
+    // from the business number itself.
+    const visitLine = (result.preferredDate || result.timeSlot) ? ` around ${result.preferredDate || ''} ${result.timeSlot || ''}`.trim() : ' shortly';
+    const msg = `Dear ${result.customerName}, this is Quickfix Mumbai. Your technician *${result.techName}* will visit you${visitLine}. Feel free to call/message if needed. Thank you for choosing us!`;
+    if (result.customerMobile) {
+      window.open(`https://wa.me/91${result.customerMobile}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+  } else {
+    alert(result.message || 'Could not accept this lead.');
+    btn.disabled = false; btn.textContent = '✅ Accept This Lead';
+    loadLeads();
+  }
+}
+
+const VISIT_STATUSES = ['Assigned', 'On the Way', 'Reached', 'Diagnosing', 'Diagnosis Done', 'Repair Done'];
+
+async function loadJobs() {
+  const pane = document.getElementById('jobsPane');
+  try {
+    const res = await fetch(`${scriptUrl}?action=technician_my_jobs&techToken=${encodeURIComponent(techToken)}`, { cache: 'no-cache' });
+    const data = await res.json();
+    if (data.status !== 'success') {
+      if (data.message === 'Please log in again.') { techLogout(); return; }
+      pane.innerHTML = `<div class="empty">${esc(data.message || 'Could not load jobs.')}</div>`;
+      return;
+    }
+    if (data.jobs.length === 0) {
+      pane.innerHTML = '<div class="empty">No active jobs — accept a lead to get started.</div>';
+      return;
+    }
+    pane.innerHTML = data.jobs.map(j => renderJobCard(j)).join('');
+  } catch (e) {
+    pane.innerHTML = '<div class="empty">Network issue — pull down to retry.</div>';
+  }
+}
+
+function renderJobCard(j) {
+  const visitOptions = VISIT_STATUSES.map(s => `<option value="${s}" ${j.visitStatus === s ? 'selected' : ''}>${s}</option>`).join('');
+  const approvalHtml = j.customerApproved === 'Yes'
+    ? '<div class="tag-ok">✅ Customer approved the estimate</div>'
+    : j.customerApproved === 'No'
+      ? '<div class="tag-no">❌ Customer declined — call the office</div>'
+      : (j.diagnosisNotes ? '<div class="meta">⏳ Waiting for customer approval (office will confirm)</div>' : '');
+  return `
+    <div class="card">
+      <h3>${esc(j.name)}</h3>
+      <div class="meta">📞 ${esc(j.mobile)}</div>
+      <div class="meta">📍 ${esc(j.location)}</div>
+      <div class="meta">🔧 ${esc(j.problem)}</div>
+      ${j.preferredDate ? `<div class="meta">📅 ${esc(j.preferredDate)} ${esc(j.timeSlot)}</div>` : ''}
+      <select class="visit-select" onchange="updateVisitStatus('${j.bookingId}', this.value)">${visitOptions}</select>
+      ${!j.checkinTime ? `<button class="btn btn-secondary" onclick="doCheckin('${j.bookingId}')">📍 Mark as Reached</button>` : ''}
+      <button class="btn btn-secondary" onclick="openDiagnosisForm('${j.bookingId}','${esc(j.diagnosisNotes)}','${esc(j.estimateAmount)}')">📋 ${j.diagnosisNotes ? 'Edit' : 'Add'} Diagnosis &amp; Estimate</button>
+      ${approvalHtml}
+      <button class="btn btn-secondary" onclick="openRepairProofForm('${j.bookingId}','${esc(j.replacedPart)}','${esc(j.testingResult)}')">🔧 Repair Proof (Part &amp; Testing)</button>
+      ${j.customerConfirmation ? `<div class="tag-ok">✅ ${esc(j.customerConfirmation)}</div>` : `<button class="btn btn-secondary" onclick="confirmVerbally('${j.bookingId}')">💬 Customer Confirmed Verbally</button>`}
+      <div class="btn-row">
+        <button class="btn btn-blue" onclick="markJobDone('${j.bookingId}')">✅ Mark Job Done</button>
+        <button class="btn btn-danger" onclick="releaseLead('${j.bookingId}')">↩ Release Job</button>
+      </div>
+    </div>
+  `;
+}
+
+async function updateVisitStatus(bookingId, visitStatus) {
+  const result = await callAction({ action: 'update_visit_status', bookingId, visitStatus });
+  if (result.status !== 'success') alert(result.message || 'Could not update status.');
+  loadJobs();
+}
+
+async function doCheckin(bookingId) {
+  const result = await callAction({ action: 'checkin', bookingId });
+  if (result.status !== 'success') alert(result.message || 'Could not check in.');
+  loadJobs();
+}
+
+async function openDiagnosisForm(bookingId, currentNotes, currentEstimate) {
+  const diagnosisNotes = prompt('What did you find? (diagnosis)', currentNotes || '');
+  if (diagnosisNotes === null) return;
+  const estimateAmount = prompt('Estimated cost for the customer (₹):', currentEstimate || '');
+  if (estimateAmount === null) return;
+  const result = await callAction({ action: 'save_diagnosis', bookingId, diagnosisNotes, estimateAmount });
+  if (result.status === 'success') {
+    alert('Saved. The office will confirm the customer\'s approval shortly — check back before starting major repair work.');
+  } else {
+    alert(result.message || 'Could not save diagnosis.');
+  }
+  loadJobs();
+}
+
+async function openRepairProofForm(bookingId, currentPart, currentTesting) {
+  const replacedPart = prompt('Part replaced (leave blank if none):', currentPart || '');
+  if (replacedPart === null) return;
+  const testingResult = prompt('Testing result after repair:', currentTesting || 'Working fine, tested on-site');
+  if (testingResult === null) return;
+  const result = await callAction({ action: 'save_repair_proof', bookingId, replacedPart, testingResult });
+  if (result.status !== 'success') alert(result.message || 'Could not save repair proof.');
+  loadJobs();
+}
+
+async function confirmVerbally(bookingId) {
+  if (!confirm('Confirm that the customer verbally accepted the repair is complete?')) return;
+  const result = await callAction({ action: 'save_customer_confirmation_from_tech', bookingId });
+  if (result.status !== 'success') alert(result.message || 'Could not save confirmation.');
+  loadJobs();
+}
+
+async function markJobDone(bookingId) {
+  const amount = prompt('Final amount collected (₹):');
+  if (amount === null) return;
+  const paymentMode = prompt('Payment mode (Cash / UPI / Card):', 'UPI');
+  if (paymentMode === null) return;
+  if (!confirm('Mark this job as fully done? This finalizes the warranty period.')) return;
+  const result = await callAction({ action: 'mark_done', bookingId, amount, paymentMode });
+  if (result.status === 'success') {
+    alert('Job marked done! Ask the customer to check WhatsApp for their confirmation code and warranty details — or generate one from the office if needed.');
+  } else {
+    alert(result.message || 'Could not mark job done.');
+  }
+  loadJobs();
+}
+
+async function releaseLead(bookingId) {
+  if (!confirm('Release this job back to the open pool? Only do this if you genuinely can\'t complete it.')) return;
+  const result = await callAction({ action: 'release_lead', bookingId });
+  if (result.status !== 'success') alert(result.message || 'Could not release job.');
+  loadLeads();
+  loadJobs();
+}
+
+// auto-resume session within this tab if already logged in
+if (techToken && techName) {
+  showApp();
+}
+</script>
+
 </body>
 </html>
