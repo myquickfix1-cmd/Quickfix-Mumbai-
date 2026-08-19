@@ -490,6 +490,13 @@ async function submitCompleteJob() {
         btn.disabled = false; btn.textContent = '✅ Complete Job';
         return;
       }
+      // Send the warranty code to the customer right now — otherwise it's generated
+      // but nobody ever tells them, and they can't use check-warranty.html later.
+      const bookingRow = (LAST_DATA.bookings || []).find(b => b.bookingId === bookingId);
+      if (bookingRow && bookingRow.mobile && doneResult.warrantyCode) {
+        const msg = `Dear ${bookingRow.name}, your Quickfix Mumbai repair is complete! Your warranty code is *${doneResult.warrantyCode}* — save this. To check your warranty anytime, visit https://quickfixmumbai.com/check-warranty.html with your mobile number and this code. Thank you for choosing us!`;
+        window.open(`https://wa.me/91${bookingRow.mobile}?text=${encodeURIComponent(msg)}`, '_blank');
+      }
     }
 
     const serialFile = document.getElementById('modalSerialPhoto').files[0];

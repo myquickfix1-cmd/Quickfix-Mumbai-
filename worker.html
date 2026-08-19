@@ -6,6 +6,9 @@
 <title>Quickfix Technician App</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/png" href="icon-technician-192.png">
+<link rel="manifest" href="manifest-technician.json">
+<meta name="theme-color" content="#1E3A8A">
+<link rel="apple-touch-icon" href="icon-technician-192.png">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root { --blue: #1E3A8A; --blue-light: #1D4ED8; --green: #16A34A; --red: #DC2626; --grey: #F3F4F6; --border: #D1D5DB; --text: #111827; --grey-dark: #374151; }
@@ -208,8 +211,10 @@ async function loadJobs() {
     }
     if (data.jobs.length === 0) {
       pane.innerHTML = '<div class="empty">No active jobs — accept a lead to get started.</div>';
+      window.LAST_JOBS = [];
       return;
     }
+    window.LAST_JOBS = data.jobs;
     pane.innerHTML = data.jobs.map(j => renderJobCard(j)).join('');
   } catch (e) {
     pane.innerHTML = '<div class="empty">Network issue — pull down to retry.</div>';
@@ -295,7 +300,12 @@ async function markJobDone(bookingId) {
   if (!confirm('Mark this job as fully done? This finalizes the warranty period.')) return;
   const result = await callAction({ action: 'mark_done', bookingId, amount, paymentMode });
   if (result.status === 'success') {
-    alert('Job marked done! Ask the customer to check WhatsApp for their confirmation code and warranty details — or generate one from the office if needed.');
+    // Look up the customer's mobile/name from the jobs already loaded on this page
+    const jobRow = (window.LAST_JOBS || []).find(j => j.bookingId === bookingId);
+    if (jobRow && jobRow.mobile && result.warrantyCode) {
+      const msg = `Dear ${jobRow.name}, your Quickfix Mumbai repair is complete! Your warranty code is *${result.warrantyCode}* — save this. To check your warranty anytime, visit https://quickfixmumbai.com/check-warranty.html with your mobile number and this code. Thank you for choosing us!`;
+      window.open(`https://wa.me/91${jobRow.mobile}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
   } else {
     alert(result.message || 'Could not mark job done.');
   }
@@ -313,6 +323,12 @@ async function releaseLead(bookingId) {
 // auto-resume session within this tab if already logged in
 if (techToken && techName) {
   showApp();
+}
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => { /* sw.js not found, install banner still works */ });
+  });
 }
 </script>
 

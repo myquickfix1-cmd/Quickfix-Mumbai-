@@ -1,9 +1,9 @@
 {
   "id": "/partner",
-  "name": "Quickfix Partner",
-  "short_name": "QP",
-  "description": "Quickfix Mumbai partner portal — job applications and updates for repair partners (percentage-based, not salaried).",
-  "start_url": "/join-our-team.html",
+  "name": "Quickfix Technician",
+  "short_name": "QF Tech",
+  "description": "Quickfix Mumbai technician app — accept leads, update job status, and manage repairs.",
+  "start_url": "/worker.html",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",

@@ -90,6 +90,8 @@ footer span { color: var(--white); }
       <div class="big-tick">✅</div>
       <h3>Confirmed — Thank You!</h3>
       <p>Your repair is marked complete in our records. If anything feels off with the appliance, just message us on WhatsApp anytime — your 3-month warranty covers this exact repair.</p>
+      <div id="paymentSummary" style="margin-top:16px; padding-top:16px; border-top:1px dashed var(--border); text-align:left; font-size:0.86rem;"></div>
+      <button class="btn-check" id="flagMismatchBtn" style="background:#fff; color:var(--red); border:1.5px solid var(--red); margin-top:12px; display:none;" onclick="flagMismatch()">🚩 This amount doesn't look right</button>
     </div>
   </div>
 
@@ -112,6 +114,25 @@ footer span { color: var(--white); }
 
 <script>
 const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4zI3hmCRy2V3dGwcUiYjuIe-8GhEyHbehjcnemWcvEzn02XT/exec";
+
+let lastConfirmedMobile = '';
+let lastConfirmedName = '';
+
+async function flagMismatch() {
+  const note = prompt('What amount did you actually pay? (This helps us check the record.)');
+  if (note === null) return;
+  const btn = document.getElementById('flagMismatchBtn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  try {
+    await fetch(scriptUrl, {
+      method: 'POST', cache: 'no-cache',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ formType: 'payment_mismatch', mobile: lastConfirmedMobile, name: lastConfirmedName, note: note })
+    });
+  } catch (e) { /* best-effort */ }
+  btn.textContent = '✅ Reported — we\'ll follow up';
+}
 
 async function confirmCompletion() {
   const mobile = document.getElementById('cMobile').value.trim();
@@ -143,6 +164,15 @@ async function confirmCompletion() {
     if (result.status === 'success') {
       resultCard.classList.add('show');
       document.querySelector('.check-box > label').style.display = 'none';
+      lastConfirmedMobile = mobile;
+      lastConfirmedName = '';
+      const summaryEl = document.getElementById('paymentSummary');
+      if (result.amount || result.paymentMode) {
+        summaryEl.innerHTML = `<strong>Job:</strong> ${result.problem ? String(result.problem).replace(/</g,'&lt;') : 'Repair'}<br><strong>Amount recorded:</strong> ₹${result.amount || '—'}<br><strong>Payment mode:</strong> ${result.paymentMode || '—'}<br><span style="font-size:0.78rem; color:var(--grey-dark);">Please check this matches what you actually paid.</span>`;
+        document.getElementById('flagMismatchBtn').style.display = 'block';
+      } else {
+        summaryEl.innerHTML = '';
+      }
     } else if (result.status === 'not_found') {
       msgBox.textContent = '⚠️ We couldn\'t match that number and code. Double-check both, or message us directly.';
       msgBox.className = 'msg-box error';
