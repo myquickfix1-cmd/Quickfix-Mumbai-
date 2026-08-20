@@ -577,6 +577,28 @@ async function setCustomerApproval(bookingId, approved) {
   else alert('Could not save approval: ' + (result.message || 'unknown error'));
 }
 
+async function collectVisitChargeOnly(bookingId) {
+  // Customer declined the repair after diagnosis — the ₹499 doorstep
+  // diagnostic visit still happened and should still be billed, just not
+  // adjusted into a repair bill that's never going to exist.
+  const amount = prompt('Visit/diagnostic charge collected (₹):', '499');
+  if (amount === null) return;
+  const paymentMode = prompt('Payment mode (Cash / UPI / Card):', 'Cash');
+  if (paymentMode === null) return;
+  await callAction({ action: 'update_notes', bookingId, notes: 'Customer declined repair after diagnosis — visit charge only, no repair performed.' });
+  const result = await callAction({ action: 'mark_done', bookingId, amount, paymentMode });
+  if (result.status === 'success') {
+    const bookingRow = (LAST_DATA.bookings || []).find(b => b.bookingId === bookingId);
+    if (bookingRow && bookingRow.mobile) {
+      const msg = `Dear ${bookingRow.name}, this is Quickfix Mumbai. Your doorstep diagnostic visit is complete — the diagnostic charge of ₹${amount} has been collected (${paymentMode}). No repair was carried out as agreed. Thank you for choosing us — we're here if you change your mind or need anything else.`;
+      window.open(`https://wa.me/91${bookingRow.mobile}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+    await loadAdminData();
+  } else {
+    alert('Could not close this job: ' + (result.message || 'unknown error'));
+  }
+}
+
 async function editRepairProof(bookingId, currentPart, currentTesting) {
   const replacedPart = prompt('Part replaced (leave blank if none):', currentPart || '');
   if (replacedPart === null) return;
@@ -764,11 +786,11 @@ function renderBookingRow(b, team) {
     const approvalLine = b.customerApproved === 'Yes'
       ? `<span class="small-note" style="color:#166534;font-weight:600;">✅ Customer approved</span>`
       : b.customerApproved === 'No'
-        ? `<span class="small-note" style="color:#DC2626;font-weight:600;">❌ Customer declined</span>`
+        ? `<span class="small-note" style="color:#DC2626;font-weight:600;">❌ Customer declined</span><button class="secondary small" onclick="collectVisitChargeOnly('${b.bookingId}')">💰 Collect ₹499 Visit Charge &amp; Close</button>`
         : (b.diagnosisNotes ? `<div class="action-group" style="flex-direction:row;gap:4px;"><button class="success small" onclick="setCustomerApproval('${b.bookingId}','Yes')">✅ Approved</button><button class="danger small" onclick="setCustomerApproval('${b.bookingId}','No')">❌ Declined</button></div>` : '');
     actionsHtml = `<div class="action-group">
       <select onchange="updateVisitStatus('${b.bookingId}', this.value)" title="Visit status">${visitOptions}</select>
-      ${!b.checkinTime ? `<button class="secondary small" onclick="doCheckin('${b.bookingId}')">📍 Check-in</button>` : `<span class="small-note">In: ${fmtDate(b.checkinTime)}</span>`}
+      ${!b.checkinTime ? `<button class="secondary small" onclick="doCheckin('${b.bookingId}')">📍 Check-in</button>` : `<span class="small-note">In: ${fmtDate(b.checkinTime)}${b.checkinLocation ? ` — <a href="https://maps.google.com/?q=${encodeURIComponent(b.checkinLocation)}" target="_blank">📍 View on map</a>` : ''}</span>`}
       ${b.checkinTime && !b.checkoutTime ? `<button class="secondary small" onclick="doCheckout('${b.bookingId}')">🚪 Check-out</button>` : ''}
       <button class="secondary small" onclick="editDiagnosis('${b.bookingId}','${escJs(b.diagnosisNotes)}','${escJs(b.estimateAmount)}')">📋 ${b.diagnosisNotes ? 'Edit' : 'Add'} Diagnosis${b.estimateAmount ? ' — ₹' + escapeHtml(String(b.estimateAmount)) : ''}</button>
       ${approvalLine}
@@ -879,6 +901,7 @@ async function loadAdminData() {
 
     LAST_DATA = result;
     const bookings = (result.bookings || []).map(b => ({ ...b, mobile: normMobile(b.mobile), techMobile: normMobile(b.techMobile), seniorMobile: normMobile(b.seniorMobile) }));
+    lastKnownSnapshot = snapshotBookings(result.bookings);
     const technicians = result.technicians || [];
     const team = (result.team || []).map(t => ({ ...t, mobile: normMobile(t.mobile) }));
     const liveTraffic = result.liveTraffic || [];
@@ -1046,7 +1069,54 @@ async function loadAdminData() {
   }
 }
 
+let lastKnownSnapshot = '';
 tryAutoLogin();
+
+// ---------- AUTO-REFRESH + NEW-ACTIVITY ALERT ----------
+// Previously admin.html only loaded data once — a technician accepting a lead
+// or moving a job forward was invisible here until someone manually clicked
+// Refresh. This polls every 20s (once logged in) and plays a short beep +
+// highlights the dashboard title when something actually changed since the
+// last check, so nothing gets missed silently.
+function playAlertBeep() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.frequency.value = 880;
+    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.25);
+  } catch (e) { /* audio not available, no big deal */ }
+}
+function snapshotBookings(bookings) {
+  // A cheap fingerprint of what admin cares about seeing change in real time:
+  // status, who's assigned, and how far along the visit is — not every field.
+  return (bookings || []).map(b => `${b.bookingId}:${b.status}:${b.techName}:${b.visitStatus}`).join('|');
+}
+async function pollForUpdates() {
+  if (!getToken()) return;
+  try {
+    const res = await fetch(`${scriptUrl}?action=admin_data&token=${encodeURIComponent(getToken())}`, { cache: 'no-cache' });
+    const data = await res.json();
+    if (data.status !== 'success') return;
+    const newSnapshot = snapshotBookings(data.bookings);
+    if (lastKnownSnapshot && newSnapshot !== lastKnownSnapshot) {
+      playAlertBeep();
+      const h2 = document.querySelector('h2');
+      if (h2) {
+        const original = h2.textContent;
+        h2.textContent = '🔔 ' + original;
+        setTimeout(() => { h2.textContent = original; }, 4000);
+      }
+      await loadAdminData();
+    }
+    lastKnownSnapshot = newSnapshot;
+  } catch (e) { /* skip this cycle, try again next poll */ }
+}
+setInterval(pollForUpdates, 20000);
+
 </script>
 
 </body>

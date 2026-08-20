@@ -53,6 +53,9 @@ select.visit-select { width: 100%; padding: 10px; border-radius: 8px; border: 1.
     <input type="tel" id="loginPin" placeholder="4-digit PIN" maxlength="4">
     <button onclick="techLogin()" id="loginBtn">Login</button>
     <div class="err" id="loginErr"></div>
+    <div style="text-align:center; margin-top:14px;">
+      <a href="javascript:void(0)" onclick="forgotPin()" style="color:#1E3A8A; font-size:0.85rem; font-weight:600; text-decoration:none;">Forgot your PIN?</a>
+    </div>
   </div>
 </div>
 
@@ -90,6 +93,21 @@ async function callAction(payload) {
     return await res.json();
   } catch (e) {
     return { status: 'error', message: 'Network issue — please check your connection and try again.' };
+  }
+}
+
+async function forgotPin() {
+  const mobile = prompt('Enter your registered mobile number:', document.getElementById('loginMobile').value || '');
+  if (!mobile) return;
+  if (!/^[6-9]\d{9}$/.test(mobile.trim())) {
+    alert('Please enter a valid 10-digit mobile number.');
+    return;
+  }
+  const result = await callAction({ action: 'technician_forgot_pin', mobile: mobile.trim() });
+  if (result.status === 'success') {
+    alert('If this number is registered, a new PIN has been sent to the office right now — please call or WhatsApp them to get it, then come back and log in.');
+  } else {
+    alert(result.message || 'Something went wrong — please contact the office directly.');
   }
 }
 
@@ -226,7 +244,7 @@ function renderJobCard(j) {
   const approvalHtml = j.customerApproved === 'Yes'
     ? '<div class="tag-ok">✅ Customer approved the estimate</div>'
     : j.customerApproved === 'No'
-      ? '<div class="tag-no">❌ Customer declined — call the office</div>'
+      ? `<div class="tag-no">❌ Customer declined</div><button class="btn btn-secondary" onclick="collectVisitChargeOnly('${j.bookingId}','${esc(j.name)}','${esc(j.mobile)}')">💰 Collect ₹499 Visit Charge &amp; Close</button>`
       : (j.diagnosisNotes ? '<div class="meta">⏳ Waiting for customer approval (office will confirm)</div>' : '');
   return `
     <div class="card">
@@ -256,7 +274,21 @@ async function updateVisitStatus(bookingId, visitStatus) {
 }
 
 async function doCheckin(bookingId) {
-  const result = await callAction({ action: 'checkin', bookingId });
+  // One-time location snapshot at the moment of check-in — not continuous
+  // live tracking (that needs the app open in the foreground the whole time
+  // and isn't reliable via a website), just proof of where they were when
+  // they marked themselves as reached.
+  let lat = null, lng = null;
+  if (navigator.geolocation) {
+    try {
+      const pos = await new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 8000 });
+      });
+      lat = pos.coords.latitude;
+      lng = pos.coords.longitude;
+    } catch (e) { /* location denied/unavailable — check in without it, that's fine */ }
+  }
+  const result = await callAction({ action: 'checkin', bookingId, lat, lng });
   if (result.status !== 'success') alert(result.message || 'Could not check in.');
   loadJobs();
 }
@@ -289,6 +321,21 @@ async function confirmVerbally(bookingId) {
   if (!confirm('Confirm that the customer verbally accepted the repair is complete?')) return;
   const result = await callAction({ action: 'save_customer_confirmation_from_tech', bookingId });
   if (result.status !== 'success') alert(result.message || 'Could not save confirmation.');
+  loadJobs();
+}
+
+async function collectVisitChargeOnly(bookingId, name, mobile) {
+  const amount = prompt('Visit/diagnostic charge collected (₹):', '499');
+  if (amount === null) return;
+  const paymentMode = prompt('Payment mode (Cash / UPI / Card):', 'Cash');
+  if (paymentMode === null) return;
+  const result = await callAction({ action: 'mark_done', bookingId, amount, paymentMode });
+  if (result.status === 'success') {
+    const msg = `Dear ${name}, this is Quickfix Mumbai. Your doorstep diagnostic visit is complete — the diagnostic charge of ₹${amount} has been collected (${paymentMode}). No repair was carried out as agreed. Thank you for choosing us!`;
+    if (mobile) window.open(`https://wa.me/91${mobile}?text=${encodeURIComponent(msg)}`, '_blank');
+  } else {
+    alert(result.message || 'Could not close this job.');
+  }
   loadJobs();
 }
 
