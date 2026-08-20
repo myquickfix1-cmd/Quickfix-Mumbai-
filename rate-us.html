@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Rate your Quickfix Mumbai repair experience in one tap.">
+<title>Rate Your Repair | Quickfix Mumbai</title>
+<link rel="canonical" href="https://quickfixmumbai.com/rate-us.html">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --blue: #1E3A8A; --blue-light: #1D4ED8; --white: #FFFFFF; --grey: #F3F4F6; --grey-dark: #374151; --text: #111827; --border: #D1D5DB; --amber: #F59E0B; --green: #16A34A; }
+body { font-family: 'Inter', sans-serif; background: var(--grey); color: var(--text); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.card { background: var(--white); max-width: 420px; width: 100%; border-radius: 18px; padding: 32px 26px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
+.card img { width: 44px; height: 44px; border-radius: 10px; margin-bottom: 10px; }
+.card h1 { font-family: 'Poppins', sans-serif; font-size: 1.3rem; color: var(--blue); margin-bottom: 6px; }
+.card p.sub { font-size: 0.88rem; color: var(--grey-dark); margin-bottom: 22px; }
+.stars { font-size: 2.6rem; letter-spacing: 6px; margin-bottom: 18px; cursor: pointer; }
+.stars span { color: var(--border); transition: color 0.15s; }
+.stars span.active { color: var(--amber); }
+textarea { width: 100%; border: 1.5px solid var(--border); border-radius: 10px; padding: 12px; font-size: 0.9rem; font-family: inherit; resize: vertical; min-height: 70px; margin-bottom: 16px; }
+button.submit { width: 100%; background: var(--blue); color: #fff; border: none; padding: 13px; border-radius: 10px; font-weight: 700; font-size: 0.95rem; cursor: pointer; }
+button.submit:disabled { opacity: 0.6; }
+.thank-you { display: none; }
+.thank-you .big { font-size: 3rem; margin-bottom: 10px; }
+.thank-you h2 { font-family: 'Poppins', sans-serif; color: var(--green); margin-bottom: 8px; }
+.thank-you p { font-size: 0.9rem; color: var(--grey-dark); }
+.err { color: #DC2626; font-size: 0.85rem; margin-top: 10px; display: none; }
+.loading { color: var(--grey-dark); font-size: 0.9rem; padding: 20px 0; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div id="loadingState" class="loading">Loading...</div>
+
+  <div id="rateForm" style="display:none;">
+    <img src="logo.png" alt="Quickfix Mumbai">
+    <h1>How was your repair?</h1>
+    <p class="sub" id="greetingLine">Tap a star to rate your Quickfix Mumbai experience.</p>
+    <div class="stars" id="starRow">
+      <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
+    </div>
+    <textarea id="comment" placeholder="Anything you'd like to add? (optional)"></textarea>
+    <button class="submit" id="submitBtn" onclick="submitRating()" disabled>Submit Rating</button>
+    <div class="err" id="errBox"></div>
+  </div>
+
+  <div class="thank-you" id="thankYou">
+    <div class="big">🙏</div>
+    <h2>Thank You!</h2>
+    <p>Your rating helps us keep improving — and helps other Mumbai families find us too.</p>
+  </div>
+</div>
+
+<script>
+const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4zI3hmCRy2V3dGwcUiYjuIe-8GhEyHbehjcnemWcvEzn02XT/exec";
+const params = new URLSearchParams(window.location.search);
+const bookingId = params.get('id') || '';
+let selectedRating = 0;
+
+function esc(s) { return String(s == null ? '' : s).replace(/</g, '&lt;'); }
+
+function showState(state) {
+  document.getElementById('loadingState').style.display = state === 'loading' ? 'block' : 'none';
+  document.getElementById('rateForm').style.display = state === 'form' ? 'block' : 'none';
+  document.getElementById('thankYou').style.display = state === 'thanks' ? 'block' : 'none';
+}
+
+document.querySelectorAll('#starRow span').forEach(star => {
+  star.addEventListener('click', () => {
+    selectedRating = parseInt(star.dataset.v, 10);
+    document.querySelectorAll('#starRow span').forEach(s => {
+      s.classList.toggle('active', parseInt(s.dataset.v, 10) <= selectedRating);
+    });
+    document.getElementById('submitBtn').disabled = false;
+  });
+});
+
+async function submitRating() {
+  const btn = document.getElementById('submitBtn');
+  const errBox = document.getElementById('errBox');
+  errBox.style.display = 'none';
+  if (!selectedRating) return;
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+  try {
+    const res = await fetch(scriptUrl, {
+      method: 'POST', cache: 'no-cache',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({
+        formType: 'submit_rating',
+        bookingId: bookingId,
+        rating: selectedRating,
+        comment: document.getElementById('comment').value.trim()
+      })
+    });
+    const data = await res.json();
+    if (data.status === 'success') {
+      showState('thanks');
+    } else {
+      errBox.textContent = data.message || 'Could not submit — please try again.';
+      errBox.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Submit Rating';
+    }
+  } catch (e) {
+    errBox.textContent = 'Network issue — please try again.';
+    errBox.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Submit Rating';
+  }
+}
+
+(async function init() {
+  if (!bookingId) {
+    showState('form');
+    document.getElementById('greetingLine').textContent = 'Tap a star to rate your Quickfix Mumbai experience.';
+    return;
+  }
+  try {
+    const res = await fetch(`${scriptUrl}?action=rating_booking_info&id=${encodeURIComponent(bookingId)}`, { cache: 'no-cache' });
+    const data = await res.json();
+    if (data.status === 'success' && !data.alreadyRated) {
+      document.getElementById('greetingLine').textContent = `Hi ${esc(data.name)}, tap a star to rate your recent repair.`;
+      showState('form');
+    } else if (data.alreadyRated) {
+      showState('thanks');
+      document.querySelector('.thank-you p').textContent = "You've already rated this repair — thank you!";
+    } else {
+      showState('form');
+    }
+  } catch (e) {
+    showState('form');
+  }
+})();
+</script>
+
+<script src="photo-loader.js" defer></script>
+</body>
+</html>

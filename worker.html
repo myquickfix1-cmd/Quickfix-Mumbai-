@@ -48,6 +48,7 @@ select.visit-select { width: 100%; padding: 10px; border-radius: 8px; border: 1.
 
 <div id="loginScreen">
   <div class="login-box">
+    <button id="installBtn" onclick="installApp()" style="display:none; width:100%; background:#16A34A; color:#fff; border:none; padding:12px; border-radius:8px; font-weight:700; font-size:0.9rem; cursor:pointer; margin-bottom:16px;">📲 Install App on This Phone</button>
     <h2>🔧 Technician Login</h2>
     <input type="tel" id="loginMobile" placeholder="Your 10-digit mobile number" maxlength="10">
     <input type="tel" id="loginPin" placeholder="4-digit PIN" maxlength="4">
@@ -350,7 +351,7 @@ async function markJobDone(bookingId) {
     // Look up the customer's mobile/name from the jobs already loaded on this page
     const jobRow = (window.LAST_JOBS || []).find(j => j.bookingId === bookingId);
     if (jobRow && jobRow.mobile && result.warrantyCode) {
-      const msg = `Dear ${jobRow.name}, your Quickfix Mumbai repair is complete! Your warranty code is *${result.warrantyCode}* — save this. To check your warranty anytime, visit https://quickfixmumbai.com/check-warranty.html with your mobile number and this code. Thank you for choosing us!`;
+      const msg = `Dear ${jobRow.name}, your Quickfix Mumbai repair is complete! Your warranty code is *${result.warrantyCode}* — save this. To check your warranty anytime, visit https://quickfixmumbai.com/check-warranty.html with your mobile number and this code.\n\nHow was your experience? Rate us in one tap: https://quickfixmumbai.com/rate-us.html?id=${bookingId}\n\nThank you for choosing us!`;
       window.open(`https://wa.me/91${jobRow.mobile}?text=${encodeURIComponent(msg)}`, '_blank');
     }
   } else {
@@ -377,6 +378,27 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').catch(() => { /* sw.js not found, install banner still works */ });
   });
 }
+
+// Shows a one-tap "Install" button when the browser supports it (most Android
+// Chrome). On iPhones, Chrome/Safari don't support this prompt at all — the
+// technician needs to use the browser's own "Add to Home Screen" option
+// instead, since Apple doesn't allow websites to trigger it programmatically.
+let deferredInstallPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  document.getElementById('installBtn').style.display = 'block';
+});
+async function installApp() {
+  if (!deferredInstallPrompt) return;
+  deferredInstallPrompt.prompt();
+  await deferredInstallPrompt.userChoice;
+  deferredInstallPrompt = null;
+  document.getElementById('installBtn').style.display = 'none';
+}
+window.addEventListener('appinstalled', () => {
+  document.getElementById('installBtn').style.display = 'none';
+});
 </script>
 
 </body>
