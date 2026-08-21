@@ -155,7 +155,7 @@ footer span { color: var(--white); }
     <a href="https://wa.me/919819832282?text=I%20want%20to%20join%20as%20a%20technician" target="_blank" class="btn-wa">📲 WhatsApp Us</a>
   </div>
 </section>
-<div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px;"><img src="circuit-checkup-repair-bandra-west.webp" alt="On-site circuit checkup by our technician" loading="lazy" style="width: 100%; max-height: 320px; object-fit: cover; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">On-site circuit checkup by our technician</p></div>
+<div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px; background: #F3F4F6;"><img src="circuit-checkup-repair-bandra-west.webp" alt="On-site circuit checkup by our technician" loading="lazy" style="width: 100%; max-height: 320px; object-fit: contain; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">On-site circuit checkup by our technician</p></div>
 
 <div id="installBanner" style="display:none; max-width: 650px; margin: 24px auto 0; padding: 18px 22px; background: var(--grey); border: 1.5px solid var(--border); border-radius: 14px; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;">
   <div style="display:flex; align-items:center; gap:12px;">
@@ -201,24 +201,140 @@ footer span { color: var(--white); }
     <div class="apply-form-box">
       <h3>Technician Application</h3>
       <p class="sub">We'll call you within 1-2 days to discuss next steps</p>
+
+      <div style="font-size:0.72rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--blue); margin:18px 0 10px;">1. Basic Information</div>
       <div class="form-group"><label>Full Name *</label><input type="text" id="appName" placeholder="Your full name"></div>
-      <div class="form-group"><label>Phone Number *</label><input type="tel" id="appPhone" placeholder="10-digit mobile number" maxlength="10"></div>
-      <div class="form-group"><label>Area You're Based In *</label><input type="text" id="appArea" placeholder="e.g. Andheri, Bandra"></div>
+      <div class="form-group"><label>Personal Mobile / WhatsApp Number *</label><input type="tel" id="appPhone" placeholder="10-digit mobile number" maxlength="10"></div>
+      <div class="form-group"><label>Family / Emergency Contact Number</label><input type="tel" id="appEmergencyContact" placeholder="A second number we can reach, if needed" maxlength="10"></div>
+      <div class="form-group"><label>Current Area in Mumbai *</label><input type="text" id="appArea" placeholder="e.g. Andheri, Bandra, Powai"></div>
       <div class="form-group">
-        <label>Experience With *</label>
-        <select id="appSpecialization">
-          <option value="">Select your main experience</option>
-          <option value="Refrigerator">Refrigerator</option>
-          <option value="Washing Machine">Washing Machine</option>
-          <option value="Microwave">Microwave</option>
-          <option value="Dishwasher">Dishwasher</option>
-          <option value="Dryer">Cloth Dryer</option>
-          <option value="Air Dresser">Air Dresser</option>
-          <option value="Multiple">Multiple Appliances</option>
+        <label>Education Qualification</label>
+        <select id="appEducation">
+          <option value="">Select</option>
+          <option value="Below 10th">Below 10th</option>
+          <option value="10th Pass">10th Pass</option>
+          <option value="12th Pass">12th Pass</option>
+          <option value="ITI / Diploma">ITI / Diploma</option>
+          <option value="Graduate">Graduate</option>
+          <option value="Other">Other</option>
         </select>
       </div>
-      <div class="form-group"><label>Years of Experience *</label><input type="text" id="appExperience" placeholder="e.g. 3 years"></div>
-      <div class="form-group"><label>Anything Else You'd Like Us to Know</label><textarea id="appMessage" placeholder="Certifications, brands you've worked with, etc. (optional)"></textarea></div>
+
+      <div style="font-size:0.72rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--blue); margin:22px 0 10px;">2. Experience &amp; Technical Expertise</div>
+      <div class="form-group">
+        <label>Appliance Specialization *</label>
+        <div style="display:flex; flex-wrap:wrap; gap:8px 14px; font-size:0.86rem;">
+          <label style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" class="appSpec" value="Washing Machine"> 🧺 Washing Machine</label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" class="appSpec" value="Refrigerator"> ❄️ Refrigerator</label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" class="appSpec" value="Microwave"> 🍿 Microwave</label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" class="appSpec" value="Dishwasher"> 🍽️ Dishwasher</label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" class="appSpec" value="Dryer/AirDresser"> 👔 Dryer / AirDresser</label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" class="appSpec" value="Other"> ➕ Other</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Brands Worked On</label>
+        <div style="display:flex; flex-wrap:wrap; gap:6px 12px; font-size:0.86rem;">
+          <label style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" class="appBrand" value="LG"> LG</label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" class="appBrand" value="Samsung"> Samsung</label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" class="appBrand" value="Whirlpool"> Whirlpool</label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" class="appBrand" value="Bosch"> Bosch</label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" class="appBrand" value="IFB"> IFB</label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" class="appBrand" value="Siemens"> Siemens</label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" class="appBrand" value="Panasonic"> Panasonic</label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" class="appBrand" value="Haier"> Haier</label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" class="appBrand" value="Godrej"> Godrej</label>
+          <label style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" class="appBrand" value="Other"> Other</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Total Work Experience *</label>
+        <select id="appExperience">
+          <option value="">Select</option>
+          <option value="Fresh / Less than 1 Year">Fresh / Less than 1 Year</option>
+          <option value="1 - 3 Years">1 - 3 Years</option>
+          <option value="3 - 5 Years">3 - 5 Years</option>
+          <option value="5+ Years (Senior Level)">5+ Years (Senior Level)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Work Background</label>
+        <select id="appWorkBackground">
+          <option value="">Select</option>
+          <option value="Brand Authorized Service Center">Brand Authorized Service Center</option>
+          <option value="Multi-Brand Local Service Shop">Multi-Brand Local Service Shop</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div style="font-size:0.72rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--blue); margin:22px 0 10px;">3. Compensation &amp; Availability</div>
+      <div class="form-group">
+        <label>Expected Monthly Earning Target</label>
+        <select id="appExpectedEarning">
+          <option value="">Select</option>
+          <option value="Below ₹15,000/month">Below ₹15,000/month</option>
+          <option value="₹15,000 - ₹25,000/month">₹15,000 - ₹25,000/month</option>
+          <option value="₹25,000 - ₹40,000/month">₹25,000 - ₹40,000/month</option>
+          <option value="₹40,000+/month">₹40,000+/month</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Availability</label>
+        <select id="appAvailability">
+          <option value="">Select</option>
+          <option value="Full-Time">Full-Time</option>
+          <option value="Part-Time">Part-Time</option>
+          <option value="On-Call Only">On-Call Only</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Current Work Status</label>
+        <select id="appWorkStatus">
+          <option value="">Select</option>
+          <option value="Unemployed (Available Immediately)">Unemployed (Available Immediately)</option>
+          <option value="Currently Working (Looking for Long-Term Growth)">Currently Working (Looking for Long-Term Growth)</option>
+          <option value="Available Part-Time / On-Call">Available Part-Time / On-Call</option>
+        </select>
+      </div>
+
+      <div style="font-size:0.72rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--blue); margin:22px 0 10px;">4. Commitment &amp; Requirements</div>
+      <div class="form-group">
+        <label>How Many Days/Week Can You Commit?</label>
+        <select id="appDaysPerWeek">
+          <option value="">Select</option>
+          <option value="6-7 Days">6-7 Days</option>
+          <option value="4-5 Days">4-5 Days</option>
+          <option value="Weekends Only">Weekends Only</option>
+          <option value="Flexible">Flexible</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Do you have your own 2-Wheeler &amp; Driving License?</label>
+        <select id="appVehicle">
+          <option value="">Select</option>
+          <option value="Yes">🟢 Yes</option>
+          <option value="No">🔴 No</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Do you have a Valid Government ID (Aadhaar / PAN)?</label>
+        <select id="appGovtId">
+          <option value="">Select</option>
+          <option value="Yes">🟢 Yes</option>
+          <option value="No">🔴 No</option>
+        </select>
+        <p style="font-size:0.76rem; color:var(--grey-dark); margin-top:6px;">We only ask if you have one here — we'll verify it in person later, never uploaded through this form.</p>
+      </div>
+
+      <div class="form-group"><label>Anything Else You'd Like Us to Know</label><textarea id="appMessage" placeholder="Certifications, additional details, etc. (optional)"></textarea></div>
+
+      <div class="form-group" style="background:var(--grey); padding:14px; border-radius:10px;">
+        <label style="display:flex; align-items:flex-start; gap:8px; font-weight:500; font-size:0.86rem; cursor:pointer;">
+          <input type="checkbox" id="appHonestyPledge" style="margin-top:3px;">
+          <span>Main Quickfix Mumbai ke saath honesty, genuine spare parts aur customer respect ke saath long-term kaam karne ke liye taiyar hoon. *</span>
+        </label>
+      </div>
+
       <div id="appFormError" style="min-height: 20px; color: #DC2626; font-size: 13px; margin-bottom: 4px; text-align: center;"></div>
       <button class="btn-apply" onclick="submitApplication()">Submit Application</button>
       <div id="appMsg" class="apply-msg"></div>
@@ -261,19 +377,34 @@ const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4z
 function submitApplication(){
   const name = document.getElementById('appName').value.trim();
   const phone = document.getElementById('appPhone').value.trim();
+  const emergencyContact = document.getElementById('appEmergencyContact').value.trim();
   const area = document.getElementById('appArea').value.trim();
-  const specialization = document.getElementById('appSpecialization').value;
-  const experience = document.getElementById('appExperience').value.trim();
+  const education = document.getElementById('appEducation').value;
+  const specialization = Array.from(document.querySelectorAll('.appSpec:checked')).map(el => el.value).join(', ');
+  const brands = Array.from(document.querySelectorAll('.appBrand:checked')).map(el => el.value).join(', ');
+  const experience = document.getElementById('appExperience').value;
+  const workBackground = document.getElementById('appWorkBackground').value;
+  const expectedEarning = document.getElementById('appExpectedEarning').value;
+  const availability = document.getElementById('appAvailability').value;
+  const workStatus = document.getElementById('appWorkStatus').value;
+  const daysPerWeek = document.getElementById('appDaysPerWeek').value;
+  const hasVehicle = document.getElementById('appVehicle').value;
+  const hasGovtId = document.getElementById('appGovtId').value;
   const message = document.getElementById('appMessage').value.trim();
+  const honestyPledge = document.getElementById('appHonestyPledge').checked;
   const errBox = document.getElementById('appFormError');
   errBox.textContent = "";
 
   if(!name || !phone || !area || !specialization || !experience){
-    errBox.textContent = "⚠️ Please fill all required fields.";
+    errBox.textContent = "⚠️ Please fill all required fields (name, phone, area, specialization, experience).";
     return;
   }
   if(!/^[6-9]\d{9}$/.test(phone)){
     errBox.textContent = "⚠️ Please enter a valid 10-digit mobile number.";
+    return;
+  }
+  if(!honestyPledge){
+    errBox.textContent = "⚠️ Please accept the honesty declaration to continue.";
     return;
   }
 
@@ -283,8 +414,11 @@ function submitApplication(){
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       formType: "technician_application",
-      name: name, mobile: phone, area: area,
-      specialization: specialization, experience: experience, notes: message
+      name: name, mobile: phone, emergencyContact: emergencyContact, area: area,
+      education: education, specialization: specialization, brands: brands,
+      experience: experience, workBackground: workBackground, expectedEarning: expectedEarning,
+      availability: availability, workStatus: workStatus, daysPerWeek: daysPerWeek,
+      hasVehicle: hasVehicle, hasGovtId: hasGovtId, honestyPledge: honestyPledge, notes: message
     })
   }).then(() => {
     document.querySelector('.apply-form-box').innerHTML = `
