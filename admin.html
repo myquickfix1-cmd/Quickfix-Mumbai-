@@ -164,7 +164,7 @@ input, select, textarea { padding: 8px 10px; border-radius: 6px; border: 1px sol
     <div id="team-error" style="color: var(--danger); font-size: 0.82rem; margin-bottom: 8px;"></div>
     <div id="team-loading" class="loading-msg">Loading team…</div>
     <table class="responsive-table" id="team-table" style="display:none;">
-      <thead><tr><th>Name</th><th>Contact</th><th>Specialization</th><th>Area</th></tr></thead>
+      <thead><tr><th>Name</th><th>Contact</th><th>Specialization</th><th>Area</th><th>Status</th></tr></thead>
       <tbody id="team-body"></tbody>
     </table>
   </div>
@@ -205,6 +205,8 @@ input, select, textarea { padding: 8px 10px; border-radius: 6px; border: 1px sol
       <select id="modalPaymentMode">
         <option value="Cash">Cash</option>
         <option value="UPI">UPI</option>
+        <option value="Card">Card</option>
+        <option value="Other">Other</option>
         <option value="Pending">Pending</option>
       </select>
     </div>
@@ -352,6 +354,12 @@ function msgNotifyTechnician(customerName, mobile, location, problem, date, time
 }
 
 // ---------- ADD TECHNICIAN ----------
+async function setTechnicianStatus(mobile, status) {
+  const result = await callAction({ action: 'set_technician_status', mobile, status });
+  if (result.status !== 'success') alert('Could not update status: ' + (result.message || 'unknown error'));
+  await loadAdminData();
+}
+
 async function addTechnician() {
   const name = document.getElementById('newTechName').value.trim();
   const mobile = document.getElementById('newTechMobile').value.trim();
@@ -521,11 +529,37 @@ async function submitCompleteJob() {
   }
 }
 
+// Lightweight tap-to-pick modal — a real selectable choice instead of a
+// free-text prompt someone could mistype.
+function pickPaymentMode() {
+  return new Promise(resolve => {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:999; display:flex; align-items:center; justify-content:center; padding:20px;';
+    const box = document.createElement('div');
+    box.style.cssText = 'background:#fff; border-radius:14px; padding:22px; max-width:320px; width:100%; text-align:center;';
+    box.innerHTML = `<h3 style="margin-bottom:14px; color:var(--dark);">Payment Mode</h3>`;
+    ['Cash', 'UPI', 'Card', 'Other', 'Pending'].forEach(mode => {
+      const btn = document.createElement('button');
+      btn.textContent = mode;
+      btn.style.cssText = 'display:block; width:100%; padding:12px; margin-bottom:8px; border:1.5px solid var(--primary); border-radius:8px; background:#fff; color:var(--primary); font-weight:700; font-size:0.9rem; cursor:pointer;';
+      btn.onclick = () => { document.body.removeChild(overlay); resolve(mode); };
+      box.appendChild(btn);
+    });
+    const cancelBtn = document.createElement('button');
+    cancelBtn.textContent = 'Cancel';
+    cancelBtn.style.cssText = 'display:block; width:100%; padding:10px; border:none; background:none; color:var(--danger); font-size:0.85rem; cursor:pointer; margin-top:4px;';
+    cancelBtn.onclick = () => { document.body.removeChild(overlay); resolve(null); };
+    box.appendChild(cancelBtn);
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+  });
+}
+
 async function editBilling(bookingId, currentAmount, currentMode) {
   const amount = prompt('Amount collected (₹):', currentAmount || '');
   if (amount === null) return;
-  const paymentMode = prompt('Payment mode? Cash / UPI / Pending', currentMode || 'Cash');
-  if (paymentMode === null) return;
+  const paymentMode = await pickPaymentMode();
+  if (!paymentMode) return;
   const result = await callAction({ action: 'update_billing', bookingId, amount, paymentMode });
   if (result.status === 'success') await loadAdminData();
   else alert('Could not update billing: ' + (result.message || 'unknown error'));
@@ -583,8 +617,8 @@ async function collectVisitChargeOnly(bookingId) {
   // adjusted into a repair bill that's never going to exist.
   const amount = prompt('Visit/diagnostic charge collected (₹):', '499');
   if (amount === null) return;
-  const paymentMode = prompt('Payment mode (Cash / UPI / Card):', 'Cash');
-  if (paymentMode === null) return;
+  const paymentMode = await pickPaymentMode();
+  if (!paymentMode) return;
   await callAction({ action: 'update_notes', bookingId, notes: 'Customer declined repair after diagnosis — visit charge only, no repair performed.' });
   const result = await callAction({ action: 'mark_done', bookingId, amount, paymentMode });
   if (result.status === 'success') {
@@ -1018,6 +1052,13 @@ async function loadAdminData() {
           <td data-label="Contact"><a href="tel:${escapeHtml(t.mobile)}" class="info-link">📞 ${escapeHtml(t.mobile)}</a><a href="${waLink(t.mobile)}" target="_blank" class="wa-link">💬</a></td>
           <td data-label="Specialization">${escapeHtml(t.specialization) || '—'}</td>
           <td data-label="Area">${escapeHtml(t.area) || '—'}</td>
+          <td data-label="Status">
+            <select onchange="setTechnicianStatus('${escapeHtml(t.mobile)}', this.value)" style="padding:6px; border-radius:6px; border:1px solid var(--border); font-size:0.82rem;">
+              <option value="Active" ${t.status === 'Active' ? 'selected' : ''}>🟢 Active</option>
+              <option value="Temporarily Unavailable" ${t.status === 'Temporarily Unavailable' ? 'selected' : ''}>🟡 Temporarily Unavailable</option>
+              <option value="Suspended" ${t.status === 'Suspended' ? 'selected' : ''}>🔴 Suspended</option>
+            </select>
+          </td>
         </tr>
       `).join('');
       document.getElementById('team-loading').style.display = 'none';
