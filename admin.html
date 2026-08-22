@@ -287,6 +287,21 @@ function waLink(mobile, text) {
   return `https://wa.me/${num}${text ? '?text=' + encodeURIComponent(text) : ''}`;
 }
 
+// Opens a blank tab RIGHT NOW (synchronously, tied to the click) and hands
+// back a reference to redirect once the WhatsApp text is ready. Browsers
+// block window.open() called after an `await` (a network round-trip) since
+// it's no longer a direct result of the click by then — this keeps the tab
+// alive across that gap. Use with waGoLink() below.
+function waOpen() {
+  try { return window.open('', '_blank'); } catch (e) { return null; }
+}
+function waGoLink(win, mobile, text) {
+  const url = waLink(mobile, text);
+  if (url === '#') { if (win) win.close(); return; }
+  if (win && !win.closed) { win.location.href = url; }
+  else { window.open(url, '_blank'); }
+}
+
 function escapeHtml(str) {
   return String(str || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
@@ -306,6 +321,16 @@ function fmtDateOnly(d) {
   const dt = new Date(d);
   if (isNaN(dt.getTime())) return String(d);
   return dt.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+function jobDuration(checkinTime, checkoutTime) {
+  const inDt = new Date(checkinTime), outDt = new Date(checkoutTime);
+  if (isNaN(inDt.getTime()) || isNaN(outDt.getTime())) return '—';
+  const mins = Math.round((outDt.getTime() - inDt.getTime()) / 60000);
+  if (mins < 0) return '—';
+  if (mins < 60) return `${mins} min`;
+  const h = Math.floor(mins / 60), m = mins % 60;
+  return `${h}h ${m}m`;
 }
 
 function daysAgo(d) {
@@ -492,19 +517,23 @@ async function submitCompleteJob() {
       btn.textContent = 'Saving...';
       const amount = document.getElementById('modalAmount').value.trim();
       const paymentMode = document.getElementById('modalPaymentMode').value;
+      const bookingRowPre = (LAST_DATA.bookings || []).find(b => b.bookingId === bookingId);
+      const waWin = (bookingRowPre && bookingRowPre.mobile) ? waOpen() : null;
       const doneResult = await callAction({ action: 'mark_done', bookingId, amount, paymentMode });
       if (doneResult.status !== 'success') {
+        if (waWin) waWin.close();
         errBox.textContent = '⚠️ ' + (doneResult.message || 'Could not complete job.');
         btn.disabled = false; btn.textContent = '✅ Complete Job';
         return;
       }
       // Send the warranty code to the customer right now — otherwise it's generated
       // but nobody ever tells them, and they can't use check-warranty.html later.
-      const bookingRow = (LAST_DATA.bookings || []).find(b => b.bookingId === bookingId);
+      const bookingRow = bookingRowPre || (LAST_DATA.bookings || []).find(b => b.bookingId === bookingId);
       if (bookingRow && bookingRow.mobile && doneResult.warrantyCode) {
         const msg = `Dear ${bookingRow.name}, your Quickfix Mumbai repair is complete! Your warranty code is *${doneResult.warrantyCode}* — save this. To check your warranty anytime, visit https://quickfixmumbai.com/check-warranty.html with your mobile number and this code.\n\nHow was your experience? Rate us in one tap: https://quickfixmumbai.com/rate-us.html?id=${bookingId}\n\nThank you for choosing us!`;
-        window.open(`https://wa.me/91${bookingRow.mobile}?text=${encodeURIComponent(msg)}`, '_blank');
-      }
+        waGoLink(waWin, bookingRow.mobile, msg);
+      } else if (waWin) { waWin.close(); }
+
     }
 
     const serialFile = document.getElementById('modalSerialPhoto').files[0];
@@ -619,16 +648,19 @@ async function collectVisitChargeOnly(bookingId) {
   if (amount === null) return;
   const paymentMode = await pickPaymentMode();
   if (!paymentMode) return;
+  const bookingRowPre = (LAST_DATA.bookings || []).find(b => b.bookingId === bookingId);
+  const waWin = (bookingRowPre && bookingRowPre.mobile) ? waOpen() : null;
   await callAction({ action: 'update_notes', bookingId, notes: 'Customer declined repair after diagnosis — visit charge only, no repair performed.' });
   const result = await callAction({ action: 'mark_done', bookingId, amount, paymentMode });
   if (result.status === 'success') {
-    const bookingRow = (LAST_DATA.bookings || []).find(b => b.bookingId === bookingId);
+    const bookingRow = bookingRowPre || (LAST_DATA.bookings || []).find(b => b.bookingId === bookingId);
     if (bookingRow && bookingRow.mobile) {
       const msg = `Dear ${bookingRow.name}, this is Quickfix Mumbai. Your doorstep diagnostic visit is complete — the diagnostic charge of ₹${amount} has been collected (${paymentMode}). No repair was carried out as agreed. Thank you for choosing us — we're here if you change your mind or need anything else.`;
-      window.open(`https://wa.me/91${bookingRow.mobile}?text=${encodeURIComponent(msg)}`, '_blank');
-    }
+      waGoLink(waWin, bookingRow.mobile, msg);
+    } else if (waWin) { waWin.close(); }
     await loadAdminData();
   } else {
+    if (waWin) waWin.close();
     alert('Could not close this job: ' + (result.message || 'unknown error'));
   }
 }
@@ -644,13 +676,15 @@ async function editRepairProof(bookingId, currentPart, currentTesting) {
 }
 
 async function sendCompletionCode(bookingId, mobile, name) {
+  const waWin = waOpen();
   const result = await callAction({ action: 'generate_completion_code', bookingId });
   if (result.status !== 'success') {
+    if (waWin) waWin.close();
     alert('Could not generate code: ' + (result.message || 'unknown error'));
     return;
   }
   const msg = `Hi ${name}, your Quickfix Mumbai repair is done! Please confirm it here: https://quickfixmumbai.com/confirm-completion.html — your confirmation code is *${result.code}*. This helps us make sure the job was done right.`;
-  window.open(waLink(mobile, msg), '_blank');
+  waGoLink(waWin, mobile, msg);
   await loadAdminData();
 }
 
@@ -672,7 +706,10 @@ async function addManualLead() {
   const problem = prompt('Problem / appliance issue:');
   if (problem === null) return;
   const leadSource = prompt('Lead source: Phone Call / Walk-in / Referral / Other', 'Phone Call') || 'Phone Call';
-  const result = await callAction({ action: 'create_manual_lead', name, mobile, location, problem, leadSource });
+  const contactTime = prompt('When did the customer actually contact you? (e.g. "Today 2:30 PM" / "Yesterday evening" — leave blank for now):', '') || '';
+  const visitDate = prompt('Preferred visit date (e.g. "Tomorrow" / "25 Aug" — leave blank if not fixed yet):', '') || '';
+  const visitTime = prompt('Preferred visit time slot (e.g. "Morning 10-12" / "Evening after 6" — leave blank if not fixed yet):', '') || '';
+  const result = await callAction({ action: 'create_manual_lead', name, mobile, location, problem, leadSource, contactTime, date: visitDate, time: visitTime });
   if (result.status === 'success') {
     alert('Lead added — it now appears in the Pending list below, ready to assign.');
     await loadAdminData();
@@ -826,6 +863,7 @@ function renderBookingRow(b, team) {
       <select onchange="updateVisitStatus('${b.bookingId}', this.value)" title="Visit status">${visitOptions}</select>
       ${!b.checkinTime ? `<button class="secondary small" onclick="doCheckin('${b.bookingId}')">📍 Check-in</button>` : `<span class="small-note">In: ${fmtDate(b.checkinTime)}${b.checkinLocation ? ` — <a href="https://maps.google.com/?q=${encodeURIComponent(b.checkinLocation)}" target="_blank">📍 View on map</a>` : ''}</span>`}
       ${b.checkinTime && !b.checkoutTime ? `<button class="secondary small" onclick="doCheckout('${b.bookingId}')">🚪 Check-out</button>` : ''}
+      ${b.checkoutTime ? `<span class="small-note">Out: ${fmtDate(b.checkoutTime)}${b.checkoutLocation ? ` — <a href="https://maps.google.com/?q=${encodeURIComponent(b.checkoutLocation)}" target="_blank">📍 View on map</a>` : ''}${b.checkinTime ? ` — ⏱ ${jobDuration(b.checkinTime, b.checkoutTime)}` : ''}</span>` : ''}
       <button class="secondary small" onclick="editDiagnosis('${b.bookingId}','${escJs(b.diagnosisNotes)}','${escJs(b.estimateAmount)}')">📋 ${b.diagnosisNotes ? 'Edit' : 'Add'} Diagnosis${b.estimateAmount ? ' — ₹' + escapeHtml(String(b.estimateAmount)) : ''}</button>
       ${approvalLine}
       <button class="secondary small" onclick="editRepairProof('${b.bookingId}','${escJs(b.replacedPart)}','${escJs(b.testingResult)}')">🔧 Repair Proof</button>
@@ -1058,6 +1096,7 @@ async function loadAdminData() {
               <option value="Temporarily Unavailable" ${t.status === 'Temporarily Unavailable' ? 'selected' : ''}>🟡 Temporarily Unavailable</option>
               <option value="Suspended" ${t.status === 'Suspended' ? 'selected' : ''}>🔴 Suspended</option>
             </select>
+            ${t.status === 'Temporarily Unavailable' && t.statusReason ? `<div style="font-size:0.76rem; color:var(--grey-dark); margin-top:3px;">Reason: ${escapeHtml(t.statusReason)}</div>` : ''}
           </td>
         </tr>
       `).join('');

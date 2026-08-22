@@ -9,6 +9,7 @@
 <link rel="manifest" href="manifest-technician.json">
 <meta name="theme-color" content="#1E3A8A">
 <link rel="apple-touch-icon" href="icon-technician-192.png">
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root { --blue: #1E3A8A; --blue-light: #1D4ED8; --green: #16A34A; --red: #DC2626; --grey: #F3F4F6; --border: #D1D5DB; --text: #111827; --grey-dark: #374151; }
@@ -63,7 +64,10 @@ select.visit-select { width: 100%; padding: 10px; border-radius: 8px; border: 1.
 <div id="appScreen" style="display:none;">
   <header>
     <h1 id="welcomeMsg">🔧 Quickfix</h1>
-    <button onclick="techLogout()">Logout</button>
+    <div style="display:flex; gap:6px; align-items:center;">
+      <button id="statusToggleBtn" onclick="toggleAvailability()" style="background:rgba(255,255,255,0.15); border:none; color:#fff; padding:6px 10px; border-radius:6px; font-size:0.76rem; cursor:pointer;">🟢 Active</button>
+      <button onclick="techLogout()">Logout</button>
+    </div>
   </header>
   <div class="tabs">
     <div class="tab active" id="tabLeadsBtn" onclick="switchTab('leads')">Available Leads</div>
@@ -77,12 +81,39 @@ select.visit-select { width: 100%; padding: 10px; border-radius: 8px; border: 1.
 
 <script>
 const scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4zI3hmCRy2V3dGwcUiYjuIe-8GhEyHbehjcnemWcvEzn02XT/exec";
+// Sign up free at onesignal.com -> create a "Web Push" app for quickfixmumbai.com
+// -> Settings -> Keys & IDs -> paste the App ID below. Until this is filled in,
+// push setup silently does nothing and the app works exactly as before
+// (leads still show via the 30s auto-refresh while the app is open).
+const ONESIGNAL_APP_ID = '1d1044fb-9cf8-47b4-946a-5f26096e4463';
+window.OneSignalDeferred = window.OneSignalDeferred || [];
+if (ONESIGNAL_APP_ID.indexOf('PASTE_') !== 0) {
+  OneSignalDeferred.push(function(OneSignal) {
+    OneSignal.init({ appId: ONESIGNAL_APP_ID }).catch(() => {});
+  });
+}
 let techToken = sessionStorage.getItem('qf_tech_token') || '';
 let techName = sessionStorage.getItem('qf_tech_name') || '';
+let techMobile = sessionStorage.getItem('qf_tech_mobile') || '';
+let techStatus = sessionStorage.getItem('qf_tech_status') || 'Active';
 let currentTab = 'leads';
 let pollTimer = null;
 
 function esc(s) { return String(s == null ? '' : s).replace(/</g, '&lt;'); }
+
+// Opens a blank tab RIGHT NOW (synchronously, while still tied to the user's
+// tap) and hands back a reference to redirect later once the WhatsApp message
+// text is ready. Mobile browsers block window.open() called after an `await`
+// (a network round-trip) because by then it's no longer a direct result of
+// the tap — this keeps the tab alive across that gap.
+function waOpen() {
+  try { return window.open('', '_blank'); } catch (e) { return null; }
+}
+function waGo(win, mobile, msg) {
+  const url = `https://wa.me/91${mobile}?text=${encodeURIComponent(msg)}`;
+  if (win && !win.closed) { win.location.href = url; }
+  else { window.open(url, '_blank'); }
+}
 
 async function callAction(payload) {
   try {
@@ -129,8 +160,12 @@ async function techLogin() {
   if (result.status === 'success') {
     techToken = result.techToken;
     techName = result.name;
+    techMobile = mobile;
+    techStatus = 'Active';
     sessionStorage.setItem('qf_tech_token', techToken);
     sessionStorage.setItem('qf_tech_name', techName);
+    sessionStorage.setItem('qf_tech_mobile', techMobile);
+    sessionStorage.setItem('qf_tech_status', techStatus);
     showApp();
   } else {
     errBox.textContent = result.message || 'Login failed.';
@@ -141,16 +176,73 @@ async function techLogin() {
 function techLogout() {
   sessionStorage.removeItem('qf_tech_token');
   sessionStorage.removeItem('qf_tech_name');
-  techToken = ''; techName = '';
+  sessionStorage.removeItem('qf_tech_mobile');
+  sessionStorage.removeItem('qf_tech_status');
+  techToken = ''; techName = ''; techMobile = ''; techStatus = 'Active';
   if (pollTimer) clearInterval(pollTimer);
   document.getElementById('appScreen').style.display = 'none';
   document.getElementById('loginScreen').style.display = 'block';
+}
+
+function setupPushNotifications() {
+  if (ONESIGNAL_APP_ID.indexOf('PASTE_') === 0 || !techMobile) return;
+  OneSignalDeferred.push(async function(OneSignal) {
+    try {
+      await OneSignal.login(techMobile);
+      await OneSignal.User.addTag('role', 'technician');
+      await OneSignal.User.addTag('status', techStatus);
+      if (OneSignal.Notifications.permission !== true) {
+        await OneSignal.Notifications.requestPermission();
+      }
+    } catch (e) { /* push not supported/denied — in-app polling still works */ }
+  });
+}
+
+function renderStatusBtn() {
+  const btn = document.getElementById('statusToggleBtn');
+  if (!btn) return;
+  if (techStatus === 'Temporarily Unavailable') {
+    btn.textContent = '🟡 Unavailable';
+    btn.style.background = 'rgba(250,204,21,0.35)';
+  } else {
+    btn.textContent = '🟢 Active';
+    btn.style.background = 'rgba(255,255,255,0.15)';
+  }
+}
+
+async function toggleAvailability() {
+  const btn = document.getElementById('statusToggleBtn');
+  if (techStatus === 'Active') {
+    const reason = prompt('Marking yourself Temporarily Unavailable — reason (leave / sick / personal / other):');
+    if (reason === null) return;
+    btn.disabled = true;
+    const result = await callAction({ action: 'technician_set_own_status', status: 'Temporarily Unavailable', reason: reason.trim() || 'Not specified' });
+    btn.disabled = false;
+    if (result.status === 'success') {
+      techStatus = 'Temporarily Unavailable';
+      sessionStorage.setItem('qf_tech_status', techStatus);
+      OneSignalDeferred.push(OneSignal => OneSignal.User.addTag('status', techStatus).catch(() => {}));
+    } else { alert(result.message || 'Could not update status.'); }
+  } else {
+    btn.disabled = true;
+    const result = await callAction({ action: 'technician_set_own_status', status: 'Active' });
+    btn.disabled = false;
+    if (result.status === 'success') {
+      techStatus = 'Active';
+      sessionStorage.setItem('qf_tech_status', techStatus);
+      OneSignalDeferred.push(OneSignal => OneSignal.User.addTag('status', techStatus).catch(() => {}));
+    } else { alert(result.message || 'Could not update status.'); }
+  }
+  renderStatusBtn();
+  loadLeads();
 }
 
 function showApp() {
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('appScreen').style.display = 'block';
   document.getElementById('welcomeMsg').textContent = '🔧 ' + techName;
+  renderStatusBtn();
+  setupPushNotifications();
   loadLeads();
   loadJobs();
   if (pollTimer) clearInterval(pollTimer);
@@ -199,6 +291,7 @@ async function loadLeads() {
 
 async function acceptLead(bookingId, btn) {
   btn.disabled = true; btn.textContent = 'Accepting...';
+  const waWin = waOpen();
   const result = await callAction({ action: 'accept_lead', bookingId: bookingId });
   if (result.status === 'success') {
     switchTab('jobs');
@@ -211,9 +304,10 @@ async function acceptLead(bookingId, btn) {
     const visitLine = (result.preferredDate || result.timeSlot) ? ` around ${result.preferredDate || ''} ${result.timeSlot || ''}`.trim() : ' shortly';
     const msg = `Dear ${result.customerName}, this is Quickfix Mumbai. Your technician *${result.techName}* will visit you${visitLine}. Feel free to call/message if needed. Thank you for choosing us!`;
     if (result.customerMobile) {
-      window.open(`https://wa.me/91${result.customerMobile}?text=${encodeURIComponent(msg)}`, '_blank');
-    }
+      waGo(waWin, result.customerMobile, msg);
+    } else if (waWin) { waWin.close(); }
   } else {
+    if (waWin) waWin.close();
     alert(result.message || 'Could not accept this lead.');
     btn.disabled = false; btn.textContent = '✅ Accept This Lead';
     loadLeads();
@@ -314,21 +408,21 @@ async function updateVisitStatus(bookingId, visitStatus) {
   loadJobs();
 }
 
-async function doCheckin(bookingId) {
-  // One-time location snapshot at the moment of check-in — not continuous
+async function getGpsSnapshot() {
+  // One-time location snapshot at the moment of the tap — not continuous
   // live tracking (that needs the app open in the foreground the whole time
-  // and isn't reliable via a website), just proof of where they were when
-  // they marked themselves as reached.
-  let lat = null, lng = null;
-  if (navigator.geolocation) {
-    try {
-      const pos = await new Promise((resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 8000 });
-      });
-      lat = pos.coords.latitude;
-      lng = pos.coords.longitude;
-    } catch (e) { /* location denied/unavailable — check in without it, that's fine */ }
-  }
+  // and isn't reliable via a website), just proof of where they were.
+  if (!navigator.geolocation) return { lat: null, lng: null };
+  try {
+    const pos = await new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 8000 });
+    });
+    return { lat: pos.coords.latitude, lng: pos.coords.longitude };
+  } catch (e) { return { lat: null, lng: null }; }
+}
+
+async function doCheckin(bookingId) {
+  const { lat, lng } = await getGpsSnapshot();
   const result = await callAction({ action: 'checkin', bookingId, lat, lng });
   if (result.status !== 'success') alert(result.message || 'Could not check in.');
   loadJobs();
@@ -370,11 +464,14 @@ async function collectVisitChargeOnly(bookingId, name, mobile) {
   if (amount === null) return;
   const paymentMode = await pickPaymentMode();
   if (!paymentMode) return;
-  const result = await callAction({ action: 'mark_done', bookingId, amount, paymentMode });
+  const { lat, lng } = await getGpsSnapshot();
+  const waWin = mobile ? waOpen() : null;
+  const result = await callAction({ action: 'mark_done', bookingId, amount, paymentMode, lat, lng });
   if (result.status === 'success') {
     const msg = `Dear ${name}, this is Quickfix Mumbai. Your doorstep diagnostic visit is complete — the diagnostic charge of ₹${amount} has been collected (${paymentMode}). No repair was carried out as agreed. Thank you for choosing us!`;
-    if (mobile) window.open(`https://wa.me/91${mobile}?text=${encodeURIComponent(msg)}`, '_blank');
+    if (mobile) waGo(waWin, mobile, msg);
   } else {
+    if (waWin) waWin.close();
     alert(result.message || 'Could not close this job.');
   }
   loadJobs();
@@ -386,15 +483,18 @@ async function markJobDone(bookingId) {
   const paymentMode = await pickPaymentMode();
   if (!paymentMode) return;
   if (!confirm('Mark this job as fully done? This finalizes the warranty period.')) return;
-  const result = await callAction({ action: 'mark_done', bookingId, amount, paymentMode });
+  const jobRow = (window.LAST_JOBS || []).find(j => j.bookingId === bookingId);
+  const { lat, lng } = await getGpsSnapshot();
+  const waWin = (jobRow && jobRow.mobile) ? waOpen() : null;
+  const result = await callAction({ action: 'mark_done', bookingId, amount, paymentMode, lat, lng });
   if (result.status === 'success') {
     // Look up the customer's mobile/name from the jobs already loaded on this page
-    const jobRow = (window.LAST_JOBS || []).find(j => j.bookingId === bookingId);
     if (jobRow && jobRow.mobile && result.warrantyCode) {
       const msg = `Dear ${jobRow.name}, your Quickfix Mumbai repair is complete! Your warranty code is *${result.warrantyCode}* — save this. To check your warranty anytime, visit https://quickfixmumbai.com/check-warranty.html with your mobile number and this code.\n\nHow was your experience? Rate us in one tap: https://quickfixmumbai.com/rate-us.html?id=${bookingId}\n\nThank you for choosing us!`;
-      window.open(`https://wa.me/91${jobRow.mobile}?text=${encodeURIComponent(msg)}`, '_blank');
-    }
+      waGo(waWin, jobRow.mobile, msg);
+    } else if (waWin) { waWin.close(); }
   } else {
+    if (waWin) waWin.close();
     alert(result.message || 'Could not mark job done.');
   }
   loadJobs();
