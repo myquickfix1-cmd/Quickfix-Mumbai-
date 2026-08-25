@@ -6,7 +6,9 @@
 <meta name="description" content="Appliance repair on Altamount Road - Fridge, AC, Washing Machine & all 13 services for premium homes. Same-day discreet service near Kemps Corner, Tardeo. Call +91 98198 32282.">
 <title>Appliance Repair in Altamount Road Mumbai | 24x7 Premium Service | Quickfix</title>
 <link rel="canonical" href="https://quickfixmumbai.com/altamount-road-appliance-repair.html">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" as="style" onload="this.rel='stylesheet'">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -196,7 +198,7 @@ footer span { color: var(--white); }
       "name": "Mera imported AC PCB fault de raha hai, fix hoga?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Bilkul! Chip-level PCB diagnosis karte hain, world-class imported models ke liye bhi solutions hain, on-site diagnose kar ke exact cost batate hain."
+        "text": "Bilkul! Accurate PCB fault diagnosis karte hain, world-class imported models ke liye bhi solutions hain, on-site diagnose kar ke exact cost batate hain."
       }
     },
     {
@@ -302,13 +304,18 @@ footer span { color: var(--white); }
         <input type="tel" id="custMobile" placeholder="Enter 10 digit number" maxlength="10" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
     <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Date:</label>
         <input type="date" id="custDate" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Time Slot:</label>
+    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Time Slot: <span style="font-weight:400; opacity:0.85;">(Open Every Slot, 7 AM – 11 PM)</span></label>
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
-            <div class="time-slot-btn" data-slot="Slot 1 (9:00 AM - 12:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Slot 1<br>9-12</div>
-                <div class="time-slot-btn" data-slot="Slot 2 (12:00 PM - 3:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Slot 2<br>12-3</div>
-                <div class="time-slot-btn" data-slot="Slot 3 (3:00 PM - 6:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Slot 3<br>3-6</div>
-                <div class="time-slot-btn" data-slot="Slot 4 (6:00 PM - 9:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Slot 4<br>6-9</div>
+            <div class="time-slot-btn" data-slot="Slot 1 (7:00 AM - 9:00 AM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">7-9<br>AM</div>
+                <div class="time-slot-btn" data-slot="Slot 2 (9:00 AM - 11:00 AM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">9-11<br>AM</div>
+                <div class="time-slot-btn" data-slot="Slot 3 (11:00 AM - 1:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">11-1<br>Noon</div>
+                <div class="time-slot-btn" data-slot="Slot 4 (1:00 PM - 3:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">1-3<br>PM</div>
+                <div class="time-slot-btn" data-slot="Slot 5 (3:00 PM - 5:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">3-5<br>PM</div>
+                <div class="time-slot-btn" data-slot="Slot 6 (5:00 PM - 7:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">5-7<br>PM</div>
+                <div class="time-slot-btn" data-slot="Slot 7 (7:00 PM - 9:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">7-9<br>PM</div>
+                <div class="time-slot-btn" data-slot="Slot 8 (9:00 PM - 11:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">9-11<br>PM</div>
         </div>
+        <div class="time-slot-btn" data-slot="Emergency — Priority Visit, Available Now (₹999)" onclick="selectSlot(this)" style="margin-top: 8px; padding: 10px 6px; text-align: center; border: 2px solid #FCA5A5; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 700; color: #991B1B; background: #FEE2E2;">🚨 Emergency — Available Now (₹999)</div>
         <input type="hidden" id="custSlot" value=""></div>
     <div id="bookFormError" style="min-height: 20px; color: #FCA5A5; font-size: 13px; margin-bottom: 8px; text-align: center;"></div>
     <div style="text-align: center;"><button onclick="sendBookingToSheets()" id="bookBtn" style="width: 100%; padding: 14px; background: #25D366; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">🚀 Book Now</button></div>
@@ -478,7 +485,7 @@ footer span { color: var(--white); }
     <div class="faq-item"><div class="faq-q">High-security buildings mein entry milti hai technician ko?</div><div class="faq-a">Haan, security protocols follow karte hain, technician ID aur appointment details building security ko deta hai entry ke liye.</div></div>
     <div class="faq-item"><div class="faq-q">Raat ko bhi book kar sakte hai Altamount Road ke paas?</div><div class="faq-a">Haan, genuinely 24x7 hain! Raat ko bhi call ya message karo, emergency slot bhi hai.</div></div>
     <div class="faq-item"><div class="faq-q">AMC plan milta hai is area ke liye?</div><div class="faq-a">Bilkul milta hai! Premium homes ke liye yearly plan especially helpful hai, multiple high-end appliances ek plan mein cover.</div></div>
-    <div class="faq-item"><div class="faq-q">Mera imported AC PCB fault de raha hai, fix hoga?</div><div class="faq-a">Bilkul! Chip-level PCB diagnosis karte hain, world-class imported models ke liye bhi solutions hain, on-site diagnose kar ke exact cost batate hain.</div></div>
+    <div class="faq-item"><div class="faq-q">Mera imported AC PCB fault de raha hai, fix hoga?</div><div class="faq-a">Bilkul! Accurate PCB fault diagnosis karte hain, world-class imported models ke liye bhi solutions hain, on-site diagnose kar ke exact cost batate hain.</div></div>
     <div class="faq-item"><div class="faq-q">Carmichael Road ya Pedder Road ke bungalows mein bhi service hoti hai?</div><div class="faq-a">Haan, regularly! Carmichael Road aur Pedder Road ki sab bungalows aur high-rises mein service dete hain.</div></div>
     <div class="faq-item"><div class="faq-q">Fridge repair ka kharcha kitna aata hai is area mein?</div><div class="faq-a">Zyada tar ₹600 se ₹4000 ke beech, ultra-premium model ke hisab se thoda zyada bhi ho sakta hai — final price confirm karte hain pehle.</div></div>
     <div class="faq-item"><div class="faq-q">Spare parts khud arrange karne padenge premium models ke liye?</div><div class="faq-a">Common parts technician hi lekar aata hai. Rare imported parts kabhi-kabhi order karna padta hai, time pehle bata dete hain.</div></div>
