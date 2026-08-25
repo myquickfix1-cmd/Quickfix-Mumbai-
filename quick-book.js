@@ -1,10 +1,14 @@
 (function(){
   var PHONE = '919819832282';
   var SLOTS = [
-    { label: 'Morning', time: '9 AM - 12 PM' },
-    { label: 'Midday', time: '12 PM - 3 PM' },
-    { label: 'Afternoon', time: '3 PM - 6 PM' },
-    { label: 'Evening', time: '6 PM - 9 PM' }
+    { label: '7-9 AM', time: '7:00 AM - 9:00 AM' },
+    { label: '9-11 AM', time: '9:00 AM - 11:00 AM' },
+    { label: '11-1', time: '11:00 AM - 1:00 PM' },
+    { label: '1-3 PM', time: '1:00 PM - 3:00 PM' },
+    { label: '3-5 PM', time: '3:00 PM - 5:00 PM' },
+    { label: '5-7 PM', time: '5:00 PM - 7:00 PM' },
+    { label: '7-9 PM', time: '7:00 PM - 9:00 PM' },
+    { label: '9-11 PM', time: '9:00 PM - 11:00 PM' }
   ];
 
   function buildSlotUrl(slot, appliance, problem) {
@@ -15,7 +19,7 @@
 
   function buildEmergencyUrl(appliance, problem) {
     var applianceText = appliance ? (appliance + (problem ? ' - ' + problem : '') + ' has a problem') : 'My appliance has a problem';
-    var msg = 'Hello, this is an EMERGENCY. ' + applianceText + ' and I need a technician urgently (priority visit). I am from ';
+    var msg = 'Hello, this is an EMERGENCY. ' + applianceText + ' and I need a technician urgently (priority visit, \u20B9999). I am from ';
     return 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg);
   }
 
@@ -42,7 +46,7 @@
       html += '<a class="qf-slot-btn" href="' + buildSlotUrl(slot, appliance, problem) + '" target="_blank">' + slot.label + '<br>' + slot.time + '</a>';
     });
     html += '</div>' +
-      '<a class="qf-emergency-btn" href="' + buildEmergencyUrl(appliance, problem) + '" target="_blank">\uD83D\uDEA8 Emergency? Priority visit (extra charge)</a>';
+      '<a class="qf-emergency-btn" href="' + buildEmergencyUrl(appliance, problem) + '" target="_blank">\uD83D\uDEA8 Emergency? Priority Visit \u2014 Available Now (\u20B9999)</a>';
     el.innerHTML = html;
     el.classList.add('qf-quickbook');
   }
