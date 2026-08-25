@@ -89,7 +89,16 @@ const ONESIGNAL_APP_ID = '1d1044fb-9cf8-47b4-946a-5f26096e4463';
 window.OneSignalDeferred = window.OneSignalDeferred || [];
 if (ONESIGNAL_APP_ID.indexOf('PASTE_') !== 0) {
   OneSignalDeferred.push(function(OneSignal) {
-    OneSignal.init({ appId: ONESIGNAL_APP_ID }).catch(() => {});
+    OneSignal.init({
+      appId: ONESIGNAL_APP_ID,
+      // sw.js is the SAME file registered by the PWA install code below (via
+      // importScripts, see sw.js) — without pointing OneSignal at it explicitly,
+      // the SDK tries to auto-register its own default file (/OneSignalSDKWorker.js),
+      // which doesn't exist on this site, so the browser never actually subscribes
+      // for push and notifications silently never arrive even though appId is correct.
+      serviceWorkerPath: 'sw.js',
+      serviceWorkerParam: { scope: '/' }
+    }).catch(() => {});
   });
 }
 let techToken = sessionStorage.getItem('qf_tech_token') || '';

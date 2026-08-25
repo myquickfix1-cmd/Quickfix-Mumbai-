@@ -7,7 +7,9 @@
 <title>Appliance Repair in Shivaji Nagar Mumbai | 24x7 Same-Day Service | Quickfix</title>
 <link rel="canonical" href="https://quickfixmumbai.com/shivaji-nagar-appliance-repair.html">
 <link rel="icon" type="image/png" href="icon-192.png">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" as="style" onload="this.rel='stylesheet'">
 
 <script type="application/ld+json">
 {
@@ -202,7 +204,7 @@ footer span { color: var(--white); }
       "name": "Fridge cooling nahi kar raha but compressor chal raha hai, PCB fault ho sakta hai?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Haan, ye common hai — compressor sahi chal raha ho phir bhi cooling na ho toh control board (PCB) ka relay ya sensor circuit fault ho sakta hai. Poora board replace karne se pehle chip-level diagnose karte hain."
+        "text": "Haan, ye common hai — compressor sahi chal raha ho phir bhi cooling na ho toh control board (PCB) ka relay ya sensor circuit fault ho sakta hai. Poora board replace karne se pehle exact fault diagnose karte hain."
       }
     },
     {
@@ -308,13 +310,18 @@ footer span { color: var(--white); }
         <input type="tel" id="custMobile" placeholder="Enter 10 digit number" maxlength="10" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
     <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Date:</label>
         <input type="date" id="custDate" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Time Slot:</label>
+    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Time Slot: <span style="font-weight:400; opacity:0.85;">(Open Every Slot, 7 AM – 11 PM)</span></label>
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
-            <div class="time-slot-btn" data-slot="Slot 1 (9:00 AM - 12:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Slot 1<br>9-12</div>
-                <div class="time-slot-btn" data-slot="Slot 2 (12:00 PM - 3:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Slot 2<br>12-3</div>
-                <div class="time-slot-btn" data-slot="Slot 3 (3:00 PM - 6:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Slot 3<br>3-6</div>
-                <div class="time-slot-btn" data-slot="Slot 4 (6:00 PM - 9:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">Slot 4<br>6-9</div>
+            <div class="time-slot-btn" data-slot="Slot 1 (7:00 AM - 9:00 AM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">7-9<br>AM</div>
+                <div class="time-slot-btn" data-slot="Slot 2 (9:00 AM - 11:00 AM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">9-11<br>AM</div>
+                <div class="time-slot-btn" data-slot="Slot 3 (11:00 AM - 1:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">11-1<br>Noon</div>
+                <div class="time-slot-btn" data-slot="Slot 4 (1:00 PM - 3:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">1-3<br>PM</div>
+                <div class="time-slot-btn" data-slot="Slot 5 (3:00 PM - 5:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">3-5<br>PM</div>
+                <div class="time-slot-btn" data-slot="Slot 6 (5:00 PM - 7:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">5-7<br>PM</div>
+                <div class="time-slot-btn" data-slot="Slot 7 (7:00 PM - 9:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">7-9<br>PM</div>
+                <div class="time-slot-btn" data-slot="Slot 8 (9:00 PM - 11:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">9-11<br>PM</div>
         </div>
+        <div class="time-slot-btn" data-slot="Emergency — Priority Visit, Available Now (₹999)" onclick="selectSlot(this)" style="margin-top: 8px; padding: 10px 6px; text-align: center; border: 2px solid #FCA5A5; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 700; color: #991B1B; background: #FEE2E2;">🚨 Emergency — Available Now (₹999)</div>
         <input type="hidden" id="custSlot" value=""></div>
     <div id="bookFormError" style="min-height: 20px; color: #FCA5A5; font-size: 13px; margin-bottom: 8px; text-align: center;"></div>
     <div style="text-align: center;"><button onclick="sendBookingToSheets()" id="bookBtn" style="width: 100%; padding: 14px; background: #25D366; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">🚀 Book Now</button></div>
@@ -391,7 +398,7 @@ footer span { color: var(--white); }
       <h2 class="section-title">Real Repair, Right Here in Shivaji Nagar</h2>
     </div>
     <div style="max-width: 500px; margin: 0 auto; border-radius: 14px; overflow: hidden; border: 1.5px solid var(--border);">
-      <img src="lg-no-power-diagnostic-ghatkopar-west.webp" alt="LG appliance diagnostic check — technician testing power supply" style="width: 100%; height: 320px; object-fit: cover; display: block;" loading="lazy">
+      <img src="lg-no-power-diagnostic-ghatkopar-west.webp" alt="LG appliance diagnostic check — technician testing power supply" style="width: 100%; height: 320px; object-fit: contain; display: block; background: #F3F4F6;" loading="lazy">
     </div>
   </div>
 </section>
@@ -456,7 +463,7 @@ footer span { color: var(--white); }
     <div class="faq-item"><div class="faq-q">Company warranty khatam ho gayi hai, ab kya karu?</div><div class="faq-a">Koi tension nahi — hum out-of-warranty appliances bhi genuine parts aur apni 3-month warranty ke saath repair karte hain, company se sasta aur jaldi.</div></div>
     <div class="faq-item"><div class="faq-q">Spare parts khud arrange karne padenge?</div><div class="faq-a">Common parts technician hi lekar aata hai. Premium model ka rare part ho toh thoda order karna padta hai, baaki ready rehta hai.</div></div>
     <div class="faq-item"><div class="faq-q">Bhai mera washing machine spin hi nahi kar raha, fix hoga?</div><div class="faq-a">Bilkul fix hoga! Motor capacitor weak hona, drive belt loose ya damaged hona, door lock sensor fault, ya control board (PCB) ka signal na dena — sab possible causes hain. Technician on-spot diagnose karke sahi fix karega.</div></div>
-    <div class="faq-item"><div class="faq-q">Fridge cooling nahi kar raha but compressor chal raha hai, PCB fault ho sakta hai?</div><div class="faq-a">Haan, ye common hai — compressor sahi chal raha ho phir bhi cooling na ho toh control board (PCB) ka relay ya sensor circuit fault ho sakta hai. Poora board replace karne se pehle chip-level diagnose karte hain.</div></div>
+    <div class="faq-item"><div class="faq-q">Fridge cooling nahi kar raha but compressor chal raha hai, PCB fault ho sakta hai?</div><div class="faq-a">Haan, ye common hai — compressor sahi chal raha ho phir bhi cooling na ho toh control board (PCB) ka relay ya sensor circuit fault ho sakta hai. Poora board replace karne se pehle exact fault diagnose karte hain.</div></div>
     <div class="faq-item"><div class="faq-q">Microwave garam nahi kar raha, sirf ghoom raha hai — ye normal hai?</div><div class="faq-a">Nahi, ye magnetron ka issue hai zyada tar. Plate ghumti hai but heating nahi hoti — humse contact karo, same-day check ho jayega.</div></div>
     <div class="faq-item"><div class="faq-q">Dishwasher mein utensil clean nahi ho rahe, fix ho jayega?</div><div class="faq-a">Haan, zyada tar spray arm block hota hai ya detergent issue hota hai. Technician check kar ke same visit mein fix kar dega.</div></div>
     <div class="faq-item"><div class="faq-q">Dryer kapde sukha hi nahi raha, problem kya ho sakti hai?</div><div class="faq-a">Heating element burn hua hoga ya vent block hoga. Ek visit mein dekh lete hain, zyada tar same-day solve ho jata hai.</div></div>

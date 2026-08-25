@@ -3,6 +3,14 @@
 // Abhi ke liye simple caching karta hai taaki site thoda tez khule aur
 // install prompt browsers ko dikhe.
 
+// OneSignal push notifications (technician "new lead" alerts even when the
+// app is closed) share this SAME service worker — OneSignal's own worker file
+// is pulled in here instead of registering a second one, since a page can
+// only have one active service worker per scope. Safe to leave this line in
+// even before the OneSignal account is set up — it just does nothing until
+// then.
+importScripts('https://cdn.onesignal.com/sdks/web/v16/tools/OneSignalSDKWorker.js');
+
 const CACHE_NAME = 'quickfix-cache-v1';
 const urlsToCache = [
   '/index.html',
