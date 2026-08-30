@@ -353,7 +353,7 @@ function renderStepTracker(bookingId, currentStatus) {
     VISIT_STATUSES.map((s, i) => {
       const done = i <= currentIndex;
       return `<div onclick="updateVisitStatus('${bookingId}','${s}')" style="display:flex; align-items:center; gap:8px; padding:6px 10px; border-radius:8px; cursor:pointer; background:${done ? '#F0FDF4' : '#F9FAFB'}; font-size:0.85rem; font-weight:${i === currentIndex ? '700' : '500'}; color:${done ? '#166534' : '#6B7280'};">
-        <span>${done ? '✅' : '⬜'}</span><span>${s}</span>
+        <span>${done ? '✅' : '⬜'}</span><span style="font-weight:800; min-width:16px;">${i + 1}.</span><span>${s}</span>
       </div>`;
     }).join('') + `</div>`;
 }
@@ -421,13 +421,16 @@ async function getGpsSnapshot() {
   // One-time location snapshot at the moment of the tap — not continuous
   // live tracking (that needs the app open in the foreground the whole time
   // and isn't reliable via a website), just proof of where they were.
-  if (!navigator.geolocation) return { lat: null, lng: null };
+  // locationOff tells the caller whether GPS was actually available, so
+  // job-done can warn the technician and the office can see it in the sheet
+  // (Checkout GPS Status column) rather than it silently going unrecorded.
+  if (!navigator.geolocation) return { lat: null, lng: null, locationOff: true };
   try {
     const pos = await new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 8000 });
     });
-    return { lat: pos.coords.latitude, lng: pos.coords.longitude };
-  } catch (e) { return { lat: null, lng: null }; }
+    return { lat: pos.coords.latitude, lng: pos.coords.longitude, locationOff: false };
+  } catch (e) { return { lat: null, lng: null, locationOff: true }; }
 }
 
 async function doCheckin(bookingId) {
@@ -473,7 +476,8 @@ async function collectVisitChargeOnly(bookingId, name, mobile) {
   if (amount === null) return;
   const paymentMode = await pickPaymentMode();
   if (!paymentMode) return;
-  const { lat, lng } = await getGpsSnapshot();
+  const { lat, lng, locationOff } = await getGpsSnapshot();
+  if (locationOff && !confirm('⚠️ Your location is OFF. Please turn on GPS so this closes with location proof.\n\nContinue anyway without location? (This will be logged.)')) return;
   const waWin = mobile ? waOpen() : null;
   const result = await callAction({ action: 'mark_done', bookingId, amount, paymentMode, lat, lng });
   if (result.status === 'success') {
@@ -491,9 +495,12 @@ async function markJobDone(bookingId) {
   if (amount === null) return;
   const paymentMode = await pickPaymentMode();
   if (!paymentMode) return;
+  const { lat, lng, locationOff } = await getGpsSnapshot();
+  if (locationOff) {
+    if (!confirm('⚠️ Your location is OFF. Please turn on GPS so this job closes with location proof.\n\nContinue anyway without location? (This will be logged.)')) return;
+  }
   if (!confirm('Mark this job as fully done? This finalizes the warranty period.')) return;
   const jobRow = (window.LAST_JOBS || []).find(j => j.bookingId === bookingId);
-  const { lat, lng } = await getGpsSnapshot();
   const waWin = (jobRow && jobRow.mobile) ? waOpen() : null;
   const result = await callAction({ action: 'mark_done', bookingId, amount, paymentMode, lat, lng });
   if (result.status === 'success') {
