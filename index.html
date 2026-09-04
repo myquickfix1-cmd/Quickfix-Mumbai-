@@ -418,8 +418,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="offer-box">
     <div class="offer-badge">✓ TRANSPARENT DOORSTEP PRICING</div>
     <h2 class="offer-title">Doorstep Technician Visit & Expert Diagnosis</h2>
-    <div class="offer-price">499 <span style="font-size:0.95rem; font-weight:600; opacity:0.85;">Standard Visit</span></div>
-    <div style="margin-top:6px; font-size:1.15rem; font-weight:800; color:#F59E0B;">999 <span style="font-size:0.85rem; font-weight:600; opacity:0.9;">Emergency / Priority Visit</span></div>
+    <div class="offer-price">₹499 <span style="font-size:0.95rem; font-weight:600; opacity:0.85;">Standard Visit</span></div>
+    <div style="margin-top:6px; font-size:1.15rem; font-weight:800; color:#F59E0B;">₹999 <span style="font-size:0.85rem; font-weight:600; opacity:0.9;">Emergency / Priority Visit</span></div>
     <div class="offer-list">
       ✔ Professional Diagnosis<br>
       ✔ Genuine Repairs<br>
@@ -461,37 +461,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="refrigerator-repair.html" class="service-card">
       <div class="service-emoji">1</div>
       <div class="service-title">Refrigerator Repair</div>
-      <p class="service-desc">Refrigerator won't turn on, completely dead fridge / No Power, Low cooling, Excess cooling in refrigerator compartment, Fridge not cooling, compressor failure, Leakage from front/back side, ice maker issues, Blinking/Showing error on display — expert repair for all brands.</p>
+      <p class="service-desc">Not cooling, PCB fault, compressor not starting, water leakage, ice maker not working, unusual noise/vibration, doesn't start/no power/dead fridge & more. Error codes: LG Er 22/Er dH/Er CO, Samsung 22E/4E/84E, Whirlpool E2/F2, Bosch E20/F1 — normal to highly technical PCB & compressor faults, all covered.</p>
       <span class="service-link">View Repair Details →</span>
     </a>
     <a href="washing-machine-repair.html" class="service-card">
       <div class="service-emoji">2</div>
       <div class="service-title">Washing Machine Repair</div>
-      <p class="service-desc">WM not washing, not spinning, not draining, leaking water — front load and top load repair.</p>
+      <p class="service-desc">Not spinning, not draining, door lock/sensor fault, water leakage, PCB/control board fault, excessive vibration, doesn't start/no power/dead machine & more. Error codes: 4E/IE, OE/E18/5C-SUD, dE/dC/UE, F05/E02, F03/E01 — normal to highly technical motor & PCB faults, all covered.</p>
       <span class="service-link">View Repair Details →</span>
     </a>
     <a href="microwave-repair.html" class="service-card">
       <div class="service-emoji">3</div>
       <div class="service-title">Microwave Repair</div>
-      <p class="service-desc">Microwave not heating, dead, buttons not working, magnetron replacement — expert oven repair.</p>
+      <p class="service-desc">Not heating, magnetron fault, no display/no power, sparking inside, turntable not rotating, door not closing properly, keypad not responding, uneven heating & more — normal to highly technical magnetron & PCB diagnosis, all covered.</p>
       <span class="service-link">View Repair Details →</span>
     </a>
     <a href="dishwasher-repair.html" class="service-card">
       <div class="service-emoji">4</div>
       <div class="service-title">Dishwasher Repair</div>
-      <p class="service-desc">Dishwasher not washing, not draining, door latch broken — professional dishwasher service.</p>
+      <p class="service-desc">Not washing properly, not draining, water leakage, door latch broken, doesn't start, cloudy dishes, unusual noise, bad odour & more. Error codes: E24/5C-5E/OE, E15/LC-LE, 4C/4E — normal to highly technical pump & PCB faults, all covered.</p>
       <span class="service-link">View Repair Details →</span>
     </a>
     <a href="dryer-repair.html" class="service-card">
       <div class="service-emoji">5</div>
       <div class="service-title">Cloth Dryer Repair</div>
-      <p class="service-desc">Dryer not heating, not drying clothes, drum not spinning — fast cloth dryer repair service.</p>
+      <p class="service-desc">Not heating, not drying clothes fully, drum not spinning, burning smell, excessive noise, doesn't start, overheating, door not latching & more — normal heating-element faults to highly technical motor & PCB diagnosis, all covered.</p>
       <span class="service-link">View Repair Details →</span>
     </a>
     <a href="air-dresser-repair.html" class="service-card">
       <div class="service-emoji">6</div>
       <div class="service-title">Premium Air Dresser Repair</div>
-      <p class="service-desc">Air dresser not steaming, not drying, door issues — premium garment care appliance repair.</p>
+      <p class="service-desc">Not steaming, not drying properly, door not closing/sealing, control panel fault, water tank sensor error, unusual noise, odour not removed, not powering on & more — normal to highly technical steam-generator & PCB diagnosis, all covered.</p>
       <span class="service-link">View Repair Details →</span>
     </a>
     <a href="amc-service.html" class="service-card">
@@ -1117,6 +1117,11 @@ async function submitReview(){
   if(!name || !text || selectedRating === 0){
     msgEl.textContent = 'Please add your name, a star rating, and your review.';
     msgEl.className = 'review-msg';
+    msgEl.style.color = '#DC2626';
+    return;
+  }
+  if(text.length < 15){
+    msgEl.textContent = 'Please add a few more words about your experience (min 15 characters).';
     msgEl.style.color = '#DC2626';
     return;
   }

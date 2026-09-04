@@ -684,6 +684,7 @@ async function submitReview(){
   const text = document.getElementById('reviewText').value.trim();
   const msgEl = document.getElementById('reviewMsg');
   if(!name || !text || selectedRating === 0){ msgEl.textContent = 'Please add your name, a star rating, and your review.'; msgEl.style.color = '#DC2626'; return; }
+  if(text.length < 15){ msgEl.textContent = 'Please add a few more words about your experience (min 15 characters).'; msgEl.style.color = '#DC2626'; return; }
   try{
     await fetch(scriptUrl, { method: "POST", mode: "no-cors", cache: "no-cache", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ formType: "review", name, area, text, rating: selectedRating }) });
