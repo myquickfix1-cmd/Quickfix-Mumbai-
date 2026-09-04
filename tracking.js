@@ -1,7 +1,7 @@
 (function () {
   try {
     var page = location.pathname.replace(/^\//, '') || 'index.html';
-    var scriptUrl = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4zI3hmCRy2V3dGwcUiYjuIe-8GhEyHbehjcnemWcvEzn02XT/exec";
+    var scriptUrl = "https://script.google.com/macros/s/AKfycbw1gTmX67ucMFe3oFmHecTTeSsffXvJ78ToGC51VXcgJyqQisAuIFpt30UxepI3swXH/exec";
     fetch(scriptUrl, {
       method: 'POST',
       mode: 'no-cors',
