@@ -16,7 +16,7 @@
    ============================================================ */
 
 (function () {
-  var PHOTO_API_URL = "https://script.google.com/macros/s/AKfycbw1gTmX67ucMFe3oFmHecTTeSsffXvJ78ToGC51VXcgJyqQisAuIFpt30UxepI3swXH/exec";
+  var PHOTO_API_URL = "https://script.google.com/macros/s/AKfycbyO3lriVfgXtiJ2x51X4zI3hmCRy2V3dGwcUiYjuIe-8GhEyHbehjcnemWcvEzn02XT/exec";
 
   function getPageSlug() {
     var path = window.location.pathname.split("/").pop();
