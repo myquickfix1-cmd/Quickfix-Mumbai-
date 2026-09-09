@@ -74,6 +74,7 @@ input, select, textarea { padding: 8px 10px; border-radius: 6px; border: 1px sol
 .modal-box .photo-preview.show { display: block; }
 .modal-btns { display: flex; gap: 10px; margin-top: 20px; }
 .modal-btns button { flex: 1; }
+.modal-box label.first { margin-top: 0; }
 </style>
 </head>
 <body>
@@ -93,7 +94,7 @@ input, select, textarea { padding: 8px 10px; border-radius: 6px; border: 1px sol
 <div id="dashboardContent" style="display: none;">
   <div class="header">
     <h2 style="color: var(--dark);">🏢 Quickfix Mumbai — Admin Dashboard</h2>
-    <button class="success" style="margin: 8px 0 4px;" onclick="addManualLead()">☎️ + Add Lead from Phone Call</button>
+    <button class="success" style="margin: 8px 0 4px;" onclick="openAddLeadModal()">☎️ + Add Lead from Phone Call</button>
     <div style="display:flex; gap:8px;">
       <button class="secondary" onclick="loadAdminData()">🔄 Refresh</button>
       <button class="danger" onclick="logoutAdmin()">Logout</button>
@@ -191,6 +192,45 @@ input, select, textarea { padding: 8px 10px; border-radius: 6px; border: 1px sol
       <thead><tr><th>Received</th><th>Name</th><th>Area</th><th>Specialization</th><th>Experience</th><th>Contact</th><th>Notes</th></tr></thead>
       <tbody id="technicians-body"></tbody>
     </table>
+  </div>
+</div>
+
+<div class="modal-overlay" id="addLeadModal">
+  <div class="modal-box">
+    <h3>☎️ Add Lead from Phone Call</h3>
+
+    <label class="first">Customer Name *</label>
+    <input type="text" id="leadName" placeholder="e.g. Rahul Sharma">
+
+    <label>Mobile Number *</label>
+    <input type="tel" id="leadMobile" placeholder="10-digit mobile" inputmode="numeric" maxlength="10">
+
+    <label>Location / Address *</label>
+    <input type="text" id="leadLocation" placeholder="e.g. Andheri West, near station">
+
+    <label>Problem / Appliance Issue *</label>
+    <textarea id="leadProblem" rows="2" placeholder="e.g. Refrigerator - not cooling"></textarea>
+
+    <label>Lead Source</label>
+    <select id="leadSource">
+      <option value="Phone Call">Phone Call</option>
+      <option value="Walk-in">Walk-in</option>
+      <option value="Referral">Referral</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label>Preferred Visit Date <span class="small-note">(optional)</span></label>
+    <input type="text" id="leadDate" placeholder="e.g. Tomorrow / 25 Aug">
+
+    <label>Preferred Visit Time Slot <span class="small-note">(optional)</span></label>
+    <input type="text" id="leadTime" placeholder="e.g. Morning 10-12">
+
+    <p id="leadModalError" style="color: var(--danger); font-size: 0.82rem; margin-top: 10px;"></p>
+
+    <div class="modal-btns">
+      <button class="secondary" onclick="closeAddLeadModal()">Cancel</button>
+      <button class="success" id="leadModalSubmitBtn" onclick="submitAddLead()">☎️ Add Lead</button>
+    </div>
   </div>
 </div>
 
@@ -436,6 +476,7 @@ let CURRENT_MARKDONE_BOOKING_ID = null;
 let MODAL_MODE = 'complete'; // 'complete' | 'photos-only'
 
 function markDone(bookingId) {
+  MODAL_OPEN = true;
   MODAL_MODE = 'complete';
   CURRENT_MARKDONE_BOOKING_ID = bookingId;
   document.getElementById('modalAmount').value = '';
@@ -452,6 +493,7 @@ function markDone(bookingId) {
 }
 
 function openPhotoModal(bookingId) {
+  MODAL_OPEN = true;
   MODAL_MODE = 'photos-only';
   CURRENT_MARKDONE_BOOKING_ID = bookingId;
   document.getElementById('modalSerialPhoto').value = '';
@@ -468,6 +510,7 @@ function openPhotoModal(bookingId) {
 function closeCompleteJobModal() {
   document.getElementById('completeJobModal').classList.remove('show');
   CURRENT_MARKDONE_BOOKING_ID = null;
+  MODAL_OPEN = false;
 }
 
 function previewPhoto(inputEl, previewId) {
@@ -696,25 +739,70 @@ async function adminCancelBooking(bookingId) {
   else alert('Could not cancel: ' + (result.message || 'unknown error'));
 }
 
-async function addManualLead() {
-  const name = prompt('Customer name:');
-  if (!name) return;
-  const mobile = prompt('Customer mobile (10 digits):');
-  if (!mobile) return;
-  const location = prompt('Location / address:');
-  if (location === null) return;
-  const problem = prompt('Problem / appliance issue:');
-  if (problem === null) return;
-  const leadSource = prompt('Lead source: Phone Call / Walk-in / Referral / Other', 'Phone Call') || 'Phone Call';
-  const contactTime = prompt('When did the customer actually contact you? (e.g. "Today 2:30 PM" / "Yesterday evening" — leave blank for now):', '') || '';
-  const visitDate = prompt('Preferred visit date (e.g. "Tomorrow" / "25 Aug" — leave blank if not fixed yet):', '') || '';
-  const visitTime = prompt('Preferred visit time slot (e.g. "Morning 10-12" / "Evening after 6" — leave blank if not fixed yet):', '') || '';
-  const result = await callAction({ action: 'create_manual_lead', name, mobile, location, problem, leadSource, contactTime, date: visitDate, time: visitTime });
-  if (result.status === 'success') {
-    alert('Lead added — it now appears in the Pending list below, ready to assign.');
-    await loadAdminData();
-  } else {
-    alert('Could not add lead: ' + (result.message || 'unknown error'));
+// Any modal being open, OR any input/textarea/select currently focused, pauses
+// the 20s auto-refresh poll (see pollForUpdates below) — a background re-render
+// while someone is mid-way through adding a lead on their phone was wiping out
+// the form / breaking their flow. MODAL_OPEN is the explicit flag for modals;
+// isUserTyping() catches everything else (plain fields, prompts, etc.).
+let MODAL_OPEN = false;
+function isUserTyping() {
+  const el = document.activeElement;
+  if (!el) return false;
+  const tag = el.tagName;
+  return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT';
+}
+
+function openAddLeadModal() {
+  MODAL_OPEN = true;
+  document.getElementById('leadName').value = '';
+  document.getElementById('leadMobile').value = '';
+  document.getElementById('leadLocation').value = '';
+  document.getElementById('leadProblem').value = '';
+  document.getElementById('leadSource').value = 'Phone Call';
+  document.getElementById('leadDate').value = '';
+  document.getElementById('leadTime').value = '';
+  document.getElementById('leadModalError').textContent = '';
+  document.getElementById('addLeadModal').classList.add('show');
+  document.getElementById('leadName').focus();
+}
+
+function closeAddLeadModal() {
+  document.getElementById('addLeadModal').classList.remove('show');
+  MODAL_OPEN = false;
+}
+
+async function submitAddLead() {
+  const name = document.getElementById('leadName').value.trim();
+  const mobile = document.getElementById('leadMobile').value.trim();
+  const location = document.getElementById('leadLocation').value.trim();
+  const problem = document.getElementById('leadProblem').value.trim();
+  const leadSource = document.getElementById('leadSource').value;
+  const visitDate = document.getElementById('leadDate').value.trim();
+  const visitTime = document.getElementById('leadTime').value.trim();
+  const errBox = document.getElementById('leadModalError');
+  errBox.textContent = '';
+
+  if (!name) { errBox.textContent = '⚠️ Customer name is required.'; return; }
+  if (!/^[6-9]\d{9}$/.test(mobile)) { errBox.textContent = '⚠️ Enter a valid 10-digit mobile number.'; return; }
+  if (!location) { errBox.textContent = '⚠️ Location / address is required.'; return; }
+  if (!problem) { errBox.textContent = '⚠️ Problem / appliance issue is required.'; return; }
+
+  const btn = document.getElementById('leadModalSubmitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Adding...';
+  try {
+    const result = await callAction({ action: 'create_manual_lead', name, mobile, location, problem, leadSource, date: visitDate, time: visitTime });
+    if (result.status === 'success') {
+      closeAddLeadModal();
+      await loadAdminData();
+    } else {
+      errBox.textContent = '⚠️ ' + (result.message || 'Could not add lead.');
+    }
+  } catch (err) {
+    errBox.textContent = '⚠️ Network error — please try again.';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '☎️ Add Lead';
   }
 }
 
@@ -1177,6 +1265,7 @@ function snapshotBookings(bookings) {
 }
 async function pollForUpdates() {
   if (!getToken()) return;
+  if (MODAL_OPEN || isUserTyping()) return; // don't disturb an in-progress lead-add / edit / typing
   try {
     const res = await fetch(`${scriptUrl}?action=admin_data&token=${encodeURIComponent(getToken())}`, { cache: 'no-cache' });
     const data = await res.json();
