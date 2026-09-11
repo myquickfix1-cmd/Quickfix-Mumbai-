@@ -101,12 +101,17 @@ document.addEventListener("DOMContentLoaded", function() {
 }
 </script>
 
-<style>
-/* Dull / Hidden Text Readability Fix */
-.section-sub, .section-label, p {
+  <style>
+/* FREE TOOL Section & Light Card Readability Fix */
+.section-sub, .section-label, p, h2, h3 {
+    color: #0F172A !important;
+    font-weight: 700 !important;
+    text-shadow: none !important;
+}
+
+/* Dark Hero Section Text Keep White */
+.hero p, .hero h1, .hero span, .cta-band h2, .cta-band p, footer, footer span {
     color: #FFFFFF !important;
-    font-weight: 600 !important;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
 }
 </style>
 
