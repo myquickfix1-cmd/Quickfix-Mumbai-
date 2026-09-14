@@ -322,29 +322,44 @@ footer span { color: var(--white); }
   </div>
 </section>
 
-<div style="max-width: 450px; margin: 30px auto; padding: 25px; background: #1e3a8a; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); text-align: left; color: #ffffff; font-family: 'Inter', sans-serif; box-shadow: 0 4px 15px rgba(0,0,0,0.15);" id="bookingFormContainer">
-   <h3 style="text-align:center;margin-top:0;color:#ffffff;margin-bottom:20px;font-size:20px;font-weight:600;">Book Repair in Santacruz West & East</h3> 
-  <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Your Name:</label>
-        <input type="text" id="custName" placeholder="Enter your name" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Locality in Santacruz:</label>
-        <input type="text" id="custLocation" placeholder="e.g. your building or landmark" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Problem:</label>
-        <input type="text" id="custProblem" placeholder="e.g. Fridge not cooling, WM not spinning" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 8px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Mobile Number:</label>
-        <input type="tel" id="custMobile" placeholder="Enter 10 digit number" maxlength="10" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Date:</label>
-        <input type="date" id="custDate" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Time Slot: <span style="font-weight:400; opacity:0.85;">(Open Every Slot, 7 AM – 11 PM)</span></label>
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
-            <div class="time-slot-btn" data-slot="Slot 1 (7:00 AM - 9:00 AM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">7-9<br>AM</div>
-                <div class="time-slot-btn" data-slot="Slot 2 (9:00 AM - 11:00 AM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">9-11<br>AM</div>
-                <div class="time-slot-btn" data-slot="Slot 3 (11:00 AM - 1:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">11-1<br>Noon</div>
-                <div class="time-slot-btn" data-slot="Slot 4 (1:00 PM - 3:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">1-3<br>PM</div>
-                <div class="time-slot-btn" data-slot="Slot 5 (3:00 PM - 5:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">3-5<br>PM</div>
-                <div class="time-slot-btn" data-slot="Slot 6 (5:00 PM - 7:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">5-7<br>PM</div>
-                <div class="time-slot-btn" data-slot="Slot 7 (7:00 PM - 9:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">7-9<br>PM</div>
-                <div class="time-slot-btn" data-slot="Slot 8 (9:00 PM - 11:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">9-11<br>PM</div>
-        </div>
+<div style="max-width: 450px; margin: 30px auto; padding: 22px; background: #1e3a8a; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); text-align: left; color: #fff; font-family: 'Inter', sans-serif;" id="bookingFormContainer">
+  <h3 style="font-size: 1.15rem; margin-top: 0; margin-bottom: 4px; text-align: center; color: #fff;">Book Repair in Santacruz West &amp; East</h3>
+  <p id="stepIndicator" style="font-size: 0.78rem; text-align: center; color: #cbd5e1; margin-bottom: 16px; margin-top: 0;">Step 2 of 2: Select Date &amp; Time Slot</p>
+
+  <input type="hidden" id="custSlot" value="">
+  
+  <div style="margin-bottom: 12px;">
+    <label style="display: block; margin-bottom: 4px; font-size: 13px; color: #e2e8f0;">Preferred Date:</label>
+    <input type="date" id="custDate" style="width: 100%; padding: 10px; border-radius: 6px; border: none; box-sizing: border-box; font-size: 14px; color: #000;">
+  </div>
+
+  <div style="margin-bottom: 16px;">
+    <label style="display: block; margin-bottom: 6px; font-size: 13px; color: #e2e8f0;">Preferred Time Slot: <span style="font-weight:400; opacity:0.85;">(7 AM – 11 PM)</span></label>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+      <div class="time-slot-btn" data-slot="7-9 AM" onclick="selectSlot(this)" style="padding:8px 4px;text-align:center;border:1px solid #93c5fd;border-radius:6px;cursor:pointer;font-size:12px;background:#fff;color:#1e3a8a;">7-9 AM</div>
+      <div class="time-slot-btn" data-slot="9-11 AM" onclick="selectSlot(this)" style="padding:8px 4px;text-align:center;border:1px solid #93c5fd;border-radius:6px;cursor:pointer;font-size:12px;background:#fff;color:#1e3a8a;">9-11 AM</div>
+      <div class="time-slot-btn" data-slot="11-1 PM" onclick="selectSlot(this)" style="padding:8px 4px;text-align:center;border:1px solid #93c5fd;border-radius:6px;cursor:pointer;font-size:12px;background:#fff;color:#1e3a8a;">11-1 Noon</div>
+      <div class="time-slot-btn" data-slot="1-3 PM" onclick="selectSlot(this)" style="padding:8px 4px;text-align:center;border:1px solid #93c5fd;border-radius:6px;cursor:pointer;font-size:12px;background:#fff;color:#1e3a8a;">1-3 PM</div>
+      <div class="time-slot-btn" data-slot="3-5 PM" onclick="selectSlot(this)" style="padding:8px 4px;text-align:center;border:1px solid #93c5fd;border-radius:6px;cursor:pointer;font-size:12px;background:#fff;color:#1e3a8a;">3-5 PM</div>
+      <div class="time-slot-btn" data-slot="5-7 PM" onclick="selectSlot(this)" style="padding:8px 4px;text-align:center;border:1px solid #93c5fd;border-radius:6px;cursor:pointer;font-size:12px;background:#fff;color:#1e3a8a;">5-7 PM</div>
+      <div class="time-slot-btn" data-slot="7-9 PM" onclick="selectSlot(this)" style="padding:8px 4px;text-align:center;border:1px solid #93c5fd;border-radius:6px;cursor:pointer;font-size:12px;background:#fff;color:#1e3a8a;">7-9 PM</div>
+      <div class="time-slot-btn" data-slot="9-11 PM" onclick="selectSlot(this)" style="padding:8px 4px;text-align:center;border:1px solid #93c5fd;border-radius:6px;cursor:pointer;font-size:12px;background:#fff;color:#1e3a8a;">9-11 PM</div>
+    </div>
+  </div>
+
+  <div id="bookFormError" style="min-height: 20px; color: #FCA5A5; font-size: 13px; margin-bottom: 8px; text-align: center;"></div>
+
+  <button onclick="sendBookingToSheets()" id="bookBtn" style="width: 100%; background: #25D366; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; padding: 14px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);">
+    🚀 Confirm &amp; Book Visit
+  </button>
+
+  <p style="text-align: center; font-size: 12px; color: #cbd5e1; margin-top: 12px; margin-bottom: 8px;">
+    ✓ Flexible Slot Booking &nbsp;·&nbsp; ✓ Inspection Fee Adjusted In Repair Bill
+  </p>
+  <a href="https://wa.me/919819832282?text=Hi%20Quickfix,%20sending%20my%20appliance%20/%20error%20display%20photo%20for%20service%20in%20Santacruz" target="_blank" style="display: block; width: 100%; text-align: center; background: #25D366; color: #fff; padding: 12px; border-radius: 6px; font-weight: 700; font-size: 14px; text-decoration: none; box-sizing: border-box;">
+    📲 Send Error Code / Machine Photo on WhatsApp
+  </a>
+</div>
       
     <input type="hidden" id="custSlot" value=""></div>
     <div id="bookFormError" style="min-height: 20px; color: #FCA5A5; font-size: 13px; margin-bottom: 8px; text-align: center;"></div>
