@@ -342,14 +342,24 @@
   </div>
 </section>
 
-<!-- Footer -->
+<!-- SEO Footer & Internal Links Hub -->
 <footer>
   <div class="trust-strip">
     <span>⚡ Express Doorstep Service</span>
     <span>🛡️ Genuine Spare Warranty</span>
     <span>👨‍🔧 Certified Master Technicians</span>
   </div>
-  <p style="margin: 10px 0 6px;">© 2026 Quickfix Appliance Repair Santacruz. All Rights Reserved.</p>
+  
+  <p style="margin: 16px 0 8px; font-weight:600; color:#fff;">Nearby Service Locations (Western Suburbs):</p>
+  <div class="footer-links">
+    <a href="bandra-appliance-repair.html">Bandra West & East</a> • 
+    <a href="vile-parle-appliance-repair.html">Vile Parle West & East</a> • 
+    <a href="khar-appliance-repair.html">Khar Road</a> • 
+    <a href="juhu-appliance-repair.html">Juhu</a> • 
+    <a href="andheri-appliance-repair.html">Andheri</a>
+  </div>
+
+  <p style="margin: 16px 0 6px;">© 2026 Quickfix Appliance Repair Santacruz. All Rights Reserved.</p>
   <div class="footer-links">
     <a href="index.html">Home</a> • 
     <a href="mumbai/index.html">Mumbai Hub</a> • 
@@ -361,7 +371,7 @@
 <a href="tel:+919876543210" class="float-call" aria-label="Call Now">📞</a>
 <a href="https://wa.me/919876543210" class="float-wa" aria-label="WhatsApp Support" target="_blank">💬</a>
 
-<!-- JavaScript Logic -->
+<!-- 2-Step Form Interactive JS Handler -->
 <script>
   function selectSlot(element) {
     document.querySelectorAll('.time-slot-btn').forEach(btn => {
@@ -379,14 +389,14 @@
     const name = document.getElementById('custName').value.trim();
     const mobile = document.getElementById('custMobile').value.trim();
     if (!name || mobile.length < 10) {
-      alert('Please enter valid Name and 10-digit Mobile Number.');
+      alert('Please enter a valid Name and 10-digit Mobile Number.');
       return;
     }
     document.getElementById('formStep1').style.display = 'none';
     document.getElementById('formStep2').style.display = 'block';
-    document.getElementById('stepIndicator').innerText = 'Step 2 of 2: Select Date & Slot';
+    document.getElementById('stepIndicator').innerText = 'Step 2 of 2: Select Date & Time Slot';
     
-    // Default today's date
+    // Auto-fill today's date
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('custDate').value = today;
   }
@@ -401,11 +411,11 @@
 
     const btn = document.getElementById('bookBtn');
     btn.disabled = true;
-    btn.innerText = 'Booking Visit...';
+    btn.innerText = 'Submitting Request...';
 
-    // Simulated API call / Google Sheet Submission
+    // Simulate direct booking action
     setTimeout(() => {
-      alert('Success! Your doorstep service visit in Santacruz has been requested. Our coordinator will call you shortly.');
+      alert('Success! Your doorstep service visit in Santacruz has been requested. Our team will contact you shortly.');
       btn.innerText = '✓ Visit Booked!';
       btn.style.background = '#059669';
     }, 1000);
@@ -413,6 +423,5 @@
 </script>
 
 </body>
-</html>
-  
+</html>  
   
