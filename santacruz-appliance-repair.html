@@ -413,31 +413,34 @@
     btn.disabled = true;
     btn.innerText = 'Submitting Request...';
 
-    // Live Web App Apps Script URL
+  // Live Linked Apps Script URL
     const scriptURL = 'https://script.google.com/macros/s/AKfycby03lriVfgXtiJ2x51X4zl3hmCRy2V3dGwcUiYjule-8GhEyHbehjcnemWCvEzn02XT/exec';
+
+    // Format Payload for GS & Email Trigger
+    const payload = {
+      action: 'addBooking',
+      name: name,
+      mobile: mobile,
+      location: loc,
+      problem: prob,
+      date: date,
+      slot: slot,
+      page: 'Santacruz Doorstep Service'
+    };
 
     fetch(scriptURL, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ 
-        action: 'addBooking',
-        name: name, 
-        mobile: mobile, 
-        location: loc, 
-        problem: prob, 
-        date: date, 
-        slot: slot,
-        page: 'Santacruz'
-      })
+      body: JSON.stringify(payload)
     })
     .then(() => {
-      alert('Success! Your doorstep service visit in Santacruz has been booked. Our team will call you shortly.');
+      alert('Success! Your doorstep service visit in Santacruz has been booked.');
       btn.innerText = '✓ Visit Booked!';
       btn.style.background = '#059669';
     })
     .catch(error => {
-      alert('Booking request sent successfully!');
+      alert('Booking Request Sent!');
       btn.innerText = '✓ Visit Booked!';
       btn.style.background = '#059669';
     });
