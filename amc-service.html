@@ -139,6 +139,15 @@ footer span { color: var(--white); }
 .float-account { background: var(--white); color: var(--blue); bottom: 164px; border: 2px solid var(--blue); box-shadow: 0 4px 16px rgba(30,58,138,0.25); }
 @media (max-width: 600px) { header { padding: 12px 16px; } section { padding: 34px 16px; } .cta-band { margin: 28px 16px; } .float-call { bottom: 84px; } }
 </style>
+<style>
+details.why-accordion{border:none;}
+details.why-accordion summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;}
+details.why-accordion summary::-webkit-details-marker{display:none;}
+details.why-accordion summary .acc-chevron{font-size:1.1rem;color:var(--blue,#1E3A8A);transition:transform .2s;margin-left:10px;flex-shrink:0;}
+details.why-accordion[open] summary .acc-chevron{transform:rotate(180deg);}
+details.why-accordion summary{padding-bottom:4px;}
+details.why-accordion .why-grid{margin-top:16px;}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -365,10 +374,41 @@ footer span { color: var(--white); }
       </div>
     </div>
     <p style="text-align:center; margin-top: 20px; color: var(--grey-dark); font-size: 0.88rem;">Exact pricing depends on your appliance count and brands — call or WhatsApp us your list, we'll quote same day.</p>
+
+    <div class="center" style="margin-top:48px;">
+      <div class="section-label">Transparent Rates</div>
+      <h2 class="section-title">AMC Pricing, Per Appliance</h2>
+      <p class="section-sub">Annual rate per appliance — GST extra, no hidden charges</p>
+    </div>
+    <div style="max-width:640px; margin:0 auto; overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+        <thead>
+          <tr style="background:var(--blue); color:#fff;">
+            <th style="padding:12px 14px; text-align:left;">Appliance</th>
+            <th style="padding:12px 14px; text-align:right;">Annual AMC Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px 14px;">Refrigerator — Side-by-Side</td><td style="padding:12px 14px; text-align:right; font-weight:700;">₹6,999 + 18% GST</td></tr>
+          <tr style="border-bottom:1px solid var(--border); background:var(--grey);"><td style="padding:12px 14px;">Refrigerator — 500L &amp; above</td><td style="padding:12px 14px; text-align:right; font-weight:700;">₹4,999 + 18% GST</td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px 14px;">Refrigerator — below 500L</td><td style="padding:12px 14px; text-align:right; font-weight:700;">₹3,999 + 18% GST</td></tr>
+          <tr style="border-bottom:1px solid var(--border); background:var(--grey);"><td style="padding:12px 14px;">Washing Machine — Front Load with Dryer</td><td style="padding:12px 14px; text-align:right; font-weight:700;">₹6,999 + 18% GST</td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px 14px;">Washing Machine — Top Load without Dryer</td><td style="padding:12px 14px; text-align:right; font-weight:700;">₹5,999 + 18% GST</td></tr>
+          <tr style="border-bottom:1px solid var(--border); background:var(--grey);"><td style="padding:12px 14px;">Microwave Oven — 25L &amp; above</td><td style="padding:12px 14px; text-align:right; font-weight:700;">₹2,999 + 18% GST</td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px 14px;">Microwave Oven — below 25L</td><td style="padding:12px 14px; text-align:right; font-weight:700;">₹2,110 + 18% GST</td></tr>
+          <tr style="border-bottom:1px solid var(--border); background:var(--grey);"><td style="padding:12px 14px;">Dishwasher — All types</td><td style="padding:12px 14px; text-align:right; font-weight:700;">₹6,999 + 18% GST</td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px 14px;">Cloth Dryer — Shield System</td><td style="padding:12px 14px; text-align:right; font-weight:700;">₹6,999 + 18% GST</td></tr>
+          <tr style="border-bottom:1px solid var(--border); background:var(--grey);"><td style="padding:12px 14px;">Cloth Dryer — Standard</td><td style="padding:12px 14px; text-align:right; font-weight:700;">₹7,999 + 18% GST</td></tr>
+          <tr><td style="padding:12px 14px;">Air Dresser / Styler</td><td style="padding:12px 14px; text-align:right; font-weight:700;">₹7,999 + 18% GST</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.8rem; color:var(--grey-dark); margin-top:16px; line-height:1.6;"><strong>Terms:</strong> AMC is issued after an inspection of the appliance's electrical and physical condition. Quickfix Mumbai's AMC does not cover interior, cosmetic, or plastic parts.</p>
+    </div>
   </div>
 </section>
 
 <section style="background: var(--grey);">
+    
   <div class="container">
     <div class="center">
       <div class="section-label">What's Covered</div>
@@ -418,7 +458,7 @@ footer span { color: var(--white); }
 
 <section>
   <div class="container">
-    <div class="center"><div class="section-label">Why Choose Us</div><h2 class="section-title">Trusted AMC Provider</h2></div>
+    <details class="why-accordion"><summary><div class="center" style="text-align:left; margin:0;"><div class="section-label">Why Choose Us</div><h2 class="section-title">Trusted AMC Provider</h2></div><span class="acc-chevron">▾</span></summary>
     <div class="why-grid">
       <div class="why-card"><div class="why-icon">⚡</div><h3>Priority Booking</h3><p>AMC customers get scheduled first</p></div>
       <div class="why-card"><div class="why-icon">🏆</div><h3>10+ Years Expert</h3><p>Experienced across all major brands</p></div>
@@ -426,7 +466,7 @@ footer span { color: var(--white); }
       <div class="why-card"><div class="why-icon">✅</div><h3>Genuine Parts</h3><p>Only company-genuine spares used</p></div>
       <div class="why-card"><div class="why-icon">🔧</div><h3>Preventive Checkups</h3><p>Catch problems before they're costly</p></div>
       <div class="why-card"><div class="why-icon">📍</div><h3>All Mumbai Covered</h3><p>Same team, every visit</p></div>
-    </div>
+    </div></details>
   </div>
 </section>
 
@@ -583,9 +623,9 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="tracking.js"></script>
-<script src="search-index.js"></script>
-<script src="site-search.js"></script>
+<script src="tracking.js" defer></script>
+<script src="search-index.js" defer></script>
+<script src="site-search.js" defer></script>
 <script src="photo-loader.js" defer></script>
 </body>
 </html>
