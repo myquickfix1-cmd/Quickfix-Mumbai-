@@ -5,5 +5,27 @@ Allow: /
 Disallow: /admin.html
 Disallow: /worker.html
 
+# Explicitly allowed AI crawlers (for visibility in ChatGPT, Perplexity, Google AI Overviews, Claude)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
 # Link directly to your new sitemap
 Sitemap: https://quickfixmumbai.com/sitemap.xml

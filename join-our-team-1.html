@@ -77,6 +77,15 @@ footer span { color: var(--white); }
 .float-account { background: var(--white); color: var(--blue); bottom: 164px; border: 2px solid var(--blue); box-shadow: 0 4px 16px rgba(30,58,138,0.25); }
 @media (max-width: 600px) { header { padding: 12px 16px; } section { padding: 34px 16px; } .float-call { bottom: 84px; } }
 </style>
+<style>
+details.why-accordion{border:none;}
+details.why-accordion summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;}
+details.why-accordion summary::-webkit-details-marker{display:none;}
+details.why-accordion summary .acc-chevron{font-size:1.1rem;color:var(--blue,#1E3A8A);transition:transform .2s;margin-left:10px;flex-shrink:0;}
+details.why-accordion[open] summary .acc-chevron{transform:rotate(180deg);}
+details.why-accordion summary{padding-bottom:4px;}
+details.why-accordion .why-grid{margin-top:16px;}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -170,7 +179,7 @@ footer span { color: var(--white); }
 
 <section>
   <div class="container">
-    <div class="center"><div class="section-label">Why Quickfix</div><h2 class="section-title">Why Technicians Choose Us</h2></div>
+    <details class="why-accordion"><summary><div class="center" style="text-align:left; margin:0;"><div class="section-label">Why Quickfix</div><h2 class="section-title">Why Technicians Choose Us</h2></div><span class="acc-chevron">▾</span></summary>
     <div class="why-grid">
       <div class="why-card"><div class="why-icon">💰</div><h3>Fair, Transparent Pay</h3><p>Competitive per-job rates plus steady volume of work across Mumbai</p></div>
       <div class="why-card"><div class="why-icon">📈</div><h3>Growing Business</h3><p>More areas, more bookings — real growth opportunity as we expand</p></div>
@@ -178,7 +187,7 @@ footer span { color: var(--white); }
       <div class="why-card"><div class="why-icon">🤝</div><h3>Respect & Support</h3><p>You're treated as a skilled professional, not just labor</p></div>
       <div class="why-card"><div class="why-icon">📱</div><h3>Steady Lead Flow</h3><p>Jobs come through our website and booking system — no need to hunt for work</p></div>
       <div class="why-card"><div class="why-icon">🕐</div><h3>Flexible Scheduling</h3><p>Work areas and hours discussed to match your availability</p></div>
-    </div>
+    </div></details>
   </div>
 </section>
 
@@ -459,9 +468,9 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 
-<script src="tracking.js"></script>
-<script src="search-index.js"></script>
-<script src="site-search.js"></script>
+<script src="tracking.js" defer></script>
+<script src="search-index.js" defer></script>
+<script src="site-search.js" defer></script>
 <script src="photo-loader.js" defer></script>
 </body>
 </html>

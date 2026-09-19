@@ -22,87 +22,8 @@
 }
 </script>
 
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --blue: #1E3A8A; --blue-light: #1D4ED8; --blue-lighter: #DBEAFE;
-  --white: #FFFFFF; --grey: #F3F4F6; --grey-dark: #374151;
-  --text: #111827; --border: #D1D5DB; --red: #DC2626; --whatsapp: #128C7E; --amber: #D97706;
-}
-html { scroll-behavior: smooth; }
-body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); line-height: 1.7; }
-header { position: sticky; top: 0; z-index: 100; background: var(--white); display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-bottom: 2px solid var(--blue-lighter); flex-wrap: wrap; gap: 10px; }
-.logo { font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--blue); text-decoration: none; }
-.logo span { color: var(--blue-light); }
-.header-btns { display: flex; gap: 10px; }
-.btn-call, .btn-wa { padding: 10px 16px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; border: none; cursor: pointer; }
-.btn-call { background: var(--blue); color: var(--white); }
-.btn-wa { background: var(--whatsapp); color: var(--white); }
-.breadcrumb { background: var(--grey); padding: 10px 24px; font-size: 0.82rem; color: var(--grey-dark); }
-.breadcrumb a { color: var(--blue); text-decoration: none; }
+<link rel="stylesheet" href="brand-common.css">
 
-.article-hero { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 44px 24px 36px; text-align: center; }
-.article-hero .tag { display: inline-block; background: rgba(255,255,255,0.2); padding: 6px 16px; border-radius: 20px; font-size: 0.76rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 14px; }
-.article-hero h1 { font-family: 'Poppins', sans-serif; font-size: clamp(1.5rem, 5.5vw, 2.3rem); font-weight: 700; margin-bottom: 12px; max-width: 800px; margin-left: auto; margin-right: auto; }
-.article-hero p { font-size: 0.94rem; color: rgba(255,255,255,0.9); max-width: 650px; margin: 0 auto; }
-
-.container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
-.article-body { padding: 40px 0; }
-.article-body h2 { font-family: 'Poppins', sans-serif; color: var(--blue); font-size: 1.35rem; margin: 32px 0 14px; }
-.article-body h2:first-child { margin-top: 0; }
-.article-body p { font-size: 0.96rem; color: var(--text); margin-bottom: 14px; }
-.article-body ul { margin: 0 0 16px 20px; }
-.article-body li { font-size: 0.95rem; margin-bottom: 8px; color: var(--text); }
-
-.quick-answer-box { background: var(--blue-lighter); border-left: 4px solid var(--blue); border-radius: 8px; padding: 18px 20px; margin: 24px 0; }
-.quick-answer-box strong { color: var(--blue); }
-
-.cause-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 20px 0; }
-.cause-card { background: var(--grey); border-radius: 10px; padding: 16px; }
-.cause-card h3 { font-size: 0.92rem; color: var(--blue); margin-bottom: 6px; font-family: 'Poppins', sans-serif; }
-.cause-card p { font-size: 0.85rem; color: var(--grey-dark); margin: 0; }
-
-.mid-cta { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); border-radius: 14px; padding: 26px 24px; text-align: center; margin: 32px 0; }
-.mid-cta h3 { font-family: 'Poppins', sans-serif; margin-bottom: 8px; font-size: 1.15rem; }
-.mid-cta p { color: rgba(255,255,255,0.9); font-size: 0.9rem; margin-bottom: 16px; }
-.mid-cta .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-.mid-cta .btn-call, .mid-cta .btn-wa { background: var(--white); color: var(--blue); }
-.mid-cta .btn-wa { color: var(--whatsapp); }
-
-.warning-box { background: #FEF2F2; border-left: 4px solid var(--red); border-radius: 8px; padding: 16px 20px; margin: 20px 0; font-size: 0.92rem; color: #991B1B; }
-
-.related-links { background: var(--grey); border-radius: 12px; padding: 20px; margin: 28px 0; }
-.related-links h3 { font-family: 'Poppins', sans-serif; color: var(--blue); font-size: 1rem; margin-bottom: 12px; }
-.related-links a { display: block; color: var(--blue); text-decoration: none; font-size: 0.9rem; font-weight: 600; padding: 6px 0; }
-.related-links a:hover { text-decoration: underline; }
-
-.areas-served-grid { display: flex; flex-wrap: wrap; gap: 9px; }
-.areas-served-grid a { background: var(--white); border: 1.5px solid var(--border); border-radius: 18px; padding: 7px 14px; font-size: 0.8rem; font-weight: 600; color: var(--text); text-decoration: none; }
-.areas-served-grid a:hover { border-color: var(--blue-light); background: var(--blue-lighter); color: var(--blue); }
-
-.faq-item { background: var(--grey); border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
-.faq-q { font-weight: 700; color: var(--blue); font-size: 0.92rem; margin-bottom: 5px; }
-.faq-a { font-size: 0.86rem; color: var(--grey-dark); }
-
-.cta-band { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); text-align: center; padding: 40px 24px; border-radius: 16px; margin: 36px auto; max-width: 760px; }
-.cta-band h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.3rem, 4vw, 1.7rem); margin-bottom: 10px; }
-.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-.cta-band .btn-call, .cta-band .btn-wa { padding: 12px 22px; font-size: 0.95rem; background: var(--white); color: var(--blue); border-radius: 8px; text-decoration: none; font-weight: 600; }
-.cta-band .btn-wa { color: var(--whatsapp); }
-
-footer { background: var(--blue); color: rgba(255,255,255,0.85); text-align: center; padding: 24px 24px; font-size: 0.78rem; }
-.trust-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 14px; margin: 12px 0; }
-.trust-strip span { display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.72rem; white-space: nowrap; }
-footer span { color: var(--white); }
-.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 12px 0; font-size: 0.74rem; }
-.footer-links a { color: rgba(255,255,255,0.92); text-decoration: none; }
-
-.float-wa, .float-call { position: fixed; z-index: 999; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; text-decoration: none; border: none; cursor: pointer; right: 20px; }
-.float-wa { background: var(--whatsapp); color: var(--white); bottom: 20px; box-shadow: 0 4px 16px rgba(16,185,129,0.4); }
-.float-call { background: var(--blue); color: var(--white); bottom: 92px; box-shadow: 0 4px 16px rgba(30,58,138,0.4); }
-.float-account { background: var(--white); color: var(--blue); bottom: 164px; border: 2px solid var(--blue); box-shadow: 0 4px 16px rgba(30,58,138,0.25); }
-@media (max-width: 600px) { header { padding: 12px 16px; } .article-body { padding: 30px 0; } .float-call { bottom: 84px; } }
-</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -167,11 +88,13 @@ footer span { color: var(--white); }
 <section class="article-hero">
   <div class="tag">📖 REPAIR GUIDE</div>
   <h1>LG Refrigerator Not Cooling: Common Causes and How It's Fixed</h1>
+<div class="brand-specialist-box"><span class="badge">✅ LG Certified Specialist Assigned</span><p>A dedicated <strong>LG-certified specialist</strong> is assigned to your repair — trained specifically on LG's PCB layouts, error codes, and genuine spare-parts sourcing.</p><p class="rating-line">⭐ 4.8/5 Rated • Samsung · LG · Bosch &amp; Siemens · IFB · Whirlpool · Haier &amp; Panasonic — Multi-Brand Technical Specialists</p></div>
+
   <p>A clear breakdown of why LG fridges stop cooling, and what a proper diagnosis actually checks.</p>
 </section>
 
 <div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px; background: #F3F4F6;"><img src="samsung-double-door-refrigerator-repair-bkc.webp" alt="Refrigerator repair technician diagnostic check in Mumbai" loading="lazy" style="width: 100%; max-height: 320px; object-fit: contain; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">Refrigerator repair — real Quickfix job in Mumbai</p></div>
-<div class="container" style="padding: 0 24px;"><div style="display:flex; gap:8px; flex-wrap:wrap; margin:18px 0;"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20LG%20refrigerator%20is%20not%20cooling.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" style="flex:1; min-width:150px; text-align:center; padding:11px 12px; border-radius:8px; font-size:0.85rem; font-weight:700; text-decoration:none; background:var(--whatsapp); color:#fff;">📲 Book Repair via WhatsApp</a><a href="refrigerator-repair.html#bookingFormContainer" style="flex:1; min-width:150px; text-align:center; padding:11px 12px; border-radius:8px; font-size:0.85rem; font-weight:700; text-decoration:none; background:var(--blue-lighter); color:var(--blue); border:1.5px solid var(--blue);">📅 Book Now</a></div></div>
+<div class="container" style="padding: 0 24px;"><div style="display:flex; gap:8px; flex-wrap:wrap; margin:18px 0;"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20LG%20refrigerator%20is%20not%20cooling.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" style="flex:1; min-width:150px; text-align:center; padding:11px 12px; border-radius:8px; font-size:0.85rem; font-weight:700; text-decoration:none; background:var(--whatsapp); color:#fff;">📲 Book Repair via WhatsApp</a><a href="refrigerator-repair.html#bookingFormContainer" style="flex:1; min-width:150px; text-align:center; padding:11px 12px; border-radius:8px; font-size:0.85rem; font-weight:700; text-decoration:none; background:var(--blue-lighter); color:var(--blue); border:1.5px solid var(--blue);">Book Now</a></div></div>
 
 
 <div class="container" style="padding-top:0;"><a href="refrigerator-diy-checker.html" style="display:block; background:#EFF6FF; border:1.5px solid #BFDBFE; border-radius:12px; padding:14px 18px; text-decoration:none; color:#1E3A8A; font-weight:600; font-size:0.9rem; text-align:center; margin-top:20px;">🧊 Not sure if it’s this exact issue? Try our free Refrigerator Self Check →</a></div>
@@ -227,6 +150,8 @@ footer span { color: var(--white); }
       <a href="refrigerator-repair.html">→ Refrigerator Repair Service in Mumbai</a>
       <a href="samsung-fridge-pcb-board-fault.html">→ Samsung Fridge PCB Board Fault Explained</a>
       <a href="samsung-lg-appliance-repair-mumbai.html">→ Samsung & LG Appliance Repair — All Brands</a>
+      <a href="godrej-refrigerator-not-cooling.html">→ Godrej Not Cooling — Causes & Fix</a>
+      <a href="hitachi-refrigerator-not-cooling.html">→ Hitachi Not Cooling — Causes & Fix</a>
     </div>
 
     <h2>Searching "Refrigerator Repair Near Me"? We Cover All of Mumbai</h2>
@@ -281,9 +206,9 @@ footer span { color: var(--white); }
 <a href="my-account.html" class="float-account" title="My Account" aria-label="My Account">👤</a>
 <a href="https://wa.me/919819832282?text=My%20LG%20fridge%20is%20not%20cooling" target="_blank" class="float-wa" title="WhatsApp Now">💬</a>
 
-<script src="tracking.js"></script>
-<script src="search-index.js"></script>
-<script src="site-search.js"></script>
+<script src="tracking.js" defer></script>
+<script src="search-index.js" defer></script>
+<script src="site-search.js" defer></script>
 <script src="photo-loader.js" defer></script>
 </body>
 </html>

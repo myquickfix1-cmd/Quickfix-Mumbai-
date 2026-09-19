@@ -121,6 +121,15 @@ footer span { color: var(--white); }
 .review-loading { text-align: center; color: var(--grey-dark); font-size: 0.85rem; padding: 18px; grid-column: 1/-1; }
 .btn-review-submit { width: 100%; background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 10px; border: none; border-radius: 8px; font-weight: 700; font-size: 0.92rem; cursor: pointer; }
 </style>
+<style>
+details.why-accordion{border:none;}
+details.why-accordion summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;}
+details.why-accordion summary::-webkit-details-marker{display:none;}
+details.why-accordion summary .acc-chevron{font-size:1.1rem;color:var(--blue,#1E3A8A);transition:transform .2s;margin-left:10px;flex-shrink:0;}
+details.why-accordion[open] summary .acc-chevron{transform:rotate(180deg);}
+details.why-accordion summary{padding-bottom:4px;}
+details.why-accordion .why-grid{margin-top:16px;}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -169,6 +178,7 @@ footer span { color: var(--white); }
   ]
 }
 </script>
+<script src="nearby-areas.js" defer></script>
 </head>
 <body>
 
@@ -218,44 +228,27 @@ footer span { color: var(--white); }
 
 <div class="breadcrumb"><a href="index.html">Home</a> › Home Appliance Repair</div>
 <section class="hero">
-  <div class="hero-badge">🕐 24x7 Service • ⭐ 4.8/5 Rated</div>
+  <div class="hero-badge">🕐 🚨 Emergency Available 24x7 • ⭐ 4.8/5 Rated</div>
   <h1>Home Appliance Repair in Mumbai — <span>One Number, Every Fix</span></h1>
   <p>Refrigerator, Washing Machine, Microwave, Dishwasher, Cloth Dryer, Air Dresser — same-day doorstep repair across Bandra West, Andheri, Borivali, Malad and all Mumbai. Genuine parts, 3-month warranty.</p>
   <div class="hero-btns">
     <a href="tel:+919819832282" class="btn-call">📞 Inquiry: +91 98198 32282</a>
     <a href="https://wa.me/919819832282?text=I%20need%20appliance%20repair" target="_blank" class="btn-wa">📲 Book by WhatsApp</a>
+  
+    <a href="#bookingFormContainer" class="btn-wa" style="background:#fff; color:#1e3a8a;">Book Now</a>
   </div>
 </section>
+<div style="max-width:500px; margin:0 auto; text-align:center; padding:8px 16px 0;">
+  <div id="qfTicker" style="transition:opacity .3s ease; min-height:20px;"></div>
+</div>
+<div style="max-width:500px; margin:16px auto; padding:14px 18px; background:#F0FDF4; border:1.5px solid #10B981; border-radius:12px; text-align:center; font-size:0.85rem; color:#1F2937;">
+  <div id="qfGeoResult">Not seeing your area? <button id="qfGeoBtn" onclick="qfFindMyArea()" style="background:#10B981; color:#fff; border:none; padding:6px 14px; border-radius:16px; font-size:0.8rem; font-weight:700; cursor:pointer; margin-left:4px;">📍 Find My Nearest Area</button></div>
+</div>
 <div class="container" style="padding: 20px 24px 0;"><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px; background: #F3F4F6;"><img src="circuit-checkup-repair-bandra-west.webp" alt="On-site circuit checkup by our technician" loading="lazy" style="width: 100%; max-height: 320px; object-fit: contain; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">On-site circuit checkup by our technician</p></div>
 
-<div style="max-width: 450px; margin: 30px auto; padding: 25px; background: #1e3a8a; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); text-align: left; color: #ffffff; font-family: 'Inter', sans-serif; box-shadow: 0 4px 15px rgba(0,0,0,0.15);" id="bookingFormContainer">
-    <h3 style="text-align: center; margin-top: 0; color: #ffffff; margin-bottom: 20px; font-size: 20px; font-weight: 600;">Book a Repair — Instant</h3>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Your Name:</label>
-        <input type="text" id="custName" placeholder="Enter your name" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Location/Area:</label>
-        <input type="text" id="custLocation" placeholder="e.g. Andheri West, Bandra" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Which Appliance & Problem:</label>
-        <input type="text" id="custProblem" placeholder="e.g. Fridge not cooling, WM not spinning" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Mobile Number:</label>
-        <input type="tel" id="custMobile" placeholder="Enter 10 digit number" maxlength="10" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Date:</label>
-        <input type="date" id="custDate" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Time Slot: <span style="font-weight:400; opacity:0.85;">(Open Every Slot, 7 AM – 11 PM)</span></label>
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
-            <div class="time-slot-btn" data-slot="Slot 1 (7:00 AM - 9:00 AM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">7-9<br>AM</div>
-                <div class="time-slot-btn" data-slot="Slot 2 (9:00 AM - 11:00 AM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">9-11<br>AM</div>
-                <div class="time-slot-btn" data-slot="Slot 3 (11:00 AM - 1:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">11-1<br>Noon</div>
-                <div class="time-slot-btn" data-slot="Slot 4 (1:00 PM - 3:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">1-3<br>PM</div>
-                <div class="time-slot-btn" data-slot="Slot 5 (3:00 PM - 5:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">3-5<br>PM</div>
-                <div class="time-slot-btn" data-slot="Slot 6 (5:00 PM - 7:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">5-7<br>PM</div>
-                <div class="time-slot-btn" data-slot="Slot 7 (7:00 PM - 9:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">7-9<br>PM</div>
-                <div class="time-slot-btn" data-slot="Slot 8 (9:00 PM - 11:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">9-11<br>PM</div>
-        </div>
-        <div class="time-slot-btn" data-slot="Emergency — Priority Visit, Available Now (₹999)" onclick="selectSlot(this)" style="margin-top: 8px; padding: 10px 6px; text-align: center; border: 2px solid #FCA5A5; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 700; color: #991B1B; background: #FEE2E2;">🚨 Emergency — Available Now (₹999)</div>
-        <input type="hidden" id="custSlot" value=""></div>
-    <div id="bookFormError" style="min-height: 20px; color: #FCA5A5; font-size: 13px; margin-bottom: 8px; text-align: center;"></div>
-    <div style="text-align: center;"><button onclick="sendBookingToSheets()" id="bookBtn" style="width: 100%; padding: 14px; background: #25D366; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer;">🚀 Book Now</button></div>
-</div>
+
+
+
 
 <section>
   <div class="container">
@@ -278,7 +271,7 @@ footer span { color: var(--white); }
 
 <section style="background: var(--grey);">
   <div class="container">
-    <div class="center"><div class="section-label">Why Choose Us</div><h2 class="section-title">Why Repair With Quickfix?</h2></div>
+    <details class="why-accordion"><summary><div class="center" style="text-align:left; margin:0;"><div class="section-label">Why Choose Us</div><h2 class="section-title">Why Repair With Quickfix?</h2></div><span class="acc-chevron">▾</span></summary>
     <div class="why-grid">
       <div class="why-card"><div class="why-icon">⚡</div><h3>Same-Day Service</h3><p>Inquiry & confirm timing across Mumbai</p></div>
       <div class="why-card"><div class="why-icon">🏆</div><h3>Expert Technicians</h3><p>Trained across all major brands</p></div>
@@ -286,7 +279,7 @@ footer span { color: var(--white); }
       <div class="why-card"><div class="why-icon">✅</div><h3>3-Month Warranty</h3><p>Every repair backed by our guarantee</p></div>
       <div class="why-card"><div class="why-icon">🔧</div><h3>Genuine Parts</h3><p>Only company-genuine spares used</p></div>
       <div class="why-card"><div class="why-icon">📍</div><h3>All Mumbai Covered</h3><p>20+ service areas daily</p></div>
-    </div>
+    </div></details>
   </div>
 </section>
 
@@ -352,6 +345,52 @@ footer span { color: var(--white); }
     <a href="https://wa.me/919819832282?text=I%20need%20appliance%20repair" target="_blank" class="btn-wa">📲 Book by WhatsApp</a>
   </div>
 </div>
+
+<section>
+<div class="container" style="max-width:500px;">
+<div id="bookingFormContainer" style="max-width: 450px; margin: 30px auto; padding: 25px; background: #1e3a8a; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); text-align: left; color: #ffffff; font-family: 'Inter', sans-serif; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+    <h3 style="text-align: center; margin-top: 0; color: #ffffff; margin-bottom: 20px; font-size: 20px; font-weight: 600;">Book a Repair — Instant</h3>
+    <div id="bookStep1">
+    
+    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Your Name:</label>
+        <input type="text" id="custName" placeholder="Enter your name" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; color: #000; font-size: 15px;"></div>
+    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Location/Area:</label>
+        <input type="text" id="custLocation" placeholder="e.g. Andheri West, Bandra" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; color: #000; font-size: 15px;"></div>
+    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Which Appliance & Problem:</label>
+        <input type="text" id="custProblem" placeholder="e.g. Fridge not cooling, WM not spinning" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; color: #000; font-size: 15px;"></div>
+    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Mobile Number:</label>
+        <input type="tel" id="custMobile" placeholder="Enter 10 digit number" maxlength="10" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; color: #000; font-size: 15px;"></div>
+    <div id="bookFormError" style="min-height: 20px; color: #FCA5A5; font-size: 13px; margin-bottom: 8px; text-align: center;"></div>
+    <div style="text-align: center;"><button onclick="goToStep2()" id="continueBtn" style="width: 100%; padding: 14px; background: #25D366; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">Continue →</button></div>
+    </div>
+    <div id="bookStep2" style="display:none;">
+    <p style="font-size: 13px; color: #cbd5e1; margin-bottom: 14px;">Almost done! When should the technician visit?</p>
+    <div style="margin-bottom: 14px;">
+        <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Date:</label>
+        <div id="dateChipRow" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px;"></div>
+        <input type="hidden" id="custDate" value="">
+    </div>
+    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Time Slot: <span style="font-weight:400; opacity:0.85;">(Open Every Slot, 7 AM – 11 PM)</span></label>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+            <div class="time-slot-btn" data-slot="Slot 1 (7:00 AM - 9:00 AM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">7-9<br>AM</div>
+                <div class="time-slot-btn" data-slot="Slot 2 (9:00 AM - 11:00 AM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">9-11<br>AM</div>
+                <div class="time-slot-btn" data-slot="Slot 3 (11:00 AM - 1:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">11-1<br>Noon</div>
+                <div class="time-slot-btn" data-slot="Slot 4 (1:00 PM - 3:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">1-3<br>PM</div>
+                <div class="time-slot-btn" data-slot="Slot 5 (3:00 PM - 5:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">3-5<br>PM</div>
+                <div class="time-slot-btn" data-slot="Slot 6 (5:00 PM - 7:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">5-7<br>PM</div>
+                <div class="time-slot-btn" data-slot="Slot 7 (7:00 PM - 9:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">7-9<br>PM</div>
+                <div class="time-slot-btn" data-slot="Slot 8 (9:00 PM - 11:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">9-11<br>PM</div>
+        </div>
+        <div class="time-slot-btn" data-slot="Emergency — Priority Visit, Available Now" onclick="selectSlot(this)" style="margin-top: 8px; padding: 10px 6px; text-align: center; border: 2px solid #FCA5A5; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 700; color: #991B1B; background: #FEE2E2;">🚨 Emergency Available Now</div>
+        <input type="hidden" id="custSlot" value=""></div>
+    <div style="text-align: center; display:flex; gap:8px;">
+        <button onclick="backToStep1()" style="flex:0 0 auto; padding: 14px 16px; background: transparent; color: #cbd5e1; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer;">← Back</button>
+        <button onclick="sendBookingToSheets()" id="bookBtn" style="flex:1; padding: 14px; background: #25D366; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">🚀 Book Now</button>
+    </div>
+    </div>
+</div>
+</div>
+</section>
 
 <footer>
   <p>© 2026 <span>Quickfix Mumbai</span> · Home Appliance & Electronics Repair</p>
@@ -501,9 +540,56 @@ async function loadReviews(){
 loadReviews();
 </script>
 
-<script src="tracking.js"></script>
-<script src="search-index.js"></script>
-<script src="site-search.js"></script>
+<script src="tracking.js" defer></script>
+<script src="search-index.js" defer></script>
+<script src="site-search.js" defer></script>
 <script src="photo-loader.js" defer></script>
+
+<script>
+function goToStep2() {
+    var name = document.getElementById('custName').value.trim();
+    var problem = document.getElementById('custProblem').value.trim();
+    var mobile = document.getElementById('custMobile').value.trim();
+    var errBox = document.getElementById('bookFormError');
+    errBox.textContent = "";
+    if(name == "" || problem == "" || mobile == "") {
+        errBox.textContent = "⚠️ Please fill all fields before continuing.";
+        return;
+    }
+    if(!/^[6-9]\d{9}$/.test(mobile)) {
+        errBox.textContent = "⚠️ Please enter a valid 10-digit mobile number.";
+        return;
+    }
+    document.getElementById('bookStep1').style.display = 'none';
+    document.getElementById('bookStep2').style.display = 'block';
+}
+function backToStep1() {
+    document.getElementById('bookStep2').style.display = 'none';
+    document.getElementById('bookStep1').style.display = 'block';
+}
+(function(){
+    var row = document.getElementById('dateChipRow');
+    if(!row) return;
+    var today = new Date();
+    var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    for(var i=0;i<8;i++){
+        var d = new Date(today); d.setDate(today.getDate()+i);
+        var iso = d.toISOString().split('T')[0];
+        var label = i===0 ? 'Today' : (i===1 ? 'Tomorrow' : days[d.getDay()]+' '+d.getDate());
+        var chip = document.createElement('div');
+        chip.textContent = label;
+        chip.setAttribute('data-date', iso);
+        chip.style.cssText = 'flex:0 0 auto;padding:10px 14px;border:2px solid #cbd5e1;border-radius:8px;cursor:pointer;font-size:12.5px;font-weight:600;color:#1e3a8a;background:#fff;white-space:nowrap;';
+        chip.onclick = function(){
+            document.querySelectorAll('#dateChipRow > div').forEach(function(c){ c.style.background='#fff'; c.style.color='#1e3a8a'; c.style.borderColor='#cbd5e1'; });
+            this.style.background='#1e3a8a'; this.style.color='#fff'; this.style.borderColor='#1e3a8a';
+            document.getElementById('custDate').value = this.getAttribute('data-date');
+        };
+        row.appendChild(chip);
+        if(i===0){ chip.onclick(); }
+    }
+})();
+</script>
+
 </body>
 </html>

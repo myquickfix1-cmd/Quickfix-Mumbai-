@@ -375,6 +375,7 @@ footer span { color: var(--white); }
   .service-card, .why-card, .testimonial-card, .review-form-box { background: rgba(255,255,255,0.95); }
 }
 </style>
+<script src="nearby-areas.js" defer></script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -449,6 +450,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="rating-item"><strong>Expert</strong><span>Technicians</span></div>
   </div>
 </section>
+<div style="max-width:500px; margin:0 auto; text-align:center; padding:8px 16px 0;">
+  <div id="qfTicker" style="transition:opacity .3s ease; min-height:20px;"></div>
+</div>
+<div style="max-width:500px; margin:16px auto; padding:14px 18px; background:#F0FDF4; border:1.5px solid #10B981; border-radius:12px; text-align:center; font-size:0.85rem; color:#1F2937;">
+  <div id="qfGeoResult">Not seeing your area? <button id="qfGeoBtn" onclick="qfFindMyArea()" style="background:#10B981; color:#fff; border:none; padding:6px 14px; border-radius:16px; font-size:0.8rem; font-weight:700; cursor:pointer; margin-left:4px;">📍 Find My Nearest Area</button></div>
+</div>
 
 <section style="padding-top: 20px;">
   <div class="offer-box">
@@ -709,7 +716,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p style="font-size: 13px; color: #cbd5e1; margin-bottom: 16px;">Almost done! When should the technician visit?</p>
         <div style="margin-bottom: 14px;">
             <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Date:</label>
-            <input type="date" id="custDate" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;">
+            <div id="dateChipRow" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px;"></div>
+            <input type="hidden" id="custDate" value="">
         </div>
 
         <div style="margin-bottom: 18px;">
@@ -724,7 +732,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="time-slot-btn" data-slot="Slot 7 (7:00 PM - 9:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">7-9<br>PM</div>
                 <div class="time-slot-btn" data-slot="Slot 8 (9:00 PM - 11:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">9-11<br>PM</div>
             </div>
-            <div class="time-slot-btn" data-slot="Emergency — Priority Visit, Available Now (₹999)" onclick="selectSlot(this)" style="margin-top: 8px; padding: 10px 6px; text-align: center; border: 2px solid #FCA5A5; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 700; color: #991B1B; background: #FEE2E2;">🚨 Emergency — Available Now (₹999)</div>
+            <div class="time-slot-btn" data-slot="Emergency — Priority Visit, Available Now" onclick="selectSlot(this)" style="margin-top: 8px; padding: 10px 6px; text-align: center; border: 2px solid #FCA5A5; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 700; color: #991B1B; background: #FEE2E2;">🚨 Emergency Available Now</div>
             <input type="hidden" id="custSlot" value="">
         </div>
         <div id="bookFormError2" style="min-height: 20px; color: #FCA5A5; font-size: 13px; margin-bottom: 8px; text-align: center;"></div>
@@ -1281,5 +1289,31 @@ if ('serviceWorker' in navigator) {
 <script src="site-search.js" defer></script>
 <script src="quick-book.js" defer></script>
 <script src="photo-loader.js" defer></script>
+
+<script>
+(function(){
+    var row = document.getElementById('dateChipRow');
+    if(!row) return;
+    var today = new Date();
+    var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    for(var i=0;i<8;i++){
+        var d = new Date(today); d.setDate(today.getDate()+i);
+        var iso = d.toISOString().split('T')[0];
+        var label = i===0 ? 'Today' : (i===1 ? 'Tomorrow' : days[d.getDay()]+' '+d.getDate());
+        var chip = document.createElement('div');
+        chip.textContent = label;
+        chip.setAttribute('data-date', iso);
+        chip.style.cssText = 'flex:0 0 auto;padding:10px 14px;border:2px solid #cbd5e1;border-radius:8px;cursor:pointer;font-size:12.5px;font-weight:600;color:#1e3a8a;background:#fff;white-space:nowrap;';
+        chip.onclick = function(){
+            document.querySelectorAll('#dateChipRow > div').forEach(function(c){ c.style.background='#fff'; c.style.color='#1e3a8a'; c.style.borderColor='#cbd5e1'; });
+            this.style.background='#1e3a8a'; this.style.color='#fff'; this.style.borderColor='#1e3a8a';
+            document.getElementById('custDate').value = this.getAttribute('data-date');
+        };
+        row.appendChild(chip);
+        if(i===0){ chip.onclick(); }
+    }
+})();
+</script>
+
 </body>
 </html>

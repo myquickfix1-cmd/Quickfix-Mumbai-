@@ -208,7 +208,7 @@ async function loadBookings(mobile) {
             <span class="status-badge ${statusClass}">${b.status || 'Pending'}</span>
           </div>
           <div class="booking-meta">📍 ${String(b.location || '-').replace(/</g,'&lt;')}</div>
-          <div class="booking-meta">📅 ${fmtDate(b.date) || 'Date TBC'}${b.timeSlot ? ' — ' + b.timeSlot : ''}</div>
+          <div class="booking-meta">${fmtDate(b.date) || 'Date TBC'}${b.timeSlot ? ' — ' + b.timeSlot : ''}</div>
           ${b.technicianName ? `<div class="booking-meta">🔧 Technician: ${String(b.technicianName).replace(/</g,'&lt;')}</div>` : ''}
           ${warrantyHtml}
           ${b.status === 'Pending' ? `<button class="btn-cancel" onclick="cancelBooking('${b.bookingId}', this)">Cancel this booking</button>` : ''}
@@ -265,8 +265,8 @@ function doLogout() {
   }
 })();
 </script>
-<script src="search-index.js"></script>
-<script src="site-search.js"></script>
+<script src="search-index.js" defer></script>
+<script src="site-search.js" defer></script>
 <script src="photo-loader.js" defer></script>
 </body>
 </html>

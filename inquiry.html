@@ -87,6 +87,15 @@ footer span { color: var(--white); }
 
 @media (max-width: 600px) { header { padding: 12px 16px; } section { padding: 34px 16px; } .cta-band { margin: 28px 16px; } .float-call { bottom: 84px; } }
 </style>
+<style>
+details.why-accordion{border:none;}
+details.why-accordion summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;}
+details.why-accordion summary::-webkit-details-marker{display:none;}
+details.why-accordion summary .acc-chevron{font-size:1.1rem;color:var(--blue,#1E3A8A);transition:transform .2s;margin-left:10px;flex-shrink:0;}
+details.why-accordion[open] summary .acc-chevron{transform:rotate(180deg);}
+details.why-accordion summary{padding-bottom:4px;}
+details.why-accordion .why-grid{margin-top:16px;}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -165,7 +174,7 @@ footer span { color: var(--white); }
 
 <div class="breadcrumb"><a href="index.html">Home</a> › Inquiry & Contact</div>
 <section class="hero">
-  <div class="hero-badge">🕐 24x7 Service • ⭐ 4.8/5 Rated</div>
+  <div class="hero-badge">🕐 🚨 Emergency Available 24x7 • ⭐ 4.8/5 Rated</div>
   <h1>Have a Question? <span>We're Here to Help</span></h1>
   <p>Not sure which service you need, or just want to ask something before booking? Browse what we do below, then send us your question — we'll get back to you fast.</p>
   <div class="hero-btns">
@@ -270,13 +279,13 @@ footer span { color: var(--white); }
 
 <section style="background: var(--grey);">
   <div class="container">
-    <div class="center"><div class="section-label">Why Reach Out to Us</div><h2 class="section-title">No Pressure, Just Answers</h2></div>
+    <details class="why-accordion"><summary><div class="center" style="text-align:left; margin:0;"><div class="section-label">Why Reach Out to Us</div><h2 class="section-title">No Pressure, Just Answers</h2></div><span class="acc-chevron">▾</span></summary>
     <div class="why-grid">
       <div class="why-card"><div class="why-icon">💬</div><h3>No Obligation</h3><p>Ask anything — booking is optional</p></div>
       <div class="why-card"><div class="why-icon">⚡</div><h3>Fast Response</h3><p>We reply quickly, usually within minutes</p></div>
       <div class="why-card"><div class="why-icon">💰</div><h3>Honest Pricing Info</h3><p>We'll tell you costs upfront, no pressure to book</p></div>
       <div class="why-card"><div class="why-icon">🕐</div><h3>24x7 Availability</h3><p>Ask us anytime, day or night</p></div>
-    </div>
+    </div></details>
   </div>
 </section>
 
@@ -363,9 +372,9 @@ function submitInquiry(e){
 }
 </script>
 
-<script src="tracking.js"></script>
-<script src="search-index.js"></script>
-<script src="site-search.js"></script>
+<script src="tracking.js" defer></script>
+<script src="search-index.js" defer></script>
+<script src="site-search.js" defer></script>
 <script src="photo-loader.js" defer></script>
 </body>
 </html>

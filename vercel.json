@@ -1,5 +1,12 @@
 {
   "rewrites": [
     { "source": "/admin", "destination": "/admin.html" }
+  ],
+  "redirects": [
+    {
+      "source": "/((?!admin)[a-z0-9-]+)",
+      "destination": "/$1.html",
+      "permanent": true
+    }
   ]
 }

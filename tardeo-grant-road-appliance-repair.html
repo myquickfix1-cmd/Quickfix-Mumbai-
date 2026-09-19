@@ -26,103 +26,9 @@
 }
 </script>
 
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --blue: #1E3A8A; --blue-light: #3B82F6; --blue-lighter: #DBEAFE;
-  --white: #FFFFFF; --grey: #F3F4F6; --grey-dark: #6B7280;
-  --text: #1F2937; --border: #E5E7EB; --red: #DC2626; --whatsapp: #25D366; --green: #10B981; --amber: #D97706;
-}
-html { scroll-behavior: smooth; }
-body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); line-height: 1.6; }
-header { position: sticky; top: 0; z-index: 100; background: var(--white); display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-bottom: 2px solid var(--blue-lighter); flex-wrap: wrap; gap: 10px; }
-.logo { font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--blue); text-decoration: none; }
-.logo span { color: var(--blue-light); }
-.header-btns { display: flex; gap: 10px; }
-.btn-call, .btn-wa { padding: 10px 16px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; border: none; cursor: pointer; }
-.btn-call { background: var(--blue); color: var(--white); }
-.btn-wa { background: var(--whatsapp); color: var(--white); }
-.breadcrumb { background: var(--grey); padding: 10px 24px; font-size: 0.82rem; color: var(--grey-dark); }
-.breadcrumb a { color: var(--blue); text-decoration: none; }
-.hero { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 50px 24px 42px; text-align: center; }
-.hero-badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 6px 16px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 16px; }
-.hero h1 { font-family: 'Poppins', sans-serif; font-size: clamp(1.7rem, 6.5vw, 2.7rem); font-weight: 700; margin-bottom: 14px; }
-.hero h1 span { color: #FCD34D; }
-.hero p { font-size: 0.96rem; color: rgba(255,255,255,0.92); max-width: 700px; margin: 0 auto 26px; }
-.hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-.hero-btns .btn-call, .hero-btns .btn-wa { font-size: 0.98rem; padding: 13px 24px; background: var(--white); }
-.hero-btns .btn-call { color: var(--blue); }
-.hero-btns .btn-wa { color: var(--whatsapp); }
-section { padding: 44px 24px; }
-.container { max-width: 1050px; margin: 0 auto; }
-.section-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
-.section-title { font-family: 'Poppins', sans-serif; font-size: clamp(1.4rem, 4vw, 1.9rem); font-weight: 700; color: var(--blue); margin-bottom: 8px; }
-.section-sub { color: var(--grey-dark); font-size: 0.92rem; margin-bottom: 28px; }
-.center { text-align: center; }
-.locality-chips { display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; }
-.locality-chip { background: var(--white); border: 1.5px solid var(--border); border-radius: 18px; padding: 8px 16px; font-size: 0.82rem; font-weight: 600; color: var(--text); text-decoration: none; }
-.locality-chip:hover { border-color: var(--blue-light); background: var(--blue-lighter); color: var(--blue); }
-.services-grid-compact { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
-.service-mini-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 16px; text-decoration: none; color: var(--text); transition: all 0.2s; }
-.service-mini-card:hover { border-color: var(--blue-light); transform: translateY(-3px); box-shadow: 0 6px 16px rgba(30,58,138,0.1); }
-.service-mini-card strong { color: var(--blue); font-size: 0.92rem; display: block; margin-bottom: 4px; font-family: 'Poppins', sans-serif; }
-.service-mini-card span { font-size: 0.78rem; color: var(--grey-dark); }
-.brand-trust-box { background: var(--white); border: 1.5px solid var(--border); border-radius: 14px; padding: 24px; max-width: 800px; margin: 0 auto; }
-.brand-trust-box p.lead { font-size: 0.94rem; margin-bottom: 14px; }
-.brand-trust-box p.lead strong { color: var(--blue); }
-.brand-chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-.brand-chip-small { background: var(--blue-lighter); color: var(--blue); font-weight: 700; font-size: 0.8rem; padding: 6px 14px; border-radius: 14px; }
-.warranty-note { background: #FEF9E7; border-left: 4px solid var(--amber); padding: 12px 16px; border-radius: 8px; font-size: 0.88rem; color: #92400E; }
-.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
-.why-card { text-align: center; padding: 20px 16px; border-radius: 12px; background: var(--grey); }
-.why-icon { font-size: 1.8rem; margin-bottom: 8px; }
-.why-card h3 { font-size: 0.9rem; font-weight: 600; color: var(--blue); margin-bottom: 4px; }
-.why-card p { font-size: 0.78rem; color: var(--grey-dark); }
-.rating-badge { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--white); border: 1.5px solid var(--border); border-radius: 24px; padding: 10px 22px; max-width: 280px; margin: 0 auto 24px; }
-.rating-badge .badge-stars { color: var(--amber); font-size: 1rem; }
-.rating-badge .badge-num { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--text); font-size: 1.05rem; }
-.rating-badge .badge-count { color: var(--grey-dark); font-size: 0.85rem; }
-.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
-.testimonial-card { background: var(--white); border-radius: 12px; padding: 18px; border: 1px solid var(--border); }
-.testimonial-stars { color: var(--amber); margin-bottom: 8px; font-size: 0.9rem; }
-.testimonial-text { font-size: 0.87rem; font-style: italic; margin-bottom: 10px; }
-.testimonial-author { font-weight: 600; color: var(--blue); font-size: 0.82rem; }
-.review-form-box { background: var(--white); border-radius: 14px; padding: 22px; max-width: 500px; margin: 0 auto 32px; border: 1.5px solid var(--border); }
-.review-form-box h3 { font-family: 'Poppins', sans-serif; color: var(--blue); font-size: 1.05rem; margin-bottom: 4px; text-align: center; }
-.review-form-box p.sub { font-size: 0.8rem; color: var(--grey-dark); text-align: center; margin-bottom: 14px; }
-.star-picker { display: flex; gap: 6px; justify-content: center; font-size: 1.7rem; margin-bottom: 14px; cursor: pointer; }
-.star-picker span { color: var(--border); }
-.star-picker span.filled { color: var(--amber); }
-.review-form-box input, .review-form-box textarea { width: 100%; padding: 9px 12px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.9rem; margin-bottom: 11px; color: var(--text); }
-.review-form-box input::placeholder, .review-form-box textarea::placeholder { color: #6B7280; }
-.review-form-box textarea { min-height: 65px; resize: vertical; }
-.btn-review-submit { width: 100%; background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 10px; border: none; border-radius: 8px; font-weight: 700; font-size: 0.92rem; cursor: pointer; }
-.review-msg { text-align: center; font-size: 0.82rem; margin-top: 9px; font-weight: 600; }
-.review-msg.success { color: #0F766E; }
-.live-reviews-label { text-align: center; font-size: 0.76rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey-dark); margin: 28px 0 16px; }
-.review-loading { text-align: center; color: var(--grey-dark); font-size: 0.85rem; padding: 18px; grid-column: 1/-1; }
-.faq-item { background: var(--grey); border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
-.faq-q { font-weight: 700; color: var(--blue); font-size: 0.92rem; margin-bottom: 5px; }
-.faq-a { font-size: 0.86rem; color: var(--grey-dark); }
-.cta-band { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); text-align: center; padding: 44px 24px; border-radius: 16px; margin: 36px 24px; }
-.cta-band h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.4rem, 4vw, 1.9rem); margin-bottom: 10px; }
-.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-.page-nav { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 20px 24px; max-width: 1050px; margin: 0 auto; flex-wrap: wrap; }
-.page-nav a { display: flex; align-items: center; gap: 6px; background: var(--grey); border: 1px solid var(--border); padding: 10px 16px; border-radius: 8px; text-decoration: none; color: var(--blue); font-weight: 600; font-size: 0.85rem; }
-.page-nav a:hover { background: var(--blue-lighter); }
-.page-nav .home-link { background: var(--blue); color: var(--white); border: none; }
-footer { background: var(--blue); color: rgba(255,255,255,0.85); text-align: center; padding: 24px 24px; font-size: 0.78rem; }
-.trust-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 14px; margin: 12px 0; }
-.trust-strip span { display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.72rem; white-space: nowrap; }
-footer span { color: var(--white); }
-.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 12px 0; font-size: 0.74rem; }
-.footer-links a { color: rgba(255,255,255,0.92); text-decoration: none; }
-.float-wa, .float-call { position: fixed; z-index: 999; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; text-decoration: none; border: none; cursor: pointer; right: 20px; }
-.float-wa { background: var(--whatsapp); color: var(--white); bottom: 20px; box-shadow: 0 4px 16px rgba(16,185,129,0.4); }
-.float-call { background: var(--blue); color: var(--white); bottom: 92px; box-shadow: 0 4px 16px rgba(30,58,138,0.4); }
-.float-account { background: var(--white); color: var(--blue); bottom: 164px; border: 2px solid var(--blue); box-shadow: 0 4px 16px rgba(30,58,138,0.25); }
-@media (max-width: 600px) { header { padding: 12px 16px; } section { padding: 34px 16px; } .cta-band { margin: 28px 16px; } .float-call { bottom: 84px; } }
-</style>
+<link rel="stylesheet" href="area-common.css">
+
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -181,7 +87,7 @@ footer span { color: var(--white); }
       "name": "Company warranty khatam ho gayi hai, ab kya karu?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Koi tension nahi — hum out-of-warranty appliances bhi genuine parts aur apni 3-month warranty ke saath repair karte hain, company se sasta aur jaldi."
+        "text": "No problem — we repair out-of-warranty appliances too, with genuine parts and our own 3-month warranty, at a lower cost and faster than the brand's service centre."
       }
     },
     {
@@ -275,6 +181,7 @@ footer span { color: var(--white); }
   ]
 }
 </script>
+<script src="nearby-areas.js" defer></script>
 </head>
 <body>
 
@@ -298,14 +205,22 @@ footer span { color: var(--white); }
 <div class="breadcrumb"><a href="index.html">Home</a> › Service Areas › Tardeo & Grant Road</div>
 
 <section class="hero">
-  <div class="hero-badge">🕐 24x7 Service • ⭐ 4.8/5 Rated</div>
+  <div class="hero-badge">🕐 🚨 Emergency Available 24x7 • ⭐ 4.8/5 Rated</div>
   <h1>Appliance Repair in <span>Tardeo & Grant Road</span></h1>
   <p>From Nana Chowk to Opera House, from Mumbai Central to Bhatia Hospital Area — every appliance repaired same-day across Tardeo & Grant Road. Same-day service, genuine parts, 3-month warranty — and right across Mumbai too.</p>
   <div class="hero-btns">
     <a href="tel:+919819832282" class="btn-call">📞 Inquiry: +91 98198 32282</a>
     <a href="https://wa.me/919819832282?text=I%20need%20appliance%20repair%20in%20Tardeo & Grant Road" target="_blank" class="btn-wa">📲 Book by WhatsApp</a>
+  
+    <a href="#bookingFormContainer" class="btn-wa" style="background:#fff; color:#1e3a8a;">Book Now</a>
   </div>
 </section>
+<div style="max-width:500px; margin:0 auto; text-align:center; padding:8px 16px 0;">
+  <div id="qfTicker" style="transition:opacity .3s ease; min-height:20px;"></div>
+</div>
+<div style="max-width:500px; margin:16px auto; padding:14px 18px; background:#F0FDF4; border:1.5px solid #10B981; border-radius:12px; text-align:center; font-size:0.85rem; color:#1F2937;">
+  <div id="qfGeoResult">Not seeing your area? <button id="qfGeoBtn" onclick="qfFindMyArea()" style="background:#10B981; color:#fff; border:none; padding:6px 14px; border-radius:16px; font-size:0.8rem; font-weight:700; cursor:pointer; margin-left:4px;">📍 Find My Nearest Area</button></div>
+</div>
 <section>
   <div class="container">
     <div class="center">
@@ -318,34 +233,9 @@ footer span { color: var(--white); }
   </div>
 </section>
 
-<div style="max-width: 450px; margin: 30px auto; padding: 25px; background: #1e3a8a; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); text-align: left; color: #ffffff; font-family: 'Inter', sans-serif; box-shadow: 0 4px 15px rgba(0,0,0,0.15);" id="bookingFormContainer">
-    <h3 style="text-align: center; margin-top: 0; color: #ffffff; margin-bottom: 20px; font-size: 20px; font-weight: 600;">Book Repair in Tardeo & Grant Road — Instant</h3>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Your Name:</label>
-        <input type="text" id="custName" placeholder="Enter your name" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Locality in Tardeo & Grant Road:</label>
-        <input type="text" id="custLocation" placeholder="e.g. your building or landmark" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Problem:</label>
-        <input type="text" id="custProblem" placeholder="e.g. Fridge not cooling, WM not spinning" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 8px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Mobile Number:</label>
-        <input type="tel" id="custMobile" placeholder="Enter 10 digit number" maxlength="10" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Date:</label>
-        <input type="date" id="custDate" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Time Slot: <span style="font-weight:400; opacity:0.85;">(Open Every Slot, 7 AM – 11 PM)</span></label>
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
-            <div class="time-slot-btn" data-slot="Slot 1 (7:00 AM - 9:00 AM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">7-9<br>AM</div>
-                <div class="time-slot-btn" data-slot="Slot 2 (9:00 AM - 11:00 AM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">9-11<br>AM</div>
-                <div class="time-slot-btn" data-slot="Slot 3 (11:00 AM - 1:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">11-1<br>Noon</div>
-                <div class="time-slot-btn" data-slot="Slot 4 (1:00 PM - 3:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">1-3<br>PM</div>
-                <div class="time-slot-btn" data-slot="Slot 5 (3:00 PM - 5:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">3-5<br>PM</div>
-                <div class="time-slot-btn" data-slot="Slot 6 (5:00 PM - 7:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">5-7<br>PM</div>
-                <div class="time-slot-btn" data-slot="Slot 7 (7:00 PM - 9:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">7-9<br>PM</div>
-                <div class="time-slot-btn" data-slot="Slot 8 (9:00 PM - 11:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">9-11<br>PM</div>
-        </div>
-        <div class="time-slot-btn" data-slot="Emergency — Priority Visit, Available Now (₹999)" onclick="selectSlot(this)" style="margin-top: 8px; padding: 10px 6px; text-align: center; border: 2px solid #FCA5A5; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 700; color: #991B1B; background: #FEE2E2;">🚨 Emergency — Available Now (₹999)</div>
-        <input type="hidden" id="custSlot" value=""></div>
-    <div id="bookFormError" style="min-height: 20px; color: #FCA5A5; font-size: 13px; margin-bottom: 8px; text-align: center;"></div>
-    <div style="text-align: center;"><button onclick="sendBookingToSheets()" id="bookBtn" style="width: 100%; padding: 14px; background: #25D366; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">🚀 Book Now</button></div>
-</div>
+
+
+
 
 
 <section style="background: var(--grey);">
@@ -362,6 +252,8 @@ footer span { color: var(--white); }
           <a href="https://wa.me/919819832282?text=I%20need%20appliance%20repair%20near%20Bhatia%20Hospital%20Area" target="_blank" class="locality-chip">Bhatia Hospital Area</a>
     </div>
   </div>
+      <p class="locality-reassurance">Don't see your exact street or society listed? Not a problem — we cover all of Tardeo & Grant Road and the surrounding neighbourhoods. Just share your location on WhatsApp and we'll be there. And if you're near a 'border' area shown above — we serve fully on both sides, not just up to the line.</p>
+
 </section>
 
 
@@ -389,7 +281,7 @@ footer span { color: var(--white); }
       <a href="dishwasher-repair.html" class="service-mini-card" style="display:flex; gap:12px; align-items:center;"><img src="service-dishwasher-repair-quickfix.webp" alt="Dishwasher repair — Quickfix Mumbai" loading="lazy" style="width:64px; height:64px; border-radius:8px; object-fit:cover; flex-shrink:0;"><div><strong>Dishwasher Repair</strong><span>Not washing properly, not draining, water leakage, door latch broken, doesn't start, dishes coming out cloudy, unusual noise, bad odour, control panel not responding & more. Error codes: E24/5C-5E/OE (drain/overflow), E15/LC-LE (leak protection), 4C/4E (water supply) — normal to highly technical pump & PCB faults, all covered.</span></div></a>
       <a href="dryer-repair.html" class="service-mini-card" style="display:flex; gap:12px; align-items:center;"><img src="service-cloth-dryer-repair-quickfix.webp" alt="Cloth dryer repair — Quickfix Mumbai" loading="lazy" style="width:64px; height:64px; border-radius:8px; object-fit:cover; flex-shrink:0;"><div><strong>Cloth Dryer Repair</strong><span>Not heating, not drying clothes fully, drum not spinning, burning smell, excessive noise, doesn't start, timer/control not working, overheating, door not latching & more — normal heating-element faults to highly technical motor & PCB diagnosis, all covered.</span></div></a>
       <a href="air-dresser-repair.html" class="service-mini-card" style="display:flex; gap:12px; align-items:center;"><img src="service-air-dresser-repair-quickfix.webp" alt="Air dresser repair — Quickfix Mumbai" loading="lazy" style="width:64px; height:64px; border-radius:8px; object-fit:cover; flex-shrink:0;"><div><strong>Premium Air Dresser Repair</strong><span>Not steaming, not drying properly, door not closing/sealing, control panel fault, water tank sensor error, unusual noise during cycle, odour not removed, not powering on, cycle stops midway & more — normal sensor faults to highly technical steam-generator & PCB diagnosis, all covered.</span></div></a>
-      <a href="amc-service.html" class="service-mini-card"><strong>Annual Maintenance (AMC)</strong><span>Appliance-wise plans, priority visits, discounted parts & more</span></a>
+      <a href="amc-service.html" class="service-mini-card"><strong>Annual Maintenance (AMC)</strong><span>Yearly plans for fridge, washing machine, microwave, dishwasher, dryer & air dresser — 2 preventive checkups/year, same-day priority visits, maximum discount on genuine parts. Catches daily wear (loose parts, minor leaks) before it becomes a critical breakdown. Starts at ₹2,110/year + GST.</span></a>
     </div>
   </div>
 </section>
@@ -406,7 +298,7 @@ footer span { color: var(--white); }
         <span class="brand-chip-small">Samsung</span><span class="brand-chip-small">LG</span><span class="brand-chip-small">IFB</span>
         <span class="brand-chip-small">Whirlpool</span><span class="brand-chip-small">Bosch</span><span class="brand-chip-small">Godrej</span>
       </div>
-      <div class="warranty-note"><strong>Company warranty khatam ho gayi?</strong> Koi tension nahi — same-day visit, genuine parts, transparent pricing, aur humari apni 3-month service warranty ke saath.</div>
+      <div class="warranty-note"><strong>Manufacturer's warranty expired?</strong> No problem — same-day visit, genuine parts, transparent pricing, and our own 3-month service warranty included.</div>
     </div>
   </div>
 </section>
@@ -414,7 +306,7 @@ footer span { color: var(--white); }
 
 <section style="background: var(--grey);">
   <div class="container">
-    <div class="center"><div class="section-label">Why Tardeo & Grant Road Trusts Us</div><h2 class="section-title">Local, Reliable, Same-Day</h2></div>
+    <details class="why-accordion"><summary><div class="center" style="text-align:left; margin:0;"><div class="section-label">Why Tardeo & Grant Road Trusts Us</div><h2 class="section-title">Local, Reliable, Same-Day</h2></div><span class="acc-chevron">▾</span></summary>
     <div class="why-grid">
       <div class="why-card"><div class="why-icon">⚡</div><h3>Same-Day Visit</h3><p>Fast response across Nana Chowk &amp; Opera House</p></div>
       <div class="why-card"><div class="why-icon">🏆</div><h3>10+ Years Experience</h3><p>Trusted across Mumbai for over a decade</p></div>
@@ -422,7 +314,7 @@ footer span { color: var(--white); }
       <div class="why-card"><div class="why-icon">✅</div><h3>3-Month Warranty</h3><p>Every job backed by a service guarantee</p></div>
       <div class="why-card"><div class="why-icon">🔧</div><h3>Genuine Parts</h3><p>Only company-genuine spares used</p></div>
       <div class="why-card"><div class="why-icon">🕐</div><h3>24x7 Availability</h3><p>Genuine round-the-clock service, every day</p></div>
-    </div>
+    </div></details>
   </div>
 </section>
 
@@ -469,7 +361,7 @@ footer span { color: var(--white); }
     <div class="faq-item"><div class="faq-q">WhatsApp pe book karna better hai ya call?</div><div class="faq-a">Dono equally fast! WhatsApp pe photo bhej sakte ho, isse technician sahi tools lekar aata hai.</div></div>
     <div class="faq-item"><div class="faq-q">Raat ko bhi book kar sakte hai?</div><div class="faq-a">Haan, genuinely 24x7 hain! Raat ko bhi call ya message karo, emergency slot bhi hai jab zaroorat ho.</div></div>
     <div class="faq-item"><div class="faq-q">AMC plan milta hai Tardeo & Grant Road walo ke liye?</div><div class="faq-a">Haan bilkul milta hai — AMC plan appliance-wise customize hota hai, generic ek-jaisa plan sabke liye nahi hota. Call karo, apne appliances batao, hum sahi plan suggest kar denge.</div></div>
-    <div class="faq-item"><div class="faq-q">Company warranty khatam ho gayi hai, ab kya karu?</div><div class="faq-a">Koi tension nahi — hum out-of-warranty appliances bhi genuine parts aur apni 3-month warranty ke saath repair karte hain, company se sasta aur jaldi.</div></div>
+    <div class="faq-item"><div class="faq-q">Company warranty khatam ho gayi hai, ab kya karu?</div><div class="faq-a">No problem — we repair out-of-warranty appliances too, with genuine parts and our own 3-month warranty, at a lower cost and faster than the brand's service centre.</div></div>
     <div class="faq-item"><div class="faq-q">Spare parts khud arrange karne padenge?</div><div class="faq-a">Common parts technician hi lekar aata hai. Premium model ka rare part ho toh thoda order karna padta hai, baaki ready rehta hai.</div></div>
     <div class="faq-item"><div class="faq-q">Bhai mera washing machine spin hi nahi kar raha, fix hoga?</div><div class="faq-a">Bilkul fix hoga! Motor capacitor weak hona, drive belt loose ya damaged hona, door lock sensor fault, ya control board (PCB) ka signal na dena — sab possible causes hain. Technician on-spot diagnose karke sahi fix karega.</div></div>
     <div class="faq-item"><div class="faq-q">Fridge cooling nahi kar raha but compressor chal raha hai, PCB fault ho sakta hai?</div><div class="faq-a">Haan, ye common hai — compressor sahi chal raha ho phir bhi cooling na ho toh control board (PCB) ka relay ya sensor circuit fault ho sakta hai. Poora board replace karne se pehle exact fault diagnose karte hain.</div></div>
@@ -498,6 +390,52 @@ footer span { color: var(--white); }
   <a href="index.html" class="home-link">🏠 Home</a>
   <a href="mumbai-central-appliance-repair.html">Next: Mumbai Central →</a>
 </nav>
+
+<section>
+<div class="container" style="max-width:500px;">
+<div id="bookingFormContainer" style="max-width: 450px; margin: 30px auto; padding: 25px; background: #1e3a8a; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); text-align: left; color: #ffffff; font-family: 'Inter', sans-serif; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+    <h3 style="text-align: center; margin-top: 0; color: #ffffff; margin-bottom: 20px; font-size: 20px; font-weight: 600;">Book Repair in Tardeo & Grant Road — Instant</h3>
+    <div id="bookStep1">
+    
+    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Your Name:</label>
+        <input type="text" id="custName" placeholder="Enter your name" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
+    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Locality in Tardeo & Grant Road:</label>
+        <input type="text" id="custLocation" placeholder="e.g. your building or landmark" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
+    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Problem:</label>
+        <input type="text" id="custProblem" placeholder="e.g. Fridge not cooling, WM not spinning" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
+    <div style="margin-bottom: 8px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Mobile Number:</label>
+        <input type="tel" id="custMobile" placeholder="Enter 10 digit number" maxlength="10" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
+    <div id="bookFormError" style="min-height: 20px; color: #FCA5A5; font-size: 13px; margin-bottom: 8px; text-align: center;"></div>
+    <div style="text-align: center;"><button onclick="goToStep2()" id="continueBtn" style="width: 100%; padding: 14px; background: #25D366; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">Continue →</button></div>
+    </div>
+    <div id="bookStep2" style="display:none;">
+    <p style="font-size: 13px; color: #cbd5e1; margin-bottom: 14px;">Almost done! When should the technician visit?</p>
+    <div style="margin-bottom: 14px;">
+        <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Date:</label>
+        <div id="dateChipRow" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px;"></div>
+        <input type="hidden" id="custDate" value="">
+    </div>
+    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Time Slot: <span style="font-weight:400; opacity:0.85;">(Open Every Slot, 7 AM – 11 PM)</span></label>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+            <div class="time-slot-btn" data-slot="Slot 1 (7:00 AM - 9:00 AM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">7-9<br>AM</div>
+                <div class="time-slot-btn" data-slot="Slot 2 (9:00 AM - 11:00 AM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">9-11<br>AM</div>
+                <div class="time-slot-btn" data-slot="Slot 3 (11:00 AM - 1:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">11-1<br>Noon</div>
+                <div class="time-slot-btn" data-slot="Slot 4 (1:00 PM - 3:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">1-3<br>PM</div>
+                <div class="time-slot-btn" data-slot="Slot 5 (3:00 PM - 5:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">3-5<br>PM</div>
+                <div class="time-slot-btn" data-slot="Slot 6 (5:00 PM - 7:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">5-7<br>PM</div>
+                <div class="time-slot-btn" data-slot="Slot 7 (7:00 PM - 9:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">7-9<br>PM</div>
+                <div class="time-slot-btn" data-slot="Slot 8 (9:00 PM - 11:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">9-11<br>PM</div>
+        </div>
+        <div class="time-slot-btn" data-slot="Emergency — Priority Visit, Available Now" onclick="selectSlot(this)" style="margin-top: 8px; padding: 10px 6px; text-align: center; border: 2px solid #FCA5A5; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 700; color: #991B1B; background: #FEE2E2;">🚨 Emergency Available Now</div>
+        <input type="hidden" id="custSlot" value=""></div>
+    <div style="text-align: center; display:flex; gap:8px;">
+        <button onclick="backToStep1()" style="flex:0 0 auto; padding: 14px 16px; background: transparent; color: #cbd5e1; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer;">← Back</button>
+        <button onclick="sendBookingToSheets()" id="bookBtn" style="flex:1; padding: 14px; background: #25D366; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">🚀 Book Now</button>
+    </div>
+    </div>
+</div>
+</div>
+</section>
 
 <footer>
   <p>© 2026 <span>Quickfix Mumbai</span> · Home Appliance & Electronics Repair</p>
@@ -649,9 +587,56 @@ async function loadReviews(){
 loadReviews();
 </script>
 
-<script src="tracking.js"></script>
-<script src="search-index.js"></script>
-<script src="site-search.js"></script>
+<script src="tracking.js" defer></script>
+<script src="search-index.js" defer></script>
+<script src="site-search.js" defer></script>
 <script src="photo-loader.js" defer></script>
+
+<script>
+function goToStep2() {
+    var name = document.getElementById('custName').value.trim();
+    var problem = document.getElementById('custProblem').value.trim();
+    var mobile = document.getElementById('custMobile').value.trim();
+    var errBox = document.getElementById('bookFormError');
+    errBox.textContent = "";
+    if(name == "" || problem == "" || mobile == "") {
+        errBox.textContent = "⚠️ Please fill all fields before continuing.";
+        return;
+    }
+    if(!/^[6-9]\d{9}$/.test(mobile)) {
+        errBox.textContent = "⚠️ Please enter a valid 10-digit mobile number.";
+        return;
+    }
+    document.getElementById('bookStep1').style.display = 'none';
+    document.getElementById('bookStep2').style.display = 'block';
+}
+function backToStep1() {
+    document.getElementById('bookStep2').style.display = 'none';
+    document.getElementById('bookStep1').style.display = 'block';
+}
+(function(){
+    var row = document.getElementById('dateChipRow');
+    if(!row) return;
+    var today = new Date();
+    var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    for(var i=0;i<8;i++){
+        var d = new Date(today); d.setDate(today.getDate()+i);
+        var iso = d.toISOString().split('T')[0];
+        var label = i===0 ? 'Today' : (i===1 ? 'Tomorrow' : days[d.getDay()]+' '+d.getDate());
+        var chip = document.createElement('div');
+        chip.textContent = label;
+        chip.setAttribute('data-date', iso);
+        chip.style.cssText = 'flex:0 0 auto;padding:10px 14px;border:2px solid #cbd5e1;border-radius:8px;cursor:pointer;font-size:12.5px;font-weight:600;color:#1e3a8a;background:#fff;white-space:nowrap;';
+        chip.onclick = function(){
+            document.querySelectorAll('#dateChipRow > div').forEach(function(c){ c.style.background='#fff'; c.style.color='#1e3a8a'; c.style.borderColor='#cbd5e1'; });
+            this.style.background='#1e3a8a'; this.style.color='#fff'; this.style.borderColor='#1e3a8a';
+            document.getElementById('custDate').value = this.getAttribute('data-date');
+        };
+        row.appendChild(chip);
+        if(i===0){ chip.onclick(); }
+    }
+})();
+</script>
+
 </body>
 </html>

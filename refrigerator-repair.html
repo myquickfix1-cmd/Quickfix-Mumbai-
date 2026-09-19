@@ -25,124 +25,8 @@
 }
 </script>
 
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --blue: #1E3A8A; --blue-light: #1D4ED8; --blue-lighter: #DBEAFE;
-  --white: #FFFFFF; --grey: #F3F4F6; --grey-dark: #374151;
-  --text: #111827; --border: #D1D5DB; --red: #DC2626; --whatsapp: #128C7E; --amber: #D97706;
-}
-html { scroll-behavior: smooth; }
-body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); line-height: 1.6; }
-header { position: sticky; top: 0; z-index: 100; background: var(--white); display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-bottom: 2px solid var(--blue-lighter); flex-wrap: wrap; gap: 10px; }
-.logo { font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--blue); text-decoration: none; }
-.logo span { color: var(--blue-light); }
-.nav-menu { display: flex; gap: 4px; flex-wrap: wrap; font-size: 0.78rem; }
-.nav-link { padding: 6px 10px; border-radius: 6px; font-weight: 500; text-decoration: none; color: var(--text); }
-.nav-link:hover, .nav-link.active { background: var(--blue); color: var(--white); }
-.header-btns { display: flex; gap: 10px; }
-.nav-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 40px; height: 40px; background: rgba(30,58,138,0.08); border: 1px solid rgba(30,58,138,0.18); border-radius: 8px; cursor: pointer; padding: 0; }
-.nav-toggle span { width: 20px; height: 2px; background: var(--blue); border-radius: 2px; margin: 0 auto; transition: transform 0.2s, opacity 0.2s; }
-.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-@media (max-width: 780px) {
-  header { position: relative; }
-  .nav-toggle { display: flex; order: 3; }
-  .nav-menu { display: none; width: 100%; order: 5; flex-direction: column; gap: 2px; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); padding: 10px 16px 18px; border-radius: 0 0 16px 16px; box-shadow: 0 16px 30px rgba(0,0,0,0.18); border-top: 1px solid var(--border); }
-  .nav-menu.open { display: flex; }
-  .nav-link { padding: 12px 14px; border-radius: 8px; }
-}
-.btn-call, .btn-wa { padding: 10px 16px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 6px; border: none; cursor: pointer; }
-.btn-call { background: var(--blue); color: var(--white); }
-.btn-wa { background: var(--whatsapp); color: var(--white); }
-.breadcrumb { background: var(--grey); padding: 10px 24px; font-size: 0.82rem; color: var(--grey-dark); }
-.breadcrumb a { color: var(--blue); text-decoration: none; }
-.hero { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 50px 24px 42px; text-align: center; }
-.hero-badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 6px 16px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 16px; }
-.hero h1 { font-family: 'Poppins', sans-serif; font-size: clamp(1.7rem, 6.5vw, 2.7rem); font-weight: 700; margin-bottom: 14px; }
-.hero h1 span { color: #FCD34D; }
-.hero p { font-size: 0.96rem; color: rgba(255,255,255,0.92); max-width: 700px; margin: 0 auto 26px; }
-.hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-.hero-btns .btn-call, .hero-btns .btn-wa { font-size: 0.98rem; padding: 13px 24px; background: var(--white); }
-.hero-btns .btn-call { color: var(--blue); }
-.hero-btns .btn-wa { color: var(--whatsapp); }
-section { padding: 44px 24px; }
-.container { max-width: 1050px; margin: 0 auto; }
-.section-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
-.section-title { font-family: 'Poppins', sans-serif; font-size: clamp(1.4rem, 4vw, 1.9rem); font-weight: 700; color: var(--blue); margin-bottom: 8px; }
-.section-sub { color: var(--grey-dark); font-size: 0.92rem; margin-bottom: 28px; }
-.center { text-align: center; }
-.problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
-.problem-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 20px; }
-.problem-card h3 { color: var(--blue); font-family: 'Poppins', sans-serif; font-size: 1rem; margin-bottom: 8px; }
-.problem-card p { font-size: 0.88rem; color: var(--grey-dark); margin-bottom: 8px; line-height: 1.55; }
-.problem-card p strong { color: var(--text); }
-.problem-card .pc-sub { font-weight: 400; font-size: 0.78em; color: var(--grey-dark); }
-.pc-reasons { margin: 6px 0 12px 18px; padding: 0; font-size: 0.85rem; color: var(--grey-dark); line-height: 1.7; }
-.pc-reasons li { margin-bottom: 2px; }
-.pc-cta-row { display: flex; gap: 8px; flex-wrap: wrap; }
-.pc-cta { flex: 1; min-width: 130px; text-align: center; padding: 9px 10px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; text-decoration: none; cursor: pointer; }
-.pc-cta-wa { background: var(--whatsapp); color: #fff; }
-.pc-cta-wa:hover { opacity: 0.9; }
-.pc-cta-form { background: var(--blue-lighter); color: var(--blue); border: 1.5px solid var(--blue); }
-.pc-cta-form:hover { background: var(--blue); color: #fff; }
-.problem-cta:hover { text-decoration: underline; }
-.brand-trust-box { background: var(--white); border: 1.5px solid var(--border); border-radius: 14px; padding: 24px; max-width: 800px; margin: 0 auto; }
-.brand-trust-box p.lead { font-size: 0.94rem; margin-bottom: 14px; }
-.brand-trust-box p.lead strong { color: var(--blue); }
-.brand-chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-.brand-chip-small { background: var(--blue-lighter); color: var(--blue); font-weight: 700; font-size: 0.8rem; padding: 6px 14px; border-radius: 14px; }
-.warranty-note { background: #FEF9E7; border-left: 4px solid var(--amber); padding: 12px 16px; border-radius: 8px; font-size: 0.88rem; color: #92400E; }
-.areas-served-grid { display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; }
-.areas-served-grid a { background: var(--white); border: 1.5px solid var(--border); border-radius: 18px; padding: 8px 16px; font-size: 0.82rem; font-weight: 600; color: var(--text); text-decoration: none; }
-.areas-served-grid a:hover { border-color: var(--blue-light); background: var(--blue-lighter); color: var(--blue); }
-.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
-.why-card { text-align: center; padding: 20px 16px; border-radius: 12px; background: var(--grey); }
-.why-icon { font-size: 1.8rem; margin-bottom: 8px; }
-.why-card h3 { font-size: 0.9rem; font-weight: 600; color: var(--blue); margin-bottom: 4px; }
-.why-card p { font-size: 0.78rem; color: var(--grey-dark); }
-.rating-badge { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--white); border: 1.5px solid var(--border); border-radius: 24px; padding: 10px 22px; max-width: 280px; margin: 0 auto 24px; }
-.rating-badge .badge-stars { color: var(--amber); font-size: 1rem; }
-.rating-badge .badge-num { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--text); font-size: 1.05rem; }
-.rating-badge .badge-count { color: var(--grey-dark); font-size: 0.85rem; }
-.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
-.testimonial-card { background: var(--white); border-radius: 12px; padding: 18px; border: 1px solid var(--border); }
-.testimonial-stars { color: var(--amber); margin-bottom: 8px; font-size: 0.9rem; }
-.testimonial-text { font-size: 0.87rem; font-style: italic; margin-bottom: 10px; }
-.testimonial-author { font-weight: 600; color: var(--blue); font-size: 0.82rem; }
-.review-form-box { background: var(--white); border-radius: 14px; padding: 22px; max-width: 500px; margin: 0 auto 32px; border: 1.5px solid var(--border); }
-.review-form-box h3 { font-family: 'Poppins', sans-serif; color: var(--blue); font-size: 1.05rem; margin-bottom: 4px; text-align: center; }
-.review-form-box p.sub { font-size: 0.8rem; color: var(--grey-dark); text-align: center; margin-bottom: 14px; }
-.star-picker { display: flex; gap: 6px; justify-content: center; font-size: 1.7rem; margin-bottom: 14px; cursor: pointer; }
-.star-picker span { color: var(--border); }
-.star-picker span.filled { color: var(--amber); }
-.review-form-box input, .review-form-box textarea { width: 100%; padding: 9px 12px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.9rem; margin-bottom: 11px; color: var(--text); }
-.review-form-box input::placeholder, .review-form-box textarea::placeholder { color: #6B7280; }
-.review-form-box textarea { min-height: 65px; resize: vertical; }
-.btn-review-submit { width: 100%; background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); padding: 10px; border: none; border-radius: 8px; font-weight: 700; font-size: 0.92rem; cursor: pointer; }
-.review-msg { text-align: center; font-size: 0.82rem; margin-top: 9px; font-weight: 600; }
-.review-msg.success { color: #0F766E; }
-.live-reviews-label { text-align: center; font-size: 0.76rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey-dark); margin: 28px 0 16px; }
-.review-loading { text-align: center; color: var(--grey-dark); font-size: 0.85rem; padding: 18px; grid-column: 1/-1; }
-.faq-item { background: var(--grey); border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
-.faq-q { font-weight: 700; color: var(--blue); font-size: 0.92rem; margin-bottom: 5px; }
-.faq-a { font-size: 0.86rem; color: var(--grey-dark); }
-.cta-band { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: var(--white); text-align: center; padding: 44px 24px; border-radius: 16px; margin: 36px 24px; }
-.cta-band h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.4rem, 4vw, 1.9rem); margin-bottom: 10px; }
-.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-footer { background: var(--blue); color: rgba(255,255,255,0.85); text-align: center; padding: 24px 24px; font-size: 0.78rem; }
-.trust-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 14px; margin: 12px 0; }
-.trust-strip span { display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.72rem; white-space: nowrap; }
-footer span { color: var(--white); }
-.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 12px 0; font-size: 0.74rem; }
-.footer-links a { color: rgba(255,255,255,0.92); text-decoration: none; }
-.float-wa, .float-call { position: fixed; z-index: 999; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; text-decoration: none; border: none; cursor: pointer; right: 20px; }
-.float-wa { background: var(--whatsapp); color: var(--white); bottom: 20px; box-shadow: 0 4px 16px rgba(16,185,129,0.4); }
-.float-call { background: var(--blue); color: var(--white); bottom: 92px; box-shadow: 0 4px 16px rgba(30,58,138,0.4); }
-.float-account { background: var(--white); color: var(--blue); bottom: 164px; border: 2px solid var(--blue); box-shadow: 0 4px 16px rgba(30,58,138,0.25); }
-@media (max-width: 600px) { header { padding: 12px 16px; } section { padding: 34px 16px; } .cta-band { margin: 28px 16px; } .float-call { bottom: 84px; } }
-</style>
+<link rel="stylesheet" href="hub-common.css">
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -225,7 +109,7 @@ footer span { color: var(--white); }
       "name": "Company warranty khatam ho gayi hai, ab kya karu?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Koi tension nahi — hum out-of-warranty fridges bhi genuine parts aur apni 3-month warranty ke saath repair karte hain, company se sasta aur jaldi."
+        "text": "No problem — we repair out-of-warranty fridges too, with genuine parts and our own 3-month warranty, at a lower cost and faster than the brand's service centre."
       }
     },
     {
@@ -335,6 +219,7 @@ footer span { color: var(--white); }
   ]
 }
 </script>
+<script src="nearby-areas.js" defer></script>
 </head>
 <body>
 
@@ -385,15 +270,31 @@ footer span { color: var(--white); }
 
 <div class="breadcrumb"><a href="index.html">Home</a> › Services › Refrigerator Repair</div>
 <section class="hero">
-  <div class="hero-badge">🕐 24x7 Service • ⭐ 4.8/5 Rated</div>
-  <h1>Refrigerator Repair in <span>Mumbai</span></h1>
+  <div class="hero-badge">🕐 🚨 Emergency Available 24x7 • ⭐ 4.8/5 Rated</div>
+  <h1>Refrigerator Repair in <span>Mumbai</span> (Single, Double, Side-by-Side &amp; French Door)</h1>
   <p>Searching for refrigerator repair near me? Not cooling, PCB board fault, compressor failure, water leakage, ice maker issues — same-day doorstep fridge repair Mumbai, genuine parts, 3-month warranty, across all Mumbai.</p>
   <div class="hero-btns">
     <a href="tel:+919819832282" class="btn-call">📞 Inquiry: +91 98198 32282</a>
     <a href="https://wa.me/919819832282?text=I%20need%20refrigerator%20repair" target="_blank" class="btn-wa">📲 Book by WhatsApp</a>
+  
+    <a href="#bookingFormContainer" class="btn-wa" style="background:#fff; color:#1e3a8a;">Book Now</a>
   </div>
   <p style="margin-top:16px; font-size:0.85rem;"><a href="refrigerator-diy-checker.html" style="color:#fff; text-decoration:underline; font-weight:600;">🧊 Not sure if it's serious? Try our free 30-second Fridge Easy Self Check →</a></p>
+  <div style="margin-top:14px; display:flex; flex-wrap:wrap; gap:8px; justify-content:center;">
+    <span style="background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.35); color:#fff; font-size:0.78rem; font-weight:600; padding:6px 14px; border-radius:14px;">Single Door</span>
+    <span style="background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.35); color:#fff; font-size:0.78rem; font-weight:600; padding:6px 14px; border-radius:14px;">Double Door</span>
+    <span style="background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.35); color:#fff; font-size:0.78rem; font-weight:600; padding:6px 14px; border-radius:14px;">Triple Door</span>
+    <span style="background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.35); color:#fff; font-size:0.78rem; font-weight:600; padding:6px 14px; border-radius:14px;">Side-by-Side</span>
+    <span style="background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.35); color:#fff; font-size:0.78rem; font-weight:600; padding:6px 14px; border-radius:14px;">French Door</span>
+    <span style="background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.35); color:#fff; font-size:0.78rem; font-weight:600; padding:6px 14px; border-radius:14px;">Multi-Door / Door-in-Door</span>
+  </div>
 </section>
+<div style="max-width:500px; margin:0 auto; text-align:center; padding:8px 16px 0;">
+  <div id="qfTicker" style="transition:opacity .3s ease; min-height:20px;"></div>
+</div>
+<div style="max-width:500px; margin:16px auto; padding:14px 18px; background:#F0FDF4; border:1.5px solid #10B981; border-radius:12px; text-align:center; font-size:0.85rem; color:#1F2937;">
+  <div id="qfGeoResult">Not seeing your area? <button id="qfGeoBtn" onclick="qfFindMyArea()" style="background:#10B981; color:#fff; border:none; padding:6px 14px; border-radius:16px; font-size:0.8rem; font-weight:700; cursor:pointer; margin-left:4px;">📍 Find My Nearest Area</button></div>
+</div>
 <div class="container" style="padding: 20px 24px 0;"><div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px;">
   <div><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px; background: #F3F4F6;"><img src="samsung-double-door-refrigerator-repair-bkc.webp" alt="Samsung refrigerator repair — real Quickfix job in Mumbai" loading="lazy" style="width: 100%; max-height: 320px; object-fit: contain; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">Samsung refrigerator repair — real Quickfix job in Mumbai</p></div>
   <div><div style="border-radius: 14px; overflow: hidden; border: 1px solid var(--border); max-height: 320px; background: #F3F4F6;"><img src="samsung-double-door-fridge-repair-bkc.webp" alt="Samsung double-door refrigerator repair — real Quickfix job in BKC, Mumbai" loading="lazy" style="width: 100%; max-height: 320px; object-fit: contain; display: block;"></div><p style="text-align:center; font-size:0.78rem; color:var(--grey-dark); margin-top:6px;">Samsung double-door refrigerator repair — real Quickfix job in BKC</p></div>
@@ -420,15 +321,15 @@ footer span { color: var(--white); }
       <p class="section-sub">Every fault has a real technical cause — our technicians diagnose before they repair</p>
     </div>
     <div class="problem-grid">
-      <div class="problem-card"><h3>Refrigerator Not Cooling <span class="pc-sub">(Fridge thanda nahi ho raha)</span></h3><ul class="pc-reasons"><li>Gas/refrigerant leakage in cooling coil</li><li>Burnt compressor relay or capacitor</li><li>Thermostat temperature sensor failure</li><li>Main PCB board power break</li><li>Any other internal electrical fault</li><li>Brand codes: Samsung PCB relay fault, LG/Whirlpool/Godrej cooling faults</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20is%20not%20cooling.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Refrigerator Not Cooling'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
-      <div class="problem-card"><h3>Refrigerator PCB Board Fault <span class="pc-sub">(Control board kaam nahi kar raha)</span></h3><ul class="pc-reasons"><li>Burnt tracks on control board</li><li>Relay or triac failure</li><li>Sensor signal circuit fault</li><li>Moisture or power-surge damage</li><li>Any other internal electrical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20has%20a%20PCB%20board%20fault.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Refrigerator PCB Board Fault'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
-      <div class="problem-card"><h3>Compressor Not Starting <span class="pc-sub">(Compressor start nahi ho raha)</span></h3><ul class="pc-reasons"><li>Overload protector trip</li><li>Starting capacitor failure</li><li>Compressor winding fault</li><li>Relay stuck or burnt</li><li>Low voltage supply at socket</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20has%20a%20compressor%20not%20starting.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Compressor Not Starting'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
-      <div class="problem-card"><h3>Refrigerator Water Leakage <span class="pc-sub">(Fridge se paani leak ho raha hai)</span></h3><ul class="pc-reasons"><li>Blocked defrost drain line</li><li>Damaged door gasket seal</li><li>Cracked drain pan</li><li>Ice build-up blocking drain</li><li>Any other internal fault</li><li>Common on Whirlpool double-door models with blocked defrost drains</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20is%20leaking%20water.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Refrigerator Water Leakage'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
-      <div class="problem-card"><h3>Ice Maker Not Working <span class="pc-sub">(Ice maker kaam nahi kar raha)</span></h3><ul class="pc-reasons"><li>Water inlet valve fault</li><li>Frozen or blocked water line</li><li>Ice-maker module failure</li><li>Low water supply pressure</li><li>Any other internal fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20has%20an%20ice%20maker%20not%20working.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Ice Maker Not Working'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
-      <div class="problem-card"><h3>Unusual Noise or Vibration <span class="pc-sub">(Ajeeb awaaz ya vibration aa rahi hai)</span></h3><ul class="pc-reasons"><li>Worn-out fan motor bearing</li><li>Loose compressor mounting</li><li>Condenser fan obstruction</li><li>Uneven floor levelling</li><li>Any other mechanical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20is%20making%20unusual%20noise.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Unusual Noise or Vibration'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
-      <div class="problem-card"><h3>Freezer Frost Build-up <span class="pc-sub">(Freezer mein zyada barf jam rahi hai)</span></h3><ul class="pc-reasons"><li>Faulty defrost timer</li><li>Defrost heater failure</li><li>Door seal air leak</li><li>Thermostat malfunction</li><li>Any other internal fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20has%20frost%20build-up.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Freezer Frost Build-up'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
-      <div class="problem-card"><h3>Interior Light Not Working <span class="pc-sub">(Andar ki light nahi jal rahi)</span></h3><ul class="pc-reasons"><li>Blown bulb or LED module</li><li>Faulty door switch</li><li>Internal wiring fault</li><li>Control board issue</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20has%20interior%20light%20not%20working.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Interior Light Not Working'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
-      <div class="problem-card"><h3>Refrigerator Running Continuously <span class="pc-sub">(Fridge band hi nahi ho raha)</span></h3><ul class="pc-reasons"><li>Dust-clogged condenser coils</li><li>Faulty thermostat</li><li>Refrigerant undercharge</li><li>Door seal air leak</li><li>Any other internal fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20keeps%20running%20continuously.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Refrigerator Running Continuously'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div><div class="problem-card"><h3>Something Else / Not Sure <span class="pc-sub">(Koi aur problem hai, ya pata nahi kya hua hai)</span></h3><ul class="pc-reasons"><li>Not seeing your exact issue above? That’s fine — most faults still fall under a standard diagnostic.</li><li>Tell us what you’re noticing, even if it’s vague, and our technician will properly diagnose it on-site.</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20has%20a%20problem%20not%20listed%20here.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Other / Not Sure'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div></div>
+      <div class="problem-card"><h3>Refrigerator Not Cooling <span class="pc-sub">(Fridge thanda nahi ho raha)</span></h3><ul class="pc-reasons"><li>Gas/refrigerant leakage in cooling coil</li><li>Burnt compressor relay or capacitor</li><li>Thermostat temperature sensor failure</li><li>Main PCB board power break</li><li>Any other internal electrical fault</li><li>Brand codes: Samsung PCB relay fault, LG/Whirlpool/Godrej cooling faults</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20is%20not%20cooling.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Refrigerator Not Cooling'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">Book Now</a></div></div>
+      <div class="problem-card"><h3>Refrigerator PCB Board Fault <span class="pc-sub">(Control board kaam nahi kar raha)</span></h3><ul class="pc-reasons"><li>Burnt tracks on control board</li><li>Relay or triac failure</li><li>Sensor signal circuit fault</li><li>Moisture or power-surge damage</li><li>Any other internal electrical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20has%20a%20PCB%20board%20fault.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Refrigerator PCB Board Fault'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">Book Now</a></div></div>
+      <div class="problem-card"><h3>Compressor Not Starting <span class="pc-sub">(Compressor start nahi ho raha)</span></h3><ul class="pc-reasons"><li>Overload protector trip</li><li>Starting capacitor failure</li><li>Compressor winding fault</li><li>Relay stuck or burnt</li><li>Low voltage supply at socket</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20has%20a%20compressor%20not%20starting.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Compressor Not Starting'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">Book Now</a></div></div>
+      <div class="problem-card"><h3>Refrigerator Water Leakage <span class="pc-sub">(Fridge se paani leak ho raha hai)</span></h3><ul class="pc-reasons"><li>Blocked defrost drain line</li><li>Damaged door gasket seal</li><li>Cracked drain pan</li><li>Ice build-up blocking drain</li><li>Any other internal fault</li><li>Common on Whirlpool double-door models with blocked defrost drains</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20is%20leaking%20water.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Refrigerator Water Leakage'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">Book Now</a></div></div>
+      <div class="problem-card"><h3>Ice Maker Not Working <span class="pc-sub">(Ice maker kaam nahi kar raha)</span></h3><ul class="pc-reasons"><li>Water inlet valve fault</li><li>Frozen or blocked water line</li><li>Ice-maker module failure</li><li>Low water supply pressure</li><li>Any other internal fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20has%20an%20ice%20maker%20not%20working.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Ice Maker Not Working'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">Book Now</a></div></div>
+      <div class="problem-card"><h3>Unusual Noise or Vibration <span class="pc-sub">(Ajeeb awaaz ya vibration aa rahi hai)</span></h3><ul class="pc-reasons"><li>Worn-out fan motor bearing</li><li>Loose compressor mounting</li><li>Condenser fan obstruction</li><li>Uneven floor levelling</li><li>Any other mechanical fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20is%20making%20unusual%20noise.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Unusual Noise or Vibration'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">Book Now</a></div></div>
+      <div class="problem-card"><h3>Freezer Frost Build-up <span class="pc-sub">(Freezer mein zyada barf jam rahi hai)</span></h3><ul class="pc-reasons"><li>Faulty defrost timer</li><li>Defrost heater failure</li><li>Door seal air leak</li><li>Thermostat malfunction</li><li>Any other internal fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20has%20frost%20build-up.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Freezer Frost Build-up'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">Book Now</a></div></div>
+      <div class="problem-card"><h3>Interior Light Not Working <span class="pc-sub">(Andar ki light nahi jal rahi)</span></h3><ul class="pc-reasons"><li>Blown bulb or LED module</li><li>Faulty door switch</li><li>Internal wiring fault</li><li>Control board issue</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20has%20interior%20light%20not%20working.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Interior Light Not Working'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">Book Now</a></div></div>
+      <div class="problem-card"><h3>Refrigerator Running Continuously <span class="pc-sub">(Fridge band hi nahi ho raha)</span></h3><ul class="pc-reasons"><li>Dust-clogged condenser coils</li><li>Faulty thermostat</li><li>Refrigerant undercharge</li><li>Door seal air leak</li><li>Any other internal fault</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20keeps%20running%20continuously.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Refrigerator Running Continuously'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">Book Now</a></div></div><div class="problem-card"><h3>Something Else / Not Sure <span class="pc-sub">(Koi aur problem hai, ya pata nahi kya hua hai)</span></h3><ul class="pc-reasons"><li>Not seeing your exact issue above? That’s fine — most faults still fall under a standard diagnostic.</li><li>Tell us what you’re noticing, even if it’s vague, and our technician will properly diagnose it on-site.</li></ul><div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20refrigerator%20has%20a%20problem%20not%20listed%20here.%20Please%20send%20me%20the%20%E2%82%B9499%20inspection%20details%20(adjusted%20in%20my%20final%20bill).%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Repair via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Other / Not Sure'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">Book Now</a></div></div>
     </div>
   </div>
 </section>
@@ -449,7 +350,7 @@ footer span { color: var(--white); }
           <li>Whirlpool: E2 / F2 — Thermistor resistance short circuit</li>
           <li>Haier / Godrej: E1 / E2 — Internal sensor disconnect</li>
         </ul>
-        <div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20fridge%20is%20showing%20a%20sensor%20error%20code.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Sensor Fix via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Sensor Error Code'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div>
+        <div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20fridge%20is%20showing%20a%20sensor%20error%20code.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Sensor Fix via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Sensor Error Code'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">Book Now</a></div>
       </div>
       <div class="problem-card">
         <h3>Defrost &amp; Heater Codes <span class="pc-sub">(Er dH, 4E, 5E, Rd)</span></h3>
@@ -458,7 +359,7 @@ footer span { color: var(--white); }
           <li>Samsung: 4E / 5E / 14E — Defrost sensor / drain-line frost</li>
           <li>Bosch / Siemens: E20 / F1 — Defrost cycle timeout</li>
         </ul>
-        <div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20fridge%20is%20showing%20a%20defrost%2Fheater%20error%20code.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Defrost Fix via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Defrost Error Code'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div>
+        <div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20fridge%20is%20showing%20a%20defrost%2Fheater%20error%20code.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Defrost Fix via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Defrost Error Code'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">Book Now</a></div>
       </div>
       <div class="problem-card">
         <h3>Inverter &amp; Communication Codes <span class="pc-sub">(Er CO, 84E, 85E, E4)</span></h3>
@@ -467,7 +368,7 @@ footer span { color: var(--white); }
           <li>Samsung: 84E / 85E — Inverter compressor locked-rotor fault</li>
           <li>Panasonic / Whirlpool: E4 / F4 — Power inverter voltage fault</li>
         </ul>
-        <div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20fridge%20is%20showing%20an%20inverter%2Fcommunication%20error%20code.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Inverter Check via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Inverter Error Code'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">📅 Book Now</a></div>
+        <div class="pc-cta-row"><a href="https://wa.me/919819832282?text=Hi%2C%20my%20fridge%20is%20showing%20an%20inverter%2Fcommunication%20error%20code.%20I%20am%20from%20" target="_blank" class="pc-cta pc-cta-wa">📲 Book Inverter Check via WhatsApp</a><a href="javascript:void(0)" onclick="document.getElementById('custProblem').value='Refrigerator - Inverter Error Code'; document.getElementById('bookingFormContainer').scrollIntoView({behavior:'smooth'});" class="pc-cta pc-cta-form">Book Now</a></div>
       </div>
       <p style="text-align:center;font-size:0.78rem;color:var(--grey-dark);">Code not listed here, or your fridge doesn't have a digital display? Send a photo of the display or describe the problem on WhatsApp — we'll identify it.</p>
     </div>
@@ -477,34 +378,9 @@ footer span { color: var(--white); }
 <!-- INLINE INSTANT BOOKING FORM — placed after Problems/Error Codes so the customer has already
      seen what we fix before being asked to book, even for emergency visits -->
 <div class="container" style="padding: 8px 24px 0;">
-<div style="max-width: 450px; margin: 20px auto 0; padding: 25px; background: #1e3a8a; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); text-align: left; color: #ffffff; font-family: 'Inter', sans-serif; box-shadow: 0 4px 15px rgba(0,0,0,0.15);" id="bookingFormContainer">
-    <h3 style="text-align: center; margin-top: 0; color: #ffffff; margin-bottom: 20px; font-size: 20px; font-weight: 600;">Book Refrigerator Repair — Instant</h3>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Your Name:</label>
-        <input type="text" id="custName" placeholder="Enter your name" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Location/Area:</label>
-        <input type="text" id="custLocation" placeholder="e.g. Andheri West, Bandra" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Problem:</label>
-        <input type="text" id="custProblem" placeholder="e.g. Fridge not cooling, PCB fault" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 8px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Mobile Number:</label>
-        <input type="tel" id="custMobile" placeholder="Enter 10 digit number" maxlength="10" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Date:</label>
-        <input type="date" id="custDate" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; outline: none; box-sizing: border-box; color: #000; font-size: 15px;"></div>
-    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Time Slot: <span style="font-weight:400; opacity:0.85;">(Open Every Slot, 7 AM – 11 PM)</span></label>
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
-            <div class="time-slot-btn" data-slot="Slot 1 (7:00 AM - 9:00 AM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">7-9<br>AM</div>
-                <div class="time-slot-btn" data-slot="Slot 2 (9:00 AM - 11:00 AM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">9-11<br>AM</div>
-                <div class="time-slot-btn" data-slot="Slot 3 (11:00 AM - 1:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">11-1<br>Noon</div>
-                <div class="time-slot-btn" data-slot="Slot 4 (1:00 PM - 3:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">1-3<br>PM</div>
-                <div class="time-slot-btn" data-slot="Slot 5 (3:00 PM - 5:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">3-5<br>PM</div>
-                <div class="time-slot-btn" data-slot="Slot 6 (5:00 PM - 7:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">5-7<br>PM</div>
-                <div class="time-slot-btn" data-slot="Slot 7 (7:00 PM - 9:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">7-9<br>PM</div>
-                <div class="time-slot-btn" data-slot="Slot 8 (9:00 PM - 11:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">9-11<br>PM</div>
-        </div>
-        <div class="time-slot-btn" data-slot="Emergency — Priority Visit, Available Now (₹999)" onclick="selectSlot(this)" style="margin-top: 8px; padding: 10px 6px; text-align: center; border: 2px solid #FCA5A5; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 700; color: #991B1B; background: #FEE2E2;">🚨 Emergency — Available Now (₹999)</div>
-        <input type="hidden" id="custSlot" value=""></div>
-    <div id="bookFormError" style="min-height: 20px; color: #FCA5A5; font-size: 13px; margin-bottom: 8px; text-align: center;"></div>
-    <div style="text-align: center;"><button onclick="sendBookingToSheets()" id="bookBtn" style="width: 100%; padding: 14px; background: #25D366; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer;">🚀 Book Now</button></div>
-</div>
+
+
+
 </div>
 
 <section style="background: var(--grey);">
@@ -519,7 +395,7 @@ footer span { color: var(--white); }
         <span class="brand-chip-small">Samsung</span><span class="brand-chip-small">LG</span><span class="brand-chip-small">Whirlpool</span>
         <span class="brand-chip-small">Godrej</span><span class="brand-chip-small">Haier</span><span class="brand-chip-small">Bosch</span><span class="brand-chip-small">Hitachi</span>
       </div>
-      <div class="warranty-note"><strong>Company warranty khatam ho gayi?</strong> Koi tension nahi — same-day visit, genuine parts, transparent pricing, aur humari apni 3-month service warranty ke saath.</div>
+      <div class="warranty-note"><strong>Manufacturer's warranty expired?</strong> No problem — same-day visit, genuine parts, transparent pricing, and our own 3-month service warranty included.</div>
     </div>
   </div>
 </section>
@@ -540,10 +416,9 @@ footer span { color: var(--white); }
 
 <section style="background: var(--grey);">
   <div class="container">
-    <details open style="border:none;">
+    <details class="why-accordion" style="border:none;">
       <summary style="list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between;" class="center-summary">
-        <div class="center" style="margin:0; flex:1;"><div class="section-label">Why Choose Us</div><h2 class="section-title">Trusted Refrigerator Repair</h2></div>
-      </summary>
+        <summary><div class="center" style="margin:0; flex:1;"><div class="section-label">Why Choose Us</div><h2 class="section-title">Trusted Refrigerator Repair</h2><span class="acc-chevron">▾</span></div></summary>
       <div class="why-grid">
         <div class="why-card"><div class="why-icon">⚡</div><h3>Same-Day Visit</h3><p>Inquiry & confirm timing across Mumbai</p></div>
         <div class="why-card"><div class="why-icon">🏆</div><h3>10+ Years Expert</h3><p>Thousands of fridge repairs completed</p></div>
@@ -592,11 +467,11 @@ footer span { color: var(--white); }
     <div class="faq-item"><div class="faq-q">Warranty milti hai repair pe?</div><div class="faq-a">Haan, 3-month service warranty har repair pe milti hai.</div></div>
     <div class="faq-item"><div class="faq-q">Fridge se ajeeb awaaz aa rahi hai, normal hai?</div><div class="faq-a">Nahi, ye fan motor wear, loose compressor mount, ya condenser fan obstruction ho sakta hai. Check karwana zaroori hai warna problem badh sakti hai.</div></div>
     <div class="faq-item"><div class="faq-q">Ice maker kaam nahi kar raha, fix hoga?</div><div class="faq-a">Water inlet valve fault ya ice-maker module failure ho sakta hai — same visit mein zyada tar diagnose ho jata hai.</div></div>
-    <div class="faq-item"><div class="faq-q">Company warranty khatam ho gayi hai, ab kya karu?</div><div class="faq-a">Koi tension nahi — hum out-of-warranty fridges bhi genuine parts aur apni 3-month warranty ke saath repair karte hain, company se sasta aur jaldi.</div></div>
+    <div class="faq-item"><div class="faq-q">Company warranty khatam ho gayi hai, ab kya karu?</div><div class="faq-a">No problem — we repair out-of-warranty fridges too, with genuine parts and our own 3-month warranty, at a lower cost and faster than the brand's service centre.</div></div>
     <div class="faq-item"><div class="faq-q">Diagnosis/inspection ka charge kya hai?</div><div class="faq-a">₹499 per appliance. Agar repair karwate ho, ye amount final bill mein adjust ho jata hai — alag se nahi lagta. Agar diagnosis ke baad repair nahi karwana chahte, sirf ye ₹499 visit charge lagta hai.</div></div>
     <div class="faq-item"><div class="faq-q">Mumbai ke climate ka fridge pe kya asar padta hai?</div><div class="faq-a">Mumbai ki humidity aur sea-facing areas ki salty air se condenser coils jaldi corrode ho sakti hain, aur hard water se water dispenser/ice maker mein scaling ho sakti hai. Isliye Mumbai mein fridges ko thoda zyada regular maintenance chahiye hota hai — hum yahi dhyan mein rakh ke check karte hain.</div></div>
     <div class="faq-item"><div class="faq-q">Fridge repair ka kharcha kitna aata hai?</div><div class="faq-a">Zyada tar repairs ₹600 se ₹3000 ke beech, problem ke hisab se — final price kaam shuru karne se pehle confirm karte hain, koi hidden charge nahi.</div></div>
-    <div class="faq-item"><div class="faq-q">Double door aur single door fridge dono repair karte ho?</div><div class="faq-a">Haan, single door, double door, side-by-side aur French door — sab types repair karte hain, sab brands.</div></div>
+    <div class="faq-item"><div class="faq-q">Single, double, triple ya side-by-side — kaunse door-type fridge repair karte ho?</div><div class="faq-a">Sab types — single door, double door, triple door, side-by-side, French door aur multi-door/door-in-door — sab repair karte hain, sab major brands ke saath (Samsung, LG, Godrej, Whirlpool, Bosch, Hitachi, Panasonic).</div></div>
     <div class="faq-item"><div class="faq-q">Fridge continuously chal raha hai, band hi nahi ho raha?</div><div class="faq-a">Dirty condenser coils, faulty thermostat, ya refrigerant undercharge ki wajah se ho sakta hai. Isse ignore mat karo — long-term mein compressor damage ho sakta hai, jaldi check karwao.</div></div>
     <div class="faq-item"><div class="faq-q">Fridge mein frost/barf jam ho raha hai zyada?</div><div class="faq-a">Defrost timer ya defrost heater fault ho sakta hai, ya door seal se moisture andar aa raha ho sakta hai. Technician exact cause diagnose karega.</div></div>
     <div class="faq-item"><div class="faq-q">Spare parts available rehte hain same-day?</div><div class="faq-a">Common parts technician hi saath lekar aata hai. Premium/rare model ka part ho toh thoda order karna pad sakta hai, baaki ready rehta hai.</div></div>
@@ -619,6 +494,8 @@ footer span { color: var(--white); }
         <a href="samsung-fridge-pcb-board-fault.html" style="color: var(--blue); text-decoration: none; font-size: 0.9rem; font-weight: 600; padding: 6px 0; display: block;">→ Samsung Fridge PCB Board Fault — Causes & Fix</a>
         <a href="lg-refrigerator-not-cooling.html" style="color: var(--blue); text-decoration: none; font-size: 0.9rem; font-weight: 600; padding: 6px 0; display: block;">→ LG Refrigerator Not Cooling — Causes & Fix</a>
         <a href="hitachi-refrigerator-not-cooling.html" style="color: var(--blue); text-decoration: none; font-size: 0.9rem; font-weight: 600; padding: 6px 0; display: block;">→ Hitachi Refrigerator Not Cooling — Causes & Fix</a>
+      
+        <a href="whirlpool-refrigerator-water-leaking.html" style="color: var(--blue); text-decoration: none; font-size: 0.9rem; font-weight: 600; padding: 6px 0; display: block;">→ Whirlpool Refrigerator Water Leaking — Causes & Fix</a>
       </div>
     </div>
   </div>
@@ -632,6 +509,52 @@ footer span { color: var(--white); }
     <a href="https://wa.me/919819832282?text=I%20need%20refrigerator%20repair" target="_blank" class="btn-wa">📲 Book by WhatsApp</a>
   </div>
 </div>
+
+<section>
+<div class="container" style="max-width:500px;">
+<div id="bookingFormContainer" style="max-width: 450px; margin: 30px auto; padding: 25px; background: #1e3a8a; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); text-align: left; color: #ffffff; font-family: 'Inter', sans-serif; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+    <h3 style="text-align: center; margin-top: 0; color: #ffffff; margin-bottom: 20px; font-size: 20px; font-weight: 600;">Book Refrigerator Repair — Instant</h3>
+    <div id="bookStep1">
+    
+    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Your Name:</label>
+        <input type="text" id="custName" placeholder="Enter your name" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; color: #000; font-size: 15px;"></div>
+    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Location/Area:</label>
+        <input type="text" id="custLocation" placeholder="e.g. Andheri West, Bandra" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; color: #000; font-size: 15px;"></div>
+    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Problem:</label>
+        <input type="text" id="custProblem" placeholder="e.g. Fridge not cooling, PCB fault" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; color: #000; font-size: 15px;"></div>
+    <div style="margin-bottom: 8px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Mobile Number:</label>
+        <input type="tel" id="custMobile" placeholder="Enter 10 digit number" maxlength="10" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1; color: #000; font-size: 15px;"></div>
+    <div id="bookFormError" style="min-height: 20px; color: #FCA5A5; font-size: 13px; margin-bottom: 8px; text-align: center;"></div>
+    <div style="text-align: center;"><button onclick="goToStep2()" id="continueBtn" style="width: 100%; padding: 14px; background: #25D366; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">Continue →</button></div>
+    </div>
+    <div id="bookStep2" style="display:none;">
+    <p style="font-size: 13px; color: #cbd5e1; margin-bottom: 14px;">Almost done! When should the technician visit?</p>
+    <div style="margin-bottom: 14px;">
+        <label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Date:</label>
+        <div id="dateChipRow" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px;"></div>
+        <input type="hidden" id="custDate" value="">
+    </div>
+    <div style="margin-bottom: 14px;"><label style="display: block; margin-bottom: 6px; font-size: 14px; color: #e2e8f0;">Preferred Time Slot: <span style="font-weight:400; opacity:0.85;">(Open Every Slot, 7 AM – 11 PM)</span></label>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+            <div class="time-slot-btn" data-slot="Slot 1 (7:00 AM - 9:00 AM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">7-9<br>AM</div>
+                <div class="time-slot-btn" data-slot="Slot 2 (9:00 AM - 11:00 AM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">9-11<br>AM</div>
+                <div class="time-slot-btn" data-slot="Slot 3 (11:00 AM - 1:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">11-1<br>Noon</div>
+                <div class="time-slot-btn" data-slot="Slot 4 (1:00 PM - 3:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">1-3<br>PM</div>
+                <div class="time-slot-btn" data-slot="Slot 5 (3:00 PM - 5:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">3-5<br>PM</div>
+                <div class="time-slot-btn" data-slot="Slot 6 (5:00 PM - 7:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">5-7<br>PM</div>
+                <div class="time-slot-btn" data-slot="Slot 7 (7:00 PM - 9:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">7-9<br>PM</div>
+                <div class="time-slot-btn" data-slot="Slot 8 (9:00 PM - 11:00 PM)" onclick="selectSlot(this)" style="padding: 10px 6px; text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: #1e3a8a; background: #fff;">9-11<br>PM</div>
+        </div>
+        <div class="time-slot-btn" data-slot="Emergency — Priority Visit, Available Now" onclick="selectSlot(this)" style="margin-top: 8px; padding: 10px 6px; text-align: center; border: 2px solid #FCA5A5; border-radius: 6px; cursor: pointer; font-size: 12.5px; font-weight: 700; color: #991B1B; background: #FEE2E2;">🚨 Emergency Available Now</div>
+        <input type="hidden" id="custSlot" value=""></div>
+    <div style="text-align: center; display:flex; gap:8px;">
+        <button onclick="backToStep1()" style="flex:0 0 auto; padding: 14px 16px; background: transparent; color: #cbd5e1; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer;">← Back</button>
+        <button onclick="sendBookingToSheets()" id="bookBtn" style="flex:1; padding: 14px; background: #25D366; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">🚀 Book Now</button>
+    </div>
+    </div>
+</div>
+</div>
+</section>
 
 <footer>
   <p>© 2026 <span>Quickfix Mumbai</span> · Home Appliance & Electronics Repair</p>
@@ -771,10 +694,57 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="tracking.js"></script>
-<script src="search-index.js"></script>
-<script src="site-search.js"></script>
+<script src="tracking.js" defer></script>
+<script src="search-index.js" defer></script>
+<script src="site-search.js" defer></script>
 <script src="quick-book.js"></script>
 <script src="photo-loader.js" defer></script>
+
+<script>
+function goToStep2() {
+    var name = document.getElementById('custName').value.trim();
+    var problem = document.getElementById('custProblem').value.trim();
+    var mobile = document.getElementById('custMobile').value.trim();
+    var errBox = document.getElementById('bookFormError');
+    errBox.textContent = "";
+    if(name == "" || problem == "" || mobile == "") {
+        errBox.textContent = "⚠️ Please fill all fields before continuing.";
+        return;
+    }
+    if(!/^[6-9]\d{9}$/.test(mobile)) {
+        errBox.textContent = "⚠️ Please enter a valid 10-digit mobile number.";
+        return;
+    }
+    document.getElementById('bookStep1').style.display = 'none';
+    document.getElementById('bookStep2').style.display = 'block';
+}
+function backToStep1() {
+    document.getElementById('bookStep2').style.display = 'none';
+    document.getElementById('bookStep1').style.display = 'block';
+}
+(function(){
+    var row = document.getElementById('dateChipRow');
+    if(!row) return;
+    var today = new Date();
+    var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    for(var i=0;i<8;i++){
+        var d = new Date(today); d.setDate(today.getDate()+i);
+        var iso = d.toISOString().split('T')[0];
+        var label = i===0 ? 'Today' : (i===1 ? 'Tomorrow' : days[d.getDay()]+' '+d.getDate());
+        var chip = document.createElement('div');
+        chip.textContent = label;
+        chip.setAttribute('data-date', iso);
+        chip.style.cssText = 'flex:0 0 auto;padding:10px 14px;border:2px solid #cbd5e1;border-radius:8px;cursor:pointer;font-size:12.5px;font-weight:600;color:#1e3a8a;background:#fff;white-space:nowrap;';
+        chip.onclick = function(){
+            document.querySelectorAll('#dateChipRow > div').forEach(function(c){ c.style.background='#fff'; c.style.color='#1e3a8a'; c.style.borderColor='#cbd5e1'; });
+            this.style.background='#1e3a8a'; this.style.color='#fff'; this.style.borderColor='#1e3a8a';
+            document.getElementById('custDate').value = this.getAttribute('data-date');
+        };
+        row.appendChild(chip);
+        if(i===0){ chip.onclick(); }
+    }
+})();
+</script>
+
 </body>
 </html>
