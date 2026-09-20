@@ -33,11 +33,36 @@ input, select, textarea { padding: 8px 10px; border-radius: 6px; border: 1px sol
 .responsive-table td { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; padding: 6px 0; border-bottom: 1px dashed #eee; font-size: 0.82rem; text-align: right; }
 .responsive-table td:last-child { border-bottom: none; }
 .responsive-table td::before { content: attr(data-label); font-weight: bold; text-align: left; color: #495057; flex-shrink: 0; }
+/* Long-text fields (address, problem description, notes) — on mobile, stack the
+   label above the value instead of squishing it into a right-aligned flex row.
+   Keeps long descriptions readable on their own full-width line(s). */
+.responsive-table td.cell-stack { display: block; text-align: left; }
+.responsive-table td.cell-stack::before { display: block; margin-bottom: 4px; }
+.responsive-table td.cell-stack .cell-value { display: block; text-align: left; white-space: pre-wrap; word-break: break-word; }
+/* Compact-card + expandable-details pattern for the Bookings table — each
+   booking is a short summary row (name/area/problem truncated + status +
+   one quick action) plus a hidden detail row with everything else, organized
+   into labeled sections, opened via the Details toggle. Keeps the always-visible
+   list short so nothing important gets missed/mis-clicked, while every field
+   is still one tap away and nothing is removed from what's saved. */
+.responsive-table td.detail-cell { display: block; text-align: left; padding: 0 !important; }
+.responsive-table td.detail-cell::before { display: none; }
+.responsive-table tbody tr.booking-detail-row { display: none; background: #fafbfc; border-style: dashed; }
+.responsive-table tbody tr.booking-detail-row.show { display: block; }
+.detail-section { margin-bottom: 14px; padding: 12px 14px; background: #fff; border-radius: 8px; border: 1px solid #edf2f9; }
+.detail-section:last-child { margin-bottom: 0; }
+.detail-section-title { font-weight: 700; color: var(--primary); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 8px; }
+.detail-row { font-size: 0.85rem; margin-bottom: 6px; line-height: 1.4; word-break: break-word; }
+.detail-row:last-child { margin-bottom: 0; }
+.booking-summary-main { font-size: 0.9rem; }
+.booking-summary-sub { font-size: 0.78rem; color: #6c757d; margin-top: 3px; word-break: break-word; }
 @media(min-width: 1100px) {
   .responsive-table thead { display: table-header-group; }
   .responsive-table tbody tr { display: table-row; background: transparent; border: none; }
   .responsive-table td { display: table-cell; text-align: left; padding: 10px 10px; border-bottom: 1px solid #edf2f9; vertical-align: top; }
   .responsive-table td::before { display: none; }
+  .responsive-table td.detail-cell { display: table-cell; }
+  .responsive-table tbody tr.booking-detail-row.show { display: table-row; }
 }
 .empty-state { text-align: center; color: #6c757d; padding: 24px; font-size: 0.9rem; }
 .info-link { color: var(--primary); text-decoration: none; font-weight: bold; display: inline-block; }
@@ -102,10 +127,10 @@ input, select, textarea { padding: 8px 10px; border-radius: 6px; border: 1px sol
   </div>
 
   <div class="grid-stats">
-    <div class="stat-card"><h3>Bookings Today</h3><p id="stat-today">—</p></div>
-    <div class="stat-card"><h3>Pending</h3><p id="stat-pending">—</p></div>
-    <div class="stat-card"><h3>In Process</h3><p id="stat-inprocess">—</p></div>
-    <div class="stat-card"><h3>Done (Total)</h3><p id="stat-done">—</p></div>
+    <div class="stat-card" style="cursor:pointer;" onclick="filterBookingsBy('today')"><h3>Bookings Today</h3><p id="stat-today">—</p></div>
+    <div class="stat-card" style="cursor:pointer;" onclick="filterBookingsBy('Pending')"><h3>Pending</h3><p id="stat-pending">—</p></div>
+    <div class="stat-card" style="cursor:pointer;" onclick="filterBookingsBy('In Process')"><h3>In Process</h3><p id="stat-inprocess">—</p></div>
+    <div class="stat-card" style="cursor:pointer;" onclick="filterBookingsBy('Done')"><h3>Done (Total)</h3><p id="stat-done">—</p></div>
     <div class="stat-card"><h3>Last Refreshed</h3><p id="stat-refreshed" style="font-size:0.78rem;">—</p></div>
   </div>
 
@@ -170,12 +195,16 @@ input, select, textarea { padding: 8px 10px; border-radius: 6px; border: 1px sol
     </table>
   </div>
 
-  <div class="section">
-    <div class="section-head"><h2>Customer Bookings</h2></div>
+  <div class="section" id="bookings-section">
+    <div class="section-head"><h2>📅 Customer Bookings</h2></div>
     <p class="small-note" style="margin-bottom:8px;">Shows Pending, In Process, and jobs completed within the last 30 days. Older completed jobs move to the Archive below — search by mobile number still finds everything.</p>
+    <div id="bookings-filter-bar" style="display:none; margin-bottom:10px;">
+      <span class="badge" style="background:#DBEAFE; color:var(--primary);">Showing: <span id="bookings-filter-label"></span></span>
+      <button class="secondary small" onclick="filterBookingsBy('all')" style="margin-left:8px;">✕ Clear filter</button>
+    </div>
     <div id="bookings-loading" class="loading-msg">Loading bookings…</div>
     <table class="responsive-table" id="bookings-table" style="display:none;">
-      <thead><tr><th>Received</th><th>Customer</th><th>Location</th><th>Problem</th><th>Contact</th><th>Status / Warranty</th><th>Billing</th><th>Notes</th><th>Actions</th></tr></thead>
+      <thead><tr><th>Received</th><th>Customer</th><th>Status</th><th>Action</th></tr></thead>
       <tbody id="bookings-body"></tbody>
     </table>
   </div>
@@ -276,6 +305,26 @@ const dashboardContent = document.getElementById('dashboardContent');
 const errorMsg = document.getElementById('errorMsg');
 
 let LAST_DATA = { bookings: [], technicians: [], team: [], liveTraffic: [], complaints: [] };
+let CURRENT_BOOKING_FILTER = 'all'; // 'all' | 'today' | 'Pending' | 'In Process' | 'Done'
+
+function filterBookingsBy(filter){
+  CURRENT_BOOKING_FILTER = filter;
+  const bar = document.getElementById('bookings-filter-bar');
+  const label = document.getElementById('bookings-filter-label');
+  if (filter === 'all') {
+    bar.style.display = 'none';
+  } else {
+    bar.style.display = 'block';
+    label.textContent = filter === 'today' ? "Today's bookings" : filter;
+  }
+  // Re-render from the data already in hand — no need to refetch from the server.
+  if (LAST_DATA && LAST_DATA.bookings) {
+    const bookings = LAST_DATA.bookings.map(b => ({ ...b, mobile: normMobile(b.mobile), techMobile: normMobile(b.techMobile), seniorMobile: normMobile(b.seniorMobile) }));
+    const team = (LAST_DATA.team || []).map(t => ({ ...t, mobile: normMobile(t.mobile) }));
+    renderBookingsSection(bookings, team);
+  }
+  document.getElementById('bookings-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 
 function getToken() { return sessionStorage.getItem('quickfix_admin_token'); }
 
@@ -929,78 +978,191 @@ function renderTeamOptions(team, placeholder) {
   return opts;
 }
 
+function toggleBookingDetails(rowId){
+  const row = document.getElementById(rowId);
+  const btn = document.getElementById('toggle-' + rowId);
+  if (!row) return;
+  const isOpen = row.classList.toggle('show');
+  if (btn) btn.textContent = isOpen ? '🔍 Details ▲' : '🔍 Details ▼';
+}
+
+function truncateText(text, maxLen){
+  const s = String(text || '');
+  return s.length > maxLen ? s.slice(0, maxLen) + '…' : s;
+}
+
 function renderBookingRow(b, team) {
-  let actionsHtml = '';
-  if (b.status === 'Done') {
-    const parts = [];
-    if (!b.thankYouSentAt) {
-      parts.push(`<button class="wa small" onclick="sendThankYou('${b.bookingId}','${escJs(b.mobile)}','${escJs(b.name)}','${escJs(b.techName)}','${escJs(b.warrantyCode)}')">📲 Thank You</button>`);
-    }
-    parts.push(`<button class="secondary small" onclick="sendFollowUp('${b.bookingId}','${escJs(b.mobile)}','${escJs(b.name)}')">📲 Follow-Up${b.followUpSentAt ? ' (resend)' : ''}</button>`);
-    parts.push(`<button class="secondary small" onclick="sendReengagement('${b.bookingId}','${escJs(b.mobile)}','${escJs(b.name)}')">📲 Check-In${b.reengagementSentAt ? ' (resend)' : ''}</button>`);
-    parts.push(`<button class="secondary small" onclick="openPhotoModal('${b.bookingId}')">📷 ${(b.serialPhoto || b.appliancePhoto) ? 'Update' : 'Add'} Photos</button>`);
-    actionsHtml = `<div class="action-group">${parts.join('')}</div>`;
+  const rowId = 'bk-' + b.bookingId;
+
+  const techLine = b.techName ? `<div class="detail-row">Technician: <strong>${escapeHtml(b.techName)}</strong> · ${escapeHtml(b.techMobile)}</div>` : '<div class="detail-row small-note">Not assigned yet</div>';
+  const seniorLine = b.seniorName ? `<div class="detail-row">Senior: <strong>${escapeHtml(b.seniorName)}</strong> · ${escapeHtml(b.seniorMobile)}</div>` : '';
+  const repeatLine = b.repeatStatus && b.repeatStatus !== 'New' ? `<span class="badge badge-repeat">${escapeHtml(b.repeatStatus)}</span>` : '';
+  const wBadge = warrantyBadge(b.completedDate, b.warrantyUntil);
+  const codeLine = b.warrantyCode ? `<div class="detail-row">Warranty code: <strong>${escapeHtml(b.warrantyCode)}</strong></div>` : '';
+  const photoLinks = [];
+  if (b.serialPhoto) photoLinks.push(`<a href="${escapeHtml(b.serialPhoto)}" target="_blank" class="info-link">📷 Serial</a>`);
+  if (b.appliancePhoto) photoLinks.push(`<a href="${escapeHtml(b.appliancePhoto)}" target="_blank" class="info-link">📷 Appliance</a>`);
+  const photoLine = photoLinks.length ? `<div class="detail-row">${photoLinks.join(' &nbsp; ')}</div>` : '<div class="detail-row small-note">No photos yet</div>';
+
+  // ---- Quick action (the one action most likely needed right now) — stays visible on the summary row ----
+  let quickActionHtml = '';
+  if (b.status === 'Pending') {
+    quickActionHtml = `<select onchange="assignLead('${b.bookingId}', this)">${renderTeamOptions(team, '-- Assign --')}</select>`;
   } else if (b.status === 'In Process') {
+    quickActionHtml = `<button class="success small" onclick="markDone('${b.bookingId}')">✅ Mark Done</button>`;
+  } else if (b.status === 'Done' && !b.thankYouSentAt) {
+    quickActionHtml = `<button class="wa small" onclick="sendThankYou('${b.bookingId}','${escJs(b.mobile)}','${escJs(b.name)}','${escJs(b.techName)}','${escJs(b.warrantyCode)}')">📲 Thank You</button>`;
+  }
+
+  // ---- Everything else, grouped into labeled sections inside the collapsible Details panel ----
+  let detailSections = `
+    <div class="detail-section">
+      <div class="detail-section-title">📍 Contact &amp; Location</div>
+      <div class="detail-row"><a href="tel:${escapeHtml(b.mobile)}" class="info-link">📞 ${escapeHtml(b.mobile)}</a> <a href="${waLink(b.mobile)}" target="_blank" class="wa-link">💬</a></div>
+      <div class="detail-row">${escapeHtml(b.location)}</div>
+      <div class="detail-row">${escapeHtml(b.problem)}</div>
+      ${(b.date || b.time) ? `<div class="detail-row small-note">Preferred: ${escapeHtml(b.date)} ${escapeHtml(b.time)}</div>` : ''}
+      ${b.leadSource ? `<div class="detail-row small-note">Source: ${escapeHtml(b.leadSource)}</div>` : ''}
+    </div>
+    <div class="detail-section">
+      <div class="detail-section-title">👷 Assignment</div>
+      ${techLine}${seniorLine}
+    </div>`;
+
+  if (b.status === 'In Process') {
     const visitOptions = VISIT_STATUSES.map(s => `<option value="${s}" ${b.visitStatus === s ? 'selected' : ''}>${s}</option>`).join('');
     const approvalLine = b.customerApproved === 'Yes'
       ? `<span class="small-note" style="color:#166534;font-weight:600;">✅ Customer approved</span>`
       : b.customerApproved === 'No'
         ? `<span class="small-note" style="color:#DC2626;font-weight:600;">❌ Customer declined</span><button class="secondary small" onclick="collectVisitChargeOnly('${b.bookingId}')">💰 Collect ₹499 Visit Charge &amp; Close</button>`
         : (b.diagnosisNotes ? `<div class="action-group" style="flex-direction:row;gap:4px;"><button class="success small" onclick="setCustomerApproval('${b.bookingId}','Yes')">✅ Approved</button><button class="danger small" onclick="setCustomerApproval('${b.bookingId}','No')">❌ Declined</button></div>` : '');
-    actionsHtml = `<div class="action-group">
-      <select onchange="updateVisitStatus('${b.bookingId}', this.value)" title="Visit status">${visitOptions}</select>
-      ${!b.checkinTime ? `<button class="secondary small" onclick="doCheckin('${b.bookingId}')">📍 Check-in</button>` : `<span class="small-note">In: ${fmtDate(b.checkinTime)}${b.checkinLocation ? ` — <a href="https://maps.google.com/?q=${encodeURIComponent(b.checkinLocation)}" target="_blank">📍 View on map</a>` : ''}</span>`}
-      ${b.checkinTime && !b.checkoutTime ? `<button class="secondary small" onclick="doCheckout('${b.bookingId}')">🚪 Check-out</button>` : ''}
-      ${b.checkoutTime ? `<span class="small-note">Out: ${fmtDate(b.checkoutTime)}${b.checkoutLocation ? ` — <a href="https://maps.google.com/?q=${encodeURIComponent(b.checkoutLocation)}" target="_blank">📍 View on map</a>` : ''}${b.checkinTime ? ` — ⏱ ${jobDuration(b.checkinTime, b.checkoutTime)}` : ''}${b.checkoutGpsStatus && b.checkoutGpsStatus.indexOf('OFF') === 0 ? ` — <span style="color:#DC2626; font-weight:700;">⚠️ GPS ${escapeHtml(b.checkoutGpsStatus)}</span>` : ''}</span>` : ''}
-      <button class="secondary small" onclick="editDiagnosis('${b.bookingId}','${escJs(b.diagnosisNotes)}','${escJs(b.estimateAmount)}')">📋 ${b.diagnosisNotes ? 'Edit' : 'Add'} Diagnosis${b.estimateAmount ? ' — ₹' + escapeHtml(String(b.estimateAmount)) : ''}</button>
-      ${approvalLine}
-      <button class="secondary small" onclick="editRepairProof('${b.bookingId}','${escJs(b.replacedPart)}','${escJs(b.testingResult)}')">🔧 Repair Proof</button>
-      ${b.customerConfirmation ? `<span class="small-note" style="color:#166534;font-weight:600;">✅ ${escapeHtml(b.customerConfirmation)}</span>` : `<button class="secondary small" onclick="sendCompletionCode('${b.bookingId}','${escJs(b.mobile)}','${escJs(b.name)}')">🔑 Send Confirmation Code</button>`}
-      <button class="wa small" onclick="notifyCustomer('${escJs(b.mobile)}','${escJs(b.name)}','${escJs(b.techName)}','${escJs(b.techMobile)}','${escJs(b.date)}','${escJs(b.time)}')">📲 Notify Customer</button>
-      <button class="wa small" onclick="notifyTechnician('${escJs(b.techMobile)}','${escJs(b.name)}','${escJs(b.mobile)}','${escJs(b.location)}','${escJs(b.problem)}','${escJs(b.date)}','${escJs(b.time)}')">🔧 Notify Technician</button>
-      <button class="success small" onclick="markDone('${b.bookingId}')">✅ Mark Done</button>
-      <button class="danger small" onclick="adminCancelBooking('${b.bookingId}')">🚫 Cancel</button>
-      <select onchange="escalateSenior('${b.bookingId}', this)" title="Escalate to a senior technician if needed">${renderTeamOptions(team, '-- Escalate to senior --')}</select>
+    detailSections += `
+    <div class="detail-section">
+      <div class="detail-section-title">🚶 Visit Progress</div>
+      <div class="action-group" style="align-items:flex-start;">
+        <select onchange="updateVisitStatus('${b.bookingId}', this.value)" title="Visit status">${visitOptions}</select>
+        ${!b.checkinTime ? `<button class="secondary small" onclick="doCheckin('${b.bookingId}')">📍 Check-in</button>` : `<span class="small-note">In: ${fmtDate(b.checkinTime)}${b.checkinLocation ? ` — <a href="https://maps.google.com/?q=${encodeURIComponent(b.checkinLocation)}" target="_blank">📍 View on map</a>` : ''}</span>`}
+        ${b.checkinTime && !b.checkoutTime ? `<button class="secondary small" onclick="doCheckout('${b.bookingId}')">🚪 Check-out</button>` : ''}
+        ${b.checkoutTime ? `<span class="small-note">Out: ${fmtDate(b.checkoutTime)}${b.checkoutLocation ? ` — <a href="https://maps.google.com/?q=${encodeURIComponent(b.checkoutLocation)}" target="_blank">📍 View on map</a>` : ''}${b.checkinTime ? ` — ⏱ ${jobDuration(b.checkinTime, b.checkoutTime)}` : ''}${b.checkoutGpsStatus && b.checkoutGpsStatus.indexOf('OFF') === 0 ? ` — <span style="color:#DC2626; font-weight:700;">⚠️ GPS ${escapeHtml(b.checkoutGpsStatus)}</span>` : ''}</span>` : ''}
+      </div>
+    </div>
+    <div class="detail-section">
+      <div class="detail-section-title">📋 Diagnosis &amp; Approval</div>
+      <div class="action-group" style="align-items:flex-start;">
+        <button class="secondary small" onclick="editDiagnosis('${b.bookingId}','${escJs(b.diagnosisNotes)}','${escJs(b.estimateAmount)}')">📋 ${b.diagnosisNotes ? 'Edit' : 'Add'} Diagnosis${b.estimateAmount ? ' — ₹' + escapeHtml(String(b.estimateAmount)) : ''}</button>
+        ${approvalLine}
+      </div>
+    </div>
+    <div class="detail-section">
+      <div class="detail-section-title">🛠️ Repair &amp; Confirmation</div>
+      <div class="action-group" style="align-items:flex-start;">
+        <button class="secondary small" onclick="editRepairProof('${b.bookingId}','${escJs(b.replacedPart)}','${escJs(b.testingResult)}')">🔧 Repair Proof</button>
+        ${b.customerConfirmation ? `<span class="small-note" style="color:#166534;font-weight:600;">✅ ${escapeHtml(b.customerConfirmation)}</span>` : `<button class="secondary small" onclick="sendCompletionCode('${b.bookingId}','${escJs(b.mobile)}','${escJs(b.name)}')">🔑 Send Confirmation Code</button>`}
+        <button class="wa small" onclick="notifyCustomer('${escJs(b.mobile)}','${escJs(b.name)}','${escJs(b.techName)}','${escJs(b.techMobile)}','${escJs(b.date)}','${escJs(b.time)}')">📲 Notify Customer</button>
+        <button class="wa small" onclick="notifyTechnician('${escJs(b.techMobile)}','${escJs(b.name)}','${escJs(b.mobile)}','${escJs(b.location)}','${escJs(b.problem)}','${escJs(b.date)}','${escJs(b.time)}')">🔧 Notify Technician</button>
+      </div>
+    </div>
+    <div class="detail-section">
+      <div class="detail-section-title">⚙️ Other</div>
+      <div class="action-group" style="align-items:flex-start;">
+        <button class="danger small" onclick="adminCancelBooking('${b.bookingId}')">🚫 Cancel</button>
+        <select onchange="escalateSenior('${b.bookingId}', this)" title="Escalate to a senior technician if needed">${renderTeamOptions(team, '-- Escalate to senior --')}</select>
+      </div>
     </div>`;
-  } else {
-    actionsHtml = `<div class="action-group">
-      <select onchange="assignLead('${b.bookingId}', this)">${renderTeamOptions(team, '-- Assign technician --')}</select>
+  } else if (b.status === 'Pending') {
+    detailSections += `
+    <div class="detail-section">
+      <div class="detail-section-title">⚙️ Other</div>
       <button class="danger small" onclick="adminCancelBooking('${b.bookingId}')">🚫 Cancel</button>
     </div>`;
   }
 
-  const techLine = b.techName ? `<div class="small-note">Technician: <strong>${escapeHtml(b.techName)}</strong> · ${escapeHtml(b.techMobile)}</div>` : '';
-  const seniorLine = b.seniorName ? `<div class="small-note">Senior: <strong>${escapeHtml(b.seniorName)}</strong> · ${escapeHtml(b.seniorMobile)}</div>` : '';
-  const repeatLine = b.repeatStatus && b.repeatStatus !== 'New' ? `<div style="margin-top:4px;"><span class="badge badge-repeat">${escapeHtml(b.repeatStatus)}</span></div>` : '';
-  const wBadge = warrantyBadge(b.completedDate, b.warrantyUntil);
-  const codeLine = b.warrantyCode ? `<div class="small-note">Code: <strong>${escapeHtml(b.warrantyCode)}</strong></div>` : '';
-  const photoLinks = [];
-  if (b.serialPhoto) photoLinks.push(`<a href="${escapeHtml(b.serialPhoto)}" target="_blank" class="info-link">📷 Serial</a>`);
-  if (b.appliancePhoto) photoLinks.push(`<a href="${escapeHtml(b.appliancePhoto)}" target="_blank" class="info-link">📷 Appliance</a>`);
-  const photoLine = photoLinks.length ? `<div class="small-note">${photoLinks.join(' &nbsp; ')}</div>` : '';
+  if (b.status === 'Done') {
+    const billingHtml = `<div class="detail-row">${b.amount ? '₹' + escapeHtml(b.amount) : 'No amount set'} — ${escapeHtml(b.paymentMode) || 'Mode not set'}</div>
+       <button class="secondary small" onclick="editBilling('${b.bookingId}','${escJs(b.amount)}','${escJs(b.paymentMode)}')">✏️ Edit Billing</button>`;
+    detailSections += `
+    <div class="detail-section">
+      <div class="detail-section-title">💰 Billing</div>
+      ${billingHtml}
+    </div>
+    <div class="detail-section">
+      <div class="detail-section-title">🛡️ Warranty &amp; Completion</div>
+      ${wBadge ? `<div class="detail-row">${wBadge}</div>` : ''}
+      ${codeLine}
+      <div class="detail-row small-note">Completed: ${fmtDate(b.completedDate)}</div>
+      ${b.customerRating ? `<div class="detail-row">⭐ Rated ${escapeHtml(String(b.customerRating))}/5</div>` : ''}
+    </div>
+    <div class="detail-section">
+      <div class="detail-section-title">📲 Communications</div>
+      <div class="action-group" style="align-items:flex-start;">
+        <button class="secondary small" onclick="sendFollowUp('${b.bookingId}','${escJs(b.mobile)}','${escJs(b.name)}')">📲 Follow-Up${b.followUpSentAt ? ' (resend)' : ''}</button>
+        <button class="secondary small" onclick="sendReengagement('${b.bookingId}','${escJs(b.mobile)}','${escJs(b.name)}')">📲 Check-In${b.reengagementSentAt ? ' (resend)' : ''}</button>
+      </div>
+    </div>
+    <div class="detail-section">
+      <div class="detail-section-title">📷 Photos</div>
+      ${photoLine}
+      <button class="secondary small" onclick="openPhotoModal('${b.bookingId}')">📷 ${(b.serialPhoto || b.appliancePhoto) ? 'Update' : 'Add'} Photos</button>
+    </div>`;
+  }
 
-  const billingHtml = b.status === 'Done'
-    ? `<div>${b.amount ? '₹' + escapeHtml(b.amount) : '<span class="small-note">No amount set</span>'}</div>
-       <div class="small-note">${escapeHtml(b.paymentMode) || 'Mode not set'}</div>
-       <button class="secondary small" onclick="editBilling('${b.bookingId}','${escJs(b.amount)}','${escJs(b.paymentMode)}')">✏️ Edit</button>`
-    : `<span class="small-note">Set on completion</span>`;
-
-  const notesHtml = `
-    <div style="max-width:160px;">${b.notes ? escapeHtml(b.notes) : '<span class="small-note">No notes</span>'}</div>
-    <button class="secondary small" onclick="editNotes('${b.bookingId}','${escJs(b.notes)}')">✏️ ${b.notes ? 'Edit' : 'Add'}</button>`;
+  detailSections += `
+    <div class="detail-section">
+      <div class="detail-section-title">📝 Notes</div>
+      <div class="detail-row">${b.notes ? escapeHtml(b.notes) : 'No notes'}</div>
+      <button class="secondary small" onclick="editNotes('${b.bookingId}','${escJs(b.notes)}')">✏️ ${b.notes ? 'Edit' : 'Add'} Notes</button>
+    </div>`;
 
   return `
-  <tr>
+  <tr class="booking-summary-row">
     <td data-label="Received">${fmtDate(b.timestamp)}</td>
-    <td data-label="Customer">${escapeHtml(b.name)}${repeatLine}</td>
-    <td data-label="Location">${escapeHtml(b.location)}</td>
-    <td data-label="Problem">${escapeHtml(b.problem)}</td>
-    <td data-label="Contact"><a href="tel:${escapeHtml(b.mobile)}" class="info-link">📞 ${escapeHtml(b.mobile)}</a><a href="${waLink(b.mobile)}" target="_blank" class="wa-link">💬</a></td>
-    <td data-label="Status">${statusBadge(b.status)}${techLine}${seniorLine}${wBadge ? '<div style="margin-top:4px;">' + wBadge + '</div>' : ''}${codeLine}${photoLine}</td>
-    <td data-label="Billing">${billingHtml}</td>
-    <td data-label="Notes">${notesHtml}</td>
-    <td data-label="Actions">${actionsHtml}</td>
+    <td data-label="Customer">
+      <div class="booking-summary-main"><strong>${escapeHtml(b.name)}</strong> ${repeatLine}</div>
+      <div class="booking-summary-sub">${escapeHtml(truncateText(b.location, 40))}</div>
+      <div class="booking-summary-sub">${escapeHtml(truncateText(b.problem, 55))}</div>
+    </td>
+    <td data-label="Status">${statusBadge(b.status)}</td>
+    <td data-label="Action">
+      <div class="action-group">
+        ${quickActionHtml}
+        <button class="secondary small" onclick="toggleBookingDetails('${rowId}')" id="toggle-${rowId}">🔍 Details ▼</button>
+      </div>
+    </td>
+  </tr>
+  <tr class="booking-detail-row" id="${rowId}">
+    <td class="detail-cell" colspan="4">${detailSections}</td>
   </tr>`;
+}
+
+function renderBookingsSection(bookings, team) {
+  const RECENT_DAYS = 30;
+  let activeBookings = bookings.filter(b => !(b.status === 'Done' && daysAgo(b.completedDate) !== null && daysAgo(b.completedDate) > RECENT_DAYS));
+  const archivedBookings = bookings.filter(b => b.status === 'Done' && daysAgo(b.completedDate) !== null && daysAgo(b.completedDate) > RECENT_DAYS);
+
+  // Apply the active stat-card filter, if any (set by filterBookingsBy / a stat-card click).
+  if (CURRENT_BOOKING_FILTER === 'today') {
+    const todayStr2 = new Date().toDateString();
+    activeBookings = activeBookings.filter(b => b.timestamp && new Date(b.timestamp).toDateString() === todayStr2);
+  } else if (CURRENT_BOOKING_FILTER && CURRENT_BOOKING_FILTER !== 'all') {
+    activeBookings = activeBookings.filter(b => (b.status || 'Pending') === CURRENT_BOOKING_FILTER);
+  }
+
+  const bBody = document.getElementById('bookings-body');
+  if (activeBookings.length === 0) {
+    bBody.innerHTML = '';
+    document.getElementById('bookings-loading').innerHTML = CURRENT_BOOKING_FILTER && CURRENT_BOOKING_FILTER !== 'all'
+      ? '<div class="empty-state">Nothing matches this filter right now.</div>'
+      : '<div class="empty-state">No active bookings right now.</div>';
+    document.getElementById('bookings-loading').style.display = 'block';
+    document.getElementById('bookings-table').style.display = 'none';
+  } else {
+    bBody.innerHTML = activeBookings.map(b => renderBookingRow(b, team)).join('');
+    document.getElementById('bookings-loading').style.display = 'none';
+    document.getElementById('bookings-table').style.display = 'table';
+  }
+
+  // The stat-card filter only applies to the main list — archive keeps showing everything, unfiltered.
+  renderArchive(archivedBookings, team);
 }
 
 function renderArchive(archivedBookings, team) {
@@ -1034,7 +1196,7 @@ function renderArchive(archivedBookings, team) {
       </div>
       <div class="archive-body" style="max-height:0; overflow:hidden; transition:max-height 0.3s ease;">
         <table class="responsive-table" style="margin-top:8px;">
-          <thead><tr><th>Received</th><th>Customer</th><th>Location</th><th>Problem</th><th>Contact</th><th>Status / Warranty</th><th>Billing</th><th>Notes</th><th>Actions</th></tr></thead>
+          <thead><tr><th>Received</th><th>Customer</th><th>Status</th><th>Action</th></tr></thead>
           <tbody>${groups[key].map(b => renderBookingRow(b, team)).join('')}</tbody>
         </table>
       </div>
@@ -1193,21 +1355,7 @@ async function loadAdminData() {
     }
 
     // ---- Bookings table (active) + Archive (Done jobs completed 30+ days ago) ----
-    const RECENT_DAYS = 30;
-    const activeBookings = bookings.filter(b => !(b.status === 'Done' && daysAgo(b.completedDate) !== null && daysAgo(b.completedDate) > RECENT_DAYS));
-    const archivedBookings = bookings.filter(b => b.status === 'Done' && daysAgo(b.completedDate) !== null && daysAgo(b.completedDate) > RECENT_DAYS);
-
-    const bBody = document.getElementById('bookings-body');
-    if (activeBookings.length === 0) {
-      bBody.innerHTML = '';
-      document.getElementById('bookings-loading').innerHTML = '<div class="empty-state">No active bookings right now.</div>';
-    } else {
-      bBody.innerHTML = activeBookings.map(b => renderBookingRow(b, team)).join('');
-      document.getElementById('bookings-loading').style.display = 'none';
-      document.getElementById('bookings-table').style.display = 'table';
-    }
-
-    renderArchive(archivedBookings, team);
+    renderBookingsSection(bookings, team);
 
     // ---- Technician applications table ----
     const tBody = document.getElementById('technicians-body');
