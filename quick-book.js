@@ -19,7 +19,7 @@
 
   function buildEmergencyUrl(appliance, problem) {
     var applianceText = appliance ? (appliance + (problem ? ' - ' + problem : '') + ' has a problem') : 'My appliance has a problem';
-    var msg = 'Hello, this is an EMERGENCY. ' + applianceText + ' and I need a technician urgently (priority visit, \u20B9999). I am from ';
+    var msg = 'Hello, this is an EMERGENCY. ' + applianceText + ' and I need a technician urgently (priority visit). I am from ';
     return 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg);
   }
 
@@ -46,7 +46,7 @@
       html += '<a class="qf-slot-btn" href="' + buildSlotUrl(slot, appliance, problem) + '" target="_blank">' + slot.label + '<br>' + slot.time + '</a>';
     });
     html += '</div>' +
-      '<a class="qf-emergency-btn" href="' + buildEmergencyUrl(appliance, problem) + '" target="_blank">\uD83D\uDEA8 Emergency? Priority Visit \u2014 Available Now (\u20B9999)</a>';
+      '<a class="qf-emergency-btn" href="' + buildEmergencyUrl(appliance, problem) + '" target="_blank">\uD83D\uDEA8 Emergency Available \u2014 Repair & Care</a>';
     el.innerHTML = html;
     el.classList.add('qf-quickbook');
   }
