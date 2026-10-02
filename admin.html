@@ -120,7 +120,6 @@ input, select, textarea { padding: 8px 10px; border-radius: 6px; border: 1px sol
   <div class="header">
     <h2 style="color: var(--dark);">🏢 Quickfix Mumbai — Admin Dashboard</h2>
     <button class="success" style="margin: 8px 0 4px;" onclick="openAddLeadModal()">☎️ + Add Lead from Phone Call</button>
-    <button class="secondary" style="margin: 0 0 4px;" onclick="openQuotationModal()">📋 Create Quotation</button>
     <div style="display:flex; gap:8px;">
       <button class="secondary" onclick="loadAdminData()">🔄 Refresh</button>
       <button class="danger" onclick="logoutAdmin()">Logout</button>
@@ -260,44 +259,6 @@ input, select, textarea { padding: 8px 10px; border-radius: 6px; border: 1px sol
     <div class="modal-btns">
       <button class="secondary" onclick="closeAddLeadModal()">Cancel</button>
       <button class="success" id="leadModalSubmitBtn" onclick="submitAddLead()">☎️ Add Lead</button>
-    </div>
-  </div>
-</div>
-
-<div class="modal-overlay" id="quotationModal">
-  <div class="modal-box">
-    <h3>📋 Create Quotation</h3>
-
-    <label class="first">Customer Name *</label>
-    <input type="text" id="quoteName" placeholder="e.g. Rahul Sharma">
-
-    <label>Mobile Number *</label>
-    <input type="tel" id="quoteMobile" placeholder="10-digit mobile" inputmode="numeric" maxlength="10">
-
-    <label>Location <span class="small-note">(optional)</span></label>
-    <input type="text" id="quoteLocation" placeholder="e.g. Andheri West">
-
-    <label>Items</label>
-    <div id="quoteItemsList"></div>
-    <button class="secondary small" type="button" onclick="addQuoteItemRow()" style="margin-top:4px;">+ Add Item</button>
-
-    <label style="margin-top:14px;">Valid For (days)</label>
-    <input type="number" id="quoteValidDays" value="7" min="1" style="max-width:100px;">
-
-    <label>Notes <span class="small-note">(optional)</span></label>
-    <textarea id="quoteNotes" rows="2" placeholder="e.g. Price valid only if approved within window"></textarea>
-
-    <div id="quoteTotalsPreview" style="margin-top:10px; font-size:0.88rem; color: var(--dark);"></div>
-
-    <p id="quoteModalError" style="color: var(--danger); font-size: 0.82rem; margin-top: 10px;"></p>
-    <div id="quoteResultBox" style="display:none; margin-top:10px; background:#F0FDF4; border:1px solid #10B981; border-radius:8px; padding:10px;">
-      <div id="quoteResultText" style="font-size:0.82rem; white-space:pre-wrap; max-height:180px; overflow-y:auto;"></div>
-      <a id="quoteWhatsAppBtn" href="#" target="_blank" class="wa" style="display:inline-block; margin-top:8px; text-decoration:none; padding:8px 14px; border-radius:6px;">📲 Send Quotation on WhatsApp</a>
-    </div>
-
-    <div class="modal-btns">
-      <button class="secondary" onclick="closeQuotationModal()">Close</button>
-      <button class="success" id="quoteModalSubmitBtn" onclick="submitQuotation()">📋 Create Quotation</button>
     </div>
   </div>
 </div>
@@ -657,12 +618,11 @@ async function submitCompleteJob() {
         btn.disabled = false; btn.textContent = '✅ Complete Job';
         return;
       }
-      // Send the bill (already includes warranty code + validity) to the
-      // customer right now via WhatsApp — otherwise it's generated but nobody
-      // ever sends it, and they can't use check-warranty.html later.
+      // Send the warranty code to the customer right now — otherwise it's generated
+      // but nobody ever tells them, and they can't use check-warranty.html later.
       const bookingRow = bookingRowPre || (LAST_DATA.bookings || []).find(b => b.bookingId === bookingId);
-      if (bookingRow && bookingRow.mobile && doneResult.billText) {
-        const msg = doneResult.billText + `\n\nHow was your experience? Rate us in one tap: https://quickfixmumbai.com/rate-us.html?id=${bookingId}`;
+      if (bookingRow && bookingRow.mobile && doneResult.warrantyCode) {
+        const msg = `Dear ${bookingRow.name}, your Quickfix Mumbai repair is complete! Your warranty code is *${doneResult.warrantyCode}* — save this. To check your warranty anytime, visit https://quickfixmumbai.com/check-warranty.html with your mobile number and this code.\n\nHow was your experience? Rate us in one tap: https://quickfixmumbai.com/rate-us.html?id=${bookingId}\n\nThank you for choosing us!`;
         waGoLink(waWin, bookingRow.mobile, msg);
       } else if (waWin) { waWin.close(); }
 
@@ -892,102 +852,6 @@ async function submitAddLead() {
   } finally {
     btn.disabled = false;
     btn.textContent = '☎️ Add Lead';
-  }
-}
-
-// ---------- CREATE QUOTATION ----------
-function openQuotationModal() {
-  MODAL_OPEN = true;
-  document.getElementById('quoteName').value = '';
-  document.getElementById('quoteMobile').value = '';
-  document.getElementById('quoteLocation').value = '';
-  document.getElementById('quoteValidDays').value = '7';
-  document.getElementById('quoteNotes').value = '';
-  document.getElementById('quoteModalError').textContent = '';
-  document.getElementById('quoteResultBox').style.display = 'none';
-  document.getElementById('quoteItemsList').innerHTML = '';
-  addQuoteItemRow();
-  addQuoteItemRow();
-  document.getElementById('quoteModalSubmitBtn').disabled = false;
-  document.getElementById('quoteModalSubmitBtn').textContent = '📋 Create Quotation';
-  document.getElementById('quotationModal').classList.add('show');
-  document.getElementById('quoteName').focus();
-}
-
-function closeQuotationModal() {
-  document.getElementById('quotationModal').classList.remove('show');
-  MODAL_OPEN = false;
-}
-
-function addQuoteItemRow() {
-  const list = document.getElementById('quoteItemsList');
-  const row = document.createElement('div');
-  row.className = 'quote-item-row';
-  row.style.cssText = 'display:flex; gap:6px; margin-top:6px; align-items:center;';
-  row.innerHTML = `
-    <input type="text" class="quote-item-desc" placeholder="e.g. PCB replacement" style="flex:2;">
-    <input type="number" class="quote-item-amount" placeholder="₹ amount" style="flex:1; max-width:110px;" oninput="updateQuoteTotalsPreview()">
-    <button type="button" class="danger small" onclick="this.parentElement.remove(); updateQuoteTotalsPreview();" style="flex:0 0 auto; padding:6px 10px;">✕</button>
-  `;
-  list.appendChild(row);
-  updateQuoteTotalsPreview();
-}
-
-function collectQuoteItems() {
-  const rows = document.querySelectorAll('#quoteItemsList .quote-item-row');
-  const items = [];
-  rows.forEach(row => {
-    const description = row.querySelector('.quote-item-desc').value.trim();
-    const amount = parseFloat(row.querySelector('.quote-item-amount').value);
-    if (description && !isNaN(amount) && amount > 0) items.push({ description, amount });
-  });
-  return items;
-}
-
-function updateQuoteTotalsPreview() {
-  const items = collectQuoteItems();
-  const subtotal = items.reduce((s, it) => s + it.amount, 0);
-  const gst = Math.round(subtotal * 0.18 * 100) / 100;
-  const total = Math.round((subtotal + gst) * 100) / 100;
-  const box = document.getElementById('quoteTotalsPreview');
-  box.innerHTML = items.length
-    ? `Subtotal: ₹${subtotal} &nbsp; + GST (18%): ₹${gst} &nbsp; = <strong>Total: ₹${total}</strong>`
-    : '';
-}
-
-async function submitQuotation() {
-  const name = document.getElementById('quoteName').value.trim();
-  const mobile = document.getElementById('quoteMobile').value.trim();
-  const location = document.getElementById('quoteLocation').value.trim();
-  const validDays = parseInt(document.getElementById('quoteValidDays').value, 10) || 7;
-  const notes = document.getElementById('quoteNotes').value.trim();
-  const items = collectQuoteItems();
-  const errBox = document.getElementById('quoteModalError');
-  errBox.textContent = '';
-
-  if (!name) { errBox.textContent = '⚠️ Customer name is required.'; return; }
-  if (!/^[6-9]\d{9}$/.test(mobile)) { errBox.textContent = '⚠️ Enter a valid 10-digit mobile number.'; return; }
-  if (!items.length) { errBox.textContent = '⚠️ Add at least one item with a description and amount.'; return; }
-
-  const btn = document.getElementById('quoteModalSubmitBtn');
-  btn.disabled = true;
-  btn.textContent = 'Creating...';
-  try {
-    const result = await callAction({ action: 'create_quotation', name, mobile, location, items, validDays, notes });
-    if (result.status === 'success') {
-      document.getElementById('quoteResultBox').style.display = 'block';
-      document.getElementById('quoteResultText').textContent = result.quotationText;
-      document.getElementById('quoteWhatsAppBtn').href = result.quotationWhatsAppLink;
-      btn.textContent = '✅ Created';
-    } else {
-      errBox.textContent = '⚠️ ' + (result.message || 'Could not create quotation.');
-      btn.disabled = false;
-      btn.textContent = '📋 Create Quotation';
-    }
-  } catch (err) {
-    errBox.textContent = '⚠️ Network error — please try again.';
-    btn.disabled = false;
-    btn.textContent = '📋 Create Quotation';
   }
 }
 
