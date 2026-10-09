@@ -252,10 +252,11 @@ function showApp() {
   document.getElementById('welcomeMsg').textContent = '🔧 ' + techName;
   renderStatusBtn();
   setupPushNotifications();
-  loadLeads();
-  loadJobs();
+  showCachedDashboard();
+  loadDashboard();
   if (pollTimer) clearInterval(pollTimer);
-  pollTimer = setInterval(() => { loadLeads(); loadJobs(); }, 30000);
+  pollTimer = setInterval(() => { if (!document.hidden) loadDashboard(); }, 45000);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) loadDashboard(); });
 }
 
 function switchTab(tab) {
@@ -266,123 +267,58 @@ function switchTab(tab) {
   document.getElementById('jobsPane').style.display = tab === 'jobs' ? 'block' : 'none';
 }
 
-async function loadLeads() {
+// One request loads leads + jobs together (was two separate calls, each slow). In-flight calls are
+// shared, polling pauses when the tab is hidden, and the last result shows instantly on next open.
+let dashPromise = null;
+function paintLeads(data) {
   const pane = document.getElementById('leadsPane');
-  try {
-    const res = await fetch(`${scriptUrl}?action=technician_available_leads&techToken=${encodeURIComponent(techToken)}`, { cache: 'no-cache' });
-    const data = await res.json();
-    if (data.status !== 'success') {
-      if (data.message === 'Please log in again.') { techLogout(); return; }
-      pane.innerHTML = `<div class="empty">${esc(data.message || 'Could not load leads.')}</div>`;
-      return;
-    }
-    if (data.paused) {
-      pane.innerHTML = '<div class="empty">🟡 You\'re marked as Temporarily Unavailable — you won\'t see new leads until the office switches you back to Active. You can still work on jobs already in "My Jobs".</div>';
-      return;
-    }
-    if (data.leads.length === 0) {
-      pane.innerHTML = '<div class="empty">No open leads right now — check back soon.</div>';
-      return;
-    }
-    pane.innerHTML = data.leads.map(l => `
-      <div class="card" ${l.areaMatch ? 'style="border:1.5px solid #16A34A;"' : ''}>
-        <span class="badge">${esc(l.leadSource || 'Website')}</span>${l.areaMatch ? ' <span class="badge" style="background:#DCFCE7;color:#166534;">📍 Near you</span>' : ''}
-        <h3>${esc(l.machine)}</h3>
-        <div class="meta">📍 Area: ${esc(l.areaPreview)}</div>
-        ${l.preferredDate ? `<div class="meta">${esc(l.preferredDate)} ${esc(l.timeSlot)}</div>` : ''}
-        <button class="btn btn-accept" onclick="acceptLead('${l.bookingId}', this)">✅ Accept This Lead</button>
-      </div>
-    `).join('');
-  } catch (e) {
-    pane.innerHTML = '<div class="empty">Network issue — pull down to retry.</div>';
+  if (data.paused) {
+    pane.innerHTML = '<div class="empty">🟡 You\'re marked as Temporarily Unavailable — you won\'t see new leads until the office switches you back to Active. You can still work on jobs already in "My Jobs".</div>';
+    return;
   }
+  if (!data.leads.length) { pane.innerHTML = '<div class="empty">No open leads right now — check back soon.</div>'; return; }
+  pane.innerHTML = data.leads.map(l => `
+    <div class="card" ${l.areaMatch ? 'style="border:1.5px solid #16A34A;"' : ''}>
+      <span class="badge">${esc(l.leadSource || 'Website')}</span>${l.areaMatch ? ' <span class="badge" style="background:#DCFCE7;color:#166534;">📍 Near you</span>' : ''}${l.bookingRef ? ` <span class="badge" style="background:#EEF2FF;color:#3730A3;">${esc(l.bookingRef)}</span>` : ''}
+      <h3>${esc(l.machine)}</h3>
+      <div class="meta">📍 Area: ${esc(l.areaPreview)}</div>
+      ${l.preferredDate ? `<div class="meta">${esc(l.preferredDate)} ${esc(l.timeSlot)}</div>` : ''}
+      <button class="btn btn-accept" onclick="acceptLead('${l.bookingId}', this)">✅ Accept This Lead</button>
+    </div>
+  `).join('');
 }
-
-async function acceptLead(bookingId, btn) {
-  btn.disabled = true; btn.textContent = 'Accepting...';
-  const waWin = waOpen();
-  const result = await callAction({ action: 'accept_lead', bookingId: bookingId });
-  if (result.status === 'success') {
-    switchTab('jobs');
-    loadLeads();
-    loadJobs();
-    // Auto-opens WhatsApp with the customer's message pre-filled — this sends
-    // from YOUR own WhatsApp (not the Quickfix business number), you just need
-    // to tap Send. Only a paid WhatsApp Business API can send fully automatically
-    // from the business number itself.
-    const visitLine = (result.preferredDate || result.timeSlot) ? ` around ${result.preferredDate || ''} ${result.timeSlot || ''}`.trim() : ' shortly';
-    const msg = `Dear ${result.customerName}, this is Quickfix Mumbai. Your technician *${result.techName}* will visit you${visitLine}. Feel free to call/message if needed. Thank you for choosing us!`;
-    if (result.customerMobile) {
-      waGo(waWin, result.customerMobile, msg);
-    } else if (waWin) { waWin.close(); }
-  } else {
-    if (waWin) waWin.close();
-    alert(result.message || 'Could not accept this lead.');
-    btn.disabled = false; btn.textContent = '✅ Accept This Lead';
-    loadLeads();
-  }
-}
-
-const VISIT_STATUSES = ['Assigned', 'On the Way', 'Reached', 'Diagnosing', 'Diagnosis Done', 'Repair Done'];
-
-async function loadJobs() {
+function paintJobs(jobs) {
   const pane = document.getElementById('jobsPane');
+  window.LAST_JOBS = jobs;
+  pane.innerHTML = jobs.length ? jobs.map(j => renderJobCard(j)).join('') : '<div class="empty">No active jobs — accept a lead to get started.</div>';
+}
+function loadDashboard() {
+  if (dashPromise) return dashPromise;
+  dashPromise = (async () => {
+    try {
+      const res = await fetch(`${scriptUrl}?action=technician_dashboard&techToken=${encodeURIComponent(techToken)}`, { cache: 'no-cache' });
+      const data = await res.json();
+      if (data.status !== 'success') {
+        if (data.message === 'Please log in again.') { techLogout(); return; }
+        document.getElementById('leadsPane').innerHTML = `<div class="empty">${esc(data.message || 'Could not load.')}</div>`;
+        return;
+      }
+      paintLeads(data); paintJobs(data.jobs || []);
+      try { localStorage.setItem('qfDash_' + techToken.slice(0, 8), JSON.stringify({ leads: data.leads, paused: data.paused, jobs: data.jobs })); } catch (e) {}
+    } catch (e) {
+      if (!document.getElementById('leadsPane').children.length) document.getElementById('leadsPane').innerHTML = '<div class="empty">Network issue — pull down to retry.</div>';
+    } finally { dashPromise = null; }
+  })();
+  return dashPromise;
+}
+function showCachedDashboard() {
   try {
-    const res = await fetch(`${scriptUrl}?action=technician_my_jobs&techToken=${encodeURIComponent(techToken)}`, { cache: 'no-cache' });
-    const data = await res.json();
-    if (data.status !== 'success') {
-      if (data.message === 'Please log in again.') { techLogout(); return; }
-      pane.innerHTML = `<div class="empty">${esc(data.message || 'Could not load jobs.')}</div>`;
-      return;
-    }
-    if (data.jobs.length === 0) {
-      pane.innerHTML = '<div class="empty">No active jobs — accept a lead to get started.</div>';
-      window.LAST_JOBS = [];
-      return;
-    }
-    window.LAST_JOBS = data.jobs;
-    pane.innerHTML = data.jobs.map(j => renderJobCard(j)).join('');
-  } catch (e) {
-    pane.innerHTML = '<div class="empty">Network issue — pull down to retry.</div>';
-  }
+    const c = JSON.parse(localStorage.getItem('qfDash_' + techToken.slice(0, 8)) || 'null');
+    if (c) { paintLeads(c); paintJobs(c.jobs || []); }
+  } catch (e) {}
 }
-
-function renderStepTracker(bookingId, currentStatus) {
-  const currentIndex = Math.max(0, VISIT_STATUSES.indexOf(currentStatus));
-  return `<div style="display:flex; flex-direction:column; gap:6px; margin:10px 0;">` +
-    VISIT_STATUSES.map((s, i) => {
-      const done = i <= currentIndex;
-      return `<div onclick="updateVisitStatus('${bookingId}','${s}')" style="display:flex; align-items:center; gap:8px; padding:6px 10px; border-radius:8px; cursor:pointer; background:${done ? '#F0FDF4' : '#F9FAFB'}; font-size:0.85rem; font-weight:${i === currentIndex ? '700' : '500'}; color:${done ? '#166534' : '#6B7280'};">
-        <span>${done ? '✅' : '⬜'}</span><span style="font-weight:800; min-width:16px;">${i + 1}.</span><span>${s}</span>
-      </div>`;
-    }).join('') + `</div>`;
-}
-
-// Lightweight tap-to-pick modal — replaces free-text prompts for payment mode
-// so it's a real selectable choice, not something typed/misspelled.
-function pickPaymentMode() {
-  return new Promise(resolve => {
-    const overlay = document.createElement('div');
-    overlay.style.cssText = 'position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:999; display:flex; align-items:center; justify-content:center; padding:20px;';
-    const box = document.createElement('div');
-    box.style.cssText = 'background:#fff; border-radius:14px; padding:22px; max-width:320px; width:100%; text-align:center;';
-    box.innerHTML = `<h3 style="margin-bottom:14px; color:#1E3A8A;">Payment Mode</h3>`;
-    ['Cash', 'UPI', 'Card', 'Other'].forEach(mode => {
-      const btn = document.createElement('button');
-      btn.textContent = mode;
-      btn.style.cssText = 'display:block; width:100%; padding:12px; margin-bottom:8px; border:1.5px solid #1E3A8A; border-radius:8px; background:#fff; color:#1E3A8A; font-weight:700; font-size:0.9rem; cursor:pointer;';
-      btn.onclick = () => { document.body.removeChild(overlay); resolve(mode); };
-      box.appendChild(btn);
-    });
-    const cancelBtn = document.createElement('button');
-    cancelBtn.textContent = 'Cancel';
-    cancelBtn.style.cssText = 'display:block; width:100%; padding:10px; border:none; background:none; color:#DC2626; font-size:0.85rem; cursor:pointer; margin-top:4px;';
-    cancelBtn.onclick = () => { document.body.removeChild(overlay); resolve(null); };
-    box.appendChild(cancelBtn);
-    overlay.appendChild(box);
-    document.body.appendChild(overlay);
-  });
-}
+async function loadLeads() { return loadDashboard(); }
+async function loadJobs() { return loadDashboard(); }
 
 function renderJobCard(j) {
   const approvalHtml = j.customerApproved === 'Yes'
@@ -392,7 +328,7 @@ function renderJobCard(j) {
       : (j.diagnosisNotes ? '<div class="meta">⏳ Waiting for customer approval (office will confirm)</div>' : '');
   return `
     <div class="card">
-      <h3>${esc(j.name)}</h3>
+      <h3>${esc(j.name)}${j.bookingRef ? ` <span class="badge" style="background:#EEF2FF;color:#3730A3;">${esc(j.bookingRef)}</span>` : ''}</h3>
       <div class="meta">📞 ${esc(j.mobile)}</div>
       <div class="meta">📍 ${esc(j.location)}</div>
       <div class="meta">🔧 ${esc(j.problem)}</div>

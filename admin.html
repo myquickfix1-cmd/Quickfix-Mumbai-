@@ -198,6 +198,11 @@ input, select, textarea { padding: 8px 10px; border-radius: 6px; border: 1px sol
   <div class="section" id="bookings-section">
     <div class="section-head"><h2>📅 Customer Bookings</h2></div>
     <p class="small-note" style="margin-bottom:8px;">Shows Pending, In Process, and jobs completed within the last 30 days. Older completed jobs move to the Archive below — search by mobile number still finds everything.</p>
+    <div style="display:flex; gap:6px; margin-bottom:10px;">
+      <input id="findBookingInput" type="text" placeholder="Find booking by ID (e.g. QF-261009-007)" style="flex:1; padding:10px; border:1.5px solid #cbd5e1; border-radius:8px;" onkeydown="if(event.key==='Enter')findBookingById()">
+      <button onclick="findBookingById()" style="padding:10px 14px;">🔎 Find</button>
+    </div>
+    <div id="junk-note" style="display:none; font-size:.8rem; color:#92400E; background:#FEF3C7; border-radius:8px; padding:8px 10px; margin-bottom:10px;"></div>
     <div id="bookings-filter-bar" style="display:none; margin-bottom:10px;">
       <span class="badge" style="background:#DBEAFE; color:var(--primary);">Showing: <span id="bookings-filter-label"></span></span>
       <button class="secondary small" onclick="filterBookingsBy('all')" style="margin-left:8px;">✕ Clear filter</button>
@@ -780,6 +785,26 @@ async function sendCompletionCode(bookingId, mobile, name) {
   await loadAdminData();
 }
 
+async function findBookingById() {
+  const id = (document.getElementById('findBookingInput').value || '').trim();
+  if (!id) return;
+  try {
+    const res = await fetch(`${scriptUrl}?action=find_booking&token=${encodeURIComponent(getToken())}&id=${encodeURIComponent(id)}`, { cache: 'no-cache' });
+    const r = await res.json();
+    if (r.status !== 'success') { alert(r.message || 'Not found'); return; }
+    const old = document.getElementById('findResult'); if (old) old.remove();
+    const box = document.createElement('div');
+    box.id = 'findResult';
+    box.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:center;justify-content:center;padding:14px;';
+    const card = document.createElement('div');
+    card.style.cssText = 'background:#fff;border-radius:12px;max-width:520px;width:100%;max-height:85vh;overflow:auto;padding:16px;';
+    const h = document.createElement('h3'); h.textContent = 'Booking ' + id + (r.duplicates ? ' (' + r.duplicates + ' duplicate row(s) found)' : ''); card.appendChild(h);
+    r.fields.forEach(f => { const d = document.createElement('div'); d.style.cssText = 'padding:6px 0;border-bottom:1px solid #eee;font-size:.88rem;'; const b = document.createElement('strong'); b.textContent = f.field + ': '; d.appendChild(b); d.appendChild(document.createTextNode(f.value)); card.appendChild(d); });
+    const c = document.createElement('button'); c.textContent = 'Close'; c.style.marginTop = '12px'; c.onclick = () => box.remove(); card.appendChild(c);
+    box.appendChild(card); box.onclick = ev => { if (ev.target === box) box.remove(); }; document.body.appendChild(box);
+  } catch (e) { alert('Could not search right now. Please try again.'); }
+}
+
 async function adminCancelBooking(bookingId) {
   const reason = prompt('Reason for cancellation (customer request / cost too high / part unavailable / other):');
   if (reason === null) return;
@@ -993,6 +1018,7 @@ function truncateText(text, maxLen){
 
 function renderBookingRow(b, team) {
   const rowId = 'bk-' + b.bookingId;
+  const refBadge = b.bookingRef ? `<span class="badge" style="background:#EEF2FF;color:#3730A3;margin-left:6px;">${escapeHtml(b.bookingRef)}</span>` : '';
 
   const techLine = b.techName ? `<div class="detail-row">Technician: <strong>${escapeHtml(b.techName)}</strong> · ${escapeHtml(b.techMobile)}</div>` : '<div class="detail-row small-note">Not assigned yet</div>';
   const seniorLine = b.seniorName ? `<div class="detail-row">Senior: <strong>${escapeHtml(b.seniorName)}</strong> · ${escapeHtml(b.seniorMobile)}</div>` : '';
@@ -1120,7 +1146,7 @@ function renderBookingRow(b, team) {
   <tr class="booking-summary-row">
     <td data-label="Received">${fmtDate(b.timestamp)}</td>
     <td data-label="Customer">
-      <div class="booking-summary-main"><strong>${escapeHtml(b.name)}</strong> ${repeatLine}</div>
+      <div class="booking-summary-main"><strong>${escapeHtml(b.name)}</strong> ${repeatLine}${refBadge}</div>
       <div class="booking-summary-sub">${escapeHtml(truncateText(b.location, 40))}</div>
       <div class="booking-summary-sub">${escapeHtml(truncateText(b.problem, 55))}</div>
     </td>
@@ -1225,6 +1251,8 @@ async function loadAdminData() {
     if (result.status !== 'success') { sessionStorage.removeItem('quickfix_admin_token'); window.location.reload(); return; }
 
     LAST_DATA = result;
+    const jn = document.getElementById('junk-note');
+    if (jn) { if (result.junkRowsHidden > 0) { jn.style.display = 'block'; jn.textContent = result.junkRowsHidden + ' blank or incomplete sheet row(s) are hidden. Run repairAllSheets() in Apps Script to clean the sheet.'; } else jn.style.display = 'none'; }
     const bookings = (result.bookings || []).map(b => ({ ...b, mobile: normMobile(b.mobile), techMobile: normMobile(b.techMobile), seniorMobile: normMobile(b.seniorMobile) }));
     lastKnownSnapshot = snapshotBookings(result.bookings);
     const technicians = result.technicians || [];
