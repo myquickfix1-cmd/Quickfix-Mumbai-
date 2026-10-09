@@ -292,9 +292,12 @@ function paintJobs(jobs) {
   window.LAST_JOBS = jobs;
   pane.innerHTML = jobs.length ? jobs.map(j => renderJobCard(j)).join('') : '<div class="empty">No active jobs — accept a lead to get started.</div>';
 }
-function loadDashboard() {
-  if (dashPromise) return dashPromise;
+let refreshQueued = null, dashSeq = 0;
+function loadDashboard(force) {
+  if (dashPromise && !force) return dashPromise;
+  const prev = dashPromise; const myId = ++dashSeq;
   dashPromise = (async () => {
+    if (prev) { try { await prev; } catch (e) {} }
     try {
       const res = await fetch(`${scriptUrl}?action=technician_dashboard&techToken=${encodeURIComponent(techToken)}`, { cache: 'no-cache' });
       const data = await res.json();
@@ -307,7 +310,7 @@ function loadDashboard() {
       try { localStorage.setItem('qfDash_' + techToken.slice(0, 8), JSON.stringify({ leads: data.leads, paused: data.paused, jobs: data.jobs })); } catch (e) {}
     } catch (e) {
       if (!document.getElementById('leadsPane').children.length) document.getElementById('leadsPane').innerHTML = '<div class="empty">Network issue — pull down to retry.</div>';
-    } finally { dashPromise = null; }
+    } finally { if (dashSeq === myId) dashPromise = null; }
   })();
   return dashPromise;
 }
@@ -317,8 +320,74 @@ function showCachedDashboard() {
     if (c) { paintLeads(c); paintJobs(c.jobs || []); }
   } catch (e) {}
 }
-async function loadLeads() { return loadDashboard(); }
-async function loadJobs() { return loadDashboard(); }
+function refreshAfterAction() {
+  if (!refreshQueued) refreshQueued = Promise.resolve().then(() => { refreshQueued = null; return loadDashboard(true); });
+  return refreshQueued;
+}
+async function loadLeads() { return refreshAfterAction(); }
+async function loadJobs() { return refreshAfterAction(); }
+
+async function acceptLead(bookingId, btn) {
+  btn.disabled = true; btn.textContent = 'Accepting...';
+  const waWin = waOpen();
+  const result = await callAction({ action: 'accept_lead', bookingId: bookingId });
+  if (result.status === 'success') {
+    switchTab('jobs');
+    loadLeads();
+    loadJobs();
+    // Auto-opens WhatsApp with the customer's message pre-filled — this sends
+    // from YOUR own WhatsApp (not the Quickfix business number), you just need
+    // to tap Send. Only a paid WhatsApp Business API can send fully automatically
+    // from the business number itself.
+    const visitLine = (result.preferredDate || result.timeSlot) ? ` around ${result.preferredDate || ''} ${result.timeSlot || ''}`.trim() : ' shortly';
+    const msg = `Dear ${result.customerName}, this is Quickfix Mumbai. Your technician *${result.techName}* will visit you${visitLine}. Feel free to call/message if needed. Thank you for choosing us!`;
+    if (result.customerMobile) {
+      waGo(waWin, result.customerMobile, msg);
+    } else if (waWin) { waWin.close(); }
+  } else {
+    if (waWin) waWin.close();
+    alert(result.message || 'Could not accept this lead.');
+    btn.disabled = false; btn.textContent = '✅ Accept This Lead';
+    loadLeads();
+  }
+}
+
+function pickPaymentMode() {
+  return new Promise(resolve => {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:999; display:flex; align-items:center; justify-content:center; padding:20px;';
+    const box = document.createElement('div');
+    box.style.cssText = 'background:#fff; border-radius:14px; padding:22px; max-width:320px; width:100%; text-align:center;';
+    box.innerHTML = `<h3 style="margin-bottom:14px; color:#1E3A8A;">Payment Mode</h3>`;
+    ['Cash', 'UPI', 'Card', 'Other'].forEach(mode => {
+      const btn = document.createElement('button');
+      btn.textContent = mode;
+      btn.style.cssText = 'display:block; width:100%; padding:12px; margin-bottom:8px; border:1.5px solid #1E3A8A; border-radius:8px; background:#fff; color:#1E3A8A; font-weight:700; font-size:0.9rem; cursor:pointer;';
+      btn.onclick = () => { document.body.removeChild(overlay); resolve(mode); };
+      box.appendChild(btn);
+    });
+    const cancelBtn = document.createElement('button');
+    cancelBtn.textContent = 'Cancel';
+    cancelBtn.style.cssText = 'display:block; width:100%; padding:10px; border:none; background:none; color:#DC2626; font-size:0.85rem; cursor:pointer; margin-top:4px;';
+    cancelBtn.onclick = () => { document.body.removeChild(overlay); resolve(null); };
+    box.appendChild(cancelBtn);
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+  });
+}
+
+const VISIT_STATUSES = ['Assigned', 'On the Way', 'Reached', 'Diagnosing', 'Diagnosis Done', 'Repair Done'];
+
+function renderStepTracker(bookingId, currentStatus) {
+  const currentIndex = Math.max(0, VISIT_STATUSES.indexOf(currentStatus));
+  return `<div style="display:flex; flex-direction:column; gap:6px; margin:10px 0;">` +
+    VISIT_STATUSES.map((s, i) => {
+      const done = i <= currentIndex;
+      return `<div onclick="updateVisitStatus('${bookingId}','${s}')" style="display:flex; align-items:center; gap:8px; padding:6px 10px; border-radius:8px; cursor:pointer; background:${done ? '#F0FDF4' : '#F9FAFB'}; font-size:0.85rem; font-weight:${i === currentIndex ? '700' : '500'}; color:${done ? '#166534' : '#6B7280'};">
+        <span>${done ? '✅' : '⬜'}</span><span style="font-weight:800; min-width:16px;">${i + 1}.</span><span>${s}</span>
+      </div>`;
+    }).join('') + `</div>`;
+}
 
 function renderJobCard(j) {
   const approvalHtml = j.customerApproved === 'Yes'
